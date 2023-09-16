@@ -4,24 +4,45 @@
     <form
       class="grid md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8 mt-12 md:mx-auto mx-8 max-w-3xl"
       id="contact-form"
+      @submit.prevent="send"
     >
       <div>
         <label for="firstname" class="text-white text-sm block"
           >First Name</label
         >
-        <input type="text" id="firstname" class="block text-4xl w-full" />
+        <input
+          type="text"
+          id="firstname"
+          class="block text-4xl w-full"
+          v-model="firstName"
+        />
       </div>
       <div>
         <label for="lastname" class="text-white text-sm block">Last Name</label>
-        <input type="text" id="lastname" class="block text-4xl w-full" />
+        <input
+          type="text"
+          id="lastname"
+          class="block text-4xl w-full"
+          v-model="lastName"
+        />
       </div>
       <div class="md:col-span-2 col-span-1">
         <label for="email" class="text-white text-sm block">Email</label>
-        <input type="text" id="email" class="block text-4xl w-full" />
+        <input
+          type="text"
+          id="email"
+          class="block text-4xl w-full"
+          v-model="email"
+        />
       </div>
       <div class="md:col-span-2 col-span-1">
         <label for="message" class="text-white text-sm block">Message</label>
-        <textarea id="message" rows="3" class="block text-xl w-full" />
+        <textarea
+          id="message"
+          rows="3"
+          class="block text-xl w-full"
+          v-model="message"
+        />
       </div>
       <div class="md:col-span-2 col-span-1 flex justify-center">
         <button
@@ -47,3 +68,26 @@
   color: black;
 }
 </style>
+
+<script setup lang="ts">
+const firstName = ref("");
+const lastName = ref("");
+const email = ref("");
+const message = ref("");
+
+const send = (e: any) => {
+  e.preventDefault();
+
+  $fetch("/.netlify/functions/contact-submit", {
+    method: "POST",
+    body: {
+      firstname: firstName,
+      lastname: lastName,
+      message,
+      email,
+    },
+  }).then((res: any) => {
+    console.log(res);
+  });
+};
+</script>
