@@ -13,7 +13,7 @@
         <input
           type="text"
           id="firstname"
-          class="block text-4xl w-full"
+          class="block text-xl h-11 w-full"
           v-model="firstName"
         />
       </div>
@@ -22,7 +22,7 @@
         <input
           type="text"
           id="lastname"
-          class="block text-4xl w-full"
+          class="block text-xl h-11 w-full"
           v-model="lastName"
         />
       </div>
@@ -31,7 +31,7 @@
         <input
           type="text"
           id="email"
-          class="block text-4xl w-full"
+          class="block text-xl h-11 w-full"
           v-model="email"
         />
       </div>
@@ -88,6 +88,10 @@ const send = (e: any) => {
     },
   }).then((res: any) => {
     console.log(res);
+    firstName.value = "";
+    lastName.value = "";
+    email.value = "";
+    message.value = "";
   });
 };
 </script>

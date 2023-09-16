@@ -4,6 +4,7 @@ require('dotenv').config()
 const { AWS_ACCESS_KEY_ID_WGV, AWS_SECRET_KEY_ID_WGV, AWS_REGION_WGV } = process.env;
 
 const TO_EMAIL = 'carly@wildgracevideography.com';
+const FROM_EMAIL = 'info@wildgracevideography.com';
 
 export const handler: Handler = async (event, context) => {
   const AWS = require("aws-sdk");
@@ -64,7 +65,7 @@ export const handler: Handler = async (event, context) => {
           Data: "From Contact Form"
         }
       },
-      Source: TO_EMAIL
+      Source: FROM_EMAIL
     }
 
     return ses.sendEmail(params).promise().then((data: any) => {
