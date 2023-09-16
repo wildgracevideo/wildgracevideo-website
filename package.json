@@ -1,0 +1,19 @@
+{
+  "name": "nuxt-app",
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "autoprefixer": "^10.4.15",
+    "nuxt": "^3.7.3",
+    "postcss": "^8.4.29",
+    "tailwindcss": "^3.3.3"
+  },
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "type": "module"
+}

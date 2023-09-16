@@ -1,0 +1,53 @@
+<template>
+  <div class="grid grid-cols-1 md:grid-cols-2 mb-16">
+    <div class="ml-24 mr-16 mt-16 leading-loose text">
+      <p>
+        I'm Carly, and creating videos is my thing. After graduating from the
+        University of Vermont (Go Catamounts!) I made the decision to pack my
+        bags and fly out west—and now call Denver, Colorado my home.
+      </p>
+      <br />
+      <p>
+        Ever since I was little, I have always found passion and excitement
+        through creating videos. From creating embarrassing movie trailers with
+        my friends when I was younger, to putting together creative travel
+        videos from my semester abroad in New Zealand, and compiling footage of
+        the ranch I worked at in Wyoming. Creating videos as a “souvenir” from
+        moments through life has always been important to me.
+      </p>
+      <br />
+      <p>
+        As Wild Grace Videography, I am focused on providing detailed and
+        personalized videos to match your brand and relay your message in a
+        professional, yet exciting style.
+      </p>
+      <br />
+      <p>
+        I am outgoing in my video style and always exploring new ways to capture
+        the viewer's eye and enhance my video style—WILD.
+      </p>
+      <br />
+      <p>
+        I focus on providing my clients with a smooth and enjoyable experience
+        to create a lasting partnership that embodies trust and
+        positivity—GRACE.
+      </p>
+      <br />
+      <p>
+        I feel beyond fortunate that I have been able to combine my love for
+        creativity and video into my own business. They say if you choose a job
+        you love, you will never work a day in your life. And that's why I made
+        video my thing.
+      </p>
+    </div>
+    <div class="mx-8">
+      <img src="/Carly1.jpg" class="max-w-4xl about-image w-full" />
+    </div>
+  </div>
+</template>
+
+<style>
+.about-image {
+  aspect-ratio: 1/1.25;
+}
+</style>
