@@ -40,7 +40,6 @@ export const handler: Handler = async (event, context) => {
       Message: {
         Body: {
           Html: {
-            // HTML Format of the email
             Charset: "UTF-8",
             Data:
               `<html>
@@ -62,7 +61,7 @@ export const handler: Handler = async (event, context) => {
         },
         Subject: {
           Charset: "UTF-8",
-          Data: "From Contact Form"
+          Data: "Wild Grace Videography Contact Form"
         }
       },
       Source: FROM_EMAIL
