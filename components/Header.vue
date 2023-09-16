@@ -17,13 +17,25 @@ import { space } from 'postcss/lib/list';
       <a
         class="ml-auto mt-12 block"
         href="https://www.instagram.com/wildgracevideo/"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Instagram :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
-      <a class="mt-12" href="https://www.facebook.com/wildgracevideo/">
+      <a
+        class="mt-12"
+        href="https://www.facebook.com/wildgracevideo/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Facebook :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
-      <a class="mt-12" href="mailto:carly@wildgracevideography.com">
+      <a
+        class="mt-12"
+        href="mailto:carly@wildgracevideography.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Email :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
     </div>
