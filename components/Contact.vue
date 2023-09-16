@@ -1,46 +1,54 @@
 <template>
-  <div class="contact-bg pt-8" :class="{ hidden: !showForm }">
-    <h2 class="text-white text-3xl text-center">Contact Us</h2>
+  <div class="contact-bg pt-8">
+    <h2 class="text-white text-3xl text-center" :class="{ hidden: !showForm }">
+      Contact Us
+    </h2>
+    <h2
+      class="text-white text-3xl text-center relative top-28"
+      :class="{ hidden: showForm, block: !showForm, 'fade-in': !showForm }"
+    >
+      Thank you!
+    </h2>
     <form
-      class="grid md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8 mt-12 md:mx-auto mx-8 max-w-3xl"
+      class="grid md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8 mt-12 md:mx-auto mx-8 max-w-3xl gap-x-8"
+      :class="{ invisible: !showForm, 'fade-out': !showForm }"
       id="contact-form"
       @submit.prevent="send"
     >
       <div>
-        <label for="firstname" class="text-white text-sm block"
-          >First Name</label
-        >
-        <input
-          type="text"
-          id="firstname"
-          class="block text-xl h-11 w-full"
+        <RequiredInput
+          title="First Name"
+          name="firstname"
+          :is-required="isRequired"
+          title-text-class="text-white"
           v-model="firstName"
         />
       </div>
       <div>
-        <label for="lastname" class="text-white text-sm block">Last Name</label>
-        <input
-          type="text"
-          id="lastname"
-          class="block text-xl h-11 w-full"
+        <RequiredInput
+          title="Last Name"
+          name="lastname"
+          :is-required="isRequired"
+          title-text-class="text-white"
           v-model="lastName"
         />
       </div>
       <div class="md:col-span-2 col-span-1">
-        <label for="email" class="text-white text-sm block">Email</label>
-        <input
-          type="text"
-          id="email"
-          class="block text-xl h-11 w-full"
+        <RequiredInput
+          title="Email"
+          name="email"
+          :is-required="isRequired"
+          title-text-class="text-white"
           v-model="email"
         />
       </div>
       <div class="md:col-span-2 col-span-1">
-        <label for="message" class="text-white text-sm block">Message</label>
-        <textarea
-          id="message"
-          rows="3"
-          class="block text-xl w-full"
+        <RequiredTextArea
+          :rows="3"
+          title="Message"
+          name="message"
+          :is-required="isRequired"
+          title-text-class="text-white"
           v-model="message"
         />
       </div>
@@ -53,9 +61,6 @@
         </button>
       </div>
     </form>
-  </div>
-  <div class="h-32 contact-bg" :class="{ hidden: showForm }">
-    <p class="mx-auto text-xl w-fit pt-8 text-white">Thank you!</p>
   </div>
 </template>
 <style>
@@ -72,6 +77,9 @@
 </style>
 
 <script setup lang="ts">
+import RequiredInput from "./RequiredInput.vue";
+import RequiredTextArea from "./RequiredTextArea.vue";
+
 const firstName = ref("");
 const lastName = ref("");
 const email = ref("");
@@ -79,25 +87,28 @@ const message = ref("");
 
 const showForm = ref(true);
 
-const send = (e: any) => {
-  e.preventDefault();
+const isRequired = ref(false);
 
-  console.log(firstName.value);
-  $fetch("/.netlify/functions/contact-submit", {
-    method: "POST",
-    body: {
-      firstname: `${firstName.value}`,
-      lastname: `${lastName.value}`,
-      message: `${message.value}`,
-      email: `${email.value}`,
-    },
-  }).then((res: any) => {
-    console.log(res);
-    firstName.value = "";
-    lastName.value = "";
-    email.value = "";
-    message.value = "";
-    showForm.value = false;
-  });
+const send = () => {
+  isRequired.value = true;
+
+  if (firstName.value && lastName.value && email.value && message.value) {
+    $fetch("/.netlify/functions/contact-submit", {
+      method: "POST",
+      body: {
+        firstname: `${firstName.value}`,
+        lastname: `${lastName.value}`,
+        message: `${message.value}`,
+        email: `${email.value}`,
+      },
+    }).then((res: any) => {
+      console.log(res);
+      firstName.value = "";
+      lastName.value = "";
+      email.value = "";
+      message.value = "";
+      showForm.value = false;
+    });
+  }
 };
 </script>

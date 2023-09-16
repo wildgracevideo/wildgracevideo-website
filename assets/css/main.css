@@ -5,3 +5,40 @@
 body, html, #__nuxt {
   height: 100%;
 }
+
+div.Header,
+div.Content,
+div.HoverCard,
+div.Feedback,
+div.SocialProof,
+div.Caption,
+div.Footer {
+  display: none !important;
+}
+
+.fade-in {
+  animation: visible 2s;
+}
+
+.fade-out {
+  animation: invisible 2s;
+  visibility: hidden;
+}
+
+@keyframes visible {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+ }
+
+@keyframes invisible {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+ }

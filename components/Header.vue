@@ -14,6 +14,7 @@ import { space } from 'postcss/lib/list';
       <NuxtLink class="mt-14 mr-8" to="/">Home</NuxtLink>
       <NuxtLink class="mt-14 mr-8" to="/portfolio">Portfolio</NuxtLink>
       <NuxtLink class="mt-14 mr-8" to="/about">About</NuxtLink>
+      <NuxtLink class="mt-14" to="/get-started">Get Started</NuxtLink>
       <a
         class="ml-auto mt-12 block"
         href="https://www.instagram.com/wildgracevideo/"

@@ -32,9 +32,6 @@ export const handler: Handler = async (event, context) => {
     region: AWS_REGION_WGV
   });
 
-  console.log(body);
-  console.log(body.firstname);
-
   const ses = new AWS.SES({ apiVersion: "2010-12-01" })
   const params = {
       Destination: {
