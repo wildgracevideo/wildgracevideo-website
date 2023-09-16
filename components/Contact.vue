@@ -54,13 +54,8 @@
       </div>
     </form>
   </div>
-  <div class="h-32 contact-bg">
-    <p
-      class="mx-auto text-xl w-fit pt-8 text-white"
-      :class="{ hidden: showForm }"
-    >
-      Thank you!
-    </p>
+  <div class="h-32 contact-bg" :class="{ hidden: showForm }">
+    <p class="mx-auto text-xl w-fit pt-8 text-white">Thank you!</p>
   </div>
 </template>
 <style>
@@ -91,10 +86,10 @@ const send = (e: any) => {
   $fetch("/.netlify/functions/contact-submit", {
     method: "POST",
     body: {
-      firstname: firstName.value,
-      lastname: lastName.value,
-      message: message.value,
-      email: email.value,
+      firstname: `${firstName.value}`,
+      lastname: `${lastName.value}`,
+      message: `${message.value}`,
+      email: `${email.value}`,
     },
   }).then((res: any) => {
     console.log(res);
