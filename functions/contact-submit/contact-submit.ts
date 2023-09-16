@@ -20,9 +20,9 @@ export const handler: Handler = async (event, context) => {
     return { statusCode: 422, body: 'Name, email, and message are required.' };
   }
   
-  const data = JSON.parse(event.body);
+  const body = JSON.parse(event.body);
 
-  if (data == null || !data.message || !data.firstname || !data.lastname || !data.email) {
+  if (body == null || !body.message || !body.firstname || !body.lastname || !body.email) {
     return { statusCode: 422, body: 'Name, email, and message are required.' };
   }
 
@@ -31,6 +31,9 @@ export const handler: Handler = async (event, context) => {
     secretAccessKey: AWS_SECRET_KEY_ID_WGV,
     region: AWS_REGION_WGV
   });
+
+  console.log(body);
+  console.log(body.firstname);
 
   const ses = new AWS.SES({ apiVersion: "2010-12-01" })
   const params = {
@@ -44,13 +47,13 @@ export const handler: Handler = async (event, context) => {
             Data:
               `<html>
                   <body>
-                    First Name: ${data.firstname}
+                    First Name: ${body.firstname}
                     <br />
-                    Last Name: ${data.lastname}
+                    Last Name: ${body.lastname}
                     <br />
-                    Email: ${data.email}
+                    Email: ${body.email}
                     <br />
-                    Message: ${data.message}
+                    Message: ${body.message}
                   </body>
               </html>`
           },

@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-bg pt-8">
+  <div class="contact-bg pt-8" :class="{ hidden: !showForm }">
     <h2 class="text-white text-3xl text-center">Contact Us</h2>
     <form
       class="grid md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8 mt-12 md:mx-auto mx-8 max-w-3xl"
@@ -54,8 +54,15 @@
       </div>
     </form>
   </div>
+  <div class="h-32 contact-bg">
+    <p
+      class="mx-auto text-xl w-fit pt-8 text-white"
+      :class="{ hidden: showForm }"
+    >
+      Thank you!
+    </p>
+  </div>
 </template>
-
 <style>
 .contact-bg {
   background-color: #757263;
@@ -75,9 +82,12 @@ const lastName = ref("");
 const email = ref("");
 const message = ref("");
 
+const showForm = ref(true);
+
 const send = (e: any) => {
   e.preventDefault();
 
+  console.log(firstName.value);
   $fetch("/.netlify/functions/contact-submit", {
     method: "POST",
     body: {
@@ -92,6 +102,7 @@ const send = (e: any) => {
     lastName.value = "";
     email.value = "";
     message.value = "";
+    showForm.value = false;
   });
 };
 </script>
