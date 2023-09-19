@@ -8,6 +8,7 @@ import { space } from 'postcss/lib/list';
           width="200"
           height="160"
           src="/logo1.webp"
+          :alt="imageAlt"
           @click="navigate"
         />
       </NuxtLink>
@@ -50,6 +51,7 @@ import { space } from 'postcss/lib/list';
           width="200"
           height="160"
           src="/logo1.webp"
+          :alt="imageAlt"
           @click="navigate"
         />
       </NuxtLink>
@@ -66,6 +68,8 @@ import Menu from "./Menu.vue";
 
 const iconSize = 80;
 const iconFill = "#000";
+
+const imageAlt = "Wild Grace Videography company logo.";
 
 const props = defineProps<{
   modelValue: boolean;

@@ -41,7 +41,11 @@
       </p>
     </div>
     <div class="mx-8">
-      <img src="/Carly1.webp" class="max-w-4xl about-image w-full" />
+      <img
+        src="/Carly1.webp"
+        class="max-w-4xl about-image w-full"
+        alt="A picture of Carly Kreiger, the founder of Wild Grace Videography."
+      />
     </div>
   </div>
 </template>

@@ -85,10 +85,13 @@ const openMenu = computed({
     emit("update:modelValue", value);
   },
 });
-addEventListener("resize", (event) => {
-  if (window.innerWidth >= 768) {
-    openMenu.value = false;
-  }
+
+onMounted(() => {
+  window.addEventListener("resize", (event) => {
+    if (window.innerWidth >= 768) {
+      openMenu.value = false;
+    }
+  });
 });
 </script>
 

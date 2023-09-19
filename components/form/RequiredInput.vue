@@ -23,14 +23,13 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import SelectChoice from "~/models/SelectChoice";
 
 interface Props {
   title: string;
   id: string;
   isRequired: boolean;
   titleTextClass: string;
-  modelValue: SelectChoice[];
+  modelValue: string;
   showRequired?: boolean;
   containerClass?: string;
   hint?: string;
@@ -39,6 +38,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   showRequired: true,
   containerClass: "",
+  hint: "",
 });
 
 const emit = defineEmits(["update:modelValue"]);
