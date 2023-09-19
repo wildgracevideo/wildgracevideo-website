@@ -16,6 +16,7 @@
       class="block h-11 w-full p-2 opacity-80"
       :class="{ 'border-2': showError, 'border-red-700': showError }"
       v-model="value"
+      :placeholder="hint"
     />
   </div>
 </template>
@@ -32,6 +33,7 @@ interface Props {
   modelValue: SelectChoice[];
   showRequired?: boolean;
   containerClass?: string;
+  hint?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {

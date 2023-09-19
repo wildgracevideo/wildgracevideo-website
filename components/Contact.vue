@@ -21,6 +21,7 @@
         :is-required="isRequired"
         title-text-class="text-white"
         v-model="firstName"
+        hint="First Name"
       />
       <RequiredInput
         title="Last Name"
@@ -28,6 +29,7 @@
         :is-required="isRequired"
         title-text-class="text-white"
         v-model="lastName"
+        hint="Last Name"
       />
       <RequiredInput
         title="Email"
@@ -35,6 +37,7 @@
         :is-required="isRequired"
         title-text-class="text-white"
         v-model="email"
+        hint="example@gmail.com"
         container-class="md:col-span-2 col-span-1"
       />
       <RequiredTextArea
@@ -49,7 +52,7 @@
       <div class="md:col-span-2 col-span-1 flex justify-center">
         <button
           type="submit"
-          class="rounded-oval text-red-100 border-red-100 border-2 py-4 px-16 send-button mb-12"
+          class="rounded-oval text-red-100 border-red-100 border-2 py-4 px-16 send-button mb-12 bg-transparent"
         >
           Send
         </button>

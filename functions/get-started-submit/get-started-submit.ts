@@ -68,7 +68,7 @@ export const handler: Handler = async (event, context) => {
                     <br />
                     Goals: ${body.goals}
                     <br />
-                    Interests: ${body.interests.join(",")}
+                    Interests: ${body.interests.join(", ")}
                     <br />
                     Business Type: ${body.businessType}
                     <br />

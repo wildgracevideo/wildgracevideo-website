@@ -20,6 +20,7 @@
         :is-required="isRequired"
         title-text-class="text-black"
         v-model="firstName"
+        hint="First Name"
       />
       <RequiredInput
         title="Last Name"
@@ -27,6 +28,7 @@
         :is-required="isRequired"
         title-text-class="text-black"
         v-model="lastName"
+        hint="Last Name"
       />
       <RequiredInput
         title="Business Name"
@@ -34,6 +36,7 @@
         :is-required="isRequired"
         title-text-class="text-black"
         v-model="businessName"
+        hint="Business Name"
       />
       <RequiredInput
         title="Email"
@@ -41,6 +44,7 @@
         :is-required="isRequired"
         title-text-class="text-black"
         v-model="email"
+        hint="example@gmail.com"
       />
       <RequiredInput
         title="Phone"
@@ -48,6 +52,7 @@
         :is-required="isRequired"
         title-text-class="text-black"
         v-model="phone"
+        hint="(888) 888 8888"
       />
       <RequiredInput
         title="Instagram Handle"
@@ -56,6 +61,7 @@
         title-text-class="text-black"
         v-model="instagramHandle"
         :show-required="false"
+        hint="@example"
       />
       <RequiredSelect
         title="Interested in..."
@@ -82,6 +88,7 @@
         title-text-class="text-black"
         v-model="goals"
         container-class="md:col-span-2 col-span-1"
+        hint="The more detail, the better!"
       />
       <RequiredDropdownSelect
         title="How did you hear about us?"

@@ -6,9 +6,10 @@
     <textarea
       :rows="rows"
       :id="id"
-      class="block text-xl w-full p-2"
+      class="block w-full p-2"
       :class="{ 'border-2': showError, 'border-red-700': showError }"
       v-model="value"
+      :placeholder="hint"
     />
   </div>
 </template>
@@ -24,10 +25,12 @@ interface Props {
   modelValue: string;
   rows: number;
   containerClass?: string;
+  hint?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   containerClass: "",
+  hint: "",
 });
 
 const emit = defineEmits(["update:modelValue"]);
