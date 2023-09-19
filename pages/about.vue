@@ -41,7 +41,7 @@
       </p>
     </div>
     <div class="mx-8">
-      <img src="/Carly1.jpg" class="max-w-4xl about-image w-full" />
+      <img src="/Carly1.webp" class="max-w-4xl about-image w-full" />
     </div>
   </div>
 </template>
