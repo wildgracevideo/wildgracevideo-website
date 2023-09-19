@@ -17,13 +17,25 @@ export const handler: Handler = async (event, context) => {
   }
 
   if (event.body == null) {
-    return { statusCode: 422, body: 'Name, email, and message are required.' };
+    return { statusCode: 422, body: 'Missing required body.' };
   }
   
   const body = JSON.parse(event.body);
 
-  if (body == null || !body.message || !body.firstname || !body.lastname || !body.email) {
-    return { statusCode: 422, body: 'Name, email, and message are required.' };
+  if (
+    body == null || 
+    !body.firstname || 
+    !body.lastname || 
+    !body.email || 
+    !body.businessName || 
+    !body.phone || 
+    !body.goals || 
+    !body.interests ||
+    !body.interests.length ||
+    !body.businessType ||
+    !body.hearChoice
+  ) {
+    return { statusCode: 422, body: 'Missing required fields.' };
   }
 
   AWS.config.update({
@@ -60,11 +72,11 @@ export const handler: Handler = async (event, context) => {
                     <br />
                     Business Type: ${body.businessType}
                     <br />
-                    Hear Choice: ${body.hearChoice}
+                    How did you hear about us?: ${body.hearChoice}
                     <br />
                     Montly Tip Signup: ${body.monthlyTipSignup}
                     <br />
-                    Instagram Handle: ${body.instagramHandle}
+                    Instagram Handle: ${body.instagramHandle ??}
                   </body>
               </html>`
           },
