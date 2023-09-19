@@ -6,15 +6,10 @@ body, html, #__nuxt {
   height: 100%;
 }
 
-div.Header,
-div.Content,
-div.HoverCard,
-div.Feedback,
-div.SocialProof,
-div.Caption,
-div.Footer {
-  display: none !important;
+.min-h-screen {
+  min-height: -webkit-fill-available;
 }
+
 
 .fade-in {
   animation: visible 2s;

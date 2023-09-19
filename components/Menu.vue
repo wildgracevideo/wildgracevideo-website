@@ -85,14 +85,6 @@ const openMenu = computed({
     emit("update:modelValue", value);
   },
 });
-
-const convertStyle = () => {
-  const height = window.innerHeight;
-  Array.from(document.getElementsByClassName("min-h-screen")).forEach(
-    (it) => ((it as HTMLElement).style.minHeight = `${height}px`)
-  );
-  window.addEventListener("DOMContentLoaded", convertStyle);
-};
 </script>
 
 <style scoped>
