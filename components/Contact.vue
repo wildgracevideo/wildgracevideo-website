@@ -10,48 +10,42 @@
       Thank you!
     </h2>
     <form
-      class="grid md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8 mt-12 md:mx-auto mx-8 max-w-3xl gap-x-8"
+      class="grid md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8 mt-12 md:mx-auto mx-8 max-w-3xl"
       :class="{ invisible: !showForm, 'fade-out': !showForm }"
       id="contact-form"
       @submit.prevent="send"
     >
-      <div>
-        <RequiredInput
-          title="First Name"
-          name="firstname"
-          :is-required="isRequired"
-          title-text-class="text-white"
-          v-model="firstName"
-        />
-      </div>
-      <div>
-        <RequiredInput
-          title="Last Name"
-          name="lastname"
-          :is-required="isRequired"
-          title-text-class="text-white"
-          v-model="lastName"
-        />
-      </div>
-      <div class="md:col-span-2 col-span-1">
-        <RequiredInput
-          title="Email"
-          name="email"
-          :is-required="isRequired"
-          title-text-class="text-white"
-          v-model="email"
-        />
-      </div>
-      <div class="md:col-span-2 col-span-1">
-        <RequiredTextArea
-          :rows="3"
-          title="Message"
-          name="message"
-          :is-required="isRequired"
-          title-text-class="text-white"
-          v-model="message"
-        />
-      </div>
+      <RequiredInput
+        title="First Name"
+        id="firstname"
+        :is-required="isRequired"
+        title-text-class="text-white"
+        v-model="firstName"
+      />
+      <RequiredInput
+        title="Last Name"
+        id="lastname"
+        :is-required="isRequired"
+        title-text-class="text-white"
+        v-model="lastName"
+      />
+      <RequiredInput
+        title="Email"
+        id="email"
+        :is-required="isRequired"
+        title-text-class="text-white"
+        v-model="email"
+        container-class="md:col-span-2 col-span-1"
+      />
+      <RequiredTextArea
+        :rows="3"
+        title="Message"
+        id="message"
+        :is-required="isRequired"
+        title-text-class="text-white"
+        v-model="message"
+        container-class="md:col-span-2 col-span-1"
+      />
       <div class="md:col-span-2 col-span-1 flex justify-center">
         <button
           type="submit"
@@ -77,8 +71,8 @@
 </style>
 
 <script setup lang="ts">
-import RequiredInput from "./RequiredInput.vue";
-import RequiredTextArea from "./RequiredTextArea.vue";
+import RequiredInput from "./form/RequiredInput.vue";
+import RequiredTextArea from "./form/RequiredTextArea.vue";
 
 const firstName = ref("");
 const lastName = ref("");
