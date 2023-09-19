@@ -1,11 +1,11 @@
 <template>
   <div class="main-background">
-    <Header />
-    <main class="relative">
+    <Header v-model="openMenu" />
+    <main v-if="!openMenu" class="relative">
       <slot />
       <Contact />
     </main>
-    <Footer />
+    <Footer v-if="!openMenu" />
   </div>
 </template>
 
@@ -13,6 +13,8 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import Contact from "../components/Contact.vue";
+
+const openMenu = ref(false);
 </script>
 
 <style scoped>

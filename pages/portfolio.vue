@@ -2,13 +2,12 @@
   <div>
     <h1 class="text-center text-6xl mb-8">Portfolio</h1>
     <iframe
-      width="100%"
       :src="mainVideoURL"
       title="Main Portofilio video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
-      class="mx-8 lg:mx-auto main-video-container"
+      class="px-8 lg:mx-auto w-full main-video-container"
     ></iframe>
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-x-16 mx-16 mt-32 mb-16">
       <div v-for="item in videos" class="video-container mx-auto">

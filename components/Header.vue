@@ -40,8 +40,11 @@ import { space } from 'postcss/lib/list';
         <Email :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
     </div>
-    <div class="flex md:hidden justify-between">
-      <NuxtLink to="/" v-slot="{ navigate }">
+    <div
+      class="flex md:hidden justify-between"
+      :class="{ 'opened-menu': openMenu }"
+    >
+      <NuxtLink to="/" v-slot="{ navigate }" class="z-20">
         <img
           class="-mt-12 mr-3"
           width="200"
@@ -50,6 +53,7 @@ import { space } from 'postcss/lib/list';
           @click="navigate"
         />
       </NuxtLink>
+      <Menu v-model="openMenu" />
     </div>
   </header>
 </template>
@@ -58,7 +62,29 @@ import { space } from 'postcss/lib/list';
 import Instagram from "./Instagram.vue";
 import Facebook from "./Facebook.vue";
 import Email from "./Email.vue";
+import Menu from "./Menu.vue";
 
 const iconSize = 80;
 const iconFill = "#000";
+
+const props = defineProps<{
+  modelValue: boolean;
+}>();
+
+const emit = defineEmits(["update:modelValue"]);
+
+const openMenu = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(value) {
+    emit("update:modelValue", value);
+  },
+});
 </script>
+
+<style scoped>
+.opened-menu {
+  background-color: #757263;
+}
+</style>
