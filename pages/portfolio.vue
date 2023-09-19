@@ -66,7 +66,7 @@ const videos = [
 ];
 </script>
 
-<style>
+<style scoped>
 .video-container {
   max-width: 490px;
   width: 100%;

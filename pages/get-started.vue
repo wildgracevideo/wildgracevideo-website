@@ -215,7 +215,11 @@ const submit = () => {
 };
 </script>
 
-<style>
+<style scoped>
+.send-button:hover {
+  background-color: #fee2e2;
+  color: black;
+}
 .send-button {
   background-color: #868d78;
 }

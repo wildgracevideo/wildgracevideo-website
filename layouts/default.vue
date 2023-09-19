@@ -15,8 +15,8 @@ import Footer from "../components/Footer.vue";
 import Contact from "../components/Contact.vue";
 </script>
 
-<style>
+<style scoped>
 .main-background {
-  background-color: #fff7e8;
+  background-color: #eeedeb;
 }
 </style>

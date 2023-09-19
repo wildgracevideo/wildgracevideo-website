@@ -46,7 +46,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .about-image {
   aspect-ratio: 1/1.25;
 }

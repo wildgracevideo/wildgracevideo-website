@@ -52,7 +52,7 @@
       <div class="md:col-span-2 col-span-1 flex justify-center">
         <button
           type="submit"
-          class="rounded-oval text-red-100 border-red-100 border-2 py-4 px-16 send-button mb-12 bg-transparent"
+          class="rounded-oval text-red-100 border-red-100 border-2 py-4 px-16 send-button mb-12 !bg-transparent"
         >
           Send
         </button>
@@ -60,7 +60,7 @@
     </form>
   </div>
 </template>
-<style>
+<style scoped>
 .contact-bg {
   background-color: #757263;
 }
