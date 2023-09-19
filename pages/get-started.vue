@@ -203,7 +203,7 @@ const submit = () => {
         interests: interests.value.map((it) => it.value),
         businessType: `${businessType.value[0].value}`,
         hearChoice: `${hearChoice.value}`,
-        monthlyTipSignup: `${monthlyTipSignup.value.length > 0}`,
+        monthlyTipSignup: monthlyTipSignup.value.length > 0,
         instagramHandle: `${instagramHandle.value}`,
       },
     }).then((res: any) => {
