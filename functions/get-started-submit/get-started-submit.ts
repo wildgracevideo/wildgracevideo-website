@@ -74,9 +74,9 @@ export const handler: Handler = async (event, context) => {
                     <br />
                     How did you hear about us?: ${body.hearChoice}
                     <br />
-                    Montly Tip Signup: ${body.monthlyTipSignup}
+                    Montly Tip Signup: ${body.monthlyTipSignup === true ? 'Yes' : 'No' }
                     <br />
-                    Instagram Handle: ${body.instagramHandle ??}
+                    Instagram Handle: ${body.instagramHandle || 'N/A'}
                   </body>
               </html>`
           },
