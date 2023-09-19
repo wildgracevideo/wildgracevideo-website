@@ -15,7 +15,7 @@
   </div>
   <div
     v-if="openMenu"
-    class="pt-44 absolute min-h-screen w-full opened-menu text-4xl z-10 flex flex-col justify-between"
+    class="pt-44 absolute min-h-dvh w-full opened-menu text-4xl z-10 flex flex-col justify-between"
   >
     <div class="flex flex-col">
       <NuxtLink class="mx-auto w-fit block" to="/" @click="openMenu = !openMenu"
