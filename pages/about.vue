@@ -1,4 +1,11 @@
 <template>
+  <OgMeta :title="pageTitle" :description="description" />
+  <SchemaOrgWebPage type="AboutPage" name="About Wild Grace Videography" />
+  <SchemaOrgImage
+    :name="imageTitle"
+    url="/Carly1.webp"
+    :description="imageDescription"
+  />
   <div class="grid grid-cols-1 md:grid-cols-2 mb-16">
     <div class="ml-24 mr-16 mt-16 leading-loose text">
       <p>
@@ -44,11 +51,28 @@
       <img
         src="/Carly1.webp"
         class="max-w-4xl about-image w-full"
-        alt="A picture of Carly Kreiger, the founder of Wild Grace Videography."
+        :alt="imageDescription"
       />
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import OgMeta from "~/components/OgMeta.vue";
+
+const imageTitle = "Picture of Carly Kreiger.";
+const imageDescription =
+  "A picture of Carly Kreiger, the founder of Wild Grace Videography, a Denver, Colorado-based video production company.";
+
+const pageTitle =
+  "About Wild Grace Videography | Denver Video Production Company";
+const description =
+  "Learn more about Wild Grace Videography, a Denver, Colorado-based video production company, that produces creative and memorable video content to make your business stand out.";
+
+useHead({
+  title: pageTitle,
+});
+</script>
 
 <style scoped>
 .about-image {

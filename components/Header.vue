@@ -4,9 +4,9 @@ import { space } from 'postcss/lib/list';
     <div class="md:flex hidden">
       <NuxtLink to="/" v-slot="{ navigate }">
         <img
-          class="-mt-12 mr-3"
-          width="200"
-          height="160"
+          class="mr-10 ml-8 mt-3"
+          width="138"
+          height="90"
           src="/logo1.webp"
           :alt="imageAlt"
           @click="navigate"
@@ -48,8 +48,8 @@ import { space } from 'postcss/lib/list';
       <NuxtLink to="/" v-slot="{ navigate }" class="z-20">
         <img
           class="-mt-12 mr-3"
-          width="200"
-          height="160"
+          width="138"
+          height="90"
           src="/logo1.webp"
           :alt="imageAlt"
           @click="navigate"
@@ -69,7 +69,8 @@ import Menu from "./Menu.vue";
 const iconSize = 80;
 const iconFill = "#000";
 
-const imageAlt = "Wild Grace Videography company logo.";
+const imageAlt =
+  "Wild Grace Videography company logo, a Denver Colorado based Video Production compan.";
 
 const props = defineProps<{
   modelValue: boolean;

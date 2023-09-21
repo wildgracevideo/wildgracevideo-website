@@ -1,26 +1,28 @@
 <template>
+  <OgMeta :title="pageTitle" :description="description" />
   <div>
-    <h1 class="text-center text-6xl mb-8">Portfolio</h1>
-    <iframe
-      :src="mainVideoURL"
-      title="Main Portofilio video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-      class="px-8 lg:mx-auto w-full main-video-container"
-    ></iframe>
+    <h1 class="text-center text-6xl mb-8">Video Production Portfolio</h1>
+    <div
+      class="aspect-ratio lg:mx-auto px-8 portfolio-page-main-video-container"
+    >
+      <LazyYoutube
+        :video-id="mainVideo.id"
+        :title="mainVideo.name"
+        video-class="w-full aspect-video"
+        :alt="mainVideo.alt"
+      />
+    </div>
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-x-16 mx-16 mt-32 mb-16">
-      <div v-for="item in videos" class="video-container mx-auto">
-        <iframe
-          width="100%"
-          :src="item.url"
+      <div
+        v-for="item in videos"
+        class="portfolio-page-video-container w-full mx-auto"
+      >
+        <LazyYoutube
+          :video-id="item.id"
+          :alt="item.alt"
+          video-class="aspect-video"
           :title="item.name"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          class="video"
-        >
-        </iframe>
+        />
         <h2 class="text-lg font-bold mt-4">{{ item.name }}</h2>
         <h3 class="mt-2 mb-16">{{ item.description }}</h3>
       </div>
@@ -29,52 +31,69 @@
 </template>
 
 <script setup lang="ts">
-const mainVideoURL = "https://youtube.com/embed/yWjmuJ_6mkA";
+import LazyYoutube from "~/components/LazyYoutube.vue";
+import OgMeta from "~/components/OgMeta.vue";
+
+const pageTitle =
+  "About Wild Grace Videography | Denver Video Production Company";
+const description =
+  "View the portfolio for Wild Grace Videography, a Denver, Colorado-based video production company, that produces creative and memorable video content to make your business stand out.";
+
+useHead({
+  title: pageTitle,
+});
+
+const mainVideo = {
+  id: "yWjmuJ_6mkA",
+  name: "Video Production Portfolio",
+  alt: "Video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company.",
+};
 
 const videos = [
   {
     name: "The Curtis Hotel",
     description: "Teaser/Promo Video",
-    url: "https://www.youtube.com/embed/ieRb3ZCgPwk",
+    id: "ieRb3ZCgPwk",
+    alt: "Promotion video that was created by Wild Grace Videography for a client, the Curtis Hotel located in downtown Denver, Colorado.",
   },
   {
     name: "Genesee Nutrition",
     description: "Website Video",
-    url: "https://www.youtube.com/embed/ZVYOhYmYn3w",
+    id: "ZVYOhYmYn3w",
+    alt: "Website video created by Wild Grace Videography for a client, Genesee Nutrition.",
   },
   {
     name: "Madlom Real Estate",
     description: "Staff Recruitment Video",
-    url: "https://www.youtube.com/embed/jXGrsa0MZWo",
+    id: "jXGrsa0MZWo",
+    alt: "A staff recruitment video created by Wild Grace Videography for a client, Madlom Real Estate",
   },
   {
     name: "KB Digital Designs",
     description: "Creative Promotional Video",
-    url: "https://www.youtube.com/embed/mzGrOYT7viE",
+    id: "mzGrOYT7viE",
+    alt: "A promotional video created by Wild Grace Videography for a client, KB Digital Designs.",
   },
   {
     name: "Nordica Spec Ad",
     description: "Creative Commercial",
-    url: "https://www.youtube.com/embed/FEHxRKq0220",
+    id: "FEHxRKq0220",
+    alt: "A spec ad created by Wild Grace Videography highlighting Nordica ski equipment.",
   },
   {
     name: "Big Island, Hawaii",
     description: "Travel & Tourism Video",
-    url: "https://www.youtube.com/embed/-9b9t_bAEz8",
+    id: "-9b9t_bAEz8",
+    alt: "A travel video created by Wild Grace Videography showcasing the Big Island of Hawaii.",
   },
 ];
 </script>
 
 <style scoped>
-.video-container {
+.portfolio-page-video-container {
   max-width: 490px;
-  width: 100%;
 }
-.video {
-  aspect-ratio: 2/1;
-}
-.main-video-container {
+.portfolio-page-main-video-container {
   max-width: 883px;
-  aspect-ratio: 2 / 1;
 }
 </style>

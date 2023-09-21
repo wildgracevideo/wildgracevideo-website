@@ -1,5 +1,9 @@
 <template>
   <div>
+    <OgMeta :title="pageTitle" :description="description" />
+    <SchemaOrgWebPage
+      name="Wild Grace Videography Video Production Portfolio"
+    />
     <h1 class="text-4xl text-center mb-16">
       We can't wait to hear about your next project!
     </h1>
@@ -125,6 +129,16 @@ import RequiredTextArea from "../components/form/RequiredTextArea.vue";
 import RequiredSelect from "../components/form/RequiredSelect.vue";
 import RequiredDropdownSelect from "../components/form/RequiredDropdownSelect.vue";
 import SelectChoice from "~/models/SelectChoice";
+import OgMeta from "~/components/OgMeta.vue";
+
+const pageTitle =
+  "Get Started with Wild Grace Videography | Denver Video Production Company";
+const description =
+  "Get started with Wild Grace Videography, a Denver, Colorado-based video production company, to create a new video to make your business stand out.";
+
+useHead({
+  title: pageTitle,
+});
 
 definePageMeta({
   layout: "get-started",

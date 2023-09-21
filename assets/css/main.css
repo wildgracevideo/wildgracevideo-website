@@ -6,10 +6,13 @@ body, html, #__nuxt {
   height: 100%;
 }
 
+.aspect-2 {
+  aspect-ratio: 2/1;
+}
+
 .min-h-dvh {
   min-height: 100dvh;
 }
-
 
 .fade-in {
   animation: visible 2s;
