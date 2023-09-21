@@ -4,7 +4,7 @@ import { space } from 'postcss/lib/list';
     <div class="md:flex hidden">
       <NuxtLink to="/" v-slot="{ navigate }">
         <img
-          class="mr-10 ml-8 mt-3"
+          class="mr-10 ml-8 mt-3 mb-8"
           width="138"
           height="90"
           src="/logo1.webp"
@@ -12,12 +12,12 @@ import { space } from 'postcss/lib/list';
           @click="navigate"
         />
       </NuxtLink>
-      <NuxtLink class="mt-14 mr-8" to="/">Home</NuxtLink>
-      <NuxtLink class="mt-14 mr-8" to="/portfolio">Portfolio</NuxtLink>
-      <NuxtLink class="mt-14 mr-8" to="/about">About</NuxtLink>
-      <NuxtLink class="mt-14" to="/get-started">Get Started</NuxtLink>
+      <NuxtLink class="mt-12 mr-8" to="/">Home</NuxtLink>
+      <NuxtLink class="mt-12 mr-8" to="/portfolio">Portfolio</NuxtLink>
+      <NuxtLink class="mt-12 mr-8" to="/about">About</NuxtLink>
+      <NuxtLink class="mt-12" to="/get-started">Get Started</NuxtLink>
       <a
-        class="ml-auto mt-12 block"
+        class="ml-auto mt-8 block"
         href="https://www.instagram.com/wildgracevideo/"
         target="_blank"
         rel="noopener noreferrer"
@@ -25,7 +25,7 @@ import { space } from 'postcss/lib/list';
         <Instagram :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
       <a
-        class="mt-12"
+        class="mt-8"
         href="https://www.facebook.com/wildgracevideo/"
         target="_blank"
         rel="noopener noreferrer"
@@ -33,7 +33,7 @@ import { space } from 'postcss/lib/list';
         <Facebook :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
       <a
-        class="mt-12"
+        class="mt-8"
         href="mailto:carly@wildgracevideography.com"
         target="_blank"
         rel="noopener noreferrer"
