@@ -15,10 +15,11 @@
     :text="secondReviewText"
   />
   <video
-    class="w-full max-w-full aspect-video -mt-4"
+    class="w-full max-w-full aspect-video -mt-4 pointer-events-none cursor-default"
     autoplay
     muted
     loop
+    disablePictureInPicture
     :title="videoTitle"
   >
     <source

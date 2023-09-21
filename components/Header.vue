@@ -47,7 +47,7 @@ import { space } from 'postcss/lib/list';
     >
       <NuxtLink to="/" v-slot="{ navigate }" class="z-20">
         <img
-          class="-mt-12 mr-3"
+          class="mt-3 mr-3 ml-8 mb-8"
           width="138"
           height="90"
           src="/logo1.webp"
