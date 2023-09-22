@@ -48,7 +48,7 @@
         :is-required="isRequired"
         title-text-class="text-white text-sm"
         v-model="message"
-        container-class="md:col-span-2 col-span-1"
+        container-class="md:col-span-2 col-span-1 text-sm"
       />
       <div class="md:col-span-2 col-span-1 flex justify-center">
         <button

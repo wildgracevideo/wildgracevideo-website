@@ -2,7 +2,7 @@
   <OgMeta :title="pageTitle" :description="description" />
   <SchemaOrgWebPage :name="pageTitle" />
   <div>
-    <h1 class="text-center text-6xl mb-8">Video Production Portfolio</h1>
+    <h1 class="text-center text-4xl mb-8">Video Production Portfolio</h1>
     <div
       class="aspect-ratio lg:mx-auto px-8 portfolio-page-main-video-container"
     >

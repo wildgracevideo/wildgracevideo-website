@@ -6,7 +6,7 @@
     <textarea
       :rows="rows"
       :id="id"
-      class="block w-full p-2"
+      class="block w-full p-2 opacity-80"
       :class="{ 'border-2': showError, 'border-red-700': showError }"
       v-model="value"
       :placeholder="hint"
