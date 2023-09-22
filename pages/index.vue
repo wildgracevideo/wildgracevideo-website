@@ -20,6 +20,7 @@
     muted
     loop
     disablePictureInPicture
+    playsinline
     :title="videoTitle"
   >
     <source

@@ -23,10 +23,7 @@ export default defineNuxtConfig({
         { rel: 'canonical', href: SITE_URL },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: APP_ICON },
-        { rel: 'preconnect', href: 'https://www.google-analytics.com/' },
-        { rel: 'dns-prefetch', href: 'https://www.google-analytics.com/' },
         { rel: 'preconnect', href: 'https://d22668h9qdy3zj.cloudfront.net/' },
-        { rel: 'dns-prefetch', href: 'https://d22668h9qdy3zj.cloudfront.net/' },
       ]
     },
   },
