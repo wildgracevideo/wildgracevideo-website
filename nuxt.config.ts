@@ -1,11 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const SITE_URL = process.env.URL || 'http://localhost:3000';
 const APP_ICON = SITE_URL + '/app-icon.png';
+const WEBSITE_ICON = SITE_URL + '/logo2.png';
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: SITE_URL,
-      appIcon: APP_ICON,
+      wesbiteIcon: WEBSITE_ICON,
     }
   },
   site: {
@@ -19,6 +20,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
       ],
       link: [
+        { rel: 'canonical', href: SITE_URL },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: APP_ICON },
         { rel: 'preconnect', href: 'https://www.google-analytics.com/' },

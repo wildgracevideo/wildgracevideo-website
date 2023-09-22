@@ -8,15 +8,15 @@
   <Meta name="twitter:url" :content="`${siteUrl}${String(route.path)}`" />
   <Meta property="og:type" content="website" />
   <Meta name="twitter:domain" :content="`${siteUrl.substring(8)}`" />
-  <Meta property="og:image" :content="appIcon" />
-  <Meta property="twitter:image" :content="appIcon" />
+  <Meta property="og:image" :content="websiteIcon" />
+  <Meta property="twitter:image" :content="websiteIcon" />
   <Link rel="canonical" :href="`${siteUrl}${String(route.path)}`" />
 </template>
 
 <script setup lang="ts">
 const runtimeConfig = useRuntimeConfig();
 const siteUrl = runtimeConfig.public.siteUrl as string;
-const appIcon = runtimeConfig.public.appIcon as string;
+const websiteIcon = runtimeConfig.public.wesbiteIcon as string;
 const route = useRoute();
 const props = defineProps<{
   description: string;
