@@ -11,7 +11,10 @@
       ></label
     >
     <input
-      type="text"
+      v-maska
+      :data-maska="dataMask"
+      :data-maska-tokens="dataMaskTokens"
+      :type="type"
       :id="id"
       class="block h-11 w-full p-2 opacity-80"
       :class="{ 'border-2': showError, 'border-red-700': showError }"
@@ -33,12 +36,18 @@ interface Props {
   showRequired?: boolean;
   containerClass?: string;
   hint?: string;
+  type?: string;
+  dataMask?: string;
+  dataMaskTokens?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   showRequired: true,
   containerClass: "",
   hint: "",
+  type: "text",
+  dataMask: "",
+  dataMaskTokens: "",
 });
 
 const emit = defineEmits(["update:modelValue"]);

@@ -13,6 +13,7 @@
         :id="choice.id"
         :value="choice.value"
         class="mb-4 mr-2 w-4 h-4"
+        :aria-label="choice.value"
         @change="updateModelValue"
       /><label class="ml-2" :for="choice.id" :hidden="!!choice.hideValue">{{
         choice.value

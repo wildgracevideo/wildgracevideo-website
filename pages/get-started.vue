@@ -43,6 +43,7 @@
       <RequiredInput
         title="Email"
         id="email"
+        type="email"
         :is-required="isRequired"
         title-text-class="text-black"
         v-model="email"
@@ -54,6 +55,7 @@
         :is-required="isRequired"
         title-text-class="text-black"
         v-model="phone"
+        data-mask="(###) ###-####"
         hint="(888) 888 8888"
       />
       <RequiredInput
@@ -63,6 +65,8 @@
         title-text-class="text-black"
         v-model="instagramHandle"
         :show-required="false"
+        data-mask="!@A"
+        data-mask-tokens="A:[a-zA-Z0-9\.\_]:multiple"
         hint="@example"
       />
       <RequiredSelect
@@ -93,6 +97,7 @@
         hint="The more detail, the better!"
       />
       <RequiredDropdownSelect
+        id="how-did-you-hear-dropdown"
         title="How did you hear about us?"
         container-class="mb-2 md:col-span-2 col-span-1"
         :is-required="isRequired"
@@ -189,13 +194,22 @@ const showForm = ref(true);
 
 const isRequired = ref(false);
 
+const validateEmail = () => {
+  if (email.value && email.value.includes("@") && email.value.includes(".")) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const submit = () => {
   isRequired.value = true;
 
   if (
+    email.value &&
+    validateEmail() &&
     firstName.value &&
     lastName.value &&
-    email.value &&
     businessName.value &&
     phone.value &&
     goals.value &&

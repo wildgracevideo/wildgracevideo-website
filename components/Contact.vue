@@ -34,6 +34,7 @@
       <RequiredInput
         title="Email"
         id="email"
+        type="email"
         :is-required="isRequired"
         title-text-class="text-white"
         v-model="email"
