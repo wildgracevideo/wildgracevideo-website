@@ -19,7 +19,6 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
       ],
       link: [
-        { rel: 'canonical', href: SITE_URL },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: APP_ICON },
         { rel: 'preconnect', href: 'https://www.google-analytics.com/' },

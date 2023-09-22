@@ -1,5 +1,6 @@
 <template>
   <OgMeta :title="pageTitle" :description="description" />
+  <SchemaOrgWebPage :name="pageTitle" />
   <div>
     <h1 class="text-center text-6xl mb-8">Video Production Portfolio</h1>
     <div

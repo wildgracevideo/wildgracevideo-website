@@ -1,6 +1,6 @@
 <template>
   <div :class="containerClass">
-    <label :for="id" class="text-sm block mb-2" :class="titleTextClass"
+    <label :for="id" class="block mb-2" :class="titleTextClass"
       >{{ title }} <span class="opacity-50"> (required)</span></label
     >
     <textarea

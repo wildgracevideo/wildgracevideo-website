@@ -1,6 +1,6 @@
 <template>
   <OgMeta :title="pageTitle" :description="description" />
-  <SchemaOrgWebPage name="Wild Grace Videography Home Page" />
+  <SchemaOrgWebPage :name="pageTitle" />
   <SchemaOrgVideo
     :name="videoTitle"
     url="https://d22668h9qdy3zj.cloudfront.net/wgv-reel.mp4"

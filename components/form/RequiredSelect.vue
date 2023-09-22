@@ -12,8 +12,9 @@
         type="checkbox"
         :id="choice.id"
         :value="choice.value"
+        class="mb-4 mr-2 w-4 h-4"
         @change="updateModelValue"
-      /><label class="ml-2" :for="choice.id" v-if="choice.hideValue !== true">{{
+      /><label class="ml-2" :for="choice.id" :hidden="!!choice.hideValue">{{
         choice.value
       }}</label>
     </div>

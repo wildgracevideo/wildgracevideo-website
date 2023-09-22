@@ -10,6 +10,7 @@
   <Meta name="twitter:domain" :content="`${siteUrl.substring(8)}`" />
   <Meta property="og:image" :content="appIcon" />
   <Meta property="twitter:image" :content="appIcon" />
+  <Link rel="canonical" :href="`${siteUrl}${String(route.path)}`" />
 </template>
 
 <script setup lang="ts">

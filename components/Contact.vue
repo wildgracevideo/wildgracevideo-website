@@ -19,7 +19,7 @@
         title="First Name"
         id="firstname"
         :is-required="isRequired"
-        title-text-class="text-white"
+        title-text-class="text-white text-sm"
         v-model="firstName"
         hint="First Name"
       />
@@ -27,7 +27,7 @@
         title="Last Name"
         id="lastname"
         :is-required="isRequired"
-        title-text-class="text-white"
+        title-text-class="text-white text-sm"
         v-model="lastName"
         hint="Last Name"
       />
@@ -38,14 +38,14 @@
         title-text-class="text-white"
         v-model="email"
         hint="example@gmail.com"
-        container-class="md:col-span-2 col-span-1"
+        container-class="md:col-span-2 col-span-1 text-sm"
       />
       <RequiredTextArea
         :rows="3"
         title="Message"
         id="message"
         :is-required="isRequired"
-        title-text-class="text-white"
+        title-text-class="text-white text-sm"
         v-model="message"
         container-class="md:col-span-2 col-span-1"
       />

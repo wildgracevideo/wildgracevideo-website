@@ -1,6 +1,6 @@
 <template>
   <OgMeta :title="pageTitle" :description="description" />
-  <SchemaOrgWebPage type="AboutPage" name="About Wild Grace Videography" />
+  <SchemaOrgWebPage type="AboutPage" :name="pageTitle" />
   <SchemaOrgImage
     :name="imageTitle"
     url="/Carly1.webp"

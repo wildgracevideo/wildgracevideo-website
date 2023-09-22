@@ -1,9 +1,7 @@
 <template>
   <div>
     <OgMeta :title="pageTitle" :description="description" />
-    <SchemaOrgWebPage
-      name="Wild Grace Videography Video Production Portfolio"
-    />
+    <SchemaOrgWebPage :name="pageTitle" />
     <h1 class="text-4xl text-center mb-16">
       We can't wait to hear about your next project!
     </h1>
