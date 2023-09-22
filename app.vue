@@ -1,5 +1,6 @@
 <template>
   <Html lang="en"></Html>
+  <Link rel="preconnect" href="https://www.googletagmanager.com" />
   <SchemaOrgOrganization
     name="Wild Grace Videography"
     logo="/logo1.webp"
@@ -15,3 +16,15 @@
     <NuxtPage />
   </NuxtLayout>
 </template>
+
+<script setup lang="ts">
+const runtimeConfig = useRuntimeConfig();
+onMounted(() => {
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", runtimeConfig.public.gaMeasurementId);
+});
+</script>

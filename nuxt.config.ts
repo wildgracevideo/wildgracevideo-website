@@ -2,11 +2,14 @@
 const SITE_URL = process.env.URL || 'http://localhost:3000';
 const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = SITE_URL + '/logo2.png';
+const GA_MEASUREMENT_ID = "G-9KDTSVFRRW";
+
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: SITE_URL,
       wesbiteIcon: WEBSITE_ICON,
+      gaMeasurementId: GA_MEASUREMENT_ID,
     }
   },
   site: {
@@ -24,6 +27,9 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: APP_ICON },
         { rel: 'preconnect', href: 'https://d22668h9qdy3zj.cloudfront.net/' },
+      ],
+      script: [
+        { src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}` }
       ]
     },
   },
