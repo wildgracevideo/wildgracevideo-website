@@ -27,6 +27,9 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: APP_ICON },
         { rel: 'preconnect', href: 'https://d22668h9qdy3zj.cloudfront.net/' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins&display=swap' },
       ],
       script: [
         { src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}` }

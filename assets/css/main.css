@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-family: 'Poppins', sans-serif;
+}
+
 body, html, #__nuxt {
   height: 100%;
 }
