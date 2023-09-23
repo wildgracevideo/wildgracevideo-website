@@ -1,4 +1,3 @@
-import { space } from 'postcss/lib/list';
 <template>
   <header class="text-lg">
     <div class="md:flex hidden">
