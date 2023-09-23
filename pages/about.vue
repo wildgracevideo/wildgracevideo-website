@@ -49,10 +49,10 @@
         video my thing.
       </p>
     </div>
-    <div class="mx-8">
+    <div class="mx-8 order-first md:order-last">
       <img
         src="/Carly1.webp"
-        class="max-w-4xl about-image w-full font-size-0 fade-in-right order-first md:order-last"
+        class="max-w-4xl about-image w-full font-size-0 fade-in-right"
         :alt="imageDescription"
       />
     </div>
