@@ -7,7 +7,9 @@
     :description="imageDescription"
   />
   <div class="grid grid-cols-1 md:grid-cols-2 mb-16">
-    <div class="ml-24 mr-16 mt-16 leading-loose text fade-in-left">
+    <div
+      class="ml-24 mr-16 mt-16 leading-loose text fade-in-left order-2 md:order-1"
+    >
       <p>
         I'm Carly, and creating videos is my thing. After graduating from the
         University of Vermont (Go Catamounts!) I made the decision to pack my
@@ -50,7 +52,7 @@
     <div class="mx-8">
       <img
         src="/Carly1.webp"
-        class="max-w-4xl about-image w-full font-size-0 fade-in-right"
+        class="max-w-4xl about-image w-full font-size-0 fade-in-right order-1 md:order-2"
         :alt="imageDescription"
       />
     </div>
