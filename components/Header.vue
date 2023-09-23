@@ -43,7 +43,7 @@ import { space } from 'postcss/lib/list';
     </div>
     <div
       class="flex md:hidden justify-between"
-      :class="{ 'opened-menu': openMenu }"
+      :class="{ 'bg-website-green': openMenu }"
     >
       <NuxtLink to="/" v-slot="{ navigate }" class="z-20">
         <img
@@ -87,9 +87,3 @@ const openMenu = computed({
   },
 });
 </script>
-
-<style scoped>
-.opened-menu {
-  background-color: #757263;
-}
-</style>

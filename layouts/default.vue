@@ -1,5 +1,5 @@
 <template>
-  <div class="main-background">
+  <div class="bg-website-off-white">
     <Header v-model="openMenu" />
     <main v-if="!openMenu" class="relative">
       <slot />
@@ -16,9 +16,3 @@ import Contact from "../components/Contact.vue";
 
 const openMenu = ref(false);
 </script>
-
-<style scoped>
-.main-background {
-  background-color: #eeedeb;
-}
-</style>

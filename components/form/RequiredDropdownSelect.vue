@@ -7,8 +7,14 @@
     <select
       :id="id"
       v-model="value"
-      class="bg-white h-11 .max-w-md w-full px-2"
-      :class="{ 'border-red-700': showError, 'border-2': showError }"
+      class="h-11 .max-w-md w-full px-2"
+      :class="[
+        inputClass,
+        {
+          '!border-red-700': showError,
+          '!border-2': showError,
+        },
+      ]"
     >
       <option value="" disabled selected hidden>Select</option>
       <option v-for="choice in choices" :value="choice.value">
@@ -31,11 +37,13 @@ interface Props {
   choices: SelectChoice[];
   containerClass?: string;
   showRequired?: boolean;
+  inputClass?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   showRequired: true,
   containerClass: "",
+  inputClass: "bg-website-off-white",
 });
 
 const emit = defineEmits(["update:modelValue"]);

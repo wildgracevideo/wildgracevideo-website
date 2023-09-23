@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-website-yellow: 247 239 106;
+    --color-website-green: 120 134 107;
+    --color-website-blue: 70 92 139;
+    --color-website-off-white: 250 249 246;
+  }
+}
+
 html {
   font-family: 'Poppins', sans-serif;
 }
@@ -12,6 +21,10 @@ body, html, #__nuxt {
 
 .aspect-2 {
   aspect-ratio: 2/1;
+}
+
+.rounded-oval {
+  border-radius: 50%;
 }
 
 .min-h-dvh {

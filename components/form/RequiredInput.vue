@@ -17,10 +17,15 @@
       :type="type"
       :id="id"
       class="block h-11 w-full p-2 opacity-80"
-      :class="{ 'border-2': showError, 'border-red-700': showError }"
+      :class="[
+        !!showError ? '!border-2' : '',
+        !!showError ? '!border-red-700' : '',
+        inputClass,
+      ]"
       v-model="value"
       :placeholder="hint"
     />
+    <p v-if="!!errorMessage" class="text-sm text-red-700">{{ errorMessage }}</p>
   </div>
 </template>
 
@@ -39,6 +44,8 @@ interface Props {
   type?: string;
   dataMask?: string;
   dataMaskTokens?: string;
+  inputClass?: string;
+  errorMessage?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -48,6 +55,8 @@ const props = withDefaults(defineProps<Props>(), {
   type: "text",
   dataMask: "",
   dataMaskTokens: "",
+  inputClass: "bg-website-off-white",
+  errorMessage: "",
 });
 
 const emit = defineEmits(["update:modelValue"]);

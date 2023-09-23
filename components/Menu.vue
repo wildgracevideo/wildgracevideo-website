@@ -15,7 +15,7 @@
   </div>
   <div
     v-if="openMenu"
-    class="pt-44 absolute min-h-dvh w-full opened-menu text-4xl z-10 flex flex-col justify-between"
+    class="pt-44 absolute min-h-dvh w-full bg-website-green text-website-off-white text-4xl z-10 flex flex-col justify-between"
   >
     <div class="flex flex-col">
       <NuxtLink class="mx-auto w-fit block" to="/" @click="openMenu = !openMenu"
@@ -73,7 +73,7 @@ const props = defineProps<{
 }>();
 
 const iconSize = 80;
-const iconFill = "#d9c5b7";
+const iconFill = "rgb(var(--color-website-off-white))";
 
 const emit = defineEmits(["update:modelValue"]);
 
@@ -99,12 +99,10 @@ onMounted(() => {
 .one {
   animation-delay: 0.1s;
 }
-
 .one,
 .two {
   transition: all 0.3s;
 }
-
 .menu-wrapper:hover .menu-bar.active {
   animation: none;
 }
@@ -112,16 +110,12 @@ onMounted(() => {
   top: 25%;
   left: 0%;
   transform: rotate(45deg);
-  background-color: #d9c5b7;
+  background-color: rgb(var(--color-website-off-white));
 }
 .active .two {
   top: 25%;
   left: 0%;
   transform: rotate(-45deg);
-  background-color: #d9c5b7;
-}
-.opened-menu {
-  background-color: #757263;
-  color: #d9c5b7;
+  background-color: rgb(var(--color-website-off-white));
 }
 </style>

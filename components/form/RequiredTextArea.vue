@@ -7,7 +7,10 @@
       :rows="rows"
       :id="id"
       class="block w-full p-2 opacity-80"
-      :class="{ 'border-2': showError, 'border-red-700': showError }"
+      :class="[
+        inputClass,
+        { '!border-2': showError, '!border-red-700': showError },
+      ]"
       v-model="value"
       :placeholder="hint"
     />
@@ -26,11 +29,13 @@ interface Props {
   rows: number;
   containerClass?: string;
   hint?: string;
+  inputClass?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   containerClass: "",
   hint: "",
+  inputClass: "bg-website-off-white",
 });
 
 const emit = defineEmits(["update:modelValue"]);

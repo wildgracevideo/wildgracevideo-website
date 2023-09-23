@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-     "./components/**/*.{js,vue,ts}",
+    "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
@@ -9,8 +9,15 @@ export default {
     "./app.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "website-yellow": "rgb(var(--color-website-yellow) / <alpha-value>)",
+        "website-green": "rgb(var(--color-website-green) / <alpha-value>)",
+        "website-blue": "rgb(var(--color-website-blue) / <alpha-value>)",
+        "website-off-white":
+          "rgb(var(--color-website-off-white) / <alpha-value>)",
+      },
+    },
   },
   plugins: [],
-}
-
+};

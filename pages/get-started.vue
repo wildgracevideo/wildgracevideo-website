@@ -2,7 +2,7 @@
   <div>
     <OgMeta :title="pageTitle" :description="description" />
     <SchemaOrgWebPage :name="pageTitle" />
-    <h1 class="text-4xl text-center mb-16">
+    <h1 class="text-2xl text-center mb-16">
       We can't wait to hear about your next project!
     </h1>
     <h1
@@ -23,6 +23,7 @@
         title-text-class="text-black"
         v-model="firstName"
         hint="First Name"
+        :input-class="inputClass"
       />
       <RequiredInput
         title="Last Name"
@@ -31,6 +32,7 @@
         title-text-class="text-black"
         v-model="lastName"
         hint="Last Name"
+        :input-class="inputClass"
       />
       <RequiredInput
         title="Business Name"
@@ -39,6 +41,7 @@
         title-text-class="text-black"
         v-model="businessName"
         hint="Business Name"
+        :input-class="inputClass"
       />
       <RequiredInput
         title="Email"
@@ -48,6 +51,7 @@
         title-text-class="text-black"
         v-model="email"
         hint="example@gmail.com"
+        :input-class="inputClass"
       />
       <RequiredInput
         title="Phone"
@@ -57,6 +61,8 @@
         v-model="phone"
         data-mask="(###) ###-####"
         hint="(888) 888 8888"
+        :error-message="phoneErrorMessage"
+        :input-class="inputClass"
       />
       <RequiredInput
         title="Instagram Handle"
@@ -68,6 +74,7 @@
         data-mask="!@A"
         data-mask-tokens="A:[a-zA-Z0-9\.\_]:multiple"
         hint="@example"
+        :input-class="inputClass"
       />
       <RequiredSelect
         title="Interested in..."
@@ -95,6 +102,7 @@
         v-model="goals"
         container-class="md:col-span-2 col-span-1"
         hint="The more detail, the better!"
+        :input-class="inputClass"
       />
       <RequiredDropdownSelect
         id="how-did-you-hear-dropdown"
@@ -104,6 +112,7 @@
         title-text-class="text-black"
         v-model="hearChoice"
         :choices="HEAR_CHOICE"
+        :input-class="inputClass"
       />
       <RequiredSelect
         title="I want to sign up to receive monthly tips on how to create video content that will increase sales! "
@@ -117,7 +126,7 @@
       <div class="mb-2 md:col-span-2 col-span-1 mx-auto">
         <button
           action="submit"
-          class="send-button text-white h-11 w-20 rounded-xl"
+          class="h-14 w-40 text-xl rounded-xl text-website-green border-website-green bg-transparent border-2 hover:bg-website-green hover:text-website-off-white"
         >
           Send
         </button>
@@ -146,6 +155,8 @@ useHead({
 definePageMeta({
   layout: "get-started",
 });
+
+let inputClass = "bg-website-off-white border-2 border-website-green";
 
 const INTERESTS_CHOICES = [
   { id: "monthly-video-prodcution-choice", value: "Monthly Video Production" },
@@ -189,15 +200,17 @@ const interests = ref<SelectChoice[]>([]);
 const businessType = ref<SelectChoice[]>([]);
 const monthlyTipSignup = ref(MONTHLY_TIP_SIGNUP);
 const hearChoice = ref("");
+const phoneErrorMessage = ref("");
 
 const showForm = ref(true);
 
 const isRequired = ref(false);
 
-const validateEmail = () => {
-  if (email.value && email.value.includes("@") && email.value.includes(".")) {
+const validatePhone = () => {
+  if (phone.value && phone.value.length === 14) {
     return true;
   } else {
+    phoneErrorMessage.value = "Please input a valid phone number.";
     return false;
   }
 };
@@ -206,8 +219,8 @@ const submit = () => {
   isRequired.value = true;
 
   if (
+    validatePhone() &&
     email.value &&
-    validateEmail() &&
     firstName.value &&
     lastName.value &&
     businessName.value &&
@@ -240,13 +253,3 @@ const submit = () => {
   }
 };
 </script>
-
-<style scoped>
-.send-button:hover {
-  background-color: #fee2e2;
-  color: black;
-}
-.send-button {
-  background-color: #868d78;
-}
-</style>

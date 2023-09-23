@@ -1,10 +1,13 @@
 <template>
-  <div class="contact-bg pt-8">
-    <h2 class="text-white text-3xl text-center" :class="{ hidden: !showForm }">
+  <div class="bg-website-green pt-8">
+    <h2
+      class="text-website-off-white text-3xl text-center"
+      :class="{ hidden: !showForm }"
+    >
       Contact Us
     </h2>
     <h2
-      class="text-white text-3xl text-center relative top-28"
+      class="text-website-blue text-3xl text-center relative top-28 text-website-off-white"
       :class="{ hidden: showForm, block: !showForm, 'fade-in': !showForm }"
     >
       Thank you!
@@ -19,41 +22,43 @@
         title="First Name"
         id="firstname"
         :is-required="isRequired"
-        title-text-class="text-white text-sm"
+        title-text-class="text-website-off-white text-sm"
         v-model="firstName"
         hint="First Name"
+        container-class="fade-out contact-scroll-observable"
       />
       <RequiredInput
         title="Last Name"
         id="lastname"
         :is-required="isRequired"
-        title-text-class="text-white text-sm"
+        title-text-class="text-website-off-white text-sm"
         v-model="lastName"
         hint="Last Name"
+        container-class="fade-out contact-scroll-observable"
       />
       <RequiredInput
         title="Email"
         id="email"
         type="email"
         :is-required="isRequired"
-        title-text-class="text-white"
+        title-text-class="text-website-off-white"
         v-model="email"
         hint="example@gmail.com"
-        container-class="md:col-span-2 col-span-1 text-sm"
+        container-class="md:col-span-2 col-span-1 text-sm fade-out contact-scroll-observable"
       />
       <RequiredTextArea
         :rows="3"
         title="Message"
         id="message"
         :is-required="isRequired"
-        title-text-class="text-white text-sm"
+        title-text-class="text-website-off-white text-sm"
         v-model="message"
-        container-class="md:col-span-2 col-span-1 text-sm"
+        container-class="md:col-span-2 col-span-1 text-sm fade-out contact-scroll-observable"
       />
       <div class="md:col-span-2 col-span-1 flex justify-center">
         <button
           type="submit"
-          class="rounded-oval text-red-100 border-red-100 border-2 py-4 px-16 send-button mb-12 !bg-transparent"
+          class="rounded-oval text-website-off-white border-website-off-white bg-transparent border-2 py-4 px-16 mb-12 hover:text-website-green hover:bg-website-off-white fade-out contact-scroll-observable"
         >
           Send
         </button>
@@ -61,18 +66,6 @@
     </form>
   </div>
 </template>
-<style scoped>
-.contact-bg {
-  background-color: #757263;
-}
-.rounded-oval {
-  border-radius: 50%;
-}
-.send-button:hover {
-  background-color: #fee2e2;
-  color: black;
-}
-</style>
 
 <script setup lang="ts">
 import RequiredInput from "./form/RequiredInput.vue";
@@ -109,4 +102,25 @@ const send = () => {
     });
   }
 };
+
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    console.log(entries);
+    entries.forEach((entry) => {
+      console.log(entry);
+      if (entry.isIntersecting) {
+        entry.target.classList.remove("fade-out");
+        entry.target.classList.add("fade-in");
+      } else {
+        entry.target.classList.remove("fade-in");
+        entry.target.classList.add("fade-out");
+      }
+    });
+  });
+
+  const animatableElements = document.querySelectorAll(
+    ".contact-scroll-observable"
+  );
+  animatableElements.forEach((element) => observer.observe(element));
+});
 </script>

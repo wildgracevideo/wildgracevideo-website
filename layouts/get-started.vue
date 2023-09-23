@@ -1,5 +1,5 @@
 <template>
-  <div class="main-background">
+  <div class="bg-website-off-white">
     <Header v-model="openMenu" />
     <main class="relative" v-if="!openMenu">
       <slot />
@@ -14,9 +14,3 @@ import Footer from "../components/Footer.vue";
 
 const openMenu = ref(false);
 </script>
-
-<style scoped>
-.main-background {
-  background-color: #eeedeb;
-}
-</style>

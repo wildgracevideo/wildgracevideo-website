@@ -64,12 +64,3 @@ useHead({
   title: pageTitle,
 });
 </script>
-
-<style scoped>
-.ytplayer {
-  pointer-events: none;
-  max-width: 1080px;
-  width: 100%;
-  aspect-ratio: 16/9;
-}
-</style>
