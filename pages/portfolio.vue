@@ -21,7 +21,7 @@
         <LazyYoutube
           :video-id="item.id"
           :alt="item.alt"
-          video-class="aspect-video"
+          video-class="aspect-video portfolio-animatable-video fade-out"
           :title="item.name"
         />
         <h2 class="text-lg font-bold mt-4">{{ item.name }}</h2>
@@ -88,6 +88,27 @@ const videos = [
     alt: "A travel video created by Wild Grace Videography showcasing the Big Island of Hawaii.",
   },
 ];
+
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    console.log(entries);
+    entries.forEach((entry) => {
+      console.log(entry);
+      if (entry.isIntersecting) {
+        entry.target.classList.remove("fade-out");
+        entry.target.classList.add("fade-in");
+      } else {
+        entry.target.classList.remove("fade-in");
+        entry.target.classList.add("fade-out");
+      }
+    });
+  });
+
+  const animatableElements = document.querySelectorAll(
+    ".portfolio-animatable-video"
+  );
+  animatableElements.forEach((element) => observer.observe(element));
+});
 </script>
 
 <style scoped>

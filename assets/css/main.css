@@ -31,6 +31,16 @@ body, html, #__nuxt {
   min-height: 100dvh;
 }
 
+.fade-in-left {
+  filter: blur(0);
+  animation: fadeInLeft 2s;
+}
+
+.fade-in-right {
+  filter: blur(0);
+  animation: fadeInRight 2s;
+}
+
 .fade-in {
   animation: visible 2s;
 }
@@ -39,6 +49,32 @@ body, html, #__nuxt {
   animation: invisible 2s;
   visibility: hidden;
 }
+
+.font-size-0 {
+  font-size: 0;
+}
+
+@keyframes fadeInRight {
+  0% {
+     opacity: 0;
+     transform: translateX(200px);
+  }
+  100% {
+     opacity: 1;
+     transform: translateX(0);
+  }
+} 
+
+@keyframes fadeInLeft {
+  0% {
+     opacity: 0;
+     transform: translateX(-200px);
+  }
+  100% {
+     opacity: 1;
+     transform: translateX(0);
+  }
+} 
 
 @keyframes visible {
   from {
