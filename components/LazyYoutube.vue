@@ -6,7 +6,7 @@
   >
     <span class="absolute play-button z-10"><YoutubePlay /></span>
     <img
-      :src="`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`"
+      :src="`https://i.ytimg.com/vi_webp/${videoId}/maxresdefault.webp`"
       :alt="alt"
       class="w-full"
       :class="videoClass"

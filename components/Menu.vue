@@ -46,6 +46,7 @@
         target="_blank"
         rel="noopener noreferrer"
         class="pl-8"
+        aria-label="Instagram"
       >
         <Instagram :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
@@ -53,6 +54,7 @@
         href="https://www.facebook.com/wildgracevideo/"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Facebook"
       >
         <Facebook :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
@@ -60,6 +62,7 @@
         href="mailto:carly@wildgracevideography.com"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Email"
       >
         <Email :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
