@@ -6,7 +6,6 @@
     url="https://d22668h9qdy3zj.cloudfront.net/wgv-reel.mp4"
     contentUrl="https://d22668h9qdy3zj.cloudfront.net/wgv-reel.mp4"
     uploadDate="2023-09-25T22:13:39.520Z"
-    thumbnailUrl="https://i.ytimg.com/vi_webp/yWjmuJ_6mkA/maxresdefault.webp"
     description="Main video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company."
   />
   <SchemaOrgComment
