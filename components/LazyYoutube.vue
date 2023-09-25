@@ -5,7 +5,7 @@
     @click="videoPlaying = true"
   >
     <span class="absolute play-button z-10"><YoutubePlay /></span>
-    <NuxtImg
+    <img
       :src="`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`"
       :alt="alt"
       class="w-full"

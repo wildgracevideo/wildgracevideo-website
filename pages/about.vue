@@ -50,7 +50,7 @@
       </p>
     </div>
     <div class="mx-8 order-first md:order-last">
-      <NuxtImg
+      <img
         src="/Carly1.webp"
         class="max-w-4xl about-image w-full font-size-0 fade-in-right"
         :alt="imageDescription"
