@@ -47,7 +47,7 @@ useHead({
 const mainVideo = {
   id: "yWjmuJ_6mkA",
   name: "Video Production Portfolio",
-  alt: "Video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company.",
+  alt: "Video reel showcasing the work of Wild Grace Videography.",
 };
 
 const videos = [
@@ -55,25 +55,25 @@ const videos = [
     name: "The Curtis Hotel",
     description: "Teaser/Promo Video",
     id: "ieRb3ZCgPwk",
-    alt: "Promotion video that was created by Wild Grace Videography for a client, the Curtis Hotel located in downtown Denver, Colorado.",
+    alt: "Promotion video created by Wild Grace Videography for the Curtis Hotel.",
   },
   {
     name: "Genesee Nutrition",
     description: "Website Video",
     id: "ZVYOhYmYn3w",
-    alt: "Website video created by Wild Grace Videography for a client, Genesee Nutrition.",
+    alt: "Website video created by Wild Grace Videography Genesee Nutrition.",
   },
   {
     name: "Madlom Real Estate",
     description: "Staff Recruitment Video",
     id: "jXGrsa0MZWo",
-    alt: "A staff recruitment video created by Wild Grace Videography for a client, Madlom Real Estate",
+    alt: "A staff recruitment video created by Wild Grace Videography Madlom Real Estate",
   },
   {
     name: "KB Digital Designs",
     description: "Creative Promotional Video",
     id: "mzGrOYT7viE",
-    alt: "A promotional video created by Wild Grace Videography for a client, KB Digital Designs.",
+    alt: "A promotional video created by Wild Grace Videography KB Digital Designs.",
   },
   {
     name: "Nordica Spec Ad",

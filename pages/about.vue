@@ -64,7 +64,7 @@ import OgMeta from "~/components/OgMeta.vue";
 
 const imageTitle = "Picture of Carly Kreiger.";
 const imageDescription =
-  "A picture of Carly Kreiger, the founder of Wild Grace Videography, a Denver, Colorado-based video production company.";
+  "A picture of Carly Kreiger, the founder of Wild Grace Videography.";
 
 const pageTitle =
   "About Wild Grace Videography | Denver Video Production Company";

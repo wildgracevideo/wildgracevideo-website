@@ -68,8 +68,7 @@ import Menu from "./Menu.vue";
 const iconSize = 80;
 const iconFill = "#000";
 
-const imageAlt =
-  "Wild Grace Videography company logo, a Denver Colorado based Video Production compan.";
+const imageAlt = "Wild Grace Videography company logo.";
 
 const props = defineProps<{
   modelValue: boolean;
