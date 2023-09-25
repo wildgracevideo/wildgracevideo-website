@@ -10,6 +10,7 @@
         :video-id="mainVideo.id"
         :title="mainVideo.name"
         video-class="w-full aspect-video"
+        image-class="w-full aspect-video"
         :alt="mainVideo.alt"
       />
     </div>
@@ -21,7 +22,8 @@
         <LazyYoutube
           :video-id="item.id"
           :alt="item.alt"
-          video-class="aspect-video portfolio-animatable-video fade-out"
+          video-class="aspect-video"
+          image-class="aspect-video portfolio-animatable-video fade-out"
           :title="item.name"
         />
         <h2 class="text-lg font-bold mt-4">{{ item.name }}</h2>

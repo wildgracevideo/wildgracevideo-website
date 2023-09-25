@@ -9,7 +9,7 @@
       :src="`https://i.ytimg.com/vi_webp/${videoId}/maxresdefault.webp`"
       :alt="alt"
       class="w-full"
-      :class="videoClass"
+      :class="imageClass"
     />
   </div>
   <iframe
@@ -33,6 +33,7 @@ const props = defineProps<{
   alt: string;
   title: string;
   videoClass: string;
+  imageClass: string;
 }>();
 
 const videoPlaying = ref(false);
