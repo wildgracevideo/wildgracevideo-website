@@ -46,6 +46,9 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/main.css'
   ],
+  image: {
+    domains: ['https://i.ytimg.com'],
+  },
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
   sitemap: {
     xslTips: process.env.NODE_ENV !== 'production',
@@ -62,6 +65,6 @@ export default defineNuxtConfig({
     '/portfolio': { sitemap: { images: [{ loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }] } },
   },
   modules: [
-    'nuxt-schema-org', 'nuxt-simple-robots', 'nuxt-simple-sitemap'
+    '@nuxt/image', 'nuxt-schema-org', 'nuxt-simple-robots', 'nuxt-simple-sitemap'
   ],
 });
