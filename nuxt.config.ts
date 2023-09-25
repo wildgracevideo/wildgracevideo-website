@@ -29,10 +29,16 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://d22668h9qdy3zj.cloudfront.net/' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins&display=swap' },
+        {
+          rel: 'stylesheet',
+          media: 'print',
+          onload: "this.onload=null;this.removeAttribute('media');",
+          href: 'https://fonts.googleapis.com/css2?family=Poppins&display=swap'
+        },
+        { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css2?family=Poppins&display=swap' },
       ],
       script: [
-        { src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}` }
+        { src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`, async: true }
       ]
     },
   },
