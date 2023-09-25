@@ -24,6 +24,10 @@
     :title="videoTitle"
   >
     <source
+      src="https://d22668h9qdy3zj.cloudfront.net/wgv-reel.webm"
+      type="video/webm"
+    />
+    <source
       src="https://d22668h9qdy3zj.cloudfront.net/wgv-reel.mp4"
       type="video/mp4"
     />
