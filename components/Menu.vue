@@ -17,7 +17,7 @@
     v-if="openMenu"
     class="pt-44 absolute min-h-dvh w-full bg-website-green text-website-off-white text-4xl z-10 flex flex-col justify-between"
   >
-    <div class="flex flex-col">
+    <nav class="flex flex-col">
       <NuxtLink class="mx-auto w-fit block" to="/" @click="openMenu = !openMenu"
         >Home</NuxtLink
       >
@@ -39,7 +39,7 @@
         @click="openMenu = !openMenu"
         >Get Started</NuxtLink
       >
-    </div>
+    </nav>
     <div class="mx-auto flex flex-row justify-center mt-8">
       <a
         href="https://www.instagram.com/wildgracevideo/"

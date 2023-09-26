@@ -11,10 +11,12 @@
           @click="navigate"
         />
       </NuxtLink>
-      <NuxtLink class="mt-12 mr-8" to="/">Home</NuxtLink>
-      <NuxtLink class="mt-12 mr-8" to="/portfolio">Portfolio</NuxtLink>
-      <NuxtLink class="mt-12 mr-8" to="/about">About</NuxtLink>
-      <NuxtLink class="mt-12" to="/get-started">Get Started</NuxtLink>
+      <nav class="mt-12">
+        <NuxtLink class="mr-8" to="/">Home</NuxtLink>
+        <NuxtLink class="mr-8" to="/portfolio">Portfolio</NuxtLink>
+        <NuxtLink class="mr-8" to="/about">About</NuxtLink>
+        <NuxtLink to="/get-started">Get Started</NuxtLink>
+      </nav>
       <a
         class="ml-auto mt-8 block"
         href="https://www.instagram.com/wildgracevideo/"

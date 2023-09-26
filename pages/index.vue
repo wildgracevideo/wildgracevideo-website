@@ -37,11 +37,11 @@
   <div
     class="grid md:grid-cols-2 grid-cols-1 gap-x-8 mx-16 md:my-12 leading-loose z-20"
   >
-    <div class="md:my-0 my-12">
+    <section class="md:my-0 my-12">
       <p>&#x301D;{{ firstReviewText }}&#x301E;</p>
       <p class="mx-4">Cecelia Mims, Clay Love</p>
-    </div>
-    <div class="md:my-0 my-12">
+    </section>
+    <section class="md:my-0 my-12">
       <p>
         &#x301D;Above and beyond our expectations of quality! The creative
         talent at Wild Grace Videography produced visuals that
@@ -51,7 +51,7 @@
         wouldn't recommend anyone else!&#x301E;
       </p>
       <p class="mx-4">Justin Little, Blue J Cones</p>
-    </div>
+    </section>
   </div>
 </template>
 

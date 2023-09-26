@@ -7,8 +7,8 @@
     :description="imageDescription"
   />
   <div class="grid grid-cols-1 md:grid-cols-2 mb-16">
-    <div
-      class="ml-24 mr-16 mt-16 leading-loose text fade-in-left order-last md:order-first"
+    <article
+      class="mt-16 md:ml-24 ml-8 mr-8 md:mr-16 leading-loose text fade-in-left order-last md:order-first"
     >
       <p>
         I'm Carly, and creating videos is my thing. After graduating from the
@@ -48,7 +48,7 @@
         you love, you will never work a day in your life. And that's why I made
         video my thing.
       </p>
-    </div>
+    </article>
     <div class="mx-8 order-first md:order-last">
       <img
         src="/Carly1.webp"

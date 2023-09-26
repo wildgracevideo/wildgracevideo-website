@@ -15,7 +15,7 @@
       />
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-x-16 mx-16 mt-32 mb-16">
-      <div
+      <section
         v-for="item in videos"
         class="portfolio-page-video-container w-full mx-auto"
       >
@@ -28,7 +28,7 @@
         />
         <h2 class="text-lg font-bold mt-4">{{ item.name }}</h2>
         <h3 class="mt-2 mb-16">{{ item.description }}</h3>
-      </div>
+      </section>
     </div>
   </div>
 </template>
@@ -93,9 +93,7 @@ const videos = [
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
-    console.log(entries);
     entries.forEach((entry) => {
-      console.log(entry);
       if (entry.isIntersecting) {
         entry.target.classList.remove("fade-out");
         entry.target.classList.add("fade-in");
