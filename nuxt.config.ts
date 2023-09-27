@@ -56,7 +56,24 @@ export default defineNuxtConfig({
     xsl: false, 
   },
   routeRules: {
-    '/': { sitemap: { images: [{ loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }] } },
+    '/': { sitemap: { 
+      images: [
+        { loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }
+      ], 
+      videos: [
+        { 
+          title: 'Wild Grace Videography Reel', 
+          thumbnailLoc: SITE_URL + '/logo1.webp', 
+          description: 'Video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company.',
+          contentLoc: 'https://d22668h9qdy3zj.cloudfront.net/wgv-reel.webm',
+          playerLoc: SITE_URL,
+          duration: 92,
+          requiresSubscription: false,
+          live: false,
+          publicationDate: '2023-09-26T19:20:30+07:00.'
+        }
+      ]
+    }},
     '/about': { sitemap: { images: [
         { loc: '/Carly1.webp', title: 'Carly Kreiger photo', caption: 'Photo of Carly Kreiger, the founder of Wild Grace Videography, a Denver, Colorado-based video production company.' },
         { loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }
