@@ -1,10 +1,13 @@
+import { NuxtConfig } from "nuxt/config";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const SITE_URL = process.env.URL || 'http://localhost:3000';
 const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = SITE_URL + '/logo2.png';
 const GA_MEASUREMENT_ID = "G-9KDTSVFRRW";
+const RECAPTCHA_SITE_KEY = '6LcqgVMoAAAAABLWZCEs3MtuslhHwadUEiMlRCFV';
 
-export default defineNuxtConfig({
+const config: NuxtConfig = {
   runtimeConfig: {
     public: {
       siteUrl: SITE_URL,
@@ -29,11 +32,10 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://d22668h9qdy3zj.cloudfront.net' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
-        { rel: 'preconnect', href: 'https://www.google-analytics.com' },
+        { rel: 'preconnect', href: 'https://www.google.com' },
       ],
       script: [
-        { src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`, async: true }
+        { src: `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`, async: true },
       ]
     },
   },
@@ -46,9 +48,6 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/main.css'
   ],
-  image: {
-    domains: ['https://i.ytimg.com'],
-  },
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
   sitemap: {
     xslTips: process.env.NODE_ENV !== 'production',
@@ -87,4 +86,12 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image', 'nuxt-schema-org', 'nuxt-simple-robots', 'nuxt-simple-sitemap'
   ],
-});
+};
+
+if (process.env.NODE_ENV === 'production') {
+  config.app?.head?.script?.push({ src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`, async: true });
+  config.app?.head?.link?.push({ rel: 'preconnect', href: 'https://www.googletagmanager.com' });
+  config.app?.head?.link?.push({ rel: 'preconnect', href: 'https://www.google-analytics.com' });
+}
+
+export default defineNuxtConfig(config);

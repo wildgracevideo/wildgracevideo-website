@@ -19,6 +19,10 @@ body, html, #__nuxt {
   height: 100%;
 }
 
+.grecaptcha-badge { 
+  visibility: hidden; 
+}
+
 /* devanagari */
 @font-face {
   font-family: 'Poppins';
