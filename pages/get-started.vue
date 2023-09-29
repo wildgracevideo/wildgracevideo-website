@@ -142,6 +142,7 @@ import RequiredSelect from "../components/form/RequiredSelect.vue";
 import RequiredDropdownSelect from "../components/form/RequiredDropdownSelect.vue";
 import SelectChoice from "~/models/SelectChoice";
 import OgMeta from "~/components/OgMeta.vue";
+import { submitRecaptcha } from "~/src/submitRecaptcha";
 
 const pageTitle =
   "Get Started with Wild Grace Videography | Denver Video Production Company";
@@ -230,25 +231,28 @@ const submit = () => {
     businessType.value.length > 0 &&
     hearChoice.value
   ) {
-    $fetch("/.netlify/functions/get-started-submit", {
-      method: "POST",
-      body: {
-        firstname: `${firstName.value}`,
-        lastname: `${lastName.value}`,
-        email: `${email.value}`,
-        businessName: `${businessName.value}`,
-        phone: `${phone.value}`,
-        goals: `${goals.value}`,
-        interests: interests.value.map((it) => it.value),
-        businessType: `${businessType.value[0].value}`,
-        hearChoice: `${hearChoice.value}`,
-        monthlyTipSignup: monthlyTipSignup.value.length > 0,
-        instagramHandle: `${instagramHandle.value}`,
-      },
-    }).then((res: any) => {
-      console.log(res);
-      showForm.value = false;
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    submitRecaptcha((token) => {
+      $fetch("/.netlify/functions/get-started-submit", {
+        method: "POST",
+        body: {
+          token: token,
+          firstname: `${firstName.value}`,
+          lastname: `${lastName.value}`,
+          email: `${email.value}`,
+          businessName: `${businessName.value}`,
+          phone: `${phone.value}`,
+          goals: `${goals.value}`,
+          interests: interests.value.map((it) => it.value),
+          businessType: `${businessType.value[0].value}`,
+          hearChoice: `${hearChoice.value}`,
+          monthlyTipSignup: monthlyTipSignup.value.length > 0,
+          instagramHandle: `${instagramHandle.value}`,
+        },
+      }).then((res: any) => {
+        console.log(res);
+        showForm.value = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     });
   }
 };

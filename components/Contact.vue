@@ -55,6 +55,19 @@
         v-model="message"
         container-class="md:col-span-2 col-span-1 text-sm fade-out contact-scroll-observable"
       />
+      <p
+        class="md:col-span-2 col-span-1 text-xs text-website-off-white text-center fade-out contact-scroll-observable"
+      >
+        This site is protected by reCAPTCHA and the Google
+        <a href="https://policies.google.com/privacy" class="underline"
+          >Privacy Policy</a
+        >
+        and
+        <a href="https://policies.google.com/terms" class="underline"
+          >Terms of Service</a
+        >
+        apply.
+      </p>
       <div class="md:col-span-2 col-span-1 flex justify-center">
         <button
           type="submit"
@@ -70,6 +83,7 @@
 <script setup lang="ts">
 import RequiredInput from "./form/RequiredInput.vue";
 import RequiredTextArea from "./form/RequiredTextArea.vue";
+import { submitRecaptcha } from "~/src/submitRecaptcha";
 
 const firstName = ref("");
 const lastName = ref("");
@@ -84,30 +98,31 @@ const send = () => {
   isRequired.value = true;
 
   if (firstName.value && lastName.value && email.value && message.value) {
-    $fetch("/.netlify/functions/contact-submit", {
-      method: "POST",
-      body: {
-        firstname: `${firstName.value}`,
-        lastname: `${lastName.value}`,
-        message: `${message.value}`,
-        email: `${email.value}`,
-      },
-    }).then((res: any) => {
-      console.log(res);
-      firstName.value = "";
-      lastName.value = "";
-      email.value = "";
-      message.value = "";
-      showForm.value = false;
+    submitRecaptcha("contact-submit", (token) => {
+      $fetch("/.netlify/functions/contact-submit", {
+        method: "POST",
+        body: {
+          token: token,
+          firstname: `${firstName.value}`,
+          lastname: `${lastName.value}`,
+          message: `${message.value}`,
+          email: `${email.value}`,
+        },
+      }).then((res: any) => {
+        console.log(res);
+        firstName.value = "";
+        lastName.value = "";
+        email.value = "";
+        message.value = "";
+        showForm.value = false;
+      });
     });
   }
 };
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
-    console.log(entries);
     entries.forEach((entry) => {
-      console.log(entry);
       if (entry.isIntersecting) {
         entry.target.classList.remove("fade-out");
         entry.target.classList.add("fade-in");

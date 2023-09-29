@@ -1,7 +1,10 @@
 import { Handler } from '@netlify/functions'
+import { FORBIDDEN_BODY } from '../util';
+import { validateRecaptcha } from '../validate-recaptcha';
+
 require('dotenv').config()
 
-const { AWS_ACCESS_KEY_ID_WGV, AWS_SECRET_KEY_ID_WGV, AWS_REGION_WGV } = process.env;
+const { AWS_ACCESS_KEY_ID_WGV, AWS_SECRET_KEY_ID_WGV, AWS_REGION_WGV, RECAPTCHA_SECRET_KEY } = process.env;
 
 const TO_EMAIL = 'carly@wildgracevideography.com';
 const FROM_EMAIL = 'info@wildgracevideography.com';
@@ -24,6 +27,18 @@ export const handler: Handler = async (event, context) => {
 
   if (body == null || !body.message || !body.firstname || !body.lastname || !body.email) {
     return { statusCode: 422, body: 'Name, email, and message are required.' };
+  }
+  
+  if (!body.token) {
+    console.error('Token body not found.');
+    return FORBIDDEN_BODY;
+  } else if (!RECAPTCHA_SECRET_KEY) {
+    console.error('Token body not found.');
+    return FORBIDDEN_BODY;
+  } else {
+    if (!(await validateRecaptcha(RECAPTCHA_SECRET_KEY, body.token, 'contact-submit'))) {
+      return FORBIDDEN_BODY;
+    }
   }
 
   AWS.config.update({
