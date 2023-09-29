@@ -1,6 +1,7 @@
 [dev]
    command = "npm dev"
 [build]
+  ignore = "git log --format='%ae' $(git rev-parse HEAD) -n 1 | grep 'ehmurray8@gmail.com\|carly@wildgracevideography.com' | exit_code=$?; exit_code_num=$((exit_code)); exit $exit_code_num"
   command = "npm run build"
   publish = "dist"
   functions = 'functions' 
