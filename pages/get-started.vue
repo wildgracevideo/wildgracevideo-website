@@ -231,7 +231,7 @@ const submit = () => {
     businessType.value.length > 0 &&
     hearChoice.value
   ) {
-    submitRecaptcha((token) => {
+    submitRecaptcha("get_started", (token) => {
       $fetch("/.netlify/functions/get-started-submit", {
         method: "POST",
         body: {
