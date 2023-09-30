@@ -123,6 +123,17 @@
         :choices="MONTHLY_TIP_SIGNUP"
         :show-required="false"
       />
+      <p class="md:col-span-2 col-span-1 text-xs text-black text-center">
+        This site is protected by reCAPTCHA and the Google
+        <a href="https://policies.google.com/privacy" class="underline"
+          >Privacy Policy</a
+        >
+        and
+        <a href="https://policies.google.com/terms" class="underline"
+          >Terms of Service</a
+        >
+        apply.
+      </p>
       <div class="mb-2 md:col-span-2 col-span-1 mx-auto">
         <button
           action="submit"
