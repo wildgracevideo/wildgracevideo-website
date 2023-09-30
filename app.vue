@@ -1,6 +1,5 @@
 <template>
   <Html lang="en"></Html>
-  <Link rel="preconnect" href="https://www.googletagmanager.com" />
   <SchemaOrgOrganization
     name="Wild Grace Videography"
     logo="/logo1.webp"

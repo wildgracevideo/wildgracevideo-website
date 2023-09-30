@@ -24,6 +24,7 @@
   "dependencies": {
     "@netlify/functions": "^2.0.2",
     "@nuxt/image": "^1.0.0-rc.2",
+    "@types/grecaptcha": "^3.0.5",
     "@types/node": "^18.17.17",
     "aws-sdk": "^2.1459.0",
     "dotenv": "^16.3.1",
