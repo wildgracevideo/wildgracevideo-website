@@ -71,7 +71,14 @@
       <div class="md:col-span-2 col-span-1 flex justify-center">
         <button
           type="submit"
-          class="rounded-oval text-website-off-white border-website-off-white bg-transparent border-2 py-4 px-16 mb-12 hover:text-website-green hover:bg-website-off-white fade-out contact-scroll-observable"
+          class="rounded-oval text-website-off-white border-website-off-white bg-transparent border-2 py-4 px-16 mb-12 contact-scroll-observable"
+          :class="{
+            'opacity-50': sendingForm,
+            'hover:text-website-green': !sendingForm,
+            'hover:bg-website-off-white': !sendingForm,
+            'cursor-default': sendingForm,
+            'fade-out': !sendingForm,
+          }"
         >
           Send
         </button>
@@ -91,13 +98,18 @@ const email = ref("");
 const message = ref("");
 
 const showForm = ref(true);
+const sendingForm = ref(false);
 
 const isRequired = ref(false);
 
 const send = () => {
+  if (sendingForm.value) {
+    return;
+  }
   isRequired.value = true;
 
   if (firstName.value && lastName.value && email.value && message.value) {
+    sendingForm.value = true;
     submitRecaptcha("contact_submit", (token) => {
       $fetch("/.netlify/functions/contact-submit", {
         method: "POST",
@@ -115,6 +127,7 @@ const send = () => {
         email.value = "";
         message.value = "";
         showForm.value = false;
+        sendingForm.value = false;
       });
     });
   }

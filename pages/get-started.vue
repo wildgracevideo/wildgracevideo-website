@@ -137,7 +137,13 @@
       <div class="mb-2 md:col-span-2 col-span-1 mx-auto">
         <button
           action="submit"
-          class="h-14 w-40 text-xl rounded-xl text-website-green border-website-green bg-transparent border-2 hover:bg-website-green hover:text-website-off-white"
+          class="h-14 w-40 text-xl rounded-xl text-website-green border-website-green bg-transparent border-2"
+          :class="{
+            'hover:bg-website-green': !sendingForm,
+            'hover:text-website-off-white': !sendingForm,
+            'opacity-50': sendingForm,
+            'cursor-default': sendingForm,
+          }"
         >
           Send
         </button>
@@ -215,10 +221,15 @@ const hearChoice = ref("");
 const phoneErrorMessage = ref("");
 
 const showForm = ref(true);
+const sendingForm = ref(false);
 
 const isRequired = ref(false);
 
 const validatePhone = () => {
+  if (sendingForm.value) {
+    return;
+  }
+
   if (phone.value && phone.value.length === 14) {
     return true;
   } else {
@@ -242,6 +253,7 @@ const submit = () => {
     businessType.value.length > 0 &&
     hearChoice.value
   ) {
+    sendingForm.value = true;
     submitRecaptcha("get_started", (token) => {
       $fetch("/.netlify/functions/get-started-submit", {
         method: "POST",
@@ -262,6 +274,7 @@ const submit = () => {
       }).then((res: any) => {
         console.log(res);
         showForm.value = false;
+        sendingForm.value = false;
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
     });
