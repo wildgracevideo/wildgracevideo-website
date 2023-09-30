@@ -1,6 +1,6 @@
 import { Handler } from '@netlify/functions'
-import { FORBIDDEN_BODY } from '../util';
-import { validateRecaptcha } from '../validate-recaptcha';
+import { FORBIDDEN_BODY } from '../../functions-shared/util';
+import { validateRecaptcha } from '../../functions-shared/validate-recaptcha';
 
 require('dotenv').config()
 
