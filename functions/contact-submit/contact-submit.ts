@@ -33,7 +33,7 @@ export const handler: Handler = async (event, context) => {
     console.error('Token body not found.');
     return FORBIDDEN_BODY;
   } else if (!RECAPTCHA_SECRET_KEY) {
-    console.error('Token body not found.');
+    console.error('Recaptcha secret key not found.');
     return FORBIDDEN_BODY;
   } else {
     if (!(await validateRecaptcha(RECAPTCHA_SECRET_KEY, body.token, 'contact_submit'))) {
