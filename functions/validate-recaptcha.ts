@@ -11,6 +11,7 @@ export async function validateRecaptcha(recaptchaSecret: string, token: string, 
         'Content-type': 'application/json; charset=UTF-8',
       },
     })).json();
+    console.log(response);
     return response.success && response.action === action && response.score >= 0.4;
   } catch (error) {
     console.error(error);
