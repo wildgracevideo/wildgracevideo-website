@@ -51,6 +51,15 @@
         <Instagram :fill="iconFill" :height="iconSize" :width="iconSize" />
       </a>
       <a
+        href="https://www.linkedin.com/in/carly-kreiger-a391a8133/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="pl-8 mt-3"
+        aria-label="Linkedin"
+      >
+        <Linkedin :fill="iconFill" :height="iconSize" :width="iconSize" />
+      </a>
+      <a
         href="https://www.facebook.com/wildgracevideo/"
         target="_blank"
         rel="noopener noreferrer"
