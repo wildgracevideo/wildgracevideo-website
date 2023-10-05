@@ -62,10 +62,10 @@ const config: NuxtConfig = {
       videos: [
         { 
           title: 'Wild Grace Videography Reel', 
-          thumbnailLoc: SITE_URL + '/logo1.webp', 
+          'thumbnail_loc':  SITE_URL + '/logo1.webp',
           description: 'Video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company.',
-          contentLoc: 'https://d22668h9qdy3zj.cloudfront.net/wgv-reel.webm',
-          playerLoc: SITE_URL,
+          'content_loc': 'https://d22668h9qdy3zj.cloudfront.net/wgv-reel.webm',
+          'player_loc': SITE_URL,
           duration: 92,
           requiresSubscription: false,
           live: false,
