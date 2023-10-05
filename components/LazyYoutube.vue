@@ -4,7 +4,7 @@
     class="cursor-pointer relative"
     @click="videoPlaying = true"
   >
-    <span class="absolute play-button z-10"><YoutubePlay /></span>
+    <span class="absolute play-button z-10"><YoutubePlay fill="black" /></span>
     <img
       :src="`https://i.ytimg.com/vi_webp/${videoId}/maxresdefault.webp`"
       :alt="alt"
