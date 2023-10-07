@@ -103,22 +103,18 @@ export const handler: Handler = async (event, context) => {
       };
     }
 
-    return {
-      statusCode: 200,
-      body: 'Message sent',
-    };
-    // return ses.sendEmail(params).promise().then((data: any) => {
-    //     console.log("email submitted to SES", data);
-    //     return {
-    //       statusCode: 200,
-    //       body: `Message sent`,
-    //     };
-    //   })
-    //   .catch((error: any) => {
-    //     console.log(error);
-    //     return {
-    //       statusCode: 500,
-    //       body: `Message unsuccesfully sent, error: ${error}`,
-    //     };
-    // }); 
+    return ses.sendEmail(params).promise().then((data: any) => {
+        console.log("email submitted to SES", data);
+        return {
+          statusCode: 200,
+          body: `Message sent`,
+        };
+      })
+      .catch((error: any) => {
+        console.log(error);
+        return {
+          statusCode: 500,
+          body: `Message unsuccesfully sent, error: ${error}`,
+        };
+    });
 }
