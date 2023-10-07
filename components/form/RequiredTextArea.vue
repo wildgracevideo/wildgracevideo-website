@@ -13,6 +13,7 @@
       ]"
       v-model="value"
       :placeholder="hint"
+      maxlength="5000"
     />
   </div>
 </template>

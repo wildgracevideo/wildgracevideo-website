@@ -1,6 +1,8 @@
 import { Handler } from '@netlify/functions'
 import { FORBIDDEN_BODY } from '~/functions-shared/util';
 import { validateRecaptcha } from '~/functions-shared/validate-recaptcha';
+import { GetStartedSubmitRequest } from '~/types/netlify-request';
+
 require('dotenv').config()
 
 const { AWS_ACCESS_KEY_ID_WGV, AWS_SECRET_KEY_ID_WGV, AWS_REGION_WGV, RECAPTCHA_SECRET_KEY } = process.env;
@@ -22,21 +24,11 @@ export const handler: Handler = async (event, context) => {
     return { statusCode: 422, body: 'Missing required body.' };
   }
   
-  const body = JSON.parse(event.body);
-
-  if (
-    body == null || 
-    !body.firstname || 
-    !body.lastname || 
-    !body.email || 
-    !body.businessName || 
-    !body.phone || 
-    !body.goals || 
-    !body.interests ||
-    !body.interests.length ||
-    !body.businessType ||
-    !body.hearChoice
-  ) {
+  let body;
+  try {
+    body = JSON.parse(event.body) as GetStartedSubmitRequest;
+  } catch (err) {
+    console.error(err);
     return { statusCode: 422, body: 'Missing required fields.' };
   }
 

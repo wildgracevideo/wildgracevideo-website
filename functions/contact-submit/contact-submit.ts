@@ -1,6 +1,8 @@
 import { Handler } from '@netlify/functions'
 import { FORBIDDEN_BODY } from '../../functions-shared/util';
 import { validateRecaptcha } from '../../functions-shared/validate-recaptcha';
+import { ContactSubmitRequest } from '~/types/netlify-request';
+import prisma from '~/lib/prisma'
 
 require('dotenv').config()
 
@@ -23,9 +25,11 @@ export const handler: Handler = async (event, context) => {
     return { statusCode: 422, body: 'Name, email, and message are required.' };
   }
   
-  const body = JSON.parse(event.body);
-
-  if (body == null || !body.message || !body.firstname || !body.lastname || !body.email) {
+  let body: ContactSubmitRequest;
+  try {
+    body = JSON.parse(event.body) as ContactSubmitRequest;
+  } catch (err) {
+    console.error(err);
     return { statusCode: 422, body: 'Name, email, and message are required.' };
   }
   
@@ -82,18 +86,32 @@ export const handler: Handler = async (event, context) => {
       Source: FROM_EMAIL
     }
 
-    return ses.sendEmail(params).promise().then((data: any) => {
-        console.log("email submitted to SES", data);
-        return {
-          statusCode: 200,
-          body: `Message sent`,
-        };
-      })
-      .catch((error: any) => {
-        console.log(error);
-        return {
-          statusCode: 500,
-          body: `Message unsuccesfully sent, error: ${error}`,
-        };
-    }); 
+    try {
+      await prisma.message.create({data: body});
+    } catch (e) {
+      console.error('Request error', e)
+      return {
+        statusCode: 500,
+        body: `Error creating message in DB, error: ${e}`,
+      };
+    }
+
+    return {
+      statusCode: 200,
+      body: 'Message sent',
+    };
+    // return ses.sendEmail(params).promise().then((data: any) => {
+    //     console.log("email submitted to SES", data);
+    //     return {
+    //       statusCode: 200,
+    //       body: `Message sent`,
+    //     };
+    //   })
+    //   .catch((error: any) => {
+    //     console.log(error);
+    //     return {
+    //       statusCode: 500,
+    //       body: `Message unsuccesfully sent, error: ${error}`,
+    //     };
+    // }); 
 }

@@ -81,10 +81,16 @@ const config: NuxtConfig = {
     '/portfolio': { sitemap: { images: [{ loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }] } },
   },
   robots: {
-    disallow: ['/_nuxt/*', '/_nuxt', '/_ipx', '/_ipx/*'],
+    disallow: ['/_nuxt/*', '/_nuxt', '/_ipx', '/_ipx/*', '/admin', '/admin/*', '/api', '/api/*'],
+  },
+  auth: {        
+    baseURL: SITE_URL,
+    provider: {
+      type: 'authjs'
+    }
   },
   modules: [
-    '@nuxt/image', 'nuxt-schema-org', 'nuxt-simple-robots', 'nuxt-simple-sitemap'
+    '@sidebase/nuxt-auth', '@nuxt/image', 'nuxt-schema-org', 'nuxt-simple-robots', 'nuxt-simple-sitemap'
   ],
 };
 

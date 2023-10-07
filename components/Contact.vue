@@ -91,6 +91,7 @@
 import RequiredInput from "./form/RequiredInput.vue";
 import RequiredTextArea from "./form/RequiredTextArea.vue";
 import { submitRecaptcha } from "~/src/submitRecaptcha";
+import { ContactSubmitRequest } from "~/types/netlify-request";
 
 const firstName = ref("");
 const lastName = ref("");
@@ -111,15 +112,16 @@ const send = () => {
   if (firstName.value && lastName.value && email.value && message.value) {
     sendingForm.value = true;
     submitRecaptcha("contact_submit", (token) => {
+      const contactSubmitRequest: ContactSubmitRequest = {
+        token: token,
+        firstname: `${firstName.value}`,
+        lastname: `${lastName.value}`,
+        message: `${message.value}`,
+        email: `${email.value}`,
+      };
       $fetch("/.netlify/functions/contact-submit", {
         method: "POST",
-        body: {
-          token: token,
-          firstname: `${firstName.value}`,
-          lastname: `${lastName.value}`,
-          message: `${message.value}`,
-          email: `${email.value}`,
-        },
+        body: contactSubmitRequest,
       }).then((res: any) => {
         console.log(res);
         firstName.value = "";

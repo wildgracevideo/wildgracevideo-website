@@ -160,6 +160,7 @@ import RequiredDropdownSelect from "../components/form/RequiredDropdownSelect.vu
 import SelectChoice from "~/models/SelectChoice";
 import OgMeta from "~/components/OgMeta.vue";
 import { submitRecaptcha } from "~/src/submitRecaptcha";
+import { GetStartedSubmitRequest } from "~/types/netlify-request";
 
 const pageTitle =
   "Get Started with Wild Grace Videography | Denver Video Production Company";
@@ -255,22 +256,23 @@ const submit = () => {
   ) {
     sendingForm.value = true;
     submitRecaptcha("get_started", (token) => {
+      const getStartedRequest: GetStartedSubmitRequest = {
+        token: token,
+        firstname: `${firstName.value}`,
+        lastname: `${lastName.value}`,
+        email: `${email.value}`,
+        businessName: `${businessName.value}`,
+        phone: `${phone.value}`,
+        goals: `${goals.value}`,
+        interests: interests.value.map((it) => it.value),
+        businessType: `${businessType.value[0].value}`,
+        hearChoice: `${hearChoice.value}`,
+        monthlyTipSignup: monthlyTipSignup.value.length > 0,
+        instagramHandle: `${instagramHandle.value}`,
+      };
       $fetch("/.netlify/functions/get-started-submit", {
         method: "POST",
-        body: {
-          token: token,
-          firstname: `${firstName.value}`,
-          lastname: `${lastName.value}`,
-          email: `${email.value}`,
-          businessName: `${businessName.value}`,
-          phone: `${phone.value}`,
-          goals: `${goals.value}`,
-          interests: interests.value.map((it) => it.value),
-          businessType: `${businessType.value[0].value}`,
-          hearChoice: `${hearChoice.value}`,
-          monthlyTipSignup: monthlyTipSignup.value.length > 0,
-          instagramHandle: `${instagramHandle.value}`,
-        },
+        body: getStartedRequest,
       }).then((res: any) => {
         console.log(res);
         showForm.value = false;
