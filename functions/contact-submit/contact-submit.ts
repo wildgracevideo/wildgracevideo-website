@@ -3,6 +3,7 @@ import { FORBIDDEN_BODY } from '../../functions-shared/util';
 import { validateRecaptcha } from '../../functions-shared/validate-recaptcha';
 import { ContactSubmitRequest } from '~/types/netlify-request';
 import prisma from '~/lib/prisma'
+import { Message } from '@prisma/client';
 
 require('dotenv').config()
 
@@ -87,7 +88,13 @@ export const handler: Handler = async (event, context) => {
     }
 
     try {
-      await prisma.message.create({data: body});
+      const message = {
+        email: body.email,
+        firstname: body.firstname,
+        lastname: body.lastname,
+        message: body.message,
+      };
+      await prisma.message.create({data: message});
     } catch (e) {
       console.error('Request error', e)
       return {

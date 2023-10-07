@@ -119,18 +119,25 @@ const send = () => {
         message: `${message.value}`,
         email: `${email.value}`,
       };
-      $fetch("/.netlify/functions/contact-submit", {
+      $fetch(`/.netlify/functions/contact-submit`, {
         method: "POST",
         body: contactSubmitRequest,
-      }).then((res: any) => {
-        console.log(res);
-        firstName.value = "";
-        lastName.value = "";
-        email.value = "";
-        message.value = "";
-        showForm.value = false;
-        sendingForm.value = false;
-      });
+      })
+        .then((res: any) => {
+          console.log(res);
+          firstName.value = "";
+          lastName.value = "";
+          email.value = "";
+          message.value = "";
+          showForm.value = false;
+          sendingForm.value = false;
+        })
+        .catch((err) => {
+          console.error("failed");
+          console.error(err);
+          sendingForm.value = false;
+          showForm.value = true;
+        });
     });
   }
 };

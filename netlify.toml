@@ -1,5 +1,5 @@
 [dev]
-   command = "npm dev"
+   command = "npm run dev"
 [build]
   command = "npm run build"
   publish = "dist"

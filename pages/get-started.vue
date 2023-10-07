@@ -270,15 +270,20 @@ const submit = () => {
         monthlyTipSignup: monthlyTipSignup.value.length > 0,
         instagramHandle: `${instagramHandle.value}`,
       };
-      $fetch("/.netlify/functions/get-started-submit", {
+      $fetch(`/.netlify/functions/get-started-submit`, {
         method: "POST",
         body: getStartedRequest,
-      }).then((res: any) => {
-        console.log(res);
-        showForm.value = false;
-        sendingForm.value = false;
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+      })
+        .then((res: any) => {
+          console.log(res);
+          showForm.value = false;
+          sendingForm.value = false;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        })
+        .catch((err) => {
+          console.error(err);
+          sendingForm.value = false;
+        });
     });
   }
 };
