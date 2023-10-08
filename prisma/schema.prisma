@@ -11,6 +11,8 @@ generator client {
 model Message {
     id          Int       @id @default(autoincrement())
     createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @default(now())
+    read        Boolean   @default(false)
     email       String    @db.VarChar(255)
     firstname   String    @db.VarChar(255)
     lastname    String    @db.VarChar(255)

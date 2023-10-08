@@ -87,6 +87,7 @@ export const handler: Handler = async (event, context) => {
       Source: FROM_EMAIL
     }
 
+    let prismaResult;
     try {
       const message = {
         email: body.email,
@@ -94,7 +95,7 @@ export const handler: Handler = async (event, context) => {
         lastname: body.lastname,
         message: body.message,
       };
-      await prisma.message.create({data: message});
+      prismaResult = prisma.message.create({data: message});
     } catch (e) {
       console.error('Request error', e)
       return {
@@ -103,18 +104,21 @@ export const handler: Handler = async (event, context) => {
       };
     }
 
-    return ses.sendEmail(params).promise().then((data: any) => {
-        console.log("email submitted to SES", data);
-        return {
-          statusCode: 200,
-          body: `Message sent`,
-        };
-      })
-      .catch((error: any) => {
-        console.log(error);
-        return {
-          statusCode: 500,
-          body: `Message unsuccesfully sent, error: ${error}`,
-        };
-    });
+    let emailResponse;
+    try {
+      emailResponse = ses.sendEmail(params)
+      await prismaResult;
+      const responseData = await emailResponse;
+      console.log("email submitted to SES", responseData);
+      return {
+        statusCode: 200,
+        body: `Message sent`,
+      };
+    } catch (error) {
+      console.log(error);
+      return {
+        statusCode: 500,
+        body: `Failed to process the submit request: ${error}`,
+      };
+    }
 }
