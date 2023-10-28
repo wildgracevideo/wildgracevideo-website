@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import SelectChoice from "../../models/SelectChoice";
+import type SelectChoice from "~/types/SelectChoice";
 
 interface Props {
   title: string;

@@ -1,5 +1,3 @@
-import { NuxtConfig } from "nuxt/config";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const SITE_URL = process.env.URL || 'http://localhost:3000';
 const APP_ICON = SITE_URL + '/app-icon.png';
@@ -7,8 +5,17 @@ const WEBSITE_ICON = SITE_URL + '/logo2.png';
 const GA_MEASUREMENT_ID = "G-9KDTSVFRRW";
 const RECAPTCHA_SITE_KEY = '6LcqgVMoAAAAABLWZCEs3MtuslhHwadUEiMlRCFV';
 
-const config: NuxtConfig = {
+
+const config = {
   runtimeConfig: {
+    awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID_WGV,
+    awsSecret: process.env.AWS_SECRET_KEY_ID_WGV,
+    awsRegion: process.env.AWS_REGION_WGV,
+    clientFromEmailAddress: process.env.CLIENT_FROM_EMAIL_ADDRESS,
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    nextAuthSecret: process.env.NEXTAUTH_SECRET,
+    recaptchaSecret: process.env.RECAPTCHA_SECRET_KEY,
     public: {
       siteUrl: SITE_URL,
       wesbiteIcon: WEBSITE_ICON,

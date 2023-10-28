@@ -157,10 +157,10 @@ import RequiredInput from "../components/form/RequiredInput.vue";
 import RequiredTextArea from "../components/form/RequiredTextArea.vue";
 import RequiredSelect from "../components/form/RequiredSelect.vue";
 import RequiredDropdownSelect from "../components/form/RequiredDropdownSelect.vue";
-import SelectChoice from "~/models/SelectChoice";
+import type SelectChoice from "~/types/SelectChoice";
 import OgMeta from "~/components/OgMeta.vue";
 import { submitRecaptcha } from "~/src/submitRecaptcha";
-import { GetStartedSubmitRequest } from "~/types/netlify-request";
+import { type GetStartedSubmitRequest } from "~/types/netlify-request";
 
 const pageTitle =
   "Get Started with Wild Grace Videography | Denver Video Production Company";

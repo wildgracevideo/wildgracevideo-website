@@ -7,7 +7,7 @@
     <select
       :id="id"
       v-model="value"
-      class="h-11 .max-w-md w-full px-2"
+      class="h-11 max-w-lg w-full px-2"
       :class="[
         inputClass,
         {
@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import SelectChoice from "~/models/SelectChoice";
+import type SelectChoice from "~/types/SelectChoice";
 
 interface Props {
   title: string;

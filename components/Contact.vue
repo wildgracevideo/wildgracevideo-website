@@ -91,7 +91,7 @@
 import RequiredInput from "./form/RequiredInput.vue";
 import RequiredTextArea from "./form/RequiredTextArea.vue";
 import { submitRecaptcha } from "~/src/submitRecaptcha";
-import { ContactSubmitRequest } from "~/types/netlify-request";
+import { type ContactSubmitRequest } from "~/types/netlify-request";
 
 const firstName = ref("");
 const lastName = ref("");
@@ -119,7 +119,7 @@ const send = () => {
         message: `${message.value}`,
         email: `${email.value}`,
       };
-      $fetch(`/.netlify/functions/contact-submit`, {
+      $fetch(`/api/contact`, {
         method: "POST",
         body: contactSubmitRequest,
       })
