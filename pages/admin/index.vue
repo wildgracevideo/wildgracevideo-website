@@ -19,11 +19,10 @@
 import { type Message } from "@prisma/client";
 import MessagePreview from "~/components/MessagePreview.vue";
 
-const selectedMessage: Ref<Message | undefined> = ref(undefined);
-
 definePageMeta({ middleware: "auth", layout: "admin" });
-const headers = useRequestHeaders(["cookie"]) as HeadersInit;
-const { data: messages } = await useFetch("/api/admin/messages", { headers });
+
+const selectedMessage: Ref<Message | undefined> = ref(undefined);
+const { data: messages } = await useFetch("/api/admin/messages");
 
 const previewClickHandler = (message: Message) => {
   selectedMessage.value = message;
