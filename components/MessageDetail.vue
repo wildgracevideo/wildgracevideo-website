@@ -54,17 +54,19 @@ const backClick = () => {
 
 const emit = defineEmits(["update:modelValue"]);
 
-console.log(props.message);
-console.log(props.message.read);
 if (!props.message.read) {
   const updatedMessage = {
     ...props.message,
     read: true,
   };
-  await $fetch("/api/admin/messages", {
-    method: "PUT",
-    body: updatedMessage,
-  });
+  try {
+    await $fetch("/api/admin/messages", {
+      method: "PUT",
+      body: updatedMessage,
+    });
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 const sendHandler = async (messageReplyRequest: MessageReplyRequest) => {

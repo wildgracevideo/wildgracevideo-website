@@ -1,5 +1,5 @@
 import prisma from "~/lib/prisma";
-import { Message } from "@prisma/client";
+import { type Message } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 export default defineEventHandler(async (event): Promise<Message> => {
