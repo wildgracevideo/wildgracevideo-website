@@ -26,7 +26,7 @@
       </p>
       <br />
       <p>
-        As Wild Grace Videography, I am focused on providing detailed and
+        At Wild Grace Videography, I am focused on providing detailed and
         personalized videos to match your brand and relay your message in a
         professional, yet exciting style.
       </p>
