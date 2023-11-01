@@ -16,6 +16,8 @@ const config = {
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
     nextAuthSecret: process.env.NEXTAUTH_SECRET,
     recaptchaSecret: process.env.RECAPTCHA_SECRET_KEY,
+    formsFromEmail: 'info@wildgracevideography.com',
+    formsToEmail: 'carly@wildgracevideography.com',
     public: {
       siteUrl: SITE_URL,
       wesbiteIcon: WEBSITE_ICON,

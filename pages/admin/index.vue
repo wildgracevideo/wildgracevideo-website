@@ -9,25 +9,25 @@
     <h1 class="pt-4 mx-auto text-xl w-fit mb-4">Messages</h1>
     <MessagePreview
       v-for="message in messages"
-      :message="(message as unknown as Message)"
+      :message="(message as unknown as MessageWithRelations)"
       :click-handler="previewClickHandler"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { type Message } from "@prisma/client";
+import { type MessageWithRelations } from "~/lib/prisma";
 import MessagePreview from "~/components/MessagePreview.vue";
 
 definePageMeta({ middleware: "auth", layout: "admin" });
 
-const selectedMessage: Ref<Message | undefined> = ref(undefined);
+const selectedMessage: Ref<MessageWithRelations | undefined> = ref(undefined);
 const { data: messages } = await useFetch("/api/admin/messages");
 
-const previewClickHandler = (message: Message) => {
+const previewClickHandler = (message: MessageWithRelations) => {
   selectedMessage.value = message;
 };
-const backClickHandler = (message: Message) => {
+const backClickHandler = (message: MessageWithRelations) => {
   selectedMessage.value = undefined;
   if (messages.value != null) {
     messages.value

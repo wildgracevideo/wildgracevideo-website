@@ -12,11 +12,11 @@
 </template>
 
 <script setup lang="ts">
-import { type Message } from "@prisma/client";
+import { type MessageWithRelations } from "~/lib/prisma";
 
 const props = defineProps<{
-  message: Message;
-  clickHandler: (message: Message) => void;
+  message: MessageWithRelations;
+  clickHandler: (message: MessageWithRelations) => void;
 }>();
 
 const messageClickHandler = () => {

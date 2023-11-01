@@ -20,3 +20,8 @@ export interface GetStartedSubmitRequest {
   monthlyTipSignup: boolean;
   instagramHandle?: string;
 };
+
+export enum RecaptchaType {
+  GetStarted = "get_started",
+  Contact = "contact_submit",
+}

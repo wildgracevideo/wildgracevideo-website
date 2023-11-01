@@ -157,10 +157,13 @@ import RequiredInput from "../components/form/RequiredInput.vue";
 import RequiredTextArea from "../components/form/RequiredTextArea.vue";
 import RequiredSelect from "../components/form/RequiredSelect.vue";
 import RequiredDropdownSelect from "../components/form/RequiredDropdownSelect.vue";
-import type SelectChoice from "~/types/SelectChoice";
+import { type SelectChoice } from "~/types/form-input";
 import OgMeta from "~/components/OgMeta.vue";
 import { submitRecaptcha } from "~/src/submitRecaptcha";
-import { type GetStartedSubmitRequest } from "~/types/netlify-request";
+import {
+  RecaptchaType,
+  type GetStartedSubmitRequest,
+} from "~/types/form-requests";
 
 const pageTitle =
   "Get Started with Wild Grace Videography | Denver Video Production Company";
@@ -255,7 +258,7 @@ const submit = () => {
     hearChoice.value
   ) {
     sendingForm.value = true;
-    submitRecaptcha("get_started", (token) => {
+    submitRecaptcha(RecaptchaType.GetStarted, async (token) => {
       const getStartedRequest: GetStartedSubmitRequest = {
         token: token,
         firstname: `${firstName.value}`,
@@ -270,20 +273,18 @@ const submit = () => {
         monthlyTipSignup: monthlyTipSignup.value.length > 0,
         instagramHandle: `${instagramHandle.value}`,
       };
-      $fetch(`/.netlify/functions/get-started-submit`, {
-        method: "POST",
-        body: getStartedRequest,
-      })
-        .then((res: any) => {
-          console.log(res);
-          showForm.value = false;
-          sendingForm.value = false;
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        })
-        .catch((err) => {
-          console.error(err);
-          sendingForm.value = false;
+      try {
+        await $fetch(`/api/forms/get-started`, {
+          method: "POST",
+          body: getStartedRequest,
         });
+      } catch (e) {
+        console.error(e);
+        sendingForm.value = false;
+      }
+      showForm.value = false;
+      sendingForm.value = false;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 };

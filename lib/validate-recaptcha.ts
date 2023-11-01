@@ -1,4 +1,6 @@
-export async function validateRecaptcha(recaptchaSecret: string, token: string, action: string) {
+import { type RecaptchaType } from "~/types/form-requests";
+
+export async function validateRecaptcha(recaptchaSecret: string, token: string, action: RecaptchaType) {
   try {
     const response = await (await fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
@@ -11,7 +13,7 @@ export async function validateRecaptcha(recaptchaSecret: string, token: string, 
       })
     })).json();
     console.log(response);
-    return response.success && response.action === action && response.score >= 0.4;
+    return response.success && response.action === action.valueOf() && response.score >= 0.4;
   } catch (error) {
     console.error(error);
     return false;

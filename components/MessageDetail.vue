@@ -30,22 +30,26 @@
     <div v-for="reply in message.replies">
       <p class="pt-4 text w-fit mb-4">
         {{ reply.toEmail }} | {{ reply.name }} |
-        {{ new Date(Date.parse(reply.createdAt)).toLocaleString() }}
+        {{
+          new Date(
+            Date.parse(reply.createdAt as unknown as string)
+          ).toLocaleString()
+        }}
       </p>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { type Message } from "@prisma/client";
+import { type MessageWithRelations } from "~/lib/prisma";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 import type { MessageReplyRequest } from "~/types/messages";
 
 const showPreview = ref(false);
 
 const props = defineProps<{
-  message: Message;
-  backClickHandler: (message: Message) => void;
+  message: MessageWithRelations;
+  backClickHandler: (message: MessageWithRelations) => void;
 }>();
 
 const backClick = () => {
@@ -55,8 +59,9 @@ const backClick = () => {
 const emit = defineEmits(["update:modelValue"]);
 
 if (!props.message.read) {
+  const { replies, ...messageWithoutReplies } = props.message;
   const updatedMessage = {
-    ...props.message,
+    ...messageWithoutReplies,
     read: true,
   };
   try {

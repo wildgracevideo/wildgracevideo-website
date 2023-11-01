@@ -3,7 +3,6 @@ import { type Message } from "@prisma/client";
 
 export default defineEventHandler(async (event): Promise<Message> => {
   const message = await readBody<Message>(event);
-  delete message.replies;
   try {
     await prisma.message.update({
       where: {

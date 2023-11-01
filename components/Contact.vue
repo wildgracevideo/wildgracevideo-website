@@ -88,10 +88,11 @@
 </template>
 
 <script setup lang="ts">
+import { RecaptchaType } from "~/types/form-requests";
 import RequiredInput from "./form/RequiredInput.vue";
 import RequiredTextArea from "./form/RequiredTextArea.vue";
 import { submitRecaptcha } from "~/src/submitRecaptcha";
-import { type ContactSubmitRequest } from "~/types/netlify-request";
+import { type ContactSubmitRequest } from "~/types/form-requests";
 
 const firstName = ref("");
 const lastName = ref("");
@@ -111,7 +112,7 @@ const send = () => {
 
   if (firstName.value && lastName.value && email.value && message.value) {
     sendingForm.value = true;
-    submitRecaptcha("contact_submit", (token) => {
+    submitRecaptcha(RecaptchaType.Contact, async (token) => {
       const contactSubmitRequest: ContactSubmitRequest = {
         token: token,
         firstname: `${firstName.value}`,
@@ -119,25 +120,22 @@ const send = () => {
         message: `${message.value}`,
         email: `${email.value}`,
       };
-      $fetch(`/api/contact`, {
-        method: "POST",
-        body: contactSubmitRequest,
-      })
-        .then((res: any) => {
-          console.log(res);
-          firstName.value = "";
-          lastName.value = "";
-          email.value = "";
-          message.value = "";
-          showForm.value = false;
-          sendingForm.value = false;
-        })
-        .catch((err) => {
-          console.error("failed");
-          console.error(err);
-          sendingForm.value = false;
-          showForm.value = true;
+      try {
+        await $fetch(`/api/forms/contact`, {
+          method: "POST",
+          body: contactSubmitRequest,
         });
+        firstName.value = "";
+        lastName.value = "";
+        email.value = "";
+        message.value = "";
+        showForm.value = false;
+        sendingForm.value = false;
+      } catch (e) {
+        console.error(e);
+        sendingForm.value = false;
+        showForm.value = true;
+      }
     });
   }
 };
