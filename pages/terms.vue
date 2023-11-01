@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: "get-started",
+  layout: "no-contact",
 });
 const rawHtml = `
 <h2><strong>Terms and Conditions</strong></h2>

@@ -34,10 +34,16 @@
         >About</NuxtLink
       >
       <NuxtLink
-        class="mt-8 w-fit mx-auto block mb-auto"
+        class="mt-8 w-fit mx-auto block"
         to="/get-started"
         @click="openMenu = !openMenu"
         >Get Started</NuxtLink
+      >
+      <NuxtLink
+        class="mt-8 w-fit mx-auto block mb-auto"
+        to="/30-day-video-transformation"
+        @click="openMenu = !openMenu"
+        >Shop</NuxtLink
       >
     </nav>
     <div class="mx-auto flex flex-row justify-center mt-8">

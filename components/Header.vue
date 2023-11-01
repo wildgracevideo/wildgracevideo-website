@@ -1,6 +1,6 @@
 <template>
   <header class="text-lg">
-    <div class="md:flex hidden">
+    <div class="lg:flex hidden">
       <NuxtLink to="/" v-slot="{ navigate }">
         <img
           class="mr-10 ml-8 mt-3 mb-8 font-size-0"
@@ -15,7 +15,8 @@
         <NuxtLink class="mr-8" to="/">Home</NuxtLink>
         <NuxtLink class="mr-8" to="/portfolio">Portfolio</NuxtLink>
         <NuxtLink class="mr-8" to="/about">About</NuxtLink>
-        <NuxtLink to="/get-started">Get Started</NuxtLink>
+        <NuxtLink class="mr-8" to="/get-started">Get Started</NuxtLink>
+        <NuxtLink to="/30-day-video-transformation">Shop</NuxtLink>
       </nav>
       <a
         class="ml-auto mt-8 block"
@@ -55,7 +56,7 @@
       </a>
     </div>
     <div
-      class="flex md:hidden justify-between"
+      class="flex lg:hidden justify-between"
       :class="{ 'bg-website-green': openMenu }"
     >
       <NuxtLink to="/" v-slot="{ navigate }" class="z-20">

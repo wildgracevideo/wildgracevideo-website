@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: "get-started",
+  layout: "no-contact",
 });
 const rawHtml = `
 <div data-custom-class="body">

@@ -86,6 +86,18 @@ body, html, #__nuxt {
   font-size: 0;
 }
 
+.aspect-125 {
+  aspect-ratio: 1/1.25;
+}
+
+.image-box-shadow {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.word-spacing-max {
+  word-spacing: 9999999px;
+}
+
 @keyframes fadeInRight {
   0% {
      opacity: 0;

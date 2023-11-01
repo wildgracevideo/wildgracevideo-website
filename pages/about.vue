@@ -52,7 +52,7 @@
     <div class="mx-8 order-first md:order-last">
       <img
         src="/Carly1.webp"
-        class="max-w-4xl about-image w-full font-size-0 fade-in-right"
+        class="max-w-4xl aspect-125 w-full font-size-0 fade-in-right"
         :alt="imageDescription"
       />
     </div>
@@ -75,9 +75,3 @@ useHead({
   title: pageTitle,
 });
 </script>
-
-<style scoped>
-.about-image {
-  aspect-ratio: 1/1.25;
-}
-</style>

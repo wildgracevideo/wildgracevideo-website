@@ -18,6 +18,8 @@ const config = {
     recaptchaSecret: process.env.RECAPTCHA_SECRET_KEY,
     formsFromEmail: 'info@wildgracevideography.com',
     formsToEmail: 'carly@wildgracevideography.com',
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+    stripeReelIdeasPriceId: process.env.STRIPE_REEL_IDEAS_PRICE_ID,
     public: {
       siteUrl: SITE_URL,
       wesbiteIcon: WEBSITE_ICON,
@@ -60,7 +62,7 @@ const config = {
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
   sitemap: {
     xslTips: process.env.NODE_ENV !== 'production',
-    exclude: ['/get-started'],
+    exclude: ['/get-started', '/privacy-policy', '/terms'],
     xsl: false, 
   },
   routeRules: {
