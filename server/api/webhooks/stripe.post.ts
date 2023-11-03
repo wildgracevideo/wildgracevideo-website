@@ -1,6 +1,9 @@
 import { Source, createContact } from '~/lib/create-contact';
+import { sendEmail } from '~/lib/send-email';
 import { sendReelIdeasEmail } from '~/lib/send-template-email';
 import { stripe } from '~/lib/stripe';
+
+const runtimeConfig = useRuntimeConfig();
 
 export default defineEventHandler(async (event): Promise<void> => {
   const webhookBody = await readBody(event);
@@ -31,8 +34,25 @@ export default defineEventHandler(async (event): Promise<void> => {
         countryCode: session.customer_details?.address?.country || undefined,
       };
       await createContact(createContactRequest);
+      await sendAdminEmail(Source.THIRTY_DAY_VIDEO_TRANSFORMATION_BUY);
     } else {
       console.log("User opted out from emails.")
     }
   }
 });
+
+async function sendAdminEmail(source: Source): Promise<void> {
+  try {
+    const htmlBody = `
+      <html>
+        <body>
+          <h1>New purchase of ${source.valueOf()}!</h1>
+        </body>
+      </html>
+    `;
+    const response = await sendEmail(htmlBody, runtimeConfig.formsToEmail, `New ${source.valueOf()} purchase`, runtimeConfig.formsFromEmail);
+    console.log(response);
+  } catch (e) {
+    console.error(e);
+  }
+}
