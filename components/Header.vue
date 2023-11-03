@@ -8,11 +8,15 @@
           height="90"
           src="/logo1.webp"
           :alt="imageAlt"
-          @click="navigate"
+          @click="
+            () => {
+              navigate();
+              openMenu = !openMenu;
+            }
+          "
         />
       </NuxtLink>
       <nav class="mt-12">
-        <NuxtLink class="mr-8" to="/">Home</NuxtLink>
         <NuxtLink class="mr-8" to="/portfolio">Portfolio</NuxtLink>
         <NuxtLink class="mr-8" to="/about">About</NuxtLink>
         <NuxtLink class="mr-8" to="/get-started">Get Started</NuxtLink>
@@ -66,7 +70,12 @@
           height="90"
           src="/logo1.webp"
           :alt="imageAlt"
-          @click="navigate"
+          @click="
+            () => {
+              navigate();
+              openMenu = !openMenu;
+            }
+          "
         />
       </NuxtLink>
       <Menu v-model="openMenu" />

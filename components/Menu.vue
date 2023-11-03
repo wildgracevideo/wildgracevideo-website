@@ -19,7 +19,7 @@
   >
     <nav class="flex flex-col">
       <NuxtLink
-        class="mt-8 w-fit mx-auto block"
+        class="w-fit mx-auto block"
         to="/portfolio"
         @click="openMenu = !openMenu"
         >Portfolio</NuxtLink
