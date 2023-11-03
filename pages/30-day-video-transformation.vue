@@ -1,26 +1,32 @@
 <template>
-  <OgMeta :title="pageTitle" :description="description" />
+  <OgMeta :title="pageTitle" :description="description" :icon="ogIcon" />
   <SchemaOrgWebPage :name="pageTitle" />
   <SchemaOrgImage
     :name="pageTitle"
     url="/37-reel-ideas.webp"
     :description="imageDescription"
   />
-  <section class="background-image">
+  <section class="background-image pb-4">
     <div
       class="flex lg:flex-row flex-col gap-0 lg:gap-24 mx-auto lg:mx-32 -mt-4"
     >
       <img
-        class="ml-auto mr-auto lg:ml-10 lg:mr-0 mt-5 font-size-0 aspect-125 max-w-sm h-auto w-auto image-box-shadow max-height-488"
+        class="ml-auto mr-auto lg:ml-10 lg:mr-0 mt-20 font-size-0 aspect-125 max-w-sm h-auto w-auto image-box-shadow max-height-488"
         src="/37-reel-ideas.webp"
         :alt="description"
       />
-      <div class="mx-8 lg:mx-0 sm:mx-auto mx-8">
-        <h1 class="text-4xl mt-10">{{ pageTitle }}</h1>
-        <h2 class="text-xl mb-12 mt-2">
+      <div class="mx-8 lg:mx-0 sm:mx-auto">
+        <h1
+          class="text-4xl mt-8 lg:mt-64 lg:text-website-off-white text-black text-shadow"
+        >
+          {{ pageTitle }}
+        </h1>
+        <h2
+          class="text-xl lg:mb-24 mb-12 mt-2 lg:text-website-off-white text-black text-shadow"
+        >
           37 Reel Ideas + 30-Day <i>Fillable</i> Video Content Planner
         </h2>
-        <p v-for="paragraph in paragraphs" class="mb-4 text-sm max-w-xl">
+        <p v-for="paragraph in paragraphs" class="pb-4 text-sm max-w-xl">
           {{ paragraph }}
         </p>
         <p class="text-xl my-8 italic text-website-green">
@@ -35,7 +41,7 @@
       </div>
     </div>
   </section>
-  <section class="mt-16 lg:ml-44 ml-8">
+  <section class="mt-8 lg:ml-44 ml-8">
     <h3 class="text-2xl mb-2">What's Inside</h3>
     <h4 class="text-lg curved-underline w-fit mb-8">
       {{ pageTitle }} Includes:
@@ -78,6 +84,9 @@ definePageMeta({
 });
 
 const runtimeConfig = useRuntimeConfig();
+
+const ogIcon = runtimeConfig.public.siteUrl + "/37-reel-ideas-cover.webp";
+
 const buyNow = async () => {
   const checkoutRequest: CheckoutRequest = {
     type: CheckoutType.ReelIdeas,
@@ -122,5 +131,12 @@ const buyNow = async () => {
 .background-image {
   background-image: url("/37-reel-ideas-cover.webp");
   background-repeat: no-repeat;
+  background-size: 1600px 400px;
+}
+
+@media (min-width: 1024px) {
+  .text-shadow {
+    text-shadow: 8px 8px 12px black;
+  }
 }
 </style>

@@ -18,9 +18,6 @@
     class="pt-44 absolute min-h-dvh w-full bg-website-green text-website-off-white text-4xl z-10 flex flex-col justify-between"
   >
     <nav class="flex flex-col">
-      <NuxtLink class="mx-auto w-fit block" to="/" @click="openMenu = !openMenu"
-        >Home</NuxtLink
-      >
       <NuxtLink
         class="mt-8 w-fit mx-auto block"
         to="/portfolio"
