@@ -6,7 +6,7 @@
     url="/37-reel-ideas.webp"
     :description="imageDescription"
   />
-  <section class="background-image pb-4">
+  <section class="cover-background-image pb-4">
     <div
       class="flex lg:flex-row flex-col gap-0 lg:gap-24 mx-auto lg:mx-32 -mt-4"
     >
@@ -32,12 +32,11 @@
         <p class="text-xl my-8 italic text-website-green">
           Price: <span class="line-through decoration-2">$15</span> $7
         </p>
-        <button
-          class="h-14 w-60 text-xl block lg:mx-0 mx-auto rounded-xl text-website-off-white border-website-green bg-website-green border-2 px-auto hover:text-website-green hover:bg-website-off-white"
-          @click="buyNow"
-        >
-          BUY NOW FOR $7
-        </button>
+        <DefaultButton
+          title="BUY NOW FOR $7"
+          :action="buyNow"
+          additonal-classes="lg:mx-0 mx-auto"
+        />
       </div>
     </div>
   </section>
@@ -50,6 +49,25 @@
       <CheckCircleIcon class="h-6 w-6 shrink-0" />
       <p class="text-sm max-w-4xl">{{ detailItem }}</p>
     </div>
+  </section>
+  <section class="banner-background-image w-full h-600 mt-8 pt-32">
+    <h4
+      class="text-6xl text-website-off-white text-center max-w-4xl mx-auto font-family-optimus"
+    >
+      it takes 30 days to make a habit, so why not start <i>now</i> ?
+    </h4>
+    <p
+      class="text-website-off-white text-center mt-8 text-2xl max-w-md mx-auto"
+    >
+      Get 30-Day Video Transformation to start truly connecting with your online
+      community.
+    </p>
+    <DefaultButton
+      title="BUY NOW FOR $7"
+      :action="buyNow"
+      :inverse="true"
+      additonal-classes="mx-auto mt-16"
+    />
   </section>
 </template>
 
@@ -89,11 +107,16 @@ const ogIcon = runtimeConfig.public.siteUrl + "/37-reel-ideas-cover.webp";
 
 const buyNow = async () => {
   const baseUrl =
-    window.location.protocol + "//" + window.location.hostname + "/";
+    window.location.protocol +
+    "//" +
+    window.location.hostname +
+    ":" +
+    window.location.port +
+    "/";
   const checkoutRequest: CheckoutRequest = {
     type: CheckoutType.ReelIdeas,
     successUrl: baseUrl,
-    cancelUrl: `${baseUrl}/30-day-video-transformation`,
+    cancelUrl: `${baseUrl}30-day-video-transformation`,
   };
   const redirectUrl = await $fetch("/api/checkout", {
     method: "POST",
@@ -130,10 +153,20 @@ const buyNow = async () => {
   max-height: 488px;
 }
 
-.background-image {
+.h-600 {
+  height: 600px;
+}
+
+.cover-background-image {
   background-image: url("/37-reel-ideas-cover.webp");
   background-repeat: no-repeat;
   background-size: 1600px 400px;
+}
+
+.banner-background-image {
+  background-image: url("/37-reel-ideas-banner.webp");
+  background-repeat: no-repeat;
+  background-size: 1600px 600px;
 }
 
 @media (min-width: 1024px) {
