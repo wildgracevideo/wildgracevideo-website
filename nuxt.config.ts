@@ -20,6 +20,9 @@ const config = {
     formsToEmail: 'carly@wildgracevideography.com',
     stripeSecretKey: process.env.STRIPE_SECRET_KEY,
     stripeReelIdeasPriceId: process.env.STRIPE_REEL_IDEAS_PRICE_ID,
+    sendGridApiKey: process.env.SENDGRID_API_KEY,
+    reelIdeasTemplateId: process.env.REEL_IDEAS_TEMPLATE_ID,
+    omnisendApiKey: process.env.OMNISEND_API_KEY,
     public: {
       siteUrl: SITE_URL,
       wesbiteIcon: WEBSITE_ICON,
@@ -90,6 +93,9 @@ const config = {
       ] 
     } },
     '/portfolio': { sitemap: { images: [{ loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }] } },
+    '/30-day-video-transformation': { sitemap: { images: [
+      { loc: '/37-reel-ideas.webp', title: '30-Day Video Transformation logo', caption: 'Boost Your Social Media Presence with 37 Engaging Reel Ideas and a Content Planner. Share Your Journey, Build Trust, and Watch Your Audience Grow in 30 Days.' },
+    ]}},
   },
   robots: {
     disallow: ['/_nuxt/*', '/_nuxt', '/_ipx', '/_ipx/*', '/admin', '/admin/*', '/api', '/api/*'],

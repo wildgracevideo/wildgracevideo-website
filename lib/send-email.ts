@@ -1,5 +1,6 @@
 import { SESv2Client, SendEmailCommand, type SendEmailRequest, type SendEmailResponse } from '@aws-sdk/client-sesv2';
 import { awsConfig } from '~/lib/aws';
+import { sendGrid } from '~/lib/send-grid';
 
 const runtimeConfig = useRuntimeConfig();
   

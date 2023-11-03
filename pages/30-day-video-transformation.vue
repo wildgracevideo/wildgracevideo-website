@@ -6,29 +6,33 @@
     url="/37-reel-ideas.webp"
     :description="imageDescription"
   />
-  <section class="flex lg:flex-row flex-col gap-0 lg:gap-24 mx-auto lg:mx-32">
-    <img
-      class="ml-auto mr-auto lg:ml-10 lg:mr-0 mt-5 font-size-0 aspect-125 max-w-sm h-auto w-auto image-box-shadow max-height-488"
-      src="/37-reel-ideas.webp"
-      :alt="imageDescription"
-    />
-    <div class="mx-8 lg:mx-0 sm:mx-auto mx-8">
-      <h1 class="text-4xl mt-10">{{ pageTitle }}</h1>
-      <h2 class="text-xl mb-12 mt-2">
-        37 Reel Ideas + 30-Day <i>Fillable</i> Video Content Planner
-      </h2>
-      <p v-for="paragraph in paragraphs" class="mb-4 text-sm max-w-xl">
-        {{ paragraph }}
-      </p>
-      <p class="text-xl my-8 italic text-website-green">
-        Price: <span class="line-through decoration-2">$15</span> $7
-      </p>
-      <button
-        class="h-14 w-60 text-xl block lg:mx-0 mx-auto rounded-xl text-website-off-white border-website-green bg-website-green border-2 px-auto hover:text-website-green hover:bg-website-off-white"
-        @click="buyNow"
-      >
-        BUY NOW FOR $7
-      </button>
+  <section class="background-image">
+    <div
+      class="flex lg:flex-row flex-col gap-0 lg:gap-24 mx-auto lg:mx-32 -mt-4"
+    >
+      <img
+        class="ml-auto mr-auto lg:ml-10 lg:mr-0 mt-5 font-size-0 aspect-125 max-w-sm h-auto w-auto image-box-shadow max-height-488"
+        src="/37-reel-ideas.webp"
+        :alt="description"
+      />
+      <div class="mx-8 lg:mx-0 sm:mx-auto mx-8">
+        <h1 class="text-4xl mt-10">{{ pageTitle }}</h1>
+        <h2 class="text-xl mb-12 mt-2">
+          37 Reel Ideas + 30-Day <i>Fillable</i> Video Content Planner
+        </h2>
+        <p v-for="paragraph in paragraphs" class="mb-4 text-sm max-w-xl">
+          {{ paragraph }}
+        </p>
+        <p class="text-xl my-8 italic text-website-green">
+          Price: <span class="line-through decoration-2">$15</span> $7
+        </p>
+        <button
+          class="h-14 w-60 text-xl block lg:mx-0 mx-auto rounded-xl text-website-off-white border-website-green bg-website-green border-2 px-auto hover:text-website-green hover:bg-website-off-white"
+          @click="buyNow"
+        >
+          BUY NOW FOR $7
+        </button>
+      </div>
     </div>
   </section>
   <section class="mt-16 lg:ml-44 ml-8">
@@ -89,6 +93,10 @@ const buyNow = async () => {
 </script>
 
 <style scoped>
+.aspect-ratio-cover {
+  aspect-ratio: 1.6/1;
+}
+
 .curved-underline {
   position: relative;
   margin-right: 1rem;
@@ -109,5 +117,10 @@ const buyNow = async () => {
 
 .max-height-488 {
   max-height: 488px;
+}
+
+.background-image {
+  background-image: url("/37-reel-ideas-cover.webp");
+  background-repeat: no-repeat;
 }
 </style>
