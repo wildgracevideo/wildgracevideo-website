@@ -26,9 +26,11 @@
         >
           37 Reel Ideas + 30-Day <i>Fillable</i> Video Content Planner
         </h2>
-        <p v-for="paragraph in paragraphs" class="pb-4 text-sm max-w-xl">
-          {{ paragraph }}
-        </p>
+        <p
+          v-for="paragraph in paragraphs"
+          class="pb-4 text-sm max-w-xl"
+          v-html="paragraph"
+        ></p>
         <p class="text-xl my-8 italic text-website-green">
           Price: <span class="line-through decoration-2">$15</span> $7
         </p>
@@ -84,7 +86,7 @@ const imageDescription =
   "Image of the Wild Grace Videography 30-Day Video Transformation product.";
 
 const paragraphs = [
-  "Let's get real about something we all say: 'I should be posting more on social media.' Well, I've got you covered with 37 Reel ideas and a handy video content planner to keep you organized. It's not just about showing off your product or service; your audience wants to see your journey, story, and some content that benefits them. Share value and build trust.",
+  "Let's get real about something we all say:&#x301DI should be posting more on social media.&#x301E;Well, I've got you covered with 37 Reel Ideas and a handy video content planner to keep you organized. It's not just about showing off your product or service; your audience wants to see your journey, story, and some content that benefits them. Share value and build trust.",
   "I challenge you to create content for 30 days and watch your audience grow. Don't let fear hold you back; use social media as your playground to figure out what works. After 30 days, pick your top-performing content pieces, and voila, you've got your winning ads. No more wasted ad spend on trial and error!",
 ];
 
