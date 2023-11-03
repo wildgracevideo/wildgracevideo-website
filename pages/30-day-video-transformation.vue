@@ -88,10 +88,12 @@ const runtimeConfig = useRuntimeConfig();
 const ogIcon = runtimeConfig.public.siteUrl + "/37-reel-ideas-cover.webp";
 
 const buyNow = async () => {
+  const baseUrl =
+    window.location.protocol + "//" + window.location.hostname + "/";
   const checkoutRequest: CheckoutRequest = {
     type: CheckoutType.ReelIdeas,
-    successUrl: runtimeConfig.public.siteUrl,
-    cancelUrl: `${runtimeConfig.public.siteUrl}/30-day-video-transformation`,
+    successUrl: baseUrl,
+    cancelUrl: `${baseUrl}/30-day-video-transformation`,
   };
   const redirectUrl = await $fetch("/api/checkout", {
     method: "POST",
