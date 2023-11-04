@@ -52,7 +52,7 @@
       <p class="text-sm max-w-4xl">{{ detailItem }}</p>
     </div>
   </section>
-  <section class="banner-background-image w-full h-600 mt-8 pt-32">
+  <section class="banner-background-image w-full h-fit mt-8 pt-32 pb-16 px-4">
     <h4
       class="text-6xl text-website-off-white text-center max-w-4xl mx-auto font-family-optimus"
     >
@@ -168,7 +168,10 @@ const buyNow = async () => {
 .banner-background-image {
   background-image: url("/37-reel-ideas-banner.webp");
   background-repeat: no-repeat;
-  background-size: 1600px 600px;
+}
+
+.banner-background-image {
+  background-size: 1600px 800px;
 }
 
 @media (min-width: 1024px) {
