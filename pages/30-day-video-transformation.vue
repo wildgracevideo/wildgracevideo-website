@@ -108,13 +108,11 @@ const runtimeConfig = useRuntimeConfig();
 const ogIcon = runtimeConfig.public.siteUrl + "/37-reel-ideas-cover.webp";
 
 const buyNow = async () => {
-  const baseUrl =
-    window.location.protocol +
-    "//" +
-    window.location.hostname +
-    ":" +
-    window.location.port +
-    "/";
+  let baseUrl = window.location.protocol + "//" + window.location.hostname;
+  if (window.location.port) {
+    baseUrl += ":" + window.location.port;
+  }
+  baseUrl += "/";
   const checkoutRequest: CheckoutRequest = {
     type: CheckoutType.ReelIdeas,
     successUrl: baseUrl,
