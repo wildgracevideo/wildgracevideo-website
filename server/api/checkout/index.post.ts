@@ -28,15 +28,16 @@ export default defineEventHandler(async (event): Promise<string> => {
         },
       ],
       mode: 'payment',
-      consent_collection: {
-        promotions: 'auto',
-      }
+      custom_text: {
+        submit: {
+          message: 'By purchasing this product you\'re opting in to marketing emails.',
+        },
+      },
     });
   } catch (e) {
     console.error('Failed to create the stripe session', e);
     throw createError({ statusMessage: 'Internal Server Error', statusCode: 500 });
   }
-  console.log(session);
   if (!session.url) {
     console.error('No url returned in Stripe session');
     throw createError({ statusMessage: 'Internal Server Error', statusCode: 500 });
