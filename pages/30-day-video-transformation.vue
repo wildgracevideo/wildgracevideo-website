@@ -105,7 +105,7 @@ definePageMeta({
 
 const runtimeConfig = useRuntimeConfig();
 
-const ogIcon = runtimeConfig.public.siteUrl + "/37-reel-ideas-cover.webp";
+const ogIcon = runtimeConfig.public.siteUrl + "/37-reel-ideas.webp";
 
 const buyNow = async () => {
   let baseUrl = window.location.protocol + "//" + window.location.hostname;
