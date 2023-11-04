@@ -18,6 +18,11 @@ const config = {
     recaptchaSecret: process.env.RECAPTCHA_SECRET_KEY,
     formsFromEmail: 'info@wildgracevideography.com',
     formsToEmail: 'carly@wildgracevideography.com',
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+    stripeReelIdeasPriceId: process.env.STRIPE_REEL_IDEAS_PRICE_ID,
+    sendGridApiKey: process.env.SENDGRID_API_KEY,
+    reelIdeasTemplateId: process.env.REEL_IDEAS_TEMPLATE_ID,
+    omnisendApiKey: process.env.OMNISEND_API_KEY,
     public: {
       siteUrl: SITE_URL,
       wesbiteIcon: WEBSITE_ICON,
@@ -60,7 +65,7 @@ const config = {
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
   sitemap: {
     xslTips: process.env.NODE_ENV !== 'production',
-    exclude: ['/get-started'],
+    exclude: ['/get-started', '/privacy-policy', '/terms'],
     xsl: false, 
   },
   routeRules: {
@@ -68,19 +73,6 @@ const config = {
       images: [
         { loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }
       ], 
-      videos: [
-        { 
-          title: 'Wild Grace Videography Reel', 
-          'thumbnail_loc':  SITE_URL + '/logo1.webp',
-          description: 'Video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company.',
-          'content_loc': 'https://d22668h9qdy3zj.cloudfront.net/wgv-reel.webm',
-          'player_loc': SITE_URL,
-          duration: 92,
-          requiresSubscription: false,
-          live: false,
-          publicationDate: '2023-09-26T19:20:30+07:00.'
-        }
-      ]
     }},
     '/about': { sitemap: { images: [
         { loc: '/Carly1.webp', title: 'Carly Kreiger photo', caption: 'Photo of Carly Kreiger, the founder of Wild Grace Videography, a Denver, Colorado-based video production company.' },
@@ -88,6 +80,9 @@ const config = {
       ] 
     } },
     '/portfolio': { sitemap: { images: [{ loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }] } },
+    '/30-day-video-transformation': { sitemap: { images: [
+      { loc: '/37-reel-ideas.webp', title: '30-Day Video Transformation logo', caption: 'Boost Your Social Media Presence with 37 Engaging Reel Ideas and a Content Planner. Share Your Journey, Build Trust, and Watch Your Audience Grow in 30 Days.' },
+    ]}},
   },
   robots: {
     disallow: ['/_nuxt/*', '/_nuxt', '/_ipx', '/_ipx/*', '/admin', '/admin/*', '/api', '/api/*'],

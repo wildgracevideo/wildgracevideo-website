@@ -27,3 +27,5 @@ logs
 .netlify
 
 .unlighthouse/
+
+package-lock.json

@@ -20,7 +20,7 @@ export default defineEventHandler(async (event): Promise<MessageReply> => {
       </body>
     </html>`;
 
-  const emailResult = sendEmail(htmlBody, messageReplyRequest.toEmail, messageReplyRequest.subject);
+  const emailResult = sendEmail(htmlBody, messageReplyRequest.subject, messageReplyRequest.toEmail);
 
   const messageReplyCreateInput: Prisma.MessageReplyCreateInput = {
     toEmail: messageReplyRequest.toEmail,

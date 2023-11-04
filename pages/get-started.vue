@@ -175,7 +175,7 @@ useHead({
 });
 
 definePageMeta({
-  layout: "get-started",
+  layout: "no-contact",
 });
 
 let inputClass = "bg-website-off-white border-2 border-website-green";

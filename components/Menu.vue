@@ -18,11 +18,8 @@
     class="pt-44 absolute min-h-dvh w-full bg-website-green text-website-off-white text-4xl z-10 flex flex-col justify-between"
   >
     <nav class="flex flex-col">
-      <NuxtLink class="mx-auto w-fit block" to="/" @click="openMenu = !openMenu"
-        >Home</NuxtLink
-      >
       <NuxtLink
-        class="mt-8 w-fit mx-auto block"
+        class="w-fit mx-auto block"
         to="/portfolio"
         @click="openMenu = !openMenu"
         >Portfolio</NuxtLink
@@ -34,10 +31,16 @@
         >About</NuxtLink
       >
       <NuxtLink
-        class="mt-8 w-fit mx-auto block mb-auto"
+        class="mt-8 w-fit mx-auto block"
         to="/get-started"
         @click="openMenu = !openMenu"
         >Get Started</NuxtLink
+      >
+      <NuxtLink
+        class="mt-8 w-fit mx-auto block mb-auto"
+        to="/30-day-video-transformation"
+        @click="openMenu = !openMenu"
+        >Shop</NuxtLink
       >
     </nav>
     <div class="mx-auto flex flex-row justify-center mt-8">
