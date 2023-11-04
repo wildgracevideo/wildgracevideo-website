@@ -32,7 +32,7 @@ async function sendTemplatedEmail(toEmail: string, templateId: string, templateD
     const response = await sendGrid.send(message);
     console.log('Sent email.', response);
   } catch (error: any) {
-    console.error(error);
+    console.error('Failed to send email with sendGrid.', error);
     if (error.response) {
       console.error(error.response.body)
     }

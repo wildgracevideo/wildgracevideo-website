@@ -35,7 +35,7 @@ export async function createContact(request: CreateContactRequest): Promise<void
       countryCode: request.countryCode,
     });
   } catch (e) {
-    console.error(e);
+    console.error('Failed to create omnisend contact.', e);
     throw e;
   }
 }
