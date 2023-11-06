@@ -8,7 +8,7 @@
   />
   <section class="cover-background-image pb-4">
     <div
-      class="flex lg:flex-row flex-col gap-0 lg:gap-24 mx-auto lg:mx-32 -mt-4"
+      class="flex lg:flex-row flex-col justify-center gap-0 lg:gap-24 mx-auto lg:mx-32 -mt-4"
     >
       <img
         class="ml-auto mr-auto lg:ml-10 lg:mr-0 mt-20 font-size-0 aspect-125 max-w-sm h-auto w-auto image-box-shadow max-height-488"
@@ -17,12 +17,12 @@
       />
       <div class="mx-8 lg:mx-0 sm:mx-auto">
         <h1
-          class="text-4xl mt-8 lg:mt-64 lg:text-website-off-white text-black text-shadow"
+          class="text-4xl mt-8 lg:mt-72 lg:text-website-off-white text-black text-shadow"
         >
           {{ pageTitle }}
         </h1>
         <h2
-          class="text-xl lg:mb-24 mb-12 mt-2 lg:text-website-off-white text-black text-shadow"
+          class="text-xl lg:mb-36 mb-12 mt-2 lg:text-website-off-white text-black text-shadow"
         >
           37 Reel Ideas + 30-Day <i>Fillable</i> Video Content Planner
         </h2>
@@ -160,7 +160,7 @@ const buyNow = async () => {
 .cover-background-image {
   background-image: url("/37-reel-ideas-cover.webp");
   background-repeat: no-repeat;
-  background-size: 1600px 400px;
+  background-size: 100% 460px; /* 1024 - 1321 */
 }
 
 .banner-background-image {
@@ -169,7 +169,7 @@ const buyNow = async () => {
 }
 
 .banner-background-image {
-  background-size: 1600px 800px;
+  background-size: 100% 800px;
 }
 
 @media (min-width: 1024px) {

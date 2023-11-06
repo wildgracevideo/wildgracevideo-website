@@ -10,7 +10,7 @@
           :alt="imageAlt"
           @click="
             () => {
-              navigate();
+              window.location.href = '/';
               openMenu = !openMenu;
             }
           "
@@ -72,7 +72,7 @@
           :alt="imageAlt"
           @click="
             () => {
-              navigate();
+              window.location.href = '/';
               openMenu = !openMenu;
             }
           "
