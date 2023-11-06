@@ -30,7 +30,7 @@ export default defineEventHandler(async (event): Promise<string> => {
       mode: 'payment',
       custom_text: {
         submit: {
-          message: 'By purchasing this product you\'re opting in to marketing emails.',
+          message: 'We\'ll email you the resources after you complete the purchase. By purchasing this product you\'re opting in to marketing emails.',
         },
       },
     });
