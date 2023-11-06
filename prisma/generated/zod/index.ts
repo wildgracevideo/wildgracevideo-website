@@ -22,6 +22,8 @@ export const UserScalarFieldEnumSchema = z.enum(['id','name','email','emailVerif
 
 export const MessageReplyScalarFieldEnumSchema = z.enum(['id','name','toEmail','body','subject','createdAt','messageId']);
 
+export const PurchaseAuditScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','email','product','country','firstName','lastName','sentProduct','stripeSessionId']);
+
 export const SortOrderSchema = z.enum(['asc','desc']);
 
 export const NullsOrderSchema = z.enum(['first','last']);
@@ -178,6 +180,25 @@ export const MessageReplyWithRelationsSchema: z.ZodType<MessageReplyWithRelation
 }))
 
 /////////////////////////////////////////
+// PURCHASE AUDIT SCHEMA
+/////////////////////////////////////////
+
+export const PurchaseAuditSchema = z.object({
+  id: z.string().cuid(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
+  email: z.string(),
+  product: z.string(),
+  country: z.string().nullable(),
+  firstName: z.string(),
+  lastName: z.string().nullable(),
+  sentProduct: z.boolean(),
+  stripeSessionId: z.string(),
+})
+
+export type PurchaseAudit = z.infer<typeof PurchaseAuditSchema>
+
+/////////////////////////////////////////
 // SELECT & INCLUDE
 /////////////////////////////////////////
 
@@ -318,6 +339,22 @@ export const MessageReplySelectSchema: z.ZodType<Prisma.MessageReplySelect> = z.
   createdAt: z.boolean().optional(),
   messageId: z.boolean().optional(),
   message: z.union([z.boolean(),z.lazy(() => MessageArgsSchema)]).optional(),
+}).strict()
+
+// PURCHASE AUDIT
+//------------------------------------------------------
+
+export const PurchaseAuditSelectSchema: z.ZodType<Prisma.PurchaseAuditSelect> = z.object({
+  id: z.boolean().optional(),
+  createdAt: z.boolean().optional(),
+  updatedAt: z.boolean().optional(),
+  email: z.boolean().optional(),
+  product: z.boolean().optional(),
+  country: z.boolean().optional(),
+  firstName: z.boolean().optional(),
+  lastName: z.boolean().optional(),
+  sentProduct: z.boolean().optional(),
+  stripeSessionId: z.boolean().optional(),
 }).strict()
 
 
@@ -707,6 +744,86 @@ export const MessageReplyScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.
   messageId: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
 }).strict();
 
+export const PurchaseAuditWhereInputSchema: z.ZodType<Prisma.PurchaseAuditWhereInput> = z.object({
+  AND: z.union([ z.lazy(() => PurchaseAuditWhereInputSchema),z.lazy(() => PurchaseAuditWhereInputSchema).array() ]).optional(),
+  OR: z.lazy(() => PurchaseAuditWhereInputSchema).array().optional(),
+  NOT: z.union([ z.lazy(() => PurchaseAuditWhereInputSchema),z.lazy(() => PurchaseAuditWhereInputSchema).array() ]).optional(),
+  id: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  email: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  product: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  country: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  firstName: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  lastName: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  sentProduct: z.union([ z.lazy(() => BoolFilterSchema),z.boolean() ]).optional(),
+  stripeSessionId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+}).strict();
+
+export const PurchaseAuditOrderByWithRelationInputSchema: z.ZodType<Prisma.PurchaseAuditOrderByWithRelationInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional(),
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
+  email: z.lazy(() => SortOrderSchema).optional(),
+  product: z.lazy(() => SortOrderSchema).optional(),
+  country: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  firstName: z.lazy(() => SortOrderSchema).optional(),
+  lastName: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  sentProduct: z.lazy(() => SortOrderSchema).optional(),
+  stripeSessionId: z.lazy(() => SortOrderSchema).optional()
+}).strict();
+
+export const PurchaseAuditWhereUniqueInputSchema: z.ZodType<Prisma.PurchaseAuditWhereUniqueInput> = z.object({
+  id: z.string().cuid()
+})
+.and(z.object({
+  id: z.string().cuid().optional(),
+  AND: z.union([ z.lazy(() => PurchaseAuditWhereInputSchema),z.lazy(() => PurchaseAuditWhereInputSchema).array() ]).optional(),
+  OR: z.lazy(() => PurchaseAuditWhereInputSchema).array().optional(),
+  NOT: z.union([ z.lazy(() => PurchaseAuditWhereInputSchema),z.lazy(() => PurchaseAuditWhereInputSchema).array() ]).optional(),
+  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  email: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  product: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  country: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  firstName: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  lastName: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  sentProduct: z.union([ z.lazy(() => BoolFilterSchema),z.boolean() ]).optional(),
+  stripeSessionId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+}).strict());
+
+export const PurchaseAuditOrderByWithAggregationInputSchema: z.ZodType<Prisma.PurchaseAuditOrderByWithAggregationInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional(),
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
+  email: z.lazy(() => SortOrderSchema).optional(),
+  product: z.lazy(() => SortOrderSchema).optional(),
+  country: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  firstName: z.lazy(() => SortOrderSchema).optional(),
+  lastName: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  sentProduct: z.lazy(() => SortOrderSchema).optional(),
+  stripeSessionId: z.lazy(() => SortOrderSchema).optional(),
+  _count: z.lazy(() => PurchaseAuditCountOrderByAggregateInputSchema).optional(),
+  _max: z.lazy(() => PurchaseAuditMaxOrderByAggregateInputSchema).optional(),
+  _min: z.lazy(() => PurchaseAuditMinOrderByAggregateInputSchema).optional()
+}).strict();
+
+export const PurchaseAuditScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.PurchaseAuditScalarWhereWithAggregatesInput> = z.object({
+  AND: z.union([ z.lazy(() => PurchaseAuditScalarWhereWithAggregatesInputSchema),z.lazy(() => PurchaseAuditScalarWhereWithAggregatesInputSchema).array() ]).optional(),
+  OR: z.lazy(() => PurchaseAuditScalarWhereWithAggregatesInputSchema).array().optional(),
+  NOT: z.union([ z.lazy(() => PurchaseAuditScalarWhereWithAggregatesInputSchema),z.lazy(() => PurchaseAuditScalarWhereWithAggregatesInputSchema).array() ]).optional(),
+  id: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  createdAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
+  updatedAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
+  email: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  product: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  country: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema),z.string() ]).optional().nullable(),
+  firstName: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  lastName: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema),z.string() ]).optional().nullable(),
+  sentProduct: z.union([ z.lazy(() => BoolWithAggregatesFilterSchema),z.boolean() ]).optional(),
+  stripeSessionId: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+}).strict();
+
 export const MessageCreateInputSchema: z.ZodType<Prisma.MessageCreateInput> = z.object({
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
@@ -1068,6 +1185,97 @@ export const MessageReplyUncheckedUpdateManyInputSchema: z.ZodType<Prisma.Messag
   subject: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   messageId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+}).strict();
+
+export const PurchaseAuditCreateInputSchema: z.ZodType<Prisma.PurchaseAuditCreateInput> = z.object({
+  id: z.string().cuid().optional(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
+  email: z.string(),
+  product: z.string(),
+  country: z.string().optional().nullable(),
+  firstName: z.string(),
+  lastName: z.string().optional().nullable(),
+  sentProduct: z.boolean().optional(),
+  stripeSessionId: z.string()
+}).strict();
+
+export const PurchaseAuditUncheckedCreateInputSchema: z.ZodType<Prisma.PurchaseAuditUncheckedCreateInput> = z.object({
+  id: z.string().cuid().optional(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
+  email: z.string(),
+  product: z.string(),
+  country: z.string().optional().nullable(),
+  firstName: z.string(),
+  lastName: z.string().optional().nullable(),
+  sentProduct: z.boolean().optional(),
+  stripeSessionId: z.string()
+}).strict();
+
+export const PurchaseAuditUpdateInputSchema: z.ZodType<Prisma.PurchaseAuditUpdateInput> = z.object({
+  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  product: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  country: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  firstName: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  lastName: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sentProduct: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
+  stripeSessionId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+}).strict();
+
+export const PurchaseAuditUncheckedUpdateInputSchema: z.ZodType<Prisma.PurchaseAuditUncheckedUpdateInput> = z.object({
+  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  product: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  country: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  firstName: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  lastName: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sentProduct: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
+  stripeSessionId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+}).strict();
+
+export const PurchaseAuditCreateManyInputSchema: z.ZodType<Prisma.PurchaseAuditCreateManyInput> = z.object({
+  id: z.string().cuid().optional(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
+  email: z.string(),
+  product: z.string(),
+  country: z.string().optional().nullable(),
+  firstName: z.string(),
+  lastName: z.string().optional().nullable(),
+  sentProduct: z.boolean().optional(),
+  stripeSessionId: z.string()
+}).strict();
+
+export const PurchaseAuditUpdateManyMutationInputSchema: z.ZodType<Prisma.PurchaseAuditUpdateManyMutationInput> = z.object({
+  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  product: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  country: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  firstName: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  lastName: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sentProduct: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
+  stripeSessionId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+}).strict();
+
+export const PurchaseAuditUncheckedUpdateManyInputSchema: z.ZodType<Prisma.PurchaseAuditUncheckedUpdateManyInput> = z.object({
+  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  product: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  country: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  firstName: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  lastName: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sentProduct: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
+  stripeSessionId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const IntFilterSchema: z.ZodType<Prisma.IntFilter> = z.object({
@@ -1474,6 +1682,45 @@ export const MessageReplyMinOrderByAggregateInputSchema: z.ZodType<Prisma.Messag
 
 export const MessageReplySumOrderByAggregateInputSchema: z.ZodType<Prisma.MessageReplySumOrderByAggregateInput> = z.object({
   messageId: z.lazy(() => SortOrderSchema).optional()
+}).strict();
+
+export const PurchaseAuditCountOrderByAggregateInputSchema: z.ZodType<Prisma.PurchaseAuditCountOrderByAggregateInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional(),
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
+  email: z.lazy(() => SortOrderSchema).optional(),
+  product: z.lazy(() => SortOrderSchema).optional(),
+  country: z.lazy(() => SortOrderSchema).optional(),
+  firstName: z.lazy(() => SortOrderSchema).optional(),
+  lastName: z.lazy(() => SortOrderSchema).optional(),
+  sentProduct: z.lazy(() => SortOrderSchema).optional(),
+  stripeSessionId: z.lazy(() => SortOrderSchema).optional()
+}).strict();
+
+export const PurchaseAuditMaxOrderByAggregateInputSchema: z.ZodType<Prisma.PurchaseAuditMaxOrderByAggregateInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional(),
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
+  email: z.lazy(() => SortOrderSchema).optional(),
+  product: z.lazy(() => SortOrderSchema).optional(),
+  country: z.lazy(() => SortOrderSchema).optional(),
+  firstName: z.lazy(() => SortOrderSchema).optional(),
+  lastName: z.lazy(() => SortOrderSchema).optional(),
+  sentProduct: z.lazy(() => SortOrderSchema).optional(),
+  stripeSessionId: z.lazy(() => SortOrderSchema).optional()
+}).strict();
+
+export const PurchaseAuditMinOrderByAggregateInputSchema: z.ZodType<Prisma.PurchaseAuditMinOrderByAggregateInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional(),
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
+  email: z.lazy(() => SortOrderSchema).optional(),
+  product: z.lazy(() => SortOrderSchema).optional(),
+  country: z.lazy(() => SortOrderSchema).optional(),
+  firstName: z.lazy(() => SortOrderSchema).optional(),
+  lastName: z.lazy(() => SortOrderSchema).optional(),
+  sentProduct: z.lazy(() => SortOrderSchema).optional(),
+  stripeSessionId: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const MessageReplyCreateNestedManyWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyCreateNestedManyWithoutMessageInput> = z.object({
@@ -2650,6 +2897,63 @@ export const MessageReplyFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.MessageRe
   where: MessageReplyWhereUniqueInputSchema,
 }).strict()
 
+export const PurchaseAuditFindFirstArgsSchema: z.ZodType<Prisma.PurchaseAuditFindFirstArgs> = z.object({
+  select: PurchaseAuditSelectSchema.optional(),
+  where: PurchaseAuditWhereInputSchema.optional(),
+  orderBy: z.union([ PurchaseAuditOrderByWithRelationInputSchema.array(),PurchaseAuditOrderByWithRelationInputSchema ]).optional(),
+  cursor: PurchaseAuditWhereUniqueInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+  distinct: z.union([ PurchaseAuditScalarFieldEnumSchema,PurchaseAuditScalarFieldEnumSchema.array() ]).optional(),
+}).strict()
+
+export const PurchaseAuditFindFirstOrThrowArgsSchema: z.ZodType<Prisma.PurchaseAuditFindFirstOrThrowArgs> = z.object({
+  select: PurchaseAuditSelectSchema.optional(),
+  where: PurchaseAuditWhereInputSchema.optional(),
+  orderBy: z.union([ PurchaseAuditOrderByWithRelationInputSchema.array(),PurchaseAuditOrderByWithRelationInputSchema ]).optional(),
+  cursor: PurchaseAuditWhereUniqueInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+  distinct: z.union([ PurchaseAuditScalarFieldEnumSchema,PurchaseAuditScalarFieldEnumSchema.array() ]).optional(),
+}).strict()
+
+export const PurchaseAuditFindManyArgsSchema: z.ZodType<Prisma.PurchaseAuditFindManyArgs> = z.object({
+  select: PurchaseAuditSelectSchema.optional(),
+  where: PurchaseAuditWhereInputSchema.optional(),
+  orderBy: z.union([ PurchaseAuditOrderByWithRelationInputSchema.array(),PurchaseAuditOrderByWithRelationInputSchema ]).optional(),
+  cursor: PurchaseAuditWhereUniqueInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+  distinct: z.union([ PurchaseAuditScalarFieldEnumSchema,PurchaseAuditScalarFieldEnumSchema.array() ]).optional(),
+}).strict()
+
+export const PurchaseAuditAggregateArgsSchema: z.ZodType<Prisma.PurchaseAuditAggregateArgs> = z.object({
+  where: PurchaseAuditWhereInputSchema.optional(),
+  orderBy: z.union([ PurchaseAuditOrderByWithRelationInputSchema.array(),PurchaseAuditOrderByWithRelationInputSchema ]).optional(),
+  cursor: PurchaseAuditWhereUniqueInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+}).strict()
+
+export const PurchaseAuditGroupByArgsSchema: z.ZodType<Prisma.PurchaseAuditGroupByArgs> = z.object({
+  where: PurchaseAuditWhereInputSchema.optional(),
+  orderBy: z.union([ PurchaseAuditOrderByWithAggregationInputSchema.array(),PurchaseAuditOrderByWithAggregationInputSchema ]).optional(),
+  by: PurchaseAuditScalarFieldEnumSchema.array(),
+  having: PurchaseAuditScalarWhereWithAggregatesInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+}).strict()
+
+export const PurchaseAuditFindUniqueArgsSchema: z.ZodType<Prisma.PurchaseAuditFindUniqueArgs> = z.object({
+  select: PurchaseAuditSelectSchema.optional(),
+  where: PurchaseAuditWhereUniqueInputSchema,
+}).strict()
+
+export const PurchaseAuditFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.PurchaseAuditFindUniqueOrThrowArgs> = z.object({
+  select: PurchaseAuditSelectSchema.optional(),
+  where: PurchaseAuditWhereUniqueInputSchema,
+}).strict()
+
 export const MessageCreateArgsSchema: z.ZodType<Prisma.MessageCreateArgs> = z.object({
   select: MessageSelectSchema.optional(),
   include: MessageIncludeSchema.optional(),
@@ -2853,4 +3157,41 @@ export const MessageReplyUpdateManyArgsSchema: z.ZodType<Prisma.MessageReplyUpda
 
 export const MessageReplyDeleteManyArgsSchema: z.ZodType<Prisma.MessageReplyDeleteManyArgs> = z.object({
   where: MessageReplyWhereInputSchema.optional(),
+}).strict()
+
+export const PurchaseAuditCreateArgsSchema: z.ZodType<Prisma.PurchaseAuditCreateArgs> = z.object({
+  select: PurchaseAuditSelectSchema.optional(),
+  data: z.union([ PurchaseAuditCreateInputSchema,PurchaseAuditUncheckedCreateInputSchema ]),
+}).strict()
+
+export const PurchaseAuditUpsertArgsSchema: z.ZodType<Prisma.PurchaseAuditUpsertArgs> = z.object({
+  select: PurchaseAuditSelectSchema.optional(),
+  where: PurchaseAuditWhereUniqueInputSchema,
+  create: z.union([ PurchaseAuditCreateInputSchema,PurchaseAuditUncheckedCreateInputSchema ]),
+  update: z.union([ PurchaseAuditUpdateInputSchema,PurchaseAuditUncheckedUpdateInputSchema ]),
+}).strict()
+
+export const PurchaseAuditCreateManyArgsSchema: z.ZodType<Prisma.PurchaseAuditCreateManyArgs> = z.object({
+  data: z.union([ PurchaseAuditCreateManyInputSchema,PurchaseAuditCreateManyInputSchema.array() ]),
+  skipDuplicates: z.boolean().optional(),
+}).strict()
+
+export const PurchaseAuditDeleteArgsSchema: z.ZodType<Prisma.PurchaseAuditDeleteArgs> = z.object({
+  select: PurchaseAuditSelectSchema.optional(),
+  where: PurchaseAuditWhereUniqueInputSchema,
+}).strict()
+
+export const PurchaseAuditUpdateArgsSchema: z.ZodType<Prisma.PurchaseAuditUpdateArgs> = z.object({
+  select: PurchaseAuditSelectSchema.optional(),
+  data: z.union([ PurchaseAuditUpdateInputSchema,PurchaseAuditUncheckedUpdateInputSchema ]),
+  where: PurchaseAuditWhereUniqueInputSchema,
+}).strict()
+
+export const PurchaseAuditUpdateManyArgsSchema: z.ZodType<Prisma.PurchaseAuditUpdateManyArgs> = z.object({
+  data: z.union([ PurchaseAuditUpdateManyMutationInputSchema,PurchaseAuditUncheckedUpdateManyInputSchema ]),
+  where: PurchaseAuditWhereInputSchema.optional(),
+}).strict()
+
+export const PurchaseAuditDeleteManyArgsSchema: z.ZodType<Prisma.PurchaseAuditDeleteManyArgs> = z.object({
+  where: PurchaseAuditWhereInputSchema.optional(),
 }).strict()

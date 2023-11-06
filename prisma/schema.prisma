@@ -16,7 +16,7 @@ generator zod {
 model Message {
   id           Int            @id @default(autoincrement())
   createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now()) @updatedAt
   read         Boolean        @default(false)
   email        String         @db.VarChar(255)
   firstname    String         @db.VarChar(255)
@@ -76,4 +76,18 @@ model MessageReply {
   createdAt   DateTime @default(now())
   messageId   Int      @map("user_id")
   message     Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+}
+
+model PurchaseAudit {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now()) @updatedAt
+  email           String
+  product         String
+  country         String?
+  firstName       String
+  lastName        String?
+  sentProduct     Boolean  @default(false)
+  stripeSessionId String
+  @@index(stripeSessionId)
 }

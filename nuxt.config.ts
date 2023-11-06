@@ -65,7 +65,7 @@ const config = {
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
   sitemap: {
     xslTips: process.env.NODE_ENV !== 'production',
-    exclude: ['/get-started', '/privacy-policy', '/terms'],
+    exclude: ['/get-started', '/privacy-policy', '/terms', '/purchase-success'],
     xsl: false, 
   },
   routeRules: {

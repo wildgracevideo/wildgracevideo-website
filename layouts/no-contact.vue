@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-website-off-white">
+  <div class="bg-website-off-white min-h-screen flex flex-col">
     <Header v-model="openMenu" />
-    <main class="relative" v-if="!openMenu">
+    <main class="relative mb-auto" v-if="!openMenu">
       <slot />
     </main>
     <Footer v-if="!openMenu" />

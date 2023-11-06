@@ -112,11 +112,10 @@ const buyNow = async () => {
   if (window.location.port) {
     baseUrl += ":" + window.location.port;
   }
-  baseUrl += "/";
   const checkoutRequest: CheckoutRequest = {
     type: CheckoutType.ReelIdeas,
-    successUrl: baseUrl,
-    cancelUrl: `${baseUrl}30-day-video-transformation`,
+    successUrl: `${baseUrl}/purchase-success`,
+    cancelUrl: `${baseUrl}/30-day-video-transformation`,
   };
   const redirectUrl = await $fetch("/api/checkout", {
     method: "POST",
