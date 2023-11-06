@@ -8,13 +8,13 @@
   />
   <section class="cover-background-image pb-4">
     <div
-      class="flex lg:flex-row flex-col justify-center gap-0 lg:gap-24 mx-auto lg:mx-32 -mt-4"
+      class="flex lg:flex-row flex-col justify-center items-center gap-0 lg:gap-24 mx-auto lg:mx-32 -mt-4"
     >
-      <img
-        class="ml-auto mr-auto lg:ml-10 lg:mr-0 mt-20 font-size-0 aspect-125 max-w-sm h-auto w-auto image-box-shadow max-height-488"
-        src="/37-reel-ideas.webp"
-        :alt="description"
-      />
+      <div
+        class="ml-4 mr-4 lg:ml-10 lg:mr-0 mt-20 font-size-0 aspect-125 max-w-sm h-auto w-auto image-box-shadow max-height-488 object-contain object-center"
+      >
+        <img src="/37-reel-ideas.webp" :alt="description" />
+      </div>
       <div class="mx-8 lg:mx-0 sm:mx-auto">
         <h1
           class="text-4xl mt-8 lg:mt-72 lg:text-website-off-white text-black text-shadow"
@@ -47,7 +47,10 @@
     <h4 class="text-lg curved-underline w-fit mb-8">
       {{ pageTitle }} Includes:
     </h4>
-    <div v-for="detailItem in detailItems" class="mt-4 flex flex-row gap-4">
+    <div
+      v-for="detailItem in detailItems"
+      class="mt-4 flex flex-row gap-4 mr-8"
+    >
       <CheckCircleIcon class="h-6 w-6 shrink-0" />
       <p class="text-sm max-w-4xl">{{ detailItem }}</p>
     </div>
