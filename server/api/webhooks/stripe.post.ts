@@ -16,11 +16,14 @@ export default defineEventHandler(async (event): Promise<void> => {
       throw createError({ statusMessage: 'Email Not Found', statusCode: 400 });
     }
     const nameParts = session.customer_details?.name?.split(' ') || [];
-    const firstName = nameParts[0] || '';
+    const firstName = capitalizeFirstLetter(nameParts[0] || '');
     let lastName = '';
     if (nameParts.length > 1) {
       lastName = nameParts[nameParts.length - 1];
     } 
+    if (lastName) {
+      lastName = capitalizeFirstLetter(lastName);
+    }
     const createContactRequest = {
       firstName: firstName,
       lastName: lastName,
@@ -86,4 +89,8 @@ async function updateSentProductField(id: string): Promise<void> {
     console.error('Failed to update sentProduct field.', e);
     throw e;
   }
+}
+
+function capitalizeFirstLetter(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
