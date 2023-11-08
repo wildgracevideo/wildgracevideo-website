@@ -84,7 +84,7 @@ const rawHtml = `
                     Visit our website
                     <bdt class="block-component"></bdt>
                     at 
-                    <bdt class="question"><a href="http://www.wildgracevideography.com" target="_blank" data-custom-class="link">http://www.wildgracevideography.com</a></bdt>
+                    <bdt class="question"><a href="https://www.wildgracevideography.com" target="_blank" data-custom-class="link">https://www.wildgracevideography.com</a></bdt>
                     <span style="font-size: 15px;">
                         <span style="color: rgb(89, 89, 89);">
                             <span data-custom-class="body_text">

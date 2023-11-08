@@ -7,6 +7,7 @@ export default {
     "./plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}",
     "./app.vue",
+    "storyblok/**/*.{vue,js}"
   ],
   theme: {
     extend: {

@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const SITE_URL = process.env.URL || 'http://localhost:3000';
+const SITE_URL = process.env.URL || 'https://localhost:3000';
 const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = SITE_URL + '/logo2.png';
 const GA_MEASUREMENT_ID = "G-9KDTSVFRRW";
@@ -94,7 +94,12 @@ const config = {
     }
   },
   modules: [
-    '@sidebase/nuxt-auth', '@nuxt/image', 'nuxt-schema-org', 'nuxt-simple-robots', 'nuxt-simple-sitemap'
+    '@sidebase/nuxt-auth', 
+    '@nuxt/image', 
+    'nuxt-schema-org', 
+    'nuxt-simple-robots', 
+    'nuxt-simple-sitemap',
+    ['@storyblok/nuxt', { accessToken: process.env.STORYBLOK_API_KEY, apiOptions: { region: "us"} }]
   ],
 };
 

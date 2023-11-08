@@ -17,7 +17,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --host",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem",
     "start": "node .output/server/index.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -33,6 +33,7 @@
     "@nuxt/image": "^1.0.0-rc.2",
     "@prisma/client": "^5.4.1",
     "@sendgrid/mail": "^7.7.0",
+    "@storyblok/nuxt": "^5.7.6",
     "@types/grecaptcha": "^3.0.5",
     "@types/node": "^18.17.17",
     "api": "^6.1.1",
