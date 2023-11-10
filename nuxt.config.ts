@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const SITE_URL = process.env.URL || 'http://localhost:3000';
 const APP_ICON = SITE_URL + '/app-icon.png';
-const WEBSITE_ICON = SITE_URL + '/logo2.png';
+const WEBSITE_ICON = 'logo2.png';
 const GA_MEASUREMENT_ID = "G-9KDTSVFRRW";
 const RECAPTCHA_SITE_KEY = '6LcqgVMoAAAAABLWZCEs3MtuslhHwadUEiMlRCFV';
 
@@ -49,7 +49,7 @@ const config = {
         { rel: 'preconnect', href: 'https://www.google.com' },
       ],
       script: [
-        { src: `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`, async: true },
+        { src: `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`, defer: true },
       ]
     },
   },

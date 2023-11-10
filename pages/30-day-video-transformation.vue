@@ -1,9 +1,9 @@
 <template>
   <OgMeta :title="pageTitle" :description="description" :icon="ogIcon" />
-  <SchemaOrgWebPage :name="pageTitle" />
+  <SchemaOrgWebPage type="ItemPage" :name="pageTitle" />
   <SchemaOrgImage
     :name="pageTitle"
-    url="/37-reel-ideas.webp"
+    url="37-reel-ideas.webp"
     :description="imageDescription"
   />
   <section class="cover-background-image pb-4">
@@ -80,7 +80,7 @@
 import { type CheckoutRequest, CheckoutType } from "~/types/stripe";
 import { CheckCircleIcon } from "@heroicons/vue/24/solid";
 
-const pageTitle = "30-Day Video Transformation";
+const pageTitle = "Wild Grace Videography | 30-Day Video Transformation";
 
 const description =
   "Boost Your Social Media Presence with 37 Engaging Reel Ideas and a Content Planner. Share Your Journey, Build Trust, and Watch Your Audience Grow in 30 Days.";
@@ -106,9 +106,7 @@ definePageMeta({
   layout: "no-contact",
 });
 
-const runtimeConfig = useRuntimeConfig();
-
-const ogIcon = runtimeConfig.public.siteUrl + "/37-reel-ideas-og.webp";
+const ogIcon = "37-reel-ideas-og.webp";
 
 const buyNow = async () => {
   let baseUrl = window.location.protocol + "//" + window.location.hostname;

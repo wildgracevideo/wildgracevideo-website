@@ -8,8 +8,8 @@
   <Meta name="twitter:url" :content="`${siteUrl}${String(route.path)}`" />
   <Meta property="og:type" content="website" />
   <Meta name="twitter:domain" :content="`${siteUrl.substring(8)}`" />
-  <Meta property="og:image" :content="icon" />
-  <Meta property="twitter:image" :content="icon" />
+  <Meta property="og:image" :content="iconLocation" />
+  <Meta property="twitter:image" :content="iconLocation" />
   <Link rel="canonical" :href="canonicalUrl" />
 </template>
 
@@ -23,5 +23,6 @@ const props = defineProps<{
   title: string;
   icon?: string;
 }>();
-const icon = props.icon || runtimeConfig.public.wesbiteIcon;
+const iconName = props.icon || runtimeConfig.public.wesbiteIcon;
+const iconLocation = runtimeConfig.public.siteUrl + "/" + iconName;
 </script>
