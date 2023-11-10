@@ -1,4 +1,5 @@
 <template>
+  <RecaptchaLoader />
   <div class="bg-website-green pt-8">
     <h2
       class="text-website-off-white text-3xl text-center"

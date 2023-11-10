@@ -1,5 +1,6 @@
 <template>
   <div>
+    <RecaptchaLoader />
     <OgMeta :title="pageTitle" :description="description" />
     <SchemaOrgWebPage :name="pageTitle" />
     <h1 class="text-2xl text-center mb-16">

@@ -3,7 +3,6 @@ const SITE_URL = process.env.URL || 'http://localhost:3000';
 const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = 'logo2.png';
 const GA_MEASUREMENT_ID = "G-9KDTSVFRRW";
-const RECAPTCHA_SITE_KEY = '6LcqgVMoAAAAABLWZCEs3MtuslhHwadUEiMlRCFV';
 
 
 const config = {
@@ -27,6 +26,7 @@ const config = {
       siteUrl: SITE_URL,
       wesbiteIcon: WEBSITE_ICON,
       gaMeasurementId: GA_MEASUREMENT_ID,
+      recaptchaSiteKey: '6LcqgVMoAAAAABLWZCEs3MtuslhHwadUEiMlRCFV',
     }
   },
   site: {
@@ -44,12 +44,7 @@ const config = {
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: APP_ICON },
         { rel: 'preconnect', href: 'https://d22668h9qdy3zj.cloudfront.net' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'preconnect', href: 'https://www.google.com' },
-      ],
-      script: [
-        { src: `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`, defer: true },
       ]
     },
   },
