@@ -24,6 +24,7 @@
     disablePictureInPicture
     playsinline
     :title="videoTitle"
+    id="reel-video"
   >
     <source
       src="https://d22668h9qdy3zj.cloudfront.net/wgv-reel.webm"
@@ -68,5 +69,19 @@ const description =
 
 useHead({
   title: pageTitle,
+});
+
+onMounted(() => {
+  // Safari won't play videos on low-power mode
+  const videoElement = document.getElementById(
+    "reel-video"
+  ) as HTMLVideoElement;
+  videoElement
+    .play()
+    .then(() => {})
+    .catch((error) => {
+      videoElement.setAttribute("controls", "controls");
+      videoElement.classList.remove("pointer-events-none");
+    });
 });
 </script>
