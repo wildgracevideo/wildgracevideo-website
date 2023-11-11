@@ -1,19 +1,20 @@
 <template>
   <header class="text-lg">
     <div class="lg:flex hidden">
-      <NuxtLink to="/" v-slot="{ navigate }">
+      <NuxtLink
+        to="/"
+        @click="
+          () => {
+            openMenu = !openMenu;
+          }
+        "
+      >
         <img
           class="mr-10 ml-8 mt-3 mb-8 font-size-0"
           width="138"
           height="90"
           src="/logo1.webp"
           :alt="imageAlt"
-          @click="
-            () => {
-              window.location.href = '/';
-              openMenu = !openMenu;
-            }
-          "
         />
       </NuxtLink>
       <nav class="mt-12">
@@ -63,19 +64,21 @@
       class="flex lg:hidden justify-between"
       :class="{ 'bg-website-green': openMenu }"
     >
-      <NuxtLink to="/" v-slot="{ navigate }" class="z-20">
+      <NuxtLink
+        class="z-20"
+        to="/"
+        @click="
+          () => {
+            openMenu = !openMenu;
+          }
+        "
+      >
         <img
           class="mt-3 mr-3 ml-8 mb-8 font-size-0"
           width="138"
           height="90"
           src="/logo1.webp"
           :alt="imageAlt"
-          @click="
-            () => {
-              window.location.href = '/';
-              openMenu = !openMenu;
-            }
-          "
         />
       </NuxtLink>
       <Menu v-model="openMenu" />
