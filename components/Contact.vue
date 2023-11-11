@@ -144,12 +144,9 @@ const send = () => {
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && entry.target.classList.contains("fade-out")) {
         entry.target.classList.remove("fade-out");
         entry.target.classList.add("fade-in");
-      } else {
-        entry.target.classList.remove("fade-in");
-        entry.target.classList.add("fade-out");
       }
     });
   });
