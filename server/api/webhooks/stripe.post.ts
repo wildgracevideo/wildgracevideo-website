@@ -40,8 +40,8 @@ export default defineEventHandler(async (event): Promise<void> => {
       purchaseAudit = await saveContactToDB(createContactRequest);
     }
     if (!purchaseAudit.sentProduct) {
-      await sendReelIdeasEmail(toEmail, templateData);
-      await updateSentProductField(purchaseAudit.id);
+      const messageId = await sendReelIdeasEmail(toEmail, templateData);
+      await updateSentProductField(purchaseAudit.id, messageId);
     }
     await createContact(createContactRequest);
   }
@@ -75,7 +75,7 @@ async function saveContactToDB(request: CreateContactRequest): Promise<PurchaseA
   }
 }
 
-async function updateSentProductField(id: string): Promise<void> {
+async function updateSentProductField(id: string, messageId: string): Promise<void> {
   try {
     await prisma.purchaseAudit.update({
       where: {
@@ -83,6 +83,7 @@ async function updateSentProductField(id: string): Promise<void> {
       },
       data: {
         sentProduct: true,
+        sendGridMessageId: messageId,
       }
     });
   } catch (e) {

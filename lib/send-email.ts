@@ -3,7 +3,7 @@ import { awsConfig } from '~/lib/aws';
 
 const runtimeConfig = useRuntimeConfig();
   
-export async function sendEmail(htmlBody: string, toEmail?: string, subject: string, fromEmail?: string): Promise<SendEmailResponse> {
+export async function sendEmail(htmlBody: string, toEmail: string, subject: string, fromEmail?: string): Promise<SendEmailResponse> {
   const sesClient = new SESv2Client(awsConfig);
   const params: SendEmailRequest = {
     Destination: {

@@ -22,11 +22,16 @@ export const UserScalarFieldEnumSchema = z.enum(['id','name','email','emailVerif
 
 export const MessageReplyScalarFieldEnumSchema = z.enum(['id','name','toEmail','body','subject','createdAt','messageId']);
 
-export const PurchaseAuditScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','email','product','country','firstName','lastName','sentProduct','stripeSessionId']);
+export const PurchaseAuditScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','email','product','country','firstName','lastName','sentProduct','stripeSessionId','sendGridMessageId','sendGridMessageStatus']);
 
 export const SortOrderSchema = z.enum(['asc','desc']);
 
 export const NullsOrderSchema = z.enum(['first','last']);
+
+export const MessageStatusSchema = z.enum(['PENDING','PROCESSED','DROPPED','DEFERRED','BOUNCED','DELIVERED','OPENED','CLICKED']);
+
+export type MessageStatusType = `${z.infer<typeof MessageStatusSchema>}`
+
 /////////////////////////////////////////
 // MODELS
 /////////////////////////////////////////
@@ -184,6 +189,7 @@ export const MessageReplyWithRelationsSchema: z.ZodType<MessageReplyWithRelation
 /////////////////////////////////////////
 
 export const PurchaseAuditSchema = z.object({
+  sendGridMessageStatus: MessageStatusSchema,
   id: z.string().cuid(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
@@ -194,6 +200,7 @@ export const PurchaseAuditSchema = z.object({
   lastName: z.string().nullable(),
   sentProduct: z.boolean(),
   stripeSessionId: z.string(),
+  sendGridMessageId: z.string().nullable(),
 })
 
 export type PurchaseAudit = z.infer<typeof PurchaseAuditSchema>
@@ -355,6 +362,8 @@ export const PurchaseAuditSelectSchema: z.ZodType<Prisma.PurchaseAuditSelect> = 
   lastName: z.boolean().optional(),
   sentProduct: z.boolean().optional(),
   stripeSessionId: z.boolean().optional(),
+  sendGridMessageId: z.boolean().optional(),
+  sendGridMessageStatus: z.boolean().optional(),
 }).strict()
 
 
@@ -758,6 +767,8 @@ export const PurchaseAuditWhereInputSchema: z.ZodType<Prisma.PurchaseAuditWhereI
   lastName: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
   sentProduct: z.union([ z.lazy(() => BoolFilterSchema),z.boolean() ]).optional(),
   stripeSessionId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => EnumMessageStatusFilterSchema),z.lazy(() => MessageStatusSchema) ]).optional(),
 }).strict();
 
 export const PurchaseAuditOrderByWithRelationInputSchema: z.ZodType<Prisma.PurchaseAuditOrderByWithRelationInput> = z.object({
@@ -770,7 +781,9 @@ export const PurchaseAuditOrderByWithRelationInputSchema: z.ZodType<Prisma.Purch
   firstName: z.lazy(() => SortOrderSchema).optional(),
   lastName: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   sentProduct: z.lazy(() => SortOrderSchema).optional(),
-  stripeSessionId: z.lazy(() => SortOrderSchema).optional()
+  stripeSessionId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const PurchaseAuditWhereUniqueInputSchema: z.ZodType<Prisma.PurchaseAuditWhereUniqueInput> = z.object({
@@ -790,6 +803,8 @@ export const PurchaseAuditWhereUniqueInputSchema: z.ZodType<Prisma.PurchaseAudit
   lastName: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
   sentProduct: z.union([ z.lazy(() => BoolFilterSchema),z.boolean() ]).optional(),
   stripeSessionId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => EnumMessageStatusFilterSchema),z.lazy(() => MessageStatusSchema) ]).optional(),
 }).strict());
 
 export const PurchaseAuditOrderByWithAggregationInputSchema: z.ZodType<Prisma.PurchaseAuditOrderByWithAggregationInput> = z.object({
@@ -803,6 +818,8 @@ export const PurchaseAuditOrderByWithAggregationInputSchema: z.ZodType<Prisma.Pu
   lastName: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   sentProduct: z.lazy(() => SortOrderSchema).optional(),
   stripeSessionId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional(),
   _count: z.lazy(() => PurchaseAuditCountOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => PurchaseAuditMaxOrderByAggregateInputSchema).optional(),
   _min: z.lazy(() => PurchaseAuditMinOrderByAggregateInputSchema).optional()
@@ -822,6 +839,8 @@ export const PurchaseAuditScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma
   lastName: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema),z.string() ]).optional().nullable(),
   sentProduct: z.union([ z.lazy(() => BoolWithAggregatesFilterSchema),z.boolean() ]).optional(),
   stripeSessionId: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema),z.string() ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => EnumMessageStatusWithAggregatesFilterSchema),z.lazy(() => MessageStatusSchema) ]).optional(),
 }).strict();
 
 export const MessageCreateInputSchema: z.ZodType<Prisma.MessageCreateInput> = z.object({
@@ -1197,7 +1216,9 @@ export const PurchaseAuditCreateInputSchema: z.ZodType<Prisma.PurchaseAuditCreat
   firstName: z.string(),
   lastName: z.string().optional().nullable(),
   sentProduct: z.boolean().optional(),
-  stripeSessionId: z.string()
+  stripeSessionId: z.string(),
+  sendGridMessageId: z.string().optional().nullable(),
+  sendGridMessageStatus: z.lazy(() => MessageStatusSchema).optional()
 }).strict();
 
 export const PurchaseAuditUncheckedCreateInputSchema: z.ZodType<Prisma.PurchaseAuditUncheckedCreateInput> = z.object({
@@ -1210,7 +1231,9 @@ export const PurchaseAuditUncheckedCreateInputSchema: z.ZodType<Prisma.PurchaseA
   firstName: z.string(),
   lastName: z.string().optional().nullable(),
   sentProduct: z.boolean().optional(),
-  stripeSessionId: z.string()
+  stripeSessionId: z.string(),
+  sendGridMessageId: z.string().optional().nullable(),
+  sendGridMessageStatus: z.lazy(() => MessageStatusSchema).optional()
 }).strict();
 
 export const PurchaseAuditUpdateInputSchema: z.ZodType<Prisma.PurchaseAuditUpdateInput> = z.object({
@@ -1224,6 +1247,8 @@ export const PurchaseAuditUpdateInputSchema: z.ZodType<Prisma.PurchaseAuditUpdat
   lastName: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   sentProduct: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   stripeSessionId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const PurchaseAuditUncheckedUpdateInputSchema: z.ZodType<Prisma.PurchaseAuditUncheckedUpdateInput> = z.object({
@@ -1237,6 +1262,8 @@ export const PurchaseAuditUncheckedUpdateInputSchema: z.ZodType<Prisma.PurchaseA
   lastName: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   sentProduct: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   stripeSessionId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const PurchaseAuditCreateManyInputSchema: z.ZodType<Prisma.PurchaseAuditCreateManyInput> = z.object({
@@ -1249,7 +1276,9 @@ export const PurchaseAuditCreateManyInputSchema: z.ZodType<Prisma.PurchaseAuditC
   firstName: z.string(),
   lastName: z.string().optional().nullable(),
   sentProduct: z.boolean().optional(),
-  stripeSessionId: z.string()
+  stripeSessionId: z.string(),
+  sendGridMessageId: z.string().optional().nullable(),
+  sendGridMessageStatus: z.lazy(() => MessageStatusSchema).optional()
 }).strict();
 
 export const PurchaseAuditUpdateManyMutationInputSchema: z.ZodType<Prisma.PurchaseAuditUpdateManyMutationInput> = z.object({
@@ -1263,6 +1292,8 @@ export const PurchaseAuditUpdateManyMutationInputSchema: z.ZodType<Prisma.Purcha
   lastName: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   sentProduct: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   stripeSessionId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const PurchaseAuditUncheckedUpdateManyInputSchema: z.ZodType<Prisma.PurchaseAuditUncheckedUpdateManyInput> = z.object({
@@ -1276,6 +1307,8 @@ export const PurchaseAuditUncheckedUpdateManyInputSchema: z.ZodType<Prisma.Purch
   lastName: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   sentProduct: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   stripeSessionId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const IntFilterSchema: z.ZodType<Prisma.IntFilter> = z.object({
@@ -1684,6 +1717,13 @@ export const MessageReplySumOrderByAggregateInputSchema: z.ZodType<Prisma.Messag
   messageId: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
+export const EnumMessageStatusFilterSchema: z.ZodType<Prisma.EnumMessageStatusFilter> = z.object({
+  equals: z.lazy(() => MessageStatusSchema).optional(),
+  in: z.lazy(() => MessageStatusSchema).array().optional(),
+  notIn: z.lazy(() => MessageStatusSchema).array().optional(),
+  not: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => NestedEnumMessageStatusFilterSchema) ]).optional(),
+}).strict();
+
 export const PurchaseAuditCountOrderByAggregateInputSchema: z.ZodType<Prisma.PurchaseAuditCountOrderByAggregateInput> = z.object({
   id: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
@@ -1694,7 +1734,9 @@ export const PurchaseAuditCountOrderByAggregateInputSchema: z.ZodType<Prisma.Pur
   firstName: z.lazy(() => SortOrderSchema).optional(),
   lastName: z.lazy(() => SortOrderSchema).optional(),
   sentProduct: z.lazy(() => SortOrderSchema).optional(),
-  stripeSessionId: z.lazy(() => SortOrderSchema).optional()
+  stripeSessionId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const PurchaseAuditMaxOrderByAggregateInputSchema: z.ZodType<Prisma.PurchaseAuditMaxOrderByAggregateInput> = z.object({
@@ -1707,7 +1749,9 @@ export const PurchaseAuditMaxOrderByAggregateInputSchema: z.ZodType<Prisma.Purch
   firstName: z.lazy(() => SortOrderSchema).optional(),
   lastName: z.lazy(() => SortOrderSchema).optional(),
   sentProduct: z.lazy(() => SortOrderSchema).optional(),
-  stripeSessionId: z.lazy(() => SortOrderSchema).optional()
+  stripeSessionId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const PurchaseAuditMinOrderByAggregateInputSchema: z.ZodType<Prisma.PurchaseAuditMinOrderByAggregateInput> = z.object({
@@ -1720,7 +1764,19 @@ export const PurchaseAuditMinOrderByAggregateInputSchema: z.ZodType<Prisma.Purch
   firstName: z.lazy(() => SortOrderSchema).optional(),
   lastName: z.lazy(() => SortOrderSchema).optional(),
   sentProduct: z.lazy(() => SortOrderSchema).optional(),
-  stripeSessionId: z.lazy(() => SortOrderSchema).optional()
+  stripeSessionId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional()
+}).strict();
+
+export const EnumMessageStatusWithAggregatesFilterSchema: z.ZodType<Prisma.EnumMessageStatusWithAggregatesFilter> = z.object({
+  equals: z.lazy(() => MessageStatusSchema).optional(),
+  in: z.lazy(() => MessageStatusSchema).array().optional(),
+  notIn: z.lazy(() => MessageStatusSchema).array().optional(),
+  not: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => NestedEnumMessageStatusWithAggregatesFilterSchema) ]).optional(),
+  _count: z.lazy(() => NestedIntFilterSchema).optional(),
+  _min: z.lazy(() => NestedEnumMessageStatusFilterSchema).optional(),
+  _max: z.lazy(() => NestedEnumMessageStatusFilterSchema).optional()
 }).strict();
 
 export const MessageReplyCreateNestedManyWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyCreateNestedManyWithoutMessageInput> = z.object({
@@ -1927,6 +1983,10 @@ export const MessageUpdateOneRequiredWithoutRepliesNestedInputSchema: z.ZodType<
   update: z.union([ z.lazy(() => MessageUpdateToOneWithWhereWithoutRepliesInputSchema),z.lazy(() => MessageUpdateWithoutRepliesInputSchema),z.lazy(() => MessageUncheckedUpdateWithoutRepliesInputSchema) ]).optional(),
 }).strict();
 
+export const EnumMessageStatusFieldUpdateOperationsInputSchema: z.ZodType<Prisma.EnumMessageStatusFieldUpdateOperationsInput> = z.object({
+  set: z.lazy(() => MessageStatusSchema).optional()
+}).strict();
+
 export const NestedIntFilterSchema: z.ZodType<Prisma.NestedIntFilter> = z.object({
   equals: z.number().optional(),
   in: z.number().array().optional(),
@@ -2126,6 +2186,23 @@ export const NestedDateTimeNullableWithAggregatesFilterSchema: z.ZodType<Prisma.
   _count: z.lazy(() => NestedIntNullableFilterSchema).optional(),
   _min: z.lazy(() => NestedDateTimeNullableFilterSchema).optional(),
   _max: z.lazy(() => NestedDateTimeNullableFilterSchema).optional()
+}).strict();
+
+export const NestedEnumMessageStatusFilterSchema: z.ZodType<Prisma.NestedEnumMessageStatusFilter> = z.object({
+  equals: z.lazy(() => MessageStatusSchema).optional(),
+  in: z.lazy(() => MessageStatusSchema).array().optional(),
+  notIn: z.lazy(() => MessageStatusSchema).array().optional(),
+  not: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => NestedEnumMessageStatusFilterSchema) ]).optional(),
+}).strict();
+
+export const NestedEnumMessageStatusWithAggregatesFilterSchema: z.ZodType<Prisma.NestedEnumMessageStatusWithAggregatesFilter> = z.object({
+  equals: z.lazy(() => MessageStatusSchema).optional(),
+  in: z.lazy(() => MessageStatusSchema).array().optional(),
+  notIn: z.lazy(() => MessageStatusSchema).array().optional(),
+  not: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => NestedEnumMessageStatusWithAggregatesFilterSchema) ]).optional(),
+  _count: z.lazy(() => NestedIntFilterSchema).optional(),
+  _min: z.lazy(() => NestedEnumMessageStatusFilterSchema).optional(),
+  _max: z.lazy(() => NestedEnumMessageStatusFilterSchema).optional()
 }).strict();
 
 export const MessageReplyCreateWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyCreateWithoutMessageInput> = z.object({

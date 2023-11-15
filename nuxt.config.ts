@@ -22,6 +22,7 @@ const config = {
     sendGridApiKey: process.env.SENDGRID_API_KEY,
     reelIdeasTemplateId: process.env.REEL_IDEAS_TEMPLATE_ID,
     omnisendApiKey: process.env.OMNISEND_API_KEY,
+    sendgridWebhookSigningKey: process.env.SENDGRID_WEBHOOK_SIGNING_KEY,
     public: {
       siteUrl: SITE_URL,
       wesbiteIcon: WEBSITE_ICON,

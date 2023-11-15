@@ -6,11 +6,11 @@ export interface ReelIdeasTemplateData {
   firstName: string;
 }
 
-export async function sendReelIdeasEmail(toEmail: string, templateData: ReelIdeasTemplateData): Promise<void> {
+export async function sendReelIdeasEmail(toEmail: string, templateData: ReelIdeasTemplateData): Promise<string> {
   return await sendTemplatedEmail(toEmail, runtimeConfig.reelIdeasTemplateId, templateData);
 }
 
-async function sendTemplatedEmail(toEmail: string, templateId: string, templateData: ReelIdeasTemplateData) {
+async function sendTemplatedEmail(toEmail: string, templateId: string, templateData: ReelIdeasTemplateData): Promise<string> {
  const message = {
     from: {
       email: runtimeConfig.clientFromEmailAddress
@@ -25,12 +25,17 @@ async function sendTemplatedEmail(toEmail: string, templateId: string, templateD
         dynamic_template_data: templateData,
       }
     ],
-    template_id: templateId,
+    templateId: templateId,
   };
 
   try {
     const response = await sendGrid.send(message);
     console.log('Sent email.', response);
+    if (response && response.length > 0) {
+      return response[0].headers["x-message-id"] || "Unknown";
+    } else {
+      return "Unknown";
+    }
   } catch (error: any) {
     console.error('Failed to send email with sendGrid.', error);
     if (error.response) {

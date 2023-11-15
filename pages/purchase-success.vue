@@ -1,6 +1,6 @@
 <template>
   <OgMeta :title="pageTitle" :description="description" />
-  <SchemaOrgWebPage type="ItemPage" :name="pageTitle" />
+  <SchemaOrgWebPage type="AboutPage" :name="pageTitle" />
   <section class="mx-auto w-fit text-center">
     <h1 class="text-4xl mb-4">{{ pageTitle }}</h1>
     <h3 class="text-2xl text-center">Have Questions? Contact me here</h3>

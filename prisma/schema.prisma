@@ -79,15 +79,29 @@ model MessageReply {
 }
 
 model PurchaseAudit {
-  id              String   @id @default(cuid())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @default(now()) @updatedAt
-  email           String
-  product         String
-  country         String?
-  firstName       String
-  lastName        String?
-  sentProduct     Boolean  @default(false)
-  stripeSessionId String
+  id                      String   @id @default(cuid())
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @default(now()) @updatedAt
+  email                   String
+  product                 String
+  country                 String?
+  firstName               String
+  lastName                String?
+  sentProduct             Boolean  @default(false)
+  stripeSessionId         String
+  sendGridMessageId       String?
+  sendGridMessageStatus   MessageStatus @default(PENDING)
   @@index(stripeSessionId)
+  @@index(sendGridMessageId)
+}
+
+enum MessageStatus {
+  PENDING
+  PROCESSED 
+  DROPPED
+  DEFERRED
+  BOUNCED
+  DELIVERED
+  OPENED
+  CLICKED
 }
