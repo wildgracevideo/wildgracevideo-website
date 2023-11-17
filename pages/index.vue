@@ -17,7 +17,7 @@
     :text="secondReviewText"
   />
   <video
-    class="w-full max-w-full aspect-video -mt-4 pointer-events-none cursor-default bg-fixed"
+    class="w-full max-w-full aspect-video pointer-events-none cursor-default bg-fixed"
     autoplay
     muted
     loop
@@ -36,7 +36,7 @@
     />
   </video>
   <div
-    class="grid md:grid-cols-2 grid-cols-1 gap-x-8 mx-16 md:my-12 leading-loose z-20"
+    class="grid md:grid-cols-2 grid-cols-1 gap-x-8 mx-16 md:my-12 leading-loose z-10"
   >
     <section class="md:my-0 my-12">
       <p>&#x301D;{{ firstReviewText }}&#x301E;</p>
