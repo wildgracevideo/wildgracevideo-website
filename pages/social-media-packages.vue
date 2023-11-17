@@ -1,5 +1,5 @@
 <template>
-  <OgMeta :title="pageTitle" :description="description" />
+  <OgMeta :title="pageTitle" :description="description" :icon="ogIcon" />
   <SchemaOrgWebPage type="ItemPage" :name="pageTitle" />
   <h1 class="mx-auto text-4xl w-fit">
     <span
@@ -63,6 +63,8 @@ const description =
 
 const heading =
   "Wild Grace Videography and Samantha Melissa Marketing are partnering together to provide Colorado businesses with a full-service social media makeover. Elevate your online presence with our tailored packages designed to transform your social media platforms into engaging hubs for your audience.";
+
+const ogIcon = "social-media-og.webp";
 
 const greenColor = "rgba(110, 132, 103, 0.54)";
 const beigeColor = "rgba(248, 240, 227, 0.7)";
