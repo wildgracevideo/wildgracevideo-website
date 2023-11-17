@@ -3,9 +3,7 @@
   <SchemaOrgWebPage :name="pageTitle" />
   <div>
     <h1 class="text-center text-4xl mb-8">Video Production Portfolio</h1>
-    <div
-      class="aspect-ratio lg:mx-auto px-8 portfolio-page-main-video-container"
-    >
+    <div class="aspect-ratio mx-auto px-8 portfolio-page-main-video-container">
       <LazyYoutube
         :video-id="mainVideo.id"
         :title="mainVideo.name"

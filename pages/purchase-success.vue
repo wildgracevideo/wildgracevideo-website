@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-const pageTitle = "Thank You For Your Purchase!";
+const pageTitle = "Wild Grace Videography | Thank You For Your Purchase!";
 const description =
   "Thank you for your purchase, please reach out to Wild Grace Videography if you have any questions.";
 definePageMeta({
