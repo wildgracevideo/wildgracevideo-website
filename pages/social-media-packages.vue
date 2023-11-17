@@ -77,7 +77,6 @@ const addons = [
   {
     bgColor: beigeColor,
     details: [
-      "1-Hour consultation",
       "Account setup assistance",
       "Additional Instagram/Facebook accounts",
     ],
@@ -114,7 +113,7 @@ const packages: Config[] = [
         bgColor: beigeColor,
         title: "Social Media Management",
         details: [
-          "1-hour Consultation",
+          "1-Hour consultation",
           "Audit of your social media accounts",
           "Individual strategy tailored to your goals",
           "Content idea calender",
@@ -146,7 +145,7 @@ const packages: Config[] = [
           "Hastag optimization",
           "Quarterly performance tracking",
           "Strategy suggestions",
-          "1-hour content strategy session",
+          "1-Hour consultation",
         ],
       },
       {
@@ -177,7 +176,7 @@ const packages: Config[] = [
           "Hastag optimization",
           "Quarterly performance tracking",
           "Strategy suggestions",
-          "1-hour content strategy session",
+          "1-Hour consultation",
         ],
       },
       {
