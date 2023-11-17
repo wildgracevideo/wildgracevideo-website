@@ -16,10 +16,15 @@
   <h2 class="text-2xl w-fit mx-auto mt-10 mb-6 text-center">
     Social Media Marketing + Video + Photo
   </h2>
-  <h3 class="mx-8 lg:mx-auto text-center max-w-4xl mb-8">{{ heading }}</h3>
-  <h3 class="font-bold text-2xl md:mx-auto mx-2 text-center">
-    Exclusive to Colorado-Based Businesses
-  </h3>
+  <h3 class="mx-8 lg:mx-auto text-center max-w-4xl">{{ heading }}</h3>
+  <p class="text-center mt-4 mb-4 text-xl mx-4">
+    Learn more about Samantha Melissa Marketing
+    <a
+      class="underline text-website-green"
+      href="https://samanthamelissamarketing.com/"
+      >here</a
+    >.
+  </p>
   <h4 class="w-fit mx-auto mb-8">3-Month Retainer</h4>
   <section
     class="grid lg:grid-cols-3 grid-cols-1 gap-20 xl:mx-16 lg:mx-4 sm:mx-16 mx-4 mb-20"
