@@ -6,15 +6,19 @@
     Social Media Video Packages
   </h2>
   <div class="mx-8 lg:mx-auto max-w-6xl text-center">
-    Elevate your social media presence effortlessly. Say goodbye to the daily
-    grind of staying top-of-mind. Picture waking up excited to focus on your
-    business, relieved from the stress of constant social media upkeep.
-    <br class="mb-4" />
-    Get a fresh batch of professionally crafted videos with a simple click,
-    freeing you from last-minute content hassles.
-    <br class="mb-4" />
-    Join the "Video Content that Converts" Program for full control of your
-    social media presence. Each month, enjoy:
+    <p class="mb-4">
+      Elevate your social media presence effortlessly. Say goodbye to the daily
+      grind of staying top-of-mind. Picture waking up excited to focus on your
+      business, relieved from the stress of constant social media upkeep.
+    </p>
+    <p class="mb-4">
+      Get a fresh batch of professionally crafted videos with a simple click,
+      freeing you from last-minute content hassles.
+    </p>
+    <p>
+      Join the "Video Content that Converts" Program for full control of your
+      social media presence. Each month, enjoy:
+    </p>
     <ul class="mt-4 mb-8 w-fit mx-8 lg:mx-auto">
       <li
         v-for="item in headingItems"
