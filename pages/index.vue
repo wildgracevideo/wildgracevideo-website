@@ -67,10 +67,6 @@ const pageTitle = "Wild Grace Videography | Denver Video Production Company";
 const description =
   "Wild Grace Videography is a Denver, Colorado-based video production company that produces creative and memorable video content to make your business stand out.";
 
-useHead({
-  title: pageTitle,
-});
-
 onMounted(() => {
   // Safari won't play videos on low-power mode
   const videoElement = document.getElementById(

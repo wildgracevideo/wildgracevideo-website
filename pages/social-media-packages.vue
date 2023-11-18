@@ -16,7 +16,7 @@
   <h2 class="text-2xl w-fit mx-auto mt-10 mb-6 text-center">
     Social Media Marketing + Video + Photo
   </h2>
-  <h3 class="mx-8 lg:mx-auto text-center max-w-4xl">{{ heading }}</h3>
+  <p class="mx-8 lg:mx-auto text-center max-w-4xl">{{ heading }}</p>
   <p class="text-center mt-4 mb-4 text-xl mx-4">
     Learn more about Samantha Melissa Marketing
     <a
@@ -61,7 +61,7 @@
 <script setup lang="ts">
 import { type Config } from "~/components/PackageItem.vue";
 
-const pageTitle = "Wild Grace Videography | Social Media Packages";
+const pageTitle = "Wild Grace Videography | Social Media Management Packages";
 
 const description =
   "Revamp your Colorado business' online presence with Samantha Melissa Marketing & Wild Grace Videography. Tailored packages for engaging social media!";

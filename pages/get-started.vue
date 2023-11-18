@@ -166,14 +166,9 @@ import {
   type GetStartedSubmitRequest,
 } from "~/types/form-requests";
 
-const pageTitle =
-  "Get Started with Wild Grace Videography | Denver Video Production Company";
+const pageTitle = "Wild Grace Videography | Get Started";
 const description =
   "Get started with Wild Grace Videography, a Denver, Colorado-based video production company, to create a new video to make your business stand out.";
-
-useHead({
-  title: pageTitle,
-});
 
 definePageMeta({
   layout: "no-contact",

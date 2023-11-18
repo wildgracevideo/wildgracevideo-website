@@ -98,10 +98,6 @@ const detailItems = [
   "30-Day Fillable Video Content Planner that will keep you accountable from planning to posting, and get you building habits for long-term video creation",
 ];
 
-useHead({
-  title: pageTitle,
-});
-
 definePageMeta({
   layout: "no-contact",
 });

@@ -41,7 +41,10 @@
 
 <script setup lang="ts">
 import { PopoverGroup } from "@headlessui/vue";
-import { DevicePhoneMobileIcon } from "@heroicons/vue/24/outline";
+import {
+  DevicePhoneMobileIcon,
+  VideoCameraIcon,
+} from "@heroicons/vue/24/outline";
 import HeaderItemDropdown from "~/components/header/HeaderItemDropdown.vue";
 import HeaderItem from "~/components/header/HeaderItem.vue";
 import type {
@@ -80,9 +83,15 @@ const items: HeaderItemConfig[] = [
     type: HeaderItemDropdown,
     children: [
       {
-        name: "Social Media Packages",
+        name: "Social Media Video Packages",
         description: "Transform your online presence",
+        href: "/video-content-that-converts",
+        icon: VideoCameraIcon,
+      },
+      {
+        name: "Social Media Management Packages",
         href: "/social-media-packages",
+        description: "Managing your online presence",
         icon: DevicePhoneMobileIcon,
       },
     ],

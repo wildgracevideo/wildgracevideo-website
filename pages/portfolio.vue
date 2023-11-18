@@ -35,14 +35,9 @@
 import LazyYoutube from "~/components/LazyYoutube.vue";
 import OgMeta from "~/components/OgMeta.vue";
 
-const pageTitle =
-  "About Wild Grace Videography | Denver Video Production Company";
+const pageTitle = "Wild Grace Videography | About";
 const description =
   "View the portfolio for Wild Grace Videography, a Denver, Colorado-based video production company, that produces creative and memorable video content to make your business stand out.";
-
-useHead({
-  title: pageTitle,
-});
 
 const mainVideo = {
   id: "yWjmuJ_6mkA",

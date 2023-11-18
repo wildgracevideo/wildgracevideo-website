@@ -25,4 +25,7 @@ const props = defineProps<{
 }>();
 const iconName = props.icon || runtimeConfig.public.wesbiteIcon;
 const iconLocation = runtimeConfig.public.siteUrl + "/" + iconName;
+useHead({
+  title: props.title,
+});
 </script>
