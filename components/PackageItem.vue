@@ -16,7 +16,7 @@
           :config="item as PackageBubbleConfig"
         />
       </template>
-      <PackageBubbleSimple :details="config.elements as string[]" />
+      <PackageBubbleSimple v-else :details="config.elements as string[]" />
     </div>
     <div>
       <p class="text-center mt-auto mb-2">Starting at</p>
