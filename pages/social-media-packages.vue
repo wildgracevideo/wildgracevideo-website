@@ -132,7 +132,7 @@ const packages: Config[] = [
   },
   {
     title: "The Batch Bundle",
-    price: 2800,
+    price: 3000,
     elements: [
       {
         bgColor: beigeColor,
