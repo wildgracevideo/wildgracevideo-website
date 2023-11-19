@@ -163,7 +163,7 @@ const packages: Config[] = [
   },
   {
     title: "The Bold Breakthrough",
-    price: 4900,
+    price: 5000,
     elements: [
       {
         bgColor: beigeColor,
