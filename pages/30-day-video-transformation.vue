@@ -11,9 +11,9 @@
       class="flex lg:flex-row flex-col justify-center items-center gap-0 lg:gap-24 mx-auto lg:mx-32 -mt-4"
     >
       <div
-        class="ml-4 mr-4 lg:ml-10 lg:mr-0 mt-20 text-0 aspect-125 max-w-sm h-auto w-auto image-box-shadow max-height-488 object-contain object-center"
+        class="ml-4 mr-4 lg:ml-10 lg:mr-0 mt-20 text-0 max-w-sm h-auto w-auto image-box-shadow max-height-488 object-contain object-center"
       >
-        <img src="/37-reel-ideas.webp" :alt="description" />
+        <img src="/37-reel-ideas.webp" class="aspect-125" :alt="description" />
       </div>
       <div class="mx-8 lg:mx-0 sm:mx-auto">
         <h1
