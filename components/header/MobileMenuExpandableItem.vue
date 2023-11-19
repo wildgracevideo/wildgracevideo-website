@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto w-fit">
-    <p class="mx-auto cursor-pointer w-fit" @click="open = !open">
+    <p class="mx-auto cursor-pointer w-fit mb-2" @click="open = !open">
       {{ config.name }}
       <ChevronDownIcon
         :class="[open ? 'rotate-180' : '', 'h-5 w-5 flex-none']"
@@ -11,7 +11,7 @@
     <NuxtLink
       v-if="open"
       v-for="item in config.children"
-      class="text-xl"
+      class="text-lg block mt-1 text-center"
       :to="item.href"
       @click="openMenu = false"
       >{{ item.name }}</NuxtLink
