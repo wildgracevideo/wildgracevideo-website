@@ -138,7 +138,7 @@ const packages: Config[] = [
         bgColor: beigeColor,
         title: "Social Media Management",
         details: [
-          "1-2 Instagram and Facebook social media feed & story posts",
+          "1-2 Instagram and Facebook social media feed & story posts per week",
           "Social media grahic design",
           "Caption writing",
           "Content scheduling",
@@ -169,7 +169,7 @@ const packages: Config[] = [
         bgColor: beigeColor,
         title: "Social Media Management",
         details: [
-          "3-4 Instagram and Facebook social media feed & story posts",
+          "3-4 Instagram and Facebook social media feed & story posts per week",
           "Social media grahic design",
           "Caption writing",
           "Content scheduling",
