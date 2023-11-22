@@ -160,7 +160,6 @@ import RequiredSelect from "../components/form/RequiredSelect.vue";
 import RequiredDropdownSelect from "../components/form/RequiredDropdownSelect.vue";
 import { type SelectChoice } from "~/types/form-input";
 import OgMeta from "~/components/OgMeta.vue";
-import { submitRecaptcha } from "~/lib/submit-recaptcha";
 import {
   RecaptchaType,
   type GetStartedSubmitRequest,
@@ -225,6 +224,8 @@ const sendingForm = ref(false);
 
 const isRequired = ref(false);
 
+const { $submitRecaptcha } = useNuxtApp()
+
 const validatePhone = () => {
   if (sendingForm.value) {
     return;
@@ -254,7 +255,7 @@ const submit = () => {
     hearChoice.value
   ) {
     sendingForm.value = true;
-    submitRecaptcha(RecaptchaType.GetStarted, async (token) => {
+    $submitRecaptcha(RecaptchaType.GetStarted, async (token) => {
       const getStartedRequest: GetStartedSubmitRequest = {
         token: token,
         firstname: `${firstName.value}`,

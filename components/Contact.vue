@@ -92,7 +92,6 @@
 import { RecaptchaType } from "~/types/form-requests";
 import RequiredInput from "./form/RequiredInput.vue";
 import RequiredTextArea from "./form/RequiredTextArea.vue";
-import { submitRecaptcha } from "~/lib/submit-recaptcha";
 import { type ContactSubmitRequest } from "~/types/form-requests";
 
 const firstName = ref("");
@@ -105,6 +104,8 @@ const sendingForm = ref(false);
 
 const isRequired = ref(false);
 
+const { $submitRecaptcha } = useNuxtApp();
+
 const send = () => {
   if (sendingForm.value) {
     return;
@@ -113,7 +114,7 @@ const send = () => {
 
   if (firstName.value && lastName.value && email.value && message.value) {
     sendingForm.value = true;
-    submitRecaptcha(RecaptchaType.Contact, async (token) => {
+    $submitRecaptcha(RecaptchaType.Contact, async (token) => {
       const contactSubmitRequest: ContactSubmitRequest = {
         token: token,
         firstname: `${firstName.value}`,
