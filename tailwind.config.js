@@ -18,6 +18,9 @@ export default {
           "rgb(var(--color-website-off-white) / <alpha-value>)",
       },
     },
+    transitionProperty: {
+      top: "top",
+    },
   },
   plugins: [],
 };

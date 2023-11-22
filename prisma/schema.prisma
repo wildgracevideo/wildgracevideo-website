@@ -22,7 +22,8 @@ model Message {
   firstname    String         @db.VarChar(255)
   lastname     String         @db.VarChar(255)
   message      String         @db.VarChar(5000)
-  replies      MessageReply[]
+  reply      MessageReply[]
+  deleted      Boolean        @default(false)
 }
 
 model Account {
@@ -68,14 +69,14 @@ model User {
 }
 
 model MessageReply {
-  id          String   @id @default(cuid())
-  name        String
-  toEmail     String
-  body        String
-  subject     String
-  createdAt   DateTime @default(now())
-  messageId   Int      @map("user_id")
-  message     Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  id                      String   @id @default(cuid())
+  name                    String
+  toEmail                 String
+  createdAt               DateTime @default(now())
+  messageId               Int      @map("messageId")
+  sendGridMessageId       String?
+  sendGridMessageStatus   MessageStatus @default(PENDING)
+  message                 Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
 }
 
 model PurchaseAudit {

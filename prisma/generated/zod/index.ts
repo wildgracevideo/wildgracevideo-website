@@ -12,7 +12,7 @@ import type { Prisma } from '@prisma/client';
 
 export const TransactionIsolationLevelSchema = z.enum(['ReadUncommitted','ReadCommitted','RepeatableRead','Serializable']);
 
-export const MessageScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','read','email','firstname','lastname','message']);
+export const MessageScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','read','email','firstname','lastname','message','deleted']);
 
 export const AccountScalarFieldEnumSchema = z.enum(['id','userId','type','provider','providerAccountId','refresh_token','access_token','expires_at','token_type','scope','id_token','session_state']);
 
@@ -20,7 +20,7 @@ export const SessionScalarFieldEnumSchema = z.enum(['id','sessionToken','userId'
 
 export const UserScalarFieldEnumSchema = z.enum(['id','name','email','emailVerified','image']);
 
-export const MessageReplyScalarFieldEnumSchema = z.enum(['id','name','toEmail','body','subject','createdAt','messageId']);
+export const MessageReplyScalarFieldEnumSchema = z.enum(['id','name','toEmail','createdAt','messageId','sendGridMessageId','sendGridMessageStatus']);
 
 export const PurchaseAuditScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','email','product','country','firstName','lastName','sentProduct','stripeSessionId','sendGridMessageId','sendGridMessageStatus']);
 
@@ -49,6 +49,7 @@ export const MessageSchema = z.object({
   firstname: z.string(),
   lastname: z.string(),
   message: z.string(),
+  deleted: z.boolean(),
 })
 
 export type Message = z.infer<typeof MessageSchema>
@@ -160,13 +161,13 @@ export const UserWithRelationsSchema: z.ZodType<UserWithRelations> = UserSchema.
 /////////////////////////////////////////
 
 export const MessageReplySchema = z.object({
+  sendGridMessageStatus: MessageStatusSchema,
   id: z.string().cuid(),
   name: z.string(),
   toEmail: z.string(),
-  body: z.string(),
-  subject: z.string(),
   createdAt: z.coerce.date(),
   messageId: z.number().int(),
+  sendGridMessageId: z.string().nullable(),
 })
 
 export type MessageReply = z.infer<typeof MessageReplySchema>
@@ -239,6 +240,7 @@ export const MessageSelectSchema: z.ZodType<Prisma.MessageSelect> = z.object({
   firstname: z.boolean().optional(),
   lastname: z.boolean().optional(),
   message: z.boolean().optional(),
+  deleted: z.boolean().optional(),
   replies: z.union([z.boolean(),z.lazy(() => MessageReplyFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => MessageCountOutputTypeArgsSchema)]).optional(),
 }).strict()
@@ -341,10 +343,10 @@ export const MessageReplySelectSchema: z.ZodType<Prisma.MessageReplySelect> = z.
   id: z.boolean().optional(),
   name: z.boolean().optional(),
   toEmail: z.boolean().optional(),
-  body: z.boolean().optional(),
-  subject: z.boolean().optional(),
   createdAt: z.boolean().optional(),
   messageId: z.boolean().optional(),
+  sendGridMessageId: z.boolean().optional(),
+  sendGridMessageStatus: z.boolean().optional(),
   message: z.union([z.boolean(),z.lazy(() => MessageArgsSchema)]).optional(),
 }).strict()
 
@@ -383,6 +385,7 @@ export const MessageWhereInputSchema: z.ZodType<Prisma.MessageWhereInput> = z.ob
   firstname: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   lastname: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   message: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  deleted: z.union([ z.lazy(() => BoolFilterSchema),z.boolean() ]).optional(),
   replies: z.lazy(() => MessageReplyListRelationFilterSchema).optional()
 }).strict();
 
@@ -395,6 +398,7 @@ export const MessageOrderByWithRelationInputSchema: z.ZodType<Prisma.MessageOrde
   firstname: z.lazy(() => SortOrderSchema).optional(),
   lastname: z.lazy(() => SortOrderSchema).optional(),
   message: z.lazy(() => SortOrderSchema).optional(),
+  deleted: z.lazy(() => SortOrderSchema).optional(),
   replies: z.lazy(() => MessageReplyOrderByRelationAggregateInputSchema).optional()
 }).strict();
 
@@ -413,6 +417,7 @@ export const MessageWhereUniqueInputSchema: z.ZodType<Prisma.MessageWhereUniqueI
   firstname: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   lastname: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   message: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  deleted: z.union([ z.lazy(() => BoolFilterSchema),z.boolean() ]).optional(),
   replies: z.lazy(() => MessageReplyListRelationFilterSchema).optional()
 }).strict());
 
@@ -425,6 +430,7 @@ export const MessageOrderByWithAggregationInputSchema: z.ZodType<Prisma.MessageO
   firstname: z.lazy(() => SortOrderSchema).optional(),
   lastname: z.lazy(() => SortOrderSchema).optional(),
   message: z.lazy(() => SortOrderSchema).optional(),
+  deleted: z.lazy(() => SortOrderSchema).optional(),
   _count: z.lazy(() => MessageCountOrderByAggregateInputSchema).optional(),
   _avg: z.lazy(() => MessageAvgOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => MessageMaxOrderByAggregateInputSchema).optional(),
@@ -444,6 +450,7 @@ export const MessageScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.Messa
   firstname: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   lastname: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   message: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  deleted: z.union([ z.lazy(() => BoolWithAggregatesFilterSchema),z.boolean() ]).optional(),
 }).strict();
 
 export const AccountWhereInputSchema: z.ZodType<Prisma.AccountWhereInput> = z.object({
@@ -690,10 +697,10 @@ export const MessageReplyWhereInputSchema: z.ZodType<Prisma.MessageReplyWhereInp
   id: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   name: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   toEmail: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  body: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  subject: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
   messageId: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => EnumMessageStatusFilterSchema),z.lazy(() => MessageStatusSchema) ]).optional(),
   message: z.union([ z.lazy(() => MessageRelationFilterSchema),z.lazy(() => MessageWhereInputSchema) ]).optional(),
 }).strict();
 
@@ -701,10 +708,10 @@ export const MessageReplyOrderByWithRelationInputSchema: z.ZodType<Prisma.Messag
   id: z.lazy(() => SortOrderSchema).optional(),
   name: z.lazy(() => SortOrderSchema).optional(),
   toEmail: z.lazy(() => SortOrderSchema).optional(),
-  body: z.lazy(() => SortOrderSchema).optional(),
-  subject: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   messageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional(),
   message: z.lazy(() => MessageOrderByWithRelationInputSchema).optional()
 }).strict();
 
@@ -718,10 +725,10 @@ export const MessageReplyWhereUniqueInputSchema: z.ZodType<Prisma.MessageReplyWh
   NOT: z.union([ z.lazy(() => MessageReplyWhereInputSchema),z.lazy(() => MessageReplyWhereInputSchema).array() ]).optional(),
   name: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   toEmail: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  body: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  subject: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
   messageId: z.union([ z.lazy(() => IntFilterSchema),z.number().int() ]).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => EnumMessageStatusFilterSchema),z.lazy(() => MessageStatusSchema) ]).optional(),
   message: z.union([ z.lazy(() => MessageRelationFilterSchema),z.lazy(() => MessageWhereInputSchema) ]).optional(),
 }).strict());
 
@@ -729,10 +736,10 @@ export const MessageReplyOrderByWithAggregationInputSchema: z.ZodType<Prisma.Mes
   id: z.lazy(() => SortOrderSchema).optional(),
   name: z.lazy(() => SortOrderSchema).optional(),
   toEmail: z.lazy(() => SortOrderSchema).optional(),
-  body: z.lazy(() => SortOrderSchema).optional(),
-  subject: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   messageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional(),
   _count: z.lazy(() => MessageReplyCountOrderByAggregateInputSchema).optional(),
   _avg: z.lazy(() => MessageReplyAvgOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => MessageReplyMaxOrderByAggregateInputSchema).optional(),
@@ -747,10 +754,10 @@ export const MessageReplyScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.
   id: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   name: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   toEmail: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
-  body: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
-  subject: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   createdAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
   messageId: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema),z.string() ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => EnumMessageStatusWithAggregatesFilterSchema),z.lazy(() => MessageStatusSchema) ]).optional(),
 }).strict();
 
 export const PurchaseAuditWhereInputSchema: z.ZodType<Prisma.PurchaseAuditWhereInput> = z.object({
@@ -851,6 +858,7 @@ export const MessageCreateInputSchema: z.ZodType<Prisma.MessageCreateInput> = z.
   firstname: z.string(),
   lastname: z.string(),
   message: z.string(),
+  deleted: z.boolean().optional(),
   replies: z.lazy(() => MessageReplyCreateNestedManyWithoutMessageInputSchema).optional()
 }).strict();
 
@@ -863,6 +871,7 @@ export const MessageUncheckedCreateInputSchema: z.ZodType<Prisma.MessageUnchecke
   firstname: z.string(),
   lastname: z.string(),
   message: z.string(),
+  deleted: z.boolean().optional(),
   replies: z.lazy(() => MessageReplyUncheckedCreateNestedManyWithoutMessageInputSchema).optional()
 }).strict();
 
@@ -874,6 +883,7 @@ export const MessageUpdateInputSchema: z.ZodType<Prisma.MessageUpdateInput> = z.
   firstname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   lastname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  deleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   replies: z.lazy(() => MessageReplyUpdateManyWithoutMessageNestedInputSchema).optional()
 }).strict();
 
@@ -886,6 +896,7 @@ export const MessageUncheckedUpdateInputSchema: z.ZodType<Prisma.MessageUnchecke
   firstname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   lastname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  deleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   replies: z.lazy(() => MessageReplyUncheckedUpdateManyWithoutMessageNestedInputSchema).optional()
 }).strict();
 
@@ -897,7 +908,8 @@ export const MessageCreateManyInputSchema: z.ZodType<Prisma.MessageCreateManyInp
   email: z.string(),
   firstname: z.string(),
   lastname: z.string(),
-  message: z.string()
+  message: z.string(),
+  deleted: z.boolean().optional()
 }).strict();
 
 export const MessageUpdateManyMutationInputSchema: z.ZodType<Prisma.MessageUpdateManyMutationInput> = z.object({
@@ -908,6 +920,7 @@ export const MessageUpdateManyMutationInputSchema: z.ZodType<Prisma.MessageUpdat
   firstname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   lastname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  deleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const MessageUncheckedUpdateManyInputSchema: z.ZodType<Prisma.MessageUncheckedUpdateManyInput> = z.object({
@@ -919,6 +932,7 @@ export const MessageUncheckedUpdateManyInputSchema: z.ZodType<Prisma.MessageUnch
   firstname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   lastname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  deleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const AccountCreateInputSchema: z.ZodType<Prisma.AccountCreateInput> = z.object({
@@ -1141,9 +1155,9 @@ export const MessageReplyCreateInputSchema: z.ZodType<Prisma.MessageReplyCreateI
   id: z.string().cuid().optional(),
   name: z.string(),
   toEmail: z.string(),
-  body: z.string(),
-  subject: z.string(),
   createdAt: z.coerce.date().optional(),
+  sendGridMessageId: z.string().optional().nullable(),
+  sendGridMessageStatus: z.lazy(() => MessageStatusSchema).optional(),
   message: z.lazy(() => MessageCreateNestedOneWithoutRepliesInputSchema)
 }).strict();
 
@@ -1151,19 +1165,19 @@ export const MessageReplyUncheckedCreateInputSchema: z.ZodType<Prisma.MessageRep
   id: z.string().cuid().optional(),
   name: z.string(),
   toEmail: z.string(),
-  body: z.string(),
-  subject: z.string(),
   createdAt: z.coerce.date().optional(),
-  messageId: z.number().int()
+  messageId: z.number().int(),
+  sendGridMessageId: z.string().optional().nullable(),
+  sendGridMessageStatus: z.lazy(() => MessageStatusSchema).optional()
 }).strict();
 
 export const MessageReplyUpdateInputSchema: z.ZodType<Prisma.MessageReplyUpdateInput> = z.object({
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toEmail: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  body: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  subject: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.lazy(() => MessageUpdateOneRequiredWithoutRepliesNestedInputSchema).optional()
 }).strict();
 
@@ -1171,39 +1185,39 @@ export const MessageReplyUncheckedUpdateInputSchema: z.ZodType<Prisma.MessageRep
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toEmail: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  body: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  subject: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   messageId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const MessageReplyCreateManyInputSchema: z.ZodType<Prisma.MessageReplyCreateManyInput> = z.object({
   id: z.string().cuid().optional(),
   name: z.string(),
   toEmail: z.string(),
-  body: z.string(),
-  subject: z.string(),
   createdAt: z.coerce.date().optional(),
-  messageId: z.number().int()
+  messageId: z.number().int(),
+  sendGridMessageId: z.string().optional().nullable(),
+  sendGridMessageStatus: z.lazy(() => MessageStatusSchema).optional()
 }).strict();
 
 export const MessageReplyUpdateManyMutationInputSchema: z.ZodType<Prisma.MessageReplyUpdateManyMutationInput> = z.object({
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toEmail: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  body: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  subject: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const MessageReplyUncheckedUpdateManyInputSchema: z.ZodType<Prisma.MessageReplyUncheckedUpdateManyInput> = z.object({
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toEmail: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  body: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  subject: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   messageId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const PurchaseAuditCreateInputSchema: z.ZodType<Prisma.PurchaseAuditCreateInput> = z.object({
@@ -1370,7 +1384,8 @@ export const MessageCountOrderByAggregateInputSchema: z.ZodType<Prisma.MessageCo
   email: z.lazy(() => SortOrderSchema).optional(),
   firstname: z.lazy(() => SortOrderSchema).optional(),
   lastname: z.lazy(() => SortOrderSchema).optional(),
-  message: z.lazy(() => SortOrderSchema).optional()
+  message: z.lazy(() => SortOrderSchema).optional(),
+  deleted: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const MessageAvgOrderByAggregateInputSchema: z.ZodType<Prisma.MessageAvgOrderByAggregateInput> = z.object({
@@ -1385,7 +1400,8 @@ export const MessageMaxOrderByAggregateInputSchema: z.ZodType<Prisma.MessageMaxO
   email: z.lazy(() => SortOrderSchema).optional(),
   firstname: z.lazy(() => SortOrderSchema).optional(),
   lastname: z.lazy(() => SortOrderSchema).optional(),
-  message: z.lazy(() => SortOrderSchema).optional()
+  message: z.lazy(() => SortOrderSchema).optional(),
+  deleted: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const MessageMinOrderByAggregateInputSchema: z.ZodType<Prisma.MessageMinOrderByAggregateInput> = z.object({
@@ -1396,7 +1412,8 @@ export const MessageMinOrderByAggregateInputSchema: z.ZodType<Prisma.MessageMinO
   email: z.lazy(() => SortOrderSchema).optional(),
   firstname: z.lazy(() => SortOrderSchema).optional(),
   lastname: z.lazy(() => SortOrderSchema).optional(),
-  message: z.lazy(() => SortOrderSchema).optional()
+  message: z.lazy(() => SortOrderSchema).optional(),
+  deleted: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const MessageSumOrderByAggregateInputSchema: z.ZodType<Prisma.MessageSumOrderByAggregateInput> = z.object({
@@ -1674,6 +1691,13 @@ export const DateTimeNullableWithAggregatesFilterSchema: z.ZodType<Prisma.DateTi
   _max: z.lazy(() => NestedDateTimeNullableFilterSchema).optional()
 }).strict();
 
+export const EnumMessageStatusFilterSchema: z.ZodType<Prisma.EnumMessageStatusFilter> = z.object({
+  equals: z.lazy(() => MessageStatusSchema).optional(),
+  in: z.lazy(() => MessageStatusSchema).array().optional(),
+  notIn: z.lazy(() => MessageStatusSchema).array().optional(),
+  not: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => NestedEnumMessageStatusFilterSchema) ]).optional(),
+}).strict();
+
 export const MessageRelationFilterSchema: z.ZodType<Prisma.MessageRelationFilter> = z.object({
   is: z.lazy(() => MessageWhereInputSchema).optional(),
   isNot: z.lazy(() => MessageWhereInputSchema).optional()
@@ -1683,10 +1707,10 @@ export const MessageReplyCountOrderByAggregateInputSchema: z.ZodType<Prisma.Mess
   id: z.lazy(() => SortOrderSchema).optional(),
   name: z.lazy(() => SortOrderSchema).optional(),
   toEmail: z.lazy(() => SortOrderSchema).optional(),
-  body: z.lazy(() => SortOrderSchema).optional(),
-  subject: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
-  messageId: z.lazy(() => SortOrderSchema).optional()
+  messageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const MessageReplyAvgOrderByAggregateInputSchema: z.ZodType<Prisma.MessageReplyAvgOrderByAggregateInput> = z.object({
@@ -1697,31 +1721,34 @@ export const MessageReplyMaxOrderByAggregateInputSchema: z.ZodType<Prisma.Messag
   id: z.lazy(() => SortOrderSchema).optional(),
   name: z.lazy(() => SortOrderSchema).optional(),
   toEmail: z.lazy(() => SortOrderSchema).optional(),
-  body: z.lazy(() => SortOrderSchema).optional(),
-  subject: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
-  messageId: z.lazy(() => SortOrderSchema).optional()
+  messageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const MessageReplyMinOrderByAggregateInputSchema: z.ZodType<Prisma.MessageReplyMinOrderByAggregateInput> = z.object({
   id: z.lazy(() => SortOrderSchema).optional(),
   name: z.lazy(() => SortOrderSchema).optional(),
   toEmail: z.lazy(() => SortOrderSchema).optional(),
-  body: z.lazy(() => SortOrderSchema).optional(),
-  subject: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
-  messageId: z.lazy(() => SortOrderSchema).optional()
+  messageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageId: z.lazy(() => SortOrderSchema).optional(),
+  sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const MessageReplySumOrderByAggregateInputSchema: z.ZodType<Prisma.MessageReplySumOrderByAggregateInput> = z.object({
   messageId: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
-export const EnumMessageStatusFilterSchema: z.ZodType<Prisma.EnumMessageStatusFilter> = z.object({
+export const EnumMessageStatusWithAggregatesFilterSchema: z.ZodType<Prisma.EnumMessageStatusWithAggregatesFilter> = z.object({
   equals: z.lazy(() => MessageStatusSchema).optional(),
   in: z.lazy(() => MessageStatusSchema).array().optional(),
   notIn: z.lazy(() => MessageStatusSchema).array().optional(),
-  not: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => NestedEnumMessageStatusFilterSchema) ]).optional(),
+  not: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => NestedEnumMessageStatusWithAggregatesFilterSchema) ]).optional(),
+  _count: z.lazy(() => NestedIntFilterSchema).optional(),
+  _min: z.lazy(() => NestedEnumMessageStatusFilterSchema).optional(),
+  _max: z.lazy(() => NestedEnumMessageStatusFilterSchema).optional()
 }).strict();
 
 export const PurchaseAuditCountOrderByAggregateInputSchema: z.ZodType<Prisma.PurchaseAuditCountOrderByAggregateInput> = z.object({
@@ -1767,16 +1794,6 @@ export const PurchaseAuditMinOrderByAggregateInputSchema: z.ZodType<Prisma.Purch
   stripeSessionId: z.lazy(() => SortOrderSchema).optional(),
   sendGridMessageId: z.lazy(() => SortOrderSchema).optional(),
   sendGridMessageStatus: z.lazy(() => SortOrderSchema).optional()
-}).strict();
-
-export const EnumMessageStatusWithAggregatesFilterSchema: z.ZodType<Prisma.EnumMessageStatusWithAggregatesFilter> = z.object({
-  equals: z.lazy(() => MessageStatusSchema).optional(),
-  in: z.lazy(() => MessageStatusSchema).array().optional(),
-  notIn: z.lazy(() => MessageStatusSchema).array().optional(),
-  not: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => NestedEnumMessageStatusWithAggregatesFilterSchema) ]).optional(),
-  _count: z.lazy(() => NestedIntFilterSchema).optional(),
-  _min: z.lazy(() => NestedEnumMessageStatusFilterSchema).optional(),
-  _max: z.lazy(() => NestedEnumMessageStatusFilterSchema).optional()
 }).strict();
 
 export const MessageReplyCreateNestedManyWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyCreateNestedManyWithoutMessageInput> = z.object({
@@ -1975,16 +1992,16 @@ export const MessageCreateNestedOneWithoutRepliesInputSchema: z.ZodType<Prisma.M
   connect: z.lazy(() => MessageWhereUniqueInputSchema).optional()
 }).strict();
 
+export const EnumMessageStatusFieldUpdateOperationsInputSchema: z.ZodType<Prisma.EnumMessageStatusFieldUpdateOperationsInput> = z.object({
+  set: z.lazy(() => MessageStatusSchema).optional()
+}).strict();
+
 export const MessageUpdateOneRequiredWithoutRepliesNestedInputSchema: z.ZodType<Prisma.MessageUpdateOneRequiredWithoutRepliesNestedInput> = z.object({
   create: z.union([ z.lazy(() => MessageCreateWithoutRepliesInputSchema),z.lazy(() => MessageUncheckedCreateWithoutRepliesInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => MessageCreateOrConnectWithoutRepliesInputSchema).optional(),
   upsert: z.lazy(() => MessageUpsertWithoutRepliesInputSchema).optional(),
   connect: z.lazy(() => MessageWhereUniqueInputSchema).optional(),
   update: z.union([ z.lazy(() => MessageUpdateToOneWithWhereWithoutRepliesInputSchema),z.lazy(() => MessageUpdateWithoutRepliesInputSchema),z.lazy(() => MessageUncheckedUpdateWithoutRepliesInputSchema) ]).optional(),
-}).strict();
-
-export const EnumMessageStatusFieldUpdateOperationsInputSchema: z.ZodType<Prisma.EnumMessageStatusFieldUpdateOperationsInput> = z.object({
-  set: z.lazy(() => MessageStatusSchema).optional()
 }).strict();
 
 export const NestedIntFilterSchema: z.ZodType<Prisma.NestedIntFilter> = z.object({
@@ -2209,18 +2226,18 @@ export const MessageReplyCreateWithoutMessageInputSchema: z.ZodType<Prisma.Messa
   id: z.string().cuid().optional(),
   name: z.string(),
   toEmail: z.string(),
-  body: z.string(),
-  subject: z.string(),
-  createdAt: z.coerce.date().optional()
+  createdAt: z.coerce.date().optional(),
+  sendGridMessageId: z.string().optional().nullable(),
+  sendGridMessageStatus: z.lazy(() => MessageStatusSchema).optional()
 }).strict();
 
 export const MessageReplyUncheckedCreateWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyUncheckedCreateWithoutMessageInput> = z.object({
   id: z.string().cuid().optional(),
   name: z.string(),
   toEmail: z.string(),
-  body: z.string(),
-  subject: z.string(),
-  createdAt: z.coerce.date().optional()
+  createdAt: z.coerce.date().optional(),
+  sendGridMessageId: z.string().optional().nullable(),
+  sendGridMessageStatus: z.lazy(() => MessageStatusSchema).optional()
 }).strict();
 
 export const MessageReplyCreateOrConnectWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyCreateOrConnectWithoutMessageInput> = z.object({
@@ -2256,10 +2273,10 @@ export const MessageReplyScalarWhereInputSchema: z.ZodType<Prisma.MessageReplySc
   id: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   name: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   toEmail: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  body: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  subject: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
   messageId: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
+  sendGridMessageId: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => EnumMessageStatusFilterSchema),z.lazy(() => MessageStatusSchema) ]).optional(),
 }).strict();
 
 export const UserCreateWithoutAccountsInputSchema: z.ZodType<Prisma.UserCreateWithoutAccountsInput> = z.object({
@@ -2493,7 +2510,8 @@ export const MessageCreateWithoutRepliesInputSchema: z.ZodType<Prisma.MessageCre
   email: z.string(),
   firstname: z.string(),
   lastname: z.string(),
-  message: z.string()
+  message: z.string(),
+  deleted: z.boolean().optional()
 }).strict();
 
 export const MessageUncheckedCreateWithoutRepliesInputSchema: z.ZodType<Prisma.MessageUncheckedCreateWithoutRepliesInput> = z.object({
@@ -2504,7 +2522,8 @@ export const MessageUncheckedCreateWithoutRepliesInputSchema: z.ZodType<Prisma.M
   email: z.string(),
   firstname: z.string(),
   lastname: z.string(),
-  message: z.string()
+  message: z.string(),
+  deleted: z.boolean().optional()
 }).strict();
 
 export const MessageCreateOrConnectWithoutRepliesInputSchema: z.ZodType<Prisma.MessageCreateOrConnectWithoutRepliesInput> = z.object({
@@ -2531,6 +2550,7 @@ export const MessageUpdateWithoutRepliesInputSchema: z.ZodType<Prisma.MessageUpd
   firstname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   lastname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  deleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const MessageUncheckedUpdateWithoutRepliesInputSchema: z.ZodType<Prisma.MessageUncheckedUpdateWithoutRepliesInput> = z.object({
@@ -2542,42 +2562,43 @@ export const MessageUncheckedUpdateWithoutRepliesInputSchema: z.ZodType<Prisma.M
   firstname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   lastname: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  deleted: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const MessageReplyCreateManyMessageInputSchema: z.ZodType<Prisma.MessageReplyCreateManyMessageInput> = z.object({
   id: z.string().cuid().optional(),
   name: z.string(),
   toEmail: z.string(),
-  body: z.string(),
-  subject: z.string(),
-  createdAt: z.coerce.date().optional()
+  createdAt: z.coerce.date().optional(),
+  sendGridMessageId: z.string().optional().nullable(),
+  sendGridMessageStatus: z.lazy(() => MessageStatusSchema).optional()
 }).strict();
 
 export const MessageReplyUpdateWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyUpdateWithoutMessageInput> = z.object({
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toEmail: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  body: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  subject: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const MessageReplyUncheckedUpdateWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyUncheckedUpdateWithoutMessageInput> = z.object({
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toEmail: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  body: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  subject: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const MessageReplyUncheckedUpdateManyWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyUncheckedUpdateManyWithoutMessageInput> = z.object({
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toEmail: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  body: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  subject: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  sendGridMessageId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  sendGridMessageStatus: z.union([ z.lazy(() => MessageStatusSchema),z.lazy(() => EnumMessageStatusFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
 export const AccountCreateManyUserInputSchema: z.ZodType<Prisma.AccountCreateManyUserInput> = z.object({
