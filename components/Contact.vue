@@ -92,7 +92,7 @@
 import { RecaptchaType } from "~/types/form-requests";
 import RequiredInput from "./form/RequiredInput.vue";
 import RequiredTextArea from "./form/RequiredTextArea.vue";
-import { submitRecaptcha } from "~/lib/submitRecaptcha";
+import { submitRecaptcha } from "~/lib/submit-recaptcha";
 import { type ContactSubmitRequest } from "~/types/form-requests";
 
 const firstName = ref("");

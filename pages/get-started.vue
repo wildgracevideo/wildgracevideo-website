@@ -160,7 +160,7 @@ import RequiredSelect from "../components/form/RequiredSelect.vue";
 import RequiredDropdownSelect from "../components/form/RequiredDropdownSelect.vue";
 import { type SelectChoice } from "~/types/form-input";
 import OgMeta from "~/components/OgMeta.vue";
-import { submitRecaptcha } from "~/lib/submitRecaptcha";
+import { submitRecaptcha } from "~/lib/submit-recaptcha";
 import {
   RecaptchaType,
   type GetStartedSubmitRequest,
