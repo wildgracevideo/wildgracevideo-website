@@ -1,5 +1,6 @@
+import { CheckoutType } from '~/lib/checkout-type';
 import { stripe } from '~/lib/stripe';
-import { CheckoutRequest, CheckoutType } from '~/types/stripe';
+import { CheckoutRequest } from '~/types/checkout-request';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -10,6 +11,9 @@ export default defineEventHandler(async (event): Promise<string> => {
   switch (checkoutRequest.type) {
     case CheckoutType.ReelIdeas:
       priceId = runtimeConfig.stripeReelIdeasPriceId;
+      break;
+    case CheckoutType.InteriorDesignerReelIdeas:
+      priceId = runtimeConfig.stripeInteriorDesignerReelIdeasPriceId;
       break;
     default:
       console.error(`Checkout request type of, ${checkoutRequest.type}, is not supported.`);

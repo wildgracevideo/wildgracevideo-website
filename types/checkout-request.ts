@@ -1,6 +1,4 @@
-export enum CheckoutType {
-  ReelIdeas = "ReelIdeas",
-}
+import { CheckoutType } from "~/lib/checkout-type";
 
 export interface CheckoutRequest {
   type: CheckoutType;

@@ -28,7 +28,7 @@
         <component v-for="item in items" :is="item.type" :config="item" />
       </PopoverGroup>
       <NuxtLink
-        class="h-12 w-32 text-md hidden lg:flex ml-auto mr-8 items-center cursor-pointer text-center block rounded-xl border-2 px-auto text-website-off-white border-website-green bg-website-green hover:text-website-green hover:bg-website-off-white"
+        class="h-12 w-32 text-md hidden lg:flex ml-auto mr-8 items-center cursor-pointer text-center rounded-xl border-2 px-auto text-website-off-white border-website-green bg-website-green hover:text-website-green hover:bg-website-off-white"
         to="/get-started"
       >
         <p class="mx-auto">Get Started</p>
@@ -98,7 +98,7 @@ const items: HeaderItemConfig[] = [
   },
   {
     name: "Shop",
-    href: "/30-day-video-transformation",
+    href: "/shop",
     type: HeaderItem,
   },
 ];

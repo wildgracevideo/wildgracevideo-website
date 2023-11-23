@@ -10,7 +10,8 @@ export interface CreateContactRequest {
 }
 
 export enum ProductType {
-  THIRTY_DAY_VIDEO_TRANSFORMATION_BUY = '30-day-video-transformation-buy'
+  THIRTY_DAY_VIDEO_TRANSFORMATION_BUY = '30-day-video-transformation-buy',
+  INTERIOR_DESIGNER_THIRTY_DAT_VIDEO_TRANSFORMATION_BUY = 'interior-designer-30-day-video-transformation-buy',
 }
 
 export async function createContact(request: CreateContactRequest): Promise<void> { 

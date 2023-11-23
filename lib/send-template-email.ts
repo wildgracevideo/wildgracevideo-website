@@ -10,6 +10,10 @@ export interface DiscoveryCallTemplateData {
   firstName: string;
 }
 
+export interface InteriorDesignerReelIdeasTemplateData {
+    firstName: string;
+}
+
 export async function sendReelIdeasEmail(toEmail: string, templateData: ReelIdeasTemplateData): Promise<string> {
   return await sendTemplatedEmail(toEmail, runtimeConfig.reelIdeasTemplateId, templateData);
 }
@@ -20,8 +24,14 @@ export async function sendDiscoveryCall(
     return sendTemplatedEmail(toEmail, runtimeConfig.discoveryCallTemplateId, templateData);
 }
 
+export async function sendInteriorDesignerReelIdeasEmail(
+    toEmail: string, templateData: InteriorDesignerReelIdeasTemplateData
+): Promise<string> {
+    return sendTemplatedEmail(toEmail, runtimeConfig.interiorDesignerReelIdeasTemplateId, templateData);
+}
+
 async function sendTemplatedEmail(toEmail: string, templateId: string, templateData: ReelIdeasTemplateData): Promise<string> {
- const message = {
+  const message = {
     from: {
       email: runtimeConfig.clientFromEmailAddress
     },
