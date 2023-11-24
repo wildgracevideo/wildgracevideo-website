@@ -70,8 +70,4 @@ const pageTitle =
   "About Wild Grace Videography | Denver Video Production Company";
 const description =
   "Learn more about Wild Grace Videography, a Denver, Colorado-based video production company, that creates memorable videos to make your business stand out.";
-
-useHead({
-  title: pageTitle,
-});
 </script>

@@ -5,7 +5,7 @@ const prisma: PrismaClient = new PrismaClient();
 export default prisma;
 
 type MessageRelations = {
-  replies: MessageReply[];
+  reply: MessageReply;
 };
 
 export type MessageWithRelations = Message & MessageRelations;

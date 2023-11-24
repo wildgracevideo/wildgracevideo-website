@@ -1,40 +1,33 @@
+import { MessageReply, SendGridMessageType  } from "@prisma/client";
 import prisma from "~/lib/prisma";
-import { type MessageReply, type Prisma } from "@prisma/client";
-import { sendEmail } from "~/lib/send-email";
+import { sendDiscoveryCall } from "~/lib/send-template-email";
 import { MessageReplyRequest } from "~/types/messages";
 
+// TODO: Error handling?
 export default defineEventHandler(async (event): Promise<MessageReply> => {
-  const messageReplyRequest = await readBody<MessageReplyRequest>(event);
+    const messageReplyRequest = await readBody<MessageReplyRequest>(event);
 
-  const htmlBody = `
-    <html>
-      <body>
-        Hi ${messageReplyRequest.name},
-        <br />
-        ${messageReplyRequest.message}
-        <br/>
-        <br/>
-        Carly Kreiger
-        <br/>
-        Wild Grace Videography
-      </body>
-    </html>`;
-
-  const emailResult = sendEmail(htmlBody, messageReplyRequest.toEmail, messageReplyRequest.subject);
-
-  const messageReplyCreateInput: Prisma.MessageReplyCreateInput = {
-    toEmail: messageReplyRequest.toEmail,
-    body: messageReplyRequest.message,
-    subject: messageReplyRequest.subject,
-    name: messageReplyRequest.name,
-    message: {
-      connect: {
-        id: messageReplyRequest.messageId
-      }
+    let messageId: string;
+    try {
+        messageId = await sendDiscoveryCall(messageReplyRequest.toEmail, { firstName: messageReplyRequest.name });
+    } catch (e) {
+        throw createError({ status: 500, statusMessage: 'Internal server error'});
     }
-  };
-  const prismaResult = prisma.messageReply.create({data: messageReplyCreateInput});
-  await emailResult;
-  return await prismaResult;
+    console.log('Sent discovery call email');
+    const messageReply = await prisma.messageReply.create({
+        data: {
+            name: messageReplyRequest.name,
+            toEmail: messageReplyRequest.toEmail,
+            messageId: messageReplyRequest.messageId,
+            sendGridMessageId: messageId,
+        }
+    });
+    await prisma.sendGridMessageMap.create({
+        data: {
+            id: messageId,
+            type: SendGridMessageType.MESSAGE_REPLY,
+        }
+    });
+    return messageReply;
 });
 

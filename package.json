@@ -28,7 +28,6 @@
     "@aws-sdk/client-sesv2": "^3.436.0",
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
-    "@netlify/functions": "^2.0.2",
     "@next-auth/prisma-adapter": "^1.0.7",
     "@nuxt/image": "^1.0.0-rc.2",
     "@prisma/client": "^5.4.1",

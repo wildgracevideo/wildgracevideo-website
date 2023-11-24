@@ -1,11 +1,129 @@
 import prisma from '~/lib/prisma';
 import { EventWebhook } from '@sendgrid/eventwebhook'; 
-import { MessageStatus } from '@prisma/client';
+import { MessageReply, MessageStatus, PrismaClient, PurchaseAudit, SendGridMessageType } from '@prisma/client';
 
 const eventWebhookValidator = new EventWebhook();
 
 const runtimeConfig = useRuntimeConfig();
 const publicKey = eventWebhookValidator.convertPublicKeyToECDSA(runtimeConfig.sendgridWebhookSigningKey);
+
+interface MessageStatusUpdate {
+    where: { 
+        id: string
+    }, 
+    data: { 
+        sendGridMessageStatus: MessageStatus
+    }
+}
+
+interface MessageStatusAndId {
+    id: string,
+    sendGridMessageStatus: MessageStatus,
+}
+
+abstract class MessageStatusTable<T extends MessageStatusAndId > {
+
+    private tableName: string;
+
+    constructor(tableName: string) {
+        this.tableName = tableName;
+    }
+
+    protected abstract getInternal(sendGridMessageId: string): Promise<T | null>;
+    protected abstract updateInternal(updateReqeust: MessageStatusUpdate): Promise<void>;
+
+    async get(sendGridMessageId: string): Promise<MessageStatusAndId> {
+        try {
+            const record = await this.getInternal(sendGridMessageId);
+            if (!record) {
+                console.error( `Failed to find ${this.tableName} with sendGridMessageId, ${sendGridMessageId}`);
+                throw createError({ statusMessage: 'Internal Server Error', statusCode: 500 });
+            }
+            return {
+                id: record.id,
+                sendGridMessageStatus: record.sendGridMessageStatus,
+            }
+        } catch (e) {
+            console.error(`Failed to find existing ${this.tableName} for messageId ${sendGridMessageId}.`, e);
+            throw createError({ statusMessage: 'Internal Server Error', statusCode: 500 });
+        }
+    }
+
+    async update(updateRequest: MessageStatusUpdate): Promise<void> {
+        try {
+            await this.updateInternal(updateRequest);
+        } catch (e) {
+            console.error(`Failed to update ${this.tableName} message status field.`, e);
+            throw e;
+        }
+    }
+}
+
+class MessageReplyTable extends MessageStatusTable<MessageReply> {
+
+    private prismaClient: PrismaClient;
+
+    constructor(prismaClient: PrismaClient) {
+        super("messageReply");
+        this.prismaClient = prismaClient;
+    }
+
+    protected async getInternal(sendGridMessageId: string): Promise<MessageReply | null> {
+        return await this.prismaClient.messageReply.findFirst({where: { sendGridMessageId }}); 
+    }
+
+    protected async updateInternal(updateReqeust: MessageStatusUpdate): Promise<void> {
+        await this.prismaClient.messageReply.update(updateReqeust);
+    }
+}
+
+class PurchaseAuditTable extends MessageStatusTable<PurchaseAudit> {
+
+    private prismaClient: PrismaClient;
+    
+    constructor(prismaClient: PrismaClient) {
+        super("purchaseAudit");
+        this.prismaClient = prismaClient;
+    }
+
+    protected async getInternal(sendGridMessageId: string): Promise<PurchaseAudit | null> {
+        return await this.prismaClient.purchaseAudit.findFirst({where: { sendGridMessageId }}); 
+    }
+
+    protected async updateInternal(updateReqeust: MessageStatusUpdate): Promise<void> {
+        await this.prismaClient.purchaseAudit.update(updateReqeust); 
+    }
+}
+
+class MessageStatusTableFactory {
+
+    private prismaClient: PrismaClient;
+
+    constructor(prismaClient: PrismaClient) {
+        this.prismaClient = prismaClient;
+    }
+
+    async getTable(sendGridMessageId: string): Promise<MessageStatusTable<MessageStatusAndId>> {
+        let sendGridMessageMap;
+        try {
+            sendGridMessageMap = await this.prismaClient.sendGridMessageMap.findFirst(
+                { where: { id: sendGridMessageId } }
+            );
+        } catch (e) {
+            console.error(`Failed to fetch mapping for sendGridMessageId, ${sendGridMessageId}`, e);
+        }
+        if (!sendGridMessageMap) {
+            console.error(`No mapping found for sendGridMessageId, ${sendGridMessageId}.`);
+            throw createError({ status: 500, statusMessage: "Internal Server Error" });
+        }
+        switch (sendGridMessageMap.type) {
+            case SendGridMessageType.PURCHASE:
+                return new PurchaseAuditTable(this.prismaClient);
+            case SendGridMessageType.MESSAGE_REPLY:
+                return new MessageReplyTable(this.prismaClient);
+        }
+    }
+}
 
 export default defineEventHandler(async (event): Promise<void> => {
   const webhookBody: Record<string, any>[] = await readBody(event);
@@ -32,40 +150,41 @@ export default defineEventHandler(async (event): Promise<void> => {
   }
 });
 
+const factory = new MessageStatusTableFactory(prisma);
+
 async function handleEvent(webhookEvent: Record<string, any>) {
   const sendGridMessageId = webhookEvent['sg_message_id']?.split('.')[0];
-  let status = getStatusFrom(webhookEvent);
-  if (!status) {
+  let newStatus = getStatusFrom(webhookEvent);
+  if (!newStatus) {
     // Don't contine to process an unknown event type
     return;
   }
-  let purchaseAudit;
-  try {
-    purchaseAudit = await prisma.purchaseAudit.findFirst({where: { sendGridMessageId }});
-  } catch (e) {
-    console.error(`Failed to find existing purchaseAudit for messageId ${sendGridMessageId}.`, e);
-    throw e;
+
+  const table = await factory.getTable(sendGridMessageId);
+  const messageStatusAndId = await table.get(sendGridMessageId);
+  const messageStatusUpdate = getUpdateData(messageStatusAndId.sendGridMessageStatus, newStatus, messageStatusAndId.id);
+  if (messageStatusUpdate) {
+    await table.update(messageStatusUpdate);
+  } else {
+    console.info(`Not updating status, for sendGridMessageId, ${sendGridMessageId}. 
+                 existingStatus: ${messageStatusAndId.sendGridMessageStatus}, newStatus: ${newStatus}`);
   }
-  if (!purchaseAudit) {
-    const message = `No purchase audit results for messageId, ${sendGridMessageId}`;
-    console.error(message)
-    throw new Error(message, webhookEvent);
-  } 
-  if (status && getStatusPriority(status) > getStatusPriority(purchaseAudit.sendGridMessageStatus)) { 
-    try {
-      await prisma.purchaseAudit.update({
-        where: {
-          id: purchaseAudit.id,
-        },
-        data: {
-          sendGridMessageStatus: status,
-        }
-      });
-    } catch (e) {
-      console.error('Failed to update purchaseAudit message status field.', e);
-      throw e;
-    }
+}
+
+function getUpdateData(
+    existingStatus: MessageStatus, newStatus: MessageStatus | undefined, recordId: string,
+): MessageStatusUpdate | undefined {
+  if (newStatus && getStatusPriority(newStatus) > getStatusPriority(existingStatus)) { 
+    return {
+      where: {
+        id: recordId,
+      },
+      data: {
+        sendGridMessageStatus: newStatus,
+      }
+    };
   }
+  return undefined;
 }
 
 function getStatusFrom(webhookEvent: Record<string, any>): MessageStatus | undefined  {

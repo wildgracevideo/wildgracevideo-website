@@ -47,8 +47,8 @@
                         id="toEmail"
                         :is-required="true"
                         title-text-class="text-gray-500 text-xs"
-                        input-class="text-sm w-full"
-                        v-model="toEmail"
+                        input-class="text-sm w-full mb-4"
+                        v-model="toEmailModel"
                         hint="To Email"
                       />
                       <FormRequiredInput
@@ -57,27 +57,8 @@
                         :is-required="true"
                         title-text-class="text-gray-500 text-xs"
                         input-class="text-sm w-full"
-                        v-model="name"
+                        v-model="nameModel"
                         hint="Name"
-                      />
-                      <FormRequiredInput
-                        title="Subject"
-                        id="subject"
-                        :is-required="true"
-                        title-text-class="text-gray-500 text-xs"
-                        container-class="my-4"
-                        input-class="text-sm"
-                        v-model="subject"
-                        hint="Subject"
-                      />
-                      <FormRequiredTextArea
-                        :rows="5"
-                        title="Message"
-                        id="message"
-                        :is-required="true"
-                        title-text-class="text-gray-500 text-xs"
-                        input-class="text-sm"
-                        v-model="message"
                       />
                     </form>
                   </div>
@@ -124,8 +105,6 @@ import type { MessageReplyRequest } from "~/types/messages";
 const props = defineProps<{
   modelValue: boolean;
   toEmail: string;
-  message: string;
-  subject: string;
   name: string;
   messageId: number;
   sendHandler: (messageReplyRequest: MessageReplyRequest) => Promise<void>;
@@ -142,27 +121,19 @@ const showModal = computed({
   },
 });
 
-const toEmail = ref(props.toEmail);
-const subject = ref(props.subject);
-const message = ref(props.message);
-const name = ref(props.name);
+const toEmailModel = ref(props.toEmail);
+const nameModel = ref(props.name);
 
 const sendingMessage = ref(false);
 
 const send = async () => {
   const messageReplyRequest: MessageReplyRequest = {
-    name: props.name,
-    toEmail: toEmail.value,
-    subject: subject.value,
-    message: message.value,
+    name: nameModel.value,
+    toEmail: toEmailModel.value,
     messageId: props.messageId,
   };
   sendingMessage.value = true;
-  try {
-    await props.sendHandler(messageReplyRequest);
-  } catch (e) {
-    console.error(e);
-  }
+  await props.sendHandler(messageReplyRequest);
   sendingMessage.value = false;
   showModal.value = false;
 };
