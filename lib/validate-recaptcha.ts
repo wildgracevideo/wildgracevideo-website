@@ -1,5 +1,7 @@
 import { type RecaptchaType } from "~/types/form-requests";
 
+const MIN_SCORE = 0.4;
+
 export async function validateRecaptcha(recaptchaSecret: string, token: string, action: RecaptchaType) {
   try {
     const response = await (await fetch('https://www.google.com/recaptcha/api/siteverify', {
@@ -13,7 +15,10 @@ export async function validateRecaptcha(recaptchaSecret: string, token: string, 
       })
     })).json();
     console.log(response);
-    return response.success && response.action === action.valueOf() && response.score >= 0.4;
+    if (response.score < MIN_SCORE) {
+      console.error(`Recaptcha score too low, ${response.score}`);
+    }
+    return response.success && response.action === action.valueOf() && response.score >= MIN_SCORE;
   } catch (error) {
     console.error(error);
     return false;
