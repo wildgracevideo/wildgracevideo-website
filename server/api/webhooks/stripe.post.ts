@@ -1,14 +1,33 @@
 import { CreateContactRequest, ProductType, createContact } from '~/lib/create-contact';
-import { sendReelIdeasEmail } from '~/lib/send-template-email';
+import { sendInteriorDesignerReelIdeasEmail, sendReelIdeasEmail } from '~/lib/send-template-email';
 import { stripe } from '~/lib/stripe';
 import prisma from '~/lib/prisma';
 import { PurchaseAudit, SendGridMessageType } from '@prisma/client';
+
+const runtimeConfig = useRuntimeConfig();
 
 export default defineEventHandler(async (event): Promise<void> => {
   const webhookBody = await readBody(event);
   if (webhookBody.type === 'checkout.session.completed') {
     const sessionId = webhookBody.data.object.id;
     const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const lineItems = await stripe.checkout.sessions.listLineItems(sessionId);
+    console.log(lineItems);
+    let priceId: string | undefined;
+    if (lineItems.data) {
+      console.log(lineItems.data[0].price);
+      priceId = lineItems.data[0].price?.id;
+    }
+
+    let productType: ProductType;
+    if (!priceId) {
+      const message = `Line items for the session, ${sessionId}, were not found`;
+      console.error(message);
+      throw createError({ statusMessage: message, statusCode: 500 });
+    } else {
+      productType = getProductType(priceId!);
+      console.log(`Checkout session, ${sessionId}, for product, ${productType}`);
+    }
     console.log("User opted in to emails.")
     const toEmail = session.customer_details?.email || session.customer_email;
     if (!toEmail) {
@@ -27,7 +46,7 @@ export default defineEventHandler(async (event): Promise<void> => {
     const createContactRequest = {
       firstName: firstName,
       lastName: lastName,
-      source: ProductType.THIRTY_DAY_VIDEO_TRANSFORMATION_BUY,
+      source: productType,
       email: toEmail,
       countryCode: session.customer_details?.address?.country || undefined,
       stripeSessionId: sessionId,
@@ -40,12 +59,35 @@ export default defineEventHandler(async (event): Promise<void> => {
       purchaseAudit = await saveContactToDB(createContactRequest);
     }
     if (!purchaseAudit.sentProduct) {
-      const messageId = await sendReelIdeasEmail(toEmail, templateData);
-      await updateSentProductField(purchaseAudit.id, messageId); 
+      let messageId: string;
+      switch (productType) {
+        case ProductType.THIRTY_DAY_VIDEO_TRANSFORMATION_BUY:
+          messageId = await sendReelIdeasEmail(toEmail, templateData);
+          break;
+        case ProductType.INTERIOR_DESIGNER_THIRTY_DAT_VIDEO_TRANSFORMATION_BUY:
+          messageId = await sendInteriorDesignerReelIdeasEmail(toEmail, templateData);
+          break;
+        default:
+          throw createError({ statusMessage: `Unknown product type, ${productType}.`, statusCode: 400 });
+      }
+      await updateSentProductField(purchaseAudit.id, messageId);
     }
     await createContact(createContactRequest);
   }
 });
+
+function getProductType(priceId: string): ProductType {
+  switch (priceId) {
+    case runtimeConfig.stripeReelIdeasPriceId:
+        return ProductType.THIRTY_DAY_VIDEO_TRANSFORMATION_BUY;
+    case runtimeConfig.stripeInteriorDesignerReelIdeasPriceId:
+        return ProductType.INTERIOR_DESIGNER_THIRTY_DAT_VIDEO_TRANSFORMATION_BUY;
+    default:
+      const message = `Unknown priceId, ${priceId}.`;
+      console.error(message);
+      throw createError({ statusMessage:message, statusCode: 500 });
+  }
+}
 
 async function getPurchaseAuditFromDB(request: CreateContactRequest): Promise<PurchaseAudit | null> {
   try {
