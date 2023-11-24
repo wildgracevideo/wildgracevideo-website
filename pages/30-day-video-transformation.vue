@@ -32,10 +32,10 @@
           v-html="paragraph"
         ></p>
         <p class="text-xl my-8 italic text-website-green">
-          Price: <span class="line-through decoration-2">$15</span> $7
+          Price: <span class="line-through decoration-2">$15</span> $0
         </p>
         <DefaultButton
-          title="BUY NOW FOR $7"
+          title="FREE"
           :action="buyNow"
           additonal-classes="lg:mx-0 mx-auto"
         />
@@ -68,7 +68,7 @@
       community.
     </p>
     <DefaultButton
-      title="BUY NOW FOR $7"
+      title="FREE"
       :action="buyNow"
       :inverse="true"
       additonal-classes="mx-auto mt-16"
