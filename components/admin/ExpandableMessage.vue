@@ -59,10 +59,11 @@ import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import { PaperAirplaneIcon, TrashIcon } from "@heroicons/vue/24/outline";
 import { type MessageWithRelations } from "~/lib/prisma";
 import type { MessageReplyRequest } from "~/types/messages";
+import type { SerializeObject } from "nitropack";
 
 const props = defineProps<{
-  message: MessageWithRelations;
-  deleteAction: (message: MessageWithRelations) => Promise<void>;
+  message: SerializeObject<MessageWithRelations>;
+  deleteAction: (message: SerializeObject<MessageWithRelations>) => Promise<void>;
   replyAction: (message: MessageReplyRequest) => Promise<void>;
 }>();
 
@@ -71,7 +72,7 @@ const showPreview = ref(false);
 const formattedCreatedAt = new Intl.DateTimeFormat(undefined, {
   timeStyle: "short",
   dateStyle: "medium",
-}).format(Date.parse(props.message.createdAt as unknown as string));
+}).format(Date.parse(props.message.createdAt));
 
 const markRead = async () => {
   if (!props.message.read) {

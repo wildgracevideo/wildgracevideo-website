@@ -28,7 +28,7 @@
 import { type MessageWithRelations } from "~/lib/prisma";
 import type { MessageReplyRequest } from "~/types/messages";
 import { NotificationType } from "~/types/component-types";
-import { MessageReply } from "@prisma/client";
+import { SerializeObject } from 'nitropack';
 
 definePageMeta({ middleware: "auth", layout: "admin" });
 useHead({
@@ -40,13 +40,12 @@ const updateIds: Ref<number[]> = ref([]);
 const loading = ref(true);
 const notifications: Ref<{type: NotificationType, message: string}[]> = ref([]);
 
-const messages: { messages: MessageWithRelations[] } = reactive({
+const messages: { messages: SerializeObject<MessageWithRelations>[] } = reactive({
   messages: [],
 });
 const { data: response } = await useFetch("/api/admin/messages");
 onMounted(() => {
-    messages.messages =
-      (response.value as unknown as MessageWithRelations[]) || [];
+    messages.messages = response.value || [];
     loading.value = false;
 });
 
@@ -56,7 +55,7 @@ const removeFirstNotification = () => {
   }
 }
 
-const deleteAction = async (message: MessageWithRelations) => {
+const deleteAction = async (message: SerializeObject<MessageWithRelations>) => {
   try {
     await useFetch(`/api/admin/messages/${message.id}`, { method: "delete" });
     messages
@@ -78,7 +77,7 @@ const replyAction = async (messageReplyRequest: MessageReplyRequest) => {
     });
     messages
       .messages!.filter((it) => it.id === messageReplyRequest.messageId)
-      .forEach((it) => it.reply = messageReply as unknown as MessageReply);
+      .forEach((it) => it.reply = messageReply);
     updateIds.value.push(messageReplyRequest.messageId);
   } catch (e) {
     notifications.value.push({ type: NotificationType.error, message: "Failed to send reply message." });

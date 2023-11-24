@@ -6,7 +6,7 @@
     "@types/jsonwebtoken": "^9.0.4",
     "@unhead/schema-org": "^1.7.4",
     "autoprefixer": "^10.4.16",
-    "nuxt": "^3.7.3",
+    "nuxt": "^3.8.2",
     "nuxt-schema-org": "^3.0.0",
     "nuxt-simple-robots": "^3.1.5",
     "nuxt-simple-sitemap": "^4.1.3",
