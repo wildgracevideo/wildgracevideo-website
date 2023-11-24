@@ -257,6 +257,10 @@ body, html, #__nuxt {
   stroke: red;
 }
 
+.stroke-green {
+  stroke: green;
+}
+
 .aspect-2 {
   aspect-ratio: 2/1;
 }

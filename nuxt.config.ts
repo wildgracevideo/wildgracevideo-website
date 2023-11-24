@@ -23,6 +23,7 @@ const config = {
     reelIdeasTemplateId: process.env.REEL_IDEAS_TEMPLATE_ID,
     omnisendApiKey: process.env.OMNISEND_API_KEY,
     sendgridWebhookSigningKey: process.env.SENDGRID_WEBHOOK_SIGNING_KEY,
+    discoveryCallTemplateId: process.env.DISCOVERY_CALL_TEMPLATE_ID,
     public: {
       siteUrl: SITE_URL,
       wesbiteIcon: WEBSITE_ICON,

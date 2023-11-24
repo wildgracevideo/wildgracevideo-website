@@ -48,7 +48,7 @@
                         :is-required="true"
                         title-text-class="text-gray-500 text-xs"
                         input-class="text-sm w-full mb-4"
-                        v-model="toEmail"
+                        v-model="toEmailModel"
                         hint="To Email"
                       />
                       <FormRequiredInput
@@ -57,7 +57,7 @@
                         :is-required="true"
                         title-text-class="text-gray-500 text-xs"
                         input-class="text-sm w-full"
-                        v-model="name"
+                        v-model="nameModel"
                         hint="Name"
                       />
                     </form>
@@ -121,23 +121,19 @@ const showModal = computed({
   },
 });
 
-const toEmail = ref(props.toEmail);
-const name = ref(props.name);
+const toEmailModel = ref(props.toEmail);
+const nameModel = ref(props.name);
 
 const sendingMessage = ref(false);
 
 const send = async () => {
   const messageReplyRequest: MessageReplyRequest = {
-    name: props.name,
-    toEmail: toEmail.value,
+    name: nameModel.value,
+    toEmail: toEmailModel.value,
     messageId: props.messageId,
   };
   sendingMessage.value = true;
-  try {
-    await props.sendHandler(messageReplyRequest);
-  } catch (e) {
-    console.error(e);
-  }
+  await props.sendHandler(messageReplyRequest);
   sendingMessage.value = false;
   showModal.value = false;
 };

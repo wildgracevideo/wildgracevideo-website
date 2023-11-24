@@ -2,7 +2,7 @@ import { CreateContactRequest, ProductType, createContact } from '~/lib/create-c
 import { sendReelIdeasEmail } from '~/lib/send-template-email';
 import { stripe } from '~/lib/stripe';
 import prisma from '~/lib/prisma';
-import { PurchaseAudit } from '@prisma/client';
+import { PurchaseAudit, SendGridMessageType } from '@prisma/client';
 
 export default defineEventHandler(async (event): Promise<void> => {
   const webhookBody = await readBody(event);
@@ -41,7 +41,7 @@ export default defineEventHandler(async (event): Promise<void> => {
     }
     if (!purchaseAudit.sentProduct) {
       const messageId = await sendReelIdeasEmail(toEmail, templateData);
-      await updateSentProductField(purchaseAudit.id, messageId);
+      await updateSentProductField(purchaseAudit.id, messageId); 
     }
     await createContact(createContactRequest);
   }
@@ -68,7 +68,7 @@ async function saveContactToDB(request: CreateContactRequest): Promise<PurchaseA
     stripeSessionId: request.stripeSessionId,
   }
   try {
-    return prisma.purchaseAudit.create({ data: input });
+    return prisma.purchaseAudit.create({ data: input }); 
   } catch (e) {
     console.error('Failed to create purchase audit.', e);
     throw e;
@@ -90,6 +90,14 @@ async function updateSentProductField(id: string, messageId: string): Promise<vo
     console.error('Failed to update sentProduct field.', e);
     throw e;
   }
+
+  // TODO: Error handling here?
+  await prisma.sendGridMessageMap.create({
+    data: {
+      id: messageId,
+      type: SendGridMessageType.PURCHASE,
+    }
+  });
 }
 
 function capitalizeFirstLetter(str: string): string {

@@ -22,8 +22,8 @@ model Message {
   firstname    String         @db.VarChar(255)
   lastname     String         @db.VarChar(255)
   message      String         @db.VarChar(5000)
-  reply      MessageReply[]
   deleted      Boolean        @default(false)
+  reply        MessageReply?
 }
 
 model Account {
@@ -73,10 +73,12 @@ model MessageReply {
   name                    String
   toEmail                 String
   createdAt               DateTime @default(now())
-  messageId               Int      @map("messageId")
+  messageId               Int      @unique
   sendGridMessageId       String?
   sendGridMessageStatus   MessageStatus @default(PENDING)
   message                 Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index(sendGridMessageId)
 }
 
 model PurchaseAudit {
@@ -94,6 +96,18 @@ model PurchaseAudit {
   sendGridMessageStatus   MessageStatus @default(PENDING)
   @@index(stripeSessionId)
   @@index(sendGridMessageId)
+}
+
+model SendGridMessageMap {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  type      SendGridMessageType
+}
+
+enum SendGridMessageType {
+  PURCHASE
+  MESSAGE_REPLY
 }
 
 enum MessageStatus {

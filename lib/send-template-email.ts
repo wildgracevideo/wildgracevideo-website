@@ -6,8 +6,18 @@ export interface ReelIdeasTemplateData {
   firstName: string;
 }
 
+export interface DiscoveryCallTemplateData {
+  firstName: string;
+}
+
 export async function sendReelIdeasEmail(toEmail: string, templateData: ReelIdeasTemplateData): Promise<string> {
   return await sendTemplatedEmail(toEmail, runtimeConfig.reelIdeasTemplateId, templateData);
+}
+
+export async function sendDiscoveryCall(
+    toEmail: string, templateData:DiscoveryCallTemplateData 
+): Promise<string> {
+    return sendTemplatedEmail(toEmail, runtimeConfig.discoveryCallTemplateId, templateData);
 }
 
 async function sendTemplatedEmail(toEmail: string, templateId: string, templateData: ReelIdeasTemplateData): Promise<string> {

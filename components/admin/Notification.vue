@@ -8,12 +8,13 @@
       v-if="type === NotificationType.error"
       class="stroke-red w-6 h-6"
     />
+    <CheckCircleIcon v-else-if="type === NotificationType.success" class="stroke-green w-6 h-6" />
     <div class="ps-4 text-sm text-gray-500">{{ message }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ExclamationCircleIcon } from "@heroicons/vue/24/outline";
+import { ExclamationCircleIcon, CheckCircleIcon } from "@heroicons/vue/24/outline";
 import { NotificationType } from "~/types/component-types";
 
 defineProps<{
@@ -28,8 +29,5 @@ onMounted(() => {
   setTimeout(() => {
     show.value = true;
   }, initialDelay);
-  setTimeout(() => {
-    show.value = false;
-  }, 5000 + initialDelay);
 });
 </script>

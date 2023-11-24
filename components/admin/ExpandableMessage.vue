@@ -17,7 +17,7 @@
               v-if="!message.read"
               class="rounded-full bg-blue-400 h-2 w-2 ml-2 inline-block"
             />
-            <span class="inline-block h-8 text-sm">Message {{ message.replies }}</span>
+            <AdminTag v-if="message.reply" :label="`Reply:${message.reply.sendGridMessageStatus}`" class="text-white bg-website-green inline-block" />
           </span>
           <p class="ml-2">{{ formattedCreatedAt }}</p>
         </div>
@@ -35,6 +35,7 @@
             @click="() => deleteAction(message)"
           />
           <PaperAirplaneIcon
+            v-if="!message.reply"
             class="w-6 h-6 inline ml-2 cursor-pointer"
             @click="showPreview = true"
           />
@@ -42,7 +43,7 @@
       </div>
     </details>
   </div>
-  <PreivewEmailModal
+  <AdminPreivewEmailModal
     v-model="showPreview"
     :to-email="message.email"
     subject="Wild Grace Videography Introduction"
@@ -74,9 +75,9 @@ const formattedCreatedAt = new Intl.DateTimeFormat(undefined, {
 
 const markRead = async () => {
   if (!props.message.read) {
-    const { replies, ...messageWithoutReplies } = props.message;
+    const { reply, ...messageWithoutReply } = props.message;
     const updatedMessage = {
-      ...messageWithoutReplies,
+      ...messageWithoutReply,
       read: true,
     };
     try {
