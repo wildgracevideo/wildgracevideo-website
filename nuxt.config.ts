@@ -64,7 +64,7 @@ const config = {
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
   sitemap: {
     xslTips: process.env.NODE_ENV !== 'production',
-    exclude: ['/get-started', '/privacy-policy', '/terms', '/purchase-success'],
+    exclude: ['/get-started', '/privacy-policy', '/terms', '/purchase-success', '/admin/*', '/admin', '/api', '/api/*'],
     xsl: false, 
   },
   routeRules: {
@@ -82,7 +82,7 @@ const config = {
           duration: 92,
           requires_subscription: false,
           live: false,
-          publication_date: '2023-09-26T19:20:30+07:00.'
+          publication_date: '2023-09-26T19:20:30+07:00'
         }
       ]
     }},
