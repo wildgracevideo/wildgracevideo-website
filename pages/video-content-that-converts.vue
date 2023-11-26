@@ -1,9 +1,14 @@
 <template>
   <OgMeta :title="pageTitle" :description="description" />
   <SchemaOrgWebPage type="ItemPage" :name="pageTitle" />
+  <SchemaOrgProduct
+      :name="productTitle"
+      :offers="packages.map(it => { return { price: it.price, priceCurrency: 'USD', availability: 'InStock', name: it.title }; })"
+      :description="description"
+  />
   <h1 class="mx-auto text-4xl text-center">Video Content That Converts</h1>
   <h2 class="text-2xl w-fit mx-auto mt-10 mb-6 text-center">
-    Social Media Video Packages
+      {{ productTitle }}
   </h2>
   <div class="mx-8 lg:mx-auto max-w-6xl text-center">
     <p class="mb-4">
@@ -46,6 +51,7 @@
 </template>
 
 <script setup lang="ts">
+const productTitle = "Social Media Video Packages";
 const pageTitle = "Wild Grace Videography | Video Content That Converts";
 const description =
   "Streamline your social media presence effortlessly. Experience monthly expertly crafted videos with our 'Video Content that Converts' program.";

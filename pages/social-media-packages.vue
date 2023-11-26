@@ -1,6 +1,11 @@
 <template>
   <OgMeta :title="pageTitle" :description="description" :icon="ogIcon" />
   <SchemaOrgWebPage type="ItemPage" :name="pageTitle" />
+  <SchemaOrgProduct
+      :name="productTitle"
+      :offers="packages.map(it => { return { price: it.price, priceCurrency: 'USD', availability: 'InStock', name: it.title }; })"
+      :description="description"
+  />
   <h1 class="mx-auto text-4xl w-fit">
     <span
       class="font-family-cardo xl:inline-block block text-center lg:mx-auto mx-2"
@@ -14,7 +19,7 @@
     >
   </h1>
   <h2 class="text-2xl w-fit mx-auto mt-10 mb-6 text-center">
-    Social Media Marketing + Video + Photo
+      {{ productTitle }}
   </h2>
   <p class="mx-8 lg:mx-auto text-center max-w-4xl">{{ heading }}</p>
   <p class="text-center mt-4 mb-4 text-xl mx-4">
@@ -60,6 +65,8 @@
 
 <script setup lang="ts">
 import { type Config } from "~/components/PackageItem.vue";
+
+const productTitle = "Social Media Marketing + Video + Photo";
 
 const pageTitle = "Wild Grace Videography | Social Media Management Packages";
 

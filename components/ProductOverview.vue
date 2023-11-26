@@ -1,9 +1,14 @@
-
 <template>
   <SchemaOrgImage
     :name="productTitle"
     :url="imageSrc"
     :description="mainImageDescription"
+  />
+  <SchemaOrgProduct
+      :name="productTitle"
+      :image="imageSrc"
+      :offers="[{ price: priceDollars, priceCurrency: 'USD', availability: 'InStock' }]"
+      :description="productDescription"
   />
   <section class="cover-background-image pb-4">
     <div
@@ -92,6 +97,7 @@ const props = defineProps<{
     originalPriceDollars: number;
     buttonText?: string;
     extraHeadingMargin?: boolean;
+    productDescription: string;
 }>(); 
 
 let headingMargin = "mb-16";

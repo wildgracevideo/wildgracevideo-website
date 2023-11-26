@@ -86,7 +86,7 @@ const config = {
         }
       ]
     }},
-    '/about': { sitemap: { images: [
+    '/who-we-are': { sitemap: { images: [
         { loc: '/Carly1.webp', title: 'Carly Kreiger photo', caption: 'Photo of Carly Kreiger, the founder of Wild Grace Videography, a Denver, Colorado-based video production company.' },
         { loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }
       ] 
@@ -94,6 +94,9 @@ const config = {
     '/portfolio': { sitemap: { images: [{ loc: '/logo1.webp', title: 'Wild Grace Videography logo', caption: 'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.' }] } },
     '/30-day-video-transformation': { sitemap: { images: [
       { loc: '/37-reel-ideas.webp', title: '30-Day Video Transformation logo', caption: 'Boost Your Social Media Presence with 37 Engaging Reel Ideas and a Content Planner. Share Your Journey, Build Trust, and Watch Your Audience Grow in 30 Days.' },
+    ]}},
+    '/video-transformation-for-interior-designers': { sitemap: { images: [
+      { loc: '/interior-designers-icon.webp', title: '30-Day Video Transformation logo', caption: 'Boost Your Social Media Presence with 37 Engaging Reel Ideas for Interior Designers and a Content Planner. Share Your Interior Design Journey, Build Trust, and Watch Your Audience Grow in 30 Days.' },
     ]}},
   },
   robots: {
