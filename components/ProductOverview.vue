@@ -7,21 +7,22 @@
   />
   <section class="cover-background-image pb-4">
     <div
-      class="flex lg:flex-row flex-col justify-center items-center gap-0 lg:gap-24 mx-auto lg:mx-32 -mt-4"
+      class="flex xl:flex-row flex-col justify-center items-center gap-0 xl:gap-24 mx-auto xl:mx-32 -mt-4"
     >
       <div
-        class="ml-4 mr-4 lg:ml-10 lg:mr-0 mt-20 text-0 max-w-sm h-auto w-auto image-box-shadow max-height-488 object-contain object-center"
+        class="ml-4 mr-4 xl:ml-10 xl:mr-0 xl:-mt-16 mt-4 xl:mb-0 mb-12 text-0 max-w-sm h-auto w-auto image-box-shadow max-height-488 object-contain object-center"
       >
         <img :src="imageSrc" class="aspect-square" :alt="mainImageDescription" />
       </div>
-      <div class="mx-8 lg:mx-0 sm:mx-auto">
+      <div class="mx-8 xl:mx-0 sm:mx-8">
         <h1
-          class="text-4xl mt-8 lg:mt-72 lg:text-website-off-white text-black text-shadow"
+          class="text-4xl mt-8 xl:mt-64 xl:text-website-off-white text-black text-shadow sm:text-left text-center"
         >
           {{ productTitle }}
         </h1>
         <h2
-          class="text-xl lg:mb-36 mb-12 mt-2 lg:text-website-off-white text-black text-shadow"
+          class="text-xl mt-2 xl:text-website-off-white text-black text-shadow sm:text-left text-center"
+          :class="headingMargin"
           v-html="productTagLineHtml"
         />
         <p
@@ -33,14 +34,14 @@
         Price: <span class="line-through decoration-2">${{originalPriceDollars}}</span> ${{priceDollars}}
         </p>
         <DefaultButton
-          :title="`BUY NOW FOR $${priceDollars}`"
+          :title="buttonTitle"
           :action="buyNow"
-          additonal-classes="lg:mx-0 mx-auto"
+          additonal-classes="xl:mx-0 mx-auto"
         />
       </div>
     </div>
   </section>
-  <section class="mt-8 lg:ml-44 ml-8">
+  <section class="mt-8 xl:ml-44 ml-8">
     <h3 class="text-2xl mb-2">What's Inside</h3>
     <h4 class="text-lg curved-underline w-fit mb-8">
       {{ productTitle }} Includes:
@@ -53,7 +54,7 @@
       <p class="text-sm max-w-4xl">{{ detailItem }}</p>
     </div>
   </section>
-  <section class="banner-background-image w-full h-fit mt-8 pt-32 pb-16 px-4">
+  <section class="banner-background-image w-full h-fit mt-8 pt-32 pb-8 px-4">
     <h4
       class="text-6xl text-website-off-white text-center max-w-4xl mx-auto font-family-optimus"
       v-html="callToActionTitleHtml"
@@ -90,13 +91,19 @@ const props = defineProps<{
     priceDollars: number;
     originalPriceDollars: number;
     buttonText?: string;
+    extraHeadingMargin?: boolean;
 }>(); 
 
-let buttonTitle = props.buttonText;
+let headingMargin = "mb-16";
+if (props.extraHeadingMargin) {
+    headingMargin = "xl:mb-32 mb-16";
+}
+
+let buttonTitle: string = props.buttonText || "";
 if (!buttonTitle) {
     buttonTitle = `BUY NOW FOR $${props.priceDollars}`;
 }
-;
+
 const buyNow = async () => {
   let baseUrl = window.location.protocol + "//" + window.location.hostname;
   if (window.location.port) {
@@ -149,7 +156,7 @@ const buyNow = async () => {
 .cover-background-image {
   background-image: url("/37-reel-ideas-cover.webp");
   background-repeat: no-repeat;
-  background-size: 100% 460px; /* 1024 - 1321 */
+  background-size: 100% 420px;
 }
 
 .banner-background-image {
@@ -157,11 +164,13 @@ const buyNow = async () => {
   background-repeat: no-repeat;
 }
 
-.banner-background-image {
-  background-size: 100% 800px;
+@media (min-width: 768px) {
+  .cover-background-image {
+    background-size: 100% 440px;
+  }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .text-shadow {
     text-shadow: 8px 8px 12px black;
   }

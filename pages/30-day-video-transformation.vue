@@ -3,7 +3,7 @@
   <SchemaOrgWebPage type="ItemPage" :name="pageTitle" />
   <ProductOverview 
       :product-title="productTitle"
-      product-tag-line-html="37 Reel Ideas + 30-Day <i>Fillable</i> Video Content Plannedr"
+      product-tag-line-html="37 Reel Ideas + 30-Day <i>Fillable</i> Video Content Planner"
       :main-image-description="imageDescription"
       :paragraphs="paragraphs"
       :detail-items="detailItems"
@@ -14,6 +14,7 @@
       :price-dollars="0"
       :original-price-dollars="15"
       button-text="FREE"
+      :extra-heading-margin="true"
   />
 </template>
 
