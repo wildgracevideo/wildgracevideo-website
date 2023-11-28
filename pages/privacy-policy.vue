@@ -1,4 +1,6 @@
 <template class="mx-8">
+  <OgMeta title="Wild Grace Videography | Privacy Policy"
+    description="Read throught the Wild Grace Videography privacy policy." />
   <div class="mx-8">
     <span v-html="rawHtml"></span>
   </div>
