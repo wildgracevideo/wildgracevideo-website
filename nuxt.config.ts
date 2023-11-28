@@ -48,7 +48,6 @@ const config = {
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: APP_ICON },
         { rel: 'preconnect', href: 'https://d22668h9qdy3zj.cloudfront.net' },
-        { rel: 'preconnect', href: 'https://www.google.com' },
       ]
     },
   },
@@ -109,7 +108,7 @@ const config = {
     }
   },
   modules: [
-    '@sidebase/nuxt-auth', '@nuxt/image', 'nuxt-schema-org', 'nuxt-simple-robots', 'nuxt-simple-sitemap'
+    '@sidebase/nuxt-auth', 'nuxt-schema-org', 'nuxt-simple-robots', 'nuxt-simple-sitemap'
   ],
 };
 
