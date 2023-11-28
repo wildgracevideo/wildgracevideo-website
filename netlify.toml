@@ -1,7 +1,7 @@
 [dev]
-   command = "npm run dev"
+   command = "bun --bun run dev"
 [build]
-  command = "prisma generate && npm run build"
+  command = "prisma generate && bun --bun run build"
   publish = "dist"
   functions = 'functions' 
 
