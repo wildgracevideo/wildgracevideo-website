@@ -13,6 +13,7 @@
       image-src="/interior-designers-icon.webp"
       :price-dollars="7"
       :original-price-dollars="15"
+      :product-description="description"
     />
 </template>
 

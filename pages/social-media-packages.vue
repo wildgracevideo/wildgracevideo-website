@@ -27,10 +27,11 @@
     <a
       class="underline text-website-green"
       href="https://samanthamelissamarketing.com/"
+      aria-label="Visit Samantha Melissa Marketing Website"
       >here</a
     >.
   </p>
-  <h4 class="w-fit mx-auto mb-8">3-Month Retainer</h4>
+  <p class="w-fit mx-auto mb-8">3-Month Retainer</p>
   <section
     class="grid lg:grid-cols-3 grid-cols-1 gap-20 xl:mx-16 lg:mx-4 sm:mx-16 mx-4 mb-20"
   >

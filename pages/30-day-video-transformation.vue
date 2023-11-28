@@ -15,6 +15,7 @@
       :original-price-dollars="15"
       button-text="FREE"
       :extra-heading-margin="true"
+      :product-description="description"
   />
 </template>
 
