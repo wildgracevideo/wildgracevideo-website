@@ -28,7 +28,7 @@
 import { type MessageWithRelations } from "~/lib/prisma";
 import type { MessageReplyRequest } from "~/types/messages";
 import { NotificationType } from "~/types/component-types";
-import { SerializeObject } from 'nitropack';
+import { type SerializeObject } from '~/types/nitro';
 
 definePageMeta({ middleware: "auth", layout: "admin" });
 useHead({
