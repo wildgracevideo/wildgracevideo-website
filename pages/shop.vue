@@ -47,7 +47,7 @@ const shopItems = [
         imageSrc: "/37-reel-ideas.webp",
         title: "30-Day Video Transformation",
         description: "Boost Your Social Media Presence with 37 Engaging Reel Ideas for Interior Designers and a Content Planner. Share Your Interior Design Journey, Build Trust, and Watch Your Audience Grow in 30 Days.",
-        priceDollars: 0,
+        priceDollars: 7,
         originalPriceDollars: 15,
         url: "/30-day-video-transformation",
         imgDescription: "Image of the Wild Grace Videography 30-Day Video Transformation product.",

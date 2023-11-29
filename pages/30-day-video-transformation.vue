@@ -11,9 +11,8 @@
       call-to-action-title-html="it takes 30 days to make a habit, so why not start <i>now</i> ?"
       call-to-action-description="Get 30-Day Video Transformation to start truly connecting with your online community."
       image-src="/37-reel-ideas.webp"
-      :price-dollars="0"
+      :price-dollars="7"
       :original-price-dollars="15"
-      button-text="FREE"
       :extra-heading-margin="true"
       :product-description="description"
   />
