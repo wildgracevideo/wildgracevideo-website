@@ -3,7 +3,6 @@ import prisma from "~/lib/prisma";
 import { sendDiscoveryCall } from "~/lib/send-template-email";
 import { MessageReplyRequest } from "~/types/messages";
 
-// TODO: Error handling?
 export default defineEventHandler(async (event): Promise<MessageReply> => {
     const messageReplyRequest = await readBody<MessageReplyRequest>(event);
 
@@ -14,20 +13,22 @@ export default defineEventHandler(async (event): Promise<MessageReply> => {
         throw createError({ status: 500, statusMessage: 'Internal server error'});
     }
     console.log('Sent discovery call email');
-    const messageReply = await prisma.messageReply.create({
-        data: {
-            name: messageReplyRequest.name,
-            toEmail: messageReplyRequest.toEmail,
-            messageId: messageReplyRequest.messageId,
-            sendGridMessageId: messageId,
-        }
-    });
-    await prisma.sendGridMessageMap.create({
-        data: {
-            id: messageId,
-            type: SendGridMessageType.MESSAGE_REPLY,
-        }
-    });
+    const [messageReply, _] = await prisma.$transaction([
+        prisma.messageReply.create({
+            data: {
+                name: messageReplyRequest.name,
+                toEmail: messageReplyRequest.toEmail,
+                messageId: messageReplyRequest.messageId,
+                sendGridMessageId: messageId,
+            }
+        }),
+        prisma.sendGridMessageMap.create({
+            data: {
+                id: messageId,
+                type: SendGridMessageType.MESSAGE_REPLY,
+            }
+        })
+    ]);
     return messageReply;
 });
 

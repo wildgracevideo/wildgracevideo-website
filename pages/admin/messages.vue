@@ -12,7 +12,7 @@
       width-class="w-16"
       :additional-classes="['mx-auto', 'mt-16']"
     />
-    <div v-else class="mt-8 mx-8">
+    <div v-else-if="messages.messages" class="mt-8 lg:mx-8 mx-2">
       <AdminExpandableMessage
         v-for="message in messages.messages"
         :key="`${message.id}${updateIds.includes(message.id) ? '-update' : ''}`"
@@ -21,6 +21,7 @@
         :reply-action="replyAction"
       />
     </div>
+    <p v-else class="mt-8 text-xl h-dvh text-center">No Messages</p>
   </div>
 </template>
 

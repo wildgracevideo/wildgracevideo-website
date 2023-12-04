@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, Message } from '@prisma/client'
 import { type Message, type MessageReply } from '~/prisma/generated/zod';
 
 const prisma: PrismaClient = new PrismaClient();

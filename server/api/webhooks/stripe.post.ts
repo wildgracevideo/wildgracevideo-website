@@ -119,27 +119,27 @@ async function saveContactToDB(request: CreateContactRequest): Promise<PurchaseA
 
 async function updateSentProductField(id: string, messageId: string): Promise<void> {
   try {
-    await prisma.purchaseAudit.update({
-      where: {
-        id: id,
-      },
-      data: {
-        sentProduct: true,
-        sendGridMessageId: messageId,
-      }
-    });
+    await prisma.$transaction([
+      prisma.purchaseAudit.update({
+        where: {
+          id: id,
+        },
+        data: {
+          sentProduct: true,
+          sendGridMessageId: messageId,
+        }
+      }),
+      prisma.sendGridMessageMap.create({
+        data: {
+          id: messageId,
+          type: SendGridMessageType.PURCHASE,
+        }
+      }),
+    ]);
   } catch (e) {
-    console.error('Failed to update sentProduct field.', e);
+    console.error('Failed to update sentProduct field, or create sendGrid message mapping.', e);
     throw e;
   }
-
-  // TODO: Error handling here?
-  await prisma.sendGridMessageMap.create({
-    data: {
-      id: messageId,
-      type: SendGridMessageType.PURCHASE,
-    }
-  });
 }
 
 function capitalizeFirstLetter(str: string): string {

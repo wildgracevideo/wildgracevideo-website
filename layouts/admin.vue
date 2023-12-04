@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-website-off-white flex flex-row">
-    <AdminSidebar />
+  <div class="bg-website-off-white flex lg:flex-row flex-col">
+    <AdminSidebar v-model="openMenu" />
     <main class="relative w-full h-full" v-if="!openMenu">
       <slot />
     </main>
