@@ -1,0 +1,39 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+.storyblok-scripts/
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Local Netlify folder
+.netlify
+
+.unlighthouse/
+
+package-lock.json
+
+prisma/generated/
+
+tsconfig.json
+
+app.vue

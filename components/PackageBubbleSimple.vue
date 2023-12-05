@@ -1,15 +1,19 @@
 <template>
-  <div class="rounded-3xl text-base m-4 py-4 pl-4 pr-2">
-    <ul class="px-4">
-      <li v-for="detail in details" class="list-disc list-item">
-        {{ detail }}
-      </li>
-    </ul>
-  </div>
+    <div class="m-4 rounded-3xl py-4 pl-4 pr-2 text-base">
+        <ul class="px-4">
+            <li
+                v-for="(detail, i) in details"
+                :key="`${i}-package-bubble-simple-li`"
+                class="list-item list-disc"
+            >
+                {{ detail }}
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  details: string[];
-}>();
+    defineProps<{
+        details: string[];
+    }>();
 </script>
