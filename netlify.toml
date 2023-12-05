@@ -1,7 +1,7 @@
 [dev]
    command = "bun --bun run dev"
 [build]
-  command = "prisma generate && bun --bun run build"
+  command = "bun upgrade && prisma generate && bun --bun run build"
   publish = "dist"
   functions = 'functions' 
 
