@@ -1,5 +1,5 @@
 <template>
-    <div role="status h-full w-full">
+    <div role="status" class="h-full w-full">
         <svg
             aria-hidden="true"
             class="animate-spin fill-website-green text-gray-200"

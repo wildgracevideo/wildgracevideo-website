@@ -2,6 +2,9 @@
     <div
         v-if="!videoPlaying"
         class="relative cursor-pointer"
+        tabindex="0"
+        role="button"
+        @keypress="videoPlaying = true"
         @click="videoPlaying = true"
     >
         <span class="play-button absolute z-10"

@@ -10,6 +10,7 @@ module.exports = {
     },
     extends: [
         'plugin:@typescript-eslint/recommended',
+        'plugin:vuejs-accessibility/recommended',
         'plugin:vue/vue3-recommended',
         '@vue/typescript/recommended',
         'plugin:import/recommended',
@@ -26,6 +27,15 @@ module.exports = {
         'sort-imports': [
             'error',
             { ignoreCase: true, ignoreDeclarationSort: true },
+        ],
+        'vuejs-accessibility/label-has-for': [
+            2,
+            {
+                required: {
+                    every: ['id'],
+                },
+                allowChildren: false,
+            },
         ],
         'import/order': [
             1,

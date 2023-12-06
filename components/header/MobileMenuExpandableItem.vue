@@ -1,6 +1,12 @@
 <template>
     <div :key="$.vnode.key || undefined" class="mx-auto w-fit">
-        <p class="mx-auto mb-2 w-fit cursor-pointer" @click="open = !open">
+        <p
+            class="mx-auto mb-2 w-fit cursor-pointer"
+            role="button"
+            tabindex="0"
+            @click="open = !open"
+            @keypress="open = !open"
+        >
             {{ config.name }}
             <ChevronDownIcon
                 :class="[open ? 'rotate-180' : '', 'h-5 w-5 flex-none']"

@@ -6,7 +6,10 @@
         <details class="group">
             <summary
                 class="flex cursor-pointer list-none items-center justify-between font-medium"
+                role="button"
+                tabindex="0"
                 @click="markRead"
+                @keypress="markRead"
             >
                 <div>
                     <span

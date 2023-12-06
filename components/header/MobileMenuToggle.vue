@@ -2,7 +2,10 @@
     <div
         class="three-bar-wrapper relative z-20 ml-auto mr-10 block h-8 w-10 cursor-pointer lg:hidden"
         :class="{ active: openMenu }"
+        tabindex="0"
+        role="button"
         @click="openMenu = !openMenu"
+        @keypress="openMenu = !openMenu"
     >
         <div class="one absolute top-0 h-1 w-full bg-black"></div>
         <div class="two absolute top-3 h-1 w-full bg-black"></div>
