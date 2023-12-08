@@ -1,4 +1,10 @@
 <template>
+    <Notification
+        v-for="notification in notifications"
+        :key="`${notification.message}-${notification.type}`"
+        :type="notification.type"
+        :message="notification.message"
+    />
     <RecaptchaLoader />
     <div class="bg-website-green pt-8">
         <h2
@@ -8,7 +14,7 @@
             Contact Us
         </h2>
         <h2
-            class="relative top-28 text-center text-3xl text-website-blue text-website-off-white"
+            class="relative top-28 text-center text-3xl text-website-off-white"
             :class="{
                 hidden: showForm,
                 block: !showForm,
@@ -82,7 +88,7 @@
                         'hover:text-website-green': !sendingForm,
                         'hover:bg-website-off-white': !sendingForm,
                         'cursor-default': sendingForm,
-                        'fade-out': !sendingForm,
+                        'fade-out': !sendingForm && !formError,
                     }"
                 >
                     Send
@@ -95,8 +101,10 @@
 <script setup lang="ts">
     import { RecaptchaType } from '~/types/form-requests';
     import { type ContactSubmitRequest } from '~/types/form-requests';
+    import { NotificationType } from '~/types/component-types';
     import RequiredInput from './form/RequiredInput.vue';
     import RequiredTextArea from './form/RequiredTextArea.vue';
+    import type { NotificationConfig } from './Notification.vue';
 
     const firstName = ref('');
     const lastName = ref('');
@@ -108,7 +116,16 @@
 
     const isRequired = ref(false);
 
+    const formError = ref(false);
+
     const { $submitRecaptcha } = useNuxtApp();
+
+    const notifications: Ref<NotificationConfig[]> = ref([]);
+    const removeFirstNotification = () => {
+        if (notifications.value.length > 0) {
+            notifications.value.shift();
+        }
+    };
 
     const send = () => {
         if (sendingForm.value) {
@@ -141,6 +158,13 @@
                     console.error(e);
                     sendingForm.value = false;
                     showForm.value = true;
+                    formError.value = true;
+                    notifications.value.push({
+                        type: NotificationType.error,
+                        message:
+                            'The message failed to send, please try again.',
+                    });
+                    setTimeout(removeFirstNotification, 5_000);
                 }
             });
         }
@@ -155,6 +179,7 @@
                 ) {
                     entry.target.classList.remove('fade-out');
                     entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
                 }
             });
         });

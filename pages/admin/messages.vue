@@ -1,5 +1,5 @@
 <template>
-    <AdminNotification
+    <Notification
         v-for="notification in notifications"
         :key="`${notification.message}-${notification.type}`"
         :type="notification.type"
@@ -33,6 +33,7 @@
     import type { MessageReplyRequest } from '~/types/messages';
     import { NotificationType } from '~/types/component-types';
     import { type SerializeObject } from '~/types/nitro';
+    import type { NotificationConfig } from '~/components/Notification.vue';
 
     definePageMeta({ middleware: 'auth', layout: 'admin' });
     useHead({
@@ -42,8 +43,7 @@
     const updateIds: Ref<number[]> = ref([]);
 
     const loading = ref(true);
-    const notifications: Ref<{ type: NotificationType; message: string }[]> =
-        ref([]);
+    const notifications: Ref<NotificationConfig[]> = ref([]);
 
     const messages: { messages: SerializeObject<MessageWithRelations>[] } =
         reactive({

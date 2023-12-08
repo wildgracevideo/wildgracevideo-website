@@ -1,4 +1,10 @@
 <template>
+    <Notification
+        v-for="notification in notifications"
+        :key="`${notification.message}-${notification.type}`"
+        :type="notification.type"
+        :message="notification.message"
+    />
     <div>
         <RecaptchaLoader />
         <OgMeta :title="pageTitle" :description="description" />
@@ -164,6 +170,8 @@
         type GetStartedSubmitRequest,
         RecaptchaType,
     } from '~/types/form-requests';
+    import { NotificationType } from '~/types/component-types';
+    import type { NotificationConfig } from '~/components/Notification.vue';
     import RequiredInput from '../components/form/RequiredInput.vue';
     import RequiredTextArea from '../components/form/RequiredTextArea.vue';
     import RequiredSelect from '../components/form/RequiredSelect.vue';
@@ -249,6 +257,13 @@
         }
     };
 
+    const notifications: Ref<NotificationConfig[]> = ref([]);
+    const removeFirstNotification = () => {
+        if (notifications.value.length > 0) {
+            notifications.value.shift();
+        }
+    };
+
     const submit = () => {
         isRequired.value = true;
 
@@ -285,13 +300,19 @@
                         method: 'POST',
                         body: getStartedRequest,
                     });
+                    showForm.value = false;
+                    sendingForm.value = false;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 } catch (e) {
                     console.error(e);
                     sendingForm.value = false;
+                    notifications.value.push({
+                        type: NotificationType.error,
+                        message:
+                            'The message failed to send, please try again.',
+                    });
+                    setTimeout(removeFirstNotification, 5_000);
                 }
-                showForm.value = false;
-                sendingForm.value = false;
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
     };

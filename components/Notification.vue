@@ -1,6 +1,6 @@
 <template>
     <div
-        class="space-x absolute right-6 flex w-full max-w-xs items-center space-x-4 divide-x divide-gray-200 rounded-lg bg-white p-4 shadow transition-top duration-1000 ease-out"
+        class="space-x fixed right-6 flex w-full max-w-xs items-center space-x-4 divide-x divide-gray-200 rounded-lg bg-white p-4 shadow transition-top duration-1000 ease-out"
         :class="{ 'top-6': show, '-top-24': !show }"
         role="alert"
     >
@@ -23,10 +23,12 @@
     } from '@heroicons/vue/24/outline';
     import { NotificationType } from '~/types/component-types';
 
-    defineProps<{
+    export interface NotificationConfig {
         type: NotificationType;
         message: string;
-    }>();
+    }
+
+    defineProps<NotificationConfig>();
 
     const show = ref(false);
 
