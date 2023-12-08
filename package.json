@@ -28,9 +28,9 @@
     },
     "private": true,
     "scripts": {
-        "build": "nuxt build",
+        "build": "bun x prisma generate && nuxt build",
         "dev": "nuxt dev --host",
-        "start": "bun .output/server/index.mjs",
+        "start": "bun run .output/server/index.mjs",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",
@@ -39,7 +39,7 @@
         "lint:prettier": "prettier --check .",
         "lint": "bun run lint:js && bun run lint:prettier",
         "lintfix": "prettier --write --list-different . && bun run lint:js --fix",
-        "validate": "bun run lint && bunx prisma generate && bun run build"
+        "validate": "bun run lint && bun run build"
     },
     "type": "module",
     "dependencies": {

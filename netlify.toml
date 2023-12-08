@@ -1,9 +1,8 @@
 [dev]
-   command = "bun --bun run dev"
+   command = "bun run dev --bun "
 [build]
-  command = "bunx prisma generate && bun --bun run build"
-  publish = "dist"
-  functions = 'functions' 
+  command = "bun upgrade && bun run build --bun"
+  publish = ".nuxt/dist"
 
 [[headers]]
   for = "/*"
