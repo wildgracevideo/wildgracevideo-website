@@ -30,16 +30,16 @@
     "scripts": {
         "build": "nuxt build",
         "dev": "nuxt dev --host",
-        "start": "node .output/server/index.mjs",
+        "start": "bun .output/server/index.mjs",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",
         "analyze": "nuxt build --analyze",
         "lint:js": "eslint . --ext .ts,.vue --ignore-path .prettierignore",
         "lint:prettier": "prettier --check .",
-        "lint": "npm run lint:js && npm run lint:prettier",
-        "lintfix": "prettier --write --list-different . && npm run lint:js --fix",
-        "validate": "npm run lint && npx prisma generate && npm run build"
+        "lint": "bun run lint:js && bun run lint:prettier",
+        "lintfix": "prettier --write --list-different . && bun run lint:js --fix",
+        "validate": "bun run lint && bunx prisma generate && bun run build"
     },
     "type": "module",
     "dependencies": {

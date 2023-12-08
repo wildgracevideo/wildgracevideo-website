@@ -31,6 +31,7 @@ npm --bun run preview
 ```
 
 Setup Stripe webhooks:
+
 ```bash
 brew install stripe/stripe-cli/stripe
 stripe listen --forward-to http://localhost:3000/api/webhooks/stripe
