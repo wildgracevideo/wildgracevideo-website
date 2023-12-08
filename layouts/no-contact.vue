@@ -1,13 +1,13 @@
 <template>
-  <div class="bg-website-off-white min-h-screen flex flex-col">
-    <Header v-model="openMenu" />
-    <main class="relative mb-auto" v-if="!openMenu">
-      <slot />
-    </main>
-    <Footer v-if="!openMenu" />
-  </div>
+    <div class="flex min-h-screen flex-col bg-website-off-white">
+        <HeaderTopBar v-model="openMenu" />
+        <main v-if="!openMenu" class="relative mb-auto">
+            <slot />
+        </main>
+        <Footer v-if="!openMenu" />
+    </div>
 </template>
 
 <script setup lang="ts">
-const openMenu = ref(false);
+    const openMenu = ref(false);
 </script>

@@ -1,22 +1,27 @@
-import { sendEmail } from "~/lib/send-email";
-import { GetStartedSubmitRequest, RecaptchaType } from "~/types/form-requests";
-import { validateRecaptcha } from "~/lib/validate-recaptcha";
+import { sendEmail } from '~/lib/send-email';
+import { GetStartedSubmitRequest, RecaptchaType } from '~/types/form-requests';
+import { validateRecaptcha } from '~/lib/validate-recaptcha';
 
 const runtimeConfig = useRuntimeConfig();
 
 export default defineEventHandler(async (event): Promise<void> => {
-  const body = await readBody<GetStartedSubmitRequest>(event);
-  if (!body.token) {
-    console.error('Token body not found.');
-    throw createError({ statusMessage: 'Forbidden', statusCode: 403 });
-  } else if (!runtimeConfig.recaptchaSecret) {
-    console.error('Recaptcha secret key not found.');
-    throw createError({ statusMessage: 'Forbidden', statusCode: 403 });
-  } else if (!(await validateRecaptcha(runtimeConfig.recaptchaSecret, body.token, RecaptchaType.GetStarted))) {
-    throw createError({ statusMessage: 'Forbidden', statusCode: 403 });
-  }
-  const htmlBody =
-    `<html>
+    const body = await readBody<GetStartedSubmitRequest>(event);
+    if (!body.token) {
+        console.error('Token body not found.');
+        throw createError({ statusMessage: 'Forbidden', statusCode: 403 });
+    } else if (!runtimeConfig.recaptchaSecret) {
+        console.error('Recaptcha secret key not found.');
+        throw createError({ statusMessage: 'Forbidden', statusCode: 403 });
+    } else if (
+        !(await validateRecaptcha(
+            runtimeConfig.recaptchaSecret,
+            body.token,
+            RecaptchaType.GetStarted
+        ))
+    ) {
+        throw createError({ statusMessage: 'Forbidden', statusCode: 403 });
+    }
+    const htmlBody = `<html>
         <body>
           First Name: ${body.firstname}
           <br />
@@ -30,19 +35,24 @@ export default defineEventHandler(async (event): Promise<void> => {
           <br />
           Goals: ${body.goals}
           <br />
-          Interests: ${body.interests.join(", ")}
+          Interests: ${body.interests.join(', ')}
           <br />
           Business Type: ${body.businessType}
           <br />
           How did you hear about us?: ${body.hearChoice}
           <br />
-          Monthly Tip Signup: ${body.monthlyTipSignup === true ? 'Yes' : 'No' }
+          Monthly Tip Signup: ${body.monthlyTipSignup === true ? 'Yes' : 'No'}
           <br />
           Instagram Handle: ${body.instagramHandle || 'N/A'}
         </body>
     </html>`;
 
-  const subject = "Wild Grace Videography Get Started Form";
-  const responseData = await sendEmail(htmlBody, runtimeConfig.formsToEmail, subject, runtimeConfig.formsFromEmail);
-  console.log("email submitted to SES", responseData);
+    const subject = 'Wild Grace Videography Get Started Form';
+    const responseData = await sendEmail(
+        htmlBody,
+        runtimeConfig.formsToEmail,
+        subject,
+        runtimeConfig.formsFromEmail
+    );
+    console.log('email submitted to SES', responseData);
 });

@@ -1,7 +1,7 @@
-import { CheckoutType } from "~/lib/checkout-type";
+import { CheckoutType } from '~/lib/checkout-type';
 
 export interface CheckoutRequest {
-  type: CheckoutType;
-  cancelUrl: string;
-  successUrl: string;
+    type: CheckoutType;
+    cancelUrl: string;
+    successUrl: string;
 }

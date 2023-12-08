@@ -1,16 +1,18 @@
 <template class="mx-8">
-  <OgMeta title="Wild Grace Videography | Terms"
-    description="Read throught the Wild Grace Videography terms and conditions." />
-  <div class="mx-8">
-    <span v-html="rawHtml"></span>
-  </div>
+    <OgMeta
+        title="Wild Grace Videography | Terms"
+        description="Read throught the Wild Grace Videography terms and conditions."
+    />
+    <div class="mx-8">
+        <span v-html="rawHtml"></span>
+    </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  layout: "no-contact",
-});
-const rawHtml = `
+    definePageMeta({
+        layout: 'no-contact',
+    });
+    const rawHtml = `
 <h2><strong>Terms and Conditions</strong></h2>
 
 <p>Welcome to Wild Grace Videography!</p>

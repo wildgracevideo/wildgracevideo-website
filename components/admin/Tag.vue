@@ -1,5 +1,8 @@
 <template>
-    <p class="rounded-md w-fit text-xs font-bold p-1" :class="class">
+    <p
+        class="w-fit rounded-md p-1 text-xs font-bold"
+        :class="additionalClasses"
+    >
         {{ label }}
     </p>
 </template>
@@ -7,6 +10,6 @@
 <script setup lang="ts">
     defineProps<{
         label: string;
-        class: string
+        additionalClasses: string;
     }>();
 </script>
