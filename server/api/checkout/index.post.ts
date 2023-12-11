@@ -1,4 +1,3 @@
-import { CheckoutType } from '~/lib/checkout-type';
 import { stripe } from '~/lib/stripe';
 import { CheckoutRequest } from '~/types/checkout-request';
 
@@ -7,22 +6,16 @@ const runtimeConfig = useRuntimeConfig();
 export default defineEventHandler(async (event): Promise<string> => {
     const checkoutRequest = await readBody<CheckoutRequest>(event);
 
-    let priceId = '';
-    switch (checkoutRequest.type) {
-        case CheckoutType.ReelIdeas:
-            priceId = runtimeConfig.stripeReelIdeasPriceId;
-            break;
-        case CheckoutType.InteriorDesignerReelIdeas:
-            priceId = runtimeConfig.stripeInteriorDesignerReelIdeasPriceId;
-            break;
-        default:
-            console.error(
-                `Checkout request type of, ${checkoutRequest.type}, is not supported.`
-            );
-            throw createError({
-                statusMessage: 'Invalid checkout request',
-                statusCode: 400,
-            });
+    let stripePriceId: string;
+    const products: { stripePriceId: string }[] = await $fetch(
+        `/api/_content/query/products?path=${checkoutRequest.route}`
+    );
+    if (products && products.length === 1) {
+        stripePriceId = products[0].stripePriceId;
+    } else {
+        const message = `Invalid path ${checkoutRequest.route} for checkout request.`;
+        console.error();
+        throw createError({ statusMessage: message, statusCode: 400 });
     }
 
     let session;
@@ -32,7 +25,7 @@ export default defineEventHandler(async (event): Promise<string> => {
             cancel_url: checkoutRequest.cancelUrl,
             line_items: [
                 {
-                    price: priceId,
+                    price: runtimeConfig.stripePriceOverride || stripePriceId,
                     quantity: 1,
                 },
             ],

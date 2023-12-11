@@ -16,7 +16,10 @@
         ]"
         :description="productDescription"
     />
-    <section class="cover-background-image pb-4">
+    <section
+        class="cover-background-image pb-4"
+        :style="{ 'background-image': `url('${topBackgroundImage}')` }"
+    >
         <div
             class="mx-auto -mt-4 flex flex-col items-center justify-center gap-0 xl:mx-32 xl:flex-row xl:gap-24"
         >
@@ -30,22 +33,19 @@
                 />
             </div>
             <div class="mx-8 sm:mx-8 xl:mx-0">
-                <h1
-                    class="text-shadow mt-8 text-center text-4xl text-black sm:text-left xl:mt-64 xl:text-website-off-white"
+                <div
+                    class="text-shadow mt-8 min-h-fit text-center text-4xl text-black sm:text-left lg:h-52 xl:mt-64 xl:text-website-off-white"
                 >
-                    {{ productTitle }}
-                </h1>
-                <h2
-                    class="text-shadow mt-2 text-center text-xl text-black sm:text-left xl:text-website-off-white"
-                    :class="headingMargin"
-                    v-html="productTagLineHtml"
+                    <h1>{{ productTitle }}</h1>
+                    <Markdown
+                        :component-class="`mt-2 text-xl h-14 mb-16`"
+                        :markdown-string="`## ${productTagLineMarkdown}`"
+                    />
+                </div>
+                <Markdown
+                    component-class="max-w-xl pb-4 text-sm product-description"
+                    :markdown-string="productDescriptionMarkdown"
                 />
-                <p
-                    v-for="(paragraph, i) in paragraphs"
-                    :key="`${i}-product-overview-p`"
-                    class="max-w-xl pb-4 text-sm"
-                    v-html="paragraph"
-                ></p>
                 <p class="my-8 text-xl italic text-website-green">
                     Price:
                     <span class="line-through decoration-2"
@@ -67,24 +67,29 @@
             {{ productTitle }} Includes:
         </h4>
         <div
-            v-for="(detailItem, i) in detailItems"
+            v-for="(detailItem, i) in whatsInsideMarkdown"
             :key="`${i}-detailItem`"
             class="mr-8 mt-4 flex flex-row gap-4"
         >
             <CheckCircleIcon class="h-6 w-6 shrink-0" />
-            <p class="max-w-4xl text-sm">{{ detailItem }}</p>
+            <Markdown
+                component-class="max-w-4xl text-sm"
+                :markdown-string="detailItem.text"
+            />
         </div>
     </section>
-    <section class="banner-background-image mt-8 h-fit w-full px-4 pb-8 pt-32">
-        <h4
-            class="font-family-optimus mx-auto max-w-4xl text-center text-6xl text-website-off-white"
-            v-html="callToActionTitleHtml"
+    <section
+        class="banner-background-image mt-8 h-fit w-full px-4 pb-8 pt-32"
+        :style="{ 'background-image': `url('${callToActionBackgroundImage}')` }"
+    >
+        <Markdown
+            component-class="font-family-optimus mx-auto max-w-4xl text-center text-6xl text-website-off-white"
+            :markdown-string="`${callToActionTitleMarkdown}`"
         />
-        <p
-            class="mx-auto mt-8 max-w-md text-center text-2xl text-website-off-white"
-        >
-            {{ callToActionDescription }}
-        </p>
+        <Markdown
+            component-class="mx-auto mt-8 max-w-md text-center text-2xl text-website-off-white"
+            :markdown-string="callToActionDescriptionMarkdown"
+        />
         <DefaultButton
             :title="buttonTitle"
             :action="buyNow"
@@ -97,32 +102,28 @@
 <script setup lang="ts">
     import { CheckCircleIcon } from '@heroicons/vue/24/solid';
     import { type CheckoutRequest } from '~/types/checkout-request';
-    import { CheckoutType } from '~/lib/checkout-type';
 
     const props = defineProps<{
         productTitle: string;
-        productTagLineHtml: string;
+        productTagLineMarkdown: string;
         mainImageDescription: string;
-        paragraphs: string[];
-        detailItems: string[];
-        checkoutType: CheckoutType;
-        callToActionTitleHtml: string;
-        callToActionDescription: string;
+        productDescriptionMarkdown: string;
+        whatsInsideMarkdown: { text: string }[];
+        callToActionTitleMarkdown: string;
+        callToActionDescriptionMarkdown: string;
         imageSrc: string;
         priceDollars: number;
         originalPriceDollars: number;
-        buttonText?: string;
-        extraHeadingMargin?: boolean;
         productDescription: string;
+        route: string;
+        callToActionBackgroundImage: string;
+        topBackgroundImage: string;
     }>();
 
-    let headingMargin = 'mb-16';
-    if (props.extraHeadingMargin) {
-        headingMargin = 'xl:mb-32 mb-16';
-    }
-
-    let buttonTitle: string = props.buttonText || '';
-    if (!buttonTitle) {
+    let buttonTitle: string;
+    if (!props.priceDollars) {
+        buttonTitle = 'FREE';
+    } else {
         buttonTitle = `BUY NOW FOR $${props.priceDollars}`;
     }
 
@@ -133,7 +134,7 @@
             baseUrl += ':' + window.location.port;
         }
         const checkoutRequest: CheckoutRequest = {
-            type: props.checkoutType,
+            route: props.route,
             successUrl: `${baseUrl}/purchase-success`,
             cancelUrl: window.location.href,
         };
@@ -177,14 +178,16 @@
     }
 
     .cover-background-image {
-        background-image: url('/37-reel-ideas-cover.webp');
         background-repeat: no-repeat;
         background-size: 100% 420px;
     }
 
     .banner-background-image {
-        background-image: url('/37-reel-ideas-banner.webp');
         background-repeat: no-repeat;
+    }
+
+    .product-description > p {
+        margin-bottom: 24px;
     }
 
     @media (min-width: 768px) {

@@ -17,16 +17,27 @@ const config = {
         formsFromEmail: 'info@wildgracevideography.com',
         formsToEmail: 'carly@wildgracevideography.com',
         stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+        stripePriceOverride:
+            process.env.NODE_ENV !== 'production'
+                ? process.env.STRIPE_PRICE_ID
+                : '',
         stripeReelIdeasPriceId: process.env.STRIPE_REEL_IDEAS_PRICE_ID,
-        stripeInteriorDesignerReelIdeasPriceId:
-            process.env.STRIPE_INTERIOR_DESIGNER_REEL_IDEAS_PRICE_ID,
         sendGridApiKey: process.env.SENDGRID_API_KEY,
-        reelIdeasTemplateId: process.env.REEL_IDEAS_TEMPLATE_ID,
-        interiorDesignerReelIdeasTemplateId:
-            process.env.INTERIOR_DESIGNER_REEL_IDEAS_TEMPLATE_ID,
         omnisendApiKey: process.env.OMNISEND_API_KEY,
         sendgridWebhookSigningKey: process.env.SENDGRID_WEBHOOK_SIGNING_KEY,
         discoveryCallTemplateId: process.env.DISCOVERY_CALL_TEMPLATE_ID,
+        gitProvider: process.env.GIT_PROVIDER || 'github',
+        gitProviderClientId: process.env.GIT_PROVIDER_CLIENT_ID,
+        gitProviderClientSecret: process.env.GIT_PROVIDER_CLIENT_SECRET,
+        gitProviderTokenHost:
+            process.env.GIT_PROVIDER_TOKEN_HOST || 'https://github.com',
+        gitProviderTokenPath:
+            process.env.GIT_PROVIDER_TOKEN_PATH || '/login/oauth/access_token',
+        gitProviderAuthorizePath:
+            process.env.GIT_PROVIDER_AUTHORIZE_PATH || '/login/oauth/authorize',
+        gitProviderLogin: process.env.GIT_PROVIDER_LOGIN || 'wildgracevideo',
+        gitProviderScopes: process.env.GIT_PROVIDER_SCOPES || 'repo,user',
+        secureCookies: process.env.NODE_ENV === 'production',
         public: {
             siteUrl: SITE_URL,
             wesbiteIcon: WEBSITE_ICON,
@@ -80,11 +91,24 @@ const config = {
             '/api/*',
         ],
         xsl: false,
+        sources: ['/api/__sitemap__/urls'],
     },
     routeRules: {
         '/**': { isr: 3_600 }, // 1hr
         '/admin/**': { isr: false },
         '/api/**': { isr: false },
+        '/30-day-video-transformation': {
+            redirect: {
+                to: '/products/30-day-video-transformation',
+                statusCode: 301,
+            },
+        },
+        '/video-transformation-for-interior-designers': {
+            redirect: {
+                to: '/products/video-transformation-for-interior-designers',
+                statusCode: 301,
+            },
+        },
         '/': {
             sitemap: {
                 images: [
@@ -142,30 +166,6 @@ const config = {
                 ],
             },
         },
-        '/30-day-video-transformation': {
-            sitemap: {
-                images: [
-                    {
-                        loc: '/37-reel-ideas.webp',
-                        title: '30-Day Video Transformation logo',
-                        caption:
-                            'Boost Your Social Media Presence with 37 Engaging Reel Ideas and a Content Planner. Share Your Journey, Build Trust, and Watch Your Audience Grow in 30 Days.',
-                    },
-                ],
-            },
-        },
-        '/video-transformation-for-interior-designers': {
-            sitemap: {
-                images: [
-                    {
-                        loc: '/interior-designers-icon.webp',
-                        title: '30-Day Video Transformation logo',
-                        caption:
-                            'Boost Your Social Media Presence with 37 Engaging Reel Ideas for Interior Designers and a Content Planner. Share Your Interior Design Journey, Build Trust, and Watch Your Audience Grow in 30 Days.',
-                    },
-                ],
-            },
-        },
     },
     robots: {
         disallow: [
@@ -185,8 +185,10 @@ const config = {
             type: 'authjs',
         },
     },
+    content: {},
     modules: [
         '@sidebase/nuxt-auth',
+        '@nuxt/content',
         'nuxt-schema-org',
         'nuxt-simple-robots',
         'nuxt-simple-sitemap',
