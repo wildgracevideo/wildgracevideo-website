@@ -4,6 +4,7 @@
         :class="{ active: openMenu }"
         tabindex="0"
         role="button"
+        aria-label="Menu Toggle"
         @click="openMenu = !openMenu"
         @keypress="openMenu = !openMenu"
     >
