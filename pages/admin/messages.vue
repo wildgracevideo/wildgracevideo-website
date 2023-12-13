@@ -8,14 +8,14 @@
     <h1 class="ml-8 mt-8 text-2xl">Get Started Messages</h1>
     <div class="mb-4 w-full">
         <Spinner
-            v-if="loading"
+            v-if="pending"
             height-class="h-16"
             width-class="w-16"
             :additional-classes="['mx-auto', 'mt-16']"
         />
-        <div v-else-if="messages.messages" class="mx-2 mt-8 lg:mx-8">
+        <div v-else-if="data" class="mx-2 mt-8 lg:mx-8">
             <AdminExpandableMessage
-                v-for="message in messages.messages"
+                v-for="message in data"
                 :key="`${message.id}${
                     updateIds.includes(message.id) ? '-update' : ''
                 }`"
@@ -42,18 +42,9 @@
 
     const updateIds: Ref<number[]> = ref([]);
 
-    const loading = ref(true);
     const notifications: Ref<NotificationConfig[]> = ref([]);
 
-    const messages: { messages: SerializeObject<MessageWithRelations>[] } =
-        reactive({
-            messages: [],
-        });
-    const { data: response } = await useFetch('/api/admin/messages');
-    onMounted(() => {
-        messages.messages = response.value || [];
-        loading.value = false;
-    });
+    const { data, pending } = await useFetch('/api/admin/messages');
 
     const removeFirstNotification = () => {
         if (notifications.value.length > 0) {
@@ -65,13 +56,13 @@
         message: SerializeObject<MessageWithRelations>
     ) => {
         try {
-            await useFetch(`/api/admin/messages/${message.id}`, {
+            await $fetch(`/api/admin/messages/${message.id}`, {
                 method: 'delete',
             });
-            messages
-                .messages!.filter((it) => it.id === message.id)
-                .map((it) => messages.messages!.indexOf(it))
-                .forEach((it) => messages.messages!.splice(it, 1));
+            data.value
+                ?.filter((it) => it.id === message.id)
+                .map((it) => data.value!.indexOf(it))
+                .forEach((it) => data.value!.splice(it, 1));
         } catch (e) {
             notifications.value.push({
                 type: NotificationType.error,
@@ -88,11 +79,9 @@
                 method: 'POST',
                 body: messageReplyRequest,
             });
-            messages
-                .messages!.filter(
-                    (it) => it.id === messageReplyRequest.messageId
-                )
-                .forEach((it) => (it.reply = messageReply));
+            data.value!.filter(
+                (it) => it.id === messageReplyRequest.messageId
+            ).forEach((it) => (it.reply = messageReply));
             updateIds.value.push(messageReplyRequest.messageId);
         } catch (e) {
             notifications.value.push({
