@@ -81,8 +81,8 @@ const config = {
         xsl: false,
     },
     routeRules: {
-        '/**': { prerender: true },
-        '/admin/**': { prerender: false },
+        '/**': { isr: 3_600 }, // 1hr
+        '/admin/**': { isr: false },
         '/': {
             sitemap: {
                 images: [
