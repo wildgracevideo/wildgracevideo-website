@@ -59,7 +59,8 @@
             await $fetch(`/api/admin/messages/${message.id}`, {
                 method: 'delete',
             });
-            data.value?.filter((it) => it.id === message.id)
+            data.value
+                ?.filter((it) => it.id === message.id)
                 .map((it) => data.value!.indexOf(it))
                 .forEach((it) => data.value!.splice(it, 1));
         } catch (e) {
@@ -79,9 +80,8 @@
                 body: messageReplyRequest,
             });
             data.value!.filter(
-                    (it) => it.id === messageReplyRequest.messageId
-                )
-                .forEach((it) => (it.reply = messageReply));
+                (it) => it.id === messageReplyRequest.messageId
+            ).forEach((it) => (it.reply = messageReply));
             updateIds.value.push(messageReplyRequest.messageId);
         } catch (e) {
             notifications.value.push({

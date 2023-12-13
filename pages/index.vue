@@ -3,8 +3,8 @@
     <SchemaOrgWebPage :name="pageTitle" />
     <SchemaOrgVideo
         :name="videoTitle"
-        url="https://d22668h9qdy3zj.cloudfront.net/wgv-reel.mp4"
-        content-url="https://d22668h9qdy3zj.cloudfront.net/wgv-reel.mp4"
+        url="https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mp4"
+        content-url="https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mp4"
         upload-date="2023-09-25T22:13:39.520Z"
         description="Main video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company."
     />
@@ -24,12 +24,9 @@
         loop
         disablePictureInPicture
         playsinline
+        data-dashjs-player
         :title="videoTitle"
-    >
-        <source src="https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mpd" />
-        <source src="https://d22668h9qdy3zj.cloudfront.net/wgv-reel.m3u8" />
-        <source src="https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mp4" />
-    </video>
+    ></video>
     <div
         class="z-10 mx-16 grid grid-cols-1 gap-x-8 leading-loose md:my-12 md:grid-cols-2"
     >
@@ -52,6 +49,8 @@
 </template>
 
 <script setup lang="ts">
+    import shaka from 'shaka-player';
+
     const firstReviewText =
         'It has been a pleasant and fruitful experience working with Carly. She has developed material that has met my expectations and more. Thank you Carly for helping me with my media needs and in a timely manner.';
     const secondReviewText =
@@ -64,10 +63,35 @@
     const description =
         'Wild Grace Videography is a Denver, Colorado-based video production company that produces creative and memorable video content to make your business stand out.';
 
-    onMounted(() => {
+    onMounted(async () => {
         const videoElement = document.getElementById(
             'reel-video'
         ) as HTMLVideoElement;
+
+        const mpegDashManifestUri =
+            'https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mpd';
+        const hlsManifestUri =
+            'https://d22668h9qdy3zj.cloudfront.net/wgv-reel.m3u8';
+        const fallbackManifestUri =
+            'https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mp4';
+
+        const player = new shaka.Player(videoElement);
+
+        try {
+            await player.load(mpegDashManifestUri);
+            console.log('MPEG-DASH is supported!');
+        } catch (error) {
+            console.warn('MPEG-DASH is not supported, trying HLS...');
+            try {
+                await player.load(hlsManifestUri);
+                console.log('HLS is supported!');
+            } catch (hlsError) {
+                console.error(
+                    'Neither MPEG-DASH nor HLS is supported, falling back to regular video'
+                );
+                await player.load(fallbackManifestUri);
+            }
+        }
 
         // Safari won't play videos on low-power mode
         videoElement
