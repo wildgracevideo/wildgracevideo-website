@@ -24,7 +24,6 @@
         loop
         disablePictureInPicture
         playsinline
-        data-dashjs-player
         :title="videoTitle"
     ></video>
     <div
@@ -76,12 +75,18 @@
             'https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mp4';
 
         const player = new shaka.Player(videoElement);
+        player.configure({
+            streaming: {
+                bufferingGoal: 93,
+                bufferBehind: 93,
+            },
+        });
 
         try {
             await player.load(mpegDashManifestUri);
             console.log('MPEG-DASH is supported!');
         } catch (error) {
-            console.warn('MPEG-DASH is not supported, trying HLS...');
+            console.log('MPEG-DASH is not supported, trying HLS...');
             try {
                 await player.load(hlsManifestUri);
                 console.log('HLS is supported!');
@@ -89,7 +94,13 @@
                 console.error(
                     'Neither MPEG-DASH nor HLS is supported, falling back to regular video'
                 );
-                await player.load(fallbackManifestUri);
+                const source = document.createElement('source');
+
+                source.setAttribute('src', fallbackManifestUri);
+                source.setAttribute('type', 'video/mp4');
+
+                videoElement.appendChild(source);
+                videoElement.play();
             }
         }
 
