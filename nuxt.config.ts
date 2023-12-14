@@ -83,6 +83,7 @@ const config = {
     routeRules: {
         '/**': { isr: 3_600 }, // 1hr
         '/admin/**': { isr: false },
+        '/api/**': { isr: false },
         '/': {
             sitemap: {
                 images: [
