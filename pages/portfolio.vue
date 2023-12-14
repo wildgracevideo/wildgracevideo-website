@@ -4,7 +4,7 @@
     <div>
         <h1 class="mb-8 text-center text-4xl">Video Production Portfolio</h1>
         <div
-            class="aspect-ratio portfolio-page-main-video-container mx-auto px-8"
+            class="aspect-ratio portfolio-page-main-video-container mx-auto px-0 sm:px-8"
         >
             <LazyYoutube
                 :video-id="mainVideo.id"
@@ -14,7 +14,7 @@
                 :alt="mainVideo.alt"
             />
         </div>
-        <div class="mx-16 mb-16 mt-32 grid grid-cols-1 gap-x-16 xl:grid-cols-2">
+        <div class="mx-0 sm:mx-8 mb-16 mt-32 grid grid-cols-1 gap-x-16 xl:grid-cols-2">
             <section
                 v-for="item in videos"
                 :key="item.id"
@@ -27,8 +27,8 @@
                     image-class="aspect-video portfolio-animatable-video fade-out"
                     :title="item.name"
                 />
-                <h2 class="mt-4 text-lg font-bold">{{ item.name }}</h2>
-                <h3 class="mb-16 mt-2">{{ item.description }}</h3>
+                <h2 class="ml-2 mt-4 text-lg font-bold">{{ item.name }}</h2>
+                <h3 class="ml-2 mb-16 mt-2">{{ item.description }}</h3>
             </section>
         </div>
     </div>
