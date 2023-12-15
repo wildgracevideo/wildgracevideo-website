@@ -21,7 +21,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 async function internalStream(
     videoElement: HTMLVideoElement,
     mpdFilename: string,
-    cloudfrontUrl: string,
+    cloudfrontUrl: string
 ): Promise<void> {
     if (window.MediaSource) {
         const bestVideoRepresentation: VideoRepresentation =
@@ -31,9 +31,7 @@ async function internalStream(
         videoElement.src = URL.createObjectURL(mediaSource);
 
         mediaSource.addEventListener('sourceopen', function () {
-            const sourceBuffer = mediaSource.addSourceBuffer(
-                'video/mp4; codecs="avc1.64001E"'
-            );
+            const sourceBuffer = mediaSource.addSourceBuffer('video/mp4');
             sourceBuffer.addEventListener('updateend', function () {
                 if (!sourceBuffer.updating) {
                     mediaSource.endOfStream();
@@ -61,7 +59,7 @@ async function internalStream(
 }
 
 async function getMPDResponse(
-    mpdUrl: string,
+    mpdUrl: string
 ): Promise<{ kbps: number; response: string }> {
     let arrayBuffer: ArrayBuffer;
     const timeStart = Date.now();
@@ -75,7 +73,9 @@ async function getMPDResponse(
         throw error;
     }
     const downloadTime = timeEnd - timeStart;
-    console.log(`took ${downloadTime} millis to download, fileSize ${arrayBuffer.byteLength}`);
+    console.log(
+        `took ${downloadTime} millis to download, fileSize ${arrayBuffer.byteLength}`
+    );
 
     const textDecoder = new TextDecoder();
     return {
@@ -86,10 +86,12 @@ async function getMPDResponse(
 
 async function getBestVideoRepresentation(
     mpdFilename: string,
-    cloudfrontUrl: string,
+    cloudfrontUrl: string
 ): Promise<VideoRepresentation> {
     try {
-        const mpdResponse = await getMPDResponse(`${cloudfrontUrl}/${mpdFilename}`);
+        const mpdResponse = await getMPDResponse(
+            `${cloudfrontUrl}/${mpdFilename}`
+        );
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(mpdResponse.response, 'text/xml');
         const representations = xmlDoc.querySelectorAll('Representation');
@@ -129,10 +131,7 @@ async function getBestVideoRepresentation(
                 lowestbandwidthRepresentation = videoRepresentation;
             }
 
-            if (
-                width <= targetDeviceWidth &&
-                bandwidth > highestBandwidth
-            ) {
+            if (width <= targetDeviceWidth && bandwidth > highestBandwidth) {
                 highestBandwidth = bandwidth;
                 bestRepresentation = videoRepresentation;
             }
