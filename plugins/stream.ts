@@ -31,7 +31,7 @@ async function internalStream(
         videoElement.src = URL.createObjectURL(mediaSource);
 
         mediaSource.addEventListener('sourceopen', function () {
-            const sourceBuffer = mediaSource.addSourceBuffer('video/mp4');
+            const sourceBuffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.640028""');
             sourceBuffer.addEventListener('updateend', function () {
                 if (!sourceBuffer.updating) {
                     mediaSource.endOfStream();
