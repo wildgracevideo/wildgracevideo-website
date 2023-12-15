@@ -55,7 +55,6 @@
         "api": "^6.1.1",
         "aws-sdk": "^2.1459.0",
         "maska": "^2.1.10",
-        "shaka-player": "^4.7.1",
         "stripe": "^14.2.0",
         "zod-prisma-types": "^2.8.1"
     },

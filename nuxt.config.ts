@@ -32,6 +32,7 @@ const config = {
             wesbiteIcon: WEBSITE_ICON,
             gaMeasurementId: GA_MEASUREMENT_ID,
             recaptchaSiteKey: '6LcqgVMoAAAAABLWZCEs3MtuslhHwadUEiMlRCFV',
+            cloudfrontUrl: 'https://d22668h9qdy3zj.cloudfront.net',
         },
     },
     site: {

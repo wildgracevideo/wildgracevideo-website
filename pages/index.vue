@@ -48,8 +48,6 @@
 </template>
 
 <script setup lang="ts">
-    import shaka from 'shaka-player';
-
     const firstReviewText =
         'It has been a pleasant and fruitful experience working with Carly. She has developed material that has met my expectations and more. Thank you Carly for helping me with my media needs and in a timely manner.';
     const secondReviewText =
@@ -67,41 +65,27 @@
             'reel-video'
         ) as HTMLVideoElement;
 
-        const mpegDashManifestUri =
-            'https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mpd';
-        const hlsManifestUri =
-            'https://d22668h9qdy3zj.cloudfront.net/wgv-reel.m3u8';
-        const fallbackManifestUri =
-            'https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mp4';
+        const { $stream } = useNuxtApp();
+        const cloudfrontUrl = useRuntimeConfig().public.cloudfrontUrl;
 
-        const player = new shaka.Player(videoElement);
-        player.configure({
-            streaming: {
-                bufferingGoal: 93,
-                bufferBehind: 93,
-            },
-        });
+        const mpegDashManifestUri = `wgv-reel-h264.mpd`;
 
         try {
-            await player.load(mpegDashManifestUri);
-            console.log('MPEG-DASH is supported!');
+            await $stream(videoElement, mpegDashManifestUri);
         } catch (error) {
-            console.log('MPEG-DASH is not supported, trying HLS...');
-            try {
-                await player.load(hlsManifestUri);
-                console.log('HLS is supported!');
-            } catch (hlsError) {
-                console.error(
-                    'Neither MPEG-DASH nor HLS is supported, falling back to regular video'
-                );
+            console.log(error);
+            const addSourceToVideo = (
+                element: HTMLVideoElement,
+                src: string
+            ) => {
                 const source = document.createElement('source');
-
-                source.setAttribute('src', fallbackManifestUri);
-                source.setAttribute('type', 'video/mp4');
-
-                videoElement.appendChild(source);
-                videoElement.play();
-            }
+                source.src = src;
+                element.appendChild(source);
+            };
+            const hlsManifestUri = `${cloudfrontUrl}/wgv-reel.m3u8`;
+            const fallbackManifestUri = `${cloudfrontUrl}/wgv-reel-h264.mp4`;
+            addSourceToVideo(videoElement, hlsManifestUri);
+            addSourceToVideo(videoElement, fallbackManifestUri);
         }
 
         // Safari won't play videos on low-power mode
