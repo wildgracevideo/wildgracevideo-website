@@ -68,24 +68,25 @@
         const { $stream } = useNuxtApp();
         const cloudfrontUrl = useRuntimeConfig().public.cloudfrontUrl;
 
+        const addSourceToVideo = (element: HTMLVideoElement, src: string) => {
+            const source = document.createElement('source');
+            source.src = src;
+            element.appendChild(source);
+        };
+
         const mpegDashManifestUri = `wgv-reel-h264.mpd`;
 
-        try {
-            await $stream(videoElement, mpegDashManifestUri);
-        } catch (error) {
-            console.log(error);
-            const addSourceToVideo = (
-                element: HTMLVideoElement,
-                src: string
-            ) => {
-                const source = document.createElement('source');
-                source.src = src;
-                element.appendChild(source);
-            };
+        if (window.safari) {
             const hlsManifestUri = `${cloudfrontUrl}/wgv-reel.m3u8`;
-            const fallbackManifestUri = `${cloudfrontUrl}/wgv-reel-h264.mp4`;
             addSourceToVideo(videoElement, hlsManifestUri);
-            addSourceToVideo(videoElement, fallbackManifestUri);
+        } else {
+            try {
+                await $stream(videoElement, mpegDashManifestUri);
+            } catch (error) {
+                console.log(error);
+                const fallbackManifestUri = `${cloudfrontUrl}/wgv-reel-h264.mp4`;
+                addSourceToVideo(videoElement, fallbackManifestUri);
+            }
         }
 
         // Safari won't play videos on low-power mode
