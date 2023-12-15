@@ -18,12 +18,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     };
 });
 
+// TODO: Fragmented stream of mp4
 async function internalStream(
     videoElement: HTMLVideoElement,
     mpdFilename: string,
     cloudfrontUrl: string
 ): Promise<void> {
-    if (window.MediaSource) {
+    const mimeType = 'video/mp4; codecs="avc1.640028""';
+    if (window.MediaSource && window.MediaSource.isTypeSupported(mimeType)) {
         const bestVideoRepresentation: VideoRepresentation =
             await getBestVideoRepresentation(mpdFilename, cloudfrontUrl);
         console.log('Selected video representation:', bestVideoRepresentation);
@@ -31,7 +33,7 @@ async function internalStream(
         videoElement.src = URL.createObjectURL(mediaSource);
 
         mediaSource.addEventListener('sourceopen', function () {
-            const sourceBuffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.640028""');
+            const sourceBuffer = mediaSource.addSourceBuffer(mimeType);
             sourceBuffer.addEventListener('updateend', function () {
                 if (!sourceBuffer.updating) {
                     mediaSource.endOfStream();
