@@ -28,7 +28,7 @@
     },
     "private": true,
     "scripts": {
-        "build": "bun x prisma generate && nuxt build",
+        "build": "nuxt build",
         "dev": "nuxt dev --host",
         "start": "bun run .output/server/index.mjs",
         "generate": "nuxt generate",
