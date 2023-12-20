@@ -2,7 +2,7 @@
    command = "bun --bun run dev"
 [build]
   command = "bun --bun run build"
-  publish = ".nuxt/dist"
+  publish = "dist"
 
 [[headers]]
   for = "/*"
