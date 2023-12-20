@@ -1,7 +1,7 @@
 [dev]
-   command = "bun run dev --bun "
+   command = "bun --bun run dev"
 [build]
-  command = "bun upgrade && bun run build --bun"
+  command = "bun --bun run build"
   publish = ".nuxt/dist"
 
 [[headers]]
