@@ -1,7 +1,7 @@
 [dev]
    command = "bun --bun run dev"
 [build]
-  command = "bun x prisma generate &&  bun --bun run build"
+  command = "bun x prisma generate && bun --bun run build"
   publish = "dist"
 
 [[headers]]
