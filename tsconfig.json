@@ -1,6 +1,6 @@
 {
     // https://nuxt.com/docs/guide/concepts/typescript
-    "extends": "./dist/tsconfig.json",
+    "extends": "./.nuxt/tsconfig.json",
     "compilerOptions": {
         "types": ["@nuxt/types", "@types/grecaptcha", "bun-types"]
     }
