@@ -2,7 +2,7 @@
    command = "bun --bun run dev"
 [build]
   command = "bun x prisma generate && bun --bun run build"
-  publish = ".output"
+  publish = ".output/public"
 
 [[headers]]
   for = "/*"

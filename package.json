@@ -15,7 +15,7 @@
         "eslint-plugin-import": "^2.29.0",
         "eslint-plugin-vue": "^9.19.2",
         "eslint-plugin-vuejs-accessibility": "^2.2.0",
-        "nuxt": "^3.8.2",
+        "nuxt": "npm:nuxt3@latest",
         "nuxt-schema-org": "^3.0.0",
         "nuxt-simple-robots": "^3.1.5",
         "nuxt-simple-sitemap": "^4.1.3",
