@@ -74,14 +74,14 @@
             element.appendChild(source);
         };
 
-        const mpegDashManifestUri = `wgv-reel-h264.mpd`;
+        const mpegDashManifestUri = `wgv-reel-264_dash.mpd`;
 
         if (window.safari) {
-            const hlsManifestUri = `${cloudfrontUrl}/wgv-reel.m3u8`;
+            const hlsManifestUri = `${cloudfrontUrl}/wgv-reel-hls/wgv-reel.m3u8`;
             addSourceToVideo(videoElement, hlsManifestUri);
         } else {
             try {
-                await $stream(videoElement, mpegDashManifestUri);
+                await $stream(videoElement, mpegDashManifestUri, 'wgv-reel-mpeg-dash');
             } catch (error) {
                 console.log(error);
                 const fallbackManifestUri = `${cloudfrontUrl}/wgv-reel-h264.mp4`;

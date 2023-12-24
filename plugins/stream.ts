@@ -1,3 +1,9 @@
+interface AdaptationSet {
+    representation: VideoRepresentation;
+    segment: VideoSegment;
+    mimeType: string;
+}
+
 interface VideoRepresentation {
     baseUrl: string;
     bandwidth: number;
@@ -5,58 +11,120 @@ interface VideoRepresentation {
     height: number;
 }
 
+interface VideoSegment {
+    initializationFile: string;
+    templateFile: string;
+    numberOfSegments: number;
+    startNumber: number;
+    timescale: number;
+}
+
 export default defineNuxtPlugin((nuxtApp) => {
     const runtimeConfig = useRuntimeConfig();
     const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl;
     return {
         provide: {
-            stream: (videoElement: HTMLVideoElement, mpdFilename: string) =>
+            stream: (
+                videoElement: HTMLVideoElement,
+                mpdFilename: string,
+                cloudfrontFolder: string
+            ) =>
                 nuxtApp.runWithContext(() =>
-                    internalStream(videoElement, mpdFilename, cloudfrontUrl)
+                    internalStream(
+                        videoElement,
+                        mpdFilename,
+                        cloudfrontUrl,
+                        cloudfrontFolder
+                    )
                 ),
         },
     };
 });
 
-// TODO: Fragmented stream of mp4
 async function internalStream(
     videoElement: HTMLVideoElement,
     mpdFilename: string,
-    cloudfrontUrl: string
+    cloudfrontUrl: string,
+    cloudfrontFolder: string
 ): Promise<void> {
-    const mimeType = 'video/mp4; codecs="avc1.640028""';
-    if (window.MediaSource && window.MediaSource.isTypeSupported(mimeType)) {
-        const bestVideoRepresentation: VideoRepresentation =
-            await getBestVideoRepresentation(mpdFilename, cloudfrontUrl);
+    if (window.MediaSource) {
+        const bestVideoRepresentation = await getBestAdaptationSet(
+            mpdFilename,
+            cloudfrontUrl,
+            cloudfrontFolder
+        );
         console.log('Selected video representation:', bestVideoRepresentation);
         const mediaSource = new MediaSource();
         videoElement.src = URL.createObjectURL(mediaSource);
 
-        mediaSource.addEventListener('sourceopen', function () {
-            const sourceBuffer = mediaSource.addSourceBuffer(mimeType);
-            sourceBuffer.addEventListener('updateend', function () {
+        mediaSource.addEventListener('sourceopen', async function () {
+            console.log('source open');
+            const response = await $fetch<Response>(
+                `${cloudfrontUrl}/${cloudfrontFolder}/${bestVideoRepresentation.segment.initializationFile}`
+            );
+            const initializationSegment = await response.arrayBuffer();
+            const sourceBuffer = mediaSource.addSourceBuffer(
+                bestVideoRepresentation.mimeType
+            );
+            sourceBuffer.appendBuffer(initializationSegment);
+            let segmentNumber = bestVideoRepresentation.segment.startNumber;
+            sourceBuffer.addEventListener('updateend', async function () {
+                console.log(`updateend, ${segmentNumber}, ${bestVideoRepresentation.segment.numberOfSegments}, ${sourceBuffer.updating}`);
                 if (!sourceBuffer.updating) {
-                    mediaSource.endOfStream();
+                    if (
+                        segmentNumber <=
+                        bestVideoRepresentation.segment.numberOfSegments
+                    ) {
+                        await appendNextSegment(
+                            segmentNumber++,
+                            bestVideoRepresentation,
+                            cloudfrontUrl,
+                            cloudfrontFolder,
+                            sourceBuffer
+                        );
+                    } else {
+                        console.log('Ending..');
+                        mediaSource.endOfStream();
+                    }
                 }
             });
-
-            $fetch<Response>(
-                `${cloudfrontUrl}/${bestVideoRepresentation?.baseUrl}`
-            )
-                .then((response: Response) => response.arrayBuffer())
-                .then((segmentData) => {
-                    sourceBuffer.appendBuffer(segmentData);
-                })
-                .catch((error) =>
-                    console.error('Error fetching MPEG-DASH segment:', error)
-                );
-        });
+        }, { once: true });
 
         videoElement.addEventListener('error', function (e) {
             console.error('Video error:', e);
         });
     } else {
         throw new Error(`MPEG-Dash is not supported`);
+    }
+}
+
+async function appendNextSegment(
+    segment: number,
+    bestVideoRepresentation: AdaptationSet,
+    cloudfrontUrl: string,
+    cloudfrontFolder: string,
+    sourceBuffer: SourceBuffer
+) {
+    const segmentFile = bestVideoRepresentation.segment.templateFile.replace(
+        /\$\w+\$/g,
+        segment.toString()
+    );
+    await fetchFile(
+        `${cloudfrontUrl}/${cloudfrontFolder}/${segmentFile}`,
+        sourceBuffer
+    );
+}
+
+async function fetchFile(
+    fileName: string,
+    sourceBuffer: SourceBuffer
+): Promise<void> {
+    try {
+        const response = await $fetch<Response>(fileName);
+        const arrayBuffer = await response.arrayBuffer();
+        sourceBuffer.appendBuffer(arrayBuffer);
+    } catch (e: unknown) {
+        console.error('Error fetching MPEG-DASH segment:', e);
     }
 }
 
@@ -86,24 +154,32 @@ async function getMPDResponse(
     };
 }
 
-async function getBestVideoRepresentation(
+async function getBestAdaptationSet(
     mpdFilename: string,
-    cloudfrontUrl: string
-): Promise<VideoRepresentation> {
+    cloudfrontUrl: string,
+    cloudfrontFolder: string
+): Promise<AdaptationSet> {
     try {
         const mpdResponse = await getMPDResponse(
-            `${cloudfrontUrl}/${mpdFilename}`
+            `${cloudfrontUrl}/${cloudfrontFolder}/${mpdFilename}`
         );
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(mpdResponse.response, 'text/xml');
-        const representations = xmlDoc.querySelectorAll('Representation');
+        const adaptationSets = xmlDoc.querySelectorAll('AdaptationSet');
 
-        let bestRepresentation: VideoRepresentation | null = null;
+        let bestRepresentation: AdaptationSet | null = null;
         let highestBandwidth = 0;
-        let lowestbandwidthRepresentation: VideoRepresentation | null;
+        let lowestbandwidthAdaptationSet: AdaptationSet | null = null;
         const targetDeviceWidth = window.innerWidth;
 
-        representations.forEach((representation) => {
+        adaptationSets.forEach((adaptationSetElement) => {
+            const representation =
+                adaptationSetElement.querySelector('Representation');
+            const segmentElement =
+                adaptationSetElement.querySelector('SegmentTemplate');
+            if (!representation || !segmentElement) {
+                return;
+            }
             const bandwidth = parseInt(
                 representation.getAttribute('bandwidth') || '0',
                 10
@@ -119,6 +195,24 @@ async function getBestVideoRepresentation(
             const baseUrl =
                 representation.querySelector('BaseURL')?.textContent || '';
 
+            const initializationFile =
+                segmentElement.getAttribute('initialization') ?? '';
+            const timescale = parseInt(
+                segmentElement.getAttribute('timescale') ?? '1',
+                10
+            );
+            const duration = parseInt(
+                segmentElement.getAttribute('duration') ?? '0',
+                10
+            );
+            const startNumber = parseInt(
+                segmentElement.getAttribute('startNumber') ?? '1',
+                10
+            );
+            const media = segmentElement.getAttribute('media') ?? '';
+
+            const numberOfSegments = duration / timescale;
+
             const videoRepresentation: VideoRepresentation = {
                 bandwidth,
                 baseUrl,
@@ -126,19 +220,47 @@ async function getBestVideoRepresentation(
                 height,
             };
 
-            if (
-                !lowestbandwidthRepresentation ||
-                lowestbandwidthRepresentation.bandwidth > bandwidth
-            ) {
-                lowestbandwidthRepresentation = videoRepresentation;
-            }
+            const segment: VideoSegment = {
+                initializationFile,
+                numberOfSegments,
+                startNumber,
+                timescale,
+                templateFile: media,
+            };
 
-            if (width <= targetDeviceWidth && bandwidth > highestBandwidth) {
-                highestBandwidth = bandwidth;
-                bestRepresentation = videoRepresentation;
+            const simpleMimeType =
+                representation.getAttribute('mimeType') || '';
+            const codecs = representation.getAttribute('codecs') || '';
+            const mimeType = `${simpleMimeType}; codecs="${codecs}""`;
+
+            const adaptationSet = {
+                mimeType,
+                representation: videoRepresentation,
+                segment: segment,
+            };
+
+            if (MediaSource.isTypeSupported(mimeType)) {
+                if (
+                    !lowestbandwidthAdaptationSet ||
+                    lowestbandwidthAdaptationSet.representation.bandwidth >
+                        bandwidth
+                ) {
+                    lowestbandwidthAdaptationSet = adaptationSet;
+                }
+
+                if (
+                    width <= targetDeviceWidth &&
+                    bandwidth > highestBandwidth
+                ) {
+                    highestBandwidth = bandwidth;
+                    bestRepresentation = adaptationSet;
+                }
             }
         });
-        return bestRepresentation || lowestbandwidthRepresentation!;
+        if (lowestbandwidthAdaptationSet === null) {
+            throw new Error('No Representation is supported.');
+        }
+        return bestRepresentation || lowestbandwidthAdaptationSet!;
     } catch (error) {
         console.error('Error fetching MPD data:', error);
     }
