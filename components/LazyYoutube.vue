@@ -31,8 +31,6 @@
 </template>
 
 <script setup lang="ts">
-    import YoutubePlay from './YoutubePlay.vue';
-
     defineProps<{
         videoId: string;
         alt: string;

@@ -138,3 +138,39 @@ collections:
                 modes: ['rich_text'],
                 minimal: true,
             }
+
+    - name: 'portfolio'
+      label: 'Portfolio'
+      folder: 'content/portfolio'
+      format: 'frontmatter'
+      create: false
+      identifier_field: 'title'
+      editor:
+          preview: false
+      fields:
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - { label: 'Page Title', name: 'heading', widget: 'string' }
+          - { label: 'Main Reel Youtube ID', name: 'mainReelYoutubeId', widget: 'string' }
+          - { label: 'Main Reel SEO Name', name: 'mainReelName', widget: 'string' }
+          - { label: 'Main Reel SEO Description', name: 'mainReelAlt', widget: 'string' }
+          - label: "Youtube Videos"
+            name: 'youtubeVideos'
+            widget: 'list'
+            fields:
+                - {
+                      label: 'Title',
+                      name: 'title',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - {
+                      label: 'Description',
+                      name: 'description',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - { label: 'Youtube ID', name: 'youtubeId', widget: 'string' }
+                - { label: 'SEO Description', name: 'alt', widget: 'text' }

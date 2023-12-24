@@ -154,18 +154,6 @@ const config = {
                 ],
             },
         },
-        '/portfolio': {
-            sitemap: {
-                images: [
-                    {
-                        loc: '/logo1.webp',
-                        title: 'Wild Grace Videography logo',
-                        caption:
-                            'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.',
-                    },
-                ],
-            },
-        },
     },
     robots: {
         disallow: [
