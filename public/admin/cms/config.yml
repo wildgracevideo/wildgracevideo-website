@@ -1,0 +1,140 @@
+backend:
+    name: github
+    branch: main
+    repo: wildgracevideo/wildgracevideo-website
+    base_url: https://www.wildgracevideography.com
+    auth_endpoint: /api/admin/cms/auth
+
+media_folder: public/uploads
+public_folder: /uploads
+
+publish_mode: editorial_workflow
+
+collections:
+    - name: 'product'
+      label: 'Product'
+      folder: 'content/product'
+      format: 'frontmatter'
+      create: true
+      identifier_field: 'path'
+      editor:
+          preview: false
+      fields:
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - {
+                label: 'Path (All lowercase, separate words with -)',
+                name: 'path',
+                widget: 'string',
+            }
+          - {
+                label: 'Product Image (384 x 384 webp)',
+                name: 'productImage',
+                widget: 'image',
+                choose_url: false,
+                allow_multiple: false,
+            }
+          - {
+                label: 'Published Date (This affects ordering in Shop page)',
+                name: 'publishedDate',
+                widget: 'datetime',
+            }
+          - {
+                label: 'SEO Product Image Description',
+                name: 'imageDescription',
+                widget: 'string',
+            }
+          - {
+                label: 'Page Preview Image (1200 x 630 webp)',
+                name: 'ogImage',
+                widget: 'image',
+                choose_url: false,
+                allow_multiple: false,
+            }
+          - {
+                label: 'Top Background Image (2048 x 683 webp)',
+                name: 'topBackgroundImage',
+                widget: 'image',
+                choose_url: false,
+                allow_multiple: false,
+            }
+          - {
+                label: 'Call To Action Background Image (6192 x 3456 webp)',
+                name: 'callToActionBackgroundImage',
+                widget: 'image',
+                choose_url: false,
+                allow_multiple: false,
+            }
+          - { label: 'Product Name', name: 'productName', widget: 'string' }
+          - {
+                label: 'Product Tagline',
+                name: 'productTagline',
+                widget: 'markdown',
+                minimal: true,
+                modes: ['rich_text'],
+            }
+          - {
+                label: 'Short description',
+                name: 'shortDescription',
+                widget: 'text',
+            }
+          - {
+                label: 'Product description',
+                name: 'productDescription',
+                widget: 'markdown',
+                modes: ['rich_text'],
+            }
+          - {
+                label: 'Price (Dollars)',
+                name: 'priceDollars',
+                widget: 'number',
+                value_type: 'int',
+                min: 0,
+            }
+          - {
+                label: 'Original Price (Dollars)',
+                name: 'originalPriceDollars',
+                widget: 'number',
+                value_type: 'int',
+                min: 0,
+            }
+          - {
+                label: 'Stripe Price ID',
+                name: 'stripePriceId',
+                widget: 'string',
+            }
+          - {
+                label: 'Send Grid Template ID',
+                name: 'sendGridTemplateId',
+                widget: 'string',
+            }
+          - {
+                label: 'Omnisend Purchase Tag',
+                name: 'omnisendTag',
+                widget: 'string',
+            }
+          - label: "What's Inside Components"
+            name: 'whatsInsideComponents'
+            widget: 'list'
+            fields:
+                - {
+                      label: 'Text',
+                      name: 'text',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+          - {
+                label: 'Call To Action title',
+                name: 'callToActionTitle',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: true,
+            }
+          - {
+                label: 'Call To Action subheading',
+                name: 'callToActionSubheading',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: true,
+            }

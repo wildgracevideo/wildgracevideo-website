@@ -1,17 +1,12 @@
 import { PurchaseAudit, SendGridMessageType } from '@prisma/client';
-import {
-    createContact,
-    CreateContactRequest,
-    ProductType,
-} from '~/lib/create-contact';
-import {
-    sendInteriorDesignerReelIdeasEmail,
-    sendReelIdeasEmail,
-} from '~/lib/send-template-email';
+import { createContact, CreateContactRequest } from '~/lib/create-contact';
+import { sendTemplatedEmail } from '~/lib/send-template-email';
 import { stripe } from '~/lib/stripe';
 import prisma from '~/lib/prisma';
-
-const runtimeConfig = useRuntimeConfig();
+import {
+    getProductByPriceId,
+    ProductBackendProperties,
+} from '~/lib/get-product';
 
 export default defineEventHandler(async (event): Promise<void> => {
     const webhookBody = await readBody(event);
@@ -27,15 +22,15 @@ export default defineEventHandler(async (event): Promise<void> => {
             priceId = lineItems.data[0].price?.id;
         }
 
-        let productType: ProductType;
+        let product: ProductBackendProperties;
         if (!priceId) {
             const message = `Line items for the session, ${sessionId}, were not found`;
             console.error(message);
             throw createError({ statusMessage: message, statusCode: 500 });
         } else {
-            productType = getProductType(priceId!);
+            product = await getProduct(priceId!);
             console.log(
-                `Checkout session, ${sessionId}, for product, ${productType}`
+                `Checkout session, ${sessionId}, for product, ${product.omnisendTag}`
             );
         }
         console.log('User opted in to emails.');
@@ -60,7 +55,7 @@ export default defineEventHandler(async (event): Promise<void> => {
         const createContactRequest = {
             firstName,
             lastName,
-            source: productType,
+            source: product.omnisendTag,
             email: toEmail,
             countryCode:
                 session.customer_details?.address?.country || undefined,
@@ -74,42 +69,19 @@ export default defineEventHandler(async (event): Promise<void> => {
             purchaseAudit = await saveContactToDB(createContactRequest);
         }
         if (!purchaseAudit.sentProduct) {
-            let messageId: string;
-            switch (productType) {
-                case ProductType.THIRTY_DAY_VIDEO_TRANSFORMATION_BUY:
-                    messageId = await sendReelIdeasEmail(toEmail, templateData);
-                    break;
-                case ProductType.INTERIOR_DESIGNER_THIRTY_DAT_VIDEO_TRANSFORMATION_BUY:
-                    messageId = await sendInteriorDesignerReelIdeasEmail(
-                        toEmail,
-                        templateData
-                    );
-                    break;
-                default: {
-                    throw createError({
-                        statusMessage: `Unknown product type, ${productType}.`,
-                        statusCode: 400,
-                    });
-                }
-            }
+            const messageId = await sendTemplatedEmail(
+                toEmail,
+                product.sendGridTemplateId,
+                templateData
+            );
             await updateSentProductField(purchaseAudit.id, messageId);
         }
         await createContact(createContactRequest);
     }
 });
 
-function getProductType(priceId: string): ProductType {
-    switch (priceId) {
-        case runtimeConfig.stripeReelIdeasPriceId:
-            return ProductType.THIRTY_DAY_VIDEO_TRANSFORMATION_BUY;
-        case runtimeConfig.stripeInteriorDesignerReelIdeasPriceId:
-            return ProductType.INTERIOR_DESIGNER_THIRTY_DAT_VIDEO_TRANSFORMATION_BUY;
-        default: {
-            const message = `Unknown priceId, ${priceId}.`;
-            console.error(message);
-            throw createError({ statusMessage: message, statusCode: 500 });
-        }
-    }
+async function getProduct(priceId: string): Promise<ProductBackendProperties> {
+    return await getProductByPriceId(priceId);
 }
 
 async function getPurchaseAuditFromDB(

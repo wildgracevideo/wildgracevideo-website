@@ -21,14 +21,14 @@
     <div class="mx-8 mb-8 grid grid-cols-1 gap-8 text-center lg:grid-cols-2">
         <div v-for="shopItem in shopItems" :key="shopItem.title">
             <NuxtLink
-                :to="shopItem.url"
+                :to="`/products/${shopItem.path}`"
                 :aria-label="shopItem.title"
                 class="shadow-floating relative mx-auto mb-8 block max-h-96 w-fit overflow-hidden rounded-xl bg-cover bg-no-repeat"
             >
                 <img
-                    :src="shopItem.imageSrc"
+                    :src="shopItem.productImage"
                     class="aspect-square max-h-96"
-                    :alt="shopItem.imgDescription"
+                    :alt="shopItem.imageDescription"
                 />
                 <div
                     class="absolute bottom-0 left-0 right-0 top-0 overflow-hidden opacity-0"
@@ -38,7 +38,7 @@
                 {{ shopItem.title }}
             </h3>
             <p class="mx-auto mb-4 max-w-sm text-sm">
-                {{ shopItem.description }}
+                {{ shopItem.shortDescription }}
             </p>
             <p class="mx-auto max-w-sm">
                 <span class="line-through decoration-2"
@@ -59,30 +59,15 @@
         heading.value?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const shopItems = [
-        {
-            imageSrc: '/interior-designers-icon.webp',
-            title: '30-Day Video Transformation for Interior Designers',
-            description:
-                'Boost Your Social Media Presence with 37 Engaging Reel Ideas and a Content Planner. Share Your Journey, Build Trust, and Watch Your Audience Grow in 30 Days.',
-            priceDollars: 7,
-            originalPriceDollars: 15,
-            url: '/video-transformation-for-interior-designers',
-            imgDescription:
-                'Image of the Wild Grace Videography 30-Day Video Transformation for Interior Designers product.',
-        },
-        {
-            imageSrc: '/37-reel-ideas.webp',
-            title: '30-Day Video Transformation',
-            description:
-                'Boost Your Social Media Presence with 37 Engaging Reel Ideas for Interior Designers and a Content Planner. Share Your Interior Design Journey, Build Trust, and Watch Your Audience Grow in 30 Days.',
-            priceDollars: 7,
-            originalPriceDollars: 15,
-            url: '/30-day-video-transformation',
-            imgDescription:
-                'Image of the Wild Grace Videography 30-Day Video Transformation product.',
-        },
-    ];
+    const { data } = await useAsyncData('products', () =>
+        queryContent('/product').find()
+    );
+    const shopItems =
+        data.value?.sort(
+            (a, b) =>
+                new Date(b.publishedDate).getTime() -
+                new Date(a.publishedDate).getTime()
+        ) || [];
 </script>
 
 <style scoped>

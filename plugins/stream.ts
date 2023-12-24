@@ -57,38 +57,44 @@ async function internalStream(
         const mediaSource = new MediaSource();
         videoElement.src = URL.createObjectURL(mediaSource);
 
-        mediaSource.addEventListener('sourceopen', async function () {
-            console.log('source open');
-            const response = await $fetch<Response>(
-                `${cloudfrontUrl}/${cloudfrontFolder}/${bestVideoRepresentation.segment.initializationFile}`
-            );
-            const initializationSegment = await response.arrayBuffer();
-            const sourceBuffer = mediaSource.addSourceBuffer(
-                bestVideoRepresentation.mimeType
-            );
-            sourceBuffer.appendBuffer(initializationSegment);
-            let segmentNumber = bestVideoRepresentation.segment.startNumber;
-            sourceBuffer.addEventListener('updateend', async function () {
-                console.log(`updateend, ${segmentNumber}, ${bestVideoRepresentation.segment.numberOfSegments}, ${sourceBuffer.updating}`);
-                if (!sourceBuffer.updating) {
-                    if (
-                        segmentNumber <=
-                        bestVideoRepresentation.segment.numberOfSegments
-                    ) {
-                        await appendNextSegment(
-                            segmentNumber++,
-                            bestVideoRepresentation,
-                            cloudfrontUrl,
-                            cloudfrontFolder,
-                            sourceBuffer
-                        );
-                    } else {
-                        console.log('Ending..');
-                        mediaSource.endOfStream();
+        mediaSource.addEventListener(
+            'sourceopen',
+            async function () {
+                console.log('source open');
+                const response = await $fetch<Response>(
+                    `${cloudfrontUrl}/${cloudfrontFolder}/${bestVideoRepresentation.segment.initializationFile}`
+                );
+                const initializationSegment = await response.arrayBuffer();
+                const sourceBuffer = mediaSource.addSourceBuffer(
+                    bestVideoRepresentation.mimeType
+                );
+                sourceBuffer.appendBuffer(initializationSegment);
+                let segmentNumber = bestVideoRepresentation.segment.startNumber;
+                sourceBuffer.addEventListener('updateend', async function () {
+                    console.log(
+                        `updateend, ${segmentNumber}, ${bestVideoRepresentation.segment.numberOfSegments}, ${sourceBuffer.updating}`
+                    );
+                    if (!sourceBuffer.updating) {
+                        if (
+                            segmentNumber <=
+                            bestVideoRepresentation.segment.numberOfSegments
+                        ) {
+                            await appendNextSegment(
+                                segmentNumber++,
+                                bestVideoRepresentation,
+                                cloudfrontUrl,
+                                cloudfrontFolder,
+                                sourceBuffer
+                            );
+                        } else {
+                            console.log('Ending..');
+                            mediaSource.endOfStream();
+                        }
                     }
-                }
-            });
-        }, { once: true });
+                });
+            },
+            { once: true }
+        );
 
         videoElement.addEventListener('error', function (e) {
             console.error('Video error:', e);

@@ -8,14 +8,6 @@
         upload-date="2023-09-25T22:13:39.520Z"
         description="Main video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company."
     />
-    <SchemaOrgComment
-        :author="{ name: 'Cecilia Mims, Clay Love' }"
-        :text="firstReviewText"
-    />
-    <SchemaOrgComment
-        :author="{ name: 'Justin Little, Blue J Cones' }"
-        :text="secondReviewText"
-    />
     <video
         id="reel-video"
         class="pointer-events-none aspect-video w-full max-w-full cursor-default bg-fixed"
@@ -50,8 +42,6 @@
 <script setup lang="ts">
     const firstReviewText =
         'It has been a pleasant and fruitful experience working with Carly. She has developed material that has met my expectations and more. Thank you Carly for helping me with my media needs and in a timely manner.';
-    const secondReviewText =
-        "Above and beyond our expectations of quality! The creative talent at Wild Grace Videography produced visuals that beautifully represent who we are as a brand. The whole process was incredibly easy we simply sent in our product, and the rest was taken care of. I wouldn't recommend anyone else!";
     const videoTitle =
         'Video reel showcasing the work of Wild Grace Videography.';
 
@@ -81,7 +71,11 @@
             addSourceToVideo(videoElement, hlsManifestUri);
         } else {
             try {
-                await $stream(videoElement, mpegDashManifestUri, 'wgv-reel-mpeg-dash');
+                await $stream(
+                    videoElement,
+                    mpegDashManifestUri,
+                    'wgv-reel-mpeg-dash'
+                );
             } catch (error) {
                 console.log(error);
                 const fallbackManifestUri = `${cloudfrontUrl}/wgv-reel-h264.mp4`;

@@ -1,7 +1,5 @@
-import { CheckoutType } from '~/lib/checkout-type';
-
 export interface CheckoutRequest {
-    type: CheckoutType;
+    route: string;
     cancelUrl: string;
     successUrl: string;
 }
