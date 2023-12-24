@@ -81,6 +81,9 @@ const config = {
         ],
         xsl: false,
     },
+    nitro: {
+        preset: 'bun',
+    },
     routeRules: {
         '/**': { isr: 3_600 }, // 1hr
         '/admin/**': { isr: false },

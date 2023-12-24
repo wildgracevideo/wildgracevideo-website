@@ -23,19 +23,14 @@ jobs:
               with:
                   bun-version: latest
 
-            - name: Setup Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 18.x
-
             - name: Install
               id: install
-              run: npm install
+              run: bun install
 
             - name: Lint
               id: lint
-              run: npm run lint
+              run: bun run lint
 
             - name: Build
               id: build
-              run: npx prisma generate && npm run build
+              run: bun prisma generate && bun --bun run build

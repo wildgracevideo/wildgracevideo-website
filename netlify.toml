@@ -1,9 +1,10 @@
 [dev]
-   command = "npm run dev"
+   command = "bun --bun run dev"
 [build]
-  command = "prisma generate && npm run build"
-  publish = "dist"
-  functions = 'functions' 
+  command = "bun x prisma generate && bun --bun run build"
+  publish = ".output/public"
+[functions]
+    directory = ".output"
 
 [[headers]]
   for = "/*"

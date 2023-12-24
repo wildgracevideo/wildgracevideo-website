@@ -13,7 +13,7 @@ export default NuxtAuthHandler({
     secret: runtimeConfig.nextAuthSecret,
     adapter: PrismaAdapter(prisma),
     providers: [
-        GoogleProvider.default({
+        GoogleProvider({
             clientId: runtimeConfig.googleClientId!,
             clientSecret: runtimeConfig.googleClientSecret!,
             authorization: {
