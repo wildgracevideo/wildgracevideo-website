@@ -3,6 +3,8 @@
 [build]
   command = "bun x prisma generate && bun --bun run build"
   publish = ".output/public"
+[functions]
+    directory = ".output"
 
 [[headers]]
   for = "/*"
