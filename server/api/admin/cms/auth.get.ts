@@ -8,7 +8,7 @@ export default defineEventHandler(async (event): Promise<void> => {
         client_id: runtimeConfig.gitProviderClientId,
         redirect_uri: `${runtimeConfig.public.siteUrl}/api/admin/cms/callback`,
         login: runtimeConfig.gitProviderLogin,
-        scopes: runtimeConfig.gitProviderScopes,
+        scope: runtimeConfig.gitProviderScopes,
         state: token,
         allow_signup: 'false',
     });
