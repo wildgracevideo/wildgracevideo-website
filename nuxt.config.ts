@@ -4,7 +4,6 @@ const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = 'logo2.png';
 const GA_MEASUREMENT_ID = 'G-9KDTSVFRRW';
 
-process.env['AUTH_REDIRECT_PROXY_URL'] = process.env.URL + '/api/auth';
 process.env['NEXTAUTH_URL'] = process.env.DEPLOY_PRIME_URL;
 
 const config = {
