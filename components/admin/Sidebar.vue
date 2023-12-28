@@ -1,6 +1,6 @@
 <template>
     <header
-        class="min-h-dvh hidden w-60 bg-website-green text-website-off-white lg:block"
+        class="hidden min-h-dvh w-60 bg-website-green text-website-off-white lg:block"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">

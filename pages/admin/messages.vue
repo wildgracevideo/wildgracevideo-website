@@ -24,7 +24,7 @@
                 :reply-action="replyAction"
             />
         </div>
-        <p v-else class="h-dvh mt-8 text-center text-xl">No Messages</p>
+        <p v-else class="mt-8 h-dvh text-center text-xl">No Messages</p>
     </div>
 </template>
 

@@ -109,6 +109,18 @@ const config = {
                 statusCode: 301,
             },
         },
+        '/video-content-that-converts': {
+            redirect: {
+                to: '/services/video-content-that-converts',
+                statusCode: 301,
+            },
+        },
+        '/social-media-packages': {
+            redirect: {
+                to: '/services/social-media-packages',
+                statusCode: 301,
+            },
+        },
         '/': {
             sitemap: {
                 images: [

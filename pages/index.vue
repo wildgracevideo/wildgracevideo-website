@@ -7,6 +7,7 @@
         content-url="https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mp4"
         upload-date="2023-09-25T22:13:39.520Z"
         description="Main video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company."
+        :thumbnail-url="thumbnailUrl"
     />
     <video
         id="reel-video"
@@ -49,6 +50,9 @@
         'Wild Grace Videography | Denver Video Production Company';
     const description =
         'Wild Grace Videography is a Denver, Colorado-based video production company that produces creative and memorable video content to make your business stand out.';
+
+    const runtimeConfig = useRuntimeConfig();
+    const thumbnailUrl = runtimeConfig.public.siteUrl + '/logo1.webp';
 
     onMounted(async () => {
         const videoElement = document.getElementById(
