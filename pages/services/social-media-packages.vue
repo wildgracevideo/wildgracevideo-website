@@ -17,8 +17,9 @@
 <script setup lang="ts">
     import type { ServicePage } from '#build/components';
 
-    const route = useRoute();
     const { data } = await useAsyncData('services', () =>
-        queryContent('/service').where({ path: route.params.slug }).findOne()
+        queryContent('/service')
+            .where({ path: 'social-media-packages' })
+            .findOne()
     );
 </script>

@@ -12,6 +12,9 @@
                 price: priceDollars,
                 priceCurrency: 'USD',
                 availability: 'InStock',
+                hasMerchantReturnPolicy: {
+                    returnPolicyCategory: 'MerchantReturnNotPermitted',
+                },
             },
         ]"
         :description="productDescription"
