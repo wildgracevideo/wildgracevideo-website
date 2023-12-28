@@ -57,7 +57,6 @@
     import HeaderItem from '~/components/header/HeaderItem.vue';
 
     const kebabToCamelCase = (str: string) => {
-        console.log(str);
         let outputStr = '';
         for (let i = 0; i < str.length; i++) {
             if (i === 0) {
