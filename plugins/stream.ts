@@ -60,7 +60,6 @@ async function internalStream(
         mediaSource.addEventListener(
             'sourceopen',
             async function () {
-                console.log('source open');
                 const response = await $fetch<Response>(
                     `${cloudfrontUrl}/${cloudfrontFolder}/${bestVideoRepresentation.segment.initializationFile}`
                 );
@@ -71,9 +70,6 @@ async function internalStream(
                 sourceBuffer.appendBuffer(initializationSegment);
                 let segmentNumber = bestVideoRepresentation.segment.startNumber;
                 sourceBuffer.addEventListener('updateend', async function () {
-                    console.log(
-                        `updateend, ${segmentNumber}, ${bestVideoRepresentation.segment.numberOfSegments}, ${sourceBuffer.updating}`
-                    );
                     if (!sourceBuffer.updating) {
                         if (
                             segmentNumber <=
@@ -87,7 +83,6 @@ async function internalStream(
                                 sourceBuffer
                             );
                         } else {
-                            console.log('Ending..');
                             mediaSource.endOfStream();
                         }
                     }
@@ -149,10 +144,6 @@ async function getMPDResponse(
         throw error;
     }
     const downloadTime = timeEnd - timeStart;
-    console.log(
-        `took ${downloadTime} millis to download, fileSize ${arrayBuffer.byteLength}`
-    );
-
     const textDecoder = new TextDecoder();
     return {
         kbps: (arrayBuffer.byteLength / downloadTime) * 8,

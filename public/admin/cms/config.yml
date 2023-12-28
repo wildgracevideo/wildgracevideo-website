@@ -227,7 +227,7 @@ collections:
                 widget: 'string',
             }
           - {
-                label: 'Menu Hero Icon Name (https://heroicons.com/outline Only pick from outline i.e: outline-academic-cap)',
+                label: 'Menu Hero Icon Name (https://heroicons.com/outline Only pick from outline i.e: academic-cap)',
                 name: 'menuIcon',
                 widget: 'string',
             }
