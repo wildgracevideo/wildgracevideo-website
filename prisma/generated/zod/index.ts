@@ -26,6 +26,8 @@ export const PurchaseAuditScalarFieldEnumSchema = z.enum(['id','createdAt','upda
 
 export const SendGridMessageMapScalarFieldEnumSchema = z.enum(['id','createdAt','updatedAt','type']);
 
+export const KeepAliveScalarFieldEnumSchema = z.enum(['id','createdAt']);
+
 export const SortOrderSchema = z.enum(['asc','desc']);
 
 export const NullsOrderSchema = z.enum(['first','last']);
@@ -226,6 +228,17 @@ export const SendGridMessageMapSchema = z.object({
 export type SendGridMessageMap = z.infer<typeof SendGridMessageMapSchema>
 
 /////////////////////////////////////////
+// KEEP ALIVE SCHEMA
+/////////////////////////////////////////
+
+export const KeepAliveSchema = z.object({
+  id: z.string().cuid(),
+  createdAt: z.coerce.date(),
+})
+
+export type KeepAlive = z.infer<typeof KeepAliveSchema>
+
+/////////////////////////////////////////
 // SELECT & INCLUDE
 /////////////////////////////////////////
 
@@ -385,6 +398,14 @@ export const SendGridMessageMapSelectSchema: z.ZodType<Prisma.SendGridMessageMap
   createdAt: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
   type: z.boolean().optional(),
+}).strict()
+
+// KEEP ALIVE
+//------------------------------------------------------
+
+export const KeepAliveSelectSchema: z.ZodType<Prisma.KeepAliveSelect> = z.object({
+  id: z.boolean().optional(),
+  createdAt: z.boolean().optional(),
 }).strict()
 
 
@@ -928,6 +949,46 @@ export const SendGridMessageMapScalarWhereWithAggregatesInputSchema: z.ZodType<P
   type: z.union([ z.lazy(() => EnumSendGridMessageTypeWithAggregatesFilterSchema),z.lazy(() => SendGridMessageTypeSchema) ]).optional(),
 }).strict();
 
+export const KeepAliveWhereInputSchema: z.ZodType<Prisma.KeepAliveWhereInput> = z.object({
+  AND: z.union([ z.lazy(() => KeepAliveWhereInputSchema),z.lazy(() => KeepAliveWhereInputSchema).array() ]).optional(),
+  OR: z.lazy(() => KeepAliveWhereInputSchema).array().optional(),
+  NOT: z.union([ z.lazy(() => KeepAliveWhereInputSchema),z.lazy(() => KeepAliveWhereInputSchema).array() ]).optional(),
+  id: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+}).strict();
+
+export const KeepAliveOrderByWithRelationInputSchema: z.ZodType<Prisma.KeepAliveOrderByWithRelationInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional()
+}).strict();
+
+export const KeepAliveWhereUniqueInputSchema: z.ZodType<Prisma.KeepAliveWhereUniqueInput> = z.object({
+  id: z.string().cuid()
+})
+.and(z.object({
+  id: z.string().cuid().optional(),
+  AND: z.union([ z.lazy(() => KeepAliveWhereInputSchema),z.lazy(() => KeepAliveWhereInputSchema).array() ]).optional(),
+  OR: z.lazy(() => KeepAliveWhereInputSchema).array().optional(),
+  NOT: z.union([ z.lazy(() => KeepAliveWhereInputSchema),z.lazy(() => KeepAliveWhereInputSchema).array() ]).optional(),
+  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+}).strict());
+
+export const KeepAliveOrderByWithAggregationInputSchema: z.ZodType<Prisma.KeepAliveOrderByWithAggregationInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional(),
+  _count: z.lazy(() => KeepAliveCountOrderByAggregateInputSchema).optional(),
+  _max: z.lazy(() => KeepAliveMaxOrderByAggregateInputSchema).optional(),
+  _min: z.lazy(() => KeepAliveMinOrderByAggregateInputSchema).optional()
+}).strict();
+
+export const KeepAliveScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.KeepAliveScalarWhereWithAggregatesInput> = z.object({
+  AND: z.union([ z.lazy(() => KeepAliveScalarWhereWithAggregatesInputSchema),z.lazy(() => KeepAliveScalarWhereWithAggregatesInputSchema).array() ]).optional(),
+  OR: z.lazy(() => KeepAliveScalarWhereWithAggregatesInputSchema).array().optional(),
+  NOT: z.union([ z.lazy(() => KeepAliveScalarWhereWithAggregatesInputSchema),z.lazy(() => KeepAliveScalarWhereWithAggregatesInputSchema).array() ]).optional(),
+  id: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  createdAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
+}).strict();
+
 export const MessageCreateInputSchema: z.ZodType<Prisma.MessageCreateInput> = z.object({
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
@@ -1452,6 +1513,41 @@ export const SendGridMessageMapUncheckedUpdateManyInputSchema: z.ZodType<Prisma.
   type: z.union([ z.lazy(() => SendGridMessageTypeSchema),z.lazy(() => EnumSendGridMessageTypeFieldUpdateOperationsInputSchema) ]).optional(),
 }).strict();
 
+export const KeepAliveCreateInputSchema: z.ZodType<Prisma.KeepAliveCreateInput> = z.object({
+  id: z.string().cuid().optional(),
+  createdAt: z.coerce.date().optional()
+}).strict();
+
+export const KeepAliveUncheckedCreateInputSchema: z.ZodType<Prisma.KeepAliveUncheckedCreateInput> = z.object({
+  id: z.string().cuid().optional(),
+  createdAt: z.coerce.date().optional()
+}).strict();
+
+export const KeepAliveUpdateInputSchema: z.ZodType<Prisma.KeepAliveUpdateInput> = z.object({
+  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+}).strict();
+
+export const KeepAliveUncheckedUpdateInputSchema: z.ZodType<Prisma.KeepAliveUncheckedUpdateInput> = z.object({
+  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+}).strict();
+
+export const KeepAliveCreateManyInputSchema: z.ZodType<Prisma.KeepAliveCreateManyInput> = z.object({
+  id: z.string().cuid().optional(),
+  createdAt: z.coerce.date().optional()
+}).strict();
+
+export const KeepAliveUpdateManyMutationInputSchema: z.ZodType<Prisma.KeepAliveUpdateManyMutationInput> = z.object({
+  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+}).strict();
+
+export const KeepAliveUncheckedUpdateManyInputSchema: z.ZodType<Prisma.KeepAliveUncheckedUpdateManyInput> = z.object({
+  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+}).strict();
+
 export const IntFilterSchema: z.ZodType<Prisma.IntFilter> = z.object({
   equals: z.number().optional(),
   in: z.number().array().optional(),
@@ -1954,6 +2050,21 @@ export const EnumSendGridMessageTypeWithAggregatesFilterSchema: z.ZodType<Prisma
   _count: z.lazy(() => NestedIntFilterSchema).optional(),
   _min: z.lazy(() => NestedEnumSendGridMessageTypeFilterSchema).optional(),
   _max: z.lazy(() => NestedEnumSendGridMessageTypeFilterSchema).optional()
+}).strict();
+
+export const KeepAliveCountOrderByAggregateInputSchema: z.ZodType<Prisma.KeepAliveCountOrderByAggregateInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional()
+}).strict();
+
+export const KeepAliveMaxOrderByAggregateInputSchema: z.ZodType<Prisma.KeepAliveMaxOrderByAggregateInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional()
+}).strict();
+
+export const KeepAliveMinOrderByAggregateInputSchema: z.ZodType<Prisma.KeepAliveMinOrderByAggregateInput> = z.object({
+  id: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional()
 }).strict();
 
 export const MessageReplyCreateNestedOneWithoutMessageInputSchema: z.ZodType<Prisma.MessageReplyCreateNestedOneWithoutMessageInput> = z.object({
@@ -3239,6 +3350,63 @@ export const SendGridMessageMapFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.Sen
   where: SendGridMessageMapWhereUniqueInputSchema,
 }).strict()
 
+export const KeepAliveFindFirstArgsSchema: z.ZodType<Prisma.KeepAliveFindFirstArgs> = z.object({
+  select: KeepAliveSelectSchema.optional(),
+  where: KeepAliveWhereInputSchema.optional(),
+  orderBy: z.union([ KeepAliveOrderByWithRelationInputSchema.array(),KeepAliveOrderByWithRelationInputSchema ]).optional(),
+  cursor: KeepAliveWhereUniqueInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+  distinct: z.union([ KeepAliveScalarFieldEnumSchema,KeepAliveScalarFieldEnumSchema.array() ]).optional(),
+}).strict()
+
+export const KeepAliveFindFirstOrThrowArgsSchema: z.ZodType<Prisma.KeepAliveFindFirstOrThrowArgs> = z.object({
+  select: KeepAliveSelectSchema.optional(),
+  where: KeepAliveWhereInputSchema.optional(),
+  orderBy: z.union([ KeepAliveOrderByWithRelationInputSchema.array(),KeepAliveOrderByWithRelationInputSchema ]).optional(),
+  cursor: KeepAliveWhereUniqueInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+  distinct: z.union([ KeepAliveScalarFieldEnumSchema,KeepAliveScalarFieldEnumSchema.array() ]).optional(),
+}).strict()
+
+export const KeepAliveFindManyArgsSchema: z.ZodType<Prisma.KeepAliveFindManyArgs> = z.object({
+  select: KeepAliveSelectSchema.optional(),
+  where: KeepAliveWhereInputSchema.optional(),
+  orderBy: z.union([ KeepAliveOrderByWithRelationInputSchema.array(),KeepAliveOrderByWithRelationInputSchema ]).optional(),
+  cursor: KeepAliveWhereUniqueInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+  distinct: z.union([ KeepAliveScalarFieldEnumSchema,KeepAliveScalarFieldEnumSchema.array() ]).optional(),
+}).strict()
+
+export const KeepAliveAggregateArgsSchema: z.ZodType<Prisma.KeepAliveAggregateArgs> = z.object({
+  where: KeepAliveWhereInputSchema.optional(),
+  orderBy: z.union([ KeepAliveOrderByWithRelationInputSchema.array(),KeepAliveOrderByWithRelationInputSchema ]).optional(),
+  cursor: KeepAliveWhereUniqueInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+}).strict()
+
+export const KeepAliveGroupByArgsSchema: z.ZodType<Prisma.KeepAliveGroupByArgs> = z.object({
+  where: KeepAliveWhereInputSchema.optional(),
+  orderBy: z.union([ KeepAliveOrderByWithAggregationInputSchema.array(),KeepAliveOrderByWithAggregationInputSchema ]).optional(),
+  by: KeepAliveScalarFieldEnumSchema.array(),
+  having: KeepAliveScalarWhereWithAggregatesInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+}).strict()
+
+export const KeepAliveFindUniqueArgsSchema: z.ZodType<Prisma.KeepAliveFindUniqueArgs> = z.object({
+  select: KeepAliveSelectSchema.optional(),
+  where: KeepAliveWhereUniqueInputSchema,
+}).strict()
+
+export const KeepAliveFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.KeepAliveFindUniqueOrThrowArgs> = z.object({
+  select: KeepAliveSelectSchema.optional(),
+  where: KeepAliveWhereUniqueInputSchema,
+}).strict()
+
 export const MessageCreateArgsSchema: z.ZodType<Prisma.MessageCreateArgs> = z.object({
   select: MessageSelectSchema.optional(),
   include: MessageIncludeSchema.optional(),
@@ -3516,4 +3684,41 @@ export const SendGridMessageMapUpdateManyArgsSchema: z.ZodType<Prisma.SendGridMe
 
 export const SendGridMessageMapDeleteManyArgsSchema: z.ZodType<Prisma.SendGridMessageMapDeleteManyArgs> = z.object({
   where: SendGridMessageMapWhereInputSchema.optional(),
+}).strict()
+
+export const KeepAliveCreateArgsSchema: z.ZodType<Prisma.KeepAliveCreateArgs> = z.object({
+  select: KeepAliveSelectSchema.optional(),
+  data: z.union([ KeepAliveCreateInputSchema,KeepAliveUncheckedCreateInputSchema ]).optional(),
+}).strict()
+
+export const KeepAliveUpsertArgsSchema: z.ZodType<Prisma.KeepAliveUpsertArgs> = z.object({
+  select: KeepAliveSelectSchema.optional(),
+  where: KeepAliveWhereUniqueInputSchema,
+  create: z.union([ KeepAliveCreateInputSchema,KeepAliveUncheckedCreateInputSchema ]),
+  update: z.union([ KeepAliveUpdateInputSchema,KeepAliveUncheckedUpdateInputSchema ]),
+}).strict()
+
+export const KeepAliveCreateManyArgsSchema: z.ZodType<Prisma.KeepAliveCreateManyArgs> = z.object({
+  data: z.union([ KeepAliveCreateManyInputSchema,KeepAliveCreateManyInputSchema.array() ]),
+  skipDuplicates: z.boolean().optional(),
+}).strict()
+
+export const KeepAliveDeleteArgsSchema: z.ZodType<Prisma.KeepAliveDeleteArgs> = z.object({
+  select: KeepAliveSelectSchema.optional(),
+  where: KeepAliveWhereUniqueInputSchema,
+}).strict()
+
+export const KeepAliveUpdateArgsSchema: z.ZodType<Prisma.KeepAliveUpdateArgs> = z.object({
+  select: KeepAliveSelectSchema.optional(),
+  data: z.union([ KeepAliveUpdateInputSchema,KeepAliveUncheckedUpdateInputSchema ]),
+  where: KeepAliveWhereUniqueInputSchema,
+}).strict()
+
+export const KeepAliveUpdateManyArgsSchema: z.ZodType<Prisma.KeepAliveUpdateManyArgs> = z.object({
+  data: z.union([ KeepAliveUpdateManyMutationInputSchema,KeepAliveUncheckedUpdateManyInputSchema ]),
+  where: KeepAliveWhereInputSchema.optional(),
+}).strict()
+
+export const KeepAliveDeleteManyArgsSchema: z.ZodType<Prisma.KeepAliveDeleteManyArgs> = z.object({
+  where: KeepAliveWhereInputSchema.optional(),
 }).strict()

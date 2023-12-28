@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const SITE_URL = process.env.URL || 'http://localhost:3000';
+const SITE_URL = process.env.URL;
 const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = 'logo2.png';
 const GA_MEASUREMENT_ID = 'G-9KDTSVFRRW';
@@ -38,6 +38,7 @@ const config = {
         gitProviderLogin: process.env.GIT_PROVIDER_LOGIN || 'wildgracevideo',
         gitProviderScopes: process.env.GIT_PROVIDER_SCOPES || 'repo user',
         secureCookies: process.env.NODE_ENV === 'production',
+        apiKey: process.env.API_KEY,
         public: {
             siteUrl: SITE_URL,
             wesbiteIcon: WEBSITE_ICON,
