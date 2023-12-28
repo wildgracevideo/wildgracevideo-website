@@ -46,17 +46,46 @@
 
 <script setup lang="ts">
     import { PopoverGroup } from '@headlessui/vue';
-    import {
-        DevicePhoneMobileIcon,
-        VideoCameraIcon,
-    } from '@heroicons/vue/24/outline';
+    import * as heroIcons from '@heroicons/vue/24/outline';
     import type {
         FunctionalComponent,
         HTMLAttributes,
         VNodeProps,
     } from 'nuxt/dist/app/compat/capi';
+    import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
     import HeaderItemDropdown from '~/components/header/HeaderItemDropdown.vue';
     import HeaderItem from '~/components/header/HeaderItem.vue';
+
+    const kebabToCamelCase = (str: string) => {
+        console.log(str);
+        let outputStr = '';
+        for (let i = 0; i < str.length; i++) {
+            if (i === 0) {
+                outputStr += str[i].toUpperCase();
+            } else if (str[i] === '-') {
+                outputStr += `${str[i + 1].toUpperCase()}`;
+                i++;
+            } else {
+                outputStr += str[i].toLowerCase();
+            }
+        }
+        return outputStr;
+    };
+
+    const { data } = await useAsyncData('all-services', () =>
+        queryContent('/service').find()
+    );
+    const servicesChildren = data!.value!.map((it: ParsedContent) => {
+        // @ts-expect-error https://github.com/tailwindlabs/heroicons/issues/278#issuecomment-868966794
+        // eslint-disable-next-line import/namespace
+        const icon = heroIcons[`${kebabToCamelCase(it.menuIcon)}Icon`];
+        return {
+            icon,
+            name: it.menuTitle,
+            description: it.menuDescription,
+            href: `/services/${it.path}`,
+        };
+    });
 
     const imageAlt = 'Wild Grace Videography company logo.';
 
@@ -86,20 +115,7 @@
         {
             name: 'Services',
             type: HeaderItemDropdown,
-            children: [
-                {
-                    name: 'Social Media Video Packages',
-                    description: 'Transform your online presence',
-                    href: '/video-content-that-converts',
-                    icon: VideoCameraIcon,
-                },
-                {
-                    name: 'Social Media Management Packages',
-                    href: '/social-media-packages',
-                    description: 'Managing your online presence',
-                    icon: DevicePhoneMobileIcon,
-                },
-            ],
+            children: servicesChildren,
         },
         {
             name: 'Shop',

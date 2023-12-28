@@ -8,6 +8,8 @@ backend:
 media_folder: public/uploads
 public_folder: /uploads
 
+local_backend: false
+
 publish_mode: editorial_workflow
 
 collections:
@@ -17,13 +19,15 @@ collections:
       format: 'frontmatter'
       create: true
       identifier_field: 'path'
+      slug: '{{slug}}'
+      preview_path: 'products/{{slug}}'
       editor:
           preview: false
       fields:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - {
-                label: 'Path (All lowercase, separate words with -)',
+                label: 'Path (All lowercase, separate words with -, no starting /)',
                 name: 'path',
                 widget: 'string',
             }
@@ -145,16 +149,29 @@ collections:
       format: 'frontmatter'
       create: false
       identifier_field: 'title'
+      preview_path: 'portfolio'
       editor:
           preview: false
       fields:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - { label: 'Page Title', name: 'heading', widget: 'string' }
-          - { label: 'Main Reel Youtube ID', name: 'mainReelYoutubeId', widget: 'string' }
-          - { label: 'Main Reel SEO Name', name: 'mainReelName', widget: 'string' }
-          - { label: 'Main Reel SEO Description', name: 'mainReelAlt', widget: 'string' }
-          - label: "Youtube Videos"
+          - {
+                label: 'Main Reel Youtube ID',
+                name: 'mainReelYoutubeId',
+                widget: 'string',
+            }
+          - {
+                label: 'Main Reel SEO Name',
+                name: 'mainReelName',
+                widget: 'string',
+            }
+          - {
+                label: 'Main Reel SEO Description',
+                name: 'mainReelAlt',
+                widget: 'string',
+            }
+          - label: 'Youtube Videos'
             name: 'youtubeVideos'
             widget: 'list'
             fields:
@@ -174,3 +191,123 @@ collections:
                   }
                 - { label: 'Youtube ID', name: 'youtubeId', widget: 'string' }
                 - { label: 'SEO Description', name: 'alt', widget: 'text' }
+
+    - name: 'service'
+      label: 'Service'
+      folder: 'content/service'
+      format: 'frontmatter'
+      create: true
+      identifier_field: 'path'
+      slug: '{{slug}}'
+      preview_path: 'services/{{slug}}'
+      editor:
+          preview: false
+      fields:
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - {
+                label: 'Page Preview Image (1200 x 630 webp)',
+                name: 'ogImage',
+                widget: 'image',
+                choose_url: false,
+                allow_multiple: false,
+                required: false,
+            }
+          - {
+                label: 'Path (All lowercase, separate words with -, no starting /)',
+                name: 'path',
+                widget: 'string',
+            }
+          - { label: 'Page Title', name: 'pageTitle', widget: 'string' }
+          - { label: 'Product Title', name: 'productTitle', widget: 'string' }
+          - { label: 'Menu Title', name: 'menuTitle', widget: 'string' }
+          - {
+                label: 'Menu Description',
+                name: 'menuDescription',
+                widget: 'string',
+            }
+          - {
+                label: 'Menu Hero Icon Name (https://heroicons.com/outline Only pick from outline i.e: outline-academic-cap)',
+                name: 'menuIcon',
+                widget: 'string',
+            }
+          - {
+                label: 'Product Description',
+                name: 'productDescription',
+                widget: 'markdown',
+                modes: ['rich_text'],
+            }
+          - {
+                label: 'Product Subtext',
+                name: 'productSubtext',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: true,
+            }
+          - label: 'Packages'
+            name: 'packages'
+            widget: 'list'
+            fields:
+                - {
+                      label: 'Title (Without "The")',
+                      name: 'title',
+                      widget: 'string',
+                  }
+                - {
+                      label: 'Price',
+                      name: 'price',
+                      widget: 'number',
+                      required: false,
+                  }
+                - label: 'Components'
+                  name: 'components'
+                  widget: 'list'
+                  fields:
+                      - {
+                            label: 'Title',
+                            name: 'title',
+                            widget: 'string',
+                            required: false,
+                        }
+                      - {
+                            label: 'Description (Non-bold component description, use if title is blank)',
+                            name: 'description',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                            required: false,
+                        }
+                      - {
+                            label: 'Contents',
+                            name: 'contents',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                        }
+          - label: 'Add-Ons'
+            name: 'addOns'
+            widget: 'list'
+            required: false
+            summary: '{{fields.id}}'
+            fields:
+                - label: 'Numeric identifier (1 matches the color of the first component in a package)'
+                  name: 'id'
+                  widget: 'number'
+                - label: 'Components'
+                  name: 'components'
+                  widget: 'list'
+                  fields:
+                      - {
+                            label: 'Contents',
+                            name: 'contents',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                        }
+          - {
+                label: 'Disclaimer',
+                name: 'disclaimer',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: true,
+            }

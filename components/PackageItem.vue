@@ -5,24 +5,16 @@
     >
         <div>
             <h3 class="mx-auto mb-6 mt-4 w-fit text-center text-4xl font-bold">
-                <span class="font-family-moontime mr-1">{{ firstWord }}</span
-                ><span class="font-family-spectral">{{ words }}</span>
+                <span class="font-family-moontime mr-1">The</span
+                ><span class="font-family-spectral">{{ config.title }}</span>
             </h3>
-            <p class="mx-4 text-center">{{ config.description }}</p>
-            <div v-if="config.description" class="mx-8 my-4 h-0.5 bg-black" />
-            <template v-if="isPackageBubble">
-                <PackageBubble
-                    v-for="item in config.elements"
-                    :key="`${item}-package-item-bubble`"
-                    :config="item as PackageBubbleConfig"
-                />
-            </template>
-            <PackageBubbleSimple
-                v-else
-                :details="config.elements as string[]"
+            <PackageBubble
+                v-for="item in config.elements"
+                :key="`${item}-package-item-bubble`"
+                :config="item as PackageBubbleConfig"
             />
         </div>
-        <div>
+        <div v-if="config.price">
             <p class="mb-2 mt-auto text-center">Starting at</p>
             <p class="mb-4 text-center text-2xl">${{ config.price }}/mo</p>
         </div>
@@ -33,27 +25,14 @@
     import { type Config as PackageBubbleConfig } from '~/components/PackageBubble.vue';
 
     export interface Config {
-        description?: string;
         title: string;
-        price: number;
-        elements: PackageBubbleConfig[] | string[];
+        price?: number;
+        elements: PackageBubbleConfig[];
     }
-
-    const props = defineProps<{
+    defineProps<{
         config: Config;
         enlarge: boolean;
     }>();
-
-    let isPackageBubble: boolean;
-    try {
-        isPackageBubble = 'title' in (props.config.elements[0] as never);
-    } catch (e) {
-        isPackageBubble = false;
-    }
-
-    const wordSplit = props.config.title.split(' ');
-    const firstWord = wordSplit[0];
-    const words = wordSplit.slice(1).join(' ');
 </script>
 
 <style scoped>

@@ -38,7 +38,7 @@
                 >
                     <h1>{{ productTitle }}</h1>
                     <Markdown
-                        :component-class="`mt-2 text-xl h-14 mb-16`"
+                        :component-class="`mt-2 text-xl h-14 mb-16 no-default-format`"
                         :markdown-string="`## ${productTagLineMarkdown}`"
                     />
                 </div>
