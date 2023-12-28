@@ -105,6 +105,11 @@ model SendGridMessageMap {
   type      SendGridMessageType
 }
 
+model KeepAlive {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+}
+
 enum SendGridMessageType {
   PURCHASE
   MESSAGE_REPLY
