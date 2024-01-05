@@ -30,7 +30,7 @@
                         >
                             <component
                                 :is="item.icon"
-                                class="h-6 w-6 text-gray-600 group-hover:text-website-green"
+                                class="h-6 w-6 text-gray-600 group-hover:text-website-primary"
                                 aria-hidden="true"
                             />
                         </div>

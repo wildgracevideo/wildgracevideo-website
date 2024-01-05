@@ -148,9 +148,9 @@
             <div class="col-span-1 mx-auto mb-2 md:col-span-2">
                 <button
                     action="submit"
-                    class="h-14 w-40 rounded-xl border-2 border-website-green bg-transparent text-xl text-website-green"
+                    class="h-14 w-40 rounded-xl border-2 border-website-primary bg-transparent text-xl text-website-primary"
                     :class="{
-                        'hover:bg-website-green': !sendingForm,
+                        'hover:bg-website-primary': !sendingForm,
                         'hover:text-website-off-white': !sendingForm,
                         'opacity-50': sendingForm,
                         'cursor-default': sendingForm,
@@ -185,7 +185,7 @@
         layout: 'no-contact',
     });
 
-    const inputClass = 'bg-website-off-white border-2 border-website-green';
+    const inputClass = 'bg-website-off-white border-2 border-website-primary';
 
     const INTERESTS_CHOICES = [
         {

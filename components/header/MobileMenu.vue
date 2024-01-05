@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="openMenu"
-        class="z-20 -mt-32 flex h-full w-full flex-col justify-between bg-website-green pt-32 text-4xl text-website-off-white"
+        class="bg-website-primary z-20 -mt-32 flex h-full w-full flex-col justify-between pt-32 text-4xl text-website-off-white"
     >
         <nav class="flex flex-col gap-8">
             <template v-for="item in items">
@@ -22,11 +22,11 @@
                 </NuxtLink>
             </template>
             <NuxtLink
-                class="px-auto mx-auto flex h-16 w-60 cursor-pointer items-center rounded-xl border-2 border-website-off-white bg-website-off-white text-center text-website-green hover:bg-website-green hover:text-website-off-white"
+                class="px-auto text-website-primary hover:bg-website-primary mx-auto flex h-16 w-60 cursor-pointer items-center rounded-xl border-2 border-website-off-white bg-website-off-white text-center hover:text-website-off-white"
                 to="/get-started"
                 @click="openMenu = false"
             >
-                <p class="mx-auto">Get Started</p>
+                <p class="mx-auto">{{ ctaText }}</p>
             </NuxtLink>
         </nav>
         <SocialMediaIcons
@@ -43,6 +43,7 @@
     const props = defineProps<{
         modelValue: boolean;
         items: HeaderItemConfig[];
+        ctaText: string;
     }>();
 
     const emit = defineEmits(['update:modelValue']);

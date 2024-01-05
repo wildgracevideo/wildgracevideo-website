@@ -39,7 +39,7 @@
 
     .markdown:not(.no-default-format) a {
         text-decoration: underline;
-        color: rgb(var(--color-website-green));
+        color: rgb(var(--color-website-primary));
     }
 
     .markdown:not(.no-default-format) h2 {

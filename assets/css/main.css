@@ -4,10 +4,11 @@
 
 @layer base {
     :root {
-        --color-website-yellow: 247 239 106;
-        --color-website-green: 120 134 107;
-        --color-website-blue: 70 92 139;
-        --color-website-off-white: 250 249 246;
+        --color-website-off-white: 250 249 249;
+        --color-website-off-black: 32 32 32;
+        --color-website-accent: 194 178 154;
+        --color-website-primary: 60 70 32;
+        --color-website-secondary: 37 49 31;
     }
 }
 
@@ -53,9 +54,41 @@ html,
 @font-face {
     font-family: 'Poppins';
     font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(~/assets/fonts/Poppins-Bold.ttf);
+    unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC,
+        U+A830-A839, U+A8E0-A8FF;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(~/assets/fonts/Poppins-Bold.ttf);
+    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
+        U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(~/assets/fonts/Poppins-Bold.ttf);
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+        U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
+        U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* devanagari */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(~/assets/fonts/poppins.woff2) format('woff2');
+    src: url(~/assets/fonts/Poppins-Regular.ttf);
     unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC,
         U+A830-A839, U+A8E0-A8FF;
 }
@@ -65,7 +98,7 @@ html,
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(~/assets/fonts/poppins.woff2) format('woff2');
+    src: url(~/assets/fonts/Poppins-Regular.ttf);
     unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
         U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -75,7 +108,7 @@ html,
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(~/assets/fonts/poppins.woff2) format('woff2');
+    src: url(~/assets/fonts/Poppins-Regular.ttf);
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
         U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
         U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -308,6 +341,10 @@ html,
     height: 100dvh;
 }
 
+.h-2dvh {
+    height: 200dvh;
+}
+
 .fade-in-left {
     filter: blur(0);
     animation: fadeInLeft 2s;
@@ -324,6 +361,15 @@ html,
 
 .fade-out {
     animation: invisible 2s;
+    visibility: hidden;
+}
+
+.fade-in-quick {
+    animation: visible 1s;
+}
+
+.fade-out-quick {
+    animation: invisible 1s;
     visibility: hidden;
 }
 
@@ -420,4 +466,8 @@ html,
 .shadow-floating {
     box-shadow: 8px 8px 16px 16px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
+}
+
+.leading-14 {
+    line-height: 3.5rem;
 }

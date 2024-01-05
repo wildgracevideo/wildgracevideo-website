@@ -2,13 +2,13 @@ backend:
     name: github
     branch: main
     repo: wildgracevideo/wildgracevideo-website
-    base_url: https://www.wildgracevideo.com
+    base_url: http://localhost:3000
     auth_endpoint: /api/admin/cms/auth
 
 media_folder: public/uploads
 public_folder: /uploads
 
-local_backend: false
+local_backend: true
 
 publish_mode: editorial_workflow
 
@@ -312,3 +312,39 @@ collections:
                 modes: ['rich_text'],
                 minimal: true,
             }
+
+    - name: 'home'
+      label: 'Home'
+      folder: 'content/home'
+      format: 'frontmatter'
+      create: false
+      identifier_field: 'title'
+      preview_path: '/'
+      editor:
+          preview: false
+      fields:
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - { label: 'Reel Video SEO Description', name: 'videoTitle', widget: 'text' }
+          - {
+                label: 'Reel Video Thumbnail Image',
+                name: 'thumbnailImage',
+                widget: 'image',
+                choose_url: false,
+                allow_multiple: false,
+            }
+          - {
+                label: 'Page Title',
+                name: 'pageTitle',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: true,
+            }
+          - {
+                label: 'Page tagline',
+                name: 'pageTagline',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: false,
+            }
+          

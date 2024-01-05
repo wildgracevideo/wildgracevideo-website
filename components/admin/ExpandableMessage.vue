@@ -22,7 +22,7 @@
                         <AdminTag
                             v-if="message.reply"
                             :label="`Reply:${message.reply.sendGridMessageStatus}`"
-                            additional-classes="inline-block bg-website-green text-white"
+                            additional-classes="inline-block bg-website-primary text-white"
                         />
                     </span>
                     <p class="ml-2">{{ formattedCreatedAt }}</p>

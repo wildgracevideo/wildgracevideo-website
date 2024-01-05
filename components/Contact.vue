@@ -6,7 +6,7 @@
         :message="notification.message"
     />
     <RecaptchaLoader />
-    <div class="bg-website-green pt-8">
+    <div class="bg-website-primary pt-8">
         <h2
             class="text-center text-3xl text-website-off-white"
             :class="{ hidden: !showForm }"
@@ -85,7 +85,7 @@
                     class="rounded-oval contact-scroll-observable mb-12 border-2 border-website-off-white bg-transparent px-16 py-4 text-website-off-white"
                     :class="{
                         'opacity-50': sendingForm,
-                        'hover:text-website-green': !sendingForm,
+                        'hover:text-website-primary': !sendingForm,
                         'hover:bg-website-off-white': !sendingForm,
                         'cursor-default': sendingForm,
                         'fade-out': !sendingForm && !formError,

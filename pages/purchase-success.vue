@@ -8,7 +8,7 @@
             If it doesn’t arrive in your email inbox within 15 minutes, please
             email me at,
             <a
-                class="inline-block text-website-green underline"
+                class="inline-block text-website-primary underline"
                 href="mailto:carly@wildgracevideo.com?subject=Purchase%20Help"
                 >carly@wildgracevideo.com</a
             >. Also, check spam to see if it went there!

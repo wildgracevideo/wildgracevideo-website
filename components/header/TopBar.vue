@@ -1,7 +1,7 @@
 <template>
     <header
         :class="{
-            'bg-website-green': openMenu,
+            'bg-website-primary': openMenu,
             'h-dvh': openMenu,
             'overflow-hidden': openMenu,
         }"
@@ -33,14 +33,18 @@
                 />
             </PopoverGroup>
             <NuxtLink
-                class="text-md px-auto ml-auto mr-8 hidden h-12 w-32 cursor-pointer items-center rounded-xl border-2 border-website-green bg-website-green text-center text-website-off-white hover:bg-website-off-white hover:text-website-green lg:flex"
+                class="text-md px-auto border-website-primary bg-website-primary hover:text-website-primary ml-auto mr-8 hidden h-12 w-32 cursor-pointer items-center rounded-xl border-2 text-center text-website-off-white hover:bg-website-off-white lg:flex"
                 to="/get-started"
             >
-                <p class="mx-auto">Get Started</p>
+                <p class="mx-auto">{{ ctaText }}</p>
             </NuxtLink>
             <HeaderMobileMenuToggle v-model="openMenu" />
         </nav>
-        <HeaderMobileMenu v-model="openMenu" :items="items" />
+        <HeaderMobileMenu
+            v-model="openMenu"
+            :items="items"
+            :cta-text="ctaText"
+        />
     </header>
 </template>
 
@@ -55,6 +59,8 @@
     import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
     import HeaderItemDropdown from '~/components/header/HeaderItemDropdown.vue';
     import HeaderItem from '~/components/header/HeaderItem.vue';
+
+    const ctaText = 'Contact';
 
     const kebabToCamelCase = (str: string) => {
         let outputStr = '';

@@ -11,14 +11,16 @@ export default {
     theme: {
         extend: {
             colors: {
-                'website-yellow':
-                    'rgb(var(--color-website-yellow) / <alpha-value>)',
-                'website-green':
-                    'rgb(var(--color-website-green) / <alpha-value>)',
-                'website-blue':
-                    'rgb(var(--color-website-blue) / <alpha-value>)',
                 'website-off-white':
                     'rgb(var(--color-website-off-white) / <alpha-value>)',
+                'website-off-black':
+                    'rgb(var(--color-website-off-black) / <alpha-value>)',
+                'website-primary':
+                    'rgb(var(--color-website-primary) / <alpha-value>)',
+                'website-secondary':
+                    'rgb(var(--color-website-secondary) / <alpha-value>)',
+                'website-accent':
+                    'rgb(var(--color-website-accent) / <alpha-value>)',
             },
         },
         transitionProperty: {
