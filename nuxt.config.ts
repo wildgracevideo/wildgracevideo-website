@@ -2,7 +2,7 @@
 const SITE_URL = process.env.URL;
 const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = 'logo2.png';
-const GA_MEASUREMENT_ID = 'G-9KDTSVFRRW';
+const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
 
 process.env['NEXTAUTH_URL'] = process.env.DEPLOY_PRIME_URL;
 
@@ -16,8 +16,8 @@ const config = {
         googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
         nextAuthSecret: process.env.NEXTAUTH_SECRET,
         recaptchaSecret: process.env.RECAPTCHA_SECRET_KEY,
-        formsFromEmail: 'info@wildgracevideography.com',
-        formsToEmail: 'carly@wildgracevideography.com',
+        formsFromEmail: 'carly@wildgracevideo.com',
+        formsToEmail: 'carly@wildgracevideo.com',
         stripeSecretKey: process.env.STRIPE_SECRET_KEY,
         stripePriceOverride:
             process.env.NODE_ENV !== 'production'
