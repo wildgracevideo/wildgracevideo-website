@@ -49,7 +49,7 @@
                     component-class="max-w-xl pb-4 text-sm product-description"
                     :markdown-string="productDescriptionMarkdown"
                 />
-                <p class="my-8 text-xl italic text-website-green">
+                <p class="my-8 text-xl italic text-website-primary">
                     Price:
                     <span class="line-through decoration-2"
                         >${{ originalPriceDollars }}</span
@@ -166,8 +166,8 @@
         left: 0;
         height: 7px;
         width: 100%;
-        border: solid 2px rgb(var(--color-website-green));
-        border-color: rgb(var(--color-website-green)) transparent transparent
+        border: solid 2px rgb(var(--color-website-primary));
+        border-color: rgb(var(--color-website-primary)) transparent transparent
             transparent;
         border-radius: 50%;
     }
