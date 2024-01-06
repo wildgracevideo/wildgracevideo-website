@@ -2,7 +2,7 @@ backend:
     name: github
     branch: main
     repo: wildgracevideo/wildgracevideo-website
-    base_url: https://www.wildgracevideography.com
+    base_url: https://www.wildgracevideo.com
     auth_endpoint: /api/admin/cms/auth
 
 media_folder: public/uploads
