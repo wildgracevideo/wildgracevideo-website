@@ -13,6 +13,7 @@ export default NuxtAuthHandler({
     secret: runtimeConfig.nextAuthSecret,
     adapter: PrismaAdapter(prisma),
     providers: [
+        // @ts-expect-error Needs default value, bad types in next-auth
         GoogleProvider.default({
             clientId: runtimeConfig.googleClientId!,
             clientSecret: runtimeConfig.googleClientSecret!,

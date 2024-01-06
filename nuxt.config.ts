@@ -4,8 +4,6 @@ const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = 'logo2.png';
 const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
 
-process.env['NEXTAUTH_URL'] = process.env.DEPLOY_PRIME_URL;
-
 const config = {
     runtimeConfig: {
         awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID_WGV,
