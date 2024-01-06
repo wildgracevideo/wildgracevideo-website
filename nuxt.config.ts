@@ -45,8 +45,8 @@ const config = {
             siteUrl: SITE_URL,
             wesbiteIcon: WEBSITE_ICON,
             gaMeasurementId: GA_MEASUREMENT_ID,
-            recaptchaSiteKey: '6LcqgVMoAAAAABLWZCEs3MtuslhHwadUEiMlRCFV',
-            cloudfrontUrl: 'https://d22668h9qdy3zj.cloudfront.net',
+            recaptchaSiteKey: '6Ld2tkcpAAAAAK052jkIsYcC5L12ih2pumxlA3e8',
+            cloudfrontUrl: 'https://content.wildgracevideo.com',
         },
     },
     site: {
