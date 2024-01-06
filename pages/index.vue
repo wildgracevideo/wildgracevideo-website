@@ -3,8 +3,8 @@
     <SchemaOrgWebPage :name="pageTitle" />
     <SchemaOrgVideo
         :name="videoTitle"
-        url="https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mp4"
-        content-url="https://d22668h9qdy3zj.cloudfront.net/wgv-reel-h264.mp4"
+        url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
+        content-url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
         upload-date="2023-09-25T22:13:39.520Z"
         description="Main video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company."
         :thumbnail-url="thumbnailUrl"
