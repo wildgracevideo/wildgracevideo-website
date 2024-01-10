@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const SITE_URL = process.env.URL;
+const SITE_URL = process.env.URL || 'https://wildgracevideo.com/';
 const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = 'logo2.png';
 const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
