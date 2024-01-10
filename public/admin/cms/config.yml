@@ -27,7 +27,7 @@ collections:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - {
-                label: 'Path (All lowercase, separate words with -, no starting /)',
+                label: 'Path DO NOT CHANGE ONCE CREATED (All lowercase, separate words with -, no starting /)',
                 name: 'path',
                 widget: 'string',
             }
@@ -149,6 +149,7 @@ collections:
       format: 'frontmatter'
       create: false
       identifier_field: 'title'
+      slug: 'portfolio'
       preview_path: 'portfolio'
       editor:
           preview: false
@@ -214,7 +215,7 @@ collections:
                 required: false,
             }
           - {
-                label: 'Path (All lowercase, separate words with -, no starting /)',
+                label: 'Path DO NOT CHANGE ONCE CREATED (All lowercase, separate words with -, no starting /)',
                 name: 'path',
                 widget: 'string',
             }
