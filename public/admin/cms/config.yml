@@ -19,8 +19,7 @@ collections:
       format: 'frontmatter'
       create: true
       identifier_field: 'path'
-      slug: '{{slug}}'
-      preview_path: 'products/{{slug}}'
+      preview_path: 'products/{{path}}'
       editor:
           preview: false
       fields:
@@ -198,8 +197,7 @@ collections:
       format: 'frontmatter'
       create: true
       identifier_field: 'path'
-      slug: '{{path}}'
-      preview_path: 'services/{{slug}}'
+      preview_path: 'services/{{path}}'
       editor:
           preview: false
       fields:
