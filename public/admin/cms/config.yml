@@ -198,7 +198,7 @@ collections:
       format: 'frontmatter'
       create: true
       identifier_field: 'path'
-      slug: '{{slug}}'
+      slug: '{{path}}'
       preview_path: 'services/{{slug}}'
       editor:
           preview: false
