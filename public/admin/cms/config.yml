@@ -320,6 +320,7 @@ collections:
       create: false
       identifier_field: 'title'
       preview_path: '/'
+      slug: 'home'
       editor:
           preview: false
       fields:
