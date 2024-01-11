@@ -13,4 +13,16 @@ pageTagline: Wild Grace Videography is a Denver-based video production company
   bold, authentic, adventurous, or however you imagine it. From engaging social
   media reels to compelling narratives, we're here to help you bring your brand
   to life and help you better connect with your audience.
+testimonialQuotes:
+  - quote: Unfortunately, our stock is somehow not well understood by the markets.
+      The market compares us with generic companies. We need to look at Biocon
+      as a bellwether stock. A stock that is differentiated, a stock that is
+      focused on R&D, and a very, very strong balance sheet with huge value
+      drivers at the end of it.
+    author: Kiran Mazumdar-Shaw
+  - quote: Certainly the caffeine in coffee, whether it's Starbucks or generic
+      coffee, is somewhat of a stimulant. But if you drink it in moderation,
+      which I think four or five cups a day is, you're fine.
+    author: Howard Schultz
+videoHighlightTitle: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
 ---

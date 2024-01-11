@@ -345,6 +345,10 @@ html,
     height: 200dvh;
 }
 
+.h-6dvh {
+    height: 600dvh;
+}
+
 .fade-in-left {
     filter: blur(0);
     animation: fadeInLeft 2s;

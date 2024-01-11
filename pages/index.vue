@@ -21,42 +21,33 @@
     ></video>
     <Markdown
         :markdown-string="`# ${pageTitle}`"
-        component-class="no-default-format mt-12 mb-8 text-5xl ml-12 mr-16 em:font-medium strong:font-bold leading-14 tracking-tighter"
+        component-class="no-default-format mt-16 mb-16 text-5xl ml-16 mr-24 em:font-medium strong:font-bold leading-14 tracking-tighter"
     />
     <Markdown
         :markdown-string="pageTagline"
         component-class="ml-12 mr-16 mb-16"
     />
-    <div ref="mountainStaticContainer" class="grid grid-cols-2">
+    <div ref="mountainStaticContainer" class="grid md:grid-cols-2 grid-cols-1">
         <div
             ref="mountainBackground"
-            class="bg-website-off-black fill-website-accent mountain-background"
-        ></div>
-        <div class="p-12 h-2dvh">
+            class="bg-website-off-black fill-website-accent mountain-background hidden md:block"
+         ></div>
+        <div class="p-12 h-6dvh">
             <div ref="testimonial1" class="top-1/3 text-center hidden p-12">
-                <p>
-                    Certainly the caffeine in coffee, whether it's Starbucks or
-                    generic coffee, is somewhat of a stimulant. But if you drink
-                    it in moderation, which I think four or five cups a day is,
-                    you're fine.
-                </p>
+                <Markdown :markdown-string="homeData!.testimonialQuotes[0].quote" />
                 <br />
-                <p>- Howard Schultz</p>
+                <p>- {{ homeData!.testimonialQuotes[0].author }}</p>
             </div>
             <div ref="testimonial2" class="top-1/3 text-center hidden p-12">
-                <p>
-                    Unfortunately, our stock is somehow not well understood by
-                    the markets. The market compares us with generic companies.
-                    We need to look at Biocon as a bellwether stock. A stock
-                    that is differentiated, a stock that is focused on R&D, and
-                    a very, very strong balance sheet with huge value drivers at
-                    the end of it.
-                </p>
+                <Markdown :markdown-string="homeData!.testimonialQuotes[1].quote" />
                 <br />
-                <p>- Kiran Mazumdar-Shaw</p>
+                <p>- {{ homeData!.testimonialQuotes[1].author }}</p>
             </div>
         </div>
     </div>
+    <Markdown
+        :markdown-string="`## ${homeData!.videoHighlightTitle!}`"
+        component-class="my-16 max-w-3xl w-fit mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-5xl" />
 </template>
 
 <script setup lang="ts">
@@ -133,7 +124,7 @@
                 const width =
                     Math.min(
                         100,
-                        ((mountainHeight / 2) - mountainTop - triggerOffset) / stepSize
+                        ((mountainHeight / 6) - mountainTop - triggerOffset) / stepSize
                     ) * 1;
                 mountainBackground.value!.style.setProperty(
                     '--mountain-width',
@@ -149,12 +140,12 @@
             const mountainStaticRect = mountainStaticContainer.value!.getBoundingClientRect();
             console.log(`mountain top: ${mountainTop}, mountain static top: ${mountainStaticRect.top}, innerHeight: ${window.innerHeight}`);
             const mountainStaticTop  = mountainStaticRect.top;
-            if (mountainStaticTop < 0 && mountainStaticTop >= (-1 * innerHeight / 2)) {
+            if (mountainStaticTop < 0 && mountainStaticTop >= (-2.5 * innerHeight)) {
                 testimonial1.value!.classList.remove('hidden', 'fade-out-quick');
                 testimonial1.value!.classList.add('fixed', 'fade-in-quick');
                 testimonial2.value!.classList.add('hidden', 'fade-out-quick');
                 testimonial2.value!.classList.remove('fixed', 'fade-in-quick');
-            } else if(mountainStaticTop < 0 && mountainStaticTop >= -1 * innerHeight) {
+            } else if(mountainStaticTop < 0 && mountainStaticTop >= -5 * innerHeight) {
                 testimonial1.value!.classList.add('hidden', 'fade-out-quick');
                 testimonial1.value!.classList.remove('fixed', 'fade-in-quick');
                 testimonial2.value!.classList.remove('hidden', 'fade-out-quick');
@@ -165,17 +156,6 @@
                 testimonial1.value!.classList.add('hidden', 'fade-out-quick');
                 testimonial1.value!.classList.remove('fixed', 'fade-in-quick');
             }
-
-            // if (mountainTop <= 0) {
-            //     testimonial1.value!.classList.add('hidden');
-            //     testimonial2.value!.classList.remove('hidden');
-            // } else if (mountainTop > triggerPoint) {
-            //     testimonial2.value!.classList.add('hidden');
-            //     testimonial1.value!.classList.remove('hidden');
-            // }
-            // if (mountainStaticRect.top <= 0) {
-            //     testimonial2.value!.classList.remove('fixed');
-            // }
         });
     });
 </script>
@@ -197,20 +177,5 @@
         display: inline-block;
         height: 100%;
         width: var(--mountain-width);
-    }
-
-    .mountain-background::after {
-        background-image: url('/sun.svg');
-        background-attachment: fixed;
-        background-position-x: 0%;
-        background-position-y: 50%;
-        background-repeat: no-repeat;
-        background-size: 25%;
-        content: '';
-        position: relative;
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        z-index: -10;
     }
 </style>

@@ -2,13 +2,13 @@ backend:
     name: github
     branch: main
     repo: wildgracevideo/wildgracevideo-website
-    base_url: http://localhost:3000
+    base_url: https://wildgracevideo.com
     auth_endpoint: /api/admin/cms/auth
 
 media_folder: public/uploads
 public_folder: /uploads
 
-local_backend: true
+local_backend: false
 
 publish_mode: editorial_workflow
 
@@ -27,7 +27,7 @@ collections:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - {
-                label: 'Path DO NOT CHANGE ONCE CREATED (All lowercase, separate words with -, no starting /)',
+                label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED',
                 name: 'path',
                 widget: 'string',
             }
@@ -148,6 +148,7 @@ collections:
       folder: 'content/portfolio'
       format: 'frontmatter'
       create: false
+      delete: false
       identifier_field: 'title'
       slug: 'portfolio'
       preview_path: 'portfolio'
@@ -215,7 +216,7 @@ collections:
                 required: false,
             }
           - {
-                label: 'Path DO NOT CHANGE ONCE CREATED (All lowercase, separate words with -, no starting /)',
+                label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED',
                 name: 'path',
                 widget: 'string',
             }
@@ -318,6 +319,7 @@ collections:
       folder: 'content/home'
       format: 'frontmatter'
       create: false
+      delete: false
       identifier_field: 'title'
       preview_path: '/'
       slug: 'home'
@@ -348,4 +350,28 @@ collections:
                 modes: ['rich_text'],
                 minimal: false,
             }
-          
+          - label: 'Testimonial Quotes (Exactly 2)'
+            name: 'testimonialQuotes'
+            widget: 'list'
+            allow_add: false
+            min: 2
+            max: 2
+            summary: '{{fields.author}}'
+            fields:
+              - {
+                    label: 'Quote',
+                    name: 'quote',
+                    widget: 'markdown',
+                    modes: ['rich_text'],
+                    minimal: true,
+                }
+              - {
+                    label: 'Author',
+                    name: 'author',
+                    widget: 'string',
+                    minimal: true
+                }
+          - label: 'Video Highlight Title'
+            name: 'videoHighlightTitle'
+            widget: 'markdown'
+            modes: ['rich_text']
