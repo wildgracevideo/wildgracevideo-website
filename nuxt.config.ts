@@ -194,7 +194,7 @@ const config = {
         '@nuxt/content',
         'nuxt-schema-org',
         'nuxt-simple-robots',
-        'nuxt-simple-sitemap',
+        '@nuxtjs/sitemap',
     ],
 };
 
