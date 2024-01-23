@@ -17,7 +17,7 @@
 
 <p>Welcome to Wild Grace Videography!</p>
 
-<p>These terms and conditions outline the rules and regulations for the use of Wild Grace Videography's Website, located at www.wildgracevideography.com.</p>
+<p>These terms and conditions outline the rules and regulations for the use of Wild Grace Videography's Website, located at www.wildgracevideo.com.</p>
 
 <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Wild Grace Videography if you do not agree to take all of the terms and conditions stated on this page.</p>
 

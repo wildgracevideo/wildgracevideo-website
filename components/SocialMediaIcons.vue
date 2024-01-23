@@ -27,7 +27,7 @@
             <Facebook :fill="iconFill" :height="iconSize" :width="iconSize" />
         </a>
         <a
-            href="mailto:carly@wildgracevideography.com"
+            href="mailto:carly@wildgracevideo.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Email"

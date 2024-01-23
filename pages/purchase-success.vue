@@ -9,8 +9,8 @@
             email me at,
             <a
                 class="inline-block text-website-green underline"
-                href="mailto:carly@wildgracevideography.com?subject=Purchase%20Help"
-                >carly@wildgracevideography.com</a
+                href="mailto:carly@wildgracevideo.com?subject=Purchase%20Help"
+                >carly@wildgracevideo.com</a
             >. Also, check spam to see if it went there!
         </h3>
     </section>

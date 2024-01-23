@@ -7,7 +7,7 @@
             'https://www.instagram.com/wildgracevideo/',
             'https://www.facebook.com/wildgracevideo/',
             'https://www.linkedin.com/company/wild-grace-videography/about/',
-            'https://www.tiktok.com/@wildgracevideography',
+            'https://www.tiktok.com/@wildgracevideo',
             'https://www.youtube.com/@carlykreiger4352',
         ]"
     />
