@@ -21,10 +21,15 @@ export async function getProductByPriceId(
     if (runtimeConfig.stripePriceOverride) {
         predicate = (_it: ProductBackendProperties) => true;
     } else {
-        predicate = (it: ProductBackendProperties) => it.stripePriceId === priceIdOrOverride;
+        predicate = (it: ProductBackendProperties) =>
+            it.stripePriceId === priceIdOrOverride;
     }
     const priceIdOrOverride = runtimeConfig.stripePriceOverride || priceId;
-    return await getProductBy(event, predicate, `Invalid priceId ${priceId} for request.`);
+    return await getProductBy(
+        event,
+        predicate,
+        `Invalid priceId ${priceId} for request.`
+    );
 }
 
 async function getProductBy(

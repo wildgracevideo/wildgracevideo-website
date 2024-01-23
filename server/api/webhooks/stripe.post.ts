@@ -81,7 +81,10 @@ export default defineEventHandler(async (event): Promise<void> => {
     }
 });
 
-async function getProduct(event: H3Event<EventHandlerRequest>, priceId: string): Promise<ProductBackendProperties> {
+async function getProduct(
+    event: H3Event<EventHandlerRequest>,
+    priceId: string
+): Promise<ProductBackendProperties> {
     return await getProductByPriceId(event, priceId);
 }
 
