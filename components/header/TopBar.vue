@@ -33,7 +33,7 @@
                 />
             </PopoverGroup>
             <NuxtLink
-                class="text-md px-auto border-website-primary bg-website-primary hover:text-website-primary ml-auto mr-8 hidden h-12 w-32 cursor-pointer items-center rounded-xl border-2 text-center text-website-off-white hover:bg-website-off-white lg:flex"
+                class="text-md px-auto ml-auto mr-8 hidden h-12 w-32 cursor-pointer items-center rounded-xl border-2 border-website-primary bg-website-primary text-center text-website-off-white hover:bg-website-off-white hover:text-website-primary lg:flex"
                 to="/get-started"
             >
                 <p class="mx-auto">{{ ctaText }}</p>

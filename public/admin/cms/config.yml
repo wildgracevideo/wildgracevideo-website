@@ -328,7 +328,11 @@ collections:
       fields:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
-          - { label: 'Reel Video SEO Description', name: 'videoTitle', widget: 'text' }
+          - {
+                label: 'Reel Video SEO Description',
+                name: 'videoTitle',
+                widget: 'text',
+            }
           - {
                 label: 'Reel Video Thumbnail Image',
                 name: 'thumbnailImage',
@@ -358,19 +362,19 @@ collections:
             max: 2
             summary: '{{fields.author}}'
             fields:
-              - {
-                    label: 'Quote',
-                    name: 'quote',
-                    widget: 'markdown',
-                    modes: ['rich_text'],
-                    minimal: true,
-                }
-              - {
-                    label: 'Author',
-                    name: 'author',
-                    widget: 'string',
-                    minimal: true
-                }
+                - {
+                      label: 'Quote',
+                      name: 'quote',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - {
+                      label: 'Author',
+                      name: 'author',
+                      widget: 'string',
+                      minimal: true,
+                  }
           - label: 'Video Highlight Title'
             name: 'videoHighlightTitle'
             widget: 'markdown'

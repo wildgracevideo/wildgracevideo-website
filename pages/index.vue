@@ -27,19 +27,23 @@
         :markdown-string="pageTagline"
         component-class="ml-12 mr-16 mb-16"
     />
-    <div ref="mountainStaticContainer" class="grid md:grid-cols-2 grid-cols-1">
+    <div ref="mountainStaticContainer" class="grid grid-cols-1 md:grid-cols-2">
         <div
             ref="mountainBackground"
-            class="bg-website-off-black fill-website-accent mountain-background hidden md:block"
-         ></div>
-        <div class="p-12 h-6dvh">
-            <div ref="testimonial1" class="top-1/3 text-center hidden p-12">
-                <Markdown :markdown-string="homeData!.testimonialQuotes[0].quote" />
+            class="mountain-background hidden bg-website-off-black fill-website-accent md:block"
+        ></div>
+        <div class="h-6dvh p-12">
+            <div ref="testimonial1" class="top-1/3 hidden p-12 text-center">
+                <Markdown
+                    :markdown-string="homeData!.testimonialQuotes[0].quote"
+                />
                 <br />
                 <p>- {{ homeData!.testimonialQuotes[0].author }}</p>
             </div>
-            <div ref="testimonial2" class="top-1/3 text-center hidden p-12">
-                <Markdown :markdown-string="homeData!.testimonialQuotes[1].quote" />
+            <div ref="testimonial2" class="top-1/3 hidden p-12 text-center">
+                <Markdown
+                    :markdown-string="homeData!.testimonialQuotes[1].quote"
+                />
                 <br />
                 <p>- {{ homeData!.testimonialQuotes[1].author }}</p>
             </div>
@@ -47,7 +51,8 @@
     </div>
     <Markdown
         :markdown-string="`## ${homeData!.videoHighlightTitle!}`"
-        component-class="my-16 max-w-3xl w-fit mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-5xl" />
+        component-class="my-16 max-w-3xl w-fit mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-5xl"
+    />
 </template>
 
 <script setup lang="ts">
@@ -118,13 +123,14 @@
             const triggerPercent = 0.9;
             const triggerPoint = mountainHeight * triggerPercent;
             const triggerOffset = mountainHeight * (1 - triggerPercent);
-            const stepSize = (mountainHeight / 100) * (triggerPercent);
+            const stepSize = (mountainHeight / 100) * triggerPercent;
 
-            if (mountainTop < triggerPoint) { 
+            if (mountainTop < triggerPoint) {
                 const width =
                     Math.min(
                         100,
-                        ((mountainHeight / 6) - mountainTop - triggerOffset) / stepSize
+                        (mountainHeight / 6 - mountainTop - triggerOffset) /
+                            stepSize
                     ) * 1;
                 mountainBackground.value!.style.setProperty(
                     '--mountain-width',
@@ -137,20 +143,35 @@
                 );
             }
 
-            const mountainStaticRect = mountainStaticContainer.value!.getBoundingClientRect();
-            console.log(`mountain top: ${mountainTop}, mountain static top: ${mountainStaticRect.top}, innerHeight: ${window.innerHeight}`);
-            const mountainStaticTop  = mountainStaticRect.top;
-            if (mountainStaticTop < 0 && mountainStaticTop >= (-2.5 * innerHeight)) {
-                testimonial1.value!.classList.remove('hidden', 'fade-out-quick');
+            const mountainStaticRect =
+                mountainStaticContainer.value!.getBoundingClientRect();
+            console.log(
+                `mountain top: ${mountainTop}, mountain static top: ${mountainStaticRect.top}, innerHeight: ${window.innerHeight}`
+            );
+            const mountainStaticTop = mountainStaticRect.top;
+            if (
+                mountainStaticTop < 0 &&
+                mountainStaticTop >= -2.5 * innerHeight
+            ) {
+                testimonial1.value!.classList.remove(
+                    'hidden',
+                    'fade-out-quick'
+                );
                 testimonial1.value!.classList.add('fixed', 'fade-in-quick');
                 testimonial2.value!.classList.add('hidden', 'fade-out-quick');
                 testimonial2.value!.classList.remove('fixed', 'fade-in-quick');
-            } else if(mountainStaticTop < 0 && mountainStaticTop >= -5 * innerHeight) {
+            } else if (
+                mountainStaticTop < 0 &&
+                mountainStaticTop >= -5 * innerHeight
+            ) {
                 testimonial1.value!.classList.add('hidden', 'fade-out-quick');
                 testimonial1.value!.classList.remove('fixed', 'fade-in-quick');
-                testimonial2.value!.classList.remove('hidden', 'fade-out-quick');
+                testimonial2.value!.classList.remove(
+                    'hidden',
+                    'fade-out-quick'
+                );
                 testimonial2.value!.classList.add('fixed', 'fade-in-quick');
-            } else { 
+            } else {
                 testimonial2.value!.classList.add('hidden', 'fade-out-quick');
                 testimonial2.value!.classList.remove('fixed', 'fade-in-quick');
                 testimonial1.value!.classList.add('hidden', 'fade-out-quick');

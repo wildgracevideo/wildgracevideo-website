@@ -22,7 +22,9 @@
             <p class="ml-1 text-lg">{{ element.title }}</p>
         </NuxtLink>
     </header>
-    <header class="flex h-16 w-full justify-between bg-website-primary lg:hidden">
+    <header
+        class="flex h-16 w-full justify-between bg-website-primary lg:hidden"
+    >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
             <img
