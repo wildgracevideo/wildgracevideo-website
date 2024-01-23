@@ -6,6 +6,6 @@ export default defineNuxtPlugin(async (_nuxtApp) => {
             oldWebsite,
             'https://www.wildgracevideo.com'
         );
-        await navigateTo(redirectUrl, { external: true });
+        await navigateTo(redirectUrl, { external: true, redirectCode: 301 });
     }
 });
