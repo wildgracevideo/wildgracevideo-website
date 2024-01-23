@@ -1,5 +1,7 @@
 import { stripe } from '~/lib/stripe';
 import { CheckoutRequest } from '~/types/checkout-request';
+// eslint-disable-next-line import/no-unresolved
+import { serverQueryContent } from '#content/server';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -7,14 +9,14 @@ export default defineEventHandler(async (event): Promise<string> => {
     const checkoutRequest = await readBody<CheckoutRequest>(event);
 
     let stripePriceId: string;
-    const products: { stripePriceId: string }[] = await $fetch(
-        `/api/_content/query/products?path=${checkoutRequest.route}`
-    );
-    if (products && products.length === 1) {
-        stripePriceId = products[0].stripePriceId;
+    const product = await serverQueryContent(event, '/product')
+        .where({ path: checkoutRequest.route })
+        .findOne();
+    if (product) {
+        stripePriceId = product.stripePriceId;
     } else {
         const message = `Invalid path ${checkoutRequest.route} for checkout request.`;
-        console.error();
+        console.error(message);
         throw createError({ statusMessage: message, statusCode: 400 });
     }
 

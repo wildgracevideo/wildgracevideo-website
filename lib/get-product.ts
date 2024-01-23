@@ -11,26 +11,20 @@ export interface ProductBackendProperties {
     path: string;
 }
 
-export async function getProductByRoute(
-    event: H3Event<EventHandlerRequest>,
-    route: string
-): Promise<ProductBackendProperties> {
-    return await getProductBy(
-        event,
-        (it) => it.path === route,
-        `Invalid path ${route} for request.`
-    );
-}
+const runtimeConfig = useRuntimeConfig();
 
 export async function getProductByPriceId(
     event: H3Event<EventHandlerRequest>,
     priceId: string
 ): Promise<ProductBackendProperties> {
-    return await getProductBy(
-        event,
-        (it) => it.stripePriceId === priceId,
-        `Invalid priceId ${priceId} for request.`
-    );
+    let predicate;
+    if (runtimeConfig.stripePriceOverride) {
+        predicate = (_it: ProductBackendProperties) => true;
+    } else {
+        predicate = (it: ProductBackendProperties) => it.stripePriceId === priceIdOrOverride;
+    }
+    const priceIdOrOverride = runtimeConfig.stripePriceOverride || priceId;
+    return await getProductBy(event, predicate, `Invalid priceId ${priceId} for request.`);
 }
 
 async function getProductBy(
@@ -39,10 +33,10 @@ async function getProductBy(
     errorMessage: string
 ): Promise<ProductBackendProperties> {
     const contentList = (await serverQueryContent(
-        event
+        event,
+        'product'
     ).find()) as ParsedContent[];
     const product = contentList
-        .filter((it) => it._path?.startsWith('/products'))
         .map((it) => it as unknown as ProductBackendProperties)
         .find(predicate);
 

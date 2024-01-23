@@ -19,6 +19,7 @@ const config = {
         formsFromEmail: 'carly@wildgracevideo.com',
         formsToEmail: 'carly@wildgracevideo.com',
         stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+        // This is needed as nuxt content is storing a live price
         stripePriceOverride:
             process.env.NODE_ENV !== 'production'
                 ? process.env.STRIPE_PRICE_ID

@@ -1,4 +1,5 @@
 import { PurchaseAudit, SendGridMessageType } from '@prisma/client';
+import type { EventHandlerRequest, H3Event } from 'h3';
 import { createContact, CreateContactRequest } from '~/lib/create-contact';
 import { sendTemplatedEmail } from '~/lib/send-template-email';
 import { stripe } from '~/lib/stripe';
@@ -28,7 +29,7 @@ export default defineEventHandler(async (event): Promise<void> => {
             console.error(message);
             throw createError({ statusMessage: message, statusCode: 500 });
         } else {
-            product = await getProduct(priceId!);
+            product = await getProduct(event, priceId!);
             console.log(
                 `Checkout session, ${sessionId}, for product, ${product.omnisendTag}`
             );
@@ -80,8 +81,8 @@ export default defineEventHandler(async (event): Promise<void> => {
     }
 });
 
-async function getProduct(priceId: string): Promise<ProductBackendProperties> {
-    return await getProductByPriceId(priceId);
+async function getProduct(event: H3Event<EventHandlerRequest>, priceId: string): Promise<ProductBackendProperties> {
+    return await getProductByPriceId(event, priceId);
 }
 
 async function getPurchaseAuditFromDB(
