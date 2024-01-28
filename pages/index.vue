@@ -31,9 +31,9 @@
     <div ref="mountainStaticContainer" class="grid grid-cols-1 md:grid-cols-2">
         <div
             ref="mountainBackground"
-            class="mountain-background bg-website-off-black fill-website-accent hidden md:block"
+            class="mountain-background hidden bg-website-off-black fill-website-accent md:block"
         ></div>
-        <div class="h-6dvh bg-website-off-black text-website-accent p-12">
+        <div class="h-6dvh bg-website-off-black p-12 text-website-accent">
             <div ref="testimonial1" class="top-1/3 hidden p-12 text-center">
                 <Markdown
                     :markdown-string="homeData!.testimonialQuotes[0].quote"
@@ -79,7 +79,7 @@
             </p>
         </div>
     </div>
-    <div class="mx-12 xl:mx-24 grid grid-cols-1 md:grid-cols-2 gap-x-16 mb-36">
+    <div class="mx-12 mb-36 grid grid-cols-1 gap-x-16 md:grid-cols-2 xl:mx-24">
         <div>
             <h2 class="strong:font-bold mb-8 text-5xl">
                 MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong>
@@ -109,38 +109,54 @@
         </div>
         <img src="/videographer.gif" alt="TODO ALT" />
     </div>
-    <div class="my-32 text-center text-4xl">
-        TODO: Trusted By...
-    </div>
-    <div class="bg-website-accent strong:font-bold">
+    <!-- <div class="my-32 text-center text-4xl"> -->
+    <!--     TODO: Trusted By... -->
+    <!-- </div> -->
+    <h2 class="mb-12 ml-8 text-5xl font-bold lg:ml-16">TRUSTED BY</h2>
+    <LogoSlider class="mb-32" :logos="logos" />
+    <div class="strong:font-bold bg-website-accent">
         <div class="w-4/5 pb-24">
-            <h2 class="text-5xl mb-12 ml-8 lg:ml-24 pt-32">
+            <h2 class="mb-12 ml-8 pt-32 text-5xl lg:ml-24">
                 HOW DOES THIS <strong>WORK</strong>?
             </h2>
             <div class="pb-16">
-                <h3 class="text-4xl strong:font-bold mb-6 lg:ml-32 ml-12">
+                <h3 class="strong:font-bold mb-6 ml-12 text-4xl lg:ml-32">
                     <strong>Step 1.</strong> Discovery Call
                 </h3>
-                <p class="lg:ml-36 ml-16">
-                This initial step is where I get to know you and your project. We discuss your vision, goals, and requirements. It's a collaborative conversation where I gather essential details to ensure I’m aligned with your vision.
+                <p class="ml-16 lg:ml-36">
+                    This initial step is where I get to know you and your
+                    project. We discuss your vision, goals, and requirements.
+                    It's a collaborative conversation where I gather essential
+                    details to ensure I’m aligned with your vision.
                 </p>
             </div>
             <div class="pb-16">
-                <h3 class="text-4xl strong:font-bold mb-6 lg:ml-32 ml-12">
+                <h3 class="strong:font-bold mb-6 ml-12 text-4xl lg:ml-32">
                     <strong>Step 2.</strong> Plan. Plan. Plan.
                 </h3>
-                <p class="lg:ml-36 ml-16">
-                Once I’ve understood your objectives, we begin the planning phase. This involves crafting a detailed strategy, storyboard, and production plan. We'll work together closely to finalize every aspect of the project before moving forward.
+                <p class="ml-16 lg:ml-36">
+                    Once I’ve understood your objectives, we begin the planning
+                    phase. This involves crafting a detailed strategy,
+                    storyboard, and production plan. We'll work together closely
+                    to finalize every aspect of the project before moving
+                    forward.
                 </p>
             </div>
             <div class="pb-16">
-                <h3 class="text-4xl strong:font-bold mb-6 lg:ml-32 ml-12">
+                <h3 class="strong:font-bold mb-6 ml-12 text-4xl lg:ml-32">
                     <strong>Step 3.</strong> Create + Deliver!
                 </h3>
-                <p class="lg:ml-36 ml-16">
-                This is where the magic happens! I’ll bring the plans to life by utilizing a wide range of cinematic equipment and leveraging my expertise. Collaboration with industry experts may also come into play to ensure the highest quality and creativity for your project. Throughout this stage, I maintain communication and transparency, ensuring the project aligns with your expectations.
-                <br class="mb-8" />
-    Finally, I’ll deliver the finished product, ready to exceed your vision and goals.
+                <p class="ml-16 lg:ml-36">
+                    This is where the magic happens! I’ll bring the plans to
+                    life by utilizing a wide range of cinematic equipment and
+                    leveraging my expertise. Collaboration with industry experts
+                    may also come into play to ensure the highest quality and
+                    creativity for your project. Throughout this stage, I
+                    maintain communication and transparency, ensuring the
+                    project aligns with your expectations.
+                    <br class="mb-8" />
+                    Finally, I’ll deliver the finished product, ready to exceed
+                    your vision and goals.
                 </p>
             </div>
         </div>
@@ -148,9 +164,7 @@
     <div class="my-32 text-center text-4xl">
         TODO: Parallax Photo + Videos...
     </div>
-    <div class="my-32 text-center text-4xl">
-        TODO: FAQ
-    </div>
+    <div class="my-32 text-center text-4xl">TODO: FAQ</div>
 </template>
 
 <script setup lang="ts">
@@ -185,6 +199,45 @@
             description:
                 "Get ready to flaunt your outdoor excursions with visuals that bring out their thrill and showcase the excitement of your adventure. Our compelling imagery will redefine your brand's marketing impact, attracting thrill-seekers and enthusiasts for unforgettable experiences.",
             video: '/adventure-preview.mp4',
+        },
+    ];
+
+    const logos = [
+        { path: '/slider-logos/3m.svg', altText: 'Test', companyName: 'Test' },
+        {
+            path: '/slider-logos/barstool-store.svg',
+            altText: 'Test',
+            companyName: 'Test',
+        },
+        {
+            path: '/slider-logos/budweiser.svg',
+            altText: 'Test',
+            companyName: 'Test',
+        },
+        {
+            path: '/slider-logos/buzzfeed.svg',
+            altText: 'Test',
+            companyName: 'Test',
+        },
+        {
+            path: '/slider-logos/forbes.svg',
+            altText: 'Test',
+            companyName: 'Test',
+        },
+        {
+            path: '/slider-logos/macys.svg',
+            altText: 'Test',
+            companyName: 'Test',
+        },
+        {
+            path: '/slider-logos/menshealth.svg',
+            altText: 'Test',
+            companyName: 'Test',
+        },
+        {
+            path: '/slider-logos/mrbeast.svg',
+            altText: 'Test',
+            companyName: 'Test',
         },
     ];
 

@@ -6,9 +6,9 @@
         :message="notification.message"
     />
     <RecaptchaLoader />
-    <div class="bg-website-off-black pt-8">
+    <div class="bg-website-off-black py-16">
         <h2
-            class="text-center text-4xl font-bold text-website-off-white mb-6"
+            class="mb-6 text-center text-4xl font-bold text-website-off-white"
             :class="{ hidden: !showForm }"
         >
             WORK WITH ME
@@ -82,7 +82,7 @@
             <div class="col-span-1 flex justify-center md:col-span-2">
                 <button
                     type="submit"
-                    class="contact-scroll-observable mb-12 border-2 border-website-off-black bg-website-off-white px-16 py-3 text-website-off-black text-xl"
+                    class="contact-scroll-observable mb-12 border-2 border-website-off-black bg-website-off-white px-16 py-3 text-xl text-website-off-black"
                     :class="{
                         'opacity-50': sendingForm,
                         'hover:text-website-off-white': !sendingForm,
