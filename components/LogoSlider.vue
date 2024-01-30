@@ -1,6 +1,6 @@
 <template>
     <div
-        class="logos relative overflow-hidden whitespace-nowrap bg-white px-0 py-14"
+        class="logos relative overflow-hidden whitespace-nowrap bg-website-off-white px-0 py-14"
     >
         <div class="logos-slide inline-block whitespace-nowrap">
             <img
@@ -50,16 +50,20 @@
 
     .logos:before {
         left: 0;
-        background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+        background: linear-gradient(
+            to left,
+            rgba(250, 249, 249, 0),
+            rgba(250, 249, 249, 1)
+        );
     }
 
     .logos:after {
         right: 0;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
-    }
-
-    .logos:hover .logos-slide {
-        animation-play-state: paused;
+        background: linear-gradient(
+            to right,
+            rgba(250, 249, 249, 0),
+            rgba(250, 249, 249, 1)
+        );
     }
 
     .logos-slide {
