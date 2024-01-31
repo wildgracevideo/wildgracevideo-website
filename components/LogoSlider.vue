@@ -48,6 +48,13 @@
         z-index: 2;
     }
 
+    @media (max-width: 768px) {
+        .logos:before,
+        .logos:after {
+            width: 100px;
+        }
+    }
+
     .logos:before {
         left: 0;
         background: linear-gradient(
