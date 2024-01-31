@@ -109,9 +109,6 @@
         </div>
         <img src="/videographer.gif" alt="TODO ALT" />
     </div>
-    <!-- <div class="my-32 text-center text-4xl"> -->
-    <!--     TODO: Trusted By... -->
-    <!-- </div> -->
     <h2 class="mb-12 ml-8 text-5xl font-bold lg:ml-16">TRUSTED BY</h2>
     <LogoSlider class="mb-32" :logos="logos" />
     <div class="strong:font-bold bg-website-accent">
@@ -161,10 +158,34 @@
             </div>
         </div>
     </div>
-    <div class="my-32 text-center text-4xl">
-        TODO: Parallax Photo + Videos...
+    <div
+        class="wave-background mb-32 grid w-full grid-cols-1 items-center justify-center gap-x-10 px-8 md:grid-cols-3"
+    >
+        <video
+            v-for="video in parallaxVideos"
+            :key="`parallax-video-${video.title}`"
+            class="pointer-events-none mx-auto mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mx-0 lg:mt-0"
+            autoplay
+            muted
+            loop
+            disablePictureInPicture
+            playsinline
+            :title="videoTitle"
+        >
+            <source :src="video.path" type="video/mp4" />
+        </video>
     </div>
-    <div class="my-32 text-center text-4xl">TODO: FAQ</div>
+    <div class="mx-8 mb-32 lg:mx-32">
+        <h2 class="mx-auto mb-20 mt-32 max-w-lg text-center text-4xl font-bold">
+            FREQUENTLY ASKED QUESTIONS
+        </h2>
+        <template v-for="faq in faqs" :key="`faq-${faq.question}`">
+            <h3 class="mb-4 font-bold">+ {{ faq.question }}</h3>
+            <p class="mb-10">
+                {{ faq.answer }}
+            </p>
+        </template>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -186,19 +207,19 @@
             title: 'BOUTIQUE HOTELS',
             description:
                 'Let us capture the essence of your boutique hotel by showcasing your unique spaces and highlighting the beauty of your surroundings. We’ll craft compelling visuals that will speak to your brand and up-level your marketing for years to come.',
-            video: '/hotel-preview.mp4',
+            video: '/boutique-hotels.mp4',
         },
         {
             title: 'OUTDOOR-RELATED PRODUCTS',
             description:
                 "Let us spotlight your outdoor gear with visuals that showcase their top-notch quality and demonstrate their ideal use in the great outdoors. Let our compelling imagery redefine your brand's marketing impact for the long term.",
-            video: '/product-preview.mp4',
+            video: '/outdoor-brands.mp4',
         },
         {
             title: 'OUTDOOR ADVENTURE COMPANIES',
             description:
                 "Get ready to flaunt your outdoor excursions with visuals that bring out their thrill and showcase the excitement of your adventure. Our compelling imagery will redefine your brand's marketing impact, attracting thrill-seekers and enthusiasts for unforgettable experiences.",
-            video: '/adventure-preview.mp4',
+            video: '/adventure-brands.mp4',
         },
     ];
 
@@ -238,6 +259,44 @@
             path: '/slider-logos/mrbeast.svg',
             altText: 'Test',
             companyName: 'Test',
+        },
+    ];
+
+    const faqs = [
+        {
+            question: 'Do you do both photo and video?',
+            answer: "I specialize in video production but can also offer photography services upon request. Whether you're seeking a stunning video production, captivating photography, or a combination of both, I’m committed to meeting your creative needs and bringing your vision to life.",
+        },
+        {
+            question: 'What is the turnaround time?',
+            answer: 'Turnaround time varies based on the project scope and I will provide an estimated timeline during the Discovery Call. However, the majority of our projects have a 2-week turnaround time from the last shoot date.',
+        },
+        {
+            question:
+                'How involved are you in the planning and storyboarding process?',
+            answer: 'I am adaptable to your preferences. Typically, I take the lead in planning and storyboarding based on the insights gathered during our discovery call and pre-production meeting. However, I welcome your involvement at any level—whether you prefer a hands-on approach in planning every detail or entrusting me to handle the creative process, I’m here to accommodate your needs and vision.',
+        },
+        {
+            question: 'Can we choose the music for our video?',
+            answer: "Typically, I curate music based on my expertise and the flow of the editing process. I have access to a wide range of quality, royalty-free tracks from a subscription platform. However, I value your preferences. If you have specific genre ideas or would like to be presented with song options, I'm more than happy to provide you with a selection to choose from. Otherwise, rest assured that I'll select music that complements the video seamlessly, drawing from my experience and creative instincts which have been successful in past projects.",
+        },
+    ];
+
+    const parallaxVideos = [
+        {
+            path: '/parallax-video-1.jpg',
+            altText: '',
+            title: 'Parallax video 1',
+        },
+        {
+            path: '/parallax-video-2.jpg',
+            altText: '',
+            title: 'Parallax video 2',
+        },
+        {
+            path: '/parallax-video-3.jpg',
+            altText: '',
+            title: 'Parallax video 3',
         },
     ];
 
@@ -371,5 +430,14 @@
         display: inline-block;
         height: 100%;
         width: var(--mountain-width);
+    }
+
+    .wave-background {
+        background-image: url('/wave.jpg');
+        background-attachment: fixed;
+        /* background-repeat: no-repeat; */
+        background-size: 100%;
+        min-height: 56rem;
+        height: 100%;
     }
 </style>
