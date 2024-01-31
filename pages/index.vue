@@ -21,7 +21,7 @@
     ></video>
     <Markdown
         :markdown-string="`# ${pageTitle}`"
-        component-class="no-default-format mt-32 mb-16 text-5xl mx-8 em:font-medium strong:font-bold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
+        component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl mx-8 em:font-medium strong:font-bold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
     />
     <Markdown
         :markdown-string="pageTagline"
@@ -57,7 +57,7 @@
     </div>
     <Markdown
         :markdown-string="`## ${homeData!.videoHighlightTitle!}`"
-        component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-5xl"
+        component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-4xl md:text-5xl"
     />
     <div class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
         <div
@@ -87,7 +87,7 @@
         class="mx-12 mb-36 mt-32 grid grid-cols-1 gap-x-16 md:mt-48 md:grid-cols-2 xl:mx-24"
     >
         <div class="order-2 md:order-1">
-            <h2 class="strong:font-bold mb-8 hidden text-5xl md:block">
+            <h2 class="strong:font-bold mb-8 hidden text-4xl md:text-5xl md:block">
                 MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong>
             </h2>
             <p>
@@ -114,17 +114,17 @@
             </p>
         </div>
         <div class="order-1 md:order-2">
-            <h2 class="strong:font-bold mb-12 block text-5xl md:hidden">
+            <h2 class="strong:font-bold mb-12 block text-4xl md:text-5xl md:hidden">
                 MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong>
             </h2>
             <img src="/videographer.gif" alt="TODO ALT" />
         </div>
     </div>
-    <h2 class="mb-12 ml-8 text-5xl font-bold lg:ml-16">TRUSTED BY</h2>
+    <h2 class="mb-12 ml-8 text-4xl md:text-5xl font-bold lg:ml-16">TRUSTED BY</h2>
     <LogoSlider class="mb-32" :logos="logos" />
     <div class="strong:font-bold bg-website-accent">
         <div class="w-4/5 pb-24">
-            <h2 class="mb-12 ml-8 pt-32 text-5xl lg:ml-24">
+            <h2 class="mb-12 ml-8 pt-32 text-4xl md:text-5xl lg:ml-24">
                 HOW DOES THIS <strong>WORK</strong>?
             </h2>
             <div class="pb-16">
