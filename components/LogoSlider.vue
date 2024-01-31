@@ -8,14 +8,14 @@
                 :key="`initial-logo-${logo.companyName}`"
                 :src="logo.path"
                 :alt="logo.altText"
-                class="mx-10 my-0 inline-block h-12"
+                class="mx-5 my-0 inline-block h-6 md:mx-10 md:h-12"
             />
             <img
                 v-for="logo in logos"
                 :key="`second-logo-${logo.companyName}`"
                 :src="logo.path"
                 :alt="logo.altText"
-                class="mx-10 my-0 inline-block h-12"
+                class="mx-5 my-0 inline-block h-6 md:mx-10 md:h-12"
             />
         </div>
     </div>

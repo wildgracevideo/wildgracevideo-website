@@ -27,21 +27,26 @@
         :markdown-string="pageTagline"
         component-class="mx-8 mb-32 max-w-6xl text-center lg:mx-auto"
     />
-    <!-- TODO: Fix me for mobile -->
     <div ref="mountainStaticContainer" class="grid grid-cols-1 md:grid-cols-2">
         <div
             ref="mountainBackground"
             class="mountain-background hidden bg-website-off-black fill-website-accent md:block"
         ></div>
         <div class="h-6dvh bg-website-off-black p-12 text-website-accent">
-            <div ref="testimonial1" class="top-1/3 hidden p-12 text-center">
+            <div
+                ref="testimonial1"
+                class="md-center top-1/3 hidden p-12 text-center"
+            >
                 <Markdown
                     :markdown-string="homeData!.testimonialQuotes[0].quote"
                 />
                 <br />
                 <p>- {{ homeData!.testimonialQuotes[0].author }}</p>
             </div>
-            <div ref="testimonial2" class="top-1/3 hidden p-12 text-center">
+            <div
+                ref="testimonial2"
+                class="md-center top-1/3 hidden p-12 text-center"
+            >
                 <Markdown
                     :markdown-string="homeData!.testimonialQuotes[1].quote"
                 />
@@ -54,12 +59,11 @@
         :markdown-string="`## ${homeData!.videoHighlightTitle!}`"
         component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-5xl"
     />
-    <div class="mx-16 mb-48 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
+    <div class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
         <div
             v-for="video in videos"
             :key="`home-highlight-video-${video.title}`"
         >
-            <!-- TODO: Handle low-power mode for iOS -->
             <video
                 class="pointer-events-none mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mt-0"
                 autoplay
@@ -79,9 +83,11 @@
             </p>
         </div>
     </div>
-    <div class="mx-12 mb-36 grid grid-cols-1 gap-x-16 md:grid-cols-2 xl:mx-24">
-        <div>
-            <h2 class="strong:font-bold mb-8 text-5xl">
+    <div
+        class="mx-12 mb-36 mt-32 grid grid-cols-1 gap-x-16 md:mt-48 md:grid-cols-2 xl:mx-24"
+    >
+        <div class="order-2 md:order-1">
+            <h2 class="strong:font-bold mb-8 hidden text-5xl md:block">
                 MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong>
             </h2>
             <p>
@@ -107,7 +113,12 @@
                 share that same energy and excitement with you.
             </p>
         </div>
-        <img src="/videographer.gif" alt="TODO ALT" />
+        <div class="order-1 md:order-2">
+            <h2 class="strong:font-bold mb-12 block text-5xl md:hidden">
+                MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong>
+            </h2>
+            <img src="/videographer.gif" alt="TODO ALT" />
+        </div>
     </div>
     <h2 class="mb-12 ml-8 text-5xl font-bold lg:ml-16">TRUSTED BY</h2>
     <LogoSlider class="mb-32" :logos="logos" />
@@ -343,8 +354,12 @@
             .play()
             .then(() => {})
             .catch(() => {
-                videoElement.setAttribute('controls', 'controls');
-                videoElement.classList.remove('pointer-events-none');
+                window.document
+                    .querySelectorAll('video')
+                    .forEach((it: HTMLVideoElement) => {
+                        it.setAttribute('controls', 'controls');
+                        it.classList.remove('pointer-events-none');
+                    });
             });
 
         addEventListener('scroll', (_event: Event) => {
@@ -377,9 +392,6 @@
 
             const mountainStaticRect =
                 mountainStaticContainer.value!.getBoundingClientRect();
-            console.log(
-                `mountain top: ${mountainTop}, mountain static top: ${mountainStaticRect.top}, innerHeight: ${window.innerHeight}`
-            );
             const mountainStaticTop = mountainStaticRect.top;
             if (
                 mountainStaticTop < innerHeight / 2 &&
@@ -435,9 +447,19 @@
     .wave-background {
         background-image: url('/wave.jpg');
         background-attachment: fixed;
-        /* background-repeat: no-repeat; */
         background-size: 100%;
         min-height: 56rem;
         height: 100%;
+    }
+
+    /* Medium tailwind */
+    @media (max-width: 767px) {
+        .md-center {
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: calc(100% - 1rem);
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
     }
 </style>
