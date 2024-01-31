@@ -439,7 +439,7 @@
                 mountainStaticContainer.value!.getBoundingClientRect();
             const mountainStaticTop = mountainStaticRect.top;
             if (
-                mountainStaticTop < innerHeight / 2 &&
+                mountainStaticTop < innerHeight / 4 &&
                 mountainStaticTop >= -2 * innerHeight
             ) {
                 testimonial1.value!.classList.remove(
@@ -450,7 +450,7 @@
                 testimonial2.value!.classList.add('hidden', 'fade-out-quick');
                 testimonial2.value!.classList.remove('fixed', 'fade-in-quick');
             } else if (
-                mountainStaticTop < innerHeight / 2 &&
+                mountainStaticTop < innerHeight / 4 &&
                 mountainStaticTop >= -5 * innerHeight
             ) {
                 testimonial1.value!.classList.add('hidden', 'fade-out-quick');
