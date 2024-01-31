@@ -2,6 +2,7 @@ export default defineNuxtPlugin(async (_nuxtApp) => {
     const oldWebsite = /^https\:\/\/(www\.)?wildgracevideography.com(:443)?/g;
     const requestUrl = useRequestURL().toString();
     if (requestUrl.match(oldWebsite)) {
+        console.log('Redirecting to wgv...');
         const redirectUrl = requestUrl.replace(
             oldWebsite,
             'https://www.wildgracevideo.com'
