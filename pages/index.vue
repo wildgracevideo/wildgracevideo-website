@@ -35,7 +35,7 @@
         <div class="h-6dvh bg-website-off-black p-12 text-website-accent">
             <div
                 ref="testimonial1"
-                class="md-center top-1/3 hidden p-12 text-center"
+                class="md-center top-1/4 hidden p-12 text-center md:top-1/3"
             >
                 <Markdown
                     :markdown-string="homeData!.testimonialQuotes[0].quote"
@@ -45,7 +45,7 @@
             </div>
             <div
                 ref="testimonial2"
-                class="md-center top-1/3 hidden p-12 text-center"
+                class="md-center top-1/4 hidden p-12 text-center md:top-1/3"
             >
                 <Markdown
                     :markdown-string="homeData!.testimonialQuotes[1].quote"
@@ -87,7 +87,9 @@
         class="mx-12 mb-36 mt-32 grid grid-cols-1 gap-x-16 md:mt-48 md:grid-cols-2 xl:mx-24"
     >
         <div class="order-2 md:order-1">
-            <h2 class="strong:font-bold mb-8 hidden text-4xl md:text-5xl md:block">
+            <h2
+                class="strong:font-bold mb-8 hidden text-4xl md:block md:text-5xl"
+            >
                 MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong>
             </h2>
             <p>
@@ -114,13 +116,17 @@
             </p>
         </div>
         <div class="order-1 md:order-2">
-            <h2 class="strong:font-bold mb-12 block text-4xl md:text-5xl md:hidden">
+            <h2
+                class="strong:font-bold mb-12 block text-4xl md:hidden md:text-5xl"
+            >
                 MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong>
             </h2>
             <img src="/videographer.gif" alt="TODO ALT" />
         </div>
     </div>
-    <h2 class="mb-12 ml-8 text-4xl md:text-5xl font-bold lg:ml-16">TRUSTED BY</h2>
+    <h2 class="mb-12 ml-8 text-4xl font-bold md:text-5xl lg:ml-16">
+        TRUSTED BY
+    </h2>
     <LogoSlider class="mb-32" :logos="logos" />
     <div class="strong:font-bold bg-website-accent">
         <div class="w-4/5 pb-24">
@@ -362,7 +368,7 @@
                     });
             });
 
-        addEventListener('scroll', (_event: Event) => {
+        const scrollHandler = (_event: Event) => {
             const mountainRect =
                 mountainBackground.value!.getBoundingClientRect();
             const mountainTop = mountainRect.top;
@@ -421,7 +427,9 @@
                 testimonial1.value!.classList.add('hidden', 'fade-out-quick');
                 testimonial1.value!.classList.remove('fixed', 'fade-in-quick');
             }
-        });
+        };
+        addEventListener('touchmove', scrollHandler);
+        addEventListener('scroll', scrollHandler);
     });
 </script>
 
