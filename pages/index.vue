@@ -27,15 +27,15 @@
         :markdown-string="pageTagline"
         component-class="mx-8 mb-32 max-w-6xl text-center lg:mx-auto"
     />
-    <div ref="mountainStaticContainer" class="grid grid-cols-1 md:grid-cols-2">
+    <div ref="mountainStaticContainer" class="hidden md:grid md:grid-cols-2">
         <div
             ref="mountainBackground"
-            class="mountain-background hidden bg-website-off-black fill-website-accent md:block"
+            class="mountain-background bg-website-off-black fill-website-accent"
         ></div>
         <div class="h-6dvh bg-website-off-black p-12 text-website-accent">
             <div
                 ref="testimonial1"
-                class="md-center top-1/4 hidden p-12 text-center md:top-1/3"
+                class="top-1/4 hidden p-12 text-center md:top-1/3"
             >
                 <Markdown
                     :markdown-string="homeData!.testimonialQuotes[0].quote"
@@ -45,8 +45,26 @@
             </div>
             <div
                 ref="testimonial2"
-                class="md-center top-1/4 hidden p-12 text-center md:top-1/3"
+                class="top-1/4 hidden p-12 text-center md:top-1/3"
             >
+                <Markdown
+                    :markdown-string="homeData!.testimonialQuotes[1].quote"
+                />
+                <br />
+                <p>- {{ homeData!.testimonialQuotes[1].author }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="block md:hidden">
+        <div class="bg-website-off-black p-12 text-website-accent">
+            <div class="home-scroll-observable fade-out mb-16 p-12 text-center">
+                <Markdown
+                    :markdown-string="homeData!.testimonialQuotes[0].quote"
+                />
+                <br />
+                <p>- {{ homeData!.testimonialQuotes[0].author }}</p>
+            </div>
+            <div class="home-scroll-observable fade-out p-12 text-center">
                 <Markdown
                     :markdown-string="homeData!.testimonialQuotes[1].quote"
                 />
@@ -368,7 +386,28 @@
                     });
             });
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (
+                    entry.isIntersecting &&
+                    entry.target.classList.contains('fade-out')
+                ) {
+                    entry.target.classList.remove('fade-out');
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        const animatableElements = document.querySelectorAll(
+            '.home-scroll-observable'
+        );
+        animatableElements.forEach((element) => observer.observe(element));
+
         const scrollHandler = (_event: Event) => {
+            if (window.innerWidth < 768) {
+                return;
+            }
             const mountainRect =
                 mountainBackground.value!.getBoundingClientRect();
             const mountainTop = mountainRect.top;
@@ -428,9 +467,6 @@
                 testimonial1.value!.classList.remove('fixed', 'fade-in-quick');
             }
         };
-        addEventListener('touchmove', scrollHandler);
-        addEventListener('touchcancel', scrollHandler);
-        addEventListener('touchend', scrollHandler);
         addEventListener('scroll', scrollHandler);
     });
 </script>
@@ -460,16 +496,5 @@
         background-size: 100%;
         min-height: 56rem;
         height: 100%;
-    }
-
-    /* Medium tailwind */
-    @media (max-width: 767px) {
-        .md-center {
-            left: 50%;
-            transform: translate(-50%, 0);
-            width: calc(100% - 1rem);
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
-        }
     }
 </style>
