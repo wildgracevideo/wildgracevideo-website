@@ -429,6 +429,8 @@
             }
         };
         addEventListener('touchmove', scrollHandler);
+        addEventListener('touchcancel', scrollHandler);
+        addEventListener('touchend', scrollHandler);
         addEventListener('scroll', scrollHandler);
     });
 </script>
