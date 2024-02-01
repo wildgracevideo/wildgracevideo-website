@@ -45,7 +45,8 @@ const config = {
         public: {
             siteUrl: SITE_URL,
             wesbiteIcon: WEBSITE_ICON,
-            gaMeasurementId: GA_MEASUREMENT_ID,
+            gaMeasurementId:
+                process.env.NODE_ENV === 'production' ? GA_MEASUREMENT_ID : '',
             recaptchaSiteKey: '6Ld2tkcpAAAAAK052jkIsYcC5L12ih2pumxlA3e8',
             cloudfrontUrl: 'https://content.wildgracevideo.com',
         },
@@ -69,7 +70,15 @@ const config = {
                 { rel: 'apple-touch-icon', href: APP_ICON },
                 {
                     rel: 'preconnect',
-                    href: 'https://d22668h9qdy3zj.cloudfront.net',
+                    href: 'https://content.wildgracevideo.com',
+                },
+                {
+                    rel: 'preconnect',
+                    href: 'https://www.googletagmanager.com',
+                },
+                {
+                    rel: 'preconnect',
+                    href: 'https://www.google-analytics.com',
                 },
             ],
         },
@@ -198,20 +207,5 @@ const config = {
         '@nuxtjs/sitemap',
     ],
 };
-
-if (process.env.NODE_ENV === 'production') {
-    config.app?.head?.script?.push({
-        src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
-        async: true,
-    });
-    config.app?.head?.link?.push({
-        rel: 'preconnect',
-        href: 'https://www.googletagmanager.com',
-    });
-    config.app?.head?.link?.push({
-        rel: 'preconnect',
-        href: 'https://www.google-analytics.com',
-    });
-}
 
 export default defineNuxtConfig(config);
