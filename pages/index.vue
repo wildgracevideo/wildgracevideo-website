@@ -1,6 +1,7 @@
 <template>
     <OgMeta :title="title" :description="description" />
     <SchemaOrgWebPage :name="title" />
+    <!-- TODO: Better thumbnail image -->
     <SchemaOrgVideo
         :name="videoTitle"
         url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
@@ -19,6 +20,8 @@
         playsinline
         :title="videoTitle"
     ></video>
+
+    <!-- TODO: HTML5 Elements instead of divs where applicable -->
     <Markdown
         :markdown-string="`# ${pageTitle}`"
         component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl mx-8 em:font-medium strong:font-bold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
@@ -27,52 +30,7 @@
         :markdown-string="pageTagline"
         component-class="mx-8 mb-32 max-w-6xl text-center lg:mx-auto"
     />
-    <div ref="mountainStaticContainer" class="hidden md:grid md:grid-cols-2">
-        <div
-            ref="mountainBackground"
-            class="mountain-background bg-website-off-black fill-website-accent"
-        ></div>
-        <div class="h-6dvh bg-website-off-black p-12 text-website-accent">
-            <div
-                ref="testimonial1"
-                class="top-1/4 hidden p-12 text-center md:top-1/3"
-            >
-                <Markdown
-                    :markdown-string="homeData!.testimonialQuotes[0].quote"
-                />
-                <br />
-                <p>- {{ homeData!.testimonialQuotes[0].author }}</p>
-            </div>
-            <div
-                ref="testimonial2"
-                class="top-1/4 hidden p-12 text-center md:top-1/3"
-            >
-                <Markdown
-                    :markdown-string="homeData!.testimonialQuotes[1].quote"
-                />
-                <br />
-                <p>- {{ homeData!.testimonialQuotes[1].author }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="block md:hidden">
-        <div class="bg-website-off-black p-12 text-website-accent">
-            <div class="home-scroll-observable fade-out mb-16 p-12 text-center">
-                <Markdown
-                    :markdown-string="homeData!.testimonialQuotes[0].quote"
-                />
-                <br />
-                <p>- {{ homeData!.testimonialQuotes[0].author }}</p>
-            </div>
-            <div class="home-scroll-observable fade-out p-12 text-center">
-                <Markdown
-                    :markdown-string="homeData!.testimonialQuotes[1].quote"
-                />
-                <br />
-                <p>- {{ homeData!.testimonialQuotes[1].author }}</p>
-            </div>
-        </div>
-    </div>
+    <TestimonialScroll :testimonial-quotes="homeData!.testimonialQuotes" />
     <Markdown
         :markdown-string="`## ${homeData!.videoHighlightTitle!}`"
         component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-4xl md:text-5xl"
@@ -82,6 +40,7 @@
             v-for="video in videos"
             :key="`home-highlight-video-${video.title}`"
         >
+            <!-- TODO: SchemaOrgVideo -->
             <video
                 class="pointer-events-none mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mt-0"
                 autoplay
@@ -101,48 +60,49 @@
             </p>
         </div>
     </div>
-    <div
-        class="mx-12 mb-36 mt-32 grid grid-cols-1 gap-x-16 md:mt-48 md:grid-cols-2 xl:mx-24"
-    >
-        <div class="order-2 md:order-1">
-            <h2
-                class="strong:font-bold mb-8 hidden text-4xl md:block md:text-5xl"
-            >
-                MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong>
-            </h2>
-            <p>
-                I'm Carly, and creating videos is my thing. After graduating
-                from the University of Vermont (Go Catamounts!) I made the
-                decision to pack my bags and fly out west—and now call Denver,
-                Colorado my home.
-                <br class="mb-8" />
-                Ever since I was younger, I have always found passion and
-                excitement through creating videos. From creating embarrassing
-                movie trailers with my friends when I was younger, to putting
-                together creative travel videos from my semester abroad in New
-                Zealand, and compiling footage of the ranch I worked at in
-                Wyoming. Creating travel and outdoor videos as a “souvenir” from
-                moments through life has always been important to me.
-                <br class="mb-8" />
-                At Wild Grace Video Productions, I am focused on providing
-                detailed and personalized videos to match your brand and relay
-                your message in a professional, yet exciting style.
-                <br class="mb-8" />
-                I feel beyond fortunate that I have been able to combine my love
-                for creativity and video into my own business and I’m excited to
-                share that same energy and excitement with you.
-            </p>
-        </div>
-        <div class="order-1 md:order-2">
-            <h2
-                class="strong:font-bold mb-12 block text-4xl md:hidden md:text-5xl"
-            >
-                MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong>
-            </h2>
-            <img src="/videographer.gif" alt="TODO ALT" />
-        </div>
-    </div>
-    <h2 class="mb-12 ml-8 text-4xl font-bold md:text-5xl lg:ml-16">
+    <HomePageAbout class="mb-36 mt-32 md:mt-48" :about-text-markdown="aboutMeDescriptionMarkdown" :about-title-markdown="aboutMeTitleMarkdown" :about-image="aboutMeImage" :about-image-alt-text="aboutMeAltText" />
+    <!-- <div -->
+    <!--     class="mx-12 grid grid-cols-1 gap-x-16 md:grid-cols-2 xl:mx-24" -->
+    <!-- > -->
+    <!--     <div class="order-2 md:order-1"> -->
+    <!--         <h2 -->
+    <!--             class="strong:font-bold mb-8 hidden text-4xl md:block md:text-5xl" -->
+    <!--         > -->
+    <!--             MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong> -->
+    <!--         </h2> -->
+    <!--         <p> -->
+    <!--             I'm Carly, and creating videos is my thing. After graduating -->
+    <!--             from the University of Vermont (Go Catamounts!) I made the -->
+    <!--             decision to pack my bags and fly out west—and now call Denver, -->
+    <!--             Colorado my home. -->
+    <!--             <br class="mb-8" /> -->
+    <!--             Ever since I was younger, I have always found passion and -->
+    <!--             excitement through creating videos. From creating embarrassing -->
+    <!--             movie trailers with my friends when I was younger, to putting -->
+    <!--             together creative travel videos from my semester abroad in New -->
+    <!--             Zealand, and compiling footage of the ranch I worked at in -->
+    <!--             Wyoming. Creating travel and outdoor videos as a “souvenir” from -->
+    <!--             moments through life has always been important to me. -->
+    <!--             <br class="mb-8" /> -->
+    <!--             At Wild Grace Video Productions, I am focused on providing -->
+    <!--             detailed and personalized videos to match your brand and relay -->
+    <!--             your message in a professional, yet exciting style. -->
+    <!--             <br class="mb-8" /> -->
+    <!--             I feel beyond fortunate that I have been able to combine my love -->
+    <!--             for creativity and video into my own business and I’m excited to -->
+    <!--             share that same energy and excitement with you. -->
+    <!--         </p> -->
+    <!--     </div> -->
+    <!--     <div class="order-1 md:order-2"> -->
+    <!--         <h2 -->
+    <!--             class="strong:font-bold mb-12 block text-4xl md:hidden md:text-5xl" -->
+    <!--         > -->
+    <!--             MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong> -->
+    <!--         </h2> -->
+    <!--         <img src="/videographer.gif" alt="TODO ALT" /> -->
+    <!--     </div> -->
+    <!-- </div> -->
+    <h2 class="mb-12 mt-20 ml-8 text-4xl font-bold md:text-5xl lg:ml-16">
         TRUSTED BY
     </h2>
     <LogoSlider class="mb-32" :logos="logos" />
@@ -196,6 +156,7 @@
     <div
         class="wave-background mb-32 grid w-full grid-cols-1 items-center justify-center gap-x-10 px-8 md:grid-cols-3"
     >
+        <!-- TODO: SchemaOrgVideo -->
         <video
             v-for="video in parallaxVideos"
             :key="`parallax-video-${video.title}`"
@@ -235,6 +196,10 @@
     const pageTagline = homeData.pageTagline!;
     const videoTitle = homeData.videoTitle!;
     const thumbnailImage = homeData.thumbnailImage!;
+    const aboutMeTitleMarkdown = homeData.aboutMeTitle!;
+    const aboutMeDescriptionMarkdown = homeData.aboutMeDescription!;
+    const aboutMeImage = homeData.aboutMeImage!;
+    const aboutMeAltText = homeData.aboutMeAltText!;
 
     // TODO: Alt/template images for SEO
     const videos = [
@@ -245,13 +210,13 @@
             video: '/boutique-hotels.mp4',
         },
         {
-            title: 'OUTDOOR-RELATED PRODUCTS',
+            title: 'OUTDOOR PRODUCTS',
             description:
                 "Let us spotlight your outdoor gear with visuals that showcase their top-notch quality and demonstrate their ideal use in the great outdoors. Let our compelling imagery redefine your brand's marketing impact for the long term.",
             video: '/outdoor-brands.mp4',
         },
         {
-            title: 'OUTDOOR ADVENTURE COMPANIES',
+            title: 'ADVENTURE COMPANIES',
             description:
                 "Get ready to flaunt your outdoor excursions with visuals that bring out their thrill and showcase the excitement of your adventure. Our compelling imagery will redefine your brand's marketing impact, attracting thrill-seekers and enthusiasts for unforgettable experiences.",
             video: '/adventure-brands.mp4',
@@ -259,41 +224,35 @@
     ];
 
     const logos = [
-        { path: '/slider-logos/3m.svg', altText: 'Test', companyName: 'Test' },
         {
-            path: '/slider-logos/barstool-store.svg',
+            path: '/slider-logos/curtis-hotel.png',
             altText: 'Test',
-            companyName: 'Test',
+            companyName: 'The Curtis Hotel',
         },
         {
-            path: '/slider-logos/budweiser.svg',
+            path: '/slider-logos/genesee.png',
             altText: 'Test',
-            companyName: 'Test',
+            companyName: 'Genesee',
         },
         {
-            path: '/slider-logos/buzzfeed.svg',
+            path: '/slider-logos/studio10.png',
             altText: 'Test',
-            companyName: 'Test',
+            companyName: 'Studio 10',
         },
         {
-            path: '/slider-logos/forbes.svg',
+            path: '/slider-logos/smith-meade.png',
             altText: 'Test',
-            companyName: 'Test',
+            companyName: 'Smith & Meade',
         },
         {
-            path: '/slider-logos/macys.svg',
+            path: '/slider-logos/abode-outside.png',
             altText: 'Test',
-            companyName: 'Test',
+            companyName: 'Abode Outside',
         },
         {
-            path: '/slider-logos/menshealth.svg',
+            path: '/slider-logos/surf-hotel.png',
             altText: 'Test',
-            companyName: 'Test',
-        },
-        {
-            path: '/slider-logos/mrbeast.svg',
-            altText: 'Test',
-            companyName: 'Test',
+            companyName: 'Surf Hotel',
         },
     ];
 
@@ -335,11 +294,6 @@
         },
     ];
 
-    const mountainBackground: Ref<HTMLElement | null> = ref(null);
-    const mountainStaticContainer: Ref<HTMLElement | null> = ref(null);
-    const testimonial1: Ref<HTMLElement | null> = ref(null);
-    const testimonial2: Ref<HTMLElement | null> = ref(null);
-
     onMounted(async () => {
         const videoElement = document.getElementById(
             'reel-video'
@@ -362,9 +316,7 @@
         } else {
             try {
                 await $stream(
-                    videoElement,
-                    mpegDashManifestUri,
-                    'wgv-reel-mpeg-dash'
+                    videoElement, mpegDashManifestUri, 'wgv-reel-mpeg-dash'
                 );
             } catch (error) {
                 console.log(error);
@@ -403,93 +355,10 @@
             '.home-scroll-observable'
         );
         animatableElements.forEach((element) => observer.observe(element));
-
-        const scrollHandler = (_event: Event) => {
-            if (window.innerWidth < 768) {
-                return;
-            }
-            const mountainRect =
-                mountainBackground.value!.getBoundingClientRect();
-            const mountainTop = mountainRect.top;
-            const mountainHeight = mountainRect.height;
-            const triggerPercent = 1;
-            const triggerPoint = mountainHeight * triggerPercent;
-            const triggerOffset = mountainHeight * (1 - triggerPercent);
-            const stepSize = (mountainHeight / 100) * triggerPercent;
-
-            if (mountainTop < triggerPoint) {
-                const width =
-                    Math.min(
-                        100,
-                        (mountainHeight / 6 - mountainTop - triggerOffset) /
-                            stepSize
-                    ) * 1;
-                mountainBackground.value!.style.setProperty(
-                    '--mountain-width',
-                    `${width}%`
-                );
-            } else {
-                mountainBackground.value!.style.setProperty(
-                    '--mountain-width',
-                    '0%'
-                );
-            }
-
-            const mountainStaticRect =
-                mountainStaticContainer.value!.getBoundingClientRect();
-            const mountainStaticTop = mountainStaticRect.top;
-            if (
-                mountainStaticTop < innerHeight / 4 &&
-                mountainStaticTop >= -2 * innerHeight
-            ) {
-                testimonial1.value!.classList.remove(
-                    'hidden',
-                    'fade-out-quick'
-                );
-                testimonial1.value!.classList.add('fixed', 'fade-in-quick');
-                testimonial2.value!.classList.add('hidden', 'fade-out-quick');
-                testimonial2.value!.classList.remove('fixed', 'fade-in-quick');
-            } else if (
-                mountainStaticTop < innerHeight / 4 &&
-                mountainStaticTop >= -5 * innerHeight
-            ) {
-                testimonial1.value!.classList.add('hidden', 'fade-out-quick');
-                testimonial1.value!.classList.remove('fixed', 'fade-in-quick');
-                testimonial2.value!.classList.remove(
-                    'hidden',
-                    'fade-out-quick'
-                );
-                testimonial2.value!.classList.add('fixed', 'fade-in-quick');
-            } else {
-                testimonial2.value!.classList.add('hidden', 'fade-out-quick');
-                testimonial2.value!.classList.remove('fixed', 'fade-in-quick');
-                testimonial1.value!.classList.add('hidden', 'fade-out-quick');
-                testimonial1.value!.classList.remove('fixed', 'fade-in-quick');
-            }
-        };
-        addEventListener('scroll', scrollHandler);
     });
 </script>
 
 <style scoped>
-    .mountain-background {
-        --mountain-width: 0%;
-    }
-
-    .mountain-background::before {
-        background-image: url('/mountain.svg');
-        background-attachment: fixed;
-        background-position-x: 0%;
-        background-position-y: 40%;
-        background-repeat: no-repeat;
-        background-size: 50%;
-        content: '';
-        position: relative;
-        display: inline-block;
-        height: 100%;
-        width: var(--mountain-width);
-    }
-
     .wave-background {
         background-image: url('/wave.jpg');
         background-attachment: fixed;

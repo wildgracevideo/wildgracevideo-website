@@ -2,20 +2,21 @@
     <div
         class="logos relative overflow-hidden whitespace-nowrap bg-website-off-white px-0 py-14"
     >
-        <div class="logos-slide inline-block whitespace-nowrap">
+        <!-- Heights and widths must match the logos-slide width defined below -->
+        <div class="logos-slide inline-block whitespace-nowrap h-16 md:h-28" :style="{ '--total-icons': logos.length }">
             <img
                 v-for="logo in logos"
                 :key="`initial-logo-${logo.companyName}`"
                 :src="logo.path"
                 :alt="logo.altText"
-                class="mx-5 my-0 inline-block h-6 md:mx-10 md:h-12"
+                class="mr-20 my-0 inline-block w-16 md:mr-40 md:w-28 max-h-full logo-aspect-ratio"
             />
             <img
                 v-for="logo in logos"
                 :key="`second-logo-${logo.companyName}`"
                 :src="logo.path"
                 :alt="logo.altText"
-                class="mx-5 my-0 inline-block h-6 md:mx-10 md:h-12"
+                class="mr-20 my-0 inline-block w-16 md:mr-40 md:w-28 max-h-full logo-aspect-ratio"
             />
         </div>
     </div>
@@ -29,13 +30,13 @@
 
 <style scoped>
     @keyframes slide {
-        from {
-            transform: translateX(0);
+        100% {
+            transform: translateX(-50%);
         }
+    }
 
-        to {
-            transform: translateX(-100%);
-        }
+    .logo-aspect-ratio {
+        aspect-ratio: auto 640 / 360
     }
 
     .logos:before,
@@ -46,13 +47,6 @@
         height: 160px;
         content: '';
         z-index: 2;
-    }
-
-    @media (max-width: 768px) {
-        .logos:before,
-        .logos:after {
-            width: 100px;
-        }
     }
 
     .logos:before {
@@ -74,6 +68,18 @@
     }
 
     .logos-slide {
-        animation: 25s slide infinite linear;
+        width: calc(var(--total-icons) * (7rem + 10rem) * 2);
+        animation: calc(3s * var(--total-icons)) slide infinite linear;
+    }
+
+    @media (max-width: 768px) {
+        .logos:before,
+        .logos:after {
+            width: 100px;
+        }
+
+        .logos-slide {
+            width: calc(var(--total-icons) * (4rem + 5rem) * 2);
+        }
     }
 </style>

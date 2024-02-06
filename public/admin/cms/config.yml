@@ -379,3 +379,21 @@ collections:
             name: 'videoHighlightTitle'
             widget: 'markdown'
             modes: ['rich_text']
+            minimal: true
+          - label: 'About Me Title'
+            name: aboutMeTitle
+            widget: 'markdown'
+            modes: ['rich_text']
+            minimal: true
+          - label: 'About Me Description'
+            name: aboutMeDescription
+            widget: 'markdown'
+            modes: ['rich_text']
+          - {
+                label: 'About Me Image (webp)',
+                name: 'aboutMeImage',
+                widget: 'image',
+                choose_url: false,
+                allow_multiple: false,
+            }
+          - { label: 'About Me Image SEO Description', name: 'aboutMeAltText', widget: 'text' }
