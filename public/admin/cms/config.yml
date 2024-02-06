@@ -396,4 +396,8 @@ collections:
                 choose_url: false,
                 allow_multiple: false,
             }
-          - { label: 'About Me Image SEO Description', name: 'aboutMeAltText', widget: 'text' }
+          - {
+                label: 'About Me Image SEO Description',
+                name: 'aboutMeAltText',
+                widget: 'text',
+            }

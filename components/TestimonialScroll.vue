@@ -8,13 +8,13 @@
                 ref="mountainBackground"
                 class="mountain-background bg-website-off-black fill-website-accent"
             ></div>
-            <div class="h-6dvh bg-website-off-black text-website-accent p-12">
+            <div class="h-6dvh bg-website-off-black p-12 text-website-accent">
                 <div
                     ref="testimonial1"
                     class="top-1/4 hidden p-12 text-center md:top-1/3"
-                > 
+                >
                     <Markdown
-                    :markdown-string="`&#8220;${testimonialQuotes[0].quote}&#8221;`"
+                        :markdown-string="`&#8220;${testimonialQuotes[0].quote}&#8221;`"
                     />
                     <br />
                     <p>- {{ testimonialQuotes[0].author }}</p>
@@ -23,9 +23,8 @@
                     ref="testimonial2"
                     class="top-1/4 hidden p-12 text-center md:top-1/3"
                 >
-
                     <Markdown
-                    :markdown-string="`&#8220;${testimonialQuotes[1].quote}&#8221;`"
+                        :markdown-string="`&#8220;${testimonialQuotes[1].quote}&#8221;`"
                     />
                     <br />
                     <p>- {{ testimonialQuotes[1].author }}</p>
@@ -33,20 +32,16 @@
             </div>
         </div>
         <div class="block md:hidden">
-            <div class="bg-website-off-black text-website-accent p-12">
+            <div class="bg-website-off-black p-12 text-website-accent">
                 <div
                     class="home-scroll-observable fade-out mb-16 p-12 text-center"
                 >
-                    <Markdown
-                        :markdown-string="testimonialQuotes[0].quote"
-                    />
+                    <Markdown :markdown-string="testimonialQuotes[0].quote" />
                     <br />
                     <p>- {{ testimonialQuotes[0].author }}</p>
                 </div>
                 <div class="home-scroll-observable fade-out p-12 text-center">
-                    <Markdown
-                        :markdown-string="testimonialQuotes[1].quote"
-                    />
+                    <Markdown :markdown-string="testimonialQuotes[1].quote" />
                     <br />
                     <p>- {{ testimonialQuotes[1].author }}</p>
                 </div>
@@ -62,7 +57,7 @@
     const testimonial2: Ref<HTMLElement | null> = ref(null);
 
     defineProps<{
-        testimonialQuotes: { quote: string, author: string }[];
+        testimonialQuotes: { quote: string; author: string }[];
     }>();
 
     onMounted(async () => {

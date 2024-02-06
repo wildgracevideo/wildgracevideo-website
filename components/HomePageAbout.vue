@@ -12,7 +12,7 @@
                 component-class="br:mb-8"
             />
         </div>
-        <div class="order-1 md:order-2 grow-0">
+        <div class="order-1 grow-0 md:order-2">
             <Markdown
                 :markdown-string="`## ${aboutTitleMarkdown}`"
                 component-class="no-default-format strong:font-bold mb-12 block text-4xl md:hidden md:text-5xl"

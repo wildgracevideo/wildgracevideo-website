@@ -3,20 +3,23 @@
         class="logos relative overflow-hidden whitespace-nowrap bg-website-off-white px-0 py-14"
     >
         <!-- Heights and widths must match the logos-slide width defined below -->
-        <div class="logos-slide inline-block whitespace-nowrap h-16 md:h-28" :style="{ '--total-icons': logos.length }">
+        <div
+            class="logos-slide inline-block h-16 whitespace-nowrap md:h-28"
+            :style="{ '--total-icons': logos.length }"
+        >
             <img
                 v-for="logo in logos"
                 :key="`initial-logo-${logo.companyName}`"
                 :src="logo.path"
                 :alt="logo.altText"
-                class="mr-20 my-0 inline-block w-16 md:mr-40 md:w-28 max-h-full logo-aspect-ratio"
+                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-16 md:mr-40 md:w-28"
             />
             <img
                 v-for="logo in logos"
                 :key="`second-logo-${logo.companyName}`"
                 :src="logo.path"
                 :alt="logo.altText"
-                class="mr-20 my-0 inline-block w-16 md:mr-40 md:w-28 max-h-full logo-aspect-ratio"
+                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-16 md:mr-40 md:w-28"
             />
         </div>
     </div>
@@ -36,7 +39,7 @@
     }
 
     .logo-aspect-ratio {
-        aspect-ratio: auto 640 / 360
+        aspect-ratio: auto 640 / 360;
     }
 
     .logos:before,

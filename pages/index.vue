@@ -60,7 +60,13 @@
             </p>
         </div>
     </div>
-    <HomePageAbout class="mb-36 mt-32 md:mt-48" :about-text-markdown="aboutMeDescriptionMarkdown" :about-title-markdown="aboutMeTitleMarkdown" :about-image="aboutMeImage" :about-image-alt-text="aboutMeAltText" />
+    <HomePageAbout
+        class="mb-36 mt-32 md:mt-48"
+        :about-text-markdown="aboutMeDescriptionMarkdown"
+        :about-title-markdown="aboutMeTitleMarkdown"
+        :about-image="aboutMeImage"
+        :about-image-alt-text="aboutMeAltText"
+    />
     <!-- <div -->
     <!--     class="mx-12 grid grid-cols-1 gap-x-16 md:grid-cols-2 xl:mx-24" -->
     <!-- > -->
@@ -102,7 +108,7 @@
     <!--         <img src="/videographer.gif" alt="TODO ALT" /> -->
     <!--     </div> -->
     <!-- </div> -->
-    <h2 class="mb-12 mt-20 ml-8 text-4xl font-bold md:text-5xl lg:ml-16">
+    <h2 class="mb-12 ml-8 mt-20 text-4xl font-bold md:text-5xl lg:ml-16">
         TRUSTED BY
     </h2>
     <LogoSlider class="mb-32" :logos="logos" />
@@ -316,7 +322,9 @@
         } else {
             try {
                 await $stream(
-                    videoElement, mpegDashManifestUri, 'wgv-reel-mpeg-dash'
+                    videoElement,
+                    mpegDashManifestUri,
+                    'wgv-reel-mpeg-dash'
                 );
             } catch (error) {
                 console.log(error);
