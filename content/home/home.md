@@ -3,7 +3,6 @@ reelVideo:
   thumbnailImage: /uploads/logo1.webp
   seoTitle: "TODO: Fix me and thumbnail image"
   seoDescription: TODO
-thumbnailImage: /uploads/logo1.webp
 pageTitle: "**YOUR** *VIDEO CONTENT PARTNER*  **FOR OUTDOOR, TRAVEL, AND
   ADVENTURE BRANDS.**"
 aboutMe:
@@ -30,6 +29,30 @@ aboutMe:
   image: /uploads/carly-headshot.webp
   imageName: TODO
   altText: TODO
+howTo:
+  title: HOW DOES THIS **WORK?**
+  steps:
+    - title: "**Step 1.** Discovery Call"
+      description: This initial step is where I get to know you and your project. We
+        discuss your vision, goals, and requirements. It's a collaborative
+        conversation where I gather essential details to ensure I’m aligned with
+        your vision.
+    - title: "**Step 2.** Plan. Plan. Plan."
+      description: Once I’ve understood your objectives, we begin the planning phase.
+        This involves crafting a detailed strategy, storyboard, and production
+        plan. We'll work together closely to finalize every aspect of the
+        project before moving forward.
+    - title: "**Step 3.** Create + Deliver!"
+      description: This is where the magic happens! I’ll bring the plans to life by
+        utilizing a wide range of cinematic equipment and leveraging my
+        expertise. Collaboration with industry experts may also come into play
+        to ensure the highest quality and creativity for your project.
+        Throughout this stage, I maintain communication and transparency,
+        ensuring the project aligns with your expectations.
+  footer: Finally, I’ll deliver the finished product, ready to exceed your vision
+    and goals.
+  seoTitle: How to create a video with Wild Grace Videography
+thumbnailImage: /uploads/logo1.webp
 aboutMeAltText: TODO
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
 aboutMeImage: /uploads/carly-headshot.webp
@@ -45,6 +68,34 @@ testimonialQuotes:
       and skill in her field of work. The final product was very impressive and
       exceeded our expectations.
     author: Nathan Baller, Abode Outside
+faq:
+  title: "**FREQUENTLY ASKED QUESTIONS**"
+  questions:
+    - question: "**Do you do both photo and video?**"
+      answer: I specialize in video production but can also offer photography services
+        upon request. Whether you're seeking a stunning video production,
+        captivating photography, or a combination of both, I’m committed to
+        meeting your creative needs and bringing your vision to life.
+    - question: "**What is the turnaround time?**"
+      answer: Turnaround time varies based on the project scope and I will provide an
+        estimated timeline during the Discovery Call. However, the majority of
+        our projects have a 2-week turnaround time from the last shoot date.
+    - question: "**How involved are you in the planning and storyboarding process?**"
+      answer: I am adaptable to your preferences. Typically, I take the lead in
+        planning and storyboarding based on the insights gathered during our
+        discovery call and pre-production meeting. However, I welcome your
+        involvement at any level—whether you prefer a hands-on approach in
+        planning every detail or entrusting me to handle the creative process,
+        I’m here to accommodate your needs and vision.
+    - question: "**Can we choose the music for our video?**"
+      answer: Typically, I curate music based on my expertise and the flow of the
+        editing process. I have access to a wide range of quality, royalty-free
+        tracks from a subscription platform. However, I value your preferences.
+        If you have specific genre ideas or would like to be presented with song
+        options, I'm more than happy to provide you with a selection to choose
+        from. Otherwise, rest assured that I'll select music that complements
+        the video seamlessly, drawing from my experience and creative instincts
+        which have been successful in past projects.
 aboutMeDescription: >-
   I'm Carly, and creating videos is my thing. After graduating from the
   University of Vermont (Go Catamounts!) I made the decision to pack my bags and

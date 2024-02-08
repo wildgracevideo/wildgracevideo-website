@@ -494,3 +494,70 @@ collections:
                       choose_url: false,
                       allow_multiple: false,
                   }
+          - label: 'How To'
+            name: 'howTo'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'How To Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'How To SEO Title (Less than 125 characters)'
+                  name: seoTitle
+                  widget: 'string'
+                - label: 'Steps'
+                  name: 'steps'
+                  widget: 'list'
+                  min: 1
+                  fields:
+                      - {
+                            label: 'Step Title',
+                            name: 'title',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                        }
+                      - {
+                            label: 'Step Description',
+                            name: 'description',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                        }
+                - {
+                      label: 'Footer',
+                      name: 'footer',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      required: false,
+                  }
+
+          - label: 'FAQ'
+            name: 'faq'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'FAQ Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Questions'
+                  name: 'questions'
+                  widget: 'list'
+                  min: 1
+                  fields:
+                      - {
+                            label: 'Question',
+                            name: 'question',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                        }
+                      - {
+                            label: 'Answer',
+                            name: 'answer',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                        }

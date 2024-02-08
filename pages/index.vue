@@ -85,53 +85,39 @@
         TRUSTED BY
     </h2>
     <LogoSlider class="mb-32" :logos="trustedBrandLogos" />
-    <div class="strong:font-bold bg-website-accent">
-        <div class="w-4/5 pb-24">
-            <h2 class="mb-12 ml-8 pt-32 text-4xl md:text-5xl lg:ml-24">
-                HOW DOES THIS <strong>WORK</strong>?
-            </h2>
-            <div class="pb-16">
-                <h3 class="strong:font-bold mb-6 ml-12 text-4xl lg:ml-32">
-                    <strong>Step 1.</strong> Discovery Call
-                </h3>
-                <p class="ml-16 lg:ml-36">
-                    This initial step is where I get to know you and your
-                    project. We discuss your vision, goals, and requirements.
-                    It's a collaborative conversation where I gather essential
-                    details to ensure I’m aligned with your vision.
-                </p>
+    <article class="bg-website-accent">
+        <div class="w-4/5 pb-16">
+            <SchemaOrgHowTo
+                :name="howTo.seoTitle"
+                :step="howToSteps"
+                in-language="en-US"
+            />
+            <Markdown
+                :markdown-string="`## ${howTo.title!}`"
+                component-class="no-default-format mb-12 ml-8 pt-24 text-4xl md:text-5xl lg:ml-24"
+            />
+            <div
+                v-for="(step, index) in howTo.steps"
+                :key="`step-${step.title}`"
+                class="pb-16"
+            >
+                <Markdown
+                    :id="`step-${index + 1}`"
+                    :markdown-string="`### ${step.title}`"
+                    component-class="no-default-format strong:font-bold mb-6 ml-12 text-4xl lg:ml-32"
+                />
+                <Markdown
+                    :markdown-string="step.description"
+                    component-class="ml-16 lg:ml-36"
+                />
             </div>
-            <div class="pb-16">
-                <h3 class="strong:font-bold mb-6 ml-12 text-4xl lg:ml-32">
-                    <strong>Step 2.</strong> Plan. Plan. Plan.
-                </h3>
-                <p class="ml-16 lg:ml-36">
-                    Once I’ve understood your objectives, we begin the planning
-                    phase. This involves crafting a detailed strategy,
-                    storyboard, and production plan. We'll work together closely
-                    to finalize every aspect of the project before moving
-                    forward.
-                </p>
-            </div>
-            <div class="pb-16">
-                <h3 class="strong:font-bold mb-6 ml-12 text-4xl lg:ml-32">
-                    <strong>Step 3.</strong> Create + Deliver!
-                </h3>
-                <p class="ml-16 lg:ml-36">
-                    This is where the magic happens! I’ll bring the plans to
-                    life by utilizing a wide range of cinematic equipment and
-                    leveraging my expertise. Collaboration with industry experts
-                    may also come into play to ensure the highest quality and
-                    creativity for your project. Throughout this stage, I
-                    maintain communication and transparency, ensuring the
-                    project aligns with your expectations.
-                    <br class="mb-8" />
-                    Finally, I’ll deliver the finished product, ready to exceed
-                    your vision and goals.
-                </p>
-            </div>
+            <Markdown
+                v-if="howTo.footer"
+                :markdown-string="howTo.footer!"
+                component-class="-mt-8 ml-16 lg:ml-36"
+            />
         </div>
-    </div>
+    </article>
     <div
         class="wave-background mb-32 grid w-full grid-cols-1 items-center justify-center gap-x-10 px-8 md:grid-cols-3"
     >
@@ -151,14 +137,27 @@
         </video>
     </div>
     <div class="mx-8 mb-32 lg:mx-32">
-        <h2 class="mx-auto mb-20 mt-32 max-w-lg text-center text-4xl font-bold">
-            FREQUENTLY ASKED QUESTIONS
-        </h2>
-        <template v-for="faq in faqs" :key="`faq-${faq.question}`">
-            <h3 class="mb-4 font-bold">+ {{ faq.question }}</h3>
-            <p class="mb-10">
-                {{ faq.answer }}
-            </p>
+        <Markdown
+            :markdown-string="`## ${faq.title!}`"
+            component-class="no-default-format mx-auto mb-20 mt-32 max-w-lg text-center text-4xl strong:font-bold"
+        />
+        <template
+            v-for="faqItem in faq.questions"
+            :key="`faq-${faqItem.question}`"
+        >
+            <SchemaOrgQuestion
+                :name="faqItem.question"
+                :accepted-answer="faqItem.answer"
+                in-language="en-US"
+            />
+            <Markdown
+                :markdown-string="`### ${faqItem.question}`"
+                component-class="no-default-format strong:font-bold mb-4"
+            />
+            <Markdown
+                :markdown-string="faqItem.answer"
+                component-class="mb-10"
+            />
         </template>
     </div>
 </template>
@@ -185,25 +184,23 @@
     const videoHighlight = homeData.videoHighlight!;
     const videoHighlightVideos = videoHighlight.videos!;
 
-    const faqs = [
-        {
-            question: 'Do you do both photo and video?',
-            answer: "I specialize in video production but can also offer photography services upon request. Whether you're seeking a stunning video production, captivating photography, or a combination of both, I’m committed to meeting your creative needs and bringing your vision to life.",
-        },
-        {
-            question: 'What is the turnaround time?',
-            answer: 'Turnaround time varies based on the project scope and I will provide an estimated timeline during the Discovery Call. However, the majority of our projects have a 2-week turnaround time from the last shoot date.',
-        },
-        {
-            question:
-                'How involved are you in the planning and storyboarding process?',
-            answer: 'I am adaptable to your preferences. Typically, I take the lead in planning and storyboarding based on the insights gathered during our discovery call and pre-production meeting. However, I welcome your involvement at any level—whether you prefer a hands-on approach in planning every detail or entrusting me to handle the creative process, I’m here to accommodate your needs and vision.',
-        },
-        {
-            question: 'Can we choose the music for our video?',
-            answer: "Typically, I curate music based on my expertise and the flow of the editing process. I have access to a wide range of quality, royalty-free tracks from a subscription platform. However, I value your preferences. If you have specific genre ideas or would like to be presented with song options, I'm more than happy to provide you with a selection to choose from. Otherwise, rest assured that I'll select music that complements the video seamlessly, drawing from my experience and creative instincts which have been successful in past projects.",
-        },
-    ];
+    const howTo = homeData.howTo!;
+
+    const faq = homeData.faq!;
+
+    const howToSteps = howTo.steps.map(
+        (it: { title: string; description: string }, i: number) => {
+            return {
+                url: `#step-${i}`,
+                text: it.description,
+                name: it.title,
+            };
+        }
+    );
+
+    howToSteps.push({
+        text: howTo.footer,
+    });
 
     const parallaxVideos = [
         {
@@ -290,6 +287,7 @@
 </script>
 
 <style scoped>
+    /* TODO: Custom image */
     .wave-background {
         background-image: url('/wave.jpg');
         background-attachment: fixed;

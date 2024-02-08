@@ -1,5 +1,10 @@
 <template>
-    <div class="markdown" :class="componentClass" v-html="markdownHtml" />
+    <div
+        :id="$attrs.id as string"
+        class="markdown"
+        :class="componentClass"
+        v-html="markdownHtml"
+    />
 </template>
 
 <script setup lang="ts">
