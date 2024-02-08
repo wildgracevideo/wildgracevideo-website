@@ -26,6 +26,10 @@
         margin-bottom: 1rem;
     }
 
+    .markdown.tall-p-margin:not(.no-default-format) p {
+        margin-bottom: 2rem;
+    }
+
     .markdown:not(.no-default-format) ul,
     .markdown:not(.no-default-format) ol {
         width: fit-content;

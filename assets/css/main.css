@@ -325,10 +325,6 @@ html,
     stroke: green;
 }
 
-.aspect-2 {
-    aspect-ratio: 2/1;
-}
-
 .rounded-oval {
     border-radius: 50%;
 }

@@ -1,14 +1,20 @@
 <template>
     <OgMeta :title="title" :description="description" />
-    <SchemaOrgWebPage :name="title" />
+    <SchemaOrgWebPage
+        :name="title"
+        :description="description"
+        in-language="en-US"
+        date-published="2024-02-07T21:19:07+0000"
+        :primary-image-of-page="aboutMeImageName"
+    />
     <!-- TODO: Better thumbnail image -->
     <SchemaOrgVideo
-        :name="videoTitle"
+        :name="reelVideo.seoTitle"
         url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
         content-url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
         upload-date="2023-09-25T22:13:39.520Z"
-        description="Main video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company."
-        :thumbnail-url="thumbnailImage"
+        :description="reelVideo.seoDescription"
+        :thumbnail-url="reelVideo.thumbnailImage"
     />
     <video
         id="reel-video"
@@ -18,7 +24,7 @@
         loop
         disablePictureInPicture
         playsinline
-        :title="videoTitle"
+        :title="reelVideo.seoTitle"
     ></video>
 
     <!-- TODO: HTML5 Elements instead of divs where applicable -->
@@ -32,15 +38,22 @@
     />
     <TestimonialScroll :testimonial-quotes="homeData!.testimonialQuotes" />
     <Markdown
-        :markdown-string="`## ${homeData!.videoHighlightTitle!}`"
+        :markdown-string="`## ${videoHighlight.title!}`"
         component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-4xl md:text-5xl"
     />
     <div class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
         <div
-            v-for="video in videos"
+            v-for="video in videoHighlightVideos"
             :key="`home-highlight-video-${video.title}`"
         >
-            <!-- TODO: SchemaOrgVideo -->
+            <SchemaOrgVideo
+                :name="video.seoTitle"
+                :url="video.video"
+                :content-url="video.video"
+                :upload-date="video.publicationDate"
+                :description="video.seoDescription"
+                :thumbnail-url="video.thumbnailImage"
+            />
             <video
                 class="pointer-events-none mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mt-0"
                 autoplay
@@ -48,7 +61,7 @@
                 loop
                 disablePictureInPicture
                 playsinline
-                :title="videoTitle"
+                :title="video.seoTitle"
             >
                 <source :src="video.video" type="video/mp4" />
             </video>
@@ -62,56 +75,16 @@
     </div>
     <HomePageAbout
         class="mb-36 mt-32 md:mt-48"
-        :about-text-markdown="aboutMeDescriptionMarkdown"
-        :about-title-markdown="aboutMeTitleMarkdown"
-        :about-image="aboutMeImage"
-        :about-image-alt-text="aboutMeAltText"
+        :text-markdown="aboutMeDescriptionMarkdown"
+        :title-markdown="aboutMeTitleMarkdown"
+        :image="aboutMeImage"
+        :image-alt-text="aboutMeAltText"
+        :image-name="aboutMeImageName"
     />
-    <!-- <div -->
-    <!--     class="mx-12 grid grid-cols-1 gap-x-16 md:grid-cols-2 xl:mx-24" -->
-    <!-- > -->
-    <!--     <div class="order-2 md:order-1"> -->
-    <!--         <h2 -->
-    <!--             class="strong:font-bold mb-8 hidden text-4xl md:block md:text-5xl" -->
-    <!--         > -->
-    <!--             MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong> -->
-    <!--         </h2> -->
-    <!--         <p> -->
-    <!--             I'm Carly, and creating videos is my thing. After graduating -->
-    <!--             from the University of Vermont (Go Catamounts!) I made the -->
-    <!--             decision to pack my bags and fly out west—and now call Denver, -->
-    <!--             Colorado my home. -->
-    <!--             <br class="mb-8" /> -->
-    <!--             Ever since I was younger, I have always found passion and -->
-    <!--             excitement through creating videos. From creating embarrassing -->
-    <!--             movie trailers with my friends when I was younger, to putting -->
-    <!--             together creative travel videos from my semester abroad in New -->
-    <!--             Zealand, and compiling footage of the ranch I worked at in -->
-    <!--             Wyoming. Creating travel and outdoor videos as a “souvenir” from -->
-    <!--             moments through life has always been important to me. -->
-    <!--             <br class="mb-8" /> -->
-    <!--             At Wild Grace Video Productions, I am focused on providing -->
-    <!--             detailed and personalized videos to match your brand and relay -->
-    <!--             your message in a professional, yet exciting style. -->
-    <!--             <br class="mb-8" /> -->
-    <!--             I feel beyond fortunate that I have been able to combine my love -->
-    <!--             for creativity and video into my own business and I’m excited to -->
-    <!--             share that same energy and excitement with you. -->
-    <!--         </p> -->
-    <!--     </div> -->
-    <!--     <div class="order-1 md:order-2"> -->
-    <!--         <h2 -->
-    <!--             class="strong:font-bold mb-12 block text-4xl md:hidden md:text-5xl" -->
-    <!--         > -->
-    <!--             MEET YOUR <strong>ADVENTURE-LOVING VIDEOGRAPHER</strong> -->
-    <!--         </h2> -->
-    <!--         <img src="/videographer.gif" alt="TODO ALT" /> -->
-    <!--     </div> -->
-    <!-- </div> -->
     <h2 class="mb-12 ml-8 mt-20 text-4xl font-bold md:text-5xl lg:ml-16">
         TRUSTED BY
     </h2>
-    <LogoSlider class="mb-32" :logos="logos" />
+    <LogoSlider class="mb-32" :logos="trustedBrandLogos" />
     <div class="strong:font-bold bg-website-accent">
         <div class="w-4/5 pb-24">
             <h2 class="mb-12 ml-8 pt-32 text-4xl md:text-5xl lg:ml-24">
@@ -172,7 +145,7 @@
             loop
             disablePictureInPicture
             playsinline
-            :title="videoTitle"
+            :title="video.title"
         >
             <source :src="video.path" type="video/mp4" />
         </video>
@@ -200,67 +173,17 @@
     const description = homeData.description;
     const pageTitle = homeData.pageTitle!;
     const pageTagline = homeData.pageTagline!;
-    const videoTitle = homeData.videoTitle!;
-    const thumbnailImage = homeData.thumbnailImage!;
-    const aboutMeTitleMarkdown = homeData.aboutMeTitle!;
-    const aboutMeDescriptionMarkdown = homeData.aboutMeDescription!;
-    const aboutMeImage = homeData.aboutMeImage!;
-    const aboutMeAltText = homeData.aboutMeAltText!;
+    const reelVideo = homeData.reelVideo!;
 
-    // TODO: Alt/template images for SEO
-    const videos = [
-        {
-            title: 'BOUTIQUE HOTELS',
-            description:
-                'Let us capture the essence of your boutique hotel by showcasing your unique spaces and highlighting the beauty of your surroundings. We’ll craft compelling visuals that will speak to your brand and up-level your marketing for years to come.',
-            video: '/boutique-hotels.mp4',
-        },
-        {
-            title: 'OUTDOOR PRODUCTS',
-            description:
-                "Let us spotlight your outdoor gear with visuals that showcase their top-notch quality and demonstrate their ideal use in the great outdoors. Let our compelling imagery redefine your brand's marketing impact for the long term.",
-            video: '/outdoor-brands.mp4',
-        },
-        {
-            title: 'ADVENTURE COMPANIES',
-            description:
-                "Get ready to flaunt your outdoor excursions with visuals that bring out their thrill and showcase the excitement of your adventure. Our compelling imagery will redefine your brand's marketing impact, attracting thrill-seekers and enthusiasts for unforgettable experiences.",
-            video: '/adventure-brands.mp4',
-        },
-    ];
+    const aboutMeTitleMarkdown = homeData.aboutMe.title!;
+    const aboutMeDescriptionMarkdown = homeData.aboutMe.description!;
+    const aboutMeImage = homeData.aboutMe.image!;
+    const aboutMeAltText = homeData.aboutMe.altText!;
+    const aboutMeImageName = homeData.aboutMe.imageName!;
 
-    const logos = [
-        {
-            path: '/slider-logos/curtis-hotel.png',
-            altText: 'Test',
-            companyName: 'The Curtis Hotel',
-        },
-        {
-            path: '/slider-logos/genesee.png',
-            altText: 'Test',
-            companyName: 'Genesee',
-        },
-        {
-            path: '/slider-logos/studio10.png',
-            altText: 'Test',
-            companyName: 'Studio 10',
-        },
-        {
-            path: '/slider-logos/smith-meade.png',
-            altText: 'Test',
-            companyName: 'Smith & Meade',
-        },
-        {
-            path: '/slider-logos/abode-outside.png',
-            altText: 'Test',
-            companyName: 'Abode Outside',
-        },
-        {
-            path: '/slider-logos/surf-hotel.png',
-            altText: 'Test',
-            companyName: 'Surf Hotel',
-        },
-    ];
+    const trustedBrandLogos = homeData.trustedBrandLogos!;
+    const videoHighlight = homeData.videoHighlight!;
+    const videoHighlightVideos = videoHighlight.videos!;
 
     const faqs = [
         {
@@ -284,17 +207,17 @@
 
     const parallaxVideos = [
         {
-            path: '/parallax-video-1.jpg',
+            path: '/parallax-video-1.mp4',
             altText: '',
             title: 'Parallax video 1',
         },
         {
-            path: '/parallax-video-2.jpg',
+            path: '/parallax-video-2.mp4',
             altText: '',
             title: 'Parallax video 2',
         },
         {
-            path: '/parallax-video-3.jpg',
+            path: '/parallax-video-3.mp4',
             altText: '',
             title: 'Parallax video 3',
         },

@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const SITE_URL = process.env.URL || 'https://wildgracevideo.com/';
 const APP_ICON = SITE_URL + '/app-icon.png';
-const WEBSITE_ICON = 'logo2.png';
+const WEBSITE_ICON = 'logo1.webp';
 const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
 
 process.env['NEXTAUTH_URL'] = process.env.DEPLOY_PRIME_URL;
@@ -44,7 +44,7 @@ const config = {
         apiKey: process.env.API_KEY,
         public: {
             siteUrl: SITE_URL,
-            wesbiteIcon: WEBSITE_ICON,
+            websiteIcon: WEBSITE_ICON,
             gaMeasurementId:
                 process.env.NODE_ENV === 'production' ? GA_MEASUREMENT_ID : '',
             recaptchaSiteKey: '6Ld2tkcpAAAAAK052jkIsYcC5L12ih2pumxlA3e8',
@@ -136,18 +136,10 @@ const config = {
         },
         '/': {
             sitemap: {
-                images: [
-                    {
-                        loc: '/logo1.webp',
-                        title: 'Wild Grace Videography logo',
-                        caption:
-                            'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.',
-                    },
-                ],
                 videos: [
                     {
                         title: 'Wild Grace Videography Reel',
-                        thumbnail_loc: SITE_URL + '/logo1.webp',
+                        thumbnail_loc: SITE_URL + '/logo2.png',
                         description:
                             'Video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company.',
                         content_loc:
@@ -169,12 +161,6 @@ const config = {
                         title: 'Carly Kreiger photo',
                         caption:
                             'Photo of Carly Kreiger, the founder of Wild Grace Videography, a Denver, Colorado-based video production company.',
-                    },
-                    {
-                        loc: '/logo1.webp',
-                        title: 'Wild Grace Videography logo',
-                        caption:
-                            'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.',
                     },
                 ],
             },

@@ -25,7 +25,11 @@ collections:
           preview: false
       fields:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
-          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - {
+                label: 'SEO Description (About 150-160 characters)',
+                name: 'description',
+                widget: 'text',
+            }
           - {
                 label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED',
                 name: 'path',
@@ -169,7 +173,7 @@ collections:
                 widget: 'string',
             }
           - {
-                label: 'Main Reel SEO Description',
+                label: 'Main Reel SEO Description (About 125 characters)',
                 name: 'mainReelAlt',
                 widget: 'string',
             }
@@ -192,7 +196,11 @@ collections:
                       minimal: true,
                   }
                 - { label: 'Youtube ID', name: 'youtubeId', widget: 'string' }
-                - { label: 'SEO Description', name: 'alt', widget: 'text' }
+                - {
+                      label: 'SEO Description (About 125 characters)',
+                      name: 'alt',
+                      widget: 'text',
+                  }
 
     - name: 'service'
       label: 'Service'
@@ -328,18 +336,24 @@ collections:
       fields:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
-          - {
-                label: 'Reel Video SEO Description',
-                name: 'videoTitle',
-                widget: 'text',
-            }
-          - {
-                label: 'Reel Video Thumbnail Image',
-                name: 'thumbnailImage',
-                widget: 'image',
-                choose_url: false,
-                allow_multiple: false,
-            }
+          - label: 'Reel Video'
+            name: 'reelVideo'
+            widget: 'object'
+            summary: '{{fields.seoTitle}}'
+            fields:
+                - {
+                      label: 'Reel Video Thumbnail Image',
+                      name: 'thumbnailImage',
+                      widget: 'image',
+                      choose_url: false,
+                      allow_multiple: false,
+                  }
+                - label: 'SEO Video Title (About 125 characters)'
+                  name: seoTitle
+                  widget: 'text'
+                - label: 'SEO Video Description (About 150-160 characters)'
+                  name: seoDescription
+                  widget: 'text'
           - {
                 label: 'Page Title',
                 name: 'pageTitle',
@@ -354,7 +368,7 @@ collections:
                 modes: ['rich_text'],
                 minimal: false,
             }
-          - label: 'Testimonial Quotes (Exactly 2)'
+          - label: 'Testimonial Quotes'
             name: 'testimonialQuotes'
             widget: 'list'
             allow_add: false
@@ -369,35 +383,114 @@ collections:
                       modes: ['rich_text'],
                       minimal: true,
                   }
+                - { label: 'Author', name: 'author', widget: 'string' }
+          - label: 'Video Highlight'
+            name: videoHighlight
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Video Highlight Title'
+                  name: 'title'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Videos'
+                  name: 'videos'
+                  min: 3
+                  max: 3
+                  allow_add: false
+                  widget: 'list'
+                  summary: '{{fields.title}}'
+                  fields:
+                      - {
+                            label: 'Video Title',
+                            name: 'title',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                        }
+                      - {
+                            label: 'Video Description',
+                            name: 'description',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                        }
+                      - label: 'Video (Up to 3MB preferably 1MB)'
+                        name: 'video'
+                        widget: 'file'
+                        media_library:
+                            allow_multiple: false
+                            choose_url: false
+                            config:
+                                multiple: false
+                                max_file_size: 4096000
+                      - {
+                            label: 'Thumbnail Image',
+                            name: 'thumbnailImage',
+                            widget: 'image',
+                            choose_url: false,
+                            allow_multiple: false,
+                        }
+                      - label: 'SEO Video Title (About 125 characters)'
+                        name: seoTitle
+                        widget: 'text'
+                      - label: 'SEO Video Description (About 150-160 characters)'
+                        name: seoDescription
+                        widget: 'text'
+                      - label: 'Publication Date (Change only if changing the video file)'
+                        name: publicationDate
+                        widget: 'datetime'
+          - label: 'About Me'
+            name: 'aboutMe'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'About Me Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'About Me Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
                 - {
-                      label: 'Author',
-                      name: 'author',
-                      widget: 'string',
-                      minimal: true,
+                      label: 'About Me Image (webp aspect-ratio 1/1.25)',
+                      name: 'image',
+                      widget: 'image',
+                      choose_url: false,
+                      allow_multiple: false,
                   }
-          - label: 'Video Highlight Title'
-            name: 'videoHighlightTitle'
-            widget: 'markdown'
-            modes: ['rich_text']
-            minimal: true
-          - label: 'About Me Title'
-            name: aboutMeTitle
-            widget: 'markdown'
-            modes: ['rich_text']
-            minimal: true
-          - label: 'About Me Description'
-            name: aboutMeDescription
-            widget: 'markdown'
-            modes: ['rich_text']
-          - {
-                label: 'About Me Image (webp)',
-                name: 'aboutMeImage',
-                widget: 'image',
-                choose_url: false,
-                allow_multiple: false,
-            }
-          - {
-                label: 'About Me Image SEO Description',
-                name: 'aboutMeAltText',
-                widget: 'text',
-            }
+                - {
+                      label: 'About Me Image SEO Title',
+                      name: 'imageName',
+                      widget: 'string',
+                  }
+                - {
+                      label: 'About Me Image SEO Description (About 125 characters)',
+                      name: 'altText',
+                      widget: 'text',
+                  }
+          - label: 'Trusted Brand Logos'
+            name: 'trustedBrandLogos'
+            widget: 'list'
+            min: 5
+            summary: '{{fields.companyName}}'
+            fields:
+                - {
+                      label: 'Company Name',
+                      name: 'companyName',
+                      widget: 'string',
+                  }
+                - {
+                      label: 'SEO Description (About 125 characters)',
+                      name: 'altText',
+                      widget: 'text',
+                  }
+                - {
+                      label: 'Image (webp 112x112 or smaller)',
+                      name: 'image',
+                      widget: 'image',
+                      choose_url: false,
+                      allow_multiple: false,
+                  }
