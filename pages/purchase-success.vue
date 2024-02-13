@@ -3,7 +3,6 @@
     <SchemaOrgWebPage type="AboutPage" :name="pageTitle" />
     <section class="mx-auto w-fit text-center">
         <h1 class="mb-6 text-4xl">{{ heading }}</h1>
-        <!-- <h3 class="text-2xl text-center">Have Questions? Contact me here</h3> -->
         <h3 class="max-w-4xl text-center text-lg">
             If it doesn’t arrive in your email inbox within 15 minutes, please
             email me at,

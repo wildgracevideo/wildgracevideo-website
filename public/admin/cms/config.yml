@@ -415,7 +415,7 @@ collections:
                             widget: 'markdown',
                             modes: ['rich_text'],
                         }
-                      - label: 'Video (Up to 3MB preferably 1MB)'
+                      - label: 'Video (Up to 4MB preferably 1MB)'
                         name: 'video'
                         widget: 'file'
                         media_library:
@@ -471,6 +471,11 @@ collections:
                       name: 'altText',
                       widget: 'text',
                   }
+          - label: 'Trusted Brand Title'
+            name: 'trustedBrandTitle'
+            widget: 'markdown'
+            modes: ['rich_text']
+            minimal: true
           - label: 'Trusted Brand Logos'
             name: 'trustedBrandLogos'
             widget: 'list'
@@ -532,7 +537,47 @@ collections:
                       modes: ['rich_text'],
                       required: false,
                   }
-
+          - label: 'Testimonials'
+            name: 'testimonials'
+            widget: 'object'
+            summary: 'Testimonials'
+            fields:
+                - label: 'Background Image (webp)'
+                  name: 'backgroundImage'
+                  widget: 'image'
+                  choose_url: false
+                  allow_multiple: false
+                - label: 'Files (3 mp4 or webp 4 MB Max preferably 1MB)'
+                  name: 'files'
+                  widget: 'list'
+                  min: 3
+                  max: 3
+                  allow_add: false
+                  fields:
+                      - label: 'File (mp4 or webp 4 MB Max preferably 1MB)'
+                        name: 'file'
+                        widget: 'file'
+                        media_library:
+                            allow_multiple: false
+                            choose_url: false
+                            config:
+                                multiple: false
+                                max_file_size: 4096000
+                      - label: 'Thumbnail Image (Only if the file is an mp4 video)'
+                        widget: 'image'
+                        name: 'thumbnailImage'
+                        choose_url: false
+                        allow_multiple: false
+                        required: false
+                      - label: 'SEO Description (About 125 characters)'
+                        name: 'seoDescription'
+                        widget: 'text'
+                      - label: 'SEO Title'
+                        name: 'seoTitle'
+                        widget: 'string'
+                      - label: 'Publication Date (Change only if changing the file)'
+                        name: publicationDate
+                        widget: 'datetime'
           - label: 'FAQ'
             name: 'faq'
             widget: 'object'

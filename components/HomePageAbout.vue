@@ -1,5 +1,5 @@
 <template>
-    <div
+    <article
         class="home-page-about-grid-container mx-12 mb-36 mt-32 grid grid-cols-1 gap-x-16 md:mt-48 md:grid-cols-2 xl:mx-24"
     >
         <div class="order-2 md:order-1">
@@ -30,7 +30,7 @@
                 class="aspect-125 mb-12 md:mb-0"
             />
         </div>
-    </div>
+    </article>
 </template>
 
 <script setup lang="ts">

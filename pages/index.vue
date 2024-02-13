@@ -26,8 +26,6 @@
         playsinline
         :title="reelVideo.seoTitle"
     ></video>
-
-    <!-- TODO: HTML5 Elements instead of divs where applicable -->
     <Markdown
         :markdown-string="`# ${pageTitle}`"
         component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl mx-8 em:font-medium strong:font-bold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
@@ -41,7 +39,7 @@
         :markdown-string="`## ${videoHighlight.title!}`"
         component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-4xl md:text-5xl"
     />
-    <div class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
+    <section class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
         <div
             v-for="video in videoHighlightVideos"
             :key="`home-highlight-video-${video.title}`"
@@ -72,7 +70,7 @@
                 {{ video.description }}
             </p>
         </div>
-    </div>
+    </section>
     <HomePageAbout
         class="mb-36 mt-32 md:mt-48"
         :text-markdown="aboutMeDescriptionMarkdown"
@@ -81,9 +79,10 @@
         :image-alt-text="aboutMeAltText"
         :image-name="aboutMeImageName"
     />
-    <h2 class="mb-12 ml-8 mt-20 text-4xl font-bold md:text-5xl lg:ml-16">
-        TRUSTED BY
-    </h2>
+    <Markdown
+        component-class="no-default-format strong:font-bold mb-12 ml-8 mt-20 text-4xl md:text-5xl lg:ml-16"
+        :markdown-string="`## ${homeData!.trustedBrandTitle}`"
+    />
     <LogoSlider class="mb-32" :logos="trustedBrandLogos" />
     <article class="bg-website-accent">
         <div class="w-4/5 pb-16">
@@ -118,25 +117,39 @@
             />
         </div>
     </article>
-    <div
-        class="wave-background mb-32 grid w-full grid-cols-1 items-center justify-center gap-x-10 px-8 md:grid-cols-3"
+    <section
+        class="parallax-background mb-32 grid w-full grid-cols-1 items-center justify-center gap-x-10 px-8 md:grid-cols-3"
+        :style="{
+            '--parallax-background-image': `url(${testimonials.backgroundImage})`,
+        }"
     >
-        <!-- TODO: SchemaOrgVideo -->
-        <video
-            v-for="video in parallaxVideos"
-            :key="`parallax-video-${video.title}`"
-            class="pointer-events-none mx-auto mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mx-0 lg:mt-0"
-            autoplay
-            muted
-            loop
-            disablePictureInPicture
-            playsinline
-            :title="video.title"
-        >
-            <source :src="video.path" type="video/mp4" />
-        </video>
-    </div>
-    <div class="mx-8 mb-32 lg:mx-32">
+        <template v-for="file in testimonials.files!">
+            <AutoPlayVideo
+                v-if="file.file!.endsWith('mp4')"
+                :key="file.file"
+                class="mx-auto mb-4 mt-8 bg-fixed lg:mx-0 lg:mt-0"
+                :video="file.file"
+                :description="file.seoDescription"
+                :title="file.seoTitle"
+                :thumbnail-image="file.thumbnailImage"
+            />
+            <template v-else>
+                <img
+                    :key="file.file"
+                    class="mx-auto mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mx-0 lg:mt-0"
+                    :src="file.file"
+                    :alt="file.seoDescription"
+                />
+                <SchemaOrgImage
+                    :key="`${file.file}-schema`"
+                    :name="file.seoTitle"
+                    :url="file.file"
+                    :description="file.seoDescription"
+                />
+            </template>
+        </template>
+    </section>
+    <article class="mx-8 mb-32 lg:mx-32">
         <Markdown
             :markdown-string="`## ${faq.title!}`"
             component-class="no-default-format mx-auto mb-20 mt-32 max-w-lg text-center text-4xl strong:font-bold"
@@ -145,11 +158,6 @@
             v-for="faqItem in faq.questions"
             :key="`faq-${faqItem.question}`"
         >
-            <SchemaOrgQuestion
-                :name="faqItem.question"
-                :accepted-answer="faqItem.answer"
-                in-language="en-US"
-            />
             <Markdown
                 :markdown-string="`### ${faqItem.question}`"
                 component-class="no-default-format strong:font-bold mb-4"
@@ -159,7 +167,7 @@
                 component-class="mb-10"
             />
         </template>
-    </div>
+    </article>
 </template>
 
 <script setup lang="ts">
@@ -188,6 +196,8 @@
 
     const faq = homeData.faq!;
 
+    const testimonials = homeData.testimonials!;
+
     const howToSteps = howTo.steps.map(
         (it: { title: string; description: string }, i: number) => {
             return {
@@ -201,24 +211,6 @@
     howToSteps.push({
         text: howTo.footer,
     });
-
-    const parallaxVideos = [
-        {
-            path: '/parallax-video-1.mp4',
-            altText: '',
-            title: 'Parallax video 1',
-        },
-        {
-            path: '/parallax-video-2.mp4',
-            altText: '',
-            title: 'Parallax video 2',
-        },
-        {
-            path: '/parallax-video-3.mp4',
-            altText: '',
-            title: 'Parallax video 3',
-        },
-    ];
 
     onMounted(async () => {
         const videoElement = document.getElementById(
@@ -287,9 +279,8 @@
 </script>
 
 <style scoped>
-    /* TODO: Custom image */
-    .wave-background {
-        background-image: url('/wave.jpg');
+    .parallax-background {
+        background-image: var(--parallax-background-image);
         background-attachment: fixed;
         background-size: 100%;
         min-height: 56rem;

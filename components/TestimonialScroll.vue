@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <section>
         <div
             ref="mountainStaticContainer"
             class="hidden md:grid md:grid-cols-2"
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup lang="ts">

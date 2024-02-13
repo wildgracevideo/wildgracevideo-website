@@ -29,6 +29,7 @@ aboutMe:
   image: /uploads/carly-headshot.webp
   imageName: TODO
   altText: TODO
+trustedBrandTitle: "**TRUSTED BY**"
 howTo:
   title: HOW DOES THIS **WORK?**
   steps:
@@ -55,6 +56,21 @@ howTo:
 thumbnailImage: /uploads/logo1.webp
 aboutMeAltText: TODO
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
+testimonials:
+  backgroundImage: /uploads/wave.jpg
+  files:
+    - publicationDate: 2024-02-13T03:20:20.274Z
+      file: /uploads/parallax-video-1.mp4
+      seoDescription: TODO
+      seoTitle: TODO
+    - publicationDate: 2024-02-13T03:21:40.026Z
+      file: /uploads/parallax-video-2.mp4
+      seoDescription: TODO
+      seoTitle: TODO
+    - publicationDate: 2024-02-13T03:21:56.578Z
+      file: /uploads/parallax-video-3.mp4
+      seoDescription: TODO
+      seoTitle: TODO
 aboutMeImage: /uploads/carly-headshot.webp
 testimonialQuotes:
   - quote: Carly was so great to work with! She exceeded my expectations with
