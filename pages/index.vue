@@ -132,6 +132,7 @@
                 :description="file.seoDescription"
                 :title="file.seoTitle"
                 :thumbnail-image="file.thumbnailImage"
+                :publication-date="file.publicationDate"
             />
             <template v-else>
                 <img

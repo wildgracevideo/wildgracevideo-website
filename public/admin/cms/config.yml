@@ -606,3 +606,27 @@ collections:
                             widget: 'markdown',
                             modes: ['rich_text'],
                         }
+    - name: 'links'
+      label: 'Links'
+      folder: 'content/link'
+      format: 'frontmatter'
+      create: true
+      delete: false
+      identifier_field: 'title'
+      slug: 'links'
+      preview_path: 'links'
+      editor:
+          preview: false
+      fields:
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - label: 'Links'
+            name: 'links'
+            widget: 'list'
+            fields:
+                - label: 'Name'
+                  name: 'name'
+                  widget: 'string'
+                - label: 'Destination (URL Ex: https://www.google.com)'
+                  name: 'destination'
+                  widget: 'string'
