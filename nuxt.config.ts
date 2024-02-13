@@ -134,25 +134,6 @@ const config = {
                 statusCode: 301,
             },
         },
-        '/': {
-            sitemap: {
-                videos: [
-                    {
-                        title: 'Wild Grace Videography Reel',
-                        thumbnail_loc: SITE_URL + '/logo2.png',
-                        description:
-                            'Video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company.',
-                        content_loc:
-                            'https://d22668h9qdy3zj.cloudfront.net/wgv-reel.webm',
-                        player_loc: SITE_URL,
-                        duration: 92,
-                        requires_subscription: false,
-                        live: false,
-                        publication_date: '2023-09-26T19:20:30+07:00',
-                    },
-                ],
-            },
-        },
         '/who-we-are': {
             sitemap: {
                 images: [
