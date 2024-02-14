@@ -39,7 +39,6 @@ export default defineSitemapEventHandler(async (e) => {
                 }) as unknown[];
                 const testimonialImages: unknown[] = [];
                 const testimonialVideos: unknown[] = [];
-                console.log(c.testimonials);
                 // @ts-expect-error No types for nuxt-content
                 c.testimonials.files.forEach((it) => {
                     if (it.file.endsWith('mp4')) {
