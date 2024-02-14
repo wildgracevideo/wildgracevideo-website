@@ -43,7 +43,8 @@
         "lint:prettier": "prettier --check .",
         "lint": "npm run lint:js && npm run lint:prettier",
         "lintfix": "prettier --write --list-different . && npm run lint:js --fix",
-        "validate": "npm run lint && npx prisma generate && npm run build"
+        "validate": "npm run lint && npx prisma generate && npm run build",
+        "dbview": "npx prisma studio"
     },
     "type": "module",
     "dependencies": {
