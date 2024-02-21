@@ -89,7 +89,7 @@ const config = {
             autoprefixer: {},
         },
     },
-    css: ['~/assets/css/main.css'],
+    css: ['~/assets/css/main.css', '~/assets/google-fonts.css'],
     devtools: { enabled: process.env.NODE_ENV !== 'production' },
     sitemap: {
         xslTips: process.env.NODE_ENV !== 'production',
@@ -169,25 +169,25 @@ const config = {
     modules: [
         '@sidebase/nuxt-auth',
         '@nuxt/content',
-        [
-            '@nuxtjs/google-fonts',
-            {
-                families: {
-                    Poppins: [400, 600],
-                    Cardo: {
-                        wght: [400],
-                    },
-                    'Playfair Display': [400, 700],
-                },
-                inject: true,
-                base64: false,
-                download: true,
-                outputDir: 'assets',
-                stylePath: 'google-fonts.css',
-                fontsDir: 'gfonts',
-                fontsPath: 'assets/gfonts',
-            },
-        ],
+        // [
+        //     '@nuxtjs/google-fonts',
+        //     {
+        //         families: {
+        //             Poppins: [400, 600],
+        //             Cardo: {
+        //                 wght: [400],
+        //             },
+        //             'Playfair Display': [400, 700],
+        //         },
+        //         inject: true,
+        //         base64: false,
+        //         download: true,
+        //         outputDir: 'assets',
+        //         stylePath: 'google-fonts.css',
+        //         fontsDir: 'gfonts',
+        //         fontsPath: 'assets/gfonts',
+        //     },
+        // ],
         'nuxt-schema-org',
         'nuxt-simple-robots',
         '@nuxtjs/sitemap',
