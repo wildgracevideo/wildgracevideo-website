@@ -8,7 +8,7 @@
     <RecaptchaLoader />
     <div class="bg-website-off-black py-16">
         <h2
-            class="mb-6 text-center text-4xl font-bold text-website-off-white"
+            class="mb-6 text-center text-4xl font-semibold text-website-off-white"
             :class="{ hidden: !showForm }"
         >
             WORK WITH ME

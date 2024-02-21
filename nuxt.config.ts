@@ -173,12 +173,19 @@ const config = {
             '@nuxtjs/google-fonts',
             {
                 families: {
-                    Poppins: [400, 700],
+                    Poppins: [400, 600],
                     Cardo: {
                         wght: [400],
                     },
                     'Playfair Display': [400, 700],
                 },
+                inject: true,
+                base64: false,
+                download: true,
+                outputDir: 'assets',
+                stylePath: 'google-fonts.css',
+                fontsDir: 'gfonts',
+                fontsPath: 'assets/gfonts',
             },
         ],
         'nuxt-schema-org',

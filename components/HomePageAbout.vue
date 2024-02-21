@@ -5,7 +5,7 @@
         <div class="order-2 md:order-1">
             <Markdown
                 :markdown-string="`## ${titleMarkdown}`"
-                component-class="no-default-format strong:font-bold mb-12 hidden text-4xl md:block md:text-5xl"
+                component-class="no-default-format strong:font-semibold mb-12 hidden text-4xl md:block md:text-5xl"
             />
             <Markdown
                 :markdown-string="textMarkdown"
@@ -17,7 +17,7 @@
         >
             <Markdown
                 :markdown-string="`## ${titleMarkdown}`"
-                component-class="no-default-format strong:font-bold mb-12 block text-4xl md:hidden md:text-5xl"
+                component-class="no-default-format strong:font-semibold mb-12 block text-4xl md:hidden md:text-5xl"
             />
             <FileOrVideo
                 :file="fileConfig.file"

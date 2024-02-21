@@ -26,7 +26,7 @@
                 image-class="aspect-video portfolio-animatable-video fade-out"
                 :title="item.name"
             />
-            <h2 class="ml-2 mt-4 text-lg font-bold">{{ item.name }}</h2>
+            <h2 class="ml-2 mt-4 text-lg font-semibold">{{ item.name }}</h2>
             <h3 class="mb-16 ml-2 mt-2">{{ item.description }}</h3>
         </section>
     </div>

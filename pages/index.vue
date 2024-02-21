@@ -29,7 +29,7 @@
     ></video>
     <Markdown
         :markdown-string="`# ${pageTitle}`"
-        component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl mx-8 em:font-medium strong:font-bold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
+        component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl mx-8 em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
     />
     <Markdown
         :markdown-string="pageTagline"
@@ -38,7 +38,7 @@
     <TestimonialScroll :testimonial-quotes="homeData!.testimonialQuotes" />
     <Markdown
         :markdown-string="`## ${videoHighlight.title!}`"
-        component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-bold leading-14 tracking-tighter em:font-medium text-4xl md:text-5xl"
+        component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-semibold leading-14 tracking-tighter em:font-medium text-4xl md:text-5xl"
     />
     <section class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
         <div
@@ -79,7 +79,7 @@
         :file-config="aboutMeFile"
     />
     <Markdown
-        component-class="no-default-format strong:font-bold mb-12 ml-8 mt-20 text-4xl md:text-5xl lg:ml-16"
+        component-class="no-default-format strong:font-semibold mb-12 ml-8 mt-20 text-4xl md:text-5xl lg:ml-16"
         :markdown-string="`## ${homeData!.trustedBrandTitle}`"
     />
     <LogoSlider class="mb-32" :logos="trustedBrandLogos" />
@@ -102,7 +102,7 @@
                 <Markdown
                     :id="`step-${index + 1}`"
                     :markdown-string="`### ${step.title}`"
-                    component-class="no-default-format strong:font-bold mb-6 ml-12 text-4xl lg:ml-32"
+                    component-class="no-default-format strong:font-semibold mb-6 ml-12 text-4xl lg:ml-32"
                 />
                 <Markdown
                     :markdown-string="step.description"
@@ -136,7 +136,7 @@
     <article class="mx-8 mb-32 lg:mx-32">
         <Markdown
             :markdown-string="`## ${faq.title!}`"
-            component-class="no-default-format mx-auto mb-20 mt-32 max-w-lg text-center text-4xl strong:font-bold"
+            component-class="no-default-format mx-auto mb-20 mt-32 max-w-lg text-center text-4xl strong:font-semibold"
         />
         <template
             v-for="faqItem in faq.questions"
@@ -144,7 +144,7 @@
         >
             <Markdown
                 :markdown-string="`### ${faqItem.question}`"
-                component-class="no-default-format strong:font-bold mb-4"
+                component-class="no-default-format strong:font-semibold mb-4"
             />
             <Markdown
                 :markdown-string="faqItem.answer"
