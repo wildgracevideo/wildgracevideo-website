@@ -454,23 +454,41 @@ collections:
                   name: description
                   widget: 'markdown'
                   modes: ['rich_text']
-                - {
-                      label: 'About Me Image (webp aspect-ratio 1/1.25)',
-                      name: 'image',
-                      widget: 'image',
-                      choose_url: false,
-                      allow_multiple: false,
-                  }
-                - {
-                      label: 'About Me Image SEO Title',
-                      name: 'imageName',
-                      widget: 'string',
-                  }
-                - {
-                      label: 'About Me Image SEO Description (About 125 characters)',
-                      name: 'altText',
-                      widget: 'text',
-                  }
+                - label: 'About Me Image or Video'
+                  widget: 'object'
+                  name: 'file'
+                  summary: '{{fields.seoTitle}}'
+                  fields:
+                      - label: 'About Me File (aspect-ratio 1/1.25)'
+                        choose_url: false
+                        allow_multiple: false
+                        name: 'file'
+                        widget: 'file'
+                        media_library:
+                            allow_multiple: false
+                            choose_url: false
+                            config:
+                                multiple: false
+                                max_file_size: 4096000
+                      - {
+                            label: 'About Me Image SEO Title',
+                            name: 'seoTitle',
+                            widget: 'string',
+                        }
+                      - {
+                            label: 'About Me Image SEO Description (About 125 characters)',
+                            name: 'seoDescription',
+                            widget: 'text',
+                        }
+                      - label: 'Thumbnail Image (Only if the file is an mp4 video)'
+                        widget: 'image'
+                        name: 'thumbnailImage'
+                        choose_url: false
+                        allow_multiple: false
+                        required: false
+                      - label: 'Publication Date (Change only if changing the file)'
+                        name: publicationDate
+                        widget: 'datetime'
           - label: 'Trusted Brand Title'
             name: 'trustedBrandTitle'
             widget: 'markdown'

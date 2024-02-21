@@ -72,7 +72,7 @@
 
     .logos-slide {
         width: calc(var(--total-icons) * (7rem + 10rem) * 2);
-        animation: calc(3s * var(--total-icons)) slide infinite linear;
+        animation: calc(6s * var(--total-icons)) slide infinite linear;
     }
 
     @media (max-width: 768px) {

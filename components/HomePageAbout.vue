@@ -19,14 +19,12 @@
                 :markdown-string="`## ${titleMarkdown}`"
                 component-class="no-default-format strong:font-bold mb-12 block text-4xl md:hidden md:text-5xl"
             />
-            <SchemaOrgImage
-                :name="imageName"
-                :url="image"
-                :description="imageAltText"
-            />
-            <img
-                :src="image"
-                :alt="imageAltText"
+            <FileOrVideo
+                :file="fileConfig.file"
+                :seo-description="fileConfig.seoDescription"
+                :seo-title="fileConfig.seoTitle"
+                :thumbnail-image="fileConfig.thumbnailImage"
+                :publication-date="fileConfig.publicationDate"
                 class="aspect-125 mb-12 md:mb-0"
             />
         </div>
@@ -34,11 +32,11 @@
 </template>
 
 <script setup lang="ts">
+    import type { FileConfig } from './FileOrVideo.vue';
+
     defineProps<{
         titleMarkdown: string;
         textMarkdown: string;
-        image: string;
-        imageAltText: string;
-        imageName: string;
+        fileConfig: FileConfig;
     }>();
 </script>

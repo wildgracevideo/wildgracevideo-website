@@ -6,29 +6,49 @@ reelVideo:
 pageTitle: "**YOUR** *VIDEO CONTENT PARTNER*  **FOR OUTDOOR, TRAVEL, AND
   ADVENTURE BRANDS.**"
 aboutMe:
-  title: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER.**
+  title: "Adventure brands: **it’s time to differentiate yourselves.**"
   description: >-
-    I'm Carly, and creating videos is my thing. After graduating from the
-    University of Vermont (Go Catamounts!) I made the decision to pack my bags
-    and fly out west—and now call Denver, Colorado my home.
+    I’m Carly, owner & lead videographer at Wild Grace Video Productions based
+    in Denver, Colorado.
 
 
 
 
-    Ever since I was younger, I have always found passion and excitement through creating videos. From creating embarrassing movie trailers with my friends when I was younger, to putting together creative travel videos from my semester abroad in New Zealand, and compiling footage of the ranch I worked at in Wyoming. Creating travel and outdoor videos as a “souvenir” from moments through life has always been important to me.
+    I began capturing videos to document important moments throughout my life. From crafting a video compilation of the adventures I refused to miss out on in New Zealand, to weaving to together college memories for my friends post-graduation from the University of Vermont, and capturing the new setting and faces of a fun summer job at a dude ranch in Wyoming, I realized that I loved creating videos that told the story of adventures, people, and new places. 
 
 
 
 
-    At Wild Grace Video Productions, I am focused on providing detailed and personalized videos to match your brand and relay your message in a professional, yet exciting style.
+    After 5+ years of creating content for all different types of brands, I found myself staying up til 2 in the morning editing (by choice!) for those brands that featured outdoor adventure and wanted to get across a deeper meaning than just selling the product itself—they wanted to create a feeling that attracted a certain type of person and community towards the brand. This is what I found spoke to both me and viewers, and what really set the brand apart from creating just another cool skiing video with their product.
 
 
 
 
-    I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
+    With each project I found myself diving into every detail of the creative process. From fine-tuning the sounds of a crashing wave to sculpting the vivid color palettes of a mountain scene that shaped the mood and atmosphere.
+
+
+
+
+    So, that’s why I’m here. To help you connect your brand to a like-minded community. 
+
+
+
+
+    I can’t wait to meet you and eager to learn what sets your brand apart. 
+
+
+
+
+    \-Carly
   image: /uploads/carly-headshot.webp
   imageName: TODO
   altText: TODO
+  file:
+    publicationDate: 2024-02-21T02:55:45.050Z
+    file: /uploads/about-me.mp4
+    seoTitle: TODO
+    seoDescription: TODO
+    thumbnailImage: /uploads/logo1.webp
 trustedBrandTitle: "**TRUSTED BY**"
 howTo:
   title: HOW DOES THIS **WORK?**
@@ -57,18 +77,18 @@ thumbnailImage: /uploads/logo1.webp
 aboutMeAltText: TODO
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
 testimonials:
-  backgroundImage: /uploads/wave.jpg
+  backgroundImage: /uploads/mountain-image-background.webp
   files:
-    - publicationDate: 2024-02-13T03:20:20.274Z
-      file: /uploads/parallax-video-1.mp4
+    - publicationDate: 2024-02-21T04:25:07.894Z
+      file: /uploads/testimonial1.webp
       seoDescription: TODO
       seoTitle: TODO
-    - publicationDate: 2024-02-13T03:21:40.026Z
-      file: /uploads/parallax-video-2.mp4
+    - publicationDate: 2024-02-21T04:25:25.736Z
+      file: /uploads/testimonial2.webp
       seoDescription: TODO
       seoTitle: TODO
     - publicationDate: 2024-02-13T03:21:56.578Z
-      file: /uploads/parallax-video-3.mp4
+      file: /uploads/testimonial3.webp
       seoDescription: TODO
       seoTitle: TODO
 aboutMeImage: /uploads/carly-headshot.webp

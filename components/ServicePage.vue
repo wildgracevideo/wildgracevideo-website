@@ -42,7 +42,7 @@
         >
             <div>
                 <h3
-                    class="font-family-spectral mx-auto mb-2 mt-4 w-fit text-center text-4xl font-bold"
+                    class="font-family-playfair-display mx-auto mb-2 mt-4 w-fit text-center text-4xl font-bold"
                 >
                     <span class="font-family-moontime">The</span> Add-Ons
                 </h3>

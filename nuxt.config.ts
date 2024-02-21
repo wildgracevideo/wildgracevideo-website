@@ -169,6 +169,18 @@ const config = {
     modules: [
         '@sidebase/nuxt-auth',
         '@nuxt/content',
+        [
+            '@nuxtjs/google-fonts',
+            {
+                families: {
+                    Poppins: [400, 700],
+                    Cardo: {
+                        wght: [400],
+                    },
+                    'Playfair Display': [400, 700],
+                },
+            },
+        ],
         'nuxt-schema-org',
         'nuxt-simple-robots',
         '@nuxtjs/sitemap',

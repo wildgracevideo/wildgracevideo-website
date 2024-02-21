@@ -1,8 +1,6 @@
 <template>
     <video
-        :class="`${
-            $attrs.class as string
-        } pointer-events-none aspect-video cursor-default`"
+        :class="`t{$attrs.class as string}`"
         autoplay
         muted
         loop

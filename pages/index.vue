@@ -1,11 +1,12 @@
 <template>
     <OgMeta :title="title" :description="description" />
+
+    <!-- TODO: :primary-image-of-page="aboutMeImageName" -->
     <SchemaOrgWebPage
         :name="title"
         :description="description"
         in-language="en-US"
         date-published="2024-02-07T21:19:07+0000"
-        :primary-image-of-page="aboutMeImageName"
     />
     <!-- TODO: Better thumbnail image -->
     <SchemaOrgVideo
@@ -75,9 +76,7 @@
         class="mb-36 mt-32 md:mt-48"
         :text-markdown="aboutMeDescriptionMarkdown"
         :title-markdown="aboutMeTitleMarkdown"
-        :image="aboutMeImage"
-        :image-alt-text="aboutMeAltText"
-        :image-name="aboutMeImageName"
+        :file-config="aboutMeFile"
     />
     <Markdown
         component-class="no-default-format strong:font-bold mb-12 ml-8 mt-20 text-4xl md:text-5xl lg:ml-16"
@@ -123,32 +122,16 @@
             '--parallax-background-image': `url(${testimonials.backgroundImage})`,
         }"
     >
-        <template v-for="file in testimonials.files!">
-            <AutoPlayVideo
-                v-if="file.file!.endsWith('mp4')"
-                :key="file.file"
-                class="mx-auto mb-4 mt-8 bg-fixed lg:mx-0 lg:mt-0"
-                :video="file.file"
-                :description="file.seoDescription"
-                :title="file.seoTitle"
-                :thumbnail-image="file.thumbnailImage"
-                :publication-date="file.publicationDate"
-            />
-            <template v-else>
-                <img
-                    :key="file.file"
-                    class="mx-auto mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mx-0 lg:mt-0"
-                    :src="file.file"
-                    :alt="file.seoDescription"
-                />
-                <SchemaOrgImage
-                    :key="`${file.file}-schema`"
-                    :name="file.seoTitle"
-                    :url="file.file"
-                    :description="file.seoDescription"
-                />
-            </template>
-        </template>
+        <FileOrVideo
+            v-for="file in testimonials.files!"
+            :key="file.file"
+            :file="file.file"
+            :seo-description="file.seoDescription"
+            :seo-title="file.seoTitle"
+            :thumbnail-image="file.thumbnailImage"
+            :publication-date="file.publicationDate"
+            class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
+        />
     </section>
     <article class="mx-8 mb-32 lg:mx-32">
         <Markdown
@@ -172,6 +155,8 @@
 </template>
 
 <script setup lang="ts">
+    import type { FileConfig } from '~/components/FileOrVideo.vue';
+
     const { data } = await useAsyncData('home', () =>
         queryContent('home').find()
     );
@@ -185,9 +170,7 @@
 
     const aboutMeTitleMarkdown = homeData.aboutMe.title!;
     const aboutMeDescriptionMarkdown = homeData.aboutMe.description!;
-    const aboutMeImage = homeData.aboutMe.image!;
-    const aboutMeAltText = homeData.aboutMe.altText!;
-    const aboutMeImageName = homeData.aboutMe.imageName!;
+    const aboutMeFile = homeData.aboutMe.file! as FileConfig;
 
     const trustedBrandLogos = homeData.trustedBrandLogos!;
     const videoHighlight = homeData.videoHighlight!;
