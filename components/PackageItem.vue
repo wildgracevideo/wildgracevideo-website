@@ -4,7 +4,9 @@
         :class="{ enlarge: enlarge }"
     >
         <div>
-            <h3 class="mx-auto mb-6 mt-4 w-fit text-center text-4xl font-semibold">
+            <h3
+                class="mx-auto mb-6 mt-4 w-fit text-center text-4xl font-semibold"
+            >
                 <span class="font-family-moontime mr-1">The</span
                 ><span class="font-family-playfair-display">{{
                     config.title

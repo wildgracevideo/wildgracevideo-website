@@ -3,7 +3,7 @@
 [build]
   command = "prisma generate && npm run build"
   publish = "dist"
-  # functions = 'netlify/functions' 
+  functions = 'netlify/functions'
 [functions."daily-db-keep-alive"]
   schedule = "@daily"
 

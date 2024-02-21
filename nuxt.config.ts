@@ -87,6 +87,16 @@ const config = {
         plugins: {
             tailwindcss: {},
             autoprefixer: {},
+            // https://github.com/nuxt/nuxt/issues/22257#issuecomment-1667578345
+            cssnano:
+                process.env.NODE_ENV === 'production'
+                    ? {
+                          preset: [
+                              'default',
+                              { discardComments: { removeAll: true } },
+                          ],
+                      }
+                    : false, // disable cssnano when not in production
         },
     },
     css: ['~/assets/css/main.css', '~/assets/google-fonts.css'],
@@ -169,6 +179,25 @@ const config = {
     modules: [
         '@sidebase/nuxt-auth',
         '@nuxt/content',
+        [
+            '@nuxtjs/google-fonts',
+            {
+                families: {
+                    Poppins: [400, 600],
+                    Cardo: {
+                        wght: [400],
+                    },
+                    'Playfair Display': [400, 700],
+                },
+                inject: true,
+                base64: false,
+                download: true,
+                outputDir: 'assets',
+                stylePath: 'google-fonts.css',
+                fontsDir: 'gfonts',
+                fontsPath: 'assets/gfonts',
+            },
+        ],
         'nuxt-schema-org',
         'nuxt-simple-robots',
         '@nuxtjs/sitemap',
