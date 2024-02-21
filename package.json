@@ -33,7 +33,7 @@
     "scripts": {
         "set-deployed-cms-config": "shx sed -i \"s/http:\\/\\/localhost:3000/https:\\/\\/www\\.wildgracevideo\\.com/g\" ./public/admin/cms/config.yml && shx sed -i \"s/local_backend\\: true/local_backend: false/g\" ./public/admin/cms/config.yml",
         "set-local-cms-config": "shx sed -i \"s/https:\\/\\/www\\.wildgracevideo\\.com/http:\\/\\/localhost:3000/g\" ./public/admin/cms/config.yml && shx sed -i \"s/local_backend: false/local_backend: true/g\" ./public/admin/cms/config.yml",
-        "build": "npm run set-deployed-cms-config  &> '/dev/null' && nuxt build",
+        "build": "npm run set-deployed-cms-config  &> '/dev/null' && NODE_OPTIONS=--max_old_space_size=6144 nuxt build",
         "dev": "npm run set-local-cms-config &> '/dev/null' && nuxt dev --host",
         "start": "node .output/server/index.mjs",
         "generate": "nuxt generate",
