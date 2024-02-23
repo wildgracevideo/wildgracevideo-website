@@ -99,7 +99,7 @@ const config = {
                     : false, // disable cssnano when not in production
         },
     },
-    css: ['~/assets/css/main.css', '~/assets/google-fonts.css'],
+    css: ['~/assets/css/main.css', '~/assets/gfonts/google-fonts.css'],
     devtools: { enabled: process.env.NODE_ENV !== 'production' },
     sitemap: {
         xslTips: process.env.NODE_ENV !== 'production',
@@ -192,10 +192,10 @@ const config = {
                 inject: true,
                 base64: false,
                 download: true,
-                outputDir: 'assets',
+                outputDir: 'assets/gfonts',
                 stylePath: 'google-fonts.css',
-                fontsDir: 'gfonts',
-                fontsPath: 'assets/gfonts',
+                fontsDir: 'fonts',
+                fontsPath: 'assets/gfonts/fonts',
             },
         ],
         'nuxt-schema-org',
