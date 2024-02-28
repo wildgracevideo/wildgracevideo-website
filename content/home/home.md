@@ -1,8 +1,11 @@
 ---
 reelVideo:
-  thumbnailImage: /uploads/logo1.webp
-  seoTitle: "TODO: Fix me and thumbnail image"
-  seoDescription: TODO
+  thumbnailImage: /uploads/reel-photo.jpg
+  seoTitle: Denver Adventure & Travel Video Production | Explore Our Dynamic Portfolio
+  seoDescription: Discover our outdoor & travel video production highlight reel,
+    showcasing useful outdoor products, thrilling expeditions, breathtaking
+    landscapes, and captivating storytelling. Highlight your brand with our
+    expertise.
 pageTitle: "**YOUR** *VIDEO CONTENT PARTNER*  **FOR OUTDOOR, TRAVEL, AND
   ADVENTURE BRANDS.**"
 aboutMe:
@@ -14,27 +17,27 @@ aboutMe:
 
 
 
-    I began capturing videos to document important moments throughout my life. From crafting a video compilation of the adventures I refused to miss out on in New Zealand, to weaving to together college memories for my friends post-graduation from the University of Vermont, and capturing the new setting and faces of a fun summer job at a dude ranch in Wyoming, I realized that I loved creating videos that told the story of adventures, people, and new places. 
+    My journey into videography began with a simple desire: to capture and preserve the meaningful moments of my life. As I crafted a video compilation of the adventures I refused to miss out on in New Zealand, wove together college memories for my friends post-graduation from the University of Vermont, and captured the new setting and faces of a fun summer job at a dude ranch in Wyoming, I realized that I loved creating videos that told the story of adventures, people, and new places.
 
 
 
 
-    After 5+ years of creating content for all different types of brands, I found myself staying up til 2 in the morning editing (by choice!) for those brands that featured outdoor adventure and wanted to get across a deeper meaning than just selling the product itself—they wanted to create a feeling that attracted a certain type of person and community towards the brand. This is what I found spoke to both me and viewers, and what really set the brand apart from creating just another cool skiing video with their product.
+    Over the past five years, I've had the privilege of creating content for a diverse range of brands. However I found myself staying up editing until 2 in the morning (by choice!) for those brands that featured outdoor adventure and wanted to get across a deeper meaning than just selling a product or service—they wanted to create a feeling that attracted a certain type of person and community towards the brand. This is what I found spoke to both me and viewers, and what really sets a brand apart from creating just another cool adventure video with a product.
 
 
 
 
-    With each project I found myself diving into every detail of the creative process. From fine-tuning the sounds of a crashing wave to sculpting the vivid color palettes of a mountain scene that shaped the mood and atmosphere.
+    With each project I've created I've found myself diving into every detail of the creative process. From fine-tuning the sounds of a crashing wave to sculpting the vivid color palettes of a mountain scene that shaped the mood and atmosphere.
 
 
 
 
-    So, that’s why I’m here. To help you connect your brand to a like-minded community. 
+    And now, I'm here to lend my expertise to you. My goal is simple: to help your brand forge meaningful connections with a like-minded community. 
 
 
 
 
-    I can’t wait to meet you and eager to learn what sets your brand apart. 
+    I'm excited to meet you, to discover what sets your brand apart, and to embark on this creative journey together.
 
 
 
@@ -44,10 +47,13 @@ aboutMe:
   imageName: TODO
   altText: TODO
   file:
-    publicationDate: 2024-02-21T02:55:45.050Z
+    publicationDate: 2024-02-27T19:50:09.711Z
     file: /uploads/about-me.mp4
-    seoTitle: TODO
-    seoDescription: TODO
+    seoTitle: "Meet the Owner: Denver Video Production | Passionate Visual
+      Storyteller & Adventure Enthusiast"
+    seoDescription: Get to know the owner of our Denver video production company, a
+      passionate visual storyteller and adventure enthusiast dedicated to
+      bringing your vision to life. Learn more about my journey!
     thumbnailImage: /uploads/logo1.webp
 trustedBrandTitle: "**TRUSTED BY**"
 howTo:
@@ -80,17 +86,25 @@ testimonials:
   backgroundImage: /uploads/mountain-image-background.webp
   files:
     - publicationDate: 2024-02-21T04:25:07.894Z
-      file: /uploads/testimonial1.webp
-      seoDescription: TODO
-      seoTitle: TODO
+      file: /uploads/testimonial1.png
+      seoDescription: Discover what our clients say about our video production
+        services. Trusted by businesses in Denver, Colorado for exceptional
+        storytelling.
+      seoTitle: Client Testimonials | Trusted Video Production Company in Denver, CO -
+        Wild Grace Video
     - publicationDate: 2024-02-21T04:25:25.736Z
-      file: /uploads/testimonial2.webp
-      seoDescription: TODO
-      seoTitle: TODO
+      file: /uploads/testimonial2.png
+      seoDescription: See why clients love our video production services in Denver,
+        CO. Read authentic reviews from satisfied customers.
+      seoTitle: Video Production Client Reviews | Denver, Colorado - Wild Grace Video
     - publicationDate: 2024-02-13T03:21:56.578Z
-      file: /uploads/testimonial3.webp
-      seoDescription: TODO
-      seoTitle: TODO
+      file: /uploads/testimonial3.png
+      seoDescription: Explore client testimonials for our top-rated video production
+        company in Denver. Find out why businesses trust us for their video
+        needs.
+      seoTitle: Client Feedback | Top Video Production Company in Denver, Colorado -
+        Wild Grace Video
+  backgroundImageVertical: /uploads/vertical-paralax.jpg
 aboutMeImage: /uploads/carly-headshot.webp
 testimonialQuotes:
   - quote: Carly was so great to work with! She exceeded my expectations with
@@ -151,23 +165,26 @@ aboutMeDescription: >-
 
 
   I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
-title: Wild Grace Videography | Home
-description: Wild Grace Videography is a Denver, Colorado-based video production
-  company that produces creative and memorable video content to make your
-  business stand out.
+title: Wild Grace Video | Home
+description: Wild Grace Video Productions is a top Denver-based video production
+  company specializing in hotel video production, outdoor product videos and
+  adventure company videos. We're here to help you bring your brand to life and
+  help you better connect with your audience.
 videoHighlight:
   title: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
   videos:
-    - publicationDate: 2024-02-07T21:27:07.366Z
+    - publicationDate: 2024-02-27T19:52:06.039Z
       title: BOUTIQUE HOTELS
       description: Let us capture the essence of your boutique hotel by showcasing
         your unique spaces and highlighting the beauty of your surroundings.
         We’ll craft compelling visuals that will speak to your brand and
         up-level your marketing for years to come.
       video: /uploads/boutique-hotels.mp4
-      thumbnailImage: /uploads/logo1.webp
-      seoTitle: "TODO: Update me and thumbnail"
-      seoDescription: TODO
+      thumbnailImage: /uploads/boutique-hotel-photo-min.png
+      seoTitle: Denver Boutique Hotel Video Production | Luxury Accommodation Visuals
+      seoDescription: Explore our Denver boutique hotel video production services,
+        showcasing upscale stays, unique amenities & stunning interiors. Elevate
+        your brand with captivating visuals.
     - publicationDate: 2024-02-07T21:27:16.938Z
       title: OUTDOOR PRODUCTS
       description: Let's spotlight your outdoor gear with visuals that showcase their
@@ -175,19 +192,23 @@ videoHighlight:
         Let our compelling imagery redefine your brand's marketing impact for
         the long term.
       video: /uploads/outdoor-brands.mp4
-      thumbnailImage: /uploads/logo1.webp
-      seoTitle: "TODO: Update me and thumbnail"
-      seoDescription: TODO
-    - publicationDate: 2024-02-07T21:28:43.573Z
+      thumbnailImage: /uploads/outdoor-product-photo-min.png
+      seoTitle: Denver Outdoor Gear Video Production | Adventure Product Showcase
+      seoDescription: Discover our Denver outdoor gear video production, featuring
+        rugged equipment, camping essentials, hiking gear & more. Inspire your
+        audience with high-quality visuals.
+    - publicationDate: 2024-02-27T19:53:28.906Z
       title: ADVENTURE COMPANIES
       description: Get ready to flaunt your outdoor excursions with visuals that bring
         out their thrill and showcase the excitement of your adventure. Our
         compelling imagery will redefine your brand's marketing impact,
         attracting thrill-seekers and enthusiasts for unforgettable experiences.
       video: /uploads/adventure-brands.mp4
-      thumbnailImage: /uploads/logo1.webp
-      seoTitle: "TODO: Update me and thumbnail"
-      seoDescription: TODO
+      thumbnailImage: /uploads/adventure-excursion-photo-min.png
+      seoTitle: Denver Adventure Video Production | Thrilling Experience Showcase
+      seoDescription: Experience our Denver adventure video production, capturing
+        adrenaline-fueled activities, scenic trails, outdoor adventures & more.
+        Inspire action with compelling visuals.
 trustedBrandLogos:
   - companyName: The Curtis Hotel
     altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
@@ -197,10 +218,6 @@ trustedBrandLogos:
     altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
       adventurers.
     image: /uploads/genesee.png
-  - companyName: Studio 10
-    altText: Logo of Studio 10, Denver's top interior design firm for residential,
-      commerical, multi-family & hospitality.
-    image: /uploads/studio10.png
   - companyName: Smith & Meade
     altText: Logo of Smith & Meade, Denver-based developer of homes that are well
       designed, and well lived.

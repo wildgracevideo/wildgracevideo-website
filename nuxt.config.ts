@@ -188,6 +188,7 @@ const config = {
                         wght: [400],
                     },
                     'Playfair Display': [400, 700],
+                    'Cormorant Garamond': [400],
                 },
                 inject: true,
                 base64: false,

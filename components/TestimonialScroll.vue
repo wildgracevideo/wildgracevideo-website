@@ -2,7 +2,7 @@
     <section>
         <div
             ref="mountainStaticContainer"
-            class="font-family-playfair-display hidden text-lg leading-7 tracking-wider md:grid md:grid-cols-2"
+            class="font-family-cormorant hidden text-lg leading-7 tracking-wider md:grid md:grid-cols-2"
         >
             <div
                 ref="mountainBackground"

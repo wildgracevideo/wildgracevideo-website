@@ -44,6 +44,10 @@ html {
     font-family: 'Moontime', sans-serif;
 }
 
+.font-family-cormorant {
+    font-family: 'Cormorant Garamond', serif;
+}
+
 body,
 html,
 #__nuxt {

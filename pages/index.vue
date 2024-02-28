@@ -8,7 +8,6 @@
         in-language="en-US"
         date-published="2024-02-07T21:19:07+0000"
     />
-    <!-- TODO: Better thumbnail image -->
     <SchemaOrgVideo
         :name="reelVideo.seoTitle"
         url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
@@ -117,9 +116,10 @@
         </div>
     </article>
     <section
-        class="parallax-background mb-32 grid w-full grid-cols-1 items-center justify-center gap-x-10 px-8 md:grid-cols-3"
+        class="parallax-background mb-32 grid w-full grid-cols-1 items-center justify-center gap-x-10 px-8 lg:grid-cols-3"
         :style="{
             '--parallax-background-image': `url(${testimonials.backgroundImage})`,
+            '--parallax-background-image-vertical': `url(${testimonials.backgroundImageVertical})`,
         }"
     >
         <FileOrVideo
@@ -264,10 +264,16 @@
 
 <style scoped>
     .parallax-background {
-        background-image: var(--parallax-background-image);
+        background-image: var(--parallax-background-image-vertical);
         background-attachment: fixed;
         background-size: 100%;
         min-height: 56rem;
         height: 100%;
+    }
+
+    @media (min-width: 1024px) {
+        .parallax-background {
+            background-image: var(--parallax-background-image);
+        }
     }
 </style>
