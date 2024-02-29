@@ -27,7 +27,7 @@
             :title="reelVideo.seoTitle"
         ></video>
         <button
-            class="absolute bottom-10 right-8 z-10 h-12 w-12 cursor-pointer text-white"
+            class="absolute bottom-6 right-8 z-10 h-10 w-10 cursor-pointer text-white md:bottom-10 md:h-12 md:w-12"
             @click="toggleMute"
         >
             <SpeakerXMarkIcon v-if="reelMuted" />
