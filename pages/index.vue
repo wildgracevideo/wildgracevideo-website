@@ -15,23 +15,25 @@
         :description="reelVideo.seoDescription"
         :thumbnail-url="reelVideo.thumbnailImage"
     />
-    <button
-        class="absolute right-8 top-[90dvh] h-12 w-12 cursor-pointer text-white"
-        @click="toggleMute"
-    >
-        <SpeakerXMarkIcon v-if="reelMuted" />
-        <SpeakerWaveIcon v-else />
-    </button>
-    <video
-        id="reel-video"
-        class="pointer-events-none aspect-video w-full max-w-full cursor-default bg-fixed"
-        autoplay
-        muted
-        loop
-        disablePictureInPicture
-        playsinline
-        :title="reelVideo.seoTitle"
-    ></video>
+    <section class="relative aspect-video w-full max-w-full bg-fixed">
+        <video
+            id="reel-video"
+            class="pointer-events-none relative z-0 h-full w-full cursor-default"
+            autoplay
+            muted
+            loop
+            disablePictureInPicture
+            playsinline
+            :title="reelVideo.seoTitle"
+        ></video>
+        <button
+            class="absolute bottom-10 right-8 z-10 h-12 w-12 cursor-pointer text-white"
+            @click="toggleMute"
+        >
+            <SpeakerXMarkIcon v-if="reelMuted" />
+            <SpeakerWaveIcon v-else />
+        </button>
+    </section>
     <Markdown
         :markdown-string="`# ${pageTitle}`"
         component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl mx-8 em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
