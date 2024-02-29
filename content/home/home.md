@@ -9,7 +9,7 @@ reelVideo:
 pageTitle: "**YOUR** *VIDEO CONTENT PARTNER*  **FOR OUTDOOR, TRAVEL, AND
   ADVENTURE BRANDS.**"
 aboutMe:
-  title: "Adventure brands: **it’s time to differentiate yourselves.**"
+  title: "Travel & adventure brands: **it’s time to differentiate yourselves.**"
   description: >-
     I’m Carly, owner & lead videographer at Wild Grace Video Productions based
     in Denver, Colorado.
@@ -198,7 +198,7 @@ videoHighlight:
         rugged equipment, camping essentials, hiking gear & more. Inspire your
         audience with high-quality visuals.
     - publicationDate: 2024-02-27T19:53:28.906Z
-      title: ADVENTURE COMPANIES
+      title: ADVENTURE TOUR COMPANIES
       description: Get ready to flaunt your outdoor excursions with visuals that bring
         out their thrill and showcase the excitement of your adventure. Our
         compelling imagery will redefine your brand's marketing impact,
