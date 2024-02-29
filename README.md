@@ -1,63 +1,75 @@
-# Nuxt 3 Minimal Starter
+# Wild Grace Video Website
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Nuxt application for the business [website](https://www.wildgracevideo.com/) of Wild Grace Videography, a Denver-based video production company.
+There are two main sections of the website the public-facing section setup to give an overview of the business and acquire new clients, and the
+admin section (all /admin/\* paths) setup for admins to manage the website.
 
-## Setup
+The website is built using Nuxt3, Tailwind CSS, and Prisma. The website is hosted using Netlify, the database is hosted using PlanetScale,
+the site's shop is using Stripe for payment processing, and transactional emails are sent using SendGrid. The admin section of the site contains
+pages for managing customer inquiries, an overview of products purchased on the shop, and a CMS for the website built using DecapCMS.
+
+## Developer Guide
+
+### Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
 ```
 
-## Development Server
+### Development Server
 
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
 ```
 
-## Production
+### Production
 
 Build the application for production:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
 ```
 
 Locally preview production build:
 
 ```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### DB Setup
+
+Mac CLI Installation:
+
+```bash
+brew install planetscale/tap/pscale
+```
+
+Authenticate with DB:
+
+```bash
+pscale auth login
+```
+
+Get Shell for DB:
+
+```bash
+pscale shell wildgracevideoadmin main
+```
+
+### Prisma Updates
+
+Generate new models after updating the prisma/schema.prisma file:
+
+```bash
+npx prisma generate
+```
+
+Push updates to the production database:
+
+```bash
+npx prisma db push
+```

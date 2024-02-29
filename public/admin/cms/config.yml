@@ -2,13 +2,13 @@ backend:
     name: github
     branch: main
     repo: wildgracevideo/wildgracevideo-website
-    base_url: https://www.wildgracevideo.com
+    base_url: http://localhost:3000
     auth_endpoint: /api/admin/cms/auth
 
 media_folder: public/uploads
 public_folder: /uploads
 
-local_backend: false
+local_backend: true
 
 publish_mode: editorial_workflow
 
@@ -25,9 +25,13 @@ collections:
           preview: false
       fields:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
-          - { label: 'SEO Description', name: 'description', widget: 'text' }
           - {
-                label: 'Path DO NOT CHANGE ONCE CREATED (All lowercase, separate words with -, no starting /)',
+                label: 'SEO Description (About 150-160 characters)',
+                name: 'description',
+                widget: 'text',
+            }
+          - {
+                label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED',
                 name: 'path',
                 widget: 'string',
             }
@@ -148,6 +152,7 @@ collections:
       folder: 'content/portfolio'
       format: 'frontmatter'
       create: false
+      delete: false
       identifier_field: 'title'
       slug: 'portfolio'
       preview_path: 'portfolio'
@@ -168,7 +173,7 @@ collections:
                 widget: 'string',
             }
           - {
-                label: 'Main Reel SEO Description',
+                label: 'Main Reel SEO Description (About 125 characters)',
                 name: 'mainReelAlt',
                 widget: 'string',
             }
@@ -191,7 +196,11 @@ collections:
                       minimal: true,
                   }
                 - { label: 'Youtube ID', name: 'youtubeId', widget: 'string' }
-                - { label: 'SEO Description', name: 'alt', widget: 'text' }
+                - {
+                      label: 'SEO Description (About 125 characters)',
+                      name: 'alt',
+                      widget: 'text',
+                  }
 
     - name: 'service'
       label: 'Service'
@@ -215,7 +224,7 @@ collections:
                 required: false,
             }
           - {
-                label: 'Path DO NOT CHANGE ONCE CREATED (All lowercase, separate words with -, no starting /)',
+                label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED',
                 name: 'path',
                 widget: 'string',
             }
@@ -312,3 +321,335 @@ collections:
                 modes: ['rich_text'],
                 minimal: true,
             }
+
+    - name: 'home'
+      label: 'Home'
+      folder: 'content/home'
+      format: 'frontmatter'
+      create: false
+      delete: false
+      identifier_field: 'title'
+      preview_path: '/'
+      slug: 'home'
+      editor:
+          preview: false
+      fields:
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - label: 'Reel Video'
+            name: 'reelVideo'
+            widget: 'object'
+            summary: '{{fields.seoTitle}}'
+            fields:
+                - {
+                      label: 'Reel Video Thumbnail Image',
+                      name: 'thumbnailImage',
+                      widget: 'image',
+                      choose_url: false,
+                      allow_multiple: false,
+                  }
+                - label: 'SEO Video Title (About 125 characters)'
+                  name: seoTitle
+                  widget: 'text'
+                - label: 'SEO Video Description (About 150-160 characters)'
+                  name: seoDescription
+                  widget: 'text'
+          - {
+                label: 'Page Title',
+                name: 'pageTitle',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: true,
+            }
+          - {
+                label: 'Page tagline',
+                name: 'pageTagline',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: false,
+            }
+          - label: 'Testimonial Quotes'
+            name: 'testimonialQuotes'
+            widget: 'list'
+            allow_add: false
+            min: 2
+            max: 2
+            summary: '{{fields.author}}'
+            fields:
+                - {
+                      label: 'Quote',
+                      name: 'quote',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - { label: 'Author', name: 'author', widget: 'string' }
+          - label: 'Video Highlight'
+            name: videoHighlight
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Video Highlight Title'
+                  name: 'title'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Videos'
+                  name: 'videos'
+                  min: 3
+                  max: 3
+                  allow_add: false
+                  widget: 'list'
+                  summary: '{{fields.title}}'
+                  fields:
+                      - {
+                            label: 'Video Title',
+                            name: 'title',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                        }
+                      - {
+                            label: 'Video Description',
+                            name: 'description',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                        }
+                      - label: 'Video (Up to 4MB preferably 1MB)'
+                        name: 'video'
+                        widget: 'file'
+                        media_library:
+                            allow_multiple: false
+                            choose_url: false
+                            config:
+                                multiple: false
+                                max_file_size: 4096000
+                      - {
+                            label: 'Thumbnail Image',
+                            name: 'thumbnailImage',
+                            widget: 'image',
+                            choose_url: false,
+                            allow_multiple: false,
+                        }
+                      - label: 'SEO Video Title (About 125 characters)'
+                        name: seoTitle
+                        widget: 'text'
+                      - label: 'SEO Video Description (About 150-160 characters)'
+                        name: seoDescription
+                        widget: 'text'
+                      - label: 'Publication Date (Change only if changing the video file)'
+                        name: publicationDate
+                        widget: 'datetime'
+          - label: 'About Me'
+            name: 'aboutMe'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'About Me Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'About Me Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                - label: 'About Me Image or Video'
+                  widget: 'object'
+                  name: 'file'
+                  summary: '{{fields.seoTitle}}'
+                  fields:
+                      - label: 'About Me File (aspect-ratio 1/1.25)'
+                        choose_url: false
+                        allow_multiple: false
+                        name: 'file'
+                        widget: 'file'
+                        media_library:
+                            allow_multiple: false
+                            choose_url: false
+                            config:
+                                multiple: false
+                                max_file_size: 4096000
+                      - {
+                            label: 'About Me Image SEO Title',
+                            name: 'seoTitle',
+                            widget: 'string',
+                        }
+                      - {
+                            label: 'About Me Image SEO Description (About 125 characters)',
+                            name: 'seoDescription',
+                            widget: 'text',
+                        }
+                      - label: 'Thumbnail Image (Only if the file is an mp4 video)'
+                        widget: 'image'
+                        name: 'thumbnailImage'
+                        choose_url: false
+                        allow_multiple: false
+                        required: false
+                      - label: 'Publication Date (Change only if changing the file)'
+                        name: publicationDate
+                        widget: 'datetime'
+          - label: 'Trusted Brand Title'
+            name: 'trustedBrandTitle'
+            widget: 'markdown'
+            modes: ['rich_text']
+            minimal: true
+          - label: 'Trusted Brand Logos'
+            name: 'trustedBrandLogos'
+            widget: 'list'
+            min: 5
+            summary: '{{fields.companyName}}'
+            fields:
+                - {
+                      label: 'Company Name',
+                      name: 'companyName',
+                      widget: 'string',
+                  }
+                - {
+                      label: 'SEO Description (About 125 characters)',
+                      name: 'altText',
+                      widget: 'text',
+                  }
+                - {
+                      label: 'Image (webp 112x112 or smaller)',
+                      name: 'image',
+                      widget: 'image',
+                      choose_url: false,
+                      allow_multiple: false,
+                  }
+          - label: 'How To'
+            name: 'howTo'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'How To Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'How To SEO Title (Less than 125 characters)'
+                  name: seoTitle
+                  widget: 'string'
+                - label: 'Steps'
+                  name: 'steps'
+                  widget: 'list'
+                  min: 1
+                  fields:
+                      - {
+                            label: 'Step Title',
+                            name: 'title',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                        }
+                      - {
+                            label: 'Step Description',
+                            name: 'description',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                        }
+                - {
+                      label: 'Footer',
+                      name: 'footer',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      required: false,
+                  }
+          - label: 'Testimonials'
+            name: 'testimonials'
+            widget: 'object'
+            summary: 'Testimonials'
+            fields:
+                - label: 'Background Image (webp)'
+                  name: 'backgroundImage'
+                  widget: 'image'
+                  choose_url: false
+                  allow_multiple: false
+                - label: 'Background Image Vertical (webp)'
+                  name: 'backgroundImageVertical'
+                  widget: 'image'
+                  choose_url: false
+                  allow_multiple: false
+                - label: 'Files (3 mp4 or webp 4 MB Max preferably 1MB)'
+                  name: 'files'
+                  widget: 'list'
+                  min: 3
+                  max: 3
+                  allow_add: false
+                  fields:
+                      - label: 'File (mp4 or webp 4 MB Max preferably 1MB)'
+                        name: 'file'
+                        widget: 'file'
+                        media_library:
+                            allow_multiple: false
+                            choose_url: false
+                            config:
+                                multiple: false
+                                max_file_size: 4096000
+                      - label: 'Thumbnail Image (Only if the file is an mp4 video)'
+                        widget: 'image'
+                        name: 'thumbnailImage'
+                        choose_url: false
+                        allow_multiple: false
+                        required: false
+                      - label: 'SEO Description (About 125 characters)'
+                        name: 'seoDescription'
+                        widget: 'text'
+                      - label: 'SEO Title'
+                        name: 'seoTitle'
+                        widget: 'string'
+                      - label: 'Publication Date (Change only if changing the file)'
+                        name: publicationDate
+                        widget: 'datetime'
+          - label: 'FAQ'
+            name: 'faq'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'FAQ Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Questions'
+                  name: 'questions'
+                  widget: 'list'
+                  min: 1
+                  fields:
+                      - {
+                            label: 'Question',
+                            name: 'question',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                        }
+                      - {
+                            label: 'Answer',
+                            name: 'answer',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                        }
+    - name: 'links'
+      label: 'Links'
+      folder: 'content/link'
+      format: 'frontmatter'
+      create: true
+      delete: false
+      identifier_field: 'title'
+      slug: 'links'
+      preview_path: 'links'
+      editor:
+          preview: false
+      fields:
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - label: 'Links'
+            name: 'links'
+            widget: 'list'
+            fields:
+                - label: 'Name'
+                  name: 'name'
+                  widget: 'string'
+                - label: 'Destination (URL Ex: https://www.google.com)'
+                  name: 'destination'
+                  widget: 'string'

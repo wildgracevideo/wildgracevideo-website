@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const SITE_URL = process.env.URL || 'https://wildgracevideo.com/';
 const APP_ICON = SITE_URL + '/app-icon.png';
-const WEBSITE_ICON = 'logo2.png';
+const WEBSITE_ICON = 'logo1.webp';
 const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
 
 process.env['NEXTAUTH_URL'] = process.env.DEPLOY_PRIME_URL;
@@ -44,11 +44,17 @@ const config = {
         apiKey: process.env.API_KEY,
         public: {
             siteUrl: SITE_URL,
-            wesbiteIcon: WEBSITE_ICON,
+            websiteIcon: WEBSITE_ICON,
             gaMeasurementId:
                 process.env.NODE_ENV === 'production' ? GA_MEASUREMENT_ID : '',
             recaptchaSiteKey: '6Ld2tkcpAAAAAK052jkIsYcC5L12ih2pumxlA3e8',
             cloudfrontUrl: 'https://content.wildgracevideo.com',
+            reelVideo: {
+                mp4Uri: '/wgv-reel-2024-h264.mp4',
+                mpegDashFolder: 'wgv-reel-2024-mpeg-dash',
+                mpegDashManifestFileName: 'wgv-reel-2024-h264_dash.mpd',
+                hlsUri: '/wgv-reel-2024-hls/wgv-reel-2024.m3u8',
+            },
         },
     },
     site: {
@@ -87,9 +93,19 @@ const config = {
         plugins: {
             tailwindcss: {},
             autoprefixer: {},
+            // https://github.com/nuxt/nuxt/issues/22257#issuecomment-1667578345
+            cssnano:
+                process.env.NODE_ENV === 'production'
+                    ? {
+                          preset: [
+                              'default',
+                              { discardComments: { removeAll: true } },
+                          ],
+                      }
+                    : false, // disable cssnano when not in production
         },
     },
-    css: ['~/assets/css/main.css'],
+    css: ['~/assets/css/main.css', '~/assets/gfonts/google-fonts.css'],
     devtools: { enabled: process.env.NODE_ENV !== 'production' },
     sitemap: {
         xslTips: process.env.NODE_ENV !== 'production',
@@ -134,33 +150,6 @@ const config = {
                 statusCode: 301,
             },
         },
-        '/': {
-            sitemap: {
-                images: [
-                    {
-                        loc: '/logo1.webp',
-                        title: 'Wild Grace Videography logo',
-                        caption:
-                            'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.',
-                    },
-                ],
-                videos: [
-                    {
-                        title: 'Wild Grace Videography Reel',
-                        thumbnail_loc: SITE_URL + '/logo1.webp',
-                        description:
-                            'Video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company.',
-                        content_loc:
-                            'https://d22668h9qdy3zj.cloudfront.net/wgv-reel.webm',
-                        player_loc: SITE_URL,
-                        duration: 92,
-                        requires_subscription: false,
-                        live: false,
-                        publication_date: '2023-09-26T19:20:30+07:00',
-                    },
-                ],
-            },
-        },
         '/who-we-are': {
             sitemap: {
                 images: [
@@ -169,12 +158,6 @@ const config = {
                         title: 'Carly Kreiger photo',
                         caption:
                             'Photo of Carly Kreiger, the founder of Wild Grace Videography, a Denver, Colorado-based video production company.',
-                    },
-                    {
-                        loc: '/logo1.webp',
-                        title: 'Wild Grace Videography logo',
-                        caption:
-                            'Company logo for Wild Grace Videography, a Denver, Colorado-based video production company.',
                     },
                 ],
             },
@@ -202,6 +185,26 @@ const config = {
     modules: [
         '@sidebase/nuxt-auth',
         '@nuxt/content',
+        [
+            '@nuxtjs/google-fonts',
+            {
+                families: {
+                    Poppins: [400, 600],
+                    Cardo: {
+                        wght: [400],
+                    },
+                    'Playfair Display': [400, 700],
+                    'Cormorant Garamond': [400],
+                },
+                inject: true,
+                base64: false,
+                download: true,
+                outputDir: 'assets/gfonts',
+                stylePath: 'google-fonts.css',
+                fontsDir: 'fonts',
+                fontsPath: 'assets/gfonts/fonts',
+            },
+        ],
         'nuxt-schema-org',
         'nuxt-simple-robots',
         '@nuxtjs/sitemap',

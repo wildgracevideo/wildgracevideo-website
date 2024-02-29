@@ -6,12 +6,12 @@
         :message="notification.message"
     />
     <RecaptchaLoader />
-    <div class="bg-website-green pt-8">
+    <div class="bg-website-off-black py-16">
         <h2
-            class="text-center text-3xl text-website-off-white"
+            class="mb-6 text-center text-4xl font-semibold text-website-off-white"
             :class="{ hidden: !showForm }"
         >
-            Contact Us
+            WORK WITH ME
         </h2>
         <h2
             class="relative top-28 text-center text-3xl text-website-off-white"
@@ -82,16 +82,17 @@
             <div class="col-span-1 flex justify-center md:col-span-2">
                 <button
                     type="submit"
-                    class="rounded-oval contact-scroll-observable mb-12 border-2 border-website-off-white bg-transparent px-16 py-4 text-website-off-white"
+                    class="contact-scroll-observable mb-12 border-2 border-website-off-black bg-website-off-white px-16 py-3 text-xl text-website-off-black"
                     :class="{
                         'opacity-50': sendingForm,
-                        'hover:text-website-green': !sendingForm,
-                        'hover:bg-website-off-white': !sendingForm,
+                        'hover:text-website-off-white': !sendingForm,
+                        'hover:bg-website-off-black': !sendingForm,
+                        'hover:border-website-off-white': !sendingForm,
                         'cursor-default': sendingForm,
                         'fade-out': !sendingForm && !formError,
                     }"
                 >
-                    Send
+                    SEND
                 </button>
             </div>
         </form>

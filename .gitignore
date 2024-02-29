@@ -6,8 +6,6 @@
 .cache
 dist
 
-.storyblok-scripts/
-
 # Node dependencies
 node_modules
 

@@ -1,5 +1,10 @@
 <template>
-    <div class="markdown" :class="componentClass" v-html="markdownHtml" />
+    <div
+        :id="$attrs.id as string"
+        class="markdown"
+        :class="componentClass"
+        v-html="markdownHtml"
+    />
 </template>
 
 <script setup lang="ts">
@@ -26,6 +31,10 @@
         margin-bottom: 1rem;
     }
 
+    .markdown.tall-p-margin:not(.no-default-format) p {
+        margin-bottom: 2rem;
+    }
+
     .markdown:not(.no-default-format) ul,
     .markdown:not(.no-default-format) ol {
         width: fit-content;
@@ -39,7 +48,7 @@
 
     .markdown:not(.no-default-format) a {
         text-decoration: underline;
-        color: rgb(var(--color-website-green));
+        color: rgb(var(--color-website-primary));
     }
 
     .markdown:not(.no-default-format) h2 {

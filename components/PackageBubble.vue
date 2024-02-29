@@ -5,7 +5,7 @@
         :class="{ 'py-4': !!config.title }"
         :style="{ 'background-color': config.bgColor }"
     >
-        <h4 v-if="config.title" class="mx-auto w-fit font-bold">
+        <h4 v-if="config.title" class="mx-auto w-fit font-semibold">
             {{ config.title }}
         </h4>
         <Markdown

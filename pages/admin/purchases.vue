@@ -11,11 +11,11 @@
         class="h- mx-8 grid grid-cols-5 rounded-xl border-2 border-gray-400 text-center"
         :class="{ 'opacity-30': loading, '-mt-16': loading }"
     >
-        <p class="border-b-2 border-gray-800 font-bold">Email</p>
-        <p class="border-b-2 border-gray-800 font-bold">Name</p>
-        <p class="border-b-2 border-gray-800 font-bold">Product</p>
-        <p class="border-b-2 border-gray-800 font-bold">Message Status</p>
-        <p class="border-b-2 border-gray-800 font-bold">Purchased At</p>
+        <p class="border-b-2 border-gray-800 font-semibold">Email</p>
+        <p class="border-b-2 border-gray-800 font-semibold">Name</p>
+        <p class="border-b-2 border-gray-800 font-semibold">Product</p>
+        <p class="border-b-2 border-gray-800 font-semibold">Message Status</p>
+        <p class="border-b-2 border-gray-800 font-semibold">Purchased At</p>
         <template
             v-for="[index, purchase] in paginationResponse?.results?.entries()"
             :key="purchase.id"

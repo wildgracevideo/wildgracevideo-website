@@ -2,7 +2,7 @@
     <div role="status" class="h-full w-full">
         <svg
             aria-hidden="true"
-            class="animate-spin fill-website-green text-gray-200"
+            class="animate-spin fill-website-primary text-gray-200"
             :class="[heightClass, widthClass, ...(additionalClasses || [])]"
             viewBox="0 0 100 101"
             fill="none"

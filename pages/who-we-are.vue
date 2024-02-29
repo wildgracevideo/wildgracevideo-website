@@ -8,7 +8,7 @@
     />
     <div class="mb-16 grid grid-cols-1 md:grid-cols-2">
         <article
-            class="text fade-in-left order-last ml-8 mr-8 mt-16 leading-loose md:order-first md:ml-24 md:mr-16"
+            class="text fade-in-left order-last ml-8 mr-8 mt-12 leading-loose md:order-first md:ml-24 md:mr-16"
         >
             <p>
                 I'm Carly, and creating videos is my thing. After graduating

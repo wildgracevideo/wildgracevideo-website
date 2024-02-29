@@ -1,6 +1,6 @@
 <template>
     <p
-        class="w-fit rounded-md p-1 text-xs font-bold"
+        class="w-fit rounded-md p-1 text-xs font-semibold"
         :class="additionalClasses"
     >
         {{ label }}

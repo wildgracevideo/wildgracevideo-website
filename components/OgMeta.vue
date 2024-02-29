@@ -26,7 +26,7 @@
         title: string;
         icon?: string;
     }>();
-    const iconName = props.icon || runtimeConfig.public.wesbiteIcon;
+    const iconName = props.icon || runtimeConfig.public.websiteIcon;
     let iconLocation = runtimeConfig.public.siteUrl;
     if (!iconName.startsWith('/')) {
         iconLocation += '/';

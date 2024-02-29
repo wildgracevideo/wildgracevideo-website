@@ -1,6 +1,6 @@
 <template>
     <header
-        class="hidden min-h-dvh w-60 bg-website-green text-website-off-white lg:block"
+        class="hidden min-h-dvh w-60 bg-website-primary text-website-off-white lg:block"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
@@ -22,7 +22,9 @@
             <p class="ml-1 text-lg">{{ element.title }}</p>
         </NuxtLink>
     </header>
-    <header class="flex h-16 w-full justify-between bg-website-green lg:hidden">
+    <header
+        class="flex h-16 w-full justify-between bg-website-primary lg:hidden"
+    >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
             <img
@@ -37,7 +39,7 @@
             <HeaderMobileMenuToggle v-model="openMenu" />
         </div>
     </header>
-    <section v-if="openMenu" class="header-full-height bg-website-green">
+    <section v-if="openMenu" class="header-full-height bg-website-primary">
         <NuxtLink
             v-for="element in elements"
             :key="element.title"

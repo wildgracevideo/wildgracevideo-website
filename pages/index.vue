@@ -1,66 +1,230 @@
 <template>
-    <OgMeta :title="pageTitle" :description="description" />
-    <SchemaOrgWebPage :name="pageTitle" />
-    <SchemaOrgVideo
-        :name="videoTitle"
-        url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
-        content-url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
-        upload-date="2023-09-25T22:13:39.520Z"
-        description="Main video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company."
-        :thumbnail-url="thumbnailUrl"
+    <OgMeta :title="title" :description="description" />
+
+    <SchemaOrgWebPage
+        :name="title"
+        :description="description"
+        in-language="en-US"
+        date-published="2024-02-28T22:13:39.520Z"
     />
-    <video
-        id="reel-video"
-        class="pointer-events-none aspect-video w-full max-w-full cursor-default bg-fixed"
-        autoplay
-        muted
-        loop
-        disablePictureInPicture
-        playsinline
-        :title="videoTitle"
-    ></video>
-    <div
-        class="z-10 mx-16 grid grid-cols-1 gap-x-8 leading-loose md:my-12 md:grid-cols-2"
-    >
-        <section class="my-12 md:my-0">
-            <p>&#x301D;{{ firstReviewText }}&#x301E;</p>
-            <p class="mx-4">Cecelia Mims, Clay Love</p>
-        </section>
-        <section class="my-12 md:my-0">
-            <p>
-                &#x301D;Above and beyond our expectations of quality! The
-                creative talent at Wild Grace Videography produced visuals that
-                <span class="italic">beautifully</span>
-                represent who we are as a brand. The whole process was
-                incredibly easy; we simply sent in our product, and the rest was
-                taken care of. I wouldn't recommend anyone else!&#x301E;
+    <SchemaOrgVideo
+        :name="reelVideo.seoTitle"
+        url="https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4"
+        content-url="https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4"
+        upload-date="2024-02-28T22:13:39.520Z"
+        :description="reelVideo.seoDescription"
+        :thumbnail-url="reelVideo.thumbnailImage"
+    />
+    <section class="relative aspect-video w-full max-w-full bg-fixed">
+        <video
+            id="reel-video"
+            class="pointer-events-none relative z-0 h-full w-full cursor-default"
+            autoplay
+            muted
+            loop
+            disablePictureInPicture
+            playsinline
+            :title="reelVideo.seoTitle"
+        ></video>
+        <button
+            class="absolute bottom-6 right-8 z-10 h-10 w-10 cursor-pointer text-white md:bottom-10 md:h-12 md:w-12"
+            @click="toggleMute"
+        >
+            <SpeakerXMarkIcon v-if="reelMuted" />
+            <SpeakerWaveIcon v-else />
+        </button>
+    </section>
+    <Markdown
+        :markdown-string="`# ${pageTitle}`"
+        component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl mx-8 em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
+    />
+    <Markdown
+        :markdown-string="pageTagline"
+        component-class="mx-8 mb-32 max-w-6xl text-center lg:mx-auto"
+    />
+    <TestimonialScroll :testimonial-quotes="homeData!.testimonialQuotes" />
+    <Markdown
+        :markdown-string="`## ${videoHighlight.title!}`"
+        component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-semibold leading-14 tracking-tighter em:font-medium text-4xl md:text-5xl"
+    />
+    <section class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
+        <div
+            v-for="video in videoHighlightVideos"
+            :key="`home-highlight-video-${video.title}`"
+        >
+            <SchemaOrgVideo
+                :name="video.seoTitle"
+                :url="video.video"
+                :content-url="video.video"
+                :upload-date="video.publicationDate"
+                :description="video.seoDescription"
+                :thumbnail-url="video.thumbnailImage"
+            />
+            <video
+                class="pointer-events-none mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mt-0"
+                autoplay
+                muted
+                loop
+                disablePictureInPicture
+                playsinline
+                :title="video.seoTitle"
+            >
+                <source :src="video.video" type="video/mp4" />
+            </video>
+            <h3 class="mb-12 text-center text-2xl">
+                {{ video.title }}
+            </h3>
+            <p class="text-center">
+                {{ video.description }}
             </p>
-            <p class="mx-4">Justin Little, Blue J Cones</p>
-        </section>
-    </div>
+        </div>
+    </section>
+    <HomePageAbout
+        class="mb-36 mt-32 md:mt-48"
+        :text-markdown="aboutMeDescriptionMarkdown"
+        :title-markdown="aboutMeTitleMarkdown"
+        :file-config="aboutMeFile"
+    />
+    <Markdown
+        component-class="no-default-format strong:font-semibold mb-12 ml-8 mt-20 text-4xl md:text-5xl lg:ml-16"
+        :markdown-string="`## ${homeData!.trustedBrandTitle}`"
+    />
+    <LogoSlider class="mb-32" :logos="trustedBrandLogos" />
+    <article class="bg-website-accent">
+        <div class="w-4/5 pb-16">
+            <SchemaOrgHowTo
+                :name="howTo.seoTitle"
+                :step="howToSteps"
+                in-language="en-US"
+            />
+            <Markdown
+                :markdown-string="`## ${howTo.title!}`"
+                component-class="no-default-format mb-12 ml-8 pt-24 text-4xl md:text-5xl lg:ml-24"
+            />
+            <div
+                v-for="(step, index) in howTo.steps"
+                :key="`step-${step.title}`"
+                class="pb-16"
+            >
+                <Markdown
+                    :id="`step-${index + 1}`"
+                    :markdown-string="`### ${step.title}`"
+                    component-class="no-default-format strong:font-semibold mb-6 ml-12 text-4xl lg:ml-32"
+                />
+                <Markdown
+                    :markdown-string="step.description"
+                    component-class="ml-16 lg:ml-36"
+                />
+            </div>
+            <Markdown
+                v-if="howTo.footer"
+                :markdown-string="howTo.footer!"
+                component-class="-mt-8 ml-16 lg:ml-36"
+            />
+        </div>
+    </article>
+    <section
+        class="parallax-background mb-32 grid w-full grid-cols-1 items-center justify-center gap-x-10 px-8 lg:grid-cols-3"
+        :style="{
+            '--parallax-background-image': `url(${testimonials.backgroundImage})`,
+            '--parallax-background-image-vertical': `url(${testimonials.backgroundImageVertical})`,
+        }"
+    >
+        <FileOrVideo
+            v-for="file in testimonials.files!"
+            :key="file.file"
+            :file="file.file"
+            :seo-description="file.seoDescription"
+            :seo-title="file.seoTitle"
+            :thumbnail-image="file.thumbnailImage"
+            :publication-date="file.publicationDate"
+            class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
+        />
+    </section>
+    <article class="mx-8 mb-32 lg:mx-32">
+        <Markdown
+            :markdown-string="`## ${faq.title!}`"
+            component-class="no-default-format mx-auto mb-20 mt-32 max-w-lg text-center text-4xl strong:font-semibold"
+        />
+        <template
+            v-for="faqItem in faq.questions"
+            :key="`faq-${faqItem.question}`"
+        >
+            <Markdown
+                :markdown-string="`### ${faqItem.question}`"
+                component-class="no-default-format strong:font-semibold mb-4"
+            />
+            <Markdown
+                :markdown-string="faqItem.answer"
+                component-class="mb-10"
+            />
+        </template>
+    </article>
 </template>
 
 <script setup lang="ts">
-    const firstReviewText =
-        'It has been a pleasant and fruitful experience working with Carly. She has developed material that has met my expectations and more. Thank you Carly for helping me with my media needs and in a timely manner.';
-    const videoTitle =
-        'Video reel showcasing the work of Wild Grace Videography.';
+    import {
+        SpeakerWaveIcon,
+        SpeakerXMarkIcon,
+    } from '@heroicons/vue/24/outline';
+    import type { FileConfig } from '~/components/FileOrVideo.vue';
 
-    const pageTitle =
-        'Wild Grace Videography | Denver Video Production Company';
-    const description =
-        'Wild Grace Videography is a Denver, Colorado-based video production company that produces creative and memorable video content to make your business stand out.';
+    const { data } = await useAsyncData('home', () =>
+        queryContent('home').find()
+    );
+
+    const reelMuted = ref(true);
+
+    let toggleMute = () => {};
+
+    const homeData = data!.value![0]!;
+    const title = homeData.title!;
+    const description = homeData.description;
+    const pageTitle = homeData.pageTitle!;
+    const pageTagline = homeData.pageTagline!;
+    const reelVideo = homeData.reelVideo!;
+
+    const aboutMeTitleMarkdown = homeData.aboutMe.title!;
+    const aboutMeDescriptionMarkdown = homeData.aboutMe.description!;
+    const aboutMeFile = homeData.aboutMe.file! as FileConfig;
+
+    const trustedBrandLogos = homeData.trustedBrandLogos!;
+    const videoHighlight = homeData.videoHighlight!;
+    const videoHighlightVideos = videoHighlight.videos!;
+
+    const howTo = homeData.howTo!;
+
+    const faq = homeData.faq!;
+
+    const testimonials = homeData.testimonials!;
+
+    const howToSteps = howTo.steps.map(
+        (it: { title: string; description: string }, i: number) => {
+            return {
+                url: `#step-${i}`,
+                text: it.description,
+                name: it.title,
+            };
+        }
+    );
+
+    howToSteps.push({
+        text: howTo.footer,
+    });
 
     const runtimeConfig = useRuntimeConfig();
-    const thumbnailUrl = runtimeConfig.public.siteUrl + '/logo1.webp';
-
     onMounted(async () => {
         const videoElement = document.getElementById(
             'reel-video'
         ) as HTMLVideoElement;
 
+        toggleMute = () => {
+            reelMuted.value = !reelMuted.value;
+            videoElement.muted = reelMuted.value;
+        };
+
         const { $stream } = useNuxtApp();
-        const cloudfrontUrl = useRuntimeConfig().public.cloudfrontUrl;
+        const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl;
 
         const addSourceToVideo = (element: HTMLVideoElement, src: string) => {
             const source = document.createElement('source');
@@ -68,21 +232,21 @@
             element.appendChild(source);
         };
 
-        const mpegDashManifestUri = `wgv-reel-264_dash.mpd`;
+        const reelVideoConfig = runtimeConfig.public.reelVideo;
 
-        if (window.safari) {
-            const hlsManifestUri = `${cloudfrontUrl}/wgv-reel-hls/wgv-reel.m3u8`;
+        if ('safari' in window) {
+            const hlsManifestUri = `${cloudfrontUrl}${reelVideoConfig.hlsUri}`;
             addSourceToVideo(videoElement, hlsManifestUri);
         } else {
             try {
                 await $stream(
                     videoElement,
-                    mpegDashManifestUri,
-                    'wgv-reel-mpeg-dash'
+                    reelVideoConfig.mpegDashManifestFileName,
+                    reelVideoConfig.mpegDashFolder
                 );
             } catch (error) {
                 console.log(error);
-                const fallbackManifestUri = `${cloudfrontUrl}/wgv-reel-h264.mp4`;
+                const fallbackManifestUri = `${cloudfrontUrl}${reelVideoConfig.mp4Uri}`;
                 addSourceToVideo(videoElement, fallbackManifestUri);
             }
         }
@@ -92,8 +256,46 @@
             .play()
             .then(() => {})
             .catch(() => {
-                videoElement.setAttribute('controls', 'controls');
-                videoElement.classList.remove('pointer-events-none');
+                window.document
+                    .querySelectorAll('video')
+                    .forEach((it: HTMLVideoElement) => {
+                        it.setAttribute('controls', 'controls');
+                        it.classList.remove('pointer-events-none');
+                    });
             });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (
+                    entry.isIntersecting &&
+                    entry.target.classList.contains('fade-out')
+                ) {
+                    entry.target.classList.remove('fade-out');
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        const animatableElements = document.querySelectorAll(
+            '.home-scroll-observable'
+        );
+        animatableElements.forEach((element) => observer.observe(element));
     });
 </script>
+
+<style scoped>
+    .parallax-background {
+        background-image: var(--parallax-background-image-vertical);
+        background-attachment: fixed;
+        background-size: 100%;
+        min-height: 56rem;
+        height: 100%;
+    }
+
+    @media (min-width: 1024px) {
+        .parallax-background {
+            background-image: var(--parallax-background-image);
+        }
+    }
+</style>
