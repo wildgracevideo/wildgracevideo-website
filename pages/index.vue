@@ -1,21 +1,27 @@
 <template>
     <OgMeta :title="title" :description="description" />
 
-    <!-- TODO: :primary-image-of-page="aboutMeImageName" -->
     <SchemaOrgWebPage
         :name="title"
         :description="description"
         in-language="en-US"
-        date-published="2024-02-07T21:19:07+0000"
+        date-published="2024-02-28T22:13:39.520Z"
     />
     <SchemaOrgVideo
         :name="reelVideo.seoTitle"
-        url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
-        content-url="https://content.wildgracevideo.com/wgv-reel-h264.mp4"
-        upload-date="2023-09-25T22:13:39.520Z"
+        url="https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4"
+        content-url="https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4"
+        upload-date="2024-02-28T22:13:39.520Z"
         :description="reelVideo.seoDescription"
         :thumbnail-url="reelVideo.thumbnailImage"
     />
+    <button
+        class="absolute right-8 top-[90dvh] h-12 w-12 cursor-pointer text-white"
+        @click="toggleMute"
+    >
+        <SpeakerXMarkIcon v-if="reelMuted" />
+        <SpeakerWaveIcon v-else />
+    </button>
     <video
         id="reel-video"
         class="pointer-events-none aspect-video w-full max-w-full cursor-default bg-fixed"
@@ -155,11 +161,19 @@
 </template>
 
 <script setup lang="ts">
+    import {
+        SpeakerWaveIcon,
+        SpeakerXMarkIcon,
+    } from '@heroicons/vue/24/outline';
     import type { FileConfig } from '~/components/FileOrVideo.vue';
 
     const { data } = await useAsyncData('home', () =>
         queryContent('home').find()
     );
+
+    const reelMuted = ref(true);
+
+    let toggleMute = () => {};
 
     const homeData = data!.value![0]!;
     const title = homeData.title!;
@@ -196,13 +210,19 @@
         text: howTo.footer,
     });
 
+    const runtimeConfig = useRuntimeConfig();
     onMounted(async () => {
         const videoElement = document.getElementById(
             'reel-video'
         ) as HTMLVideoElement;
 
+        toggleMute = () => {
+            reelMuted.value = !reelMuted.value;
+            videoElement.muted = reelMuted.value;
+        };
+
         const { $stream } = useNuxtApp();
-        const cloudfrontUrl = useRuntimeConfig().public.cloudfrontUrl;
+        const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl;
 
         const addSourceToVideo = (element: HTMLVideoElement, src: string) => {
             const source = document.createElement('source');
@@ -210,21 +230,21 @@
             element.appendChild(source);
         };
 
-        const mpegDashManifestUri = `wgv-reel-264_dash.mpd`;
+        const reelVideoConfig = runtimeConfig.public.reelVideo;
 
         if ('safari' in window) {
-            const hlsManifestUri = `${cloudfrontUrl}/wgv-reel-hls/wgv-reel.m3u8`;
+            const hlsManifestUri = `${cloudfrontUrl}${reelVideoConfig.hlsUri}`;
             addSourceToVideo(videoElement, hlsManifestUri);
         } else {
             try {
                 await $stream(
                     videoElement,
-                    mpegDashManifestUri,
-                    'wgv-reel-mpeg-dash'
+                    reelVideoConfig.mpegDashManifestFileName,
+                    reelVideoConfig.mpegDashFolder
                 );
             } catch (error) {
                 console.log(error);
-                const fallbackManifestUri = `${cloudfrontUrl}/wgv-reel-h264.mp4`;
+                const fallbackManifestUri = `${cloudfrontUrl}${reelVideoConfig.mp4Uri}`;
                 addSourceToVideo(videoElement, fallbackManifestUri);
             }
         }

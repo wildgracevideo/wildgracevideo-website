@@ -5,6 +5,37 @@ import { asSitemapUrl, defineSitemapEventHandler } from '#imports';
 // eslint-disable-next-line import/no-unresolved
 import { serverQueryContent } from '#content/server';
 
+function parseImageOrVideo(file: {
+    file: string;
+    seoDescription: string;
+    seoTitle: string;
+    thumbnailImage?: string;
+    publicationDate?: string;
+}) {
+    let data;
+    let isImage = true;
+    if (file.file.endsWith('mp4')) {
+        data = {
+            title: file.seoTitle,
+            thumbnail_loc: file.thumbnailImage,
+            description: file.seoDescription,
+            content_loc: file.file,
+            player_loc: `/`,
+            requires_subscription: false,
+            live: false,
+            publication_date: file.publicationDate,
+        };
+        isImage = false;
+    } else {
+        data = {
+            loc: file.file,
+            title: file.seoTitle,
+            caption: file.seoDescription,
+        };
+    }
+    return { isImage, data };
+}
+
 export default defineSitemapEventHandler(async (e) => {
     const contentList = (await serverQueryContent(e).find()) as ParsedContent[];
     return contentList
@@ -37,56 +68,42 @@ export default defineSitemapEventHandler(async (e) => {
                         publication_date: it.publicationDate,
                     };
                 }) as unknown[];
-                const testimonialImages: unknown[] = [];
-                const testimonialVideos: unknown[] = [];
+                const additionalImages: unknown[] = [];
+                const additionalVideos: unknown[] = [];
                 // @ts-expect-error No types for nuxt-content
                 c.testimonials.files.forEach((it) => {
-                    if (it.file.endsWith('mp4')) {
-                        testimonialVideos.push({
-                            title: it.seoTitle,
-                            thumbnail_loc: it.thumbnailImage,
-                            description: it.seoDescription,
-                            content_loc: it.file,
-                            player_loc: `/`,
-                            requires_subscription: false,
-                            live: false,
-                            publication_date: it.publicationDate,
-                        });
+                    const imageOrVideoResult = parseImageOrVideo(it);
+                    if (imageOrVideoResult.isImage) {
+                        additionalImages.push(imageOrVideoResult.data);
                     } else {
-                        testimonialImages.push({
-                            loc: it.file,
-                            title: it.seoTitle,
-                            caption: it.seoDescription,
-                        });
+                        additionalVideos.push(imageOrVideoResult.data);
                     }
                 });
+                const imageOrVideoResult = parseImageOrVideo(c.aboutMe.file);
+                if (imageOrVideoResult.isImage) {
+                    additionalImages.push(imageOrVideoResult.data);
+                } else {
+                    additionalVideos.push(imageOrVideoResult.data);
+                }
                 const sitemapUrl: SitemapUrl = {
                     loc: `/`,
-                    lastmod: '2024-02-12T19:20:30+07:00',
-                    images: [
-                        {
-                            loc: c.aboutMe.image,
-                            title: c.aboutMe.imageName,
-                            caption: c.aboutMe.altText,
-                        },
-                        ...testimonialImages,
-                    ],
+                    lastmod: '2024-02-28T19:20:30+07:00',
+                    images: additionalImages,
                     videos: [
                         {
-                            title: 'Wild Grace Videography Reel',
-                            thumbnail_loc: '/logo2.png',
-                            description:
-                                'Video reel showcasing the work of Wild Grace Videography, a Denver, Colorado-based video production company.',
+                            title: c.reelVideo.seoTitle,
+                            thumbnail_loc: c.reelVideo.thumbnailImage,
+                            description: c.reelVideo.seoDescription,
                             content_loc:
-                                'https://d22668h9qdy3zj.cloudfront.net/wgv-reel.webm',
+                                'https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4',
                             player_loc: '/',
-                            duration: 92,
+                            duration: 83,
                             requires_subscription: false,
                             live: false,
-                            publication_date: '2023-09-26T19:20:30+07:00',
+                            publication_date: '2023-02-28T19:20:30+07:00',
                         },
                         ...highlightVideos,
-                        ...testimonialVideos,
+                        ...additionalVideos,
                     ],
                 };
                 return asSitemapUrl(sitemapUrl);
