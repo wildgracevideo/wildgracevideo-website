@@ -12,14 +12,14 @@
                 :key="`initial-logo-${logo.companyName}`"
                 :src="logo.image"
                 :alt="logo.altText"
-                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-20 md:mr-40 md:w-28"
+                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-16 md:mr-40 md:w-28"
             />
             <img
                 v-for="logo in logos"
                 :key="`second-logo-${logo.companyName}`"
                 :src="logo.image"
                 :alt="logo.altText"
-                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-20 md:mr-40 md:w-28"
+                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-16 md:mr-40 md:w-28"
             />
         </div>
     </div>
