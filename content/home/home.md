@@ -82,30 +82,11 @@ howTo:
 thumbnailImage: /uploads/logo1.webp
 aboutMeAltText: TODO
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
-testimonials:
-  backgroundImage: /uploads/mountain-image-background.webp
-  files:
-    - publicationDate: 2024-02-21T04:25:07.894Z
-      file: /uploads/testimonial1.png
-      seoDescription: Discover what our clients say about our video production
-        services. Trusted by businesses in Denver, Colorado for exceptional
-        storytelling.
-      seoTitle: Client Testimonials | Trusted Video Production Company in Denver, CO -
-        Wild Grace Video
-    - publicationDate: 2024-02-21T04:25:25.736Z
-      file: /uploads/testimonial2.png
-      seoDescription: See why clients love our video production services in Denver,
-        CO. Read authentic reviews from satisfied customers.
-      seoTitle: Video Production Client Reviews | Denver, Colorado - Wild Grace Video
-    - publicationDate: 2024-02-13T03:21:56.578Z
-      file: /uploads/testimonial3.png
-      seoDescription: Explore client testimonials for our top-rated video production
-        company in Denver. Find out why businesses trust us for their video
-        needs.
-      seoTitle: Client Feedback | Top Video Production Company in Denver, Colorado -
-        Wild Grace Video
-  backgroundImageVertical: /uploads/vertical-paralax.jpg
-aboutMeImage: /uploads/carly-headshot.webp
+title: Wild Grace Video | Home
+description: Wild Grace Video Productions is a top Denver-based video production
+  company specializing in hotel video production, outdoor product videos and
+  adventure company videos. We're here to help you bring your brand to life and
+  help you better connect with your audience.
 testimonialQuotes:
   - quote: Carly was so great to work with! She exceeded my expectations with
       bringing my vision to life and delivering an epic video for our brand. She
@@ -118,6 +99,30 @@ testimonialQuotes:
       and skill in her field of work. The final product was very impressive and
       exceeded our expectations.
     author: Nathan Baller, Abode Outside
+testimonials:
+  backgroundImage: https://content.wildgracevideo.com/Website-Home-Page/Horizontal+Paralax-min.webp
+  files:
+    - publicationDate: 2024-02-21T04:25:07.894Z
+      file: https://content.wildgracevideo.com/Website-Home-Page/Client-Testimonials/1.webp
+      seoDescription: Discover what our clients say about our video production
+        services. Trusted by businesses in Denver, Colorado for exceptional
+        storytelling.
+      seoTitle: Client Testimonials | Trusted Video Production Company in Denver, CO -
+        Wild Grace Video
+    - publicationDate: 2024-02-21T04:25:25.736Z
+      file: https://content.wildgracevideo.com/Website-Home-Page/Client-Testimonials/2.webp
+      seoDescription: See why clients love our video production services in Denver,
+        CO. Read authentic reviews from satisfied customers.
+      seoTitle: Video Production Client Reviews | Denver, Colorado - Wild Grace Video
+    - publicationDate: 2024-02-13T03:21:56.578Z
+      file: https://content.wildgracevideo.com/Website-Home-Page/Client-Testimonials/3.webp
+      seoDescription: Explore client testimonials for our top-rated video production
+        company in Denver. Find out why businesses trust us for their video
+        needs.
+      seoTitle: Client Feedback | Top Video Production Company in Denver, Colorado -
+        Wild Grace Video
+  backgroundImageVertical: https://content.wildgracevideo.com/Website-Home-Page/Vertical+Paralax-min.webp
+aboutMeImage: /uploads/carly-headshot.webp
 faq:
   title: "**FREQUENTLY ASKED QUESTIONS**"
   questions:
@@ -165,11 +170,6 @@ aboutMeDescription: >-
 
 
   I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
-title: Wild Grace Video | Home
-description: Wild Grace Video Productions is a top Denver-based video production
-  company specializing in hotel video production, outdoor product videos and
-  adventure company videos. We're here to help you bring your brand to life and
-  help you better connect with your audience.
 videoHighlight:
   title: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
   videos:
@@ -213,28 +213,23 @@ trustedBrandLogos:
   - companyName: The Curtis Hotel
     altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
       themed rooms.
-    image: /uploads/curtis-hotel.png
-    width: 112
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/The+Curtis+Hotel_logo+copy.webp
   - companyName: Genesee Nutrition
     altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
       adventurers.
-    image: /uploads/genesee.png
-    width: 112
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/genesee_logo+copy.webp
   - companyName: Smith & Meade
     altText: Logo of Smith & Meade, Denver-based developer of homes that are well
       designed, and well lived.
-    image: /uploads/smith-meade.png
-    width: 112
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/SmithMeadeLogoTagline_Black%20copy.webp
   - companyName: Abode Outside
     altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
-    image: /uploads/abode-outside.png
-    width: 112
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/Abode+Outside_logo.webp
   - altText: Logo of The Surf Hotel, a boutique hotel in adventurous Buena Vista,
       Colorado, ideal for romantic getaways, mountain weddings, or corporate
       events.
     companyName: The Surf Hotel
-    image: /uploads/surf-hotel.png
-    width: 112
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/surf-hotel+copy.webp
 faqs:
   - companyName: The Curtis Hotel
     altText: Logo of The Curtis Hotel, a boutique hotel located in Denver, Colorado.
