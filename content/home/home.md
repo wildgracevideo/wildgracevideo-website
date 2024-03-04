@@ -217,7 +217,7 @@ trustedBrandLogos:
   - companyName: Genesee Nutrition
     altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
       adventurers.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/genesee_logo+copy.webp
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/genesee_logosmall.webp
   - companyName: Smith & Meade
     altText: Logo of Smith & Meade, Denver-based developer of homes that are well
       designed, and well lived.
