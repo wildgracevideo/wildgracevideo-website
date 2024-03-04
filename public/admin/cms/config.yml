@@ -39,7 +39,7 @@ collections:
                 label: 'Product Image (384 x 384 webp)',
                 name: 'productImage',
                 widget: 'image',
-                choose_url: false,
+                choose_url: true,
                 allow_multiple: false,
             }
           - {
@@ -56,21 +56,21 @@ collections:
                 label: 'Page Preview Image (1200 x 630 webp)',
                 name: 'ogImage',
                 widget: 'image',
-                choose_url: false,
+                choose_url: true,
                 allow_multiple: false,
             }
           - {
                 label: 'Top Background Image (2048 x 683 webp)',
                 name: 'topBackgroundImage',
                 widget: 'image',
-                choose_url: false,
+                choose_url: true,
                 allow_multiple: false,
             }
           - {
                 label: 'Call To Action Background Image (6192 x 3456 webp)',
                 name: 'callToActionBackgroundImage',
                 widget: 'image',
-                choose_url: false,
+                choose_url: true,
                 allow_multiple: false,
             }
           - { label: 'Product Name', name: 'productName', widget: 'string' }
@@ -219,7 +219,7 @@ collections:
                 label: 'Page Preview Image (1200 x 630 webp)',
                 name: 'ogImage',
                 widget: 'image',
-                choose_url: false,
+                choose_url: true,
                 allow_multiple: false,
                 required: false,
             }
@@ -345,7 +345,7 @@ collections:
                       label: 'Reel Video Thumbnail Image',
                       name: 'thumbnailImage',
                       widget: 'image',
-                      choose_url: false,
+                      choose_url: true,
                       allow_multiple: false,
                   }
                 - label: 'SEO Video Title (About 125 characters)'
@@ -420,7 +420,7 @@ collections:
                         widget: 'file'
                         media_library:
                             allow_multiple: false
-                            choose_url: false
+                            choose_url: true
                             config:
                                 multiple: false
                                 max_file_size: 4096000
@@ -428,7 +428,7 @@ collections:
                             label: 'Thumbnail Image',
                             name: 'thumbnailImage',
                             widget: 'image',
-                            choose_url: false,
+                            choose_url: true,
                             allow_multiple: false,
                         }
                       - label: 'SEO Video Title (About 125 characters)'
@@ -460,13 +460,13 @@ collections:
                   summary: '{{fields.seoTitle}}'
                   fields:
                       - label: 'About Me File (aspect-ratio 1/1.25)'
-                        choose_url: false
+                        choose_url: true
                         allow_multiple: false
                         name: 'file'
                         widget: 'file'
                         media_library:
                             allow_multiple: false
-                            choose_url: false
+                            choose_url: true
                             config:
                                 multiple: false
                                 max_file_size: 4096000
@@ -483,7 +483,7 @@ collections:
                       - label: 'Thumbnail Image (Only if the file is an mp4 video)'
                         widget: 'image'
                         name: 'thumbnailImage'
-                        choose_url: false
+                        choose_url: true
                         allow_multiple: false
                         required: false
                       - label: 'Publication Date (Change only if changing the file)'
@@ -514,7 +514,7 @@ collections:
                       label: 'Image (webp 112x112 or smaller)',
                       name: 'image',
                       widget: 'image',
-                      choose_url: false,
+                      choose_url: true,
                       allow_multiple: false,
                   }
           - label: 'How To'
@@ -563,12 +563,12 @@ collections:
                 - label: 'Background Image (webp)'
                   name: 'backgroundImage'
                   widget: 'image'
-                  choose_url: false
+                  choose_url: true
                   allow_multiple: false
                 - label: 'Background Image Vertical (webp)'
                   name: 'backgroundImageVertical'
                   widget: 'image'
-                  choose_url: false
+                  choose_url: true
                   allow_multiple: false
                 - label: 'Files (3 mp4 or webp 4 MB Max preferably 1MB)'
                   name: 'files'
@@ -582,14 +582,14 @@ collections:
                         widget: 'file'
                         media_library:
                             allow_multiple: false
-                            choose_url: false
+                            choose_url: true
                             config:
                                 multiple: false
                                 max_file_size: 4096000
                       - label: 'Thumbnail Image (Only if the file is an mp4 video)'
                         widget: 'image'
                         name: 'thumbnailImage'
-                        choose_url: false
+                        choose_url: true
                         allow_multiple: false
                         required: false
                       - label: 'SEO Description (About 125 characters)'
