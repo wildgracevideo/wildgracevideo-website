@@ -121,7 +121,7 @@ testimonials:
         needs.
       seoTitle: Client Feedback | Top Video Production Company in Denver, Colorado -
         Wild Grace Video
-  backgroundImageVertical: https://content.wildgracevideo.com/Website-Home-Page/Vertical+Paralax-min.webp
+  backgroundImageVertical: /uploads/vertical-paralax.webp
 aboutMeImage: /uploads/carly-headshot.webp
 faq:
   title: "**FREQUENTLY ASKED QUESTIONS**"
