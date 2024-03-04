@@ -13,7 +13,7 @@
                 :src="logo.image"
                 :alt="logo.altText"
                 loading="lazy"
-                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-20 md:mr-40 md:w-28"
+                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full md:mr-40"
             />
             <img
                 v-for="logo in logos"
@@ -21,7 +21,7 @@
                 :src="logo.image"
                 :alt="logo.altText"
                 loading="lazy"
-                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-16 md:mr-40 md:w-28"
+                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full md:mr-40"
             />
         </div>
     </div>
