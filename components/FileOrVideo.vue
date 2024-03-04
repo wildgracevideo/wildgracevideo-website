@@ -16,6 +16,7 @@
                 :class="`cursor-default ${$attrs.class as string}`"
                 :src="file"
                 :alt="seoDescription"
+                :loading="isLazy ? 'lazy' : 'eager'"
             />
             <SchemaOrgImage
                 :name="seoTitle"
@@ -33,6 +34,7 @@
         seoTitle: string;
         thumbnailImage?: string;
         publicationDate: string;
+        isLazy?: boolean;
     }
     defineProps<FileConfig>();
 </script>

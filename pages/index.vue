@@ -30,6 +30,9 @@
             class="absolute bottom-6 right-8 z-10 h-10 w-10 cursor-pointer text-white md:bottom-10 md:h-12 md:w-12"
             @click="toggleMute"
         >
+            <span class="sr-only">{{
+                reelMuted ? 'Unmute Video Reel Audio' : 'Mute Video Reel Audio'
+            }}</span>
             <SpeakerXMarkIcon v-if="reelMuted" />
             <SpeakerWaveIcon v-else />
         </button>
@@ -138,6 +141,7 @@
             :seo-title="file.seoTitle"
             :thumbnail-image="file.thumbnailImage"
             :publication-date="file.publicationDate"
+            :is-lazy="true"
             class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
         />
     </section>

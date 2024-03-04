@@ -12,13 +12,15 @@
                 :key="`initial-logo-${logo.companyName}`"
                 :src="logo.image"
                 :alt="logo.altText"
-                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-16 md:mr-40 md:w-28"
+                loading="lazy"
+                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-20 md:mr-40 md:w-28"
             />
             <img
                 v-for="logo in logos"
                 :key="`second-logo-${logo.companyName}`"
                 :src="logo.image"
                 :alt="logo.altText"
+                loading="lazy"
                 class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full w-16 md:mr-40 md:w-28"
             />
         </div>
@@ -72,7 +74,7 @@
 
     .logos-slide {
         width: calc(var(--total-icons) * (7rem + 10rem) * 2);
-        animation: calc(6s * var(--total-icons)) slide infinite linear;
+        animation: calc(3s * var(--total-icons)) slide infinite linear;
     }
 
     @media (max-width: 768px) {
@@ -82,7 +84,7 @@
         }
 
         .logos-slide {
-            width: calc(var(--total-icons) * (5rem + 5rem) * 2);
+            width: calc(var(--total-icons) * (4rem + 5rem) * 2);
         }
     }
 </style>

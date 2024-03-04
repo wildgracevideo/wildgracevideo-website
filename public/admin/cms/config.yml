@@ -511,7 +511,7 @@ collections:
                       widget: 'text',
                   }
                 - {
-                      label: 'Image (webp 112x112 or smaller)',
+                      label: 'Image (webp 112x112)',
                       name: 'image',
                       widget: 'image',
                       choose_url: true,
