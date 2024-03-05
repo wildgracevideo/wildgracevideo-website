@@ -23,7 +23,7 @@
             <NuxtLink
                 :to="`/products/${shopItem.path}`"
                 :aria-label="shopItem.title"
-                class="shadow-floating relative mx-auto mb-8 block max-h-96 w-fit overflow-hidden rounded-xl bg-cover bg-no-repeat"
+                class="shadow-floating bg-cover relative mx-auto mb-8 block max-h-96 w-fit overflow-hidden rounded-xl bg-no-repeat"
             >
                 <img
                     :src="shopItem.productImage"

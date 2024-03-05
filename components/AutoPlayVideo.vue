@@ -1,7 +1,7 @@
 <template>
     <video
+        ref="videoElement"
         :class="`t{$attrs.class as string}`"
-        autoplay
         muted
         loop
         disablePictureInPicture
@@ -16,12 +16,34 @@
             :description="description"
             :thumbnail-url="thumbnailImage"
         />
-        <source :src="video" type="video/mp4" />
     </video>
 </template>
 
 <script setup lang="ts">
-    defineProps<{
+    const videoElement = ref<HTMLVideoElement>();
+
+    onMounted(() => {
+        function handleIntersection(entries: IntersectionObserverEntry[]) {
+            entries.map((entry: IntersectionObserverEntry) => {
+                if (entry.isIntersecting) {
+                    const videoSource: HTMLSourceElement =
+                        document.createElement('source');
+                    videoSource.type = 'video/mp4';
+                    videoSource.src = props.video;
+                    videoElement.value!.appendChild(videoSource);
+                    videoElement.value!.play();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, {
+            rootMargin: '200px',
+        });
+        observer.observe(videoElement.value!);
+    });
+
+    const props = defineProps<{
         title: string;
         description: string;
         thumbnailImage: string | undefined;

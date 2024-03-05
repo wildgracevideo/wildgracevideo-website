@@ -26,6 +26,9 @@ export default {
         transitionProperty: {
             top: 'top',
         },
+        backgroundSize: {
+            full: '100%',
+        },
     },
     plugins: [],
 };

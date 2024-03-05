@@ -55,25 +55,14 @@
             v-for="video in videoHighlightVideos"
             :key="`home-highlight-video-${video.title}`"
         >
-            <SchemaOrgVideo
-                :name="video.seoTitle"
-                :url="video.video"
-                :content-url="video.video"
-                :upload-date="video.publicationDate"
-                :description="video.seoDescription"
-                :thumbnail-url="video.thumbnailImage"
-            />
-            <video
+            <AutoPlayVideo
                 class="pointer-events-none mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mt-0"
-                autoplay
-                muted
-                loop
-                disablePictureInPicture
-                playsinline
                 :title="video.seoTitle"
-            >
-                <source :src="video.video" type="video/mp4" />
-            </video>
+                :description="video.seoDescription"
+                :video="video.video"
+                :thumbnail-image="video.thumbnailImage"
+                :publication-date="video.publicationDate"
+            />
             <h3 class="mb-12 text-center text-2xl">
                 {{ video.title }}
             </h3>
@@ -126,12 +115,11 @@
             />
         </div>
     </article>
-    <section
-        class="parallax-background mb-32 grid w-full grid-cols-1 items-center justify-center gap-x-10 px-8 lg:grid-cols-3"
-        :style="{
-            '--parallax-background-image': `url(${testimonials.backgroundImage})`,
-            '--parallax-background-image-vertical': `url(${testimonials.backgroundImageVertical})`,
-        }"
+    <BackgroundImageLazy
+        component="section"
+        class="mb-32 grid h-full min-h-14 w-full grid-cols-1 items-center justify-center gap-x-10 bg-full px-8 lg:grid-cols-3"
+        :background-image="testimonials.backgroundImage"
+        :background-image-vertical="testimonials.backgroundImageVertical"
     >
         <FileOrVideo
             v-for="file in testimonials.files!"
@@ -144,7 +132,7 @@
             :is-lazy="true"
             class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
         />
-    </section>
+    </BackgroundImageLazy>
     <article class="mx-8 mb-32 lg:mx-32">
         <Markdown
             :markdown-string="`## ${faq.title!}`"
@@ -287,19 +275,3 @@
         animatableElements.forEach((element) => observer.observe(element));
     });
 </script>
-
-<style scoped>
-    .parallax-background {
-        background-image: var(--parallax-background-image-vertical);
-        background-attachment: fixed;
-        background-size: 100%;
-        min-height: 56rem;
-        height: 100%;
-    }
-
-    @media (min-width: 1024px) {
-        .parallax-background {
-            background-image: var(--parallax-background-image);
-        }
-    }
-</style>
