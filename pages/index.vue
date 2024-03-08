@@ -13,7 +13,10 @@
         content-url="https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4"
         upload-date="2024-02-28T22:13:39.520Z"
         :description="reelVideo.seoDescription"
-        :thumbnail-url="reelVideo.thumbnailImage"
+        :thumbnail="{
+            url: reelVideo.thumbnailImage,
+            contentUrl: reelVideo.thumbnailImage,
+        }"
     />
     <section class="relative aspect-video w-full max-w-full bg-fixed">
         <video

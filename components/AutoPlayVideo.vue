@@ -14,7 +14,7 @@
             :content-url="video"
             :upload-date="publicationDate"
             :description="description"
-            :thumbnail-url="thumbnailImage"
+            :thumbnail="{ url: thumbnailImage, contentUrl: thumbnailImage }"
         />
     </video>
 </template>
