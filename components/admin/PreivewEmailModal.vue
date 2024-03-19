@@ -100,7 +100,8 @@
         TransitionChild,
         TransitionRoot,
     } from '@headlessui/vue';
-    import type { MessageReplyRequest } from '~/types/messages';
+    import type { InferInsertModel } from 'drizzle-orm';
+    import type { messageReplies } from '~/drizzle/schema';
 
     const props = defineProps<{
         modelValue: boolean;
@@ -108,7 +109,7 @@
         name: string;
         messageId: number;
         sendHandler: (
-            messageReplyRequest: MessageReplyRequest
+            messageReplyRequest: InferInsertModel<typeof messageReplies>
         ) => Promise<void>;
     }>();
 
@@ -129,7 +130,7 @@
     const sendingMessage = ref(false);
 
     const send = async () => {
-        const messageReplyRequest: MessageReplyRequest = {
+        const messageReplyRequest: InferInsertModel<typeof messageReplies> = {
             name: nameModel.value,
             toEmail: toEmailModel.value,
             messageId: props.messageId,

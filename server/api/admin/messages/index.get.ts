@@ -1,20 +1,16 @@
-import prisma from '~/lib/prisma';
-import { type MessageWithRelations } from '~/lib/prisma';
+import { desc } from 'drizzle-orm';
+import { messages, MessageWithReply } from '~/drizzle/schema';
+import { db } from '~/lib/db';
 
 export default defineEventHandler(
-    async (_event): Promise<MessageWithRelations[]> => {
-        const messages =
-            (await prisma.message.findMany<{
-                include: { reply: true };
-                orderBy: { createdAt: 'desc' };
-            }>({
-                orderBy: {
-                    createdAt: 'desc',
-                },
-                include: {
-                    reply: true,
-                },
-            })) || [];
-        return messages.filter((it) => !it.deleted);
+    async (_event): Promise<MessageWithReply[]> => {
+        const selectedMessages = await db.query.messages.findMany({
+            with: { messageReply: true },
+            orderBy: desc(messages.createdAt),
+        });
+
+        return selectedMessages
+            .filter((it) => !!it && !it.deleted)
+            .map((it) => it as MessageWithReply);
     }
 );

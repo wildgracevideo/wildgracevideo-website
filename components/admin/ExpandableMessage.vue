@@ -20,8 +20,8 @@
                             class="ml-2 inline-block h-2 w-2 rounded-full bg-blue-400"
                         />
                         <AdminTag
-                            v-if="message.reply"
-                            :label="`Reply:${message.reply.sendGridMessageStatus}`"
+                            v-if="message.messageReply"
+                            :label="`Reply:${message.messageReply.sendGridMessageStatus}`"
                             additional-classes="inline-block bg-website-primary text-white"
                         />
                     </span>
@@ -43,7 +43,7 @@
                         @click="() => deleteAction(message)"
                     />
                     <PaperAirplaneIcon
-                        v-if="!message.reply"
+                        v-if="!message.messageReply"
                         class="ml-2 inline h-6 w-6 cursor-pointer"
                         @click="showPreview = true"
                     />
@@ -65,16 +65,18 @@
 <script setup lang="ts">
     import { ChevronDownIcon } from '@heroicons/vue/20/solid';
     import { PaperAirplaneIcon, TrashIcon } from '@heroicons/vue/24/outline';
+    import type { InferInsertModel } from 'drizzle-orm';
     import type { SerializeObject } from 'nitropack';
-    import { type MessageWithRelations } from '~/lib/prisma';
-    import type { MessageReplyRequest } from '~/types/messages';
+    import type { messageReplies, MessageWithReply } from '~/drizzle/schema';
 
     const props = defineProps<{
-        message: SerializeObject<MessageWithRelations>;
+        message: SerializeObject<MessageWithReply>;
         deleteAction: (
-            message: SerializeObject<MessageWithRelations>
+            message: SerializeObject<MessageWithReply>
         ) => Promise<void>;
-        replyAction: (message: MessageReplyRequest) => Promise<void>;
+        replyAction: (
+            message: InferInsertModel<typeof messageReplies>
+        ) => Promise<void>;
     }>();
 
     const showPreview = ref(false);
@@ -88,7 +90,7 @@
         if (!props.message.read) {
             // This is used to separate the message from the reply
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { reply, ...messageWithoutReply } = props.message;
+            const { messageReply, ...messageWithoutReply } = props.message;
             const updatedMessage = {
                 ...messageWithoutReply,
                 read: true,

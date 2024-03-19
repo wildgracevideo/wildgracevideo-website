@@ -16,6 +16,7 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:import/typescript',
         'prettier',
+        'plugin:drizzle/recommended',
     ],
     settings: {
         'import/resolver': {

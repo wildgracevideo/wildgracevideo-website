@@ -1,13 +1,15 @@
 import { EventWebhook } from '@sendgrid/eventwebhook';
-import {
-    MessageReply,
-    MessageStatus,
-    PrismaClient,
-    PurchaseAudit,
-    SendGridMessageType,
-} from '@prisma/client';
-import prisma from '~/lib/prisma';
+import { LibSQLDatabase } from 'drizzle-orm/libsql';
+import { eq, InferSelectModel, sql } from 'drizzle-orm';
 import { JSONObject } from '~/types/main';
+import {
+    messageReplies,
+    MessageStatus,
+    purchaseAudits,
+    sendGridMessagesMap,
+} from '~/drizzle/schema';
+import { db } from '~/lib/db';
+import * as schema from '~/drizzle/schema';
 
 const eventWebhookValidator = new EventWebhook();
 
@@ -15,15 +17,6 @@ const runtimeConfig = useRuntimeConfig();
 const publicKey = eventWebhookValidator.convertPublicKeyToECDSA(
     runtimeConfig.sendgridWebhookSigningKey
 );
-
-interface MessageStatusUpdate {
-    where: {
-        id: string;
-    };
-    data: {
-        sendGridMessageStatus: MessageStatus;
-    };
-}
 
 interface MessageStatusAndId {
     id: string;
@@ -42,7 +35,7 @@ abstract class MessageStatusTable<T extends MessageStatusAndId> {
     ): Promise<T | null>;
 
     protected abstract updateInternal(
-        updateReqeust: MessageStatusUpdate
+        messageStatus: MessageStatusAndId
     ): Promise<void>;
 
     async get(sendGridMessageId: string): Promise<MessageStatusAndId> {
@@ -73,7 +66,7 @@ abstract class MessageStatusTable<T extends MessageStatusAndId> {
         }
     }
 
-    async update(updateRequest: MessageStatusUpdate): Promise<void> {
+    async update(updateRequest: MessageStatusAndId): Promise<void> {
         try {
             await this.updateInternal(updateRequest);
         } catch (e) {
@@ -86,57 +79,83 @@ abstract class MessageStatusTable<T extends MessageStatusAndId> {
     }
 }
 
-class MessageReplyTable extends MessageStatusTable<MessageReply> {
-    private prismaClient: PrismaClient;
+class MessageReplyTable extends MessageStatusTable<
+    InferSelectModel<typeof messageReplies>
+> {
+    private dbClient: LibSQLDatabase<typeof schema>;
 
-    constructor(prismaClient: PrismaClient) {
+    constructor(dbClient: LibSQLDatabase<typeof schema>) {
         super('messageReply');
-        this.prismaClient = prismaClient;
+        this.dbClient = dbClient;
     }
 
     protected async getInternal(
         sendGridMessageId: string
-    ): Promise<MessageReply | null> {
-        return await this.prismaClient.messageReply.findFirst({
-            where: { sendGridMessageId },
-        });
+    ): Promise<InferSelectModel<typeof messageReplies> | null> {
+        const results = await this.dbClient
+            .select()
+            .from(messageReplies)
+            .where(eq(messageReplies.sendGridMessageId, sendGridMessageId));
+        if (results) {
+            return results[0];
+        }
+        return null;
     }
 
     protected async updateInternal(
-        updateReqeust: MessageStatusUpdate
+        updateRequest: MessageStatusAndId
     ): Promise<void> {
-        await this.prismaClient.messageReply.update(updateReqeust);
+        await this.dbClient
+            .update(messageReplies)
+            .set({
+                sendGridMessageStatus: updateRequest.sendGridMessageStatus,
+                updatedAt: sql`CURRENT_TIMESTAMP`,
+            })
+            .where(eq(messageReplies.id, updateRequest.id));
     }
 }
 
-class PurchaseAuditTable extends MessageStatusTable<PurchaseAudit> {
-    private prismaClient: PrismaClient;
+class PurchaseAuditTable extends MessageStatusTable<
+    InferSelectModel<typeof purchaseAudits>
+> {
+    private dbClient: LibSQLDatabase<typeof schema>;
 
-    constructor(prismaClient: PrismaClient) {
+    constructor(dbClient: LibSQLDatabase<typeof schema>) {
         super('purchaseAudit');
-        this.prismaClient = prismaClient;
+        this.dbClient = dbClient;
     }
 
     protected async getInternal(
         sendGridMessageId: string
-    ): Promise<PurchaseAudit | null> {
-        return await this.prismaClient.purchaseAudit.findFirst({
-            where: { sendGridMessageId },
-        });
+    ): Promise<InferSelectModel<typeof purchaseAudits> | null> {
+        const results = await this.dbClient
+            .select()
+            .from(purchaseAudits)
+            .where(eq(purchaseAudits.sendGridMessageId, sendGridMessageId));
+        if (results) {
+            return results[0];
+        }
+        return null;
     }
 
     protected async updateInternal(
-        updateReqeust: MessageStatusUpdate
+        updateRequest: MessageStatusAndId
     ): Promise<void> {
-        await this.prismaClient.purchaseAudit.update(updateReqeust);
+        await this.dbClient
+            .update(purchaseAudits)
+            .set({
+                sendGridMessageStatus: updateRequest.sendGridMessageStatus,
+                updatedAt: sql`CURRENT_TIMESTAMP`,
+            })
+            .where(eq(messageReplies.id, updateRequest.id));
     }
 }
 
 class MessageStatusTableFactory {
-    private prismaClient: PrismaClient;
+    private dbClient: LibSQLDatabase<typeof schema>;
 
-    constructor(prismaClient: PrismaClient) {
-        this.prismaClient = prismaClient;
+    constructor(dbClient: LibSQLDatabase<typeof schema>) {
+        this.dbClient = dbClient;
     }
 
     async getTable(
@@ -144,19 +163,25 @@ class MessageStatusTableFactory {
     ): Promise<MessageStatusTable<MessageStatusAndId>> {
         let sendGridMessageMap;
         try {
-            sendGridMessageMap =
-                await this.prismaClient.sendGridMessageMap.findFirst({
-                    where: { id: sendGridMessageId },
+            const results = await this.dbClient
+                .select()
+                .from(sendGridMessagesMap)
+                .where(eq(sendGridMessagesMap.id, sendGridMessageId));
+            if (!results) {
+                console.error(
+                    `No mapping found for sendGridMessageId, ${sendGridMessageId}.`
+                );
+                throw createError({
+                    status: 500,
+                    statusMessage: 'Internal Server Error',
                 });
+            } else {
+                sendGridMessageMap = results[0];
+            }
         } catch (e) {
             console.error(
                 `Failed to fetch mapping for sendGridMessageId, ${sendGridMessageId}`,
                 e
-            );
-        }
-        if (!sendGridMessageMap) {
-            console.error(
-                `No mapping found for sendGridMessageId, ${sendGridMessageId}.`
             );
             throw createError({
                 status: 500,
@@ -164,10 +189,15 @@ class MessageStatusTableFactory {
             });
         }
         switch (sendGridMessageMap.type) {
-            case SendGridMessageType.PURCHASE:
-                return new PurchaseAuditTable(this.prismaClient);
-            case SendGridMessageType.MESSAGE_REPLY:
-                return new MessageReplyTable(this.prismaClient);
+            case 'PURCHASE':
+                return new PurchaseAuditTable(this.dbClient);
+            case 'MESSAGE_REPLY':
+                return new MessageReplyTable(this.dbClient);
+            default:
+                throw createError({
+                    status: 500,
+                    statusMessage: 'Internal Server Error',
+                });
         }
     }
 }
@@ -211,7 +241,7 @@ export default defineEventHandler(async (event): Promise<void> => {
     }
 });
 
-const factory = new MessageStatusTableFactory(prisma);
+const factory = new MessageStatusTableFactory(db);
 
 async function handleEvent(webhookEvent: JSONObject) {
     if (typeof webhookEvent.sg_message_id !== 'string') {
@@ -245,18 +275,14 @@ function getUpdateData(
     existingStatus: MessageStatus,
     newStatus: MessageStatus | undefined,
     recordId: string
-): MessageStatusUpdate | undefined {
+): MessageStatusAndId | undefined {
     if (
         newStatus &&
         getStatusPriority(newStatus) > getStatusPriority(existingStatus)
     ) {
         return {
-            where: {
-                id: recordId,
-            },
-            data: {
-                sendGridMessageStatus: newStatus,
-            },
+            id: recordId,
+            sendGridMessageStatus: newStatus,
         };
     }
     return undefined;
@@ -265,19 +291,19 @@ function getUpdateData(
 function getStatusFrom(webhookEvent: JSONObject): MessageStatus | undefined {
     switch (webhookEvent.event) {
         case 'processed':
-            return MessageStatus.PROCESSED;
+            return 'PROCESSED';
         case 'deferred':
-            return MessageStatus.DEFERRED;
+            return 'DEFERRED';
         case 'delivered':
-            return MessageStatus.DELIVERED;
+            return 'DELIVERED';
         case 'open':
-            return MessageStatus.OPENED;
+            return 'OPENED';
         case 'click':
-            return MessageStatus.CLICKED;
+            return 'CLICKED';
         case 'bounce':
-            return MessageStatus.BOUNCED;
+            return 'BOUNCED';
         case 'dropped':
-            return MessageStatus.DROPPED;
+            return 'DROPPED';
         default:
             console.error(
                 'Event of type ' + webhookEvent.event + ' cannot be handled.'
@@ -287,19 +313,19 @@ function getStatusFrom(webhookEvent: JSONObject): MessageStatus | undefined {
 
 function getStatusPriority(status: MessageStatus): number {
     switch (status) {
-        case MessageStatus.PENDING:
+        case 'PENDING':
             return 0;
-        case MessageStatus.PROCESSED:
+        case 'PROCESSED':
             return 1;
-        case MessageStatus.DEFERRED:
+        case 'DEFERRED':
             return 2;
-        case MessageStatus.BOUNCED:
+        case 'BOUNCED':
             return 3;
-        case MessageStatus.DELIVERED:
+        case 'DELIVERED':
             return 4;
-        case MessageStatus.OPENED:
+        case 'OPENED':
             return 5;
-        case MessageStatus.CLICKED:
+        case 'CLICKED':
             return 6;
         default:
             throw new Error(`Unknown MessageStatus ${status}`);

@@ -1,13 +1,14 @@
-import { PurchaseAudit, SendGridMessageType } from '@prisma/client';
 import type { EventHandlerRequest, H3Event } from 'h3';
+import { eq, InferSelectModel, sql } from 'drizzle-orm';
 import { createContact, CreateContactRequest } from '~/lib/create-contact';
 import { sendTemplatedEmail } from '~/lib/send-template-email';
 import { stripe } from '~/lib/stripe';
-import prisma from '~/lib/prisma';
 import {
     getProductByPriceId,
     ProductBackendProperties,
 } from '~/lib/get-product';
+import { purchaseAudits, sendGridMessagesMap } from '~/drizzle/schema';
+import { db } from '~/lib/db';
 
 export default defineEventHandler(async (event): Promise<void> => {
     const webhookBody = await readBody(event);
@@ -90,11 +91,13 @@ async function getProduct(
 
 async function getPurchaseAuditFromDB(
     request: CreateContactRequest
-): Promise<PurchaseAudit | null> {
+): Promise<InferSelectModel<typeof purchaseAudits> | null> {
     try {
-        return await prisma.purchaseAudit.findFirst({
-            where: { stripeSessionId: request.stripeSessionId },
-        });
+        const foundAudits = await db
+            .select()
+            .from(purchaseAudits)
+            .where(eq(purchaseAudits.stripeSessionId, request.stripeSessionId));
+        return foundAudits[0];
     } catch (e) {
         console.error('Failed to get PurchaseAudit from the database.', e);
         throw e;
@@ -103,7 +106,7 @@ async function getPurchaseAuditFromDB(
 
 async function saveContactToDB(
     request: CreateContactRequest
-): Promise<PurchaseAudit> {
+): Promise<InferSelectModel<typeof purchaseAudits>> {
     const input = {
         email: request.email,
         product: request.source,
@@ -113,7 +116,7 @@ async function saveContactToDB(
         stripeSessionId: request.stripeSessionId,
     };
     try {
-        return await prisma.purchaseAudit.create({ data: input });
+        return (await db.insert(purchaseAudits).values(input).returning())[0];
     } catch (e) {
         console.error('Failed to create purchase audit.', e);
         throw e;
@@ -125,23 +128,19 @@ async function updateSentProductField(
     messageId: string
 ): Promise<void> {
     try {
-        await prisma.$transaction([
-            prisma.purchaseAudit.update({
-                where: {
-                    id,
-                },
-                data: {
+        await db.transaction(async (tx) => {
+            await tx
+                .update(purchaseAudits)
+                .set({
                     sentProduct: true,
                     sendGridMessageId: messageId,
-                },
-            }),
-            prisma.sendGridMessageMap.create({
-                data: {
-                    id: messageId,
-                    type: SendGridMessageType.PURCHASE,
-                },
-            }),
-        ]);
+                    updatedAt: sql`CURRENT_TIMESTAMP`,
+                })
+                .where(eq(purchaseAudits.id, id));
+            await tx
+                .insert(sendGridMessagesMap)
+                .values({ id: messageId, type: 'PURCHASE' });
+        });
     } catch (e) {
         console.error(
             'Failed to update sentProduct field, or create sendGrid message mapping.',
