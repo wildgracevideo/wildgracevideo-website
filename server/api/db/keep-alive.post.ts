@@ -1,4 +1,5 @@
-import prisma from '~/lib/prisma';
+import { keepAlives } from '~/drizzle/schema';
+import { db } from '~/lib/db';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -10,5 +11,5 @@ export default defineEventHandler(async (event): Promise<void> => {
         throw createError({ statusCode: 401, statusMessage: 'Unauthorized' });
     }
 
-    await prisma.keepAlive.create({ data: {} });
+    await db.insert(keepAlives).values({});
 });

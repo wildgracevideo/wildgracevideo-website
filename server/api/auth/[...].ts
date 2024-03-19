@@ -1,7 +1,9 @@
-import { TokenSet } from 'next-auth';
-import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import { Adapter, DefaultSession, TokenSet } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import prisma from '~/lib/prisma';
+import { and, eq } from 'drizzle-orm';
+import { DrizzleAdapter } from '@auth/drizzle-adapter';
+import { db } from '~/lib/db';
+import { accounts } from '~/drizzle/schema';
 // eslint-disable-next-line import/no-unresolved
 import { NuxtAuthHandler } from '#auth';
 
@@ -11,7 +13,7 @@ const PROVIDER = 'google';
 
 export default NuxtAuthHandler({
     secret: runtimeConfig.nextAuthSecret,
-    adapter: PrismaAdapter(prisma),
+    adapter: DrizzleAdapter(db) as Adapter,
     providers: [
         GoogleProvider.default({
             clientId: runtimeConfig.googleClientId!,
@@ -27,9 +29,16 @@ export default NuxtAuthHandler({
     ],
     callbacks: {
         async session({ session, user }) {
-            const [account] = await prisma.account.findMany({
-                where: { userId: user.id, provider: PROVIDER },
-            });
+            const [account] = await db
+                .select()
+                .from(accounts)
+                .where(
+                    and(
+                        eq(accounts.userId, user.id),
+                        eq(accounts.provider, PROVIDER)
+                    )
+                )
+                .all();
             if (
                 (account.expires_at == null ||
                     account.expires_at * 1000 < Date.now()) &&
@@ -61,20 +70,23 @@ export default NuxtAuthHandler({
                         throw tokens;
                     }
 
-                    await prisma.account.update({
-                        data: {
+                    await db
+                        .update(accounts)
+                        .set({
                             access_token: tokens.access_token,
                             expires_at: tokens.expires_at,
                             refresh_token:
                                 tokens.refresh_token ?? account.refresh_token,
-                        },
-                        where: {
-                            provider_providerAccountId: {
-                                provider: PROVIDER,
-                                providerAccountId: account.providerAccountId,
-                            },
-                        },
-                    });
+                        })
+                        .where(
+                            and(
+                                eq(accounts.provider, PROVIDER),
+                                eq(
+                                    accounts.providerAccountId,
+                                    account.providerAccountId
+                                )
+                            )
+                        );
                 } catch (error) {
                     console.error('Error refreshing access token', error);
                     // The error property will be used client-side to handle the refresh token error
@@ -86,8 +98,8 @@ export default NuxtAuthHandler({
     },
 });
 
-declare module '@auth/core/types' {
-    interface Session {
+declare module 'next-auth' {
+    interface Session extends DefaultSession {
         error?: 'RefreshAccessTokenError';
     }
 }

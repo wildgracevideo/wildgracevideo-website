@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1710809600954,
+      "tag": "0000_tidy_malcolm_colcord",
+      "breakpoints": true
+    }
+  ]
+}

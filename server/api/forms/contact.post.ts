@@ -1,5 +1,5 @@
-import { type Prisma } from '@prisma/client';
-import prisma from '~/lib/prisma';
+import { db } from '~/lib/db';
+import { messages } from '~/drizzle/schema';
 import { sendEmail } from '~/lib/send-email';
 import { ContactSubmitRequest, RecaptchaType } from '~/types/form-requests';
 import { validateRecaptcha } from '~/lib/validate-recaptcha';
@@ -36,20 +36,20 @@ export default defineEventHandler(async (event): Promise<void> => {
     </html>`;
 
     const subject = 'Wild Grace Videography Contact Form';
-    const message: Prisma.MessageCreateInput = {
+    const message = {
         email: body.email,
         firstname: body.firstname,
         lastname: body.lastname,
         message: body.message,
     };
-    const prismaResult = prisma.message.create({ data: message });
+    const insertResult = db.insert(messages).values(message);
     const emailResult = sendEmail(
         htmlBody,
         runtimeConfig.formsToEmail,
         subject,
         runtimeConfig.formsFromEmail
     );
-    await prismaResult;
+    await insertResult;
     const responseData = await emailResult;
     console.log('email submitted to SES', responseData);
 });

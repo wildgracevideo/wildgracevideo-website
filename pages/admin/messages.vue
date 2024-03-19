@@ -29,8 +29,8 @@
 </template>
 
 <script setup lang="ts">
-    import { type MessageWithRelations } from '~/lib/prisma';
-    import type { MessageReplyRequest } from '~/types/messages';
+    import type { InferInsertModel } from 'drizzle-orm';
+    import { messageReplies, type MessageWithReply } from '~/drizzle/schema';
     import { NotificationType } from '~/types/component-types';
     import { type SerializeObject } from '~/types/nitro';
     import type { NotificationConfig } from '~/components/Notification.vue';
@@ -52,9 +52,7 @@
         }
     };
 
-    const deleteAction = async (
-        message: SerializeObject<MessageWithRelations>
-    ) => {
+    const deleteAction = async (message: SerializeObject<MessageWithReply>) => {
         try {
             await $fetch(`/api/admin/messages/${message.id}`, {
                 method: 'delete',
@@ -73,7 +71,9 @@
         }
     };
 
-    const replyAction = async (messageReplyRequest: MessageReplyRequest) => {
+    const replyAction = async (
+        messageReplyRequest: InferInsertModel<typeof messageReplies>
+    ) => {
         try {
             const messageReply = await $fetch('/api/admin/messages/reply', {
                 method: 'POST',
@@ -81,7 +81,7 @@
             });
             data.value!.filter(
                 (it) => it.id === messageReplyRequest.messageId
-            ).forEach((it) => (it.reply = messageReply));
+            ).forEach((it) => (it.messageReply = messageReply));
             updateIds.value.push(messageReplyRequest.messageId);
         } catch (e) {
             notifications.value.push({

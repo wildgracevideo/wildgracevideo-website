@@ -1,25 +1,26 @@
-import { type Message } from '@prisma/client';
-import prisma from '~/lib/prisma';
+import { eq, InferSelectModel, sql } from 'drizzle-orm';
+import { messages } from '~/drizzle/schema';
+import { db } from '~/lib/db';
 
-export default defineEventHandler(async (event): Promise<Message> => {
-    const message = await readBody<Message>(event);
-    let updatedMessage;
-    try {
-        updatedMessage = await prisma.message.update({
-            where: {
-                id: message.id,
-            },
-            data: message,
-        });
-    } catch (error: unknown) {
-        // @ts-expect-error TODO: Can't import this in Netlify (import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
-        if (error?.name === 'PrismaClientKnownRequestError') {
-            console.error(`Message with id, ${message.id}, was not found.`);
-            throw createError({
-                statusMessage: 'Message Not Found',
-                statusCode: 404,
-            });
-        } else {
+export default defineEventHandler(
+    async (event): Promise<InferSelectModel<typeof messages>> => {
+        const message =
+            await readBody<InferSelectModel<typeof messages>>(event);
+        try {
+            const results = await db
+                .update(messages)
+                .set({ ...message, updatedAt: sql`CURRENT_TIMESTAMP` })
+                .where(eq(messages.id, message.id))
+                .returning();
+            if (!results) {
+                console.error(`Message with id, ${message.id}, was not found.`);
+                throw createError({
+                    statusMessage: 'Message Not Found',
+                    statusCode: 404,
+                });
+            }
+            return results[0];
+        } catch (error: unknown) {
             console.error(error);
             throw createError({
                 statusMessage: 'Internal Server Error',
@@ -27,5 +28,4 @@ export default defineEventHandler(async (event): Promise<Message> => {
             });
         }
     }
-    return updatedMessage;
-});
+);
