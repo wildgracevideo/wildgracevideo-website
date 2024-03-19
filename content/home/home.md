@@ -214,22 +214,27 @@ trustedBrandLogos:
     altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
       themed rooms.
     image: /uploads/curtis-hotel.png
+    width: 112
   - companyName: Genesee Nutrition
     altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
       adventurers.
     image: /uploads/genesee.png
+    width: 112
   - companyName: Smith & Meade
     altText: Logo of Smith & Meade, Denver-based developer of homes that are well
       designed, and well lived.
     image: /uploads/smith-meade.png
+    width: 112
   - companyName: Abode Outside
     altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
     image: /uploads/abode-outside.png
+    width: 112
   - altText: Logo of The Surf Hotel, a boutique hotel in adventurous Buena Vista,
       Colorado, ideal for romantic getaways, mountain weddings, or corporate
       events.
     companyName: The Surf Hotel
     image: /uploads/surf-hotel.png
+    width: 112
 faqs:
   - companyName: The Curtis Hotel
     altText: Logo of The Curtis Hotel, a boutique hotel located in Denver, Colorado.

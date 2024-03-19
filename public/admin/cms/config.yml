@@ -511,11 +511,19 @@ collections:
                       widget: 'text',
                   }
                 - {
-                      label: 'Image (webp 112x112)',
+                      label: 'Image',
                       name: 'image',
                       widget: 'image',
                       choose_url: true,
                       allow_multiple: false,
+                  }
+                - {
+                      label: 'Width',
+                      name: 'width',
+                      default: 112,
+                      widget: 'number',
+                      value_type: 'int',
+                      min: 1,
                   }
           - label: 'How To'
             name: 'howTo'
