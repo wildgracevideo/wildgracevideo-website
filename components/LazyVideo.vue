@@ -4,8 +4,8 @@
         class="group relative cursor-pointer"
         tabindex="0"
         role="button"
-        @keypress="videoPlaying = true"
-        @click="videoPlaying = true"
+        @keypress="videoClick"
+        @click="videoClick"
     >
         <span
             class="play-button absolute z-10 text-sm font-bold text-white opacity-100 group-hover:opacity-0"
@@ -53,6 +53,20 @@
     }>();
 
     const videoPlaying = ref(false);
+
+    const videoElement = ref(null);
+
+    const videoClick = async () => {
+        videoPlaying.value = true;
+        await nextTick();
+        if (videoElement.value.requestFullscreen) {
+            videoElement.value.requestFullscreen();
+        } else if (videoElement.value.webkitRequestFullscreen) {
+            videoElement.value.webkitRequestFullscreen();
+        } else if (videoElement.value.msRequestFullScreen) {
+            videoElement.value.msRequestFullScreen();
+        }
+    };
 </script>
 
 <style scoped>

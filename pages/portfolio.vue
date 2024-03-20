@@ -27,23 +27,4 @@
         videoInfo: VideoInfo;
         videoTitle: string;
     }[];
-
-    onMounted(() => {
-        // const observer = new IntersectionObserver((entries) => {
-        //     entries.forEach((entry) => {
-        //         if (entry.isIntersecting) {
-        //             entry.target.classList.remove('fade-out');
-        //             entry.target.classList.add('fade-in');
-        //         } else {
-        //             entry.target.classList.remove('fade-in');
-        //             entry.target.classList.add('fade-out');
-        //         }
-        //     });
-        // });
-        //
-        // const animatableElements = document.querySelectorAll(
-        //     '.portfolio-animatable-video'
-        // );
-        // animatableElements.forEach((element) => observer.observe(element));
-    });
 </script>
