@@ -86,10 +86,13 @@
     );
 
     const formatDate = (dateStr: string) => {
+        const gmtDate = new Date(dateStr);
+        const timezoneOffset = gmtDate.getTimezoneOffset();
+        const localDate = new Date(gmtDate.getTime() - timezoneOffset * 60000);
         return new Intl.DateTimeFormat(undefined, {
             timeStyle: 'short',
             dateStyle: 'medium',
-        }).format(Date.parse(dateStr));
+        }).format(localDate);
     };
 
     const loading = ref(false);

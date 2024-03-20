@@ -81,10 +81,13 @@
 
     const showPreview = ref(false);
 
+    const gmtDate = new Date(props.message.createdAt);
+    const timezoneOffset = gmtDate.getTimezoneOffset();
+    const localDate = new Date(gmtDate.getTime() - timezoneOffset * 60000);
     const formattedCreatedAt = new Intl.DateTimeFormat(undefined, {
         timeStyle: 'short',
         dateStyle: 'medium',
-    }).format(Date.parse(props.message.createdAt));
+    }).format(localDate);
 
     const markRead = async () => {
         if (!props.message.read) {
