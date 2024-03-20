@@ -12,6 +12,34 @@ local_backend: true
 
 publish_mode: editorial_workflow
 
+VideoInfo: &videoInfo
+    fields:
+        - label: 'Video'
+          name: 'video'
+          widget: 'file'
+          media_library:
+              allow_multiple: false
+              choose_url: true
+              config:
+                  multiple: false
+                  max_file_size: 4096000
+        - {
+              label: 'Thumbnail Image',
+              name: 'thumbnailImage',
+              widget: 'image',
+              choose_url: true,
+              allow_multiple: false,
+          }
+        - label: 'SEO Video Title (About 125 characters)'
+          name: seoTitle
+          widget: 'text'
+        - label: 'SEO Video Description (About 150-160 characters)'
+          name: seoDescription
+          widget: 'text'
+        - label: 'Publication Date (Change only if changing the video file)'
+          name: publicationDate
+          widget: 'datetime'
+
 collections:
     - name: 'product'
       label: 'Product'
@@ -162,46 +190,18 @@ collections:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - { label: 'Page Title', name: 'heading', widget: 'string' }
-          - {
-                label: 'Main Reel Youtube ID',
-                name: 'mainReelYoutubeId',
-                widget: 'string',
-            }
-          - {
-                label: 'Main Reel SEO Name',
-                name: 'mainReelName',
-                widget: 'string',
-            }
-          - {
-                label: 'Main Reel SEO Description (About 125 characters)',
-                name: 'mainReelAlt',
-                widget: 'string',
-            }
-          - label: 'Youtube Videos'
-            name: 'youtubeVideos'
+          - label: 'Videos'
+            name: 'videos'
             widget: 'list'
+            summary: '{{fields.title}}'
+            preview:
             fields:
-                - {
-                      label: 'Title',
-                      name: 'title',
-                      widget: 'markdown',
-                      modes: ['rich_text'],
-                      minimal: true,
-                  }
-                - {
-                      label: 'Description',
-                      name: 'description',
-                      widget: 'markdown',
-                      modes: ['rich_text'],
-                      minimal: true,
-                  }
-                - { label: 'Youtube ID', name: 'youtubeId', widget: 'string' }
-                - {
-                      label: 'SEO Description (About 125 characters)',
-                      name: 'alt',
-                      widget: 'text',
-                  }
-
+                - { label: 'Video Title', name: 'title', widget: 'string' }
+                - label: 'Video Info'
+                  name: 'videoInfo'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *videoInfo
     - name: 'service'
       label: 'Service'
       folder: 'content/service'
