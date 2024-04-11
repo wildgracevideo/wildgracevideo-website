@@ -5,22 +5,25 @@ import { asSitemapUrl, defineSitemapEventHandler } from '#imports';
 // eslint-disable-next-line import/no-unresolved
 import { serverQueryContent } from '#content/server';
 
+const runtimeConfig = useRuntimeConfig();
+
 function parseImageOrVideo(file: {
     file: string;
     seoDescription: string;
     seoTitle: string;
     thumbnailImage?: string;
     publicationDate?: string;
-}) {
+}, path: string) {
     let data;
     let isImage = true;
     if (file.file.endsWith('mp4')) {
+        const thumbnailLoc = getThumbnailLoc(file.thumbnailImage);
         data = {
             title: file.seoTitle,
-            thumbnail_loc: file.thumbnailImage,
+            thumbnail_loc: thumbnailLoc,
             description: file.seoDescription,
             content_loc: file.file,
-            player_loc: `/`,
+            player_loc: runtimeConfig.public.siteUrl.slice(0, -1) + path,
             requires_subscription: false,
             live: false,
             publication_date: file.publicationDate,
@@ -59,10 +62,10 @@ export default defineSitemapEventHandler(async (e) => {
                 const highlightVideos = c.videoHighlight.videos.map((it) => {
                     return {
                         title: it.seoTitle,
-                        thumbnail_loc: it.thumbnailImage,
+                        thumbnail_loc: getThumbnailLoc(it.thumbnailImage),
                         description: it.seoDescription,
                         content_loc: it.video,
-                        player_loc: `/`,
+                        player_loc: runtimeConfig.public.siteUrl,
                         requires_subscription: false,
                         live: false,
                         publication_date: it.publicationDate,
@@ -72,14 +75,14 @@ export default defineSitemapEventHandler(async (e) => {
                 const additionalVideos: unknown[] = [];
                 // @ts-expect-error No types for nuxt-content
                 c.testimonials.files.forEach((it) => {
-                    const imageOrVideoResult = parseImageOrVideo(it);
+                    const imageOrVideoResult = parseImageOrVideo(it, '/');
                     if (imageOrVideoResult.isImage) {
                         additionalImages.push(imageOrVideoResult.data);
                     } else {
                         additionalVideos.push(imageOrVideoResult.data);
                     }
                 });
-                const imageOrVideoResult = parseImageOrVideo(c.aboutMe.file);
+                const imageOrVideoResult = parseImageOrVideo(c.aboutMe.file, '/');
                 if (imageOrVideoResult.isImage) {
                     additionalImages.push(imageOrVideoResult.data);
                 } else {
@@ -92,11 +95,11 @@ export default defineSitemapEventHandler(async (e) => {
                     videos: [
                         {
                             title: c.reelVideo.seoTitle,
-                            thumbnail_loc: c.reelVideo.thumbnailImage,
+                            thumbnail_loc: getThumbnailLoc(c.reelVideo.thumbnailImage),
                             description: c.reelVideo.seoDescription,
                             content_loc:
                                 'https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4',
-                            player_loc: '/',
+                            player_loc: runtimeConfig.public.siteUrl,
                             duration: 83,
                             requires_subscription: false,
                             live: false,
@@ -110,3 +113,11 @@ export default defineSitemapEventHandler(async (e) => {
             }
         });
 });
+
+function getThumbnailLoc(thumbnailImage: string | undefined): string | undefined {
+    let thumbnailLoc =  thumbnailImage;
+    if (thumbnailLoc && !thumbnailLoc!.startsWith('http')) {
+        thumbnailLoc = runtimeConfig.public.siteUrl.slice(0, -1) + thumbnailImage!;
+    }
+    return thumbnailLoc;
+}
