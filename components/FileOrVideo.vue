@@ -1,7 +1,7 @@
 <template>
     <div :key="$.vnode.key || undefined">
         <AutoPlayVideo
-            v-if="file.endsWith('mp4')"
+            v-if="file.endsWith('mp4') || file.endsWith('webm')"
             :video="file"
             :description="seoDescription"
             :title="seoTitle"

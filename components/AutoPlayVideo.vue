@@ -1,7 +1,7 @@
 <template>
     <video
         ref="videoElement"
-        :class="`t{$attrs.class as string}`"
+        :class="`{$attrs.class as string}`"
         muted
         loop
         disablePictureInPicture
