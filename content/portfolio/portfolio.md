@@ -36,18 +36,37 @@ youtubeVideos:
     alt: A travel video created by Wild Grace Videography showcasing the Big Island
       of Hawaii.
 videos:
+  - videoInfo:
+      publicationDate: 2024-04-11T15:08:00.000Z
+      seoDescription: Explore our dynamic video portfolio, customized for Colorado's
+        boutique hotels, highlighting the Surf Hotel.
+      seoTitle: "Surf Hotel: Adventure Boutique Hotel in Colorado | Video Portfolio"
+      video: https://content.wildgracevideo.com/Website-Portfolio/Surf_Compressed/The+Surf+Hotel+Website+Video+V2.mp4
+      thumbnailImage: https://content.wildgracevideo.com/Website-Portfolio/Surf_Compressed/surfthumbnail.webp
+    title: Surf Hotel
+  - videoInfo:
+      publicationDate: 2024-04-11T15:05:00.000Z
+      video: https://content.wildgracevideo.com/Website-Portfolio/Kama_Compressed/Kama+Ski_Horizontal+V1.mp4
+      thumbnailImage: https://content.wildgracevideo.com/Website-Portfolio/Kama_Compressed/Kamathumbnail.webp
+      seoDescription: Explore our dynamic video portfolio, customized for Colorado's
+        outdoor product brands, highlighting Kama Surface.
+      seoTitle: "Kama Surface: Outdoor Product Brand in Colorado | Video Portfolio"
+    title: KĀMA Surface
+  - videoInfo:
+      publicationDate: 2024-04-11T15:05:00.000Z
+      video: https://content.wildgracevideo.com/Website-Portfolio/Curtis_Compressed/The+Curtis+Sales+Pitch+V4.mp4
+      thumbnailImage: https://content.wildgracevideo.com/Website-Portfolio/Curtis_Compressed/curtisthumbnail.webp
+      seoTitle: "The Curtis Hotel: Pop-Culture Hotel in Denver, CO | Video Portfolio"
+      seoDescription: Explore our dynamic video portfolio, customized for Denver's
+        boutique hotels, highlighting The Curtis Hotel.
+    title: The Curtis Hotel
   - title: Genesee Nutrition
     videoInfo:
       video: https://content.wildgracevideo.com/Website-Portfolio/Genesee_Compressed/Genesee+Flagship+Website+Video.mp4
-      thumbnailImage: /uploads/mountain-image-background.webp
-      seoTitle: TODO
-      seoDescription: TODO
-      publicationDate: 2024-03-20T02:57:07.686Z
-  - videoInfo:
-      publicationDate: 2024-03-20T02:57:10.026Z
-      video: https://content.wildgracevideo.com/Website-Portfolio/Curtis_Compressed/The+Curtis+Sales+Pitch+V4.mp4
-      thumbnailImage: /uploads/boutique-hotel-photo-min.png
-      seoTitle: TODO
-      seoDescription: TODO
-    title: Curtis Hotel
+      thumbnailImage: https://content.wildgracevideo.com/Website-Portfolio/Genesee_Compressed/Geneseethumbnail.webp
+      seoTitle: "Genesee Nutrition: Protein Bars for Outdoor Enthusiasts in Denver, CO
+        | Video Portfolio"
+      seoDescription: Explore our dynamic video portfolio, customized for Denver's
+        outdoor brands, highlighting Genesee Nutrition's protein bars.
+      publicationDate: 2024-04-11T15:04:00.000Z
 ---
