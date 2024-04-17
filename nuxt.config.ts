@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const SITE_URL = process.env.URL || 'https://wildgracevideo.com/';
+const SITE_URL = process.env.URL || 'https://www.wildgracevideo.com';
 const APP_ICON = SITE_URL + '/app-icon.png';
 const WEBSITE_ICON = 'logo1.webp';
 const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
@@ -85,6 +85,13 @@ const config = {
                 {
                     rel: 'preconnect',
                     href: 'https://www.google-analytics.com',
+                },
+            ],
+            script: [
+                {
+                    src: '/meta-pixel.js',
+                    type: 'text/javascript',
+                    defer: true,
                 },
             ],
         },

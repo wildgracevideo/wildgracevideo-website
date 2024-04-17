@@ -7,13 +7,16 @@ import { serverQueryContent } from '#content/server';
 
 const runtimeConfig = useRuntimeConfig();
 
-function parseImageOrVideo(file: {
-    file: string;
-    seoDescription: string;
-    seoTitle: string;
-    thumbnailImage?: string;
-    publicationDate?: string;
-}, path: string) {
+function parseImageOrVideo(
+    file: {
+        file: string;
+        seoDescription: string;
+        seoTitle: string;
+        thumbnailImage?: string;
+        publicationDate?: string;
+    },
+    path: string
+) {
     let data;
     let isImage = true;
     if (file.file.endsWith('mp4')) {
@@ -23,7 +26,7 @@ function parseImageOrVideo(file: {
             thumbnail_loc: thumbnailLoc,
             description: file.seoDescription,
             content_loc: file.file,
-            player_loc: runtimeConfig.public.siteUrl.slice(0, -1) + path,
+            player_loc: runtimeConfig.public.siteUrl + path,
             requires_subscription: false,
             live: false,
             publication_date: file.publicationDate,
@@ -82,7 +85,10 @@ export default defineSitemapEventHandler(async (e) => {
                         additionalVideos.push(imageOrVideoResult.data);
                     }
                 });
-                const imageOrVideoResult = parseImageOrVideo(c.aboutMe.file, '/');
+                const imageOrVideoResult = parseImageOrVideo(
+                    c.aboutMe.file,
+                    '/'
+                );
                 if (imageOrVideoResult.isImage) {
                     additionalImages.push(imageOrVideoResult.data);
                 } else {
@@ -95,7 +101,9 @@ export default defineSitemapEventHandler(async (e) => {
                     videos: [
                         {
                             title: c.reelVideo.seoTitle,
-                            thumbnail_loc: getThumbnailLoc(c.reelVideo.thumbnailImage),
+                            thumbnail_loc: getThumbnailLoc(
+                                c.reelVideo.thumbnailImage
+                            ),
                             description: c.reelVideo.seoDescription,
                             content_loc:
                                 'https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4',
@@ -114,10 +122,12 @@ export default defineSitemapEventHandler(async (e) => {
         });
 });
 
-function getThumbnailLoc(thumbnailImage: string | undefined): string | undefined {
-    let thumbnailLoc =  thumbnailImage;
+function getThumbnailLoc(
+    thumbnailImage: string | undefined
+): string | undefined {
+    let thumbnailLoc = thumbnailImage;
     if (thumbnailLoc && !thumbnailLoc!.startsWith('http')) {
-        thumbnailLoc = runtimeConfig.public.siteUrl.slice(0, -1) + thumbnailImage!;
+        thumbnailLoc = runtimeConfig.public.siteUrl + thumbnailImage!;
     }
     return thumbnailLoc;
 }
