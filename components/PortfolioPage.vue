@@ -13,16 +13,15 @@
     import LazyVideo from '~/components/LazyVideo.vue';
     import type { VideoInfo } from '~/lib/video';
 
-    const { data } = await useAsyncData('portfolio', () =>
-        queryContent('portfolio').find()
-    );
-    const portfolio = data!.value![0];
-    const pageTitle = portfolio.title!;
-    const description = portfolio.description!;
-    const heading = portfolio.heading!;
+    export interface Portfolio {
+        pageTitle: string;
+        description: string;
+        heading: string;
+        videos: {
+            videoInfo: VideoInfo;
+            videoTitle: string;
+        }[];
+    }
 
-    const videos = portfolio.videos! as {
-        videoInfo: VideoInfo;
-        videoTitle: string;
-    }[];
+    defineProps<Portfolio>();
 </script>

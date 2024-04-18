@@ -202,6 +202,39 @@ collections:
                   widget: 'object'
                   summary: '{{fields.seoTitle}}'
                   <<: *videoInfo
+
+    - name: 'custom-portfolio'
+      label: 'Custom Portfolios'
+      folder: 'content/custom-portfolio'
+      format: 'frontmatter'
+      identifier_field: 'path'
+      slug: '{{slug}}'
+      preview_path: 'portfolio/{{slug}}'
+      create: true
+      editor:
+          preview: false
+      fields:
+          - {
+                label: 'Path (DO NOT CHANGE ONCE CREATED, DO NOT REPEAT) (Should be short, all lowercase, and words separated with -)',
+                name: 'path',
+                widget: 'string',
+            }
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - { label: 'Page Title', name: 'heading', widget: 'string' }
+          - label: 'Videos'
+            name: 'videos'
+            widget: 'list'
+            summary: '{{fields.title}}'
+            preview:
+            fields:
+                - { label: 'Video Title', name: 'title', widget: 'string' }
+                - label: 'Video Info'
+                  name: 'videoInfo'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *videoInfo
+
     - name: 'service'
       label: 'Service'
       folder: 'content/service'
