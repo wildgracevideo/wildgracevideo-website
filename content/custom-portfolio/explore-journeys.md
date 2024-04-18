@@ -1,8 +1,8 @@
 ---
 path: explore-journeys
 title: Explore Journeys Portfolio Examples
-description: Antarpply Expeditions Portfolio Examples
-heading: Antarpply Expeditions Portfolio Examples
+description: Explore Journeys Portfolio Examples
+heading: Explore Journeys Portfolio Examples
 videos:
   - videoInfo:
       publicationDate: 2024-04-18T14:18:00.000Z
