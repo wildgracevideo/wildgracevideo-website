@@ -15,5 +15,10 @@
             .where({ path: route.params.slug })
             .findOne()
     );
-    const portfolio = data!.value! as Portfolio;
+    let portfolio = null;
+    if (!data || !data.value!) {
+        await navigateTo('/portfolio');
+    } else {
+        portfolio = data!.value! as Portfolio;
+    }
 </script>
