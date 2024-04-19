@@ -23,9 +23,9 @@ export default {
                     'rgb(var(--color-website-accent) / <alpha-value>)',
             },
             aspectRatio: {
-              auto: 'auto',
-              square: '1 / 1',
-              video: '16 / 9'
+                auto: 'auto',
+                square: '1 / 1',
+                video: '16 / 9',
             },
         },
         transitionProperty: {

@@ -1,38 +1,42 @@
 <template>
     <div>
-        <h1 class="ml-8 my-8 text-2xl">Media Library</h1>
-        <UTable :columns="columns" :rows="files" :loading="!files" class="min-h-96">
+        <h1 class="my-8 ml-8 text-2xl">Media Library</h1>
+        <h2 class="my-8 ml-8 text-lg">
+            <button
+                v-if="currentFolder.length > 0"
+                class="cursor-hover mr-2 text-website-primary underline"
+                @click="() => goUpDirectory()"
+            >
+                Back</button
+            >{{ currentFolder.join('/') || '/' }}
+        </h2>
+        <UTable
+            :columns="columns"
+            :rows="files || []"
+            :loading="loading"
+            class="min-h-96"
+        >
+            <template #lastModified-data="{ row }">
+                <span>
+                    {{ transformDateTime(row.lastModified) }}
+                </span>
+            </template>
+
             <template #name-data="{ row }">
-                <button 
-                    v-if="row.isFolder" 
-                    class="cursor-pointer text-website-accent hover:underline"
+                <button
+                    class="cursor-pointer text-website-primary underline"
                     @click="() => handleNameClick(row)"
                 >
-                    {{ row.name }}
+                    {{ row.name.replace(currentFolder.join('/'), '') }}
                 </button>
-            </template>
-            <template #icon-data="{ row }">
-                <UButton 
-                    v-if="row.isFolder"
-                    color="gray" 
-                    variant="ghost" 
-                    icon="i-folder-24-outline w-6 h-6"
-                    @click="() => copyToClipboard(row)" 
-                />
-                <UButton
-                    v-else
-                    color="gray"
-                    variant="ghost"
-                    class="i-document-24-outline"
-                />
             </template>
 
             <template #action-data="{ row }">
-                <UButton 
-                    color="gray" 
-                    variant="ghost" 
-                    icon="i-clipboard-24-outline w-6 h-6"
-                    @click="() => copyToClipboard(row)" 
+                <ClipboardIcon
+                    v-if="!row.isFolder"
+                    class="h-6 w-6 cursor-pointer"
+                    fill="gray"
+                    @click="() => copyToClipboard(row.name)"
                 />
             </template>
         </UTable>
@@ -40,79 +44,129 @@
 </template>
 
 <script lang="ts" setup>
-const files = ref<S3Objcet[]>([]);
-const columns = [
-    { key: 'icon' },
-    { key: 'name', label: 'Name' },
-    { key: 'type', label: 'Type' },
-    { key: 'lastModified', label: 'Last Modified' },
-    { key: 'size', label: 'Size' },
-    { key: 'action' },
-];
+    import { ClipboardIcon } from '@heroicons/vue/24/outline';
 
-definePageMeta({ middleware: 'auth', layout: 'admin' });
-useHead({
-    title: 'WGV Admin | Media',
-});
+    const columns = [
+        { key: 'name', label: 'Name' },
+        { key: 'lastModified', label: 'Last Modified' },
+        { key: 'size', label: 'Size' },
+        { key: 'action' },
+    ];
 
-const currentFolder = [];
+    definePageMeta({ middleware: 'auth', layout: 'admin' });
+    useHead({
+        title: 'WGV Admin | Media',
+    });
 
-const runtimeConfig = useRuntimeConfig();
+    const route = useRoute();
+    const queryFolder = route.query.folder;
+    let folder = [];
+    if (queryFolder && queryFolder !== '/') {
+        folder = queryFolder.split('/');
+    }
+    const currentFolder = ref(folder);
 
-const fetchFiles = async (prefix = '') => {
-    try {
-        if (prefix) {
-            const { data } = await useFetch(`/api/admin/media?prefix=${prefix}`);
-            files.value = data.value as S3Object[];
-        } else {
-            const { data } = await useFetch(`/api/admin/media`);
-            files.value = data.value as S3Object[];
+    const runtimeConfig = useRuntimeConfig();
+
+    const loading = ref(true);
+
+    const files = ref([]);
+
+    const { push } = useRouter();
+
+    const fetchFiles = async () => {
+        try {
+            files.value = [];
+            loading.value = true;
+            const prefix = currentFolder.value.join('/');
+            const data = await $fetch(
+                `/api/admin/media?prefix=${prefix || '/'}`
+            );
+
+            files.value = data.filter(
+                (it) => it.name !== currentFolder.value.join('/')
+            );
+        } catch (error) {
+            console.error('Error fetching files:', error);
         }
+        loading.value = false;
+    };
 
-    } catch (error) {
-        console.error('Error fetching files:', error);
+    function transformDateTime(dateString: string) {
+        try {
+            const localDate = new Date(dateString);
+            return new Intl.DateTimeFormat(undefined, {
+                timeStyle: 'short',
+                dateStyle: 'medium',
+            }).format(localDate);
+        } catch (e: unknown) {
+            return dateString;
+        }
     }
-};
 
-const handleNameClick = (row) => {
-    if (row.isFolder) {
-        handleFolderClick(row.name);
-    } else {
-        previewFile(row.name);
+    async function goUpDirectory() {
+        if (currentFolder.value.length > 0) {
+            currentFolder.value.pop();
+            push({
+                query: {
+                    folder: currentFolder.value.join('/'),
+                },
+            });
+
+            await fetchFiles();
+        }
     }
-};
 
-const handleFolderClick = (folderName) => {
-    currentFolder.push(folderName);
-    fetchFiles(folderName);
-};
+    const handleNameClick = (row) => {
+        if (row.isFolder) {
+            handleFolderClick(row.name);
+        } else {
+            previewFile(row.name);
+        }
+    };
 
-const previewFile = async (file) => {
-    try {
-        const content =
-            runtimeConfig.public.cloudfrontUrl +
-            '/' +
-            folderNames.join(',') +
-            encodeUri(file.name);
-        await navigateTo(content);
-    } catch (error) {
-        console.error('Error previewing file:', error);
+    const handleFolderClick = async (folderName: string) => {
+        const lastFolderName = folderName.replace(/\/$/g, '').split('/').pop();
+        currentFolder.value.push(lastFolderName);
+        push({
+            query: {
+                folder: currentFolder.value.join('/'),
+            },
+        });
+        await fetchFiles();
+    };
+
+    function getCloudFrontUrl(fileName: string) {
+        let content = runtimeConfig.public.cloudfrontUrl;
+        if (currentFolder.value.length > 0) {
+            content += '/' + currentFolder.value.join('/');
+        }
+        return content + '/' + encodeURIComponent(fileName);
     }
-};
 
-const copyToClipboard = async (file) => {
-    try {
-        const content =
-            runtimeConfig.public.cloudfrontUrl +
-            '/' +
-            folderNames.join(',') +
-            encodeUri(file.name);
-        navigator.clipboard.writeText(content);
-        console.log('File content copied to clipboard:', content);
-    } catch (error) {
-        console.error('Error copying file content to clipboard:', error);
-    }
-};
+    const previewFile = async (file: string) => {
+        try {
+            await navigateTo(getCloudFrontUrl(file), { external: true });
+        } catch (error) {
+            console.error('Error previewing file:', error);
+        }
+    };
 
-await fetchFiles();
+    const copyToClipboard = async (file: string) => {
+        try {
+            navigator.clipboard.writeText(getCloudFrontUrl(file));
+            console.log('File content copied to clipboard:', content);
+        } catch (error) {
+            console.error('Error copying file content to clipboard:', error);
+        }
+    };
+
+    onMounted(async () => {
+        try {
+            await fetchFiles();
+        } catch (e: unknown) {
+            console.error(e);
+        }
+        loading.value = false;
+    });
 </script>

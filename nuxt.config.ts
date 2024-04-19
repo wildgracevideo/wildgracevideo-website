@@ -59,7 +59,7 @@ const config = {
         },
     },
     colorMode: {
-        preference: 'light'
+        preference: 'light',
     },
     site: {
         url: SITE_URL,
@@ -108,11 +108,11 @@ const config = {
             cssnano:
                 process.env.NODE_ENV === 'production'
                     ? {
-                        preset: [
-                            'default',
-                            { discardComments: { removeAll: true } },
-                        ],
-                    }
+                          preset: [
+                              'default',
+                              { discardComments: { removeAll: true } },
+                          ],
+                      }
                     : false, // disable cssnano when not in production
         },
     },
