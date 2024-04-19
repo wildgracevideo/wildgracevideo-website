@@ -42,6 +42,7 @@ const config = {
         gitProviderScopes: process.env.GIT_PROVIDER_SCOPES || 'repo user',
         secureCookies: process.env.NODE_ENV === 'production',
         apiKey: process.env.API_KEY,
+        s3MediaBucket: 'wildgracevideo-content',
         public: {
             siteUrl: SITE_URL,
             websiteIcon: WEBSITE_ICON,
@@ -56,6 +57,9 @@ const config = {
                 hlsUri: '/wgv-reel-2024-hls/wgv-reel-2024.m3u8',
             },
         },
+    },
+    colorMode: {
+        preference: 'light'
     },
     site: {
         url: SITE_URL,
@@ -104,11 +108,11 @@ const config = {
             cssnano:
                 process.env.NODE_ENV === 'production'
                     ? {
-                          preset: [
-                              'default',
-                              { discardComments: { removeAll: true } },
-                          ],
-                      }
+                        preset: [
+                            'default',
+                            { discardComments: { removeAll: true } },
+                        ],
+                    }
                     : false, // disable cssnano when not in production
         },
     },
@@ -192,6 +196,7 @@ const config = {
     modules: [
         '@sidebase/nuxt-auth',
         '@nuxt/content',
+        '@nuxt/ui',
         [
             '@nuxtjs/google-fonts',
             {
