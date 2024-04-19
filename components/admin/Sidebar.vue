@@ -54,7 +54,11 @@
 </template>
 
 <script setup lang="ts">
-    import { CreditCardIcon, InboxIcon } from '@heroicons/vue/24/outline';
+    import {
+        CreditCardIcon,
+        FolderIcon,
+        InboxIcon,
+    } from '@heroicons/vue/24/outline';
 
     const props = defineProps<{
         modelValue: boolean;
@@ -82,6 +86,11 @@
             icon: CreditCardIcon,
             title: 'Purchases',
             to: '/admin/purchases',
+        },
+        {
+            icon: FolderIcon,
+            title: 'Media',
+            to: '/admin/media',
         },
     ];
 </script>
