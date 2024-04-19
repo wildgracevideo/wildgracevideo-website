@@ -1,7 +1,7 @@
 <template>
     <PortfolioPage
         v-if="portfolio"
-        :page-title="portfolio.pageTitle"
+        :page-title="portfolio.title"
         :description="portfolio.description"
         :heading="portfolio.heading"
         :videos="portfolio.videos"
