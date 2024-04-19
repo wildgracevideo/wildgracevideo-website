@@ -8,7 +8,9 @@ backend:
 media_folder: public/uploads
 public_folder: /uploads
 
-local_backend: true
+local_backend:
+    url: http://localhost:8081/api/v1
+    allowed_hosts: ['localhost', '127.0.0.1']
 
 publish_mode: editorial_workflow
 
