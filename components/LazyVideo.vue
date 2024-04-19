@@ -25,7 +25,7 @@
         playsinline
         controls
         autoplay
-        :title="video.seoTitle"
+        :title="title"
     >
         <SchemaOrgVideo
             :name="video.seoTitle"
@@ -45,7 +45,7 @@
 <script setup lang="ts">
     import type { VideoInfo } from '~/lib/video';
 
-    defineProps<{
+    const props = defineProps<{
         video: VideoInfo;
         videoTitle: string;
         videoClass?: string;
@@ -67,6 +67,18 @@
             videoElement.value.msRequestFullScreen();
         }
     };
+
+    const title = ref(props.video.seoTitle);
+
+    onMounted(() => {
+        window.addEventListener('fullscreenchange', (event: Event | null) => {
+            if (event) {
+                title.value = '';
+            } else {
+                title.value = props.video.seoTitle;
+            }
+        });
+    });
 </script>
 
 <style scoped>
