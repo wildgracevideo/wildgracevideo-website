@@ -1,76 +1,27 @@
 <template>
-    <p class="mb-4 ml-8 mt-8 text-2xl">Purchases</p>
-    <Spinner
-        v-if="loading"
-        :additional-classes="['relative', 'z-20', 'top-60', 'left-1/2']"
-        height-class="h-16"
-        width-class="w-16"
-    />
-    <div
-        v-if="paginationResponse?.results"
-        class="h- mx-8 grid grid-cols-5 rounded-xl border-2 border-gray-400 text-center"
-        :class="{ 'opacity-30': loading, '-mt-16': loading }"
+    <p class="my-8 mb-4 ml-8 text-2xl">Purchases</p>
+
+    <UTable
+        :rows="paginationResponse?.results || []"
+        :loading="pending || loading"
+        :columns="columns"
+        class="mx-4"
     >
-        <p class="border-b-2 border-gray-800 font-semibold">Email</p>
-        <p class="border-b-2 border-gray-800 font-semibold">Name</p>
-        <p class="border-b-2 border-gray-800 font-semibold">Product</p>
-        <p class="border-b-2 border-gray-800 font-semibold">Message Status</p>
-        <p class="border-b-2 border-gray-800 font-semibold">Purchased At</p>
-        <template
-            v-for="[index, purchase] in paginationResponse?.results?.entries()"
-            :key="purchase.id"
-        >
-            <p
-                class="break-words border-gray-400 px-2"
-                :class="{
-                    'border-b-2':
-                        index !== paginationResponse!.results.length - 1,
-                }"
-            >
-                {{ purchase.email }}
-            </p>
-            <p
-                class="break-words border-gray-400 px-2"
-                :class="{
-                    'border-b-2':
-                        index !== paginationResponse!.results.length - 1,
-                }"
-            >
-                {{ purchase.firstName }} {{ purchase.lastName }}
-            </p>
-            <p
-                class="break-words border-gray-400 px-2"
-                :class="{
-                    'border-b-2':
-                        index !== paginationResponse!.results.length - 1,
-                }"
-            >
-                {{ purchase.product }}
-            </p>
-            <p
-                class="break-words border-gray-400 px-2"
-                :class="{
-                    'border-b-2':
-                        index !== paginationResponse!.results.length - 1,
-                }"
-            >
-                {{ purchase.sendGridMessageStatus }}
-            </p>
-            <p
-                class="break-words border-gray-400 px-2"
-                :class="{
-                    'border-b-2':
-                        index !== paginationResponse!.results.length - 1,
-                }"
-            >
-                {{ formatDate(purchase.createdAt) }}
-            </p>
+        <template #createdAt-data="{ row }">
+            <span>
+                {{ formatDate(row.createdAt) }}
+            </span>
         </template>
+    </UTable>
+    <div
+        class="flex justify-end border-t border-gray-200 px-3 py-3.5 dark:border-gray-700"
+    >
+        <UPagination
+            v-model="page"
+            :page-count="limit"
+            :total="paginationResponse?.totalResults ?? 0"
+        />
     </div>
-    <AdminPaginatedTableFooter
-        :result="paginationResponse!"
-        :page-select-handler="pageSelectHandler"
-    />
 </template>
 
 <script setup lang="ts">
@@ -79,10 +30,21 @@
         title: 'WGV Admin | Purchases',
     });
 
-    const limit = 10;
+    const columns = [
+        { key: 'email', label: 'Email' },
+        { key: 'firstName', label: 'First Name' },
+        { key: 'lastName', label: 'Last Name' },
+        { key: 'product', label: 'Product' },
+        { key: 'sendGridMessageStatus', label: 'Message Status' },
+        { key: 'createdAt', label: 'Created At' },
+    ];
 
-    const { data: paginationResponse } = await useFetch(
-        `/api/admin/purchases?offset=0&limit=${limit}`
+    const limit = ref(10);
+
+    const { data: paginationResponse, pending } = await useLazyAsyncData(
+        'purchases',
+        () => $fetch(`/api/admin/purchases?offset=0&limit=${limit.value}`),
+        { server: false }
     );
 
     const formatDate = (dateStr: string) => {
@@ -97,10 +59,20 @@
 
     const loading = ref(false);
 
+    const page = ref(1);
+
+    watch(page, async (newValue) => {
+        loading.value = true;
+        await pageSelectHandler(newValue - 1);
+        loading.value = false;
+    });
+
     const pageSelectHandler = async (pageIndex: number) => {
         loading.value = true;
         const { data: paginationUpdateResponse } = await useFetch(
-            `/api/admin/purchases?offset=${pageIndex * limit}&limit=${limit}`
+            `/api/admin/purchases?offset=${pageIndex * limit.value}&limit=${
+                limit.value
+            }`
         );
         loading.value = false;
         paginationResponse.value = paginationUpdateResponse.value;
