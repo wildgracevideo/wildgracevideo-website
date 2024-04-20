@@ -11,7 +11,7 @@ const s3Client = new S3Client({
 
 export interface S3Object {
     name: string;
-    lastModified: Date;
+    lastModified: string;
     size: string;
     isFolder: boolean;
 }
@@ -19,9 +19,15 @@ export interface S3Object {
 export default defineEventHandler(async (event): Promise<S3Object[]> => {
     const requestQueryParams = getQuery(event);
     const prefix = requestQueryParams.prefix?.toString() ?? '';
-    const params: { Bucket: string; Prefix: string; Delimiter?: string } = {
+    const params: {
+        Bucket: string;
+        Prefix: string;
+        Delimiter?: string;
+        MaxSize?: number;
+    } = {
         Bucket: runtimeConfig.s3MediaBucket,
         Prefix: prefix,
+        MaxSize: 1000,
     };
     if (!prefix || prefix === '/') {
         params.Prefix = '';
@@ -41,24 +47,51 @@ export default defineEventHandler(async (event): Promise<S3Object[]> => {
                     };
                 }
             ) as unknown) || []) as S3Object[];
-            let responseContents = response.Contents.map((item) => ({
-                name: item.Key!,
-                lastModified: item.LastModified || '-',
-                size: item.Size?.toString() || '-',
-                isFolder: item.Key!.endsWith('/'),
-            })) as S3Object[];
-            responseContents = responseContents.filter((item) => {
-                const elements = item.name.replace(prefix, '').split('/');
+            const originalResponseContents = response.Contents.map((item) => {
+                const isFolder = item.Key!.endsWith('/');
+                return {
+                    name: item.Key!,
+                    lastModified: isFolder ? '-' : item.LastModified || '-',
+                    size: isFolder ? '-' : item.Size?.toString() || '-',
+                    isFolder,
+                };
+            }) as S3Object[];
+            const responseContents = originalResponseContents.filter((item) => {
+                const elements = item.name
+                    .trim()
+                    .replace(prefix.replace(/\/$/, ''), '')
+                    .split('/');
                 return (
-                    item.name !== prefix + '/' &&
-                    (elements.length <= 2 ||
-                        (elements.length === 3 &&
-                            elements[elements.length - 1] === ''))
+                    item.name !== prefix &&
+                    (elements.length <= 1 ||
+                        (elements.length === 2 &&
+                            (item.name.trim().endsWith('/') ||
+                                elements[0] === '')))
                 );
             });
-            responseContents.forEach(
-                (it) => (it.name = it.name.replace(prefix + '/', ''))
-            );
+            for (const originalContent of originalResponseContents) {
+                const elements = originalContent.name
+                    .trim()
+                    .replace(prefix, '')
+                    .split('/');
+                if (elements.length > 1) {
+                    const folderName = elements[0] + '/';
+                    let hasFolder = false;
+                    for (const item of responseContents) {
+                        if (folderName === item.name) {
+                            hasFolder = true;
+                        }
+                    }
+                    if (!hasFolder) {
+                        responseContents.push({
+                            name: folderName,
+                            lastModified: '-',
+                            size: '-',
+                            isFolder: true,
+                        });
+                    }
+                }
+            }
             const responseFolders = responseContents.filter(
                 (item) => item.isFolder
             );
@@ -66,12 +99,19 @@ export default defineEventHandler(async (event): Promise<S3Object[]> => {
                 (item) => !item.isFolder
             );
 
-            // Sort folders and files by name
             folders.sort((a, b) => a.name.localeCompare(b.name));
             responseFolders.sort((a, b) => a.name.localeCompare(b.name));
             responseFiles.sort((a, b) => a.name.localeCompare(b.name));
 
-            return folders.concat(responseFolders.concat(responseFiles));
+            const finalResponse = folders.concat(
+                responseFolders.concat(responseFiles)
+            );
+            for (const finalResponseElement of finalResponse) {
+                finalResponseElement.name = finalResponseElement.name
+                    .replace(prefix, '')
+                    .replace(/^\//, '');
+            }
+            return finalResponse;
         }
         return [];
     } catch (error) {

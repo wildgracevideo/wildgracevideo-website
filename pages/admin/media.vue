@@ -27,7 +27,7 @@
                     class="cursor-pointer text-website-primary underline"
                     @click="() => handleNameClick(row)"
                 >
-                    {{ row.name.replace(currentFolder.join('/'), '') }}
+                    {{ row.name }}
                 </button>
             </template>
 
@@ -78,7 +78,7 @@
         try {
             files.value = [];
             loading.value = true;
-            const prefix = currentFolder.value.join('/');
+            const prefix = currentFolder.value.join('/') + '/';
             const data = await $fetch(
                 `/api/admin/media?prefix=${prefix || '/'}`
             );
@@ -126,7 +126,7 @@
     };
 
     const handleFolderClick = async (folderName: string) => {
-        const lastFolderName = folderName.replace(/\/$/g, '').split('/').pop();
+        const lastFolderName = folderName.replace(/\/$/, '').split('/').pop();
         currentFolder.value.push(lastFolderName);
         push({
             query: {
@@ -138,6 +138,7 @@
 
     function getCloudFrontUrl(fileName: string) {
         let content = runtimeConfig.public.cloudfrontUrl;
+        console.log(currentFolder.value);
         if (currentFolder.value.length > 0) {
             content += '/' + currentFolder.value.join('/');
         }
