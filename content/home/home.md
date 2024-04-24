@@ -83,10 +83,9 @@ thumbnailImage: /uploads/logo1.webp
 aboutMeAltText: TODO
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
 title: Denver Video Production Company | Wild Grace Video
-description: Wild Grace Video Productions is a top Denver-based video production
-  company specializing in hotel video production, outdoor product videos and
-  adventure company videos. We're here to help you bring your brand to life and
-  help you better connect with your audience.
+description: "Wild Grace Video is a top Denver-based video production company
+  specializing in hotel video production, outdoor product videos and adventure
+  tour videos. "
 testimonialQuotes:
   - quote: Carly was so great to work with! She exceeded my expectations with
       bringing my vision to life and delivering an epic video for our brand. She
