@@ -1,6 +1,6 @@
 ---
-title: Wild Grace Videography | Links
-description: TODO
+title: Denver Video Production Company | Wild Grace Video Links
+description: Denver Video Production Company | Wild Grace Video
 links:
   - name: MY WORK
     destination: https://www.wildgracevideo.com/portfolio
