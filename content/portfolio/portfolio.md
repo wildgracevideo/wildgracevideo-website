@@ -1,5 +1,5 @@
 ---
-title: Wild Grace Videography | Portfolio
+title: Denver Video Production Company | Wild Grace Video Portfolio
 description: "Wild Grace Video is a top Denver-based video production company
   specializing in hotel video production, outdoor product videos and adventure
   tour videos. "
