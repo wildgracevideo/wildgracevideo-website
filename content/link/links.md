@@ -1,6 +1,8 @@
 ---
-title: Wild Grace Videography | Links
-description: TODO
+title: Denver Video Production Company | Wild Grace Video Links
+description: "Wild Grace Video is a top Denver-based video production company
+  specializing in hotel video production, outdoor product videos and adventure
+  tour videos. "
 links:
   - name: MY WORK
     destination: https://www.wildgracevideo.com/portfolio
