@@ -1,8 +1,8 @@
 ---
 title: Wild Grace Videography | Portfolio
-description: View the portfolio for Wild Grace Videography, a Denver,
-  Colorado-based video production company, that produces creative and memorable
-  video content to make your business stand out.
+description: "Wild Grace Video is a top Denver-based video production company
+  specializing in hotel video production, outdoor product videos and adventure
+  tour videos. "
 heading: Portfolio
 mainReelYoutubeId: yWjmuJ_6mkA
 mainReelName: Video Production Portfolio
