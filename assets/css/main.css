@@ -101,6 +101,11 @@ html,
     unicode-range: U+0054, U+0068, U+0065;
 }
 
+/* nuxt-ui is setting the ::selection pseudo element to be the primary color this resets it back to the system color */
+::selection {
+    background-color: Highlight !important;
+}
+
 /* TODO: Why doesn't this work in native tailwind? */
 .stroke-red {
     stroke: red;
