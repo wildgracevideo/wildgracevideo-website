@@ -1,6 +1,6 @@
 <template>
     <header
-        class="hidden min-h-dvh w-60 bg-website-primary text-website-off-white lg:block"
+        class="hidden min-h-dvh w-60 bg-website-accent text-website- lg:block"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
@@ -23,7 +23,7 @@
         </NuxtLink>
     </header>
     <header
-        class="flex h-16 w-full justify-between bg-website-primary lg:hidden"
+        class="flex h-16 w-full justify-between bg-website-accent text-website-primary lg:hidden"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
@@ -39,7 +39,7 @@
             <HeaderMobileMenuToggle v-model="openMenu" />
         </div>
     </header>
-    <section v-if="openMenu" class="header-full-height bg-website-primary">
+    <section v-if="openMenu" class="header-full-height bg-website-accent text-website-primary">
         <NuxtLink
             v-for="element in elements"
             :key="element.title"
