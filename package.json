@@ -69,7 +69,7 @@
         "@types/node": "20.10.5",
         "api": "6.1.1",
         "aws-sdk": "2.1459.0",
-        "drizzle-orm": "0.30.2",
+        "drizzle-orm": "0.30.8",
         "markdown-it": "14.0.0",
         "marked": "11.1.0",
         "maska": "2.1.10",
@@ -79,6 +79,6 @@
     },
     "overrides": {
         "next-auth": "4.21.1",
-        "react": "18.2.0"
+        "react": "18.3.1"
     }
 }
