@@ -1,6 +1,6 @@
 <template>
     <header
-        class="hidden min-h-dvh w-60 bg-website-accent text-website- lg:block"
+        class="text-website- hidden min-h-dvh w-60 bg-website-accent lg:block"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
@@ -39,7 +39,10 @@
             <HeaderMobileMenuToggle v-model="openMenu" />
         </div>
     </header>
-    <section v-if="openMenu" class="header-full-height bg-website-accent text-website-primary">
+    <section
+        v-if="openMenu"
+        class="header-full-height bg-website-accent text-website-primary"
+    >
         <NuxtLink
             v-for="element in elements"
             :key="element.title"
@@ -55,6 +58,7 @@
 
 <script setup lang="ts">
     import {
+        BeakerIcon,
         CreditCardIcon,
         FolderIcon,
         InboxIcon,
@@ -91,6 +95,11 @@
             icon: FolderIcon,
             title: 'Media',
             to: '/admin/media',
+        },
+        {
+            icon: BeakerIcon,
+            title: 'CMS',
+            to: '/admin/cms',
         },
     ];
 </script>

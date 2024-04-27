@@ -182,9 +182,9 @@
                     messageId: selectedMessage.value.id,
                 },
             });
-            messages.value!.filter(
-                (it) => it.id === selectedMessage.value.id
-            ).forEach((it) => (it.messageReply = messageReply));
+            messages
+                .value!.filter((it) => it.id === selectedMessage.value.id)
+                .forEach((it) => (it.messageReply = messageReply));
             toast.add({
                 title: 'Successfully sent reply.',
                 color: 'green',
