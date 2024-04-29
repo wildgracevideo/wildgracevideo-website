@@ -9,7 +9,9 @@
     <Meta property="og:type" content="website" />
     <Meta name="twitter:domain" :content="`${siteUrl.substring(8)}`" />
     <Meta property="og:image" :content="iconLocation" />
-    <Meta property="og:image:type" :content="image / webp" />
+    <Meta property="og:image:type" content="image/webp" />
+    <Meta property="og:image:width" content="1200" />
+    <Meta property="og:image:height" content="630" />
     <Meta property="twitter:image" :content="iconLocation" />
     <Link rel="canonical" :href="canonicalUrl" />
 </template>
