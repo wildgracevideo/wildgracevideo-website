@@ -1,7 +1,7 @@
 <template>
     <Html lang="en">
         <SchemaOrgOrganization
-    name="Wild Grace Videography" logo="/logo2.png" :same-as="[
+            name="Wild Grace Videography" :logo="runtimeConfig.public.websiteIcon" :same-as="[
             'https://www.instagram.com/wildgracevideo/',
             'https://www.facebook.com/wildgracevideo/',
             'https://www.linkedin.com/company/wild-grace-videography/about/',

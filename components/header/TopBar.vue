@@ -20,7 +20,7 @@
                     class="text-0 mb-8 ml-8 mr-10 mt-3"
                     width="138"
                     height="90"
-                    src="/logo1.webp"
+                    :src="runtimeConfig.public.websiteIcon"
                     :alt="imageAlt"
                 />
             </NuxtLink>
@@ -61,6 +61,8 @@
     import HeaderItem from '~/components/header/HeaderItem.vue';
 
     const ctaText = 'Contact';
+
+    const runtimeConfig = useRuntimeConfig();
 
     const kebabToCamelCase = (str: string) => {
         let outputStr = '';

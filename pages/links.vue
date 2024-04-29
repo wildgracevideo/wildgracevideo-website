@@ -3,7 +3,7 @@
     <SchemaOrgWebPage :name="linksData!.title" />
     <NuxtLink to="/">
         <img
-            src="/logo1.webp"
+            :src="runtimeConfig.public.websiteIcon"
             alt="Wild Grace Videography company logo."
             class="mx-auto mb-12 mt-8 cursor-pointer"
             width="138"
@@ -27,6 +27,8 @@
         queryContent('link').find()
     );
     const linksData = data!.value![0]!;
+
+    const runtimeConfig = useRuntimeConfig();
 
     definePageMeta({
         layout: 'plain',

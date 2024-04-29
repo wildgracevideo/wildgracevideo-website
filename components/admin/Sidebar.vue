@@ -6,9 +6,9 @@
         <NuxtLink to="/admin">
             <img
                 class="text-0 mb-8 ml-4 mr-10 mt-4"
-                width="69"
-                height="45"
-                src="/logo1.webp"
+                width="100"
+                height="50"
+                :src="runtimeConfig.public.websiteIcon"
                 :alt="imageAlt"
             />
         </NuxtLink>
@@ -29,9 +29,9 @@
         <NuxtLink to="/admin">
             <img
                 class="text-0 my-2 mb-8 ml-4 mr-10"
-                width="69"
-                height="45"
-                src="/logo1.webp"
+                width="100"
+                height="50"
+                :src="runtimeConfig.public.websiteIcon"
                 :alt="imageAlt"
             />
         </NuxtLink>
@@ -63,6 +63,8 @@
         FolderIcon,
         InboxIcon,
     } from '@heroicons/vue/24/outline';
+
+    const runtimeConfig = useRuntimeConfig();
 
     const props = defineProps<{
         modelValue: boolean;

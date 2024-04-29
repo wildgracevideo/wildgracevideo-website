@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const SITE_URL = process.env.URL || 'https://www.wildgracevideo.com';
-const APP_ICON = SITE_URL + '/app-icon.png';
-const WEBSITE_ICON = 'logo1.webp';
+const CLOUDFRONT_URL = 'https://content.wildgracevideo.com';
+const APP_ICON = CLOUDFRONT_URL + '/Website-Main/app-icon.png';
+const WEBSITE_ICON = CLOUDFRONT_URL + '/Website-Main/WildGraceVideo-logo.webp';
 const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
 
 process.env['NEXTAUTH_URL'] = process.env.DEPLOY_PRIME_URL;
@@ -49,7 +50,7 @@ const config = {
             gaMeasurementId:
                 process.env.NODE_ENV === 'production' ? GA_MEASUREMENT_ID : '',
             recaptchaSiteKey: '6Ld2tkcpAAAAAK052jkIsYcC5L12ih2pumxlA3e8',
-            cloudfrontUrl: 'https://content.wildgracevideo.com',
+            cloudfrontUrl: CLOUDFRONT_URL,
             reelVideo: {
                 mp4Uri: '/wgv-reel-2024-h264.mp4',
                 mpegDashFolder: 'wgv-reel-2024-mpeg-dash',
@@ -76,7 +77,11 @@ const config = {
             ],
             link: [
                 { rel: 'canonical', href: SITE_URL },
-                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+                {
+                    rel: 'icon',
+                    type: 'image/x-icon',
+                    href: CLOUDFRONT_URL + '/Website-Main/favicon.ico',
+                },
                 { rel: 'apple-touch-icon', href: APP_ICON },
                 {
                     rel: 'preconnect',
