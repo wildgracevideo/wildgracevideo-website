@@ -31,7 +31,7 @@
     }>();
     const iconName = props.icon || runtimeConfig.public.websiteIcon;
     let iconLocation = runtimeConfig.public.siteUrl;
-    if (!iconName.startsWith('/')) {
+    if (!iconName.startsWith('/') && !iconName.startsWith('https')) {
         iconLocation += '/';
     }
     iconLocation += iconName;
