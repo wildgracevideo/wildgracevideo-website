@@ -31,10 +31,14 @@
     }>();
     const iconName = props.icon || runtimeConfig.public.websiteIcon;
     let iconLocation = runtimeConfig.public.siteUrl;
-    if (!iconName.startsWith('/') && !iconName.startsWith('https')) {
-        iconLocation += '/';
+    if (!iconName.startsWith('https')) {
+        if (!iconName.startsWith('/')) {
+            iconLocation += '/';
+        }
+        iconLocation += iconName;
+    } else {
+        iconLocation = iconName;
     }
-    iconLocation += iconName;
     useHead({
         title: props.title,
     });
