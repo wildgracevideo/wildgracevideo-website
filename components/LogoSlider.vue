@@ -11,28 +11,31 @@
                 '--total-icon-width-no-unit': `${totalWidth}`,
             }"
         >
-            <img
-                v-for="logo in logos"
-                :key="`initial-logo-${logo.companyName}`"
-                :src="logo.image"
-                :alt="logo.altText"
-                loading="lazy"
-                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full md:mr-40"
-                :style="{
-                    '--icon-width': `${logo.width}px`,
-                }"
-            />
-            <img
-                v-for="logo in logos"
-                :key="`second-logo-${logo.companyName}`"
-                :src="logo.image"
-                :alt="logo.altText"
-                loading="lazy"
-                class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full md:mr-40"
-                :style="{
-                    '--icon-width': `${logo.width}px`,
-                }"
-            />
+            <template
+                v-for="(logo, index) in [...logos, ...logos]"
+                :key="`${index % logos.length}-logo-${logo.companyName}`"
+            >
+                <object
+                    v-if="logo.image.endsWith('.svg')"
+                    :data="logo.image"
+                    type="image/svg+xml"
+                    :aria-label="logo.altText"
+                    class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full md:mr-40"
+                    :style="{
+                        '--icon-width': `${logo.width}px`,
+                    }"
+                ></object>
+                <img
+                    v-else
+                    :src="logo.image"
+                    :alt="logo.altText"
+                    loading="lazy"
+                    class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full md:mr-40"
+                    :style="{
+                        '--icon-width': `${logo.width}px`,
+                    }"
+                />
+            </template>
         </div>
     </div>
 </template>
@@ -99,7 +102,8 @@
             slide infinite linear;
     }
 
-    .logos img {
+    .logos img,
+    .logos object {
         width: var(--icon-width);
     }
 

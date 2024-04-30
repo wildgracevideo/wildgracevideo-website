@@ -227,7 +227,7 @@ trustedBrandLogos:
     width: 300
   - companyName: Abode Outside
     altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/abode-outside.webp
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/abode-outside.svg
     width: 200
   - altText: Logo of The Surf Hotel, a boutique hotel in adventurous Buena Vista,
       Colorado, ideal for romantic getaways, mountain weddings, or corporate
@@ -235,30 +235,6 @@ trustedBrandLogos:
     companyName: The Surf Hotel
     image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/surf-hotel.webp
     width: 200
-faqs:
-  - companyName: The Curtis Hotel
-    altText: Logo of The Curtis Hotel, a boutique hotel located in Denver, Colorado.
-    image: /uploads/curtis-hotel.png
-  - companyName: Genesee Nutrition
-    altText: Logo of Genesee Nutrition, a Colorado based protein bar company for
-      adventure loving people.
-    image: /uploads/genesee.png
-  - companyName: Studio 10
-    altText: Logo of Studio 10, a Denver Colorado based full-service interior design
-      studio.
-    image: /uploads/studio10.png
-  - companyName: Smith & Meade
-    altText: Logo of Smith & Meade a Denver-based developer of homes that are well
-      designed, and well lived.
-    image: /uploads/smith-meade.png
-  - companyName: Abode Outside
-    altText: Logo of Abode Outside, an online outdoor clothing store based in Minnesota.
-    image: /uploads/abode-outside.png
-  - companyName: Surf Hotel
-    altText: Logo of The Surf Hotel, a boutique hotel in adventurous Buena Vista,
-      CO, ideal for family vacations, romantic getaways, mountain weddings, or
-      corporate events.
-    image: /uploads/surf-hotel.png
 videoTitle: Video reel showcasing the work of Wild Grace Videography.
 pageTagline: Wild Grace Videography is a Denver-based video production company
   specializing in creating video and photo content for outdoor, travel, and
