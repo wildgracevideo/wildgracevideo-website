@@ -1,7 +1,7 @@
 <template>
     <video
         ref="videoElement"
-        :class="`{$attrs.class as string}`"
+        :class="`${$attrs.class as string}`"
         muted
         loop
         disablePictureInPicture
@@ -17,10 +17,33 @@
             :thumbnail="{ url: thumbnailImage, contentUrl: thumbnailImage }"
         />
     </video>
+    <button
+        v-if="withSoundControl"
+        class="relative bottom-12 z-10 float-right ml-auto mr-4 h-8 w-8 cursor-pointer text-white md:h-10 md:w-10"
+        @click="toggleMute"
+    >
+        <span class="sr-only">{{
+            muted ? 'Unmute Video Audio' : 'Mute Video Audio'
+        }}</span>
+        <SpeakerXMarkIcon v-if="muted" />
+        <SpeakerWaveIcon v-else />
+    </button>
 </template>
 
 <script setup lang="ts">
+    import {
+        SpeakerWaveIcon,
+        SpeakerXMarkIcon,
+    } from '@heroicons/vue/24/outline';
+
     const videoElement = ref<HTMLVideoElement>();
+
+    const muted = ref(true);
+
+    function toggleMute() {
+        muted.value = !muted.value;
+        videoElement.value.muted = muted.value;
+    }
 
     onMounted(() => {
         function handleIntersection(entries: IntersectionObserverEntry[]) {
@@ -49,5 +72,6 @@
         thumbnailImage: string | undefined;
         video: string;
         publicationDate: string;
+        withSoundControl?: boolean;
     }>();
 </script>

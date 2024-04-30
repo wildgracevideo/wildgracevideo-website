@@ -167,15 +167,9 @@ const config = {
             },
         },
         '/who-we-are': {
-            sitemap: {
-                images: [
-                    {
-                        loc: '/Carly1.webp',
-                        title: 'Carly Kreiger photo',
-                        caption:
-                            'Photo of Carly Kreiger, the founder of Wild Grace Videography, a Denver, Colorado-based video production company.',
-                    },
-                ],
+            redirect: {
+                to: '/behind-the-scenes',
+                statusCode: 301,
             },
         },
     },
@@ -212,6 +206,7 @@ const config = {
                     },
                     'Playfair Display': [400, 700],
                     'Cormorant Garamond': [400],
+                    'Rock Salt': [400],
                 },
                 inject: true,
                 base64: false,

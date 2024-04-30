@@ -1,5 +1,5 @@
 <template>
-    <div :key="$.vnode.key || undefined">
+    <div :key="$.vnode.key || undefined" :class="parentClass">
         <AutoPlayVideo
             v-if="file.endsWith('mp4') || file.endsWith('webm')"
             :video="file"
@@ -10,6 +10,7 @@
             :class="`pointer-events-none cursor-default ${
                 $attrs.class as string
             }`"
+            :with-sound-control="withSoundControl"
         />
         <template v-else>
             <img
@@ -35,6 +36,12 @@
         thumbnailImage?: string;
         publicationDate: string;
         isLazy?: boolean;
+        withSoundControl?: boolean;
+        parentClass?: string;
     }
     defineProps<FileConfig>();
+
+    defineOptions({
+        inheritAttrs: false,
+    });
 </script>

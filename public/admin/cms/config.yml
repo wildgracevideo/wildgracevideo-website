@@ -355,6 +355,188 @@ collections:
                 minimal: true,
             }
 
+    - name: 'about'
+      label: 'About'
+      folder: 'content/about'
+      format: 'frontmatter'
+      create: true
+      delete: false
+      identifier_field: 'title'
+      preview_path: '/behind-the-scenes'
+      slug: 'about'
+      editor:
+          preview: false
+      fields:
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - {
+                label: 'Page Title',
+                name: 'pageTitle',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: true,
+            }
+          - label: 'Banner Video'
+            name: 'bannerVideo'
+            widget: 'object'
+            summary: '{{fields.seoTitle}}'
+            <<: *videoInfo
+          - label: 'About Me'
+            name: 'aboutMe'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            required: true
+            fields:
+                - {
+                      label: 'Title',
+                      name: 'title',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - {
+                      label: 'Description',
+                      name: 'description',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: false,
+                  }
+                - {
+                      label: 'More Info Title',
+                      name: 'moreInfoTitle',
+                      widget: 'string',
+                  }
+
+                - {
+                      label: 'More Info',
+                      name: 'moreInfo',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: false,
+                  }
+                - label: 'About Me Image or Video'
+                  widget: 'object'
+                  name: 'file'
+                  summary: '{{fields.seoTitle}}'
+                  fields:
+                      - label: 'About Me File (aspect-ratio 1/1.25)'
+                        choose_url: true
+                        allow_multiple: false
+                        name: 'file'
+                        widget: 'file'
+                        media_library:
+                            allow_multiple: false
+                            choose_url: true
+                            config:
+                                multiple: false
+                                max_file_size: 4096000
+                      - {
+                            label: 'About Me Image SEO Title',
+                            name: 'seoTitle',
+                            widget: 'string',
+                        }
+                      - {
+                            label: 'About Me Image SEO Description (About 125 characters)',
+                            name: 'seoDescription',
+                            widget: 'text',
+                        }
+                      - label: 'Thumbnail Image (Only if the file is an mp4 video)'
+                        widget: 'image'
+                        name: 'thumbnailImage'
+                        choose_url: true
+                        allow_multiple: false
+                        required: false
+                      - label: 'Publication Date (Change only if changing the file)'
+                        name: publicationDate
+                        widget: 'datetime'
+          - label: 'What We Do'
+            name: 'whatWeDo'
+            widget: 'list'
+            min: 2
+            max: 6
+            summary: '{{fields.text}}'
+            fields:
+                - label: 'Text'
+                  name: 'text'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'File'
+                  name: 'file'
+                  widget: 'object'
+                  fields:
+                      - label: 'Background Photo'
+                        choose_url: true
+                        allow_multiple: false
+                        name: 'file'
+                        widget: 'file'
+                        media_library:
+                            allow_multiple: false
+                            choose_url: true
+                            config:
+                                multiple: false
+                                max_file_size: 4096000
+          - label: 'Assets'
+            name: assets
+            widget: 'list'
+            min: 1
+            summary: '{{fields.seoTitle}}'
+            fields:
+                - label: 'Video Or Photo'
+                  name: 'file'
+                  widget: 'file'
+                  media_library:
+                      allow_multiple: false
+                      choose_url: true
+                      config:
+                          multiple: false
+                          max_file_size: 4096000
+                - {
+                      label: 'Thumbnail Image (Only for Video)',
+                      name: 'thumbnailImage',
+                      widget: 'image',
+                      required: false,
+                      choose_url: true,
+                      allow_multiple: false,
+                  }
+                - label: 'Wide'
+                  name: 'isWide'
+                  default: false
+                  widget: 'boolean'
+                - label: 'SEO Title (About 125 characters)'
+                  name: 'seoTitle'
+                  widget: 'string'
+                - label: 'SEO Description (About 150-160 characters)'
+                  name: seoDescription
+                  widget: 'text'
+                - label: 'Publication Date (Change only if changing the file)'
+                  name: publicationDate
+                  widget: 'datetime'
+          - label: 'Testimonials'
+            name: 'testimonials'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Title'
+                  name: 'title'
+                  widget: 'text'
+                - label: 'Client Testimonials'
+                  name: 'clientTestimonials'
+                  widget: 'list'
+                  min: 2
+                  summary: '{{fields.author}}'
+                  fields:
+                      - label: 'Author'
+                        name: 'author'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Text'
+                        name: 'text'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
+
     - name: 'home'
       label: 'Home'
       folder: 'content/home'

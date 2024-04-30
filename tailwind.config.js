@@ -26,6 +26,8 @@ export default {
                 auto: 'auto',
                 square: '1 / 1',
                 video: '16 / 9',
+                vertical: '9 / 16',
+                photo: '1 / 1.25',
             },
         },
         transitionProperty: {
