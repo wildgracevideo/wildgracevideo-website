@@ -223,7 +223,7 @@ trustedBrandLogos:
   - companyName: Smith & Meade
     altText: Logo of Smith & Meade, Denver-based developer of homes that are well
       designed, and well lived.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/smith-meade.webp
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/smith-and-meade.svg
     width: 300
   - companyName: Abode Outside
     altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
