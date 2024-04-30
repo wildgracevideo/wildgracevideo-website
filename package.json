@@ -70,6 +70,7 @@
         "api": "6.1.1",
         "aws-sdk": "2.1459.0",
         "drizzle-orm": "0.30.8",
+        "@headlessui/vue": "1.7.20",
         "markdown-it": "14.0.0",
         "marked": "11.1.0",
         "maska": "2.1.10",
