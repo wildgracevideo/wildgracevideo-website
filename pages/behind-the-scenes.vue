@@ -19,15 +19,15 @@
                 component-class="no-default-format mt-4 mb-8 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
             />
             <ul
-                class="font-family-cormorant mx-auto mb-12 w-fit text-xl text-website-primary underline"
+                class="font-family-cormorant mx-auto mb-12 flex w-fit flex-col justify-center gap-4 text-center text-xl text-website-primary underline"
             >
-                <li class="mx-4 inline-block cursor-pointer underline">
+                <li class="inline-block cursor-pointer underline">
                     <a href="#what-we-do">What We Do</a>
                 </li>
-                <li class="mx-4 inline-block cursor-pointer underline">
+                <li class="inline-block cursor-pointer underline">
                     <a href="#meet-carly">Meet Carly</a>
                 </li>
-                <li class="mx-4 inline-block cursor-pointer underline">
+                <li class="inline-block cursor-pointer underline">
                     <a href="#hear-from-our-clients">Hear From Our Clients</a>
                 </li>
             </ul>
@@ -57,7 +57,7 @@
                 :class="`${getWhatWeDoMarkdownOrderClass(
                     i,
                     true
-                )} bg-full bg-fixed bg-center`"
+                )} background-image h-80 bg-full bg-center md:bg-fixed`"
                 :style="{
                     '--bg-image': `url(${whatWeDoItem.file.file})`,
                 }"
@@ -286,7 +286,7 @@
 </script>
 
 <style scoped>
-    .bg-fixed {
+    .background-image {
         background-image: var(--bg-image);
     }
 
