@@ -46,7 +46,7 @@
                 v-for="(whatWeDoItem, i) in whatWeDo"
                 :key="`markdown-${i}`"
                 :markdown-string="whatWeDoItem.text"
-                :component-class="`mx-auto h-80 max-w-[80%] pt-24 text-center text-lg md:text-xl text-website-accent ${getWhatWeDoMarkdownOrderClass(
+                :component-class="`mx-auto h-80 max-w-[80%] pt-24 text-center text-lg md:text-xl text-website-accent tracking-tighter font-thin [&_li]:!list-none [&_li]:before:content-['+'] [&_li]:before:mr-2 what-we-do-markdown ${getWhatWeDoMarkdownOrderClass(
                     i,
                     false
                 )}`"
