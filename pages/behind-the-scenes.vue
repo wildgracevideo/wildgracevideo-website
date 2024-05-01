@@ -57,7 +57,7 @@
                 :class="`${getWhatWeDoMarkdownOrderClass(
                     i,
                     true
-                )} background-image h-80 bg-full bg-center md:bg-fixed`"
+                )} background-image h-80 bg-full bg-center bg-no-repeat md:bg-fixed`"
                 :style="{
                     '--bg-image': `url(${whatWeDoItem.file.file})`,
                 }"
@@ -119,7 +119,7 @@
             <div
                 v-for="i in Array(8).keys()"
                 :key="`${i}-container`"
-                class="mr-12 inline-block w-fit min-w-[100dvh] whitespace-nowrap text-4xl font-bold text-website-accent"
+                class="mr-4 inline-block w-fit min-w-[100dvh] whitespace-nowrap text-xl font-bold text-website-accent md:mr-12 md:text-4xl"
             >
                 <span
                     v-for="char in `${testimonials.title}`"
