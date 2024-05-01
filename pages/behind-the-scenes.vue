@@ -119,7 +119,7 @@
             <div
                 v-for="i in Array(8).keys()"
                 :key="`${i}-container`"
-                class="mr-4 inline-block w-fit min-w-[100dvh] whitespace-nowrap text-xl font-bold text-website-accent md:mr-12 md:text-4xl"
+                class="inline-block w-fit min-w-[100dvh] whitespace-nowrap pr-2 text-xl font-bold text-website-accent md:pr-12 md:text-4xl"
             >
                 <span
                     v-for="char in `${testimonials.title}`"
