@@ -99,8 +99,8 @@ const config = {
             script: [
                 {
                     src: '/meta-pixel.js',
-                    type: 'text/javascript',
                     defer: true,
+                    type: 'text/partytown',
                 },
             ],
         },
@@ -192,6 +192,19 @@ const config = {
         },
     },
     content: {},
+    partytown: {
+        forward: ['dataLayer.push', 'fbq'],
+        resolveUrl: function (url: { href: string; hostname: string }) {
+            if (url.hostname === 'connect.facebook.net') {
+                const proxyUrl = new URL(
+                    'https://www.wildgracevideo.com/api/fbevents'
+                );
+                proxyUrl.searchParams.append('url', url.href);
+                return proxyUrl;
+            }
+            return url;
+        },
+    },
     modules: [
         '@sidebase/nuxt-auth',
         '@nuxt/content',
