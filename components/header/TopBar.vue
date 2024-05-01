@@ -115,7 +115,7 @@
             type: HeaderItem,
         },
         {
-            name: 'Who We Are',
+            name: 'Behind the Scenes',
             href: '/who-we-are',
             type: HeaderItem,
         },

@@ -48,10 +48,15 @@ html {
     font-family: 'Cormorant Garamond', serif;
 }
 
+.font-family-rock-salt {
+    font-family: 'Rock Salt', serif;
+}
+
 body,
 html,
 #__nuxt {
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 .grecaptcha-badge {
@@ -167,10 +172,6 @@ html,
     font-size: 0;
 }
 
-.aspect-125 {
-    aspect-ratio: 1/1.25;
-}
-
 .image-box-shadow {
     box-shadow:
         rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
@@ -186,6 +187,7 @@ html,
         opacity: 0;
         transform: translateX(200px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -197,6 +199,7 @@ html,
         opacity: 0;
         transform: translateX(-200px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -207,6 +210,7 @@ html,
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -216,6 +220,7 @@ html,
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -225,6 +230,7 @@ html,
     0% {
         font-size: 0;
     }
+
     100% {
         font-size: 2.25rem;
     }
@@ -234,6 +240,7 @@ html,
     0% {
         font-size: 0;
     }
+
     100% {
         font-size: 2.25rem;
     }

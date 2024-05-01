@@ -31,6 +31,12 @@
                 </button>
             </template>
 
+            <template #size-data="{ row }">
+                <span>
+                    {{ formatBytes(row.size) }}
+                </span>
+            </template>
+
             <template #action-data="{ row }">
                 <ClipboardIcon
                     v-if="!row.isFolder"
@@ -161,6 +167,22 @@
             console.error('Error copying file content to clipboard:', error);
         }
     };
+
+    function formatBytes(bytes, decimals = 2) {
+        if (!+bytes) {
+            return '-';
+        }
+
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${
+            sizes[i]
+        }`;
+    }
 
     onMounted(async () => {
         try {

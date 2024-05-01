@@ -25,7 +25,7 @@
                 :seo-title="fileConfig.seoTitle"
                 :thumbnail-image="fileConfig.thumbnailImage"
                 :publication-date="fileConfig.publicationDate"
-                class="aspect-125 mx-0 mb-12 md:mb-0"
+                class="mx-0 mb-12 aspect-photo md:mb-0"
             />
         </div>
     </article>

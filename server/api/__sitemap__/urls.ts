@@ -7,16 +7,13 @@ import { serverQueryContent } from '#content/server';
 
 const runtimeConfig = useRuntimeConfig();
 
-function parseImageOrVideo(
-    file: {
-        file: string;
-        seoDescription: string;
-        seoTitle: string;
-        thumbnailImage?: string;
-        publicationDate?: string;
-    },
-    path: string
-) {
+function parseImageOrVideo(file: {
+    file: string;
+    seoDescription: string;
+    seoTitle: string;
+    thumbnailImage?: string;
+    publicationDate?: string;
+}) {
     let data;
     let isImage = true;
     if (file.file.endsWith('mp4')) {
@@ -26,7 +23,6 @@ function parseImageOrVideo(
             thumbnail_loc: thumbnailLoc,
             description: file.seoDescription,
             content_loc: file.file,
-            player_loc: runtimeConfig.public.siteUrl + path,
             requires_subscription: false,
             live: false,
             publication_date: file.publicationDate,
@@ -68,7 +64,6 @@ export default defineSitemapEventHandler(async (e) => {
                         thumbnail_loc: getThumbnailLoc(it.thumbnailImage),
                         description: it.seoDescription,
                         content_loc: it.video,
-                        player_loc: runtimeConfig.public.siteUrl,
                         requires_subscription: false,
                         live: false,
                         publication_date: it.publicationDate,
@@ -78,17 +73,14 @@ export default defineSitemapEventHandler(async (e) => {
                 const additionalVideos: unknown[] = [];
                 // @ts-expect-error No types for nuxt-content
                 c.testimonials.files.forEach((it) => {
-                    const imageOrVideoResult = parseImageOrVideo(it, '/');
+                    const imageOrVideoResult = parseImageOrVideo(it);
                     if (imageOrVideoResult.isImage) {
                         additionalImages.push(imageOrVideoResult.data);
                     } else {
                         additionalVideos.push(imageOrVideoResult.data);
                     }
                 });
-                const imageOrVideoResult = parseImageOrVideo(
-                    c.aboutMe.file,
-                    '/'
-                );
+                const imageOrVideoResult = parseImageOrVideo(c.aboutMe.file);
                 if (imageOrVideoResult.isImage) {
                     additionalImages.push(imageOrVideoResult.data);
                 } else {

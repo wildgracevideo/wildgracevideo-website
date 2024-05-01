@@ -1,6 +1,6 @@
 ---
 reelVideo:
-  thumbnailImage: /uploads/reel-photo.jpg
+  thumbnailImage: https://content.wildgracevideo.com/Website-Home-Page/SEO-Images/Reel%20photo.jpg
   seoTitle: Denver Adventure & Travel Video Production | Explore Our Dynamic Portfolio
   seoDescription: Discover our outdoor & travel video production highlight reel,
     showcasing useful outdoor products, thrilling expeditions, breathtaking
