@@ -19,7 +19,7 @@
                 component-class="no-default-format mt-4 mb-8 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
             />
             <ul
-                class="font-family-cormorant mx-auto mb-12 flex w-fit flex-col justify-center gap-4 text-center text-xl text-website-primary underline"
+                class="font-family-cormorant mx-auto mb-12 flex w-fit flex-col justify-center gap-4 text-center text-xl text-website-primary underline md:flex-row"
             >
                 <li class="inline-block cursor-pointer underline">
                     <a href="#what-we-do">What We Do</a>
