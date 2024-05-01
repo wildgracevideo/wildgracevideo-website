@@ -10,5 +10,10 @@
             >
             <NuxtLink to="/terms">Terms of Use</NuxtLink>
         </div>
+        <SocialMediaIcons
+            icon-fill="rgb(var(--color-website-accent))"
+            class="-mb-8"
+            :icon-size="80"
+        />
     </footer>
 </template>
