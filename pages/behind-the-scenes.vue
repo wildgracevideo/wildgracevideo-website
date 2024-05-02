@@ -83,6 +83,7 @@
                 :seo-title="aboutMeFile.seoDescription"
                 :thumbnail-image="aboutMeFile.thumbnailImage"
                 :publication-date="aboutMeFile.publicationDate"
+                :is-lazy="true"
             />
             <h3
                 ref="moreInfoTitle"
@@ -112,6 +113,7 @@
             :thumbnail-image="asset.thumbnailImage"
             :publication-date="asset.publicationDate"
             :with-sound-control="true"
+            :is-lazy="true"
         />
     </section>
     <section id="hear-from-our-clients" class="overflow-hidden">
