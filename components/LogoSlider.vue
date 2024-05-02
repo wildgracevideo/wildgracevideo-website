@@ -29,7 +29,6 @@
                     v-else
                     :src="logo.image"
                     :alt="logo.altText"
-                    loading="lazy"
                     class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full md:mr-40"
                     :style="{
                         '--icon-width': `${logo.width}px`,
