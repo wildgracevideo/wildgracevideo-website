@@ -4,7 +4,7 @@
     >
         <!-- Heights and widths must match the logos-slide width defined below -->
         <div
-            class="logos-slide inline-block h-16 whitespace-nowrap md:h-28"
+            class="logos-slide inline-block h-28 whitespace-nowrap"
             :style="{
                 '--total-icons': logos.length,
                 '--total-icon-width': `${totalWidth}px`,
@@ -20,7 +20,7 @@
                     :data="logo.image"
                     type="image/svg+xml"
                     :aria-label="logo.altText"
-                    class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full md:mr-40"
+                    class="logo-aspect-ratio my-0 mr-40 inline-block max-h-full"
                     :style="{
                         '--icon-width': `${logo.width}px`,
                     }"
@@ -29,7 +29,7 @@
                     v-else
                     :src="logo.image"
                     :alt="logo.altText"
-                    class="logo-aspect-ratio my-0 mr-20 inline-block max-h-full md:mr-40"
+                    class="logo-aspect-ratio my-0 mr-40 inline-block max-h-full"
                     :style="{
                         '--icon-width': `${logo.width}px`,
                     }"
@@ -104,22 +104,5 @@
     .logos img,
     .logos object {
         width: var(--icon-width);
-    }
-
-    @media (max-width: 768px) {
-        .logos:before,
-        .logos:after {
-            width: 100px;
-        }
-
-        .logos img {
-            width: calc(var(--icon-width) * 0.75);
-        }
-
-        .logos-slide {
-            width: calc(
-                (var(--total-icons) * 5rem + var(--total-icon-width) * 0.75) * 2
-            );
-        }
     }
 </style>
