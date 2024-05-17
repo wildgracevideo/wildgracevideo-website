@@ -1,5 +1,5 @@
 <template>
-    <footer class="mt-8 pb-8">
+    <footer class="relative z-50 bg-website-off-white pb-8 pt-8">
         <p class="mb-6 text-center text-xl">CARLY KREIGER</p>
         <address class="mx-4 text-center text-xs italic">
             203.906.3837 | carly@wildgracevideo.com | Denver, CO

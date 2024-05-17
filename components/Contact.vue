@@ -6,7 +6,7 @@
         :message="notification.message"
     />
     <RecaptchaLoader />
-    <div class="bg-website-off-black py-16">
+    <div class="relative z-50 bg-website-off-black py-16">
         <h2
             class="mb-6 text-center text-4xl font-semibold text-website-off-white"
             :class="{ hidden: !showForm }"
