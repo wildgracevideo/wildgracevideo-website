@@ -20,7 +20,7 @@
         >
             <Markdown
                 :markdown-string="`# ${pageTitle}`"
-                component-class="no-default-format md:mb-8 mb-4 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
+                component-class="no-default-format md:mb-8 mb-4 pt-8 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
             />
             <ul
                 class="font-family-cormorant mx-auto mb-8 flex w-fit flex-col justify-center gap-4 text-center text-xl text-website-primary underline md:flex-row"
