@@ -43,7 +43,7 @@ const config = {
         gitProviderScopes: process.env.GIT_PROVIDER_SCOPES || 'repo user',
         secureCookies: process.env.NODE_ENV === 'production',
         apiKey: process.env.API_KEY,
-        s3MediaBucket: 'wildgracevideo-content',
+        s3MediaBucket: process.env.S3_BUCKET,
         public: {
             siteUrl: SITE_URL,
             websiteIcon: WEBSITE_ICON,
