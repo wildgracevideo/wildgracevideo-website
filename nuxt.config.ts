@@ -134,9 +134,11 @@ const config = {
             '/admin',
             '/api',
             '/api/*',
+            '/links',
         ],
         xsl: false,
         sources: ['/api/__sitemap__/urls'],
+        excludeAppSources: true,
     },
     routeRules: {
         '/**': { isr: 3_600 }, // 1hr
