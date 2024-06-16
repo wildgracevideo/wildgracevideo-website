@@ -185,6 +185,7 @@ const config = {
             '/admin/*',
             '/api',
             '/api/*',
+            '/links',
         ],
     },
     auth: {
