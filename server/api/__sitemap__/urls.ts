@@ -41,7 +41,7 @@ function parseImageOrVideo(file: {
 export default defineSitemapEventHandler(async (e) => {
     const contentList = (await serverQueryContent(e).find()) as ParsedContent[];
     return contentList
-        .filter((c) => c._dir === 'product' || c._dir === 'home')
+        .filter((c) => c._dir === 'product' || c._dir === 'home' || c._dir === 'service')
         .map((c) => {
             if (c._dir === 'product') {
                 const sitemapUrl: SitemapUrl = {
@@ -110,6 +110,12 @@ export default defineSitemapEventHandler(async (e) => {
                     ],
                 };
                 return asSitemapUrl(sitemapUrl);
+            } else if (c._dir === 'service') {
+                const sitemapUrl: SitemapUrl = {
+                    loc: `/${c._dir}s/${c.path}`,
+                };
+                return asSitemapUrl(sitemapUrl);
+
             }
         });
 });
