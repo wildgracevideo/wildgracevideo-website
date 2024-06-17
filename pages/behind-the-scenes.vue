@@ -2,9 +2,11 @@
     <OgMeta :title="seoTitle" :description="seoDescription" />
     <SchemaOrgWebPage type="AboutPage" :name="seoTitle" />
     <section
-        class="relative flex h-[calc(100dvh-116.45px)] flex-col justify-between overflow-x-hidden"
+        class="relative flex h-[calc(100dvh-116.45px)] flex-col justify-between"
     >
-        <div class="fixed mx-auto h-[45%] w-full md:h-[55%]">
+        <div
+            class="backface-visibility-hidden fixed mx-auto h-[50%] w-full md:h-[65%]"
+        >
             <AutoPlayVideo
                 :title="bannerVideo.seoTitle"
                 :description="bannerVideo.seoDescription"
@@ -13,6 +15,7 @@
                 :video="bannerVideo.video"
                 :with-sound-control="true"
                 class="h-full w-full object-cover object-center"
+                sound-control-bottom-class="bottom-14 md:bottom-16"
             />
         </div>
         <div
@@ -331,5 +334,9 @@
 
     .slider {
         animation: 60s slide infinite linear;
+    }
+
+    .backface-visibility-hidden {
+        backface-visibility: hidden;
     }
 </style>

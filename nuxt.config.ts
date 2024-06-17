@@ -176,13 +176,7 @@ const config = {
         },
     },
     robots: {
-        disallow: [
-            '/admin',
-            '/admin/*',
-            '/api',
-            '/api/*',
-            '/links',
-        ],
+        disallow: ['/admin', '/admin/*', '/api', '/api/*', '/links'],
     },
     auth: {
         baseURL: SITE_URL,

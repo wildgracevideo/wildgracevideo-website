@@ -19,7 +19,7 @@
     </video>
     <button
         v-if="withSoundControl"
-        class="relative bottom-12 z-10 float-right ml-auto mr-4 h-8 w-8 cursor-pointer text-white md:h-10 md:w-10"
+        :class="`relative ${soundControlBottomClass} z-10 float-right ml-auto mr-4 h-8 w-8 cursor-pointer text-white md:h-10 md:w-10`"
         @click="toggleMute"
     >
         <span class="sr-only">{{
@@ -66,12 +66,18 @@
         observer.observe(videoElement.value!);
     });
 
-    const props = defineProps<{
-        title: string;
-        description: string;
-        thumbnailImage: string | undefined;
-        video: string;
-        publicationDate: string;
-        withSoundControl?: boolean;
-    }>();
+    const props = withDefaults(
+        defineProps<{
+            title: string;
+            description: string;
+            thumbnailImage: string | undefined;
+            video: string;
+            publicationDate: string;
+            withSoundControl?: boolean;
+            soundControlBottomClass: string;
+        }>(),
+        {
+            soundControlBottomClass: 'bottom-12',
+        }
+    );
 </script>
