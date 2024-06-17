@@ -4,7 +4,7 @@
     <section
         class="relative flex h-[calc(100dvh-116.45px)] flex-col justify-between overflow-x-hidden"
     >
-        <div class="fixed mx-auto h-[45%] w-full md:h-[60%]">
+        <div class="fixed mx-auto h-[45%] w-full md:h-[55%]">
             <AutoPlayVideo
                 :title="bannerVideo.seoTitle"
                 :description="bannerVideo.seoDescription"
