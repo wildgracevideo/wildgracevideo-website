@@ -177,8 +177,6 @@ const config = {
     },
     robots: {
         disallow: [
-            '/_ipx',
-            '/_ipx/*',
             '/admin',
             '/admin/*',
             '/api',
