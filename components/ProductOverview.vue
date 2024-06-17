@@ -14,6 +14,7 @@
                 availability: 'InStock',
                 hasMerchantReturnPolicy: {
                     returnPolicyCategory: 'MerchantReturnNotPermitted',
+                    applicableCountry: 'US',
                 },
             },
         ]"

@@ -177,8 +177,6 @@ const config = {
     },
     robots: {
         disallow: [
-            '/_nuxt/*',
-            '/_nuxt',
             '/_ipx',
             '/_ipx/*',
             '/admin',
