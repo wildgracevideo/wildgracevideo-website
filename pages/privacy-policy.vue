@@ -3,6 +3,7 @@
         title="Wild Grace Videography | Privacy Policy"
         description="Read throught the Wild Grace Videography privacy policy."
     />
+    <Meta name="robots" content="noindex,nofollow" />
     <div class="mx-8">
         <span v-html="rawHtml"></span>
     </div>

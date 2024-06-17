@@ -12,7 +12,7 @@
         <h1 class="mb-16 text-center text-2xl">
             We can't wait to hear about your next project!
         </h1>
-        <h1
+        <h2
             class="relative top-28 text-center text-4xl text-black"
             :class="{
                 hidden: showForm,
@@ -21,7 +21,7 @@
             }"
         >
             Thank you!
-        </h1>
+        </h2>
         <form
             class="mx-8 grid max-w-4xl grid-cols-1 gap-x-4 gap-y-6 lg:mx-auto lg:grid-cols-2"
             :class="{ invisible: !showForm, 'fade-out': !showForm }"

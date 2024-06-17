@@ -3,6 +3,7 @@
         title="Wild Grace Videography | Terms"
         description="Read throught the Wild Grace Videography terms and conditions."
     />
+    <Meta name="robots" content="noindex,nofollow" />
     <div class="mx-8">
         <span v-html="rawHtml"></span>
     </div>
