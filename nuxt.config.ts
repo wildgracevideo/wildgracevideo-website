@@ -18,7 +18,7 @@ const config = {
         nextAuthSecret: process.env.NEXTAUTH_SECRET,
         recaptchaSecret: process.env.RECAPTCHA_SECRET_KEY,
         formsFromEmail: 'carly@wildgracevideo.com',
-        formsToEmail: 'info@wildgracevideo.com',
+        formsToEmail: 'carly@wildgracevideo.com',
         stripeSecretKey: process.env.STRIPE_SECRET_KEY,
         // This is needed as nuxt content is storing a live price
         stripePriceOverride:
