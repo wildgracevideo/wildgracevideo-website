@@ -2,9 +2,9 @@
     <OgMeta :title="seoTitle" :description="seoDescription" />
     <SchemaOrgWebPage type="AboutPage" :name="seoTitle" />
     <section
-        class="relative flex h-[calc(100dvh-116.45px)] flex-col justify-between"
+        class="relative flex h-[calc(100dvh-116.45px)] flex-col justify-between overflow-x-hidden"
     >
-        <div class="fixed mx-auto h-1/2 w-full md:h-[65%]">
+        <div class="fixed mx-auto h-[45%] w-full md:h-[60%]">
             <AutoPlayVideo
                 :title="bannerVideo.seoTitle"
                 :description="bannerVideo.seoDescription"

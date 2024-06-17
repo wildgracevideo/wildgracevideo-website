@@ -40,8 +40,13 @@ function parseImageOrVideo(file: {
 
 export default defineSitemapEventHandler(async (e) => {
     const contentList = (await serverQueryContent(e).find()) as ParsedContent[];
-    return contentList
-        .filter((c) => c._dir === 'product' || c._dir === 'home' || c._dir === 'service')
+    const filteredList = contentList
+        .filter(
+            (c) =>
+                c._dir === 'product' ||
+                c._dir === 'home' ||
+                c._dir === 'service'
+        )
         .map((c) => {
             if (c._dir === 'product') {
                 const sitemapUrl: SitemapUrl = {
@@ -115,9 +120,20 @@ export default defineSitemapEventHandler(async (e) => {
                     loc: `/${c._dir}s/${c.path}`,
                 };
                 return asSitemapUrl(sitemapUrl);
-
             }
         });
+    filteredList.push(
+        {
+            loc: `/behind-the-scenes`,
+        },
+        {
+            loc: `/shop`,
+        },
+        {
+            loc: '/portfolio',
+        }
+    );
+    return filteredList;
 });
 
 function getThumbnailLoc(
