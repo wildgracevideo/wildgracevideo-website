@@ -19,7 +19,7 @@
             />
         </div>
         <div
-            class="absolute left-1/2 top-[calc(100dvh-116.45px)] z-10 w-full -translate-x-1/2 -translate-y-full bg-website-off-white"
+            class="sm:top-[calc(100dvh-116.45px) absolute left-1/2 top-[calc(100dvh-100px)] z-10 w-full -translate-x-1/2 -translate-y-full bg-website-off-white"
         >
             <Markdown
                 :markdown-string="`# ${pageTitle}`"
