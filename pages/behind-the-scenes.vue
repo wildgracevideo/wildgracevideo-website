@@ -14,6 +14,7 @@
                 :publication-date="bannerVideo.publicationDate"
                 :video="bannerVideo.video"
                 :with-sound-control="true"
+                video-id="reel-video"
                 class="h-full w-full object-cover object-center"
                 sound-control-bottom-class="bottom-14 md:bottom-16"
             />
@@ -298,6 +299,12 @@
                     '--more-info-title-width',
                     `${underlineWidth}%`
                 );
+            }
+
+            if (window.scrollY > window.innerHeight) {
+                videoElement.classList.add('invisible');
+            } else {
+                videoElement.classList.remove('invisible');
             }
         });
     });

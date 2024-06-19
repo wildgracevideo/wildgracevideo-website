@@ -17,11 +17,11 @@ export const getImage: ProviderGetImage = (
     if (operations) {
         operationsArray = operations.split('/');
     }
-    if (!operationsArray.some(it => /^format=.*/g.test(it))) {
+    if (!operationsArray.some((it) => /^format=.*/g.test(it))) {
         operationsArray.push('format=webp');
     }
     const transformedUrl = src + '?' + operationsArray.join('&');
     return {
         url: transformedUrl,
     };
-}
+};

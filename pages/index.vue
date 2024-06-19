@@ -65,6 +65,7 @@
                 :video="video.video"
                 :thumbnail-image="video.thumbnailImage"
                 :publication-date="video.publicationDate"
+                :video-id="`home-highlight-video-element-${video.title}`"
             />
             <h3 class="mb-12 text-center text-2xl">
                 {{ video.title }}

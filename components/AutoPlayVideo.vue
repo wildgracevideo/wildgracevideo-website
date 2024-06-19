@@ -1,5 +1,6 @@
 <template>
     <video
+        :id="videoId"
         ref="videoElement"
         :class="`${$attrs.class as string}`"
         muted
@@ -75,9 +76,11 @@
             publicationDate: string;
             withSoundControl?: boolean;
             soundControlBottomClass?: string;
+            videoId?: string;
         }>(),
         {
             soundControlBottomClass: 'bottom-12',
+            videoId: '',
         }
     );
 </script>

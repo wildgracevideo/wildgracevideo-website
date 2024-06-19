@@ -2,7 +2,8 @@
 const SITE_URL = process.env.URL || 'https://www.wildgracevideo.com';
 const CLOUDFRONT_URL = 'https://content.wildgracevideo.com';
 const APP_ICON = CLOUDFRONT_URL + '/Website-Main/app-icon.png';
-const WEBSITE_ICON = CLOUDFRONT_URL + '/images/Website-Main/WildGraceVideo-logo.webp';
+const WEBSITE_ICON =
+    CLOUDFRONT_URL + '/images/Website-Main/WildGraceVideo-logo.webp';
 const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
 
 process.env['NEXTAUTH_URL'] = process.env.DEPLOY_PRIME_URL;

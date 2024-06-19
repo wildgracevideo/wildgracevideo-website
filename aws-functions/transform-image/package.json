@@ -1,22 +1,22 @@
 {
-  "name": "transform-image",
-  "version": "1.0.0",
-  "description": "Transform image lambda function",
-  "main": "index.mjs",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wildgracevideo/wildgracevideo-website.git"
-  },
-  "author": "Emmet Murray",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wildgracevideo/wildgracevideo-website/issues"
-  },
-  "homepage": "https://github.com/wildgracevideo/wildgracevideo-website#readme",
-  "dependencies": {
-    "sharp": "0.33.4"
-  }
+    "name": "transform-image",
+    "version": "1.0.0",
+    "description": "Transform image lambda function",
+    "main": "index.mjs",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wildgracevideo/wildgracevideo-website.git"
+    },
+    "author": "Emmet Murray",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/wildgracevideo/wildgracevideo-website/issues"
+    },
+    "homepage": "https://github.com/wildgracevideo/wildgracevideo-website#readme",
+    "dependencies": {
+        "sharp": "0.33.4"
+    }
 }
