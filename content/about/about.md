@@ -18,7 +18,7 @@ aboutMe:
     file: https://content.wildgracevideo.com/Website-Home-Page/about-me.mp4
     seoTitle: Denver Video Production Company | Wild Grace Video Owner
     seoDescription: Photo of Wild Grace Video owner, Carly Kreiger.
-    thumbnailImage: https://content.wildgracevideo.com/Website-Main/logo1.webp
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/logo1.webp
   title: Meet **Carly.**
   description: >-
     Hey there! I’m Carly, owner & lead videographer at Wild Grace Video  based
@@ -67,12 +67,12 @@ aboutMe:
   moreInfoTitle: Fun Facts
 whatWeDo:
   - file:
-      file: https://content.wildgracevideo.com/Website-About/WWD_1.webp
+      file: https://content.wildgracevideo.com/images/Website-About/WWD_1.webp
     text: Wild Grace Video transforms your brand with high-quality content,
       positioning you as an industry leader and building trust for confident
       buying decisions.
   - file:
-      file: https://content.wildgracevideo.com/Website-About/WWD_3.webp
+      file: https://content.wildgracevideo.com/images/Website-About/WWD_3.webp
     text: |-
       We specialize in travel and outdoor-related brands.
 
@@ -84,27 +84,27 @@ assets:
     publicationDate: 2024-04-29T11:56:00.000Z
     seoTitle: Wild Grace Video | Behind The Scenes Video
     file: https://content.wildgracevideo.com/Website-About/Compressed_BTS_Video.mp4
-    thumbnailImage: https://content.wildgracevideo.com/Website-Main/logo1.webp
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/logo1.webp
     seoDescription: Video showcasing the behind the scenes at Wild Grace Video, a
       top Denver-based video production company.
   - isWide: true
     publicationDate: 2024-04-29T11:57:00.000Z
-    file: https://content.wildgracevideo.com/Website-About/BTS_Photo1.webp
-    thumbnailImage: https://content.wildgracevideo.com/Website-Main/logo1.webp
+    file: https://content.wildgracevideo.com/images/Website-About/BTS_Photo1.webp
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/logo1.webp
     seoTitle: Wild Grace Video | Behind The Scenes Photo
     seoDescription: Photo showcasing the behind the scenes at Wild Grace Video, a
       top Denver-based video production company.
   - isWide: true
     publicationDate: 2024-04-29T11:57:00.000Z
-    file: https://content.wildgracevideo.com/Website-About/BTS_Photo3.webp
-    thumbnailImage: https://content.wildgracevideo.com/Website-Main/logo1.webp
+    file: https://content.wildgracevideo.com/images/Website-About/BTS_Photo3.webp
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/logo1.webp
     seoTitle: Wild Grace Video | Behind The Scenes Photo
     seoDescription: Photo showcasing the behind the scenes at Wild Grace Video, a
       top Denver-based video production company.
   - isWide: false
     publicationDate: 2024-04-29T11:57:00.000Z
-    file: https://content.wildgracevideo.com/Website-About/BTS_Photo2.webp
-    thumbnailImage: https://content.wildgracevideo.com/Website-Main/logo1.webp
+    file: https://content.wildgracevideo.com/images/Website-About/BTS_Photo2.webp
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/logo1.webp
     seoTitle: Wild Grace Video | Behind The Scenes Photo
     seoDescription: Photo showcasing the behind the scenes at Wild Grace Video, a
       top Denver-based video production company.

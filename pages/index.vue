@@ -133,6 +133,7 @@
             :thumbnail-image="file.thumbnailImage"
             :publication-date="file.publicationDate"
             :is-lazy="true"
+            sizes="2xl:800px xl:460px 400px"
             class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
         />
     </BackgroundImageLazy>

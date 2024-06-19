@@ -13,10 +13,11 @@
             :with-sound-control="withSoundControl"
         />
         <template v-else>
-            <img
+            <NuxtImg
                 :class="`cursor-default ${$attrs.class as string}`"
                 :src="file"
                 :alt="seoDescription"
+                :sizes="sizes"
                 :loading="isLazy ? 'lazy' : 'eager'"
             />
             <SchemaOrgImage
@@ -35,6 +36,7 @@
         seoTitle: string;
         thumbnailImage?: string;
         publicationDate: string;
+        sizes?: string;
         isLazy?: boolean;
         withSoundControl?: boolean;
         parentClass?: string;

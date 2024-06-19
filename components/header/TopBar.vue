@@ -16,7 +16,7 @@
                 "
             >
                 <span class="sr-only">Wild Grace Videography</span>
-                <img
+                <NuxtImg
                     class="text-0 mb-8 ml-8 mr-10 mt-3"
                     width="138"
                     height="90"

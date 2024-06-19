@@ -25,10 +25,11 @@
                 :aria-label="shopItem.title"
                 class="shadow-floating bg-cover relative mx-auto mb-8 block max-h-96 w-fit overflow-hidden rounded-xl bg-no-repeat"
             >
-                <img
+                <NuxtImg
                     :src="shopItem.productImage"
                     class="aspect-square max-h-96"
                     :alt="shopItem.imageDescription"
+                    sizes="384px"
                 />
                 <div
                     class="absolute bottom-0 left-0 right-0 top-0 overflow-hidden opacity-0"
@@ -72,7 +73,7 @@
 
 <style scoped>
     .bg-img {
-        background-image: url('/shop-cover.webp');
+        background-image: url('https://content.wildgracevideo.com/images/Website-Products/shop-cover.webp');
         background-repeat: no-repeat;
         background-size: 100% 100%;
         height: 500px;

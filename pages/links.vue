@@ -2,7 +2,7 @@
     <OgMeta :title="linksData!.title" :description="linksData!.description" />
     <SchemaOrgWebPage :name="linksData!.title" />
     <NuxtLink to="/">
-        <img
+        <NuxtImg
             :src="runtimeConfig.public.websiteIcon"
             alt="Wild Grace Videography company logo."
             class="mx-auto mb-12 mt-8 cursor-pointer"

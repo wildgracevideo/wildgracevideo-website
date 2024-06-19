@@ -30,10 +30,11 @@
             <div
                 class="text-0 image-box-shadow max-height-488 mb-12 ml-4 mr-4 mt-4 h-auto w-auto max-w-sm object-contain object-center xl:-mt-16 xl:mb-0 xl:ml-10 xl:mr-0"
             >
-                <img
+                <NuxtImg
                     :src="imageSrc"
                     class="aspect-square"
                     :alt="mainImageDescription"
+                    sizes="488px"
                 />
             </div>
             <div class="mx-8 sm:mx-8 xl:mx-0">

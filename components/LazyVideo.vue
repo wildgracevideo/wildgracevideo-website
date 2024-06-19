@@ -11,10 +11,11 @@
             class="play-button absolute z-10 text-sm font-bold text-white opacity-100 group-hover:opacity-0"
             >{{ videoTitle }}</span
         >
-        <img
+        <NuxtImg
             :src="video.thumbnailImage"
             :alt="video.seoDescription"
             class="aspect-video w-full brightness-50 duration-300 ease-linear hover:brightness-100"
+            :sizes="sizes"
         />
     </div>
     <video
@@ -50,6 +51,7 @@
         videoTitle: string;
         videoClass?: string;
         imageClass?: string;
+        sizes: string;
     }>();
 
     const videoPlaying = ref(false);

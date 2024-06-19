@@ -4,7 +4,7 @@
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
-            <img
+            <NuxtImg
                 class="text-0 mb-8 ml-4 mr-10 mt-4"
                 width="100"
                 height="50"
@@ -27,7 +27,7 @@
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
-            <img
+            <NuxtImg
                 class="text-0 my-2 mb-8 ml-4 mr-10"
                 width="100"
                 height="50"

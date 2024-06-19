@@ -74,7 +74,7 @@
             video: string;
             publicationDate: string;
             withSoundControl?: boolean;
-            soundControlBottomClass: string;
+            soundControlBottomClass?: string;
         }>(),
         {
             soundControlBottomClass: 'bottom-12',

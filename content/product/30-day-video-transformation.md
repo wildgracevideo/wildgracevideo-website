@@ -4,12 +4,12 @@ description: Boost Your Social Media Presence with 37 Engaging Reel Ideas and a
     Content Planner. Share Your Journey, Build Trust, and Watch Your Audience Grow
     in 30 Days.
 path: 30-day-video-transformation
-productImage: /uploads/37-reel-ideas.webp
+productImage: https://content.wildgracevideo.com/images/Website-Products/37-reel-ideas.webp
 publishedDate: 2023-12-14T19:31:12.040Z
 imageDescription: Image of the Wild Grace Videography 30-Day Video Transformation product.
-ogImage: /uploads/37-reel-ideas-og.webp
-topBackgroundImage: /uploads/37-reel-ideas-cover.webp
-callToActionBackgroundImage: /uploads/37-reel-ideas-banner.webp
+ogImage: https://content.wildgracevideo.com/images/Website-Products/37-reel-ideas-og.webp
+topBackgroundImage: https://content.wildgracevideo.com/images/Website-Products/37-reel-ideas-cover.webp
+callToActionBackgroundImage: https://content.wildgracevideo.com/images/Website-Products/37-reel-ideas-banner.webp
 productName: 30-Day Video Transformation
 productTagline: 37 Reel Ideas + 30-Day *Fillable* Video Content Planner
 shortDescription: Boost Your Social Media Presence with 37 Engaging Reel Ideas

@@ -92,6 +92,7 @@
                     :thumbnail-image="aboutMeFile.thumbnailImage"
                     :publication-date="aboutMeFile.publicationDate"
                     :is-lazy="true"
+                    sizes="640px"
                 />
                 <h3
                     ref="moreInfoTitle"
@@ -122,6 +123,7 @@
                 :publication-date="asset.publicationDate"
                 :with-sound-control="true"
                 :is-lazy="true"
+                :sizes="`${asset.isWide ? '747px' : '336px'}`"
             />
         </section>
         <section id="hear-from-our-clients" class="overflow-hidden">

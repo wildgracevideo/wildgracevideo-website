@@ -1,6 +1,6 @@
 ---
 reelVideo:
-  thumbnailImage: https://content.wildgracevideo.com/Website-Home-Page/SEO-Images/Reel%20photo.jpg
+  thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/Reel%20photo.jpg
   seoTitle: Denver Adventure & Travel Video Production | Explore Our Dynamic Portfolio
   seoDescription: Discover our outdoor & travel video production highlight reel,
     showcasing useful outdoor products, thrilling expeditions, breathtaking
@@ -43,18 +43,18 @@ aboutMe:
 
 
     \-Carly
-  image: /uploads/carly-headshot.webp
+  image: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
   imageName: TODO
   altText: TODO
   file:
     publicationDate: 2024-02-27T19:50:09.711Z
-    file: /uploads/about-me.mp4
+    file: https://content.wildgracevideo.com/Website-Home-Page/about-me.mp4
     seoTitle: "Meet the Owner: Denver Video Production | Passionate Visual
       Storyteller & Adventure Enthusiast"
     seoDescription: Get to know the owner of our Denver video production company, a
       passionate visual storyteller and adventure enthusiast dedicated to
       bringing your vision to life. Learn more about my journey!
-    thumbnailImage: https://content.wildgracevideo.com/Website-Main/WildGraceVideo-logo.webp
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
 trustedBrandTitle: "**TRUSTED BY**"
 howTo:
   title: HOW DOES THIS **WORK?**
@@ -79,33 +79,33 @@ howTo:
   footer: Finally, I’ll deliver the finished product, ready to exceed your vision
     and goals.
   seoTitle: How to create a video with Wild Grace Videography
-thumbnailImage: https://content.wildgracevideo.com/Website-Main/WildGraceVideo-logo.webp
+thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
 aboutMeAltText: TODO
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
 testimonials:
-  backgroundImage: https://content.wildgracevideo.com/Website-Home-Page/Horizontal+Paralax-min.webp
+  backgroundImage: https://content.wildgracevideo.com/images/Website-Home-Page/Horizontal+Paralax-min.webp
   files:
     - publicationDate: 2024-02-21T04:25:07.894Z
-      file: https://content.wildgracevideo.com/Website-Home-Page/Client-Testimonials/1.webp
+      file: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Testimonials/1.webp
       seoDescription: Discover what our clients say about our video production
         services. Trusted by businesses in Denver, Colorado for exceptional
         storytelling.
       seoTitle: Client Testimonials | Trusted Video Production Company in Denver, CO -
         Wild Grace Video
     - publicationDate: 2024-02-21T04:25:25.736Z
-      file: https://content.wildgracevideo.com/Website-Home-Page/Client-Testimonials/2.webp
+      file: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Testimonials/2.webp
       seoDescription: See why clients love our video production services in Denver,
         CO. Read authentic reviews from satisfied customers.
       seoTitle: Video Production Client Reviews | Denver, Colorado - Wild Grace Video
     - publicationDate: 2024-02-13T03:21:56.578Z
-      file: https://content.wildgracevideo.com/Website-Home-Page/Client-Testimonials/3.webp
+      file: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Testimonials/3.webp
       seoDescription: Explore client testimonials for our top-rated video production
         company in Denver. Find out why businesses trust us for their video
         needs.
       seoTitle: Client Feedback | Top Video Production Company in Denver, Colorado -
         Wild Grace Video
-  backgroundImageVertical: /uploads/vertical-paralax.webp
-aboutMeImage: /uploads/carly-headshot.webp
+  backgroundImageVertical: https://content.wildgracevideo.com/images/Website-Home-Page/Vertical+Paralax.webp
+aboutMeImage: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
 testimonialQuotes:
   - quote: Carly was so great to work with! She exceeded my expectations with
       bringing my vision to life and delivering an epic video for our brand. She
@@ -179,8 +179,8 @@ videoHighlight:
         your unique spaces and highlighting the beauty of your surroundings.
         We’ll craft compelling visuals that will speak to your brand and
         up-level your marketing for years to come.
-      video: /uploads/boutique-hotels.mp4
-      thumbnailImage: /uploads/boutique-hotel-photo-min.png
+      video: https://content.wildgracevideo.com/Website-Home-Page/Boutique%20Hotels%20Thumbnail.mp4
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/boutique%20hotel%20photo-min.png
       seoTitle: Denver Boutique Hotel Video Production | Luxury Accommodation Visuals
       seoDescription: Explore our Denver boutique hotel video production services,
         showcasing upscale stays, unique amenities & stunning interiors. Elevate
@@ -191,8 +191,8 @@ videoHighlight:
         top-notch quality and demonstrate their ideal use in the great outdoors.
         Let our compelling imagery redefine your brand's marketing impact for
         the long term.
-      video: /uploads/outdoor-brands.mp4
-      thumbnailImage: /uploads/outdoor-product-photo-min.png
+      video: https://content.wildgracevideo.com/Website-Home-Page/Outdoor%20Brands%20Thumbnail.mp4
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/outdoor%20product%20photo-min.png
       seoTitle: Denver Outdoor Gear Video Production | Adventure Product Showcase
       seoDescription: Discover our Denver outdoor gear video production, featuring
         rugged equipment, camping essentials, hiking gear & more. Inspire your
@@ -203,8 +203,8 @@ videoHighlight:
         out their thrill and showcase the excitement of your adventure. Our
         compelling imagery will redefine your brand's marketing impact,
         attracting thrill-seekers and enthusiasts for unforgettable experiences.
-      video: /uploads/adventure-brands.mp4
-      thumbnailImage: /uploads/adventure-excursion-photo-min.png
+      video: https://content.wildgracevideo.com/Website-Home-Page/Adventure%20Brands%20Thumbnail%20V2.mp4
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/adventure%20excursion%20photo-min.png
       seoTitle: Denver Adventure Video Production | Thrilling Experience Showcase
       seoDescription: Experience our Denver adventure video production, capturing
         adrenaline-fueled activities, scenic trails, outdoor adventures & more.
@@ -213,12 +213,12 @@ trustedBrandLogos:
   - companyName: The Curtis Hotel
     altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
       themed rooms.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/curtis.webp
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/curtis.webp
     width: 200
   - companyName: Genesee Nutrition
     altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
       adventurers.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/genesee.webp
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/genesee.webp
     width: 200
   - companyName: Smith & Meade
     altText: Logo of Smith & Meade, Denver-based developer of homes that are well
@@ -233,7 +233,7 @@ trustedBrandLogos:
       Colorado, ideal for romantic getaways, mountain weddings, or corporate
       events.
     companyName: The Surf Hotel
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/surf-hotel.webp
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
     width: 200
 videoTitle: Video reel showcasing the work of Wild Grace Videography.
 pageTagline: Wild Grace Videography is a Denver-based video production company

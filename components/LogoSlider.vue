@@ -25,14 +25,16 @@
                         '--icon-width': `${logo.width}px`,
                     }"
                 ></object>
-                <img
+                <NuxtImg
                     v-else
                     :src="logo.image"
                     :alt="logo.altText"
+                    loading="lazy"
                     class="logo-aspect-ratio my-0 mr-40 inline-block max-h-full"
                     :style="{
                         '--icon-width': `${logo.width}px`,
                     }"
+                    :sizes="`${logo.width}px`"
                 />
             </template>
         </div>
