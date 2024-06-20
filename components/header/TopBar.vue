@@ -116,7 +116,7 @@
         },
         {
             name: 'Behind the Scenes',
-            href: '/who-we-are',
+            href: '/behind-the-scenes',
             type: HeaderItem,
         },
         {
