@@ -6,7 +6,7 @@
             :src="runtimeConfig.public.websiteIcon"
             alt="Wild Grace Videography company logo."
             class="mx-auto mb-12 mt-8 cursor-pointer"
-            width="138"
+            width="160"
             height="90"
         />
     </NuxtLink>
