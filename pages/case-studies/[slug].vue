@@ -1,5 +1,9 @@
 <template>
-    <OgMeta :title="seoTitle" :description="seoDescription" />
+    <OgMeta
+        :title="seoTitle"
+        :description="seoDescription"
+        :icon="caseStudyData.webpagePreviewFile"
+    />
     <SchemaOrgWebPage :name="seoTitle" />
     <h1 class="mx-auto mt-8 text-center text-4xl">{{ pageTitle }}</h1>
     <h2 class="mx-auto my-8 w-[60%] text-center">{{ pageSubtitle }}</h2>

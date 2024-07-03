@@ -948,6 +948,13 @@ collections:
           - label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED'
             widget: 'string'
             name: 'path'
+          - label: 'Webpage Preview File'
+            name: 'webpagePreviewFile'
+            widget: 'file'
+            required: false
+            media_library:
+                allow_multiple: false
+                choose_url: true
           - {
                 label: 'Page Title',
                 name: 'pageTitle',
