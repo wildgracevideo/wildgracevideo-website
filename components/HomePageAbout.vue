@@ -20,11 +20,7 @@
                 component-class="no-default-format strong:font-semibold mb-12 block text-4xl md:hidden md:text-5xl"
             />
             <FileOrVideo
-                :file="fileConfig.file"
-                :seo-description="fileConfig.seoDescription"
-                :seo-title="fileConfig.seoTitle"
-                :thumbnail-image="fileConfig.thumbnailImage"
-                :publication-date="fileConfig.publicationDate"
+                :file="fileConfig"
                 class="mx-0 mb-12 aspect-photo md:mb-0"
             />
         </div>
@@ -32,11 +28,11 @@
 </template>
 
 <script setup lang="ts">
-    import type { FileConfig } from './FileOrVideo.vue';
+    import type { FileInfo } from './FileOrVideo.vue';
 
     defineProps<{
         titleMarkdown: string;
         textMarkdown: string;
-        fileConfig: FileConfig;
+        fileConfig: FileInfo;
     }>();
 </script>

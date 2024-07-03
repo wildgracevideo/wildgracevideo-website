@@ -8,20 +8,24 @@
         @click="videoClick"
     >
         <span
+            v-if="videoTitle"
             class="play-button absolute z-10 text-sm font-bold text-white opacity-100 group-hover:opacity-0"
             >{{ videoTitle }}</span
         >
+        <PlayIcon v-else class="play-button absolute z-10 h-10 w-10" />
         <NuxtImg
             :src="video.thumbnailImage"
             :alt="video.seoDescription"
-            class="aspect-video w-full brightness-50 duration-300 ease-linear hover:brightness-100"
+            class="w-full brightness-50 duration-300 ease-linear hover:brightness-100"
+            :class="aspectRatio"
             :sizes="sizes"
         />
     </div>
     <video
         v-else
         ref="videoElement"
-        class="aspect-video w-full cursor-pointer"
+        class="w-full cursor-pointer"
+        :class="aspectRatio"
         loop
         playsinline
         controls
@@ -44,15 +48,27 @@
 </template>
 
 <script setup lang="ts">
+    import { PlayIcon } from '@heroicons/vue/24/outline';
     import type { VideoInfo } from '~/lib/video';
 
-    const props = defineProps<{
-        video: VideoInfo;
-        videoTitle: string;
-        videoClass?: string;
-        imageClass?: string;
-        sizes: string;
-    }>();
+    const props = withDefaults(
+        defineProps<{
+            video: VideoInfo;
+            videoTitle?: string;
+            videoClass?: string;
+            imageClass?: string;
+            sizes: string;
+            fullScreenClick?: boolean;
+            aspectRatio?: string;
+        }>(),
+        {
+            videoTitle: undefined,
+            videoClass: '',
+            imageClass: '',
+            fullScreenClick: true,
+            aspectRatio: 'aspect-video',
+        }
+    );
 
     const videoPlaying = ref(false);
 
@@ -61,12 +77,16 @@
     const videoClick = async () => {
         videoPlaying.value = true;
         await nextTick();
-        if (videoElement.value.requestFullscreen) {
-            videoElement.value.requestFullscreen();
-        } else if (videoElement.value.webkitRequestFullscreen) {
-            videoElement.value.webkitRequestFullscreen();
-        } else if (videoElement.value.msRequestFullScreen) {
-            videoElement.value.msRequestFullScreen();
+        if (props.fullScreenClick) {
+            if (videoElement.value.requestFullscreen) {
+                videoElement.value.requestFullscreen();
+            } else if (videoElement.value.webkitRequestFullscreen) {
+                videoElement.value.webkitRequestFullscreen();
+            } else if (videoElement.value.msRequestFullScreen) {
+                videoElement.value.msRequestFullScreen();
+            }
+        } else {
+            videoElement.play();
         }
     };
 
@@ -86,7 +106,7 @@
 <style scoped>
     .play-button {
         top: 50%;
-        left: 55%;
+        left: 50%;
         transform: translate(-50%, -50%);
     }
 </style>

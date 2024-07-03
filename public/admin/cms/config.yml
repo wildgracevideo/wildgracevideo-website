@@ -40,6 +40,56 @@ VideoInfo: &videoInfo
           name: publicationDate
           widget: 'datetime'
 
+ImageInfo: &imageInfo
+    fields:
+        - label: 'Image'
+          name: 'image'
+          widget: 'file'
+          media_library:
+              allow_multiple: false
+              choose_url: true
+              config:
+                  multiple: false
+                  max_file_size: 4096000
+        - label: 'SEO Image Title (About 125 characters)'
+          name: seoTitle
+          widget: 'text'
+        - label: 'SEO Image Description (About 150-160 characters)'
+          name: seoDescription
+          widget: 'text'
+        - label: 'Publication Date (Change only if changing the file)'
+          name: publicationDate
+          widget: 'datetime'
+
+FileInfo: &fileInfo
+    fields:
+        - label: 'File'
+          name: 'file'
+          widget: 'file'
+          media_library:
+              allow_multiple: false
+              choose_url: true
+              config:
+                  multiple: false
+                  max_file_size: 4096000
+        - {
+              label: 'Thumbnail Image',
+              name: 'thumbnailImage',
+              widget: 'image',
+              choose_url: true,
+              allow_multiple: false,
+              required: false,
+          }
+        - label: 'SEO File Title (About 125 characters)'
+          name: seoTitle
+          widget: 'text'
+        - label: 'SEO File Description (About 150-160 characters)'
+          name: seoDescription
+          widget: 'text'
+        - label: 'Publication Date (Change only if changing the file)'
+          name: publicationDate
+          widget: 'datetime'
+
 collections:
     - name: 'product'
       label: 'Product'
@@ -852,6 +902,7 @@ collections:
                             widget: 'markdown',
                             modes: ['rich_text'],
                         }
+
     - name: 'links'
       label: 'Links'
       folder: 'content/link'
@@ -876,3 +927,149 @@ collections:
                 - label: 'Destination (URL Ex: https://www.google.com)'
                   name: 'destination'
                   widget: 'string'
+
+    - name: 'case-study'
+      label: 'Case Study'
+      folder: 'content/case-study'
+      format: 'frontmatter'
+      create: true
+      identifier_field: 'path'
+      slug: '{{slug}}'
+      preview_path: 'case-studies/{{slug}}'
+      editor:
+          preview: false
+      fields:
+          - label: 'SEO Title (About 125 characters)'
+            name: 'seoTitle'
+            widget: 'string'
+          - label: 'SEO Description (About 150-160 characters)'
+            name: seoDescription
+            widgets: 'text'
+          - label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED'
+            widget: 'string'
+            name: 'path'
+          - {
+                label: 'Page Title',
+                name: 'pageTitle',
+                widget: 'markdown',
+                minimal: true,
+                modes: ['rich_text'],
+            }
+          - {
+                label: 'Page Subtitle',
+                name: 'pageSubtitle',
+                widget: 'markdown',
+                minimal: true,
+                modes: ['rich_text'],
+            }
+          - {
+                label: 'Overview Video',
+                name: 'overviewVideo',
+                widget: 'object',
+                summary: '{{fields.seoTitle}}',
+                <<: *videoInfo,
+            }
+          - label: 'Statistics'
+            name: 'stats'
+            widget: 'list'
+            summary: '{{fields.stat}}'
+            preview:
+            fields:
+                - {
+                      label: 'Stat Period',
+                      name: 'statPeriod',
+                      widget: 'markdown',
+                      minimal: true,
+                      modes: ['rich_text'],
+                  }
+                - {
+                      label: 'Stat',
+                      name: 'stat',
+                      widget: 'markdown',
+                      minimal: true,
+                      modes: ['rich_text'],
+                  }
+                - {
+                      label: 'Stat Clarifier',
+                      name: 'statClarifier',
+                      widget: 'markdown',
+                      minimal: true,
+                      modes: ['rich_text'],
+                  }
+                - {
+                      label: 'Stat Description',
+                      name: 'statDescription',
+                      widget: 'markdown',
+                      minimal: true,
+                      modes: ['rich_text'],
+                  }
+                - label: 'Additional Stats'
+                  name: 'additionalStats'
+                  widget: 'list'
+                  fields:
+                      - {
+                            label: 'Stat',
+                            name: 'stat',
+                            widget: 'markdown',
+                            minimal: true,
+                            modes: ['rich_text'],
+                        }
+                      - {
+                            label: 'Stat Description',
+                            name: 'statDescription',
+                            widget: 'markdown',
+                            minimal: true,
+                            modes: ['rich_text'],
+                        }
+                - label: 'Video Info'
+                  name: 'videoInfo'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *videoInfo
+          - label: 'Videos'
+            name: 'videos'
+            widget: 'list'
+            summary: '{{fields.videoDescription}}'
+            fields:
+                - label: 'Video Info'
+                  name: 'videoInfo'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *videoInfo
+                - {
+                      label: 'Video Description',
+                      name: 'videoDescription',
+                      widget: 'markdown',
+                      minimal: false,
+                      modes: ['rich_text'],
+                  }
+          - label: 'Testimonials'
+            name: 'testimonials'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Client Testimonials'
+                  name: 'clientTestimonials'
+                  widget: 'list'
+                  summary: '{{fields.author}}'
+                  fields:
+                      - label: 'Author'
+                        name: 'author'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Text'
+                        name: 'text'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
+          - label: 'Behind the Scenes'
+            name: 'bts'
+            widget: 'object'
+            summary: 'Behind the scenes files'
+            fields:
+                - label: 'Files'
+                  name: 'files'
+                  widget: 'list'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo

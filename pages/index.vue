@@ -128,11 +128,7 @@
         <FileOrVideo
             v-for="file in testimonials.files!"
             :key="file.file"
-            :file="file.file"
-            :seo-description="file.seoDescription"
-            :seo-title="file.seoTitle"
-            :thumbnail-image="file.thumbnailImage"
-            :publication-date="file.publicationDate"
+            :file="file"
             :is-lazy="true"
             sizes="2xl:800px xl:460px 400px"
             class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"

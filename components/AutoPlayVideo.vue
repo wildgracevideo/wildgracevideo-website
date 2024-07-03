@@ -20,7 +20,7 @@
     </video>
     <button
         v-if="withSoundControl"
-        :class="`relative ${soundControlBottomClass} z-10 float-right ml-auto mr-4 h-8 w-8 cursor-pointer text-white md:h-10 md:w-10`"
+        :class="`relative ${soundControlBottomClass} z-10 float-right ml-auto mr-4 h-8 w-8 cursor-pointer ${textColorClass} md:h-10 md:w-10`"
         @click="toggleMute"
     >
         <span class="sr-only">{{
@@ -77,10 +77,12 @@
             withSoundControl?: boolean;
             soundControlBottomClass?: string;
             videoId?: string;
+            textColorClass?: string;
         }>(),
         {
             soundControlBottomClass: 'bottom-12',
             videoId: '',
+            textColorClass: 'text-white',
         }
     );
 </script>

@@ -10,6 +10,15 @@ export default {
     ],
     theme: {
         extend: {
+            animation: {
+                'loop-scroll': 'loop-scroll 40s linear infinite',
+            },
+            keyframes: {
+                'loop-scroll': {
+                    from: { transform: 'translateX(0)' },
+                    to: { transform: 'translateX(-85%)' },
+                },
+            },
             colors: {
                 'website-off-white':
                     'rgb(var(--color-website-off-white) / <alpha-value>)',
@@ -28,6 +37,7 @@ export default {
                 video: '16 / 9',
                 vertical: '9 / 16',
                 photo: '1 / 1.25',
+                'photo-long': '1 / 1.5',
             },
         },
         transitionProperty: {

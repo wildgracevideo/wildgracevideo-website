@@ -12,6 +12,7 @@ export const getImage: ProviderGetImage = (
             url: src,
         };
     }
+    const srcWithoutQuery = src.split('?')[0];
     const operations = operationsGenerator(modifiers);
     let operationsArray: string[] = [];
     if (operations) {
@@ -20,7 +21,7 @@ export const getImage: ProviderGetImage = (
     if (!operationsArray.some((it) => /^format=.*/g.test(it))) {
         operationsArray.push('format=webp');
     }
-    const transformedUrl = src + '?' + operationsArray.join('&');
+    const transformedUrl = srcWithoutQuery + '?' + operationsArray.join('&');
     return {
         url: transformedUrl,
     };

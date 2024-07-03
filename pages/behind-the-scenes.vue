@@ -87,11 +87,7 @@
             <div>
                 <FileOrVideo
                     class="aspect-photo w-[640px] object-cover object-bottom"
-                    :file="aboutMeFile.file"
-                    :seo-description="aboutMeFile.seoTitle"
-                    :seo-title="aboutMeFile.seoDescription"
-                    :thumbnail-image="aboutMeFile.thumbnailImage"
-                    :publication-date="aboutMeFile.publicationDate"
+                    :file="aboutMeFile"
                     :is-lazy="true"
                     sizes="640px"
                 />
@@ -117,11 +113,7 @@
                 :class="`h-[420px] flex-grow object-cover ${
                     asset.isWide ? 'aspect-video' : 'aspect-photo'
                 }`"
-                :file="asset.file"
-                :seo-description="asset.seoTitle"
-                :seo-title="asset.seoDescription"
-                :thumbnail-image="asset.thumbnailImage"
-                :publication-date="asset.publicationDate"
+                :file="asset"
                 :with-sound-control="true"
                 :is-lazy="true"
                 :sizes="`${asset.isWide ? '747px' : '336px'}`"
@@ -145,50 +137,15 @@
                     </span>
                 </div>
             </div>
-            <div class="mb-12 mt-24 flex flex-row justify-between align-middle">
-                <button aria-label="Go to previous client testimonial">
-                    <ArrowLeftIcon
-                        class="flex-0 ml-4 h-10 w-10 cursor-pointer"
-                        @click="decrementTestimonialIndex"
-                    />
-                </button>
-                <div class="relative h-48 w-2/3 text-center">
-                    <div
-                        v-for="(
-                            clientTestimonial, i
-                        ) in testimonials.clientTestimonials"
-                        :key="clientTestimonial.author"
-                        :data-active="
-                            i === activeTestimonialIndex ? true : null
-                        "
-                        class="transition-opacity absolute mx-auto flex h-full w-full flex-col justify-center text-center opacity-0 duration-700 ease-in-out data-[active]:opacity-100"
-                    >
-                        <Markdown
-                            :markdown-string="`&#8220;${clientTestimonial.text}&#8221;`"
-                            component-class="text-lg"
-                        />
-                        <p class="text-center">
-                            <span class="inline"> - </span>
-                            <Markdown
-                                :markdown-string="`${clientTestimonial.author}`"
-                                component-class="inline [&_>p]:inline text-lg"
-                            />
-                        </p>
-                    </div>
-                </div>
-                <button aria-label="Go to next client testimonial">
-                    <ArrowRightIcon
-                        class="flex-0 mr-4 h-10 w-10 cursor-pointer"
-                        @click="incrementTestimonialIndex"
-                    />
-                </button>
-            </div>
+            <TestimonialCarousel
+                :testimonials="testimonials.clientTestimonials"
+            />
         </section>
     </div>
 </template>
 
 <script setup lang="ts">
-    import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/vue/24/outline';
+    import { handleVideoControls } from '~/lib/handle-video-controls';
     const { data } = await useAsyncData('about', () =>
         queryContent('about').find()
     );
@@ -210,35 +167,7 @@
 
     const testimonials = behindTheScenesData.testimonials;
 
-    const activeTestimonialIndex = ref(4);
-    const intervalID = ref(null);
     const moreInfoTitle = ref(null);
-
-    function increment() {
-        activeTestimonialIndex.value =
-            (activeTestimonialIndex.value + 1) %
-            testimonials.clientTestimonials.length;
-    }
-
-    function incrementTestimonialIndex() {
-        if (intervalID.value) {
-            clearInterval(intervalID.value);
-        }
-        increment();
-        intervalID.value = setInterval(increment, 5000);
-    }
-
-    function decrementTestimonialIndex() {
-        if (intervalID.value) {
-            clearInterval(intervalID.value);
-        }
-        activeTestimonialIndex.value =
-            (activeTestimonialIndex.value -
-                1 +
-                testimonials.clientTestimonials.length) %
-            testimonials.clientTestimonials.length;
-        intervalID.value = setInterval(increment, 5000);
-    }
 
     function getWhatWeDoMarkdownOrderClass(
         index: number,
@@ -263,23 +192,8 @@
         const videoElement = document.getElementById(
             'reel-video'
         ) as HTMLVideoElement;
+        handleVideoControls(videoElement);
 
-        // Safari won't play videos on low-power mode
-        if (videoElement) {
-            videoElement
-                .play()
-                .then(() => {})
-                .catch(() => {
-                    window.document
-                        .querySelectorAll('video')
-                        .forEach((it: HTMLVideoElement) => {
-                            it.setAttribute('controls', 'controls');
-                            it.classList.remove('pointer-events-none');
-                        });
-                });
-        }
-
-        intervalID.value = setInterval(increment, 5000);
         addEventListener('scroll', () => {
             const moreInfoRect = moreInfoTitle.value.getBoundingClientRect();
             if (
