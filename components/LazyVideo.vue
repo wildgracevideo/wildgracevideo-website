@@ -17,7 +17,7 @@
             :src="video.thumbnailImage"
             :alt="video.seoDescription"
             class="w-full brightness-50 duration-300 ease-linear hover:brightness-100"
-            :class="aspectRatio"
+            :class="`${aspectRatio} ${imageClass}`"
             :sizes="sizes"
         />
     </div>
@@ -25,7 +25,7 @@
         v-else
         ref="videoElement"
         class="w-full cursor-pointer"
-        :class="aspectRatio"
+        :class="`${aspectRatio} ${videoClass}`"
         loop
         playsinline
         controls

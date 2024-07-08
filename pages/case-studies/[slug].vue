@@ -32,7 +32,7 @@
                     {{ stat.stat }}
                 </p>
                 <p class="mb-32 tracking-tight">{{ stat.statClarifier }}</p>
-                <p class="mb-4 ml-6 mr-2 text-left">
+                <p class="mb-4 ml-16 mr-4 text-left">
                     {{ stat.statDescription }}
                 </p>
             </div>
@@ -83,8 +83,9 @@
             class="text-white"
             sizes="lg:1300px md:1024px 768px"
             :full-screen-click="false"
+            video-class="!w-1/2"
         />
-        <p>{{ video.videoDescription }}</p>
+        <p class="mx-8">{{ video.videoDescription }}</p>
     </section>
     <section>
         <TestimonialCarousel :testimonials="testimonials.clientTestimonials" />
