@@ -9,7 +9,7 @@ pageSubtitle: Crafted video assets for VanEssential’s Facebook ad campaigns to
 overviewVideo:
   publicationDate: 2024-07-02T17:02:00.000Z
   video: https://content.wildgracevideo.com/Website-Portfolio/VanEssential_Compressed/Product%20Overview%20Video%20V2.mp4
-  thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/logo1.webp
+  thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/VanEssential/ProductImage-min.png
   seoTitle: VanEssential | Video Production Case Study
   seoDescription: In this case study, we highlight the production of a video
     showcasing VanEssential's diverse product offerings.
