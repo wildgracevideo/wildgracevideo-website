@@ -3,7 +3,7 @@ seoTitle: Denver Video Production Company | VanEssential Case Study
 seoDescription: "Denver video production case study for a results-driven video
   project for a van storage company. "
 path: van-essential
-pageTitle: VanEssential Video Case Study
+pageTitle: "VanEssential: Video Case Study"
 pageSubtitle: Crafted video assets for VanEssential’s Facebook ad campaigns to
   boost sales & informative installation videos for a seamless client experience
 overviewVideo:
@@ -40,8 +40,8 @@ videos:
       seoDescription: In this case study, we highlight the production of a product
         installation video that clearly explains how to install rear-door
         storage panels in a Mercedez-Benz van.
-    videoDescription: One of three "How-To" storage installation videos designed to
-      enhance client experience.
+    videoDescription: '"How-To" Storage Installation Video designed to simplify
+      client experience.'
 testimonials:
   clientTestimonials:
     - text: Carly is super easy to work with! She's organized, has a calm energy about
