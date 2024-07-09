@@ -6,7 +6,8 @@ path: van-essential
 webpagePreviewFile: https://content.wildgracevideo.com/images/Website-Portfolio/VanEssential/VE__WGV_Thumbnail.png
 pageTitle: "VanEssential: Video Case Study"
 pageSubtitle: Crafted video assets for VanEssential’s Facebook ad campaigns to
-  boost sales & informative installation videos for a seamless client experience
+  boost sales & created informative installation videos for a seamless client
+  experience
 overviewVideo:
   publicationDate: 2024-07-02T17:02:00.000Z
   video: https://content.wildgracevideo.com/Website-Portfolio/VanEssential_Compressed/Product%20Overview%20Video%20V2.mp4
