@@ -58,7 +58,7 @@
                         <div
                             v-for="(additionalStat, j) in stat.additionalStats"
                             :key="additionalStat.stat"
-                            class="min-w-30 md:min-w-52"
+                            class="mb:h-5rem h-4rem min-w-40 md:min-w-52"
                         >
                             <p
                                 :id="`${i}-${j}-additional-stat`"
