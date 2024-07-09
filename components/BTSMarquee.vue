@@ -2,7 +2,12 @@
     <svg
         fill="currentColor"
         aria-hidden="true"
-        style="height: 94px; transform: translateY(3.4px); overflow: visible"
+        style="
+            height: 94px;
+            width: 4928.4px;
+            transform: translateY(3.4px);
+            overflow: visible;
+        "
     >
         <g transform="translate(0, 1.7000000000000002)">
             <path
