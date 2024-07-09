@@ -25,13 +25,15 @@
         :key="stat.stat"
         class="w-full bg-website-off-black text-website-off-white"
     >
-        <div class="mb-10 flex flex-row gap-10">
+        <div class="mb-10 grid grid-cols-1 gap-10 md:grid-cols-2">
             <div class="min-w-[40%] text-center">
                 <p class="mb-12 mt-16 tracking-tight">{{ stat.statPeriod }}</p>
                 <p class="mb-6 text-5xl font-extralight tracking-tight">
                     {{ stat.stat }}
                 </p>
-                <p class="mb-32 tracking-tight">{{ stat.statClarifier }}</p>
+                <p class="mb-4 tracking-tight md:mb-32">
+                    {{ stat.statClarifier }}
+                </p>
                 <p class="mb-4 ml-16 mr-4 text-left">
                     {{ stat.statDescription }}
                 </p>
@@ -56,11 +58,11 @@
                         <div
                             v-for="(additionalStat, j) in stat.additionalStats"
                             :key="additionalStat.stat"
-                            class="min-w-52"
+                            class="min-w-30 md:min-w-52"
                         >
                             <p
                                 :id="`${i}-${j}-additional-stat`"
-                                class="mb-4 text-5xl tracking-tight"
+                                class="mb-4 text-3xl tracking-tight md:text-5xl"
                             >
                                 {{ additionalStat.stat }}
                             </p>
@@ -76,7 +78,7 @@
     <section
         v-for="(video, i) in caseStudyData.videos"
         :key="`${i}-bts-video`"
-        class="flex w-full flex-row items-center px-8 text-center text-lg"
+        class="grid w-full grid-cols-1 items-center px-8 text-center text-lg md:grid-cols-2"
     >
         <LazyVideo
             :video="video.videoInfo"
@@ -85,7 +87,7 @@
             :full-screen-click="false"
             video-class="!w-1/2"
         />
-        <p class="mx-8">{{ video.videoDescription }}</p>
+        <p class="mx-8 mt-4 md:mt-0">{{ video.videoDescription }}</p>
     </section>
     <section>
         <TestimonialCarousel :testimonials="testimonials.clientTestimonials" />
@@ -95,12 +97,12 @@
             <BTSMarquee />
         </div>
         <div
-            class="mx-24 grid grid-cols-1 gap-20 sm:grid-cols-2 lg:grid-cols-3"
+            class="mx-4 grid grid-cols-1 gap-20 sm:grid-cols-2 md:mx-24 lg:grid-cols-3"
         >
             <FileOrVideo
                 v-for="file in caseStudyData.bts.files"
                 :key="file.seoTitle"
-                class="aspect-photo-long h-full object-fill object-center"
+                class="aspect-photo-long h-full w-full object-fill object-center"
                 :file="file"
                 :is-lazy="true"
                 sizes="md:1000px 768px"
