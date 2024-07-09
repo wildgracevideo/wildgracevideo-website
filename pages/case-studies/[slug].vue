@@ -85,7 +85,6 @@
             class="text-white"
             sizes="lg:1300px md:1024px 768px"
             :full-screen-click="false"
-            video-class="md:!w-1/2 w-full"
         />
         <p class="mx-8 mt-4 md:mt-0">{{ video.videoDescription }}</p>
     </section>
