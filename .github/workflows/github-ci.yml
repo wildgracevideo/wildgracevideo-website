@@ -33,4 +33,4 @@ jobs:
 
             - name: Build
               id: build
-              run: npx prisma generate && npm run build
+              run: npm run build
