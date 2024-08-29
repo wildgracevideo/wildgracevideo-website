@@ -48,8 +48,6 @@ const config = {
         public: {
             siteUrl: SITE_URL,
             websiteIcon: WEBSITE_ICON,
-            gaMeasurementId:
-                process.env.NODE_ENV === 'production' ? GA_MEASUREMENT_ID : '',
             recaptchaSiteKey: '6Ld2tkcpAAAAAK052jkIsYcC5L12ih2pumxlA3e8',
             cloudfrontUrl: CLOUDFRONT_URL,
             reelVideo: {
@@ -88,22 +86,19 @@ const config = {
                     rel: 'preconnect',
                     href: 'https://content.wildgracevideo.com',
                 },
-                {
-                    rel: 'preconnect',
-                    href: 'https://www.googletagmanager.com',
-                },
-                {
-                    rel: 'preconnect',
-                    href: 'https://www.google-analytics.com',
-                },
             ],
-            script: [
-                {
-                    src: '/meta-pixel.js',
-                    defer: true,
-                    type: 'text/partytown',
+        },
+    },
+    $production: {
+        scripts: {
+            registry: {
+                googleAnalytics: {
+                    id: GA_MEASUREMENT_ID,
                 },
-            ],
+                metaPixel: {
+                    id: '7800015660048842',
+                },
+            },
         },
     },
     postcss: {
@@ -204,6 +199,7 @@ const config = {
         '@nuxt/content',
         '@nuxt/ui',
         '@nuxt/image',
+        '@nuxt/scripts',
         [
             '@nuxtjs/google-fonts',
             {

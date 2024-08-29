@@ -23,17 +23,9 @@ let siteUrl = runtimeConfig.public.siteUrl;
 siteUrl = siteUrl.endsWith('/') ?
     siteUrl.slice(0, -1) :
     siteUrl;
+const { proxy } = useScriptMetaPixel()
+
 onMounted(() => {
-    const measurementId = runtimeConfig.public.gaMeasurementId;
-    const script = document.createElement('script');
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-    script.async = true;
-    document.body.appendChild(script);
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', measurementId);
+  proxy.fbq('track', 'PageView');
 });
 </script>
