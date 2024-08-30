@@ -1,15 +1,26 @@
 <template>
     <div>
         <h1 class="my-8 ml-8 text-2xl">Media Library</h1>
-        <h2 class="my-8 ml-8 text-lg">
-            <button
-                v-if="currentFolder.length > 0"
-                class="cursor-hover mr-2 text-website-primary underline"
-                @click="() => goUpDirectory()"
-            >
-                Back</button
-            >{{ currentFolder.join('/') || '/' }}
-        </h2>
+        <div class="my-8 flex w-full flex-row justify-between pl-8 text-lg">
+            <div>
+                <button
+                    v-if="currentFolder.length > 0"
+                    class="cursor-hover mr-2 inline text-website-primary underline"
+                    @click="() => goUpDirectory()"
+                >
+                    Back
+                </button>
+                <h2 class="inline">{{ currentFolder.join('/') || '/' }}</h2>
+            </div>
+            <UButton
+                color="green"
+                size="lg"
+                variant="solid"
+                label="Upload"
+                class="mr-8"
+                @click="() => launchModal()"
+            />
+        </div>
         <UTable
             :columns="columns"
             :rows="files || []"
@@ -51,6 +62,12 @@
 
 <script lang="ts" setup>
     import { ClipboardIcon } from '@heroicons/vue/24/outline';
+    import { Uppy } from '@uppy/core';
+    import Dashboard from '@uppy/dashboard';
+    import AwsS3 from '@uppy/aws-s3';
+
+    import '@uppy/core/dist/style.min.css';
+    import '@uppy/dashboard/dist/style.min.css';
 
     const columns = [
         { key: 'name', label: 'Name' },
@@ -184,6 +201,57 @@
         }`;
     }
 
+    let uppy;
+    function createUppy() {
+        uppy = new Uppy({}).use(Dashboard).use(AwsS3, {
+            async getUploadParameters(file) {
+                const signS3Response = await $fetch(
+                    `/api/admin/media/sign-s3`,
+                    {
+                        method: 'POST',
+                        body: {
+                            prefix: folder.join('/'),
+                            filename: file.name,
+                            contentType: file.type,
+                        },
+                    }
+                );
+                return {
+                    method: signS3Response.method,
+                    url: signS3Response.url,
+                    fields: signS3Response.fields, // For presigned PUT uploads, this should be left empty.
+                    headers: {
+                        'Content-Type': file.type,
+                    },
+                };
+            },
+        });
+
+        uppy.on('complete', (result) => {
+            console.log(
+                'Upload complete! We’ve uploaded these files:',
+                result.successful
+            );
+        });
+
+        uppy.on('upload-success', (file, _data) => {
+            console.log(
+                'Upload success! We’ve uploaded this file:',
+                file.meta['name']
+            );
+        });
+
+        uppy.on('dashboard:modal-closed', async () => {
+            await fetchFiles();
+        });
+    }
+
+    function launchModal() {
+        uppy.setOptions({ restrictions: { allowedFileTypes: ['image/*'] } });
+        const dashboard = uppy.getPlugin('Dashboard');
+        dashboard.openModal();
+    }
+
     onMounted(async () => {
         try {
             await fetchFiles();
@@ -191,5 +259,6 @@
             console.error(e);
         }
         loading.value = false;
+        createUppy();
     });
 </script>
