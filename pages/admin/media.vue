@@ -247,7 +247,19 @@
     }
 
     function launchModal() {
-        uppy.setOptions({ restrictions: { allowedFileTypes: ['image/*'] } });
+        if (
+            currentFolder.value &&
+            currentFolder.value.length > 0 &&
+            currentFolder.value[0] === 'images'
+        ) {
+            uppy.setOptions({
+                restrictions: { allowedFileTypes: ['image/*'] },
+            });
+        } else {
+            uppy.setOptions({
+                restrictions: { allowedFileTypes: ['video/*', '.pdf', '.txt'] },
+            });
+        }
         const dashboard = uppy.getPlugin('Dashboard');
         dashboard.openModal();
     }
