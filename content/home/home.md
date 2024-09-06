@@ -82,6 +82,20 @@ howTo:
 thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
 aboutMeAltText: TODO
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
+title: Denver Video Production Company | Wild Grace Video
+description: Wild Grace Video Productions is a top Denver-based video production
+  company specializing in hotel video production, outdoor product videos and
+  adventure company videos. We're here to help you bring your brand to life and
+  help you better connect with your audience.
+testimonialQuotes:
+  - quote: Carly was so great to work with! She listened to every detail I wanted to
+      be included, and took creative responsibility during the shoots to ensure
+      she had everything she needed.
+    author: Lauren Klein, Genesee Nutrition
+  - quote: Carly has great energy and enthusiasm, combined with maturity, knowledge
+      and skill in her field of work. The final product was very impressive and
+      exceeded our expectations.
+    author: Nathan Baller, Abode Outside
 testimonials:
   backgroundImage: https://content.wildgracevideo.com/images/Website-Home-Page/Horizontal+Paralax-min.webp
   files:
@@ -106,18 +120,6 @@ testimonials:
         Wild Grace Video
   backgroundImageVertical: https://content.wildgracevideo.com/images/Website-Home-Page/Vertical+Paralax.webp
 aboutMeImage: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
-testimonialQuotes:
-  - quote: Carly was so great to work with! She exceeded my expectations with
-      bringing my vision to life and delivering an epic video for our brand. She
-      listened to every detail I wanted to be included, and took creative
-      responsibility during the shoots to ensure she had everything she needed.
-      When I received the final work I had to watch it 5x in a row because it
-      was that good. Highly recommend her for your cinematic needs!
-    author: Lauren Klein, Genesee Nutrition
-  - quote: Carly has great energy and enthusiasm, combined with maturity, knowledge
-      and skill in her field of work. The final product was very impressive and
-      exceeded our expectations.
-    author: Nathan Baller, Abode Outside
 faq:
   title: "**FREQUENTLY ASKED QUESTIONS**"
   questions:
@@ -165,13 +167,14 @@ aboutMeDescription: >-
 
 
   I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
-title: Denver Video Production Company | Wild Grace Video
-description: Wild Grace Video Productions is a top Denver-based video production
-  company specializing in hotel video production, outdoor product videos and
-  adventure company videos. We're here to help you bring your brand to life and
-  help you better connect with your audience.
+pageTagline: >-
+  Wild Grace Video is a Denver-based video production company specializing in
+  creating video and photo content for outdoor, travel, and adventure brands. 
+
+
+  We're here for the brands that embrace dreamy escapes and wild adventures—those that confidently stand out and stay true to who they are. They're bold, inspiring, and refreshingly different.
 videoHighlight:
-  title: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
+  title: LET'S SELL **THE EXPERIENCE.**
   videos:
     - publicationDate: 2024-02-27T19:52:06.039Z
       title: BOUTIQUE HOTELS
@@ -236,11 +239,5 @@ trustedBrandLogos:
     image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
     width: 200
 videoTitle: Video reel showcasing the work of Wild Grace Videography.
-pageTagline: Wild Grace Videography is a Denver-based video production company
-  specializing in creating video and photo content for outdoor, travel, and
-  adventure brands. We're here to give your brand that 'wow' factor—be it bold,
-  authentic, adventurous, or however you imagine it. From engaging social media
-  reels to compelling narratives, we're here to help you bring your brand to
-  life and help you better connect with your audience.
 videoHighlightTitle: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
 ---
