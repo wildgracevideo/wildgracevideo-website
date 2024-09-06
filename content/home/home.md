@@ -174,7 +174,7 @@ pageTagline: Wild Grace Videography is a Denver-based video production company
   reels to compelling narratives, we're here to help you bring your brand to
   life and help you better connect with your audience.
 videoHighlight:
-  title: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
+  title: LET'S SELL **THE EXPERIENCE.**
   videos:
     - publicationDate: 2024-02-27T19:52:06.039Z
       title: BOUTIQUE HOTELS
