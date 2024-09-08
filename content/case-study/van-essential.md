@@ -4,7 +4,7 @@ seoDescription: "Denver video production case study for a results-driven video
   project for a van storage company. "
 path: van-essential
 webpagePreviewFile: https://content.wildgracevideo.com/images/Website-Portfolio/VanEssential/VE__WGV_Thumbnail.png
-pageTitle: "VanEssential: Video Case Study"
+pageTitle: VANESSENTIAL
 pageSubtitle: Crafted video assets for VanEssential’s Facebook ad campaigns to
   boost sales & created informative installation videos for a seamless client
   experience
