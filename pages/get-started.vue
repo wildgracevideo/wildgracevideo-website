@@ -76,39 +76,19 @@
                 :input-class="inputClass"
             />
             <RequiredInput
-                id="instagramhandle"
-                v-model="instagramHandle"
-                title="Instagram Handle"
+                id="businesswebsite"
+                v-model="businessWebsite"
+                title="Business Website"
                 :is-required="false"
                 title-text-class="text-black"
                 :show-required="false"
-                data-mask="!@A"
-                data-mask-tokens="A:[a-zA-Z0-9\.\_]:multiple"
-                hint="@example"
                 :input-class="inputClass"
             />
-            <RequiredSelect
-                v-model="interests"
-                title="Interested in..."
-                container-class="mb-2 md:col-span-2 col-span-1"
-                :is-required="isRequired"
-                title-text-class="text-black"
-                :choices="INTERESTS_CHOICES"
-            />
-            <RequiredSelect
-                v-model="businessType"
-                title="What kind of business are you?"
-                container-class="mb-2 md:col-span-2 col-span-1"
-                :is-required="isRequired"
-                title-text-class="text-black"
-                :single-item="true"
-                :choices="BUSINESS_TYPE_CHOICES"
-            />
             <RequiredTextArea
-                id="goals"
-                v-model="goals"
+                id="currentBusinessChallenge"
+                v-model="currentBusinessChallenge"
                 :rows="3"
-                title="Tell us a little about your brand, and your goals for working together!"
+                title="Current Business Challenge"
                 :is-required="isRequired"
                 title-text-class="text-black"
                 container-class="md:col-span-2 col-span-1"
@@ -156,7 +136,7 @@
                         'cursor-default': sendingForm,
                     }"
                 >
-                    Send
+                    Get Started
                 </button>
             </div>
         </form>
@@ -164,7 +144,6 @@
 </template>
 
 <script setup lang="ts">
-    import { type SelectChoice } from '~/types/form-input';
     import OgMeta from '~/components/OgMeta.vue';
     import {
         type GetStartedSubmitRequest,
@@ -186,25 +165,6 @@
     });
 
     const inputClass = 'bg-website-off-white border-2 border-website-primary';
-
-    const INTERESTS_CHOICES = [
-        {
-            id: 'monthly-video-prodcution-choice',
-            value: 'Monthly Video Production',
-        },
-        { id: 'video-prodcution-choice', value: 'Video Production' },
-        {
-            id: 'course-video-prodcution-choice',
-            value: 'Course Video Production',
-        },
-        { id: 'photography-choice', value: 'Photography' },
-    ];
-
-    const BUSINESS_TYPE_CHOICES = [
-        { id: 'product-choice', value: 'Product' },
-        { id: 'service-choice', value: 'Service' },
-        { id: 'other-choice', value: 'Other' },
-    ];
 
     const MONTHLY_TIP_SIGNUP = [
         {
@@ -228,11 +188,9 @@
     const lastName = ref('');
     const businessName = ref('');
     const phone = ref('');
-    const instagramHandle = ref('');
-    const goals = ref('');
+    const businessWebsite = ref('');
+    const currentBusinessChallenge = ref('');
     const email = ref('');
-    const interests = ref<SelectChoice[]>([]);
-    const businessType = ref<SelectChoice[]>([]);
     const monthlyTipSignup = ref(MONTHLY_TIP_SIGNUP);
     const hearChoice = ref('');
     const phoneErrorMessage = ref('');
@@ -274,9 +232,7 @@
             lastName.value &&
             businessName.value &&
             phone.value &&
-            goals.value &&
-            interests.value.length > 0 &&
-            businessType.value.length > 0 &&
+            currentBusinessChallenge.value &&
             hearChoice.value
         ) {
             sendingForm.value = true;
@@ -288,12 +244,10 @@
                     email: `${email.value}`,
                     businessName: `${businessName.value}`,
                     phone: `${phone.value}`,
-                    goals: `${goals.value}`,
-                    interests: interests.value.map((it) => it.value),
-                    businessType: `${businessType.value[0].value}`,
+                    currentBusinessChallenge: `${currentBusinessChallenge.value}`,
                     hearChoice: `${hearChoice.value}`,
                     monthlyTipSignup: monthlyTipSignup.value.length > 0,
-                    instagramHandle: `${instagramHandle.value}`,
+                    businessWebsite: `${businessWebsite.value}`,
                 };
                 try {
                     await $fetch(`/api/forms/get-started`, {

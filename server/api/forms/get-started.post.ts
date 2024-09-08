@@ -33,17 +33,13 @@ export default defineEventHandler(async (event): Promise<void> => {
           <br />
           Phone: ${body.phone}
           <br />
-          Goals: ${body.goals}
+          Current Business Challenge: ${body.currentBusinessChallenge}
           <br />
-          Interests: ${body.interests.join(', ')}
-          <br />
-          Business Type: ${body.businessType}
-          <br />
-          How did you hear about us?: ${body.hearChoice}
+          How did you hear about us? ${body.hearChoice}
           <br />
           Monthly Tip Signup: ${body.monthlyTipSignup === true ? 'Yes' : 'No'}
           <br />
-          Instagram Handle: ${body.instagramHandle || 'N/A'}
+          Business Website:  ${body.businessWebsite || 'N/A'}
         </body>
     </html>`;
 

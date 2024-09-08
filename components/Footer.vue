@@ -11,7 +11,7 @@
             <NuxtLink to="/terms">Terms of Use</NuxtLink>
         </div>
         <SocialMediaIcons
-            icon-fill="rgb(var(--color-website-accent))"
+            icon-fill="rgb(var(--color-website-primary))"
             class="-mb-8"
             :icon-size="80"
         />

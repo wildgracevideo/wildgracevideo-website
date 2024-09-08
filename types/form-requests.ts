@@ -13,12 +13,10 @@ export interface GetStartedSubmitRequest {
     email: string;
     businessName: string;
     phone: string;
-    goals: string;
-    interests: string[];
-    businessType: string;
+    currentBusinessChallenge: string;
     hearChoice: string;
     monthlyTipSignup: boolean;
-    instagramHandle?: string;
+    businessWebsite?: string | undefined;
 }
 
 export enum RecaptchaType {

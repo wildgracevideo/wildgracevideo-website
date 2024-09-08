@@ -4,6 +4,7 @@
         :width="width"
         :height="height"
         :viewBox="`0 0 ${width} ${height}`"
+        class="pt-0.5"
     >
         <path
             :fill="fill"
