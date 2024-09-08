@@ -167,12 +167,11 @@ aboutMeDescription: >-
 
 
   I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
-pageTagline: >-
-  Wild Grace Video is a Denver-based video production company specializing in
-  creating video and photo content for outdoor, travel, and adventure brands. 
-
-
-  We're here for the brands that embrace dreamy escapes and wild adventures—those that confidently stand out and stay true to who they are. They're bold, inspiring, and refreshingly different.
+pageTagline: Wild Grace Video is a Denver-based video production company
+  specializing in creating video and photo content for outdoor, travel, and
+  adventure brands. We're here for the brands that embrace dreamy escapes and
+  wild adventures—those that confidently stand out and stay true to who they
+  are. They're bold, inspiring, and refreshingly different.
 videoHighlight:
   title: LET'S SELL **THE EXPERIENCE.**
   videos:
