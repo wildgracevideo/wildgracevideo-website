@@ -162,6 +162,8 @@
     } from '@heroicons/vue/24/outline';
     import type { FileConfig } from '~/components/FileOrVideo.vue';
 
+    import shaka from 'shaka-player';
+
     const { data } = await useAsyncData('home', () =>
         queryContent('home').find()
     );
@@ -216,46 +218,55 @@
             videoElement.muted = reelMuted.value;
         };
 
-        const { $stream } = useNuxtApp();
-        const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl;
+        const player = new shaka.Player(videoElement);
+        // const ui = videoElement['ui'];
+        // const config = {
+         // 'controlPanelElements': []
+        // }
+        // ui.configure(config);
+        const mpdUrl = 'https://content.wildgracevideo.com/videos/2024 Website Reel(2).mp4.mpd';
+        player.load(mpdUrl)
 
-        const addSourceToVideo = (element: HTMLVideoElement, src: string) => {
-            const source = document.createElement('source');
-            source.src = src;
-            element.appendChild(source);
-        };
+        // const { $stream } = useNuxtApp();
+        // const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl;
 
-        const reelVideoConfig = runtimeConfig.public.reelVideo;
-
-        if ('safari' in window) {
-            const hlsManifestUri = `${cloudfrontUrl}${reelVideoConfig.hlsUri}`;
-            addSourceToVideo(videoElement, hlsManifestUri);
-        } else {
-            try {
-                await $stream(
-                    videoElement,
-                    reelVideoConfig.mpegDashManifestFileName,
-                    reelVideoConfig.mpegDashFolder
-                );
-            } catch (error) {
-                console.log(error);
-                const fallbackManifestUri = `${cloudfrontUrl}${reelVideoConfig.mp4Uri}`;
-                addSourceToVideo(videoElement, fallbackManifestUri);
-            }
-        }
+        // const addSourceToVideo = (element: HTMLVideoElement, src: string) => {
+        //     const source = document.createElement('source');
+        //     source.src = src;
+        //     element.appendChild(source);
+        // };
+        //
+        // const reelVideoConfig = runtimeConfig.public.reelVideo;
+        //
+        // if ('safari' in window) {
+        //     const hlsManifestUri = `${cloudfrontUrl}${reelVideoConfig.hlsUri}`;
+        //     addSourceToVideo(videoElement, hlsManifestUri);
+        // } else {
+        //     try {
+        //         await $stream(
+        //             videoElement,
+        //             reelVideoConfig.mpegDashManifestFileName,
+        //             reelVideoConfig.mpegDashFolder
+        //         );
+        //     } catch (error) {
+        //         console.log(error);
+        //         const fallbackManifestUri = `${cloudfrontUrl}${reelVideoConfig.mp4Uri}`;
+        //         addSourceToVideo(videoElement, fallbackManifestUri);
+        //     }
+        // }
 
         // Safari won't play videos on low-power mode
-        videoElement
-            .play()
-            .then(() => {})
-            .catch(() => {
-                window.document
-                    .querySelectorAll('video')
-                    .forEach((it: HTMLVideoElement) => {
-                        it.setAttribute('controls', 'controls');
-                        it.classList.remove('pointer-events-none');
-                    });
-            });
+        // videoElement
+        //     .play()
+        //     .then(() => {})
+        //     .catch(() => {
+        //         window.document
+        //             .querySelectorAll('video')
+        //             .forEach((it: HTMLVideoElement) => {
+        //                 it.setAttribute('controls', 'controls');
+        //                 it.classList.remove('pointer-events-none');
+        //             });
+        //     });
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
