@@ -33,4 +33,4 @@ jobs:
 
             - name: Build
               id: build
-              run: npm run build
+              run: TURSO_DATABASE_URL=https://missing-db.com npm run build

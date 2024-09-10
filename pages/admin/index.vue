@@ -65,7 +65,6 @@
             const { data } = await useFetch(
                 `/api/admin/stats?numDays=${newValue}`
             );
-            console.log(data);
             stats.value = data.value;
         } catch (e: unknown) {
             console.error(e);

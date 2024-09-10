@@ -14,8 +14,6 @@ const config = {
         awsSecret: process.env.AWS_SECRET_KEY_ID_WGV,
         awsRegion: process.env.AWS_REGION_WGV,
         clientFromEmailAddress: process.env.CLIENT_FROM_EMAIL_ADDRESS,
-        googleClientId: process.env.GOOGLE_CLIENT_ID,
-        googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
         nextAuthSecret: process.env.NEXTAUTH_SECRET,
         recaptchaSecret: process.env.RECAPTCHA_SECRET_KEY,
         formsFromEmail: 'carly@wildgracevideo.com',
@@ -32,8 +30,8 @@ const config = {
         sendgridWebhookSigningKey: process.env.SENDGRID_WEBHOOK_SIGNING_KEY,
         discoveryCallTemplateId: process.env.DISCOVERY_CALL_TEMPLATE_ID,
         gitProvider: process.env.GIT_PROVIDER || 'github',
-        gitProviderClientId: process.env.GIT_PROVIDER_CLIENT_ID,
-        gitProviderClientSecret: process.env.GIT_PROVIDER_CLIENT_SECRET,
+        gitProviderClientId: process.env.GITHUB_CLIENT_ID,
+        gitProviderClientSecret: process.env.GITHUB_CLIENT_SECRET,
         gitProviderTokenHost:
             process.env.GIT_PROVIDER_TOKEN_HOST || 'https://github.com',
         gitProviderTokenPath:
@@ -45,6 +43,12 @@ const config = {
         secureCookies: process.env.NODE_ENV === 'production',
         apiKey: process.env.API_KEY,
         s3MediaBucket: process.env.S3_BUCKET,
+        allowedGithubUsers: (process.env.ALLOWED_GITHUB_USERS || '').split(','),
+        allowedAuthRedirectHosts: [
+            '^localhost:3000$',
+            '^www.wildgracevideo.com$',
+            '.*netlify.app$',
+        ],
         public: {
             siteUrl: SITE_URL,
             websiteIcon: WEBSITE_ICON,
@@ -174,12 +178,6 @@ const config = {
     robots: {
         disallow: ['/admin', '/admin/*', '/api', '/api/*', '/links'],
     },
-    auth: {
-        baseURL: SITE_URL,
-        provider: {
-            type: 'authjs',
-        },
-    },
     content: {},
     image: {
         domains: ['content.wildgracevideo.com'],
@@ -195,7 +193,6 @@ const config = {
         },
     },
     modules: [
-        '@sidebase/nuxt-auth',
         '@nuxt/content',
         '@nuxt/ui',
         '@nuxt/image',
