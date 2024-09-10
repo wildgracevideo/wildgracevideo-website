@@ -1,6 +1,6 @@
 <template>
     <header
-        class="text-website- hidden min-h-dvh w-60 bg-website-accent lg:block"
+        class="hidden min-h-dvh w-60 bg-website-accent text-website-off-black lg:block"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
@@ -16,7 +16,7 @@
             v-for="element in elements"
             :key="element.title"
             :to="element.to"
-            class="mb-4 ml-4 flex items-center"
+            class="mb-4 ml-4 flex items-center !text-website-off-black"
         >
             <component :is="element.icon" class="h-5 w-5" />
             <p class="ml-1 text-lg">{{ element.title }}</p>

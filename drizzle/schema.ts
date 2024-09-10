@@ -204,3 +204,17 @@ export const verificationTokens = sqliteTable(
         compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
     })
 );
+
+export const luciaUserTable = sqliteTable('lucia-user', {
+    id: text('id').primaryKey(),
+    githubId: text('github_id').unique().notNull(),
+    username: text('username').notNull(),
+});
+
+export const luciaSessionTable = sqliteTable('lucia-session', {
+    id: text('id').primaryKey(),
+    userId: text('user_id')
+        .notNull()
+        .references(() => luciaUserTable.id),
+    expiresAt: integer('expires_at').notNull(),
+});

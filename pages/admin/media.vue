@@ -165,7 +165,7 @@
         if (currentFolder.value.length > 0) {
             content += '/' + currentFolder.value.join('/');
         }
-        return content + '/' + encodeURIComponent(fileName);
+        return content + '/' + encodeURI(fileName);
     }
 
     const previewFile = async (file: string) => {
