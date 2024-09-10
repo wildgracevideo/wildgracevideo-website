@@ -38,7 +38,6 @@ const config = {
             process.env.GIT_PROVIDER_TOKEN_PATH || '/login/oauth/access_token',
         gitProviderAuthorizePath:
             process.env.GIT_PROVIDER_AUTHORIZE_PATH || '/login/oauth/authorize',
-        gitProviderLogin: process.env.GIT_PROVIDER_LOGIN || 'wildgracevideo',
         gitProviderScopes: process.env.GIT_PROVIDER_SCOPES || 'repo user',
         secureCookies: process.env.NODE_ENV === 'production',
         apiKey: process.env.API_KEY,
@@ -47,7 +46,7 @@ const config = {
         allowedAuthRedirectHosts: [
             '^localhost:3000$',
             '^www.wildgracevideo.com$',
-            '.*netlify.app$',
+            '.*wildgracevideo.netlify.app$',
         ],
         public: {
             siteUrl: SITE_URL,
