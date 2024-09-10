@@ -1,13 +1,7 @@
-import { ListObjectsV2Command, S3Client } from '@aws-sdk/client-s3';
+import { ListObjectsV2Command } from '@aws-sdk/client-s3';
+import { getS3Client } from '~/server/utils/s3Client';
 
 const runtimeConfig = useRuntimeConfig();
-const s3Client = new S3Client({
-    region: runtimeConfig.awsRegion,
-    credentials: {
-        accessKeyId: runtimeConfig.awsAccessKeyId,
-        secretAccessKey: runtimeConfig.awsSecret,
-    },
-});
 
 export interface S3Object {
     name: string;
@@ -35,7 +29,9 @@ export default defineEventHandler(async (event): Promise<S3Object[]> => {
     }
 
     try {
-        const response = await s3Client.send(new ListObjectsV2Command(params));
+        const response = await getS3Client().send(
+            new ListObjectsV2Command(params)
+        );
         if (response.Contents) {
             const folders: S3Object[] = ((response.CommonPrefixes?.map(
                 (item) => {

@@ -1,5 +1,6 @@
-import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { getS3Client } from '~/server/utils/s3Client';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -31,15 +32,3 @@ export default defineEventHandler(
         };
     }
 );
-
-let s3Client: S3Client;
-function getS3Client() {
-    s3Client ??= new S3Client({
-        region: runtimeConfig.awsRegion,
-        credentials: {
-            accessKeyId: runtimeConfig.awsAccessKeyId,
-            secretAccessKey: runtimeConfig.awsSecret,
-        },
-    });
-    return s3Client;
-}
