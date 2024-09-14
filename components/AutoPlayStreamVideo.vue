@@ -85,7 +85,7 @@
         });
         observer.observe(videoElement.value!);
 
-        const player = new shaka.Player(videoElement);
+        const player = new shaka.Player(videoElement.value);
         await player.load(props.video);
 
         // Safari won't play videos on low-power mode

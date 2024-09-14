@@ -40,7 +40,6 @@ function parseImageOrVideo(file: {
 
 export default defineSitemapEventHandler(async (e) => {
     const contentList = (await serverQueryContent(e).find()) as ParsedContent[];
-    // console.log(contentList);
     const filteredList = contentList
         .filter(
             (c) =>

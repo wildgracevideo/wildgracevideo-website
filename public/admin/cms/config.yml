@@ -2,12 +2,12 @@ backend:
     name: github
     branch: main
     repo: wildgracevideo/wildgracevideo-website
-    base_url: https://www.wildgracevideo.com
+    base_url: http://localhost:3000
 
 media_folder: public/uploads
 public_folder: /uploads
 
-local_backend: false
+local_backend: true
 
 publish_mode: editorial_workflow
 

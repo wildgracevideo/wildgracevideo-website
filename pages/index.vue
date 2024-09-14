@@ -11,8 +11,8 @@
         <AutoPlayStreamVideo
             video-id="reel-video"
             class="pointer-events-none relative z-0 h-full w-full cursor-default"
-            :title="reelVideo.title"
-            :description="reelVideo.description"
+            :title="reelVideo.seoTitle"
+            :description="reelVideo.seoDescription"
             :video="reelVideo.video"
             :with-sound-control="true"
             :thumbnail-image="reelVideo.thumbnailImage"
