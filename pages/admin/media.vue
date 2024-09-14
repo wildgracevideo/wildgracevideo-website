@@ -134,10 +134,26 @@
                 </span>
             </UCard>
         </UModal>
+
+        <UModal v-model="showShakaModal">
+            <UCard>
+                <template #header> Video preview </template>
+                <video
+                    ref="videoElement"
+                    controls
+                    muted
+                    disablePictureInPicture
+                    playsinline
+                    autoplay
+                    data-shaka-player
+                ></video>
+            </UCard>
+        </UModal>
     </div>
 </template>
 
 <script lang="ts" setup>
+    import shaka from 'shaka-player';
     import { ClipboardIcon, TrashIcon } from '@heroicons/vue/24/outline';
     import { Uppy } from '@uppy/core';
     import Dashboard from '@uppy/dashboard';
@@ -180,6 +196,10 @@
     const createFolderName = ref('');
 
     const folderNameError = ref(false);
+
+    const showShakaModal = ref(false);
+
+    const selectedVideoFileName = ref('');
 
     const { push } = useRouter();
 
@@ -230,7 +250,13 @@
         if (row.isFolder) {
             handleFolderClick(row.name);
         } else {
-            previewFile(row.name);
+            console.log(currentFolder.value);
+            if (currentFolder.value && currentFolder.value[0] === 'videos') {
+                selectedVideoFileName.value = getCloudFrontUrl(row.name);
+                showShakaModal.value = true;
+            } else {
+                previewFile(row.name);
+            }
         }
     };
 
@@ -247,9 +273,19 @@
 
     function getCloudFrontUrl(fileName: string) {
         let content = runtimeConfig.public.cloudfrontUrl;
-        console.log(currentFolder.value);
         if (currentFolder.value.length > 0) {
             content += '/' + currentFolder.value.join('/');
+            if (currentFolder.value[0] === 'videos') {
+                const fileNameWithoutPrefix = fileName.replace(/\.[^/.]+$/, '');
+                return (
+                    content +
+                    '/' +
+                    encodeURI(fileNameWithoutPrefix) +
+                    '/' +
+                    encodeURI(fileNameWithoutPrefix) +
+                    '.mpd'
+                );
+            }
         }
         return content + '/' + encodeURI(fileName);
     }
@@ -420,6 +456,15 @@
             console.error(e);
         }
     };
+
+    const videoElement = ref<HTMLVideoElement>();
+
+    watchEffect(async () => {
+        if (videoElement.value) {
+            const player = new shaka.Player(videoElement.value);
+            await player.load(selectedVideoFileName.value);
+        }
+    });
 
     onMounted(async () => {
         try {

@@ -16,7 +16,7 @@ function parseImageOrVideo(file: {
 }) {
     let data;
     let isImage = true;
-    if (file.file.endsWith('mp4')) {
+    if (file.file.endsWith('mp4') || file.file.endsWith('mpd')) {
         const thumbnailLoc = getThumbnailLoc(file.thumbnailImage);
         data = {
             title: file.seoTitle,
@@ -62,59 +62,30 @@ export default defineSitemapEventHandler(async (e) => {
                 };
                 return asSitemapUrl(sitemapUrl);
             } else if (c._dir === 'home') {
-                // @ts-expect-error No types for nuxt-content
-                const highlightVideos = c.videoHighlight.videos.map((it) => {
-                    return {
-                        title: it.seoTitle,
-                        thumbnail_loc: getThumbnailLoc(it.thumbnailImage),
-                        description: it.seoDescription,
-                        content_loc: it.video,
-                        requires_subscription: false,
-                        live: false,
-                        publication_date: it.publicationDate,
+                // TODO: Use this format for everything
+                if (c.sitemap.include) {
+                    const additionalImages: unknown[] = [];
+                    const additionalVideos: unknown[] = [];
+                    const videosAndImages = findImagesAndVideos(c);
+                    videosAndImages.forEach((imageOrVideo) => {
+                        const imageOrVideoResult =
+                            parseImageOrVideo(imageOrVideo);
+                        if (imageOrVideoResult.isImage) {
+                            additionalImages.push(imageOrVideoResult.data);
+                        } else {
+                            additionalVideos.push(imageOrVideoResult.data);
+                        }
+                    });
+                    const lastModDate = new Date(c.lastmod);
+                    const sitemapUrl: SitemapUrl = {
+                        loc: c.sitemap.loc,
+                        lastmod: `${lastModDate.getUTCFullYear()}-${lastModDate.getUTCMonth()}-${lastModDate.getUTCDate()}`,
+                        changefreq: c.sitemap.changefreq,
+                        images: additionalImages,
+                        videos: additionalVideos,
                     };
-                }) as unknown[];
-                const additionalImages: unknown[] = [];
-                const additionalVideos: unknown[] = [];
-                // @ts-expect-error No types for nuxt-content
-                c.testimonials.files.forEach((it) => {
-                    const imageOrVideoResult = parseImageOrVideo(it);
-                    if (imageOrVideoResult.isImage) {
-                        additionalImages.push(imageOrVideoResult.data);
-                    } else {
-                        additionalVideos.push(imageOrVideoResult.data);
-                    }
-                });
-                const imageOrVideoResult = parseImageOrVideo(c.aboutMe.file);
-                if (imageOrVideoResult.isImage) {
-                    additionalImages.push(imageOrVideoResult.data);
-                } else {
-                    additionalVideos.push(imageOrVideoResult.data);
+                    return asSitemapUrl(sitemapUrl);
                 }
-                const sitemapUrl: SitemapUrl = {
-                    loc: `/`,
-                    lastmod: '2024-02-28T19:20:30+07:00',
-                    images: additionalImages,
-                    videos: [
-                        {
-                            title: c.reelVideo.seoTitle,
-                            thumbnail_loc: getThumbnailLoc(
-                                c.reelVideo.thumbnailImage
-                            ),
-                            description: c.reelVideo.seoDescription,
-                            content_loc:
-                                'https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4',
-                            player_loc: runtimeConfig.public.siteUrl,
-                            duration: 83,
-                            requires_subscription: false,
-                            live: false,
-                            publication_date: '2023-02-28T19:20:30+07:00',
-                        },
-                        ...highlightVideos,
-                        ...additionalVideos,
-                    ],
-                };
-                return asSitemapUrl(sitemapUrl);
             } else if (c._dir === 'service') {
                 const sitemapUrl: SitemapUrl = {
                     loc: `/${c._dir}s/${c.path}`,
@@ -144,4 +115,55 @@ function getThumbnailLoc(
         thumbnailLoc = runtimeConfig.public.siteUrl + thumbnailImage!;
     }
     return thumbnailLoc;
+}
+
+interface FileDescription {
+    seoDescription: string;
+    seoTitle: string;
+    publicationDate: string;
+    file: string;
+    thumbnailImage: string | undefined;
+}
+
+function findImagesAndVideos(data: object) {
+    const results: FileDescription[] = [];
+
+    function recursiveSearch(
+        obj: Partial<FileDescription> & {
+            video: string | undefined;
+            image: string | undefined;
+        }
+    ) {
+        if (typeof obj === 'object' && obj !== null) {
+            // Check if the object has all the required fields
+            if (
+                'seoTitle' in obj &&
+                'seoDescription' in obj &&
+                'publicationDate' in obj &&
+                ('file' in obj || 'video' in obj || 'image' in obj)
+            ) {
+                const result = {
+                    seoTitle: obj.seoTitle as string,
+                    seoDescription: obj.seoDescription as string,
+                    publicationDate: obj.publicationDate as string,
+                    file: (obj.file || obj.video || obj.image)!,
+                    thumbnailImage: obj.thumbnailImage,
+                };
+                results.push(result);
+            }
+
+            // Recursively search each key-value pair
+            for (const key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    recursiveSearch(obj[key]);
+                }
+            }
+        } else if (Array.isArray(obj)) {
+            // Recursively search in each array element
+            obj.forEach((item) => recursiveSearch(item));
+        }
+    }
+
+    recursiveSearch(data);
+    return results;
 }
