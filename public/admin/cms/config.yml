@@ -2,12 +2,12 @@ backend:
     name: github
     branch: main
     repo: wildgracevideo/wildgracevideo-website
-    base_url: http://localhost:3000
+    base_url: https://www.wildgracevideo.com
 
 media_folder: public/uploads
 public_folder: /uploads
 
-local_backend: true
+local_backend: false
 
 publish_mode: editorial_workflow
 
@@ -21,7 +21,6 @@ VideoInfo: &videoInfo
               choose_url: true
               config:
                   multiple: false
-                  max_file_size: 4096000
         - {
               label: 'Thumbnail Image',
               name: 'thumbnailImage',
@@ -598,6 +597,46 @@ collections:
       editor:
           preview: false
       fields:
+          - label: "Sitemap (Don't change)"
+            name: 'sitemap'
+            widget: 'object'
+            fields:
+                - {
+                      label: 'Change Frequency',
+                      name: 'changefreq',
+                      widget: 'select',
+                      options:
+                          [
+                              'always',
+                              'hourly',
+                              'daily',
+                              'weekly',
+                              'monthly',
+                              'yearly',
+                              'never',
+                          ],
+                      default: 'monthly',
+                  }
+                - {
+                      label: 'Include in Sitemap',
+                      name: 'include',
+                      widget: 'boolean',
+                      default: true,
+                  }
+                - {
+                      label: 'Last Modified',
+                      name: 'lastmod',
+                      widget: 'datetime',
+                      default: '{{now}}',
+                      date_format: 'YYYY-MM-DD',
+                      time_format: false,
+                  }
+                - {
+                      label: 'Location',
+                      name: 'loc',
+                      widget: 'string',
+                      default: '/',
+                  }
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - label: 'Reel Video'
@@ -605,6 +644,13 @@ collections:
             widget: 'object'
             summary: '{{fields.seoTitle}}'
             fields:
+                - label: 'Reel Video'
+                  name: 'video'
+                  widget: 'file'
+                  choose_url: true
+                  allow_multiple: false
+                  media_library:
+                      allow_multiple: false
                 - {
                       label: 'Reel Video Thumbnail Image',
                       name: 'thumbnailImage',
@@ -618,6 +664,9 @@ collections:
                 - label: 'SEO Video Description (About 150-160 characters)'
                   name: seoDescription
                   widget: 'text'
+                - label: 'Publication Date (Change only if changing the video file)'
+                  name: publicationDate
+                  widget: 'datetime'
           - {
                 label: 'Page Title',
                 name: 'pageTitle',

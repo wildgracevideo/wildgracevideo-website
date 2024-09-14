@@ -7,38 +7,17 @@
         in-language="en-US"
         date-published="2024-02-28T22:13:39.520Z"
     />
-    <SchemaOrgVideo
-        :name="reelVideo.seoTitle"
-        url="https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4"
-        content-url="https://content.wildgracevideo.com/wgv-reel-2024-h264.mp4"
-        upload-date="2024-02-28T22:13:39.520Z"
-        :description="reelVideo.seoDescription"
-        :thumbnail="{
-            url: reelVideo.thumbnailImage,
-            contentUrl: reelVideo.thumbnailImage,
-        }"
-    />
     <section class="relative aspect-video w-full max-w-full bg-fixed">
-        <video
-            id="reel-video"
+        <AutoPlayStreamVideo
+            video-id="reel-video"
             class="pointer-events-none relative z-0 h-full w-full cursor-default"
-            autoplay
-            muted
-            loop
-            disablePictureInPicture
-            playsinline
-            :title="reelVideo.seoTitle"
-        ></video>
-        <button
-            class="absolute bottom-6 right-8 z-10 h-10 w-10 cursor-pointer text-white md:bottom-10 md:h-12 md:w-12"
-            @click="toggleMute"
-        >
-            <span class="sr-only">{{
-                reelMuted ? 'Unmute Video Reel Audio' : 'Mute Video Reel Audio'
-            }}</span>
-            <SpeakerXMarkIcon v-if="reelMuted" />
-            <SpeakerWaveIcon v-else />
-        </button>
+            :title="reelVideo.title"
+            :description="reelVideo.description"
+            :video="reelVideo.video"
+            :with-sound-control="true"
+            :thumbnail-image="reelVideo.thumbnailImage"
+            :publication-date="reelVideo.publicationDate"
+        />
     </section>
     <Markdown
         :markdown-string="`# ${pageTitle}`"
@@ -156,21 +135,11 @@
 </template>
 
 <script setup lang="ts">
-    import {
-        SpeakerWaveIcon,
-        SpeakerXMarkIcon,
-    } from '@heroicons/vue/24/outline';
     import type { FileConfig } from '~/components/FileOrVideo.vue';
-
-    import shaka from 'shaka-player';
 
     const { data } = await useAsyncData('home', () =>
         queryContent('home').find()
     );
-
-    const reelMuted = ref(true);
-
-    let toggleMute = () => {};
 
     const homeData = data!.value![0]!;
     const title = homeData.title!;
@@ -207,67 +176,8 @@
         text: howTo.footer,
     });
 
-    const runtimeConfig = useRuntimeConfig();
+    // const runtimeConfig = useRuntimeConfig();
     onMounted(async () => {
-        const videoElement = document.getElementById(
-            'reel-video'
-        ) as HTMLVideoElement;
-
-        toggleMute = () => {
-            reelMuted.value = !reelMuted.value;
-            videoElement.muted = reelMuted.value;
-        };
-
-        const player = new shaka.Player(videoElement);
-        // const ui = videoElement['ui'];
-        // const config = {
-         // 'controlPanelElements': []
-        // }
-        // ui.configure(config);
-        const mpdUrl = 'https://content.wildgracevideo.com/videos/2024 Website Reel(2).mp4.mpd';
-        player.load(mpdUrl)
-
-        // const { $stream } = useNuxtApp();
-        // const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl;
-
-        // const addSourceToVideo = (element: HTMLVideoElement, src: string) => {
-        //     const source = document.createElement('source');
-        //     source.src = src;
-        //     element.appendChild(source);
-        // };
-        //
-        // const reelVideoConfig = runtimeConfig.public.reelVideo;
-        //
-        // if ('safari' in window) {
-        //     const hlsManifestUri = `${cloudfrontUrl}${reelVideoConfig.hlsUri}`;
-        //     addSourceToVideo(videoElement, hlsManifestUri);
-        // } else {
-        //     try {
-        //         await $stream(
-        //             videoElement,
-        //             reelVideoConfig.mpegDashManifestFileName,
-        //             reelVideoConfig.mpegDashFolder
-        //         );
-        //     } catch (error) {
-        //         console.log(error);
-        //         const fallbackManifestUri = `${cloudfrontUrl}${reelVideoConfig.mp4Uri}`;
-        //         addSourceToVideo(videoElement, fallbackManifestUri);
-        //     }
-        // }
-
-        // Safari won't play videos on low-power mode
-        // videoElement
-        //     .play()
-        //     .then(() => {})
-        //     .catch(() => {
-        //         window.document
-        //             .querySelectorAll('video')
-        //             .forEach((it: HTMLVideoElement) => {
-        //                 it.setAttribute('controls', 'controls');
-        //                 it.classList.remove('pointer-events-none');
-        //             });
-        //     });
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (
