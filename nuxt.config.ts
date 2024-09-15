@@ -75,7 +75,7 @@ const config = {
                     name: 'viewport',
                     content: 'width=device-width, initial-scale=1',
                 },
-                { charset: 'utf-8' }, 
+                { charset: 'utf-8' },
             ],
             link: [
                 { rel: 'canonical', href: SITE_URL },
@@ -91,6 +91,25 @@ const config = {
                     crossorigin: true,
                 },
             ],
+        },
+    },
+    security: {
+        headers: {
+            'default-src': ["'self'", 'https://*.wildgracevideo.com'],
+            'style-src': [
+                "'self'",
+                'https://*.wildgracevideo.com',
+                'https://fonts.googleapis.com',
+                "'unsafe-inline'",
+            ],
+            'script-src': ["'self'", 'https://*.wildgracevideo.com'],
+            'font-src': [
+                "'self'",
+                'https://*.wildgracevideo.com',
+                'https://fonts.gstatic.com',
+                'data:',
+            ],
+            'img-src': ["'self'", 'https://*.wildgracevideo.com', 'data:'],
         },
     },
     $production: {
