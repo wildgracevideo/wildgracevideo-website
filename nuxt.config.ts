@@ -12,6 +12,7 @@ let securityConfig = {};
 if (process.env.NODE_ENV === 'production') {
     securityConfig = {
         headers: {
+            crossOriginEmbedderPolicy: 'unsafe-none', // TODO: Look into this
             contentSecurityPolicy: {
                 'default-src': ["'self'", 'https:', '*.wildgracevideo.com'],
                 'connect-src': [
