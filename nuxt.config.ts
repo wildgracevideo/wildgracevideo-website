@@ -75,12 +75,7 @@ const config = {
                     name: 'viewport',
                     content: 'width=device-width, initial-scale=1',
                 },
-                { charset: 'utf-8' },
-                {
-                    'http-equiv': 'Content-Security-Policy',
-                    content:
-                        "default-src 'self' https://wildgracevideo.com https://*.wildgracevideo.com; style-src 'unsafe-inline' 'self' https://wildgracevideo.com https://*.wildgracevideo.com https://fonts.googleapis.com; font-src 'self' https://wildgracevideo.com https://*.wildgracevideo.com https://fonts.gstatic.com;",
-                },
+                { charset: 'utf-8' }, 
             ],
             link: [
                 { rel: 'canonical', href: SITE_URL },
