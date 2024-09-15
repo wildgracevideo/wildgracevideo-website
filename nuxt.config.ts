@@ -8,6 +8,110 @@ const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
 
 process.env['NEXTAUTH_URL'] = process.env.DEPLOY_PRIME_URL;
 
+let securityConfig = {};
+if (process.env.NODE_ENV === 'production') {
+    securityConfig = {
+        headers: {
+            contentSecurityPolicy: {
+                'default-src': ["'self'", 'https:', '*.wildgracevideo.com'],
+                'connect-src': [
+                    "'self'",
+                    'https:',
+                    '*.wildgracevideo.com',
+                    'fonts.googleapis.com',
+                    'connect.facebook.net',
+                    'fonts.gstatic.com',
+                    'github.com',
+                    'api.github.com',
+                ],
+                'style-src': [
+                    "'self'",
+                    'https:',
+                    '*.wildgracevideo.com',
+                    'fonts.googleapis.com',
+                    "'unsafe-inline'",
+                ],
+                'script-src': [
+                    "'self'",
+                    'https:',
+                    '*.wildgracevideo.com',
+                    'connect.facebook.net',
+                ],
+                'script-src-attr': ["'unsafe-inline'"],
+                'font-src': [
+                    "'self'",
+                    'data:',
+                    'https:',
+                    '*.wildgracevideo.com',
+                    'fonts.gstatic.com',
+                ],
+                'img-src': [
+                    "'self'",
+                    'data:',
+                    'https:',
+                    '*.wildgracevideo.com',
+                ],
+                'object-src': ["'self'", 'https:', '*.wildgracevideo.com'],
+            },
+        },
+    };
+} else {
+    securityConfig = {
+        headers: {
+            crossOriginEmbedderPolicy: 'unsafe-none',
+            contentSecurityPolicy: {
+                'default-src': [
+                    "'self'",
+                    'http://localhost:3000',
+                    'http://localhost:24678',
+                    'http://localhost:8081',
+                    'ws:',
+                    'https:',
+                    '*.wildgracevideo.com',
+                ],
+                'style-src': [
+                    "'self'",
+                    'http://localhost:3000',
+                    'https:',
+                    '*.wildgracevideo.com',
+                    'fonts.googleapis.com',
+                    "'unsafe-inline'",
+                ],
+                'script-src': [
+                    "'self'",
+                    "'unsafe-inline'",
+                    "'unsafe-eval'",
+                    'http://localhost:3000',
+                    'https:',
+                    'connect.facebook.net',
+                ],
+                'script-src-attr': ["'unsafe-inline'"],
+                'font-src': [
+                    "'self'",
+                    'data:',
+                    'https:',
+                    '*.wildgracevideo.com',
+                    'fonts.gstatic.com',
+                ],
+                'img-src': [
+                    "'self'",
+                    'localhost:3000',
+                    'data:',
+                    'https:',
+                    '*.wildgracevideo.com',
+                ],
+                'object-src': [
+                    "'self'",
+                    'http://localhost:3000',
+                    'https:',
+                    '*.wildgracevideo.com',
+                ],
+                'upgrade-insecure-requests': false,
+            },
+        },
+    };
+}
+
 const config = {
     runtimeConfig: {
         awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID_WGV,
@@ -93,27 +197,7 @@ const config = {
             ],
         },
     },
-    security: {
-        headers: {
-            'default-src': ["'self'", 'https:', '*.wildgracevideo.com'],
-            'style-src': [
-                "'self'",
-                'https:',
-                '*.wildgracevideo.com',
-                'fonts.googleapis.com',
-                "'unsafe-inline'",
-            ],
-            'script-src': ["'self'", 'https://*.wildgracevideo.com'],
-            'font-src': [
-                "'self'",
-                'data:',
-                'https:',
-                '*.wildgracevideo.com',
-                'fonts.gstatic.com',
-            ],
-            'img-src': ["'self'", 'data:', 'https:', '*.wildgracevideo.com'],
-        },
-    },
+    security: securityConfig,
     $production: {
         scripts: {
             registry: {
