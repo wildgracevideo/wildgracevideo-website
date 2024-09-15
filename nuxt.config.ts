@@ -79,7 +79,7 @@ const config = {
                 {
                     'http-equiv': 'Content-Security-Policy',
                     content:
-                        "default-scr 'self' wildgracevideo.com *.wildgracevideo.com; style-src 'self' wildgracevideo.com *.wildgracevideo.com https://fonts.googleapis.com; font-src 'self' wildgracevideo.com *.wildgracevideo.com https://fonts.gstatic.com;",
+                        "default-src 'self' wildgracevideo.com *.wildgracevideo.com; style-src 'unsafe-inline' 'self' wildgracevideo.com *.wildgracevideo.com https://fonts.googleapis.com; font-src 'self' wildgracevideo.com *.wildgracevideo.com https://fonts.gstatic.com;",
                 },
             ],
             link: [
