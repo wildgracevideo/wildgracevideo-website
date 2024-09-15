@@ -26,17 +26,10 @@ if (process.env.NODE_ENV === 'production') {
                 ],
                 'style-src': [
                     "'self'",
+                    "'unsafe-inline'",
                     'https:',
                     '*.wildgracevideo.com',
                     'fonts.googleapis.com',
-                    "'unsafe-inline'",
-                ],
-                'style-src-elem': [
-                    "'self'",
-                    'https:',
-                    '*.wildgracevideo.com',
-                    'fonts.googleapis.com',
-                    "'unsafe-inline'",
                 ],
                 'script-src': [
                     "'self'",
@@ -80,11 +73,11 @@ if (process.env.NODE_ENV === 'production') {
                 ],
                 'style-src': [
                     "'self'",
+                    "'unsafe-inline'",
                     'http://localhost:3000',
                     'https:',
                     '*.wildgracevideo.com',
                     'fonts.googleapis.com',
-                    "'unsafe-inline'",
                 ],
                 'script-src': [
                     "'self'",
