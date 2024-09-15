@@ -302,7 +302,7 @@
 
     const copyToClipboard = async (file: string) => {
         try {
-            navigator.clipboard.writeText(getCloudFrontUrl(file));
+            window.navigator.clipboard.writeText(getCloudFrontUrl(file));
             toast.add({
                 title: `Successfully copied file url.`,
                 color: 'green',
