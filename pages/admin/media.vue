@@ -280,14 +280,16 @@
                 return (
                     content +
                     '/' +
-                    encodeURI(fileNameWithoutPrefix) +
+                    encodeURIComponent(
+                        fileNameWithoutPrefix.replaceAll(' ', '+')
+                    ) +
                     '/' +
-                    encodeURI(fileNameWithoutPrefix) +
+                    encodeURIComponent(fileNameWithoutPrefix) +
                     '.mpd'
                 );
             }
         }
-        return content + '/' + encodeURI(fileName);
+        return content + '/' + encodeURIComponent(fileName);
     }
 
     const previewFile = async (file: string) => {
@@ -301,7 +303,11 @@
     const copyToClipboard = async (file: string) => {
         try {
             navigator.clipboard.writeText(getCloudFrontUrl(file));
-            console.log('File content copied to clipboard:', content);
+            toast.add({
+                title: `Successfully copied file url.`,
+                color: 'green',
+                icon: 'i-heroicons-check-badge',
+            });
         } catch (error) {
             console.error('Error copying file content to clipboard:', error);
         }
@@ -429,7 +435,7 @@
     };
 
     const createFolderAction = async () => {
-        if (!createFolderName.value || createFolderName.value.contains('/')) {
+        if (!createFolderName.value || createFolderName.value.includes('/')) {
             folderNameError.value =
                 'Folder name cannot contain a / nor be empty.';
         }
@@ -445,7 +451,7 @@
                 color: 'green',
                 icon: 'i-heroicons-check-badge',
             });
-            showDeleteConfirmation.value = false;
+            showCreateFolder.value = false;
             await fetchFiles();
         } catch (e) {
             toast.add({
