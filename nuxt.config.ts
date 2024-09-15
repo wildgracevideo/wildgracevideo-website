@@ -76,6 +76,11 @@ const config = {
                     content: 'width=device-width, initial-scale=1',
                 },
                 { charset: 'utf-8' },
+                {
+                    'http-equiv': 'Content-Security-Policy',
+                    content:
+                        "style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;",
+                },
             ],
             link: [
                 { rel: 'canonical', href: SITE_URL },

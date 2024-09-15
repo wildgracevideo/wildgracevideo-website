@@ -12,6 +12,7 @@
                 if (scroll > 0 && fired === false) {
                     const recaptchaScript = document.createElement('script');
                     recaptchaScript.src = `https://www.google.com/recaptcha/api.js?render=${runtimeConfig.public.recaptchaSiteKey}`;
+                    recaptchaScript.crossorigin = true;
                     recaptchaScript.defer = true;
                     document.body.appendChild(recaptchaScript);
                     fired = true;
