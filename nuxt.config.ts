@@ -216,6 +216,7 @@ const config = {
         '@nuxt/ui',
         '@nuxt/image',
         '@nuxt/scripts',
+        'nuxt-security',
         [
             '@nuxtjs/google-fonts',
             {

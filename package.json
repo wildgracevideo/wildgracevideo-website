@@ -26,6 +26,7 @@
         "eslint-plugin-vuejs-accessibility": "2.2.0",
         "nuxt": "3.11.2",
         "nuxt-schema-org": "3.2.3",
+        "nuxt-security": "2.0.0-rc.9",
         "nuxt-simple-robots": "3.1.5",
         "postcss": "8.4.38",
         "prettier": "3.1.1",
