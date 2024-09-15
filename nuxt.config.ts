@@ -95,7 +95,7 @@ const config = {
     },
     security: {
         headers: {
-            'default-src': ["'self'", 'https://*.wildgracevideo.com'],
+            'default-src': ["'self'", 'https:', '*.wildgracevideo.com'],
             'style-src': [
                 "'self'",
                 'https:',
