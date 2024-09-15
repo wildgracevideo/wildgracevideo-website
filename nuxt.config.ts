@@ -31,8 +31,17 @@ if (process.env.NODE_ENV === 'production') {
                     'fonts.googleapis.com',
                     "'unsafe-inline'",
                 ],
+                'style-src-elem': [
+                    "'self'",
+                    'https:',
+                    '*.wildgracevideo.com',
+                    'fonts.googleapis.com',
+                    "'unsafe-inline'",
+                ],
                 'script-src': [
                     "'self'",
+                    "'unsafe-inline'",
+                    "'unsafe-eval'",
                     'https:',
                     '*.wildgracevideo.com',
                     'connect.facebook.net',
