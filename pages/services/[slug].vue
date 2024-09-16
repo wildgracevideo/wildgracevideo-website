@@ -10,6 +10,6 @@
 
     const route = useRoute();
     const { data } = await useAsyncData('services', () =>
-        queryContent('/service').where({ path: route.params.slug }).findOne()
+        queryContent('/service/').where({ path: route.params.slug }).findOne()
     );
 </script>

@@ -250,7 +250,6 @@
         if (row.isFolder) {
             handleFolderClick(row.name);
         } else {
-            console.log(currentFolder.value);
             if (currentFolder.value && currentFolder.value[0] === 'videos') {
                 selectedVideoFileName.value = getCloudFrontUrl(row.name);
                 showShakaModal.value = true;
@@ -280,16 +279,14 @@
                 return (
                     content +
                     '/' +
-                    encodeURIComponent(
-                        fileNameWithoutPrefix.replaceAll(' ', '+')
-                    ) +
+                    fileNameWithoutPrefix.replaceAll(' ', '+') +
                     '/' +
-                    encodeURIComponent(fileNameWithoutPrefix) +
+                    fileNameWithoutPrefix +
                     '.mpd'
                 );
             }
         }
-        return content + '/' + encodeURIComponent(fileName);
+        return content + '/' + fileName;
     }
 
     const previewFile = async (file: string) => {
@@ -297,19 +294,6 @@
             await navigateTo(getCloudFrontUrl(file), { external: true });
         } catch (error) {
             console.error('Error previewing file:', error);
-        }
-    };
-
-    const copyToClipboard = async (file: string) => {
-        try {
-            window.navigator.clipboard.writeText(getCloudFrontUrl(file));
-            toast.add({
-                title: `Successfully copied file url.`,
-                color: 'green',
-                icon: 'i-heroicons-check-badge',
-            });
-        } catch (error) {
-            console.error('Error copying file content to clipboard:', error);
         }
     };
 
@@ -434,14 +418,17 @@
         }
     };
 
+    // TODO: Fix the key so that it includes the currentFolder as well
+    // TODO: Look into making sure 0 byte files are seen as folders
     const createFolderAction = async () => {
         if (!createFolderName.value || createFolderName.value.includes('/')) {
             folderNameError.value =
                 'Folder name cannot contain a / nor be empty.';
         }
+        const prefix = currentFolder.value.join('/') + '/';
         try {
             await $fetch(
-                `/api/admin/media/create-folder?key=${createFolderName.value}`,
+                `/api/admin/media/create-folder?key=${prefix}${createFolderName.value}`,
                 {
                     method: 'post',
                 }
@@ -472,6 +459,7 @@
         }
     });
 
+    let copyToClipboard = () => {};
     onMounted(async () => {
         try {
             await fetchFiles();
@@ -480,5 +468,21 @@
         }
         loading.value = false;
         createUppy();
+
+        copyToClipboard = async (file: string) => {
+            try {
+                window.navigator.clipboard.writeText(getCloudFrontUrl(file));
+                toast.add({
+                    title: `Successfully copied file url.`,
+                    color: 'green',
+                    icon: 'i-heroicons-check-badge',
+                });
+            } catch (error) {
+                console.error(
+                    'Error copying file content to clipboard:',
+                    error
+                );
+            }
+        };
     });
 </script>

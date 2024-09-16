@@ -585,6 +585,168 @@ collections:
                         modes: ['rich_text']
                         minimal: false
 
+    - name: 'service-landing-page'
+      label: 'Service Landing Page'
+      folder: 'content/service-landing-page'
+      format: 'frontmatter'
+      create: true
+      identifier_field: 'path'
+      preview_path: 'service-overview/{{slug}}'
+      slug: '{{slug}}'
+      editor:
+          preview: false
+      fields:
+          - label: "Sitemap (Don't change)"
+            name: 'sitemap'
+            widget: 'object'
+            fields:
+                - {
+                      label: 'Change Frequency',
+                      name: 'changefreq',
+                      widget: 'select',
+                      options:
+                          [
+                              'always',
+                              'hourly',
+                              'daily',
+                              'weekly',
+                              'monthly',
+                              'yearly',
+                              'never',
+                          ],
+                      default: 'monthly',
+                  }
+                - {
+                      label: 'Include in Sitemap',
+                      name: 'include',
+                      widget: 'boolean',
+                      default: true,
+                  }
+                - {
+                      label: 'Last Modified',
+                      name: 'lastmod',
+                      widget: 'datetime',
+                      default: '{{now}}',
+                      date_format: 'YYYY-MM-DD',
+                      time_format: false,
+                  }
+                - {
+                      label: 'Location',
+                      name: 'loc',
+                      widget: 'string',
+                      default: '/service-overview/{{slug}}',
+                  }
+          - {
+                label: 'Page Preview Image (1200 x 630 webp)',
+                name: 'ogImage',
+                widget: 'image',
+                choose_url: true,
+                allow_multiple: false,
+                required: false,
+            }
+          - {
+                label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED',
+                name: 'path',
+                widget: 'string',
+            }
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - label: 'Video Info'
+            name: 'videoInfo'
+            widget: 'object'
+            summary: '{{fields.seoTitle}}'
+            <<: *videoInfo
+          - {
+                label: 'Page Title',
+                name: 'pageTitle',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: true,
+            }
+          - label: 'Overview'
+            name: 'overview'
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - { label: 'Title', name: 'title', widget: 'string' }
+                - {
+                      label: 'Description',
+                      name: 'description',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: false,
+                  }
+                - label: 'File Info'
+                  name: 'fileInfo'
+                  widget: 'object'
+                  <<: *fileInfo
+          - label: 'Files'
+            name: 'files'
+            widget: 'list'
+            summary: '{{fields.seoTitle}}'
+            <<: *fileInfo
+          - label: 'Call to Action'
+            name: 'callsToAction'
+            widget: 'list'
+            summary: '{{fields.title}}'
+            fields:
+                - {
+                      label: 'Title',
+                      name: 'title',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - {
+                      label: 'Description',
+                      name: 'description',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: false,
+                  }
+                - {
+                      label: 'Call to Action Text',
+                      name: 'callToActionText',
+                      widget: 'string',
+                  }
+                - {
+                      label: 'Call to Action Button Text',
+                      name: 'callToActionButtonText',
+                      widget: 'string',
+                  }
+                - label: 'Is Vertical File'
+                  name: 'isVertical'
+                  widget: 'boolean'
+                  default: false
+                - label: 'File Info'
+                  name: 'fileInfo'
+                  widget: 'object'
+                  <<: *fileInfo
+          - label: 'Social Media Files'
+            name: 'socialMediaFiles'
+            widget: 'list'
+            summary: '{{fields.seoTitle}}'
+            <<: *fileInfo
+          - label: 'Testimonial'
+            name: 'testimonial'
+            widget: 'object'
+            summary: 'Testimonial'
+            fields:
+                - label: 'Background Photo'
+                  name: 'backgroundPhoto'
+                  widget: 'object'
+                  <<: *imageInfo
+                - label: 'Background Photo Vertical'
+                  name: 'backgroundPhotoVertical'
+                  widget: 'object'
+                  <<: *imageInfo
+
+                - label: 'Testimonials'
+                  name: 'testimonials'
+                  widget: 'list'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+
     - name: 'home'
       label: 'Home'
       folder: 'content/home'

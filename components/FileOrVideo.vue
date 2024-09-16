@@ -12,6 +12,18 @@
             }`"
             :with-sound-control="withSoundControl"
         />
+        <AutoPlayStreamVideo
+            v-else-if="file.file.endsWith('mpd')"
+            :video="file.file"
+            :description="file.seoDescription"
+            :title="file.seoTitle"
+            :thumbnail-image="file.thumbnailImage"
+            :publication-date="file.publicationDate"
+            :class="`pointer-events-none cursor-default ${
+                $attrs.class as string
+            }`"
+            :with-sound-control="withSoundControl"
+        />
         <template v-else>
             <NuxtImg
                 :class="`cursor-default ${$attrs.class as string}`"

@@ -147,8 +147,6 @@
 
     const testimonials = caseStudyData.testimonials;
 
-    console.log(caseStudyData.bts.files[0].file);
-
     onMounted(() => {
         const videoElement = document.getElementById(
             'overview-video'

@@ -80,7 +80,7 @@
     };
 
     const { data } = await useAsyncData('all-services', () =>
-        queryContent('/service').find()
+        queryContent('/service/').find()
     );
     const servicesChildren = data!.value!.map((it: ParsedContent) => {
         // @ts-expect-error https://github.com/tailwindlabs/heroicons/issues/278#issuecomment-868966794

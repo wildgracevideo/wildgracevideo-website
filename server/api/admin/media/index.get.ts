@@ -44,7 +44,7 @@ export default defineEventHandler(async (event): Promise<S3Object[]> => {
                 }
             ) as unknown) || []) as S3Object[];
             const originalResponseContents = response.Contents.map((item) => {
-                const isFolder = item.Key!.endsWith('/');
+                const isFolder = item.Key!.endsWith('/') || !item.Size;
                 return {
                     name: item.Key!,
                     lastModified: isFolder ? '-' : item.LastModified || '-',
