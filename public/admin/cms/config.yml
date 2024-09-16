@@ -596,7 +596,7 @@ collections:
       editor:
           preview: false
       fields:
-          - label: "Sitemap (Don't change)"
+          - label: "Sitemap (Only change location change)"
             name: 'sitemap'
             widget: 'object'
             fields:
