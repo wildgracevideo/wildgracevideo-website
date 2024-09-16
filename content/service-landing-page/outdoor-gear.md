@@ -11,7 +11,7 @@ videoInfo:
   video: https://content.wildgracevideo.com/videos/HotelLandingPage/Boutique+Hotels+Thumbnail/Boutique
     Hotels Thumbnail.mpd
   thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/Reel%20photo.jpg
-  seoTitle: TODO
+  seoTitle: "TODO "
   seoDescription: TODO
   publicationDate: 2024-09-14T17:46:00.000Z
 pageTitle: BOUTIQUE HOTEL MARKETING VIDEOS
@@ -99,7 +99,7 @@ testimonial:
     seoDescription: TODO
     publicationDate: 2024-09-15T20:07:00.000Z
   backgroundPhotoVertical:
-    image: https://content.wildgracevideo.com/images/Website-Hotel/hoteltestimonialbanner.jpg
+    image: https://content.wildgracevideo.com/images/Website-Hotel/hoteltestimonialbanner_dark.jpg
     seoTitle: TODO
     seoDescription: TODO
     publicationDate: 2024-09-15T20:07:00.000Z
