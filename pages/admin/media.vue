@@ -470,18 +470,22 @@
         createUppy();
 
         copyToClipboard = async (file: string) => {
-            try {
-                window.navigator.clipboard.writeText(getCloudFrontUrl(file));
-                toast.add({
-                    title: `Successfully copied file url.`,
-                    color: 'green',
-                    icon: 'i-heroicons-check-badge',
-                });
-            } catch (error) {
-                console.error(
-                    'Error copying file content to clipboard:',
-                    error
-                );
+            if (!process.server) {
+                try {
+                    window.navigator.clipboard.writeText(
+                        getCloudFrontUrl(file)
+                    );
+                    toast.add({
+                        title: `Successfully copied file url.`,
+                        color: 'green',
+                        icon: 'i-heroicons-check-badge',
+                    });
+                } catch (error) {
+                    console.error(
+                        'Error copying file content to clipboard:',
+                        error
+                    );
+                }
             }
         };
     });
