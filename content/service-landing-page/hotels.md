@@ -4,7 +4,7 @@ sitemap:
   include: true
   lastmod: 2024-09-14
   loc: /
-path: outdoor-gear
+path: hotels
 title: "TODO  "
 description: TODO
 videoInfo:

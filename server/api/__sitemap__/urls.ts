@@ -45,7 +45,8 @@ export default defineSitemapEventHandler(async (e) => {
             (c) =>
                 c._dir === 'product' ||
                 c._dir === 'home' ||
-                c._dir === 'service'
+                c._dir === 'service' ||
+                c._dir === 'service-landing-page'
         )
         .map((c) => {
             if (c._dir === 'product') {
@@ -61,7 +62,7 @@ export default defineSitemapEventHandler(async (e) => {
                     ],
                 };
                 return asSitemapUrl(sitemapUrl);
-            } else if (c._dir === 'home') {
+            } else if (c._dir === 'home' || c._dir === 'service-landing-page') {
                 // TODO: Use this format for everything
                 if (c.sitemap.include) {
                     const additionalImages: unknown[] = [];
