@@ -3,7 +3,7 @@ sitemap:
   changefreq: monthly
   include: true
   lastmod: 2024-09-14
-  loc: /
+  loc: /service-overview/hotels
 path: hotels
 title: "TODO  "
 description: TODO
