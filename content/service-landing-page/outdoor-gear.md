@@ -99,7 +99,7 @@ testimonial:
     seoDescription: TODO
     publicationDate: 2024-09-15T20:07:00.000Z
   backgroundPhotoVertical:
-    image: https://content.wildgracevideo.com/images/Website-Hotel/hoteltestimonialbanner.jpg
+    image: https://content.wildgracevideo.com/images/Website-Hotel/hoteltestimonialbanner_dark.jpg
     seoTitle: TODO
     seoDescription: TODO
     publicationDate: 2024-09-15T20:07:00.000Z
