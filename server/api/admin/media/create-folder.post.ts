@@ -10,10 +10,11 @@ export default defineEventHandler(async (event): Promise<void> => {
         throw createError({ status: 400 });
     }
     try {
-        if (!(await existsFolder(runtimeConfig.s3MediaBucket, key))) {
+        const suffixedKey = key.endsWith('/') ? key : key + '/';
+        if (!(await existsFolder(runtimeConfig.s3MediaBucket, suffixedKey))) {
             const response = await createFolder(
                 runtimeConfig.s3MediaBucket,
-                key
+                suffixedKey
             );
             console.log('Create folder response', response);
         } else {

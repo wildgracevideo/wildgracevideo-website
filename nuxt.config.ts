@@ -269,6 +269,7 @@ const config = {
     routeRules: {
         '/**': { isr: 3_600 }, // 1hr
         '/admin/**': { isr: false },
+        '/admin/media': { ssr: false },
         '/api/**': { isr: false },
         '/30-day-video-transformation': {
             redirect: {

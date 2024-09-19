@@ -472,7 +472,7 @@
         copyToClipboard = async (file: string) => {
             if (typeof window !== 'undefined' && navigator?.clipboard) {
                 try {
-                    window.navigator?.clipboard?.writeText(
+                    await window.navigator?.clipboard?.writeText(
                         getCloudFrontUrl(file)
                     );
                     toast.add({
