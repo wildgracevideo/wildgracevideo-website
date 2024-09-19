@@ -12,7 +12,7 @@
             <AdminTag
                 v-if="row.messageReply"
                 :label="`Reply:${row.messageReply.sendGridMessageStatus}`"
-                additional-classes="inline-block bg-website-accent text-website-secondary"
+                additional-classes="inline-block bg-website-accent text-website-off-black"
             />
         </template>
         <template #createdAt-data="{ row }">

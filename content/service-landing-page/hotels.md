@@ -15,6 +15,12 @@ videoInfo:
   seoDescription: TODO
   publicationDate: 2024-09-14T17:46:00.000Z
 pageTitle: BOUTIQUE HOTEL MARKETING VIDEOS
+pageDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+  non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 overview:
   title: SHARE THE EXPERIENCE.
   description: >-
@@ -71,7 +77,7 @@ callsToAction:
       * PAID SOCIAL MEDIA AD CAMPAIGN VIDEOS
       * EXTENSIVE VIDEO CLIP LIBRARY
       * SOCIAL MEDIA MANAGEMENT & STRATEGY SESSIONS
-    callToActionText: CONSISTENCY MATTERS
+    callToActionText: INQUIRE FOR PRICING
     callToActionButtonText: GET STARTED
     fileInfo:
       file: https://content.wildgracevideo.com/images/Website-Hotel/HotelBTS.JPG

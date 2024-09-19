@@ -5,9 +5,9 @@
 @layer base {
     :root {
         --color-website-off-white: 250 249 249;
-        --color-website-off-black: 32 32 32;
-        --color-website-accent: 194 178 154;
-        --color-website-primary: 60 70 32;
+        --color-website-off-black: 48 48 48;
+        --color-website-accent: 238 236 226;
+        --color-website-primary: 68 74 59;
         --color-website-secondary: 37 49 31;
     }
 }

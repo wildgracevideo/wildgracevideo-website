@@ -663,6 +663,13 @@ collections:
                 modes: ['rich_text'],
                 minimal: true,
             }
+          - {
+                label: 'Page Description',
+                name: 'pageDescription',
+                widget: 'markdown',
+                modes: ['rich_text'],
+                minimal: false,
+            }
           - label: 'Overview'
             name: 'overview'
             widget: 'object'
@@ -707,11 +714,6 @@ collections:
                 - {
                       label: 'Call to Action Text',
                       name: 'callToActionText',
-                      widget: 'string',
-                  }
-                - {
-                      label: 'Call to Action Button Text',
-                      name: 'callToActionButtonText',
                       widget: 'string',
                   }
                 - label: 'Is Vertical File'

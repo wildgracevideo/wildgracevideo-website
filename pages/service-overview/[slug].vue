@@ -1,5 +1,4 @@
 <template>
-    <div />
     <OgMeta :title="title" :description="description" :icon="ogImage" />
     <SchemaOrgWebPage
         :name="title"
@@ -18,8 +17,17 @@
             :publication-date="videoInfo.publicationDate"
         />
     </section>
-    <h1 class="my-16 text-center text-4xl">{{ serviceData.pageTitle }}</h1>
-    <section class="mb-20 grid grid-cols-1 md:grid-cols-2">
+    <section class="my-32">
+        <Markdown
+            :markdown-string="`# ${serviceData.pageTitle}`"
+            class="no-default-format mx-auto mb-8 max-w-xl text-center text-4xl"
+        />
+        <Markdown
+            :markdown-string="serviceData.pageDescription"
+            class="mx-auto max-w-2xl px-4 text-center"
+        />
+    </section>
+    <section class="grid grid-cols-1 md:grid-cols-2">
         <FileOrVideo
             class="pointer-events-none relative z-0 aspect-video h-full w-full cursor-default object-cover object-center"
             parent-class="p-4"
@@ -28,12 +36,17 @@
             sizes="lg:650px md:512px 380px"
             :with-sound-control="false"
         />
-        <div class="py-4 pl-4 pr-8">
-            <h2 class="mb-8 text-center text-xl">{{ overview.title }}</h2>
-            <Markdown :markdown-string="overview.description" />
+        <div
+            class="flex flex-col items-center justify-center py-4 pl-4 pr-8 text-left"
+        >
+            <h2 class="mb-8 text-center text-3xl">{{ overview.title }}</h2>
+            <Markdown
+                :markdown-string="overview.description"
+                class="[&>p]:w-full"
+            />
         </div>
     </section>
-    <section class="mb-16 grid grid-cols-1 md:grid-cols-3">
+    <section class="my-32 grid grid-cols-1 md:grid-cols-3">
         <FileOrVideo
             v-for="file in serviceData.files"
             :key="file.seoTitle"
@@ -44,25 +57,34 @@
         />
     </section>
     <section
-        v-for="callToAction in serviceData.callsToAction"
+        v-for="(callToAction, index) in serviceData.callsToAction"
         :key="callToAction.title"
-        class="mb-16 grid grid-cols-1 md:grid-cols-2"
+        class="mb-32 grid grid-cols-1 md:grid-cols-2"
     >
-        <div class="py-4 pl-4 pr-8">
-            <h2 class="mb-8 text-center text-xl">{{ callToAction.title }}</h2>
+        <!-- md:order-1 md:order-2 -->
+        <div
+            class="order-1 flex flex-col items-center justify-center bg-website-accent"
+            :class="{
+                'md:order-1': index % 2 === 0,
+                'md:ml-8': index % 2 === 0,
+                'md:order-2': index % 2 !== 0,
+                'md:mr-8': index % 2 !== 0,
+                'md:-ml-8': index % 2 !== 0,
+                'z-10': index % 2 !== 0,
+            }"
+        >
+            <h2 class="mb-8 pt-8 text-left text-xl">
+                {{ callToAction.title }}
+            </h2>
             <Markdown
                 :markdown-string="callToAction.description"
-                class="mb-8 ml-8"
+                class="mx-16 mb-8 inline-block text-left [&>li]:break-all"
             />
-            <div class="justify-left ml-8 mt-8 flex flex-row gap-8 text-xl">
-                <p class="mt-4">
-                    {{ callToAction.callToActionText }}
-                    <ArrowLongRightIcon class="inline h-10 w-10" />
-                </p>
+            <div class="ml-8 mt-8 gap-8 pb-8 text-xl">
                 <button
-                    class="mt-2 h-14 w-40 rounded-xl border-2 border-website-primary bg-website-primary text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary"
+                    class="mt-2 min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary"
                 >
-                    {{ callToAction.callToActionButtonText }}
+                    {{ callToAction.callToActionText }}
                 </button>
             </div>
         </div>
@@ -70,14 +92,16 @@
             :class="`pointer-events-none relative z-0 max-h-[600px] w-full cursor-default object-cover object-center ${
                 callToAction.isVertical ? 'aspect-photo' : 'aspect-video'
             }`"
-            parent-class="p-4"
+            :parent-class="`my-8 order-2 md:order-${
+                index % 2 === 0 ? 2 : 1
+            } bg-website-accent ${index % 2 === 0 ? '-ml-8 mr-8' : 'ml-8'} `"
             :file="callToAction.fileInfo"
             :is-lazy="true"
             sizes="lg:650px md:512px 380px"
             :with-sound-control="false"
         />
     </section>
-    <section class="mb-20 mt-16">
+    <section class="my-32">
         <div class="grid grid-cols-1 justify-between md:grid-cols-3">
             <FileOrVideo
                 v-for="socialMediaFile in serviceData.socialMediaFiles"
@@ -111,7 +135,6 @@
 </template>
 
 <script lang="ts" setup>
-    import { ArrowLongRightIcon } from '@heroicons/vue/20/solid';
     import type { FileConfig } from '~/components/FileOrVideo.vue';
 
     const route = useRoute();
