@@ -30,10 +30,10 @@
                 class="font-family-cormorant mx-auto mb-8 flex w-fit flex-col justify-center gap-4 text-center text-xl text-website-primary underline md:flex-row"
             >
                 <li class="inline-block cursor-pointer underline">
-                    <a href="#what-we-do">What We Do</a>
+                    <a href="#meet-carly">Meet Carly</a>
                 </li>
                 <li class="inline-block cursor-pointer underline">
-                    <a href="#meet-carly">Meet Carly</a>
+                    <a href="#what-we-do">What We Do</a>
                 </li>
                 <li class="inline-block cursor-pointer underline">
                     <a href="#hear-from-our-clients">Hear From Our Clients</a>
@@ -42,40 +42,9 @@
         </div>
     </section>
     <div class="relative z-10 bg-website-off-white">
-        <section id="what-we-do" class="bg-website-off-black">
-            <h2
-                class="font-family-rock-salt pb-16 pt-12 text-center text-2xl tracking-tighter text-website-accent md:text-4xl"
-            >
-                What We Do
-            </h2>
-            <!-- order-1 order-2 order-3 order-4 order-5 order-6 order-7 order-8 order-9 order-10 order-11 order-12 -->
-            <!-- md:order-1 md:order-2 md:order-3 md:order-4 md:order-5 md:order-6 md:order-7 md:order-8 md:order-9 md:order-10 md:order-11 md:order-12 -->
-            <div class="grid grid-cols-1 bg-website-off-black md:grid-cols-2">
-                <Markdown
-                    v-for="(whatWeDoItem, i) in whatWeDo"
-                    :key="`markdown-${i}`"
-                    :markdown-string="whatWeDoItem.text"
-                    :component-class="`mx-auto h-80 max-w-[80%] pt-24 text-center text-lg md:text-xl text-website-accent tracking-tighter font-thin [&_li]:!list-none [&_li]:before:content-['+'] [&_li]:before:mr-2 what-we-do-markdown ${getWhatWeDoMarkdownOrderClass(
-                        i,
-                        false
-                    )}`"
-                />
-                <div
-                    v-for="(whatWeDoItem, i) in whatWeDo"
-                    :key="`file-${i}`"
-                    :class="`${getWhatWeDoMarkdownOrderClass(
-                        i,
-                        true
-                    )} background-image h-80 bg-full bg-center bg-no-repeat md:bg-fixed`"
-                    :style="{
-                        '--bg-image': `url(${whatWeDoItem.file.file})`,
-                    }"
-                />
-            </div>
-        </section>
         <section
             id="meet-carly"
-            class="mx-8 my-20 grid grid-cols-1 gap-32 md:mx-16 md:grid-cols-2"
+            class="mx-8 mb-20 grid grid-cols-1 gap-32 md:mx-16 md:grid-cols-2"
         >
             <div>
                 <Markdown
@@ -103,6 +72,38 @@
                 />
             </div>
         </section>
+        <section id="what-we-do" class="bg-website-accent">
+            <h2
+                class="font-family-rock-salt pb-16 pt-12 text-center text-2xl tracking-tighter text-website-off-black md:text-4xl"
+            >
+                What We Do
+            </h2>
+            <!-- order-1 order-2 order-3 order-4 order-5 order-6 order-7 order-8 order-9 order-10 order-11 order-12 -->
+            <!-- md:order-1 md:order-2 md:order-3 md:order-4 md:order-5 md:order-6 md:order-7 md:order-8 md:order-9 md:order-10 md:order-11 md:order-12 -->
+            <div class="grid grid-cols-1 bg-website-accent md:grid-cols-2">
+                <Markdown
+                    v-for="(whatWeDoItem, i) in whatWeDo"
+                    :key="`markdown-${i}`"
+                    :markdown-string="whatWeDoItem.text"
+                    :component-class="`mx-auto h-[450px] max-w-[60%] pt-24 text-center text-lg md:text-xl text-website-off-black tracking-tighter font-thin [&_li]:!list-none [&_li]:before:content-['+'] [&_li]:before:mr-2 what-we-do-markdown ${getWhatWeDoMarkdownOrderClass(
+                        i,
+                        false
+                    )}`"
+                />
+                <div
+                    v-for="(whatWeDoItem, i) in whatWeDo"
+                    :key="`file-${i}`"
+                    :class="`${getWhatWeDoMarkdownOrderClass(
+                        i,
+                        true
+                    )} background-image h-[450px] bg-full bg-center bg-no-repeat md:bg-fixed`"
+                    :style="{
+                        '--bg-image': `url(${whatWeDoItem.file.file})`,
+                    }"
+                />
+            </div>
+        </section>
+
         <section
             id="behind-the-scenes"
             class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 bg-website-accent py-8"
