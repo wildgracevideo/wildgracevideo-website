@@ -470,7 +470,7 @@
         createUppy();
 
         copyToClipboard = async (file: string) => {
-            if (!process.server) {
+            if (typeof window !== 'undefined' && navigator?.clipboard) {
                 try {
                     window.navigator?.clipboard?.writeText(
                         getCloudFrontUrl(file)
