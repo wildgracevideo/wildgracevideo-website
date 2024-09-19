@@ -1,5 +1,7 @@
 <template>
-    <div class="mb-12 mt-24 flex flex-row justify-between align-middle">
+    <div
+        class="flex flex-row justify-between bg-website-accent pb-48 pt-48 align-middle"
+    >
         <button aria-label="Go to previous client testimonial">
             <ArrowLeftIcon
                 v-if="testimonials.length > 1"

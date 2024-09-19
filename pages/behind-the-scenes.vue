@@ -26,19 +26,6 @@
                 :markdown-string="`# ${pageTitle}`"
                 component-class="no-default-format md:mb-8 mb-4 pt-4 md:pt-8 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
             />
-            <ul
-                class="font-family-cormorant mx-auto mb-8 flex w-fit flex-col justify-center gap-4 text-center text-xl text-website-primary underline md:flex-row"
-            >
-                <li class="inline-block cursor-pointer underline">
-                    <a href="#meet-carly">Meet Carly</a>
-                </li>
-                <li class="inline-block cursor-pointer underline">
-                    <a href="#what-we-do">What We Do</a>
-                </li>
-                <li class="inline-block cursor-pointer underline">
-                    <a href="#hear-from-our-clients">Hear From Our Clients</a>
-                </li>
-            </ul>
         </div>
     </section>
     <div class="relative z-10 bg-website-off-white">
