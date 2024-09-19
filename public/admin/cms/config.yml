@@ -22,7 +22,7 @@ VideoInfo: &videoInfo
               config:
                   multiple: false
         - {
-              label: 'Thumbnail Image',
+              label: 'Thumbnail Image (Optional)',
               name: 'thumbnailImage',
               widget: 'image',
               choose_url: true,
@@ -71,7 +71,7 @@ FileInfo: &fileInfo
                   multiple: false
                   max_file_size: 4096000
         - {
-              label: 'Thumbnail Image',
+              label: 'Thumbnail Image (Optional for Video, ignored needed for Image)',
               name: 'thumbnailImage',
               widget: 'image',
               choose_url: true,
@@ -596,7 +596,7 @@ collections:
       editor:
           preview: false
       fields:
-          - label: "Sitemap (Only change location change)"
+          - label: 'Sitemap (Only change location change)'
             name: 'sitemap'
             widget: 'object'
             fields:
