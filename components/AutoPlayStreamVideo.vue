@@ -15,7 +15,10 @@
             :content-url="video"
             :upload-date="publicationDate"
             :description="description"
-            :thumbnail="{ url: thumbnailImage, contentUrl: thumbnailImage }"
+            :thumbnail="{
+                url: thumbnailImageResolved,
+                contentUrl: thumbnailImageResolved,
+            }"
         />
     </video>
     <button
@@ -64,6 +67,12 @@
             textColorClass: 'text-white',
         }
     );
+
+    const thumbnailImageResolved = !props.thumbnailImage
+        ? props.video
+              .replace('videos/', 'images/')
+              .replace('.mpd', '.0000000.jpg')
+        : props.thumbnailImage;
 
     onMounted(async () => {
         function handleIntersection(entries: IntersectionObserverEntry[]) {
