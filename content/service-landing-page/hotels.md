@@ -14,13 +14,14 @@ videoInfo:
   seoTitle: "TODO "
   seoDescription: TODO
   publicationDate: 2024-09-14T17:46:00.000Z
-pageTitle: BOUTIQUE HOTEL MARKETING VIDEOS
-pageDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-  non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+pageTitle: BOUTIQUE HOTEL VIDEO MARKETING
+pageDescription: We understand what your boutique hotel needs to attract more
+  guests and increase your bookings. Through a thoughtfully crafted video
+  strategy that highlights your property's unique charm and elevates your online
+  presence, we help position your hotel to stand out in a competitive market.
+  Successfully marketing boutique hotels requires both creativity and
+  strategy—something we have been perfecting to help your property thrive and
+  attract more guests.
 overview:
   title: SHARE THE EXPERIENCE.
   description: >-
