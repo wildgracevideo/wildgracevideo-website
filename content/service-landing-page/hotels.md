@@ -82,7 +82,7 @@ callsToAction:
     callToActionText: INQUIRE FOR PRICING
     callToActionButtonText: GET STARTED
     fileInfo:
-      file: https://content.wildgracevideo.com/images/Website-Hotel/HotelBTS.JPG
+      file: https://content.wildgracevideo.com/videos/Website-Hotel/BoutiqueHotels_social/BoutiqueHotels_social.mpd
       seoTitle: TODO
       seoDescription: TODO
       publicationDate: 2024-09-15T20:07:00.000Z
