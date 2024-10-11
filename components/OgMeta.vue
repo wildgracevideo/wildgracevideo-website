@@ -39,6 +39,7 @@
     } else {
         iconLocation = iconName;
     }
+    iconLocation += '?width=1200&height=630&format=webp';
     useHead({
         title: props.title,
     });

@@ -71,7 +71,7 @@ FileInfo: &fileInfo
                   multiple: false
                   max_file_size: 4096000
         - {
-              label: 'Thumbnail Image (Optional for Video, ignored needed for Image)',
+              label: 'Thumbnail Image (Optional for Video, not needed for Image)',
               name: 'thumbnailImage',
               widget: 'image',
               choose_url: true,
@@ -112,7 +112,7 @@ collections:
                 widget: 'string',
             }
           - {
-                label: 'Product Image (384 x 384 webp)',
+                label: 'Product Image',
                 name: 'productImage',
                 widget: 'image',
                 choose_url: true,
@@ -129,21 +129,21 @@ collections:
                 widget: 'string',
             }
           - {
-                label: 'Page Preview Image (1200 x 630 webp)',
+                label: 'Page Preview Image',
                 name: 'ogImage',
                 widget: 'image',
                 choose_url: true,
                 allow_multiple: false,
             }
           - {
-                label: 'Top Background Image (2048 x 683 webp)',
+                label: 'Top Background Image',
                 name: 'topBackgroundImage',
                 widget: 'image',
                 choose_url: true,
                 allow_multiple: false,
             }
           - {
-                label: 'Call To Action Background Image (6192 x 3456 webp)',
+                label: 'Call To Action Background Image',
                 name: 'callToActionBackgroundImage',
                 widget: 'image',
                 choose_url: true,
@@ -297,7 +297,7 @@ collections:
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - {
-                label: 'Page Preview Image (1200 x 630 webp)',
+                label: 'Page Preview Image',
                 name: 'ogImage',
                 widget: 'image',
                 choose_url: true,
@@ -637,7 +637,7 @@ collections:
                       default: '/service-overview/{{slug}}',
                   }
           - {
-                label: 'Page Preview Image (1200 x 630 webp)',
+                label: 'Page Preview Image',
                 name: 'ogImage',
                 widget: 'image',
                 choose_url: true,
@@ -1045,24 +1045,24 @@ collections:
             widget: 'object'
             summary: 'Testimonials'
             fields:
-                - label: 'Background Image (webp)'
+                - label: 'Background Image'
                   name: 'backgroundImage'
                   widget: 'image'
                   choose_url: true
                   allow_multiple: false
-                - label: 'Background Image Vertical (webp)'
+                - label: 'Background Image Vertical'
                   name: 'backgroundImageVertical'
                   widget: 'image'
                   choose_url: true
                   allow_multiple: false
-                - label: 'Files (3 mp4 or webp 4 MB Max preferably 1MB)'
+                - label: 'Files'
                   name: 'files'
                   widget: 'list'
                   min: 3
                   max: 3
                   allow_add: false
                   fields:
-                      - label: 'File (mp4 or webp 4 MB Max preferably 1MB)'
+                      - label: 'File'
                         name: 'file'
                         widget: 'file'
                         media_library:
