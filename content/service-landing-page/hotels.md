@@ -140,4 +140,9 @@ socialMediaFiles:
       guests effortlessly.
     publicationDate: 2024-09-15T20:10:00.000Z
     thumbnailImage: ""
+testimonials:
+  clientTestimonials:
+    - author: \- Megan, The Curtis Hotel
+      text: "\"She made it very easy to film--she really didn't need much from me
+        after arriving on property which was a huge weight off my shoulders.\""
 ---
