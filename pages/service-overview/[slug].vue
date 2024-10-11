@@ -90,7 +90,7 @@
         </div>
         <FileOrVideo
             :class="`pointer-events-none relative z-0 max-h-[600px] w-full cursor-default object-cover object-center ${
-                callToAction.isVertical ? 'aspect-photo' : 'aspect-video'
+                callToAction.isVertical ? 'aspect-vertical' : 'aspect-video'
             }`"
             :parent-class="`my-8 order-2 md:order-${
                 index % 2 === 0 ? 2 : 1
@@ -115,23 +115,12 @@
             />
         </div>
     </section>
-    <BackgroundImageLazy
-        component="section"
-        class="flex h-full min-h-14 w-full flex-row place-items-center items-center justify-center gap-x-10 bg-full px-8"
-        :background-image="serviceData.testimonial.backgroundPhoto.image"
-        :background-image-vertical="
-            serviceData.testimonial.backgroundPhotoVertical.image
-        "
-    >
-        <FileOrVideo
-            v-for="file in serviceData.testimonial.testimonials!"
-            :key="file.seoTitle"
-            :file="file"
-            :is-lazy="true"
-            sizes="2xl:800px xl:460px 400px"
-            class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
+    <section>
+        <TestimonialCarousel
+            v-if="testimonials"
+            :testimonials="testimonials.clientTestimonials"
         />
-    </BackgroundImageLazy>
+    </section>
 </template>
 
 <script lang="ts" setup>
@@ -152,4 +141,6 @@
 
     const overview = serviceData.overview!;
     const overviewFile = overview.fileInfo! as FileConfig;
+
+    const testimonials = serviceData.testimonials;
 </script>

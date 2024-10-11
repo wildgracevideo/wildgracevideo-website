@@ -729,25 +729,26 @@ collections:
             widget: 'list'
             summary: '{{fields.seoTitle}}'
             <<: *fileInfo
-          - label: 'Testimonial'
-            name: 'testimonial'
+          - label: 'Testimonials'
+            name: 'testimonials'
             widget: 'object'
-            summary: 'Testimonial'
+            summary: '{{fields.title}}'
             fields:
-                - label: 'Background Photo'
-                  name: 'backgroundPhoto'
-                  widget: 'object'
-                  <<: *imageInfo
-                - label: 'Background Photo Vertical'
-                  name: 'backgroundPhotoVertical'
-                  widget: 'object'
-                  <<: *imageInfo
-
-                - label: 'Testimonials'
-                  name: 'testimonials'
+                - label: 'Client Testimonials'
+                  name: 'clientTestimonials'
                   widget: 'list'
-                  summary: '{{fields.seoTitle}}'
-                  <<: *fileInfo
+                  summary: '{{fields.author}}'
+                  fields:
+                      - label: 'Author'
+                        name: 'author'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Text'
+                        name: 'text'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
 
     - name: 'home'
       label: 'Home'

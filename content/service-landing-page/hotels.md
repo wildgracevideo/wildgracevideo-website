@@ -140,20 +140,4 @@ socialMediaFiles:
       guests effortlessly.
     publicationDate: 2024-09-15T20:10:00.000Z
     thumbnailImage: ""
-testimonial:
-  backgroundPhoto:
-    image: https://content.wildgracevideo.com/images/Website-Hotel/hoteltestimonialbanner_dark.jpg
-    seoTitle: TODO
-    seoDescription: TODO
-    publicationDate: 2024-09-15T20:07:00.000Z
-  backgroundPhotoVertical:
-    image: https://content.wildgracevideo.com/images/Website-Hotel/hoteltestimonialbanner_dark.jpg
-    seoTitle: TODO
-    seoDescription: TODO
-    publicationDate: 2024-09-15T20:07:00.000Z
-  testimonials:
-    - file: https://content.wildgracevideo.com/images/Website-Hotel/Curtis_testimonial.png
-      seoTitle: TODO - Testimonial 1
-      seoDescription: TODO
-      publicationDate: 2024-09-15T20:12:00.000Z
 ---
