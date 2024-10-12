@@ -142,7 +142,7 @@ socialMediaFiles:
     thumbnailImage: https://content.wildgracevideo.com/images/Website-Hotel/FrenchHotel_boutiquehotels.png
 testimonials:
   clientTestimonials:
-    - author: \- Megan, The Curtis Hotel
-      text: "\"She made it very easy to film--she really didn't need much from me
-        after arriving on property which was a huge weight off my shoulders.\""
+    - author: Megan, The Curtis Hotel
+      text: She made it very easy to film--she really didn't need much from me after
+        arriving on property which was a huge weight off my shoulders.
 ---
