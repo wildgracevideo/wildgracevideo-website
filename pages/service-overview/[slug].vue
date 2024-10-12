@@ -20,7 +20,7 @@
     <section class="my-32">
         <Markdown
             :markdown-string="`# ${serviceData.pageTitle}`"
-            class="no-default-format mx-auto mb-8 max-w-xl text-center text-4xl"
+            class="no-default-format mx-auto mb-8 max-w-[80%] text-center text-4xl"
         />
         <Markdown
             :markdown-string="serviceData.pageDescription"
