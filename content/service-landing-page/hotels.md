@@ -143,6 +143,6 @@ socialMediaFiles:
 testimonials:
   clientTestimonials:
     - author: Megan, The Curtis Hotel
-      text: She made it very easy to film--she really didn't need much from me after
+      text: Carly made it very easy to film--she really didn't need much from me after
         arriving on property which was a huge weight off my shoulders.
 ---
