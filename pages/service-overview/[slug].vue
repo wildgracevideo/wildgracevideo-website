@@ -103,16 +103,26 @@
     </section>
     <section class="my-32">
         <div class="grid grid-cols-1 justify-between md:grid-cols-3">
-            <FileOrVideo
+            <div
                 v-for="socialMediaFile in serviceData.socialMediaFiles"
                 :key="socialMediaFile.seoTitle"
-                class="pointer-events-none relative z-0 aspect-photo h-full w-full cursor-default object-cover object-center"
-                parent-class="p-4"
-                :file="socialMediaFile"
-                :is-lazy="true"
-                sizes="lg:650px md:512px 380px"
-                :with-sound-control="false"
-            />
+            >
+                <FileOrVideo
+                    class="pointer-events-none relative z-0 aspect-photo h-full w-full cursor-default object-cover object-center"
+                    parent-class="p-4"
+                    :file="socialMediaFile"
+                    :is-lazy="true"
+                    sizes="lg:650px md:512px 380px"
+                    :with-sound-control="false"
+                />
+                <div
+                    class="relative bottom-44 -mb-44 flex flex-col items-end gap-6 pr-8"
+                >
+                    <HeartIcon class="h-8 w-8 text-white" />
+                    <ChatBubbleOvalLeftIcon class="h-8 w-8 text-white" />
+                    <PaperAirplaneIcon class="h-8 w-8 text-white" />
+                </div>
+            </div>
         </div>
     </section>
     <section>
@@ -124,6 +134,11 @@
 </template>
 
 <script lang="ts" setup>
+    import {
+        ChatBubbleOvalLeftIcon,
+        HeartIcon,
+        PaperAirplaneIcon,
+    } from '@heroicons/vue/24/outline';
     import type { FileConfig } from '~/components/FileOrVideo.vue';
 
     const route = useRoute();
