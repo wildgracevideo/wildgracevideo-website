@@ -7,17 +7,18 @@ description: Wild Grace Video Productions is a top Denver-based video production
 pageTitle: Behind The Scenes
 bannerVideo:
   publicationDate: 2024-04-30T15:09:00.000Z
-  video: https://content.wildgracevideo.com/Website-Home-Page/2024%20Website%20Reel.mp4
-  thumbnailImage: https://content.wildgracevideo.com/Website-Home-Page/SEO-Images/Reel%20photo.jpg
-  seoTitle: Denver Video Production Company | Wild Grace Video Behind The Scenes Reel
-  seoDescription: Video showcasing the behind the scenes at Wild Grace Video, a
+  video: https://content.wildgracevideo.com/images/Website-About/BehindTheScenesBanner.jpg
+  thumbnailImage: https://content.wildgracevideo.com/images/Website-About/BehindTheScenesBanner.jpg
+  seoTitle: Denver Video Production Company | Wild Grace Video Behind The Scenes Photo
+  seoDescription: Photo showcasing the behind the scenes at Wild Grace Video, a
     top Denver-based video production company.
 aboutMe:
   file:
     publicationDate: 2024-04-30T16:13:00.000Z
-    file: https://content.wildgracevideo.com/Website-Home-Page/about-me.mp4
+    file: https://content.wildgracevideo.com/videos/BehindTheScenes/SMM+-+Granite+Gear/SMM
+      - Granite Gear.mpd
     seoTitle: Denver Video Production Company | Wild Grace Video Owner
-    seoDescription: Photo of Wild Grace Video owner, Carly Kreiger.
+    seoDescription: Video of Wild Grace Video owner, Carly Kreiger.
     thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/logo1.webp
   title: Meet **Carly.**
   description: >-
