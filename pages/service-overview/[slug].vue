@@ -101,6 +101,14 @@
             :with-sound-control="false"
         />
     </section>
+    <section>
+        <TestimonialCarousel
+            v-if="testimonials"
+            :testimonials="testimonials.clientTestimonials"
+            class="bg-website-off-black text-website-accent"
+        />
+    </section>
+
     <section class="my-32">
         <div class="grid grid-cols-1 justify-between md:grid-cols-3">
             <div
@@ -124,12 +132,6 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section>
-        <TestimonialCarousel
-            v-if="testimonials"
-            :testimonials="testimonials.clientTestimonials"
-        />
     </section>
 </template>
 
