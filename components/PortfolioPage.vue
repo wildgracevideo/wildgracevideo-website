@@ -4,7 +4,28 @@
     <h1 class="mb-8 text-center text-4xl">{{ heading }}</h1>
     <div class="mx-0 mb-16 mt-16 grid grid-cols-1 gap-8 sm:mx-8 xl:grid-cols-2">
         <section v-for="item in videos" :key="item.id" class="w-full">
+            <div
+                v-if="item.pagePath"
+                class="group relative cursor-pointer"
+                tabindex="0"
+                role="button"
+                @keypress="imageClick(item.pagePath)"
+                @click="imageClick(item.pagePath)"
+            >
+                <span
+                    v-if="item.title"
+                    class="play-button absolute left-1/2 top-1/2 z-10 -translate-x-1/2 text-sm font-bold text-white opacity-100 group-hover:opacity-0"
+                    >{{ item.title }}</span
+                >
+                <NuxtImg
+                    :src="item.videoInfo.thumbnailImage"
+                    :alt="item.videoInfo.seoDescription"
+                    class="w-full brightness-50 duration-300 ease-linear hover:brightness-100"
+                    sizes="lg:1300px md:1024 sm:768px xs:640px 320px"
+                />
+            </div>
             <LazyVideo
+                v-else
                 :video="item.videoInfo"
                 :video-title="item.title"
                 sizes="lg:1300px md:1024 sm:768px xs:640px 320px"
@@ -28,4 +49,8 @@
     }
 
     defineProps<Portfolio>();
+
+    const imageClick = async (path) => {
+        await navigateTo({ path });
+    };
 </script>

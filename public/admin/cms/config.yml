@@ -245,12 +245,18 @@ collections:
             preview:
             fields:
                 - { label: 'Video Title', name: 'title', widget: 'string' }
-                - label: 'Video Info'
+                - label: 'Video Info (If linking to another page, fill out Page Path and set Video to http://localhost.)'
                   name: 'videoInfo'
                   widget: 'object'
                   summary: '{{fields.seoTitle}}'
+                  required: false
                   <<: *videoInfo
-
+                - {
+                      label: 'Page Path (i.e. /case-studies/van-essential)',
+                      name: 'pagePath',
+                      widget: 'string',
+                      required: false,
+                  }
     - name: 'custom-portfolio'
       label: 'Custom Portfolios'
       folder: 'content/custom-portfolio'

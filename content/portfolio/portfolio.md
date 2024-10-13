@@ -69,4 +69,12 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Genesee Nutrition's protein bars.
       publicationDate: 2024-04-11T15:04:00.000Z
+  - title: Van Essential
+    videoInfo:
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/VanEssential/VanEssential_thumbnail.png
+      seoTitle: TODO
+      seoDescription: TODO
+      publicationDate: 2024-10-11T18:51:00.000Z
+      video: http://localhost
+    pagePath: /case-studies/van-essential
 ---

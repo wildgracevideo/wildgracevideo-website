@@ -42,7 +42,7 @@
             </div>
             <div>
                 <FileOrVideo
-                    class="aspect-photo w-[640px] object-cover object-bottom"
+                    class="aspect-photo w-[640px] object-cover object-center"
                     :file="aboutMeFile"
                     :is-lazy="true"
                     sizes="640px"
