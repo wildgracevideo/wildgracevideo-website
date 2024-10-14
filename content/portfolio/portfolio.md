@@ -52,6 +52,15 @@ videos:
         outdoor product brands, highlighting Kama Surface.
       seoTitle: "Kama Surface: Outdoor Product Brand in Colorado | Video Portfolio"
     title: KĀMA Surface
+  - title: Van Essential
+    videoInfo:
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/VanEssential/VanEssential_thumbnail.png
+      seoTitle: "VanEssential: Outdoor Product Brand in Colorado | Video Portfolio"
+      seoDescription: Explore our dynamic video portfolio, customized for Colorado's
+        outdoor product brands, highlighting VanEssential.
+      publicationDate: 2024-10-11T18:51:00.000Z
+      video: http://localhost
+    pagePath: /case-studies/van-essential
   - videoInfo:
       publicationDate: 2024-04-11T15:05:00.000Z
       video: https://content.wildgracevideo.com/Website-Portfolio/Curtis_Compressed/The+Curtis+Sales+Pitch+V4.mp4
@@ -69,12 +78,4 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Genesee Nutrition's protein bars.
       publicationDate: 2024-04-11T15:04:00.000Z
-  - title: Van Essential
-    videoInfo:
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/VanEssential/VanEssential_thumbnail.png
-      seoTitle: TODO
-      seoDescription: TODO
-      publicationDate: 2024-10-11T18:51:00.000Z
-      video: http://localhost
-    pagePath: /case-studies/van-essential
 ---
