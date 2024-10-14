@@ -26,9 +26,6 @@ pageDescription: We understand what your boutique hotel needs to attract more
   guests and increase your bookings. Through a thoughtfully crafted video
   strategy that highlights your property's unique charm and elevates your online
   presence, we help position your hotel to stand out in a competitive market.
-  Successfully marketing boutique hotels requires both creativity and
-  strategy—something we have been perfecting to help your property thrive and
-  attract more guests.
 overview:
   title: SHARE THE EXPERIENCE.
   description: >-
