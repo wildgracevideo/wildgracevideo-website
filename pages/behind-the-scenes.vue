@@ -63,7 +63,7 @@
         </article>
         <section
             id="behind-the-scenes"
-            class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 bg-website-off-black py-8"
+            class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 bg-website-accent py-8"
         >
             <FileOrVideo
                 v-for="asset in assets"
