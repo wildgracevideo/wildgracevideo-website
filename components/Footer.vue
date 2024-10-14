@@ -12,7 +12,7 @@
         </div>
         <SocialMediaIcons
             icon-fill="rgb(var(--color-website-primary))"
-            class="-mb-8 mx-auto mt-8"
+            class="mx-auto -mb-8 mt-8"
             :icon-size="80"
         />
     </footer>

@@ -79,12 +79,12 @@
         </section>
         <section id="hear-from-our-clients" class="overflow-hidden">
             <div
-                class="slider w-fit whitespace-nowrap bg-website-off-black py-12"
+                class="slider w-fit whitespace-nowrap bg-website-off-black py-3"
             >
                 <div
                     v-for="i in Array(8).keys()"
                     :key="`${i}-container`"
-                    class="inline-block w-fit min-w-[100dvh] whitespace-nowrap pr-2 text-xl font-bold text-website-accent md:pr-12 md:text-4xl"
+                    class="inline-block w-fit min-w-[100dvh] whitespace-nowrap pr-2 text-sm tracking-tighter text-website-accent md:pr-12 md:text-xl"
                 >
                     <span
                         v-for="char in `${testimonials.title}`"

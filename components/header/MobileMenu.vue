@@ -31,7 +31,7 @@
         </nav>
         <SocialMediaIcons
             icon-fill="rgb(var(--color-website-off-white))"
-            class="mt-auto mx-auto"
+            class="mx-auto mt-auto"
             :icon-size="80"
         />
     </div>
