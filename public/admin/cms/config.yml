@@ -450,19 +450,6 @@ collections:
                       modes: ['rich_text'],
                       minimal: false,
                   }
-                - {
-                      label: 'More Info Title',
-                      name: 'moreInfoTitle',
-                      widget: 'string',
-                  }
-
-                - {
-                      label: 'More Info',
-                      name: 'moreInfo',
-                      widget: 'markdown',
-                      modes: ['rich_text'],
-                      minimal: false,
-                  }
                 - label: 'About Me Image or Video'
                   widget: 'object'
                   name: 'file'
@@ -498,33 +485,34 @@ collections:
                       - label: 'Publication Date (Change only if changing the file)'
                         name: publicationDate
                         widget: 'datetime'
-          - label: 'What We Do'
-            name: 'whatWeDo'
-            widget: 'list'
-            min: 2
-            max: 6
-            summary: '{{fields.text}}'
+          - label: 'FAQ'
+            name: 'faq'
+            widget: 'object'
+            summary: '{{fields.title}}'
             fields:
-                - label: 'Text'
-                  name: 'text'
+                - label: 'FAQ Title'
+                  name: title
                   widget: 'markdown'
                   modes: ['rich_text']
-                  minimal: false
-                - label: 'File'
-                  name: 'file'
-                  widget: 'object'
+                  minimal: true
+                - label: 'Questions'
+                  name: 'questions'
+                  widget: 'list'
+                  min: 1
                   fields:
-                      - label: 'Background Photo'
-                        choose_url: true
-                        allow_multiple: false
-                        name: 'file'
-                        widget: 'file'
-                        media_library:
-                            allow_multiple: false
-                            choose_url: true
-                            config:
-                                multiple: false
-                                max_file_size: 4096000
+                      - {
+                            label: 'Question',
+                            name: 'question',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: true,
+                        }
+                      - {
+                            label: 'Answer',
+                            name: 'answer',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                        }
           - label: 'Assets'
             name: assets
             widget: 'list'

@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-auto mt-8 flex flex-row justify-center">
+    <div class="flex flex-row justify-center">
         <a
             href="https://www.instagram.com/wildgracevideo/"
             target="_blank"

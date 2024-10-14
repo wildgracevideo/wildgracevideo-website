@@ -16,33 +16,40 @@ aboutMe:
   title: Meet **Carly.**
   description: >-
     Wild Grace Video is an outdoor and travel brand video production company
-    based in Denver, Colorado. W
+    based in Denver, Colorado. 
+
+
 
 
     We help outdoor and travel-related brands, like boutique hotels, outdoor gear companies, and adventure tour companies, create a visual identity that inspires their consumers to get outside, romanticize life, and experience the world. Our style is adventurous, inspiring, and organic.
-  moreInfo: >-
-    * I don’t drink coffee (matcha and chai all the way).
-
-    * My friends make fun of me for pulling out the FlightRadar app every time I see an airplane so I can track where it’s going. 
-
-    * I think about the universe way too much and how small we are on this little rock.
-
-    * As a child I had a green pet duck named Patty and it would follow me around the yard.
-  moreInfoTitle: Fun Facts
-whatWeDo:
-  - file:
-      file: https://content.wildgracevideo.com/images/Website-About/WWD_1.webp
-    text: Wild Grace Video transforms your brand with high-quality content,
-      positioning you as an industry leader and building trust for confident
-      buying decisions.
-  - file:
-      file: https://content.wildgracevideo.com/images/Website-About/WWD_3.webp
-    text: |-
-      We specialize in travel and outdoor-related brands.
-
-      * Boutique Hotels
-      * Outdoor Products 
-      * Adventure Tour Companies
+faq:
+  title: "**FREQUENTLY ASKED QUESTIONS**"
+  questions:
+    - question: "**Do you do both photo and video?**"
+      answer: I specialize in video production but can also offer photography services
+        upon request. Whether you're seeking a stunning video production,
+        captivating photography, or a combination of both, I’m committed to
+        meeting your creative needs and bringing your vision to life.
+    - question: "**What is the turnaround time?**"
+      answer: Turnaround time varies based on the project scope and I will provide an
+        estimated timeline during the Discovery Call. However, the majority of
+        our projects have a 2-week turnaround time from the last shoot date.
+    - question: "**How involved are you in the planning and storyboarding process?**"
+      answer: I am adaptable to your preferences. Typically, I take the lead in
+        planning and storyboarding based on the insights gathered during our
+        discovery call and pre-production meeting. However, I welcome your
+        involvement at any level—whether you prefer a hands-on approach in
+        planning every detail or entrusting me to handle the creative process,
+        I’m here to accommodate your needs and vision.
+    - question: "**Can we choose the music for our video?**"
+      answer: Typically, I curate music based on my expertise and the flow of the
+        editing process. I have access to a wide range of quality, royalty-free
+        tracks from a subscription platform. However, I value your preferences.
+        If you have specific genre ideas or would like to be presented with song
+        options, I'm more than happy to provide you with a selection to choose
+        from. Otherwise, rest assured that I'll select music that complements
+        the video seamlessly, drawing from my experience and creative instincts
+        which have been successful in past projects.
 assets:
   - isWide: false
     publicationDate: 2024-04-29T11:56:00.000Z

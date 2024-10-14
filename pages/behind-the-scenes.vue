@@ -11,54 +11,59 @@
             class="mx-8 mb-20 grid grid-cols-1 gap-32 md:mx-16 md:grid-cols-2"
         >
             <FileOrVideo
+                parent-class="mx-16"
                 class="aspect-photo w-[640px] object-cover object-center"
                 :file="aboutMeFile"
                 :is-lazy="true"
                 sizes="640px"
             />
-            <div>
-                <Markdown
-                    :markdown-string="`## ${aboutMe.title!}`"
-                    component-class="pt-8 mb-8 w-fit text-left mr-auto no-default-format strong:font-semibold leading-14 tracking-tighter em:font-medium text-2xl md:text-4xl"
-                />
-                <Markdown :markdown-string="aboutMe.description" />
+            <div class="-ml-16 mr-16 flex flex-col justify-between">
+                <div>
+                    <Markdown
+                        :markdown-string="`## ${aboutMe.title!}`"
+                        component-class="pt-16 mb-8 w-fit text-left mr-auto no-default-format strong:font-semibold leading-14 tracking-tighter em:font-medium text-2xl md:text-4xl"
+                    />
+                    <Markdown :markdown-string="aboutMe.description" />
+                </div>
+                <div>
+                    <button
+                        class="mt-2 min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary"
+                    >
+                        INQUIRE
+                    </button>
+                    <SocialMediaIcons
+                        icon-fill="rgb(var(--color-website-primary))"
+                        class="my-8 -ml-10 !justify-start"
+                        :icon-size="80"
+                    />
+                </div>
             </div>
         </section>
-        <section id="what-we-do" class="bg-website-accent">
-            <h2
-                class="font-family-rock-salt pb-16 pt-12 text-center text-2xl tracking-tighter text-website-off-black md:text-4xl"
-            >
-                What We Do
-            </h2>
-            <!-- order-1 order-2 order-3 order-4 order-5 order-6 order-7 order-8 order-9 order-10 order-11 order-12 -->
-            <!-- md:order-1 md:order-2 md:order-3 md:order-4 md:order-5 md:order-6 md:order-7 md:order-8 md:order-9 md:order-10 md:order-11 md:order-12 -->
-            <div class="grid grid-cols-1 bg-website-accent md:grid-cols-2">
-                <Markdown
-                    v-for="(whatWeDoItem, i) in whatWeDo"
-                    :key="`markdown-${i}`"
-                    :markdown-string="whatWeDoItem.text"
-                    :component-class="`mx-auto h-[450px] max-w-[60%] pt-24 text-center text-lg md:text-xl text-website-off-black tracking-tighter font-thin [&_li]:!list-none [&_li]:before:content-['+'] [&_li]:before:mr-2 what-we-do-markdown ${getWhatWeDoMarkdownOrderClass(
-                        i,
-                        false
-                    )}`"
-                />
+        <article class="bg-website-accent px-8 pb-32 pt-16 lg:px-32">
+            <Markdown
+                :markdown-string="`## ${faq.title!}`"
+                component-class="no-default-format mx-auto mb-20 max-w-lg text-center text-4xl strong:font-semibold"
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2">
                 <div
-                    v-for="(whatWeDoItem, i) in whatWeDo"
-                    :key="`file-${i}`"
-                    :class="`${getWhatWeDoMarkdownOrderClass(
-                        i,
-                        true
-                    )} background-image h-[450px] bg-full bg-center bg-no-repeat md:bg-fixed`"
-                    :style="{
-                        '--bg-image': `url(${whatWeDoItem.file.file})`,
-                    }"
-                />
+                    v-for="faqItem in faq.questions"
+                    :key="`faq-${faqItem.question}`"
+                    class="p-8"
+                >
+                    <Markdown
+                        :markdown-string="`### ${faqItem.question}`"
+                        component-class="no-default-format strong:font-semibold mb-4"
+                    />
+                    <Markdown
+                        :markdown-string="faqItem.answer"
+                        component-class="mb-10 text-sm"
+                    />
+                </div>
             </div>
-        </section>
-
+        </article>
         <section
             id="behind-the-scenes"
-            class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 bg-website-accent py-8"
+            class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 bg-website-off-black py-8"
         >
             <FileOrVideo
                 v-for="asset in assets"
@@ -106,8 +111,6 @@
     const seoTitle = behindTheScenesData.title;
     const seoDescription = behindTheScenesData.description;
 
-    const whatWeDo = behindTheScenesData.whatWeDo;
-
     const pageTitle = behindTheScenesData.pageTitle;
 
     const aboutMe = behindTheScenesData.aboutMe;
@@ -117,26 +120,7 @@
 
     const testimonials = behindTheScenesData.testimonials;
 
-    const moreInfoTitle = ref(null);
-
-    function getWhatWeDoMarkdownOrderClass(
-        index: number,
-        isFile: boolean
-    ): string {
-        const markdownOrders = [1, 4, 5, 8, 9, 12];
-        const fileOrders = [2, 3, 6, 7, 10, 11];
-        const markdownOrdersSmall = [1, 3, 5, 7, 9, 11];
-        const fileOrdersSmall = [2, 4, 6, 8, 10, 12];
-
-        let largeIndex = markdownOrders[index];
-        let smallIndex = markdownOrdersSmall[index];
-        if (isFile) {
-            largeIndex = fileOrders[index];
-            smallIndex = fileOrdersSmall[index];
-        }
-
-        return `order-${smallIndex} md:order-${largeIndex}`;
-    }
+    const faq = behindTheScenesData.faq;
 
     onMounted(() => {
         addEventListener('scroll', () => {
