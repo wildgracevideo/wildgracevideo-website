@@ -1,58 +1,27 @@
 <template>
     <OgMeta :title="seoTitle" :description="seoDescription" />
     <SchemaOrgWebPage type="AboutPage" :name="seoTitle" />
-    <section
-        class="relative flex h-[calc(100dvh-116.45px)] flex-col justify-between"
-    >
-        <div
-            class="backface-visibility-hidden xs:h-[50%] fixed mx-auto h-[40%] w-full md:h-[65%]"
-        >
-            <FileOrVideo
-                class="h-full w-full object-cover object-center"
-                :file="bannerFile"
-                :with-sound-control="true"
-                :is-lazy="true"
-                sizes="2xl:2000px xl:1536px lg:1280px md:1024px sm:768px 640px"
-            />
-        </div>
-        <div
-            class="sm:top-[calc(100dvh-116.45px) absolute left-1/2 top-[calc(100dvh-100px)] z-10 w-full -translate-x-1/2 -translate-y-full bg-website-off-white"
-        >
-            <Markdown
-                :markdown-string="`# ${pageTitle}`"
-                component-class="no-default-format md:mb-8 mb-4 pt-4 md:pt-8 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
-            />
-        </div>
-    </section>
+    <Markdown
+        :markdown-string="`# ${pageTitle}`"
+        component-class="no-default-format mt-6 md:mt-12 md:mb-24 mb-12 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
+    />
     <div class="relative z-10 bg-website-off-white">
         <section
             id="meet-carly"
             class="mx-8 mb-20 grid grid-cols-1 gap-32 md:mx-16 md:grid-cols-2"
         >
+            <FileOrVideo
+                class="aspect-photo w-[640px] object-cover object-center"
+                :file="aboutMeFile"
+                :is-lazy="true"
+                sizes="640px"
+            />
             <div>
                 <Markdown
                     :markdown-string="`## ${aboutMe.title!}`"
                     component-class="pt-8 mb-8 w-fit text-left mr-auto no-default-format strong:font-semibold leading-14 tracking-tighter em:font-medium text-2xl md:text-4xl"
                 />
                 <Markdown :markdown-string="aboutMe.description" />
-            </div>
-            <div>
-                <FileOrVideo
-                    class="aspect-photo w-[640px] object-cover object-center"
-                    :file="aboutMeFile"
-                    :is-lazy="true"
-                    sizes="640px"
-                />
-                <h3
-                    ref="moreInfoTitle"
-                    class="more-info-title font-family-rock-salt relative mb-4 mt-8 w-fit text-xl"
-                >
-                    {{ aboutMe.moreInfoTitle }}
-                </h3>
-                <Markdown
-                    :markdown-string="aboutMe.moreInfo"
-                    component-class="[&_>ul]:pl-10"
-                />
             </div>
         </section>
         <section id="what-we-do" class="bg-website-accent">
@@ -137,8 +106,6 @@
     const seoTitle = behindTheScenesData.title;
     const seoDescription = behindTheScenesData.description;
 
-    const bannerFile = behindTheScenesData.bannerFile;
-
     const whatWeDo = behindTheScenesData.whatWeDo;
 
     const pageTitle = behindTheScenesData.pageTitle;
@@ -173,26 +140,6 @@
 
     onMounted(() => {
         addEventListener('scroll', () => {
-            const moreInfoRect = moreInfoTitle.value.getBoundingClientRect();
-            if (
-                moreInfoRect.top >= 0 &&
-                moreInfoRect.bottom <= document.documentElement.clientHeight
-            ) {
-                const underlineWidth = Math.min(
-                    Math.floor(
-                        ((document.documentElement.clientHeight -
-                            moreInfoRect.top) /
-                            document.documentElement.clientHeight) *
-                            200
-                    ),
-                    100
-                );
-                moreInfoTitle.value.style.setProperty(
-                    '--more-info-title-width',
-                    `${underlineWidth}%`
-                );
-            }
-
             if (window.scrollY > window.innerHeight) {
                 videoElement.classList.add('invisible');
             } else {
@@ -211,22 +158,6 @@
         height: 420px;
     }
 
-    .more-info-title {
-        --more-info-title-width: 0%;
-    }
-
-    .more-info-title::after {
-        width: var(--more-info-title-width);
-        content: '';
-        position: absolute;
-        bottom: -0.75rem;
-        left: 0;
-        height: 0.5rem;
-        border-top: solid 3px rgb(var(--color-website-accent) / 1);
-        border-radius: 75%;
-        height: 0.5rem;
-    }
-
     @keyframes slide {
         to {
             transform: translateX(calc(-50%));
@@ -235,9 +166,5 @@
 
     .slider {
         animation: 60s slide infinite linear;
-    }
-
-    .backface-visibility-hidden {
-        backface-visibility: hidden;
     }
 </style>

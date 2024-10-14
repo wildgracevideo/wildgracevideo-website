@@ -430,11 +430,6 @@ collections:
                 modes: ['rich_text'],
                 minimal: true,
             }
-          - label: 'Banner Video'
-            name: 'bannerFile'
-            widget: 'object'
-            summary: '{{fields.seoTitle}}'
-            <<: *fileInfo
           - label: 'About Me'
             name: 'aboutMe'
             widget: 'object'

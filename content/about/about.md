@@ -5,13 +5,6 @@ description: Wild Grace Video Productions is a top Denver-based video production
   adventure company videos. We're here to help you bring your brand to life and
   help you better connect with your audience.
 pageTitle: Behind The Scenes
-bannerFile:
-  publicationDate: 2024-04-30T15:09:00.000Z
-  file: https://content.wildgracevideo.com/images/Website-About/BehindTheScenesBanner.jpg
-  thumbnailImage: https://content.wildgracevideo.com/images/Website-About/BehindTheScenesBanner.jpg
-  seoTitle: Denver Video Production Company | Wild Grace Video Behind The Scenes Photo
-  seoDescription: Photo showcasing the behind the scenes at Wild Grace Video, a
-    top Denver-based video production company.
 aboutMe:
   file:
     publicationDate: 2024-04-30T16:13:00.000Z
