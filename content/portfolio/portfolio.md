@@ -52,7 +52,7 @@ videos:
         outdoor product brands, highlighting Kama Surface.
       seoTitle: "Kama Surface: Outdoor Product Brand in Colorado | Video Portfolio"
     title: KĀMA Surface
-  - title: Van Essential
+  - title: VanEssential
     videoInfo:
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/VanEssential/VanEssential_thumbnail.png
       seoTitle: "VanEssential: Outdoor Product Brand in Colorado | Video Portfolio"
