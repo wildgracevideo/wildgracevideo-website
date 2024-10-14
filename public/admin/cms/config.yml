@@ -431,10 +431,10 @@ collections:
                 minimal: true,
             }
           - label: 'Banner Video'
-            name: 'bannerVideo'
+            name: 'bannerFile'
             widget: 'object'
             summary: '{{fields.seoTitle}}'
-            <<: *videoInfo
+            <<: *fileInfo
           - label: 'About Me'
             name: 'aboutMe'
             widget: 'object'

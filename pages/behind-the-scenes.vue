@@ -7,16 +7,12 @@
         <div
             class="backface-visibility-hidden xs:h-[50%] fixed mx-auto h-[40%] w-full md:h-[65%]"
         >
-            <AutoPlayVideo
-                :title="bannerVideo.seoTitle"
-                :description="bannerVideo.seoDescription"
-                :thumbnail-image="bannerVideo.thumbnailImage"
-                :publication-date="bannerVideo.publicationDate"
-                :video="bannerVideo.video"
-                :with-sound-control="true"
-                video-id="reel-video"
+            <FileOrVideo
                 class="h-full w-full object-cover object-center"
-                sound-control-bottom-class="bottom-14 md:bottom-16"
+                :file="bannerFile"
+                :with-sound-control="true"
+                :is-lazy="true"
+                sizes="2xl:2000px xl:1536px lg:1280px md:1024px sm:768px 640px"
             />
         </div>
         <div
@@ -133,7 +129,6 @@
 </template>
 
 <script setup lang="ts">
-    import { handleVideoControls } from '~/lib/handle-video-controls';
     const { data } = await useAsyncData('about', () =>
         queryContent('about').find()
     );
@@ -142,7 +137,7 @@
     const seoTitle = behindTheScenesData.title;
     const seoDescription = behindTheScenesData.description;
 
-    const bannerVideo = behindTheScenesData.bannerVideo;
+    const bannerFile = behindTheScenesData.bannerFile;
 
     const whatWeDo = behindTheScenesData.whatWeDo;
 
@@ -177,11 +172,6 @@
     }
 
     onMounted(() => {
-        const videoElement = document.getElementById(
-            'reel-video'
-        ) as HTMLVideoElement;
-        handleVideoControls(videoElement);
-
         addEventListener('scroll', () => {
             const moreInfoRect = moreInfoTitle.value.getBoundingClientRect();
             if (
