@@ -15,41 +15,11 @@ aboutMe:
     thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/logo1.webp
   title: Meet **Carly.**
   description: >-
-    Hey there! I’m Carly, owner & lead videographer at Wild Grace Video  based
-    in Denver, Colorado.
+    Wild Grace Video is an outdoor and travel brand video production company
+    based in Denver, Colorado. W
 
 
-
-
-    As a kid, I started by creating embarrassing horror movie trailers, which sparked my passion for video creation. Now, I thrive on crafting beautiful cinematic visuals and authentic stories for travel and adventure brands.
-
-
-
-
-    I've always loved to capture the meaningful moments of my life on video. I've compiled adventures from my time abroad New Zealand, memories from my college years at University of Vermont, and captured staff moments at a Wyoming dude ranch during my summer job.
-
-
-
-
-    Over the past five years, I've continued to do all of those things...just at a little bit more of a professional level. I’ve had the privilege of creating content for a diverse range of brands. 
-
-
-
-
-    I enjoy the variety in the types of projects that I take on--from solo work to collaborative productions that create lasting impressions.
-
-
-
-
-    Whatever type of creative assets your brand needs, I’m excited to produce the type of content that will help boost growth and leave an impact on your audience.
-
-
-
-
-    Talk soon!
-
-
-    ~Carly
+    We help outdoor and travel-related brands, like boutique hotels, outdoor gear companies, and adventure tour companies, create a visual identity that inspires their consumers to get outside, romanticize life, and experience the world. Our style is adventurous, inspiring, and organic.
   moreInfo: >-
     * I don’t drink coffee (matcha and chai all the way).
 
