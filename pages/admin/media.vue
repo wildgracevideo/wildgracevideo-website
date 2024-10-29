@@ -315,6 +315,7 @@
 
     let uppy;
     function createUppy() {
+        const MiB = 0x10_00_00;
         uppy = new Uppy({}).use(Dashboard).use(AwsS3, {
             async getUploadParameters(file) {
                 const signS3Response = await $fetch(
@@ -337,7 +338,126 @@
                     },
                 };
             },
-            shouldUseMultipart: true,
+            shouldUseMultipart: (file) => file.size > 100 * MiB,
+            async createMultipartUpload(file, signal) {
+                signal?.throwIfAborted();
+
+                const metadata = {};
+
+                Object.keys(file.meta || {}).forEach((key) => {
+                    if (file.meta[key] != null) {
+                        metadata[key] = file.meta[key].toString();
+                    }
+                });
+
+                try {
+                    return await $fetch('/api/admin/media/multipart', {
+                        method: 'POST',
+                        headers: {
+                            accept: 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: {
+                            filename: file.name,
+                            prefix: folder.join('/'),
+                            type: file.type,
+                            metadata,
+                        },
+                        signal,
+                    });
+                } catch (e: unknown) {
+                    console.error('Failed to created multipart upload', e);
+                    throw new Error('Failed to created multipart upload', {
+                        cause: e,
+                    });
+                }
+            },
+            async abortMultipartUpload(file, { key, uploadId, signal }) {
+                const filename = encodeURIComponent(key);
+                const uploadIdEnc = encodeURIComponent(uploadId);
+                try {
+                    return (response = await $fetch(
+                        `/api/admin/media/multipart/${uploadIdEnc}?key=${filename}`,
+                        {
+                            method: 'DELETE',
+                            signal,
+                        }
+                    ));
+                } catch (e: unknown) {
+                    console.error('Failed to abort multipart upload', e);
+                    throw new Error('Failed to abort multipart upload', {
+                        cause: e,
+                    });
+                }
+            },
+            async signPart(file, options) {
+                const { uploadId, key, partNumber, signal } = options;
+
+                signal?.throwIfAborted();
+
+                if (uploadId == null || key == null || partNumber == null) {
+                    throw new Error(
+                        'Cannot sign without a key, an uploadId, and a partNumber'
+                    );
+                }
+
+                const filename = encodeURIComponent(key);
+                try {
+                    return await $fetch(
+                        `/api/admin/media/multipart/${uploadId}/${partNumber}?key=${filename}`,
+                        { signal }
+                    );
+                } catch (e: unknown) {
+                    console.error('Failed to signPart', e);
+                    throw new Error('Failed to signPart', {
+                        cause: e,
+                    });
+                }
+            },
+            async listParts(file, { key, uploadId }, signal) {
+                signal?.throwIfAborted();
+
+                const filename = encodeURIComponent(key);
+                try {
+                    return await $fetch(
+                        `/api/admin/media/multipart/${uploadId}?key=${filename}`,
+                        { signal }
+                    );
+                } catch (e: unknown) {
+                    console.error('Failed to listParts', e);
+                    throw new Error('Failed to listParts', {
+                        cause: e,
+                    });
+                }
+            },
+            async completeMultipartUpload(
+                file,
+                { key, uploadId, parts },
+                signal
+            ) {
+                signal?.throwIfAborted();
+
+                const filename = encodeURIComponent(key);
+                const uploadIdEnc = encodeURIComponent(uploadId);
+                try {
+                    return await $fetch(
+                        `/api/admin/media/multipart/${uploadIdEnc}/complete?key=${filename}`,
+                        {
+                            method: 'POST',
+                            headers: {
+                                accept: 'application/json',
+                            },
+                            body: { parts },
+                            signal,
+                        }
+                    );
+                } catch (e: unknown) {
+                    console.error('Failed to complete multipart upload', e);
+                    throw new Error('Failed to complete multipart upload', {
+                        cause: e,
+                    });
+                }
+            },
         });
 
         uppy.on('complete', (result) => {
