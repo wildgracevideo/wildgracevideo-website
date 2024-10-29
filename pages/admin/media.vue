@@ -337,6 +337,7 @@
                     },
                 };
             },
+            shouldUseMultipart: true,
         });
 
         uppy.on('complete', (result) => {
