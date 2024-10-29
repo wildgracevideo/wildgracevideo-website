@@ -78,4 +78,14 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Genesee Nutrition's protein bars.
       publicationDate: 2024-04-11T15:04:00.000Z
+  - videoInfo:
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/GraniteGear/GGThumbnail.png
+      seoTitle: "Granite Gear: Backpacks for Outdoor Enthusiasts | Video Portfolio"
+      seoDescription: Explore our dynamic video portfolio, customized for Denver's
+        outdoor brands, highlighting Granite Gear's backpacks and the
+        experience.
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/Granite+Gear+Social+1+V1/Granite
+        Gear Social 1 V1.mpd
+      publicationDate: 2024-10-28T18:47:00.000Z
+    title: Granite Gear
 ---
