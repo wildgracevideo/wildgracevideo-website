@@ -12,7 +12,13 @@
                 </button>
                 <h2 class="inline">{{ currentFolder.join('/') || '/' }}</h2>
             </div>
-            <div>
+            <div
+                v-if="
+                    currentFolder.length > 0 &&
+                    (currentFolder[0] === 'images' ||
+                        currentFolder[0] === 'videos')
+                "
+            >
                 <UButton
                     color="amber"
                     size="lg"
