@@ -539,35 +539,40 @@
         }
     };
 
-    // TODO: Fix the key so that it includes the currentFolder as well
-    // TODO: Look into making sure 0 byte files are seen as folders
     const createFolderAction = async () => {
-        if (!createFolderName.value || createFolderName.value.includes('/')) {
+        if (!createFolderName.value) {
             folderNameError.value =
                 'Folder name cannot contain a / nor be empty.';
-        }
-        const prefix = currentFolder.value.join('/') + '/';
-        try {
-            await $fetch(
-                `/api/admin/media/create-folder?key=${prefix}${createFolderName.value}`,
-                {
-                    method: 'post',
+        } else {
+            const prefix = currentFolder.value.join('/') + '/';
+            try {
+                await $fetch(
+                    `/api/admin/media/create-folder?key=${prefix}${createFolderName.value}`,
+                    {
+                        method: 'post',
+                    }
+                );
+                toast.add({
+                    title: `Successfully created the folder ${createFolderName.value}.`,
+                    color: 'green',
+                    icon: 'i-heroicons-check-badge',
+                });
+                showCreateFolder.value = false;
+                await fetchFiles();
+            } catch (e: unknown) {
+                toast.add({
+                    title: `Failed to create the folder ${createFolderName.value}.`,
+                    color: 'red',
+                    icon: 'i-heroicons-information-circle',
+                });
+                console.error(e);
+                if (e.hasOwnProperty('data')) {
+                    const errorBody = e.data;
+                    if (errorBody?.statusMessage) {
+                        folderNameError.value = errorBody!.statusMessage;
+                    }
                 }
-            );
-            toast.add({
-                title: `Successfully created the folder ${createFolderName.value}.`,
-                color: 'green',
-                icon: 'i-heroicons-check-badge',
-            });
-            showCreateFolder.value = false;
-            await fetchFiles();
-        } catch (e) {
-            toast.add({
-                title: `Failed to create the folder ${createFolderName.value}.`,
-                color: 'red',
-                icon: 'i-heroicons-information-circle',
-            });
-            console.error(e);
+            }
         }
     };
 
@@ -591,7 +596,11 @@
         createUppy();
 
         copyToClipboard = async (file: string) => {
-            if (typeof window !== 'undefined' && navigator?.clipboard) {
+            if (
+                typeof window !== 'undefined' &&
+                window &&
+                window.navigator?.clipboard
+            ) {
                 try {
                     await window.navigator?.clipboard?.writeText(
                         getCloudFrontUrl(file)

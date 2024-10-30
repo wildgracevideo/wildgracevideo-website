@@ -36,7 +36,7 @@ stats:
 videos:
   - videoInfo:
       publicationDate: 2024-07-02T17:02:00.000Z
-      video: https://content.wildgracevideo.com/Website-Portfolio/VanEssential_Compressed/MERCEDES%20Rear%20Storage%20Install%20Video%20V2%20%5Bcaptions%5D.mp4
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/VanEssential/MercedesRearStorageInstallVideoV2-captions/MercedesRearStorageInstallVideoV2-captions.mpd
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/VanEssential/MercImage-min.png
       seoTitle: VanEssential | Video Production Case Study
       seoDescription: In this case study, we highlight the production of a product

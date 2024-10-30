@@ -80,7 +80,7 @@
         :key="`${i}-bts-video`"
         class="grid w-full grid-cols-1 items-center px-8 text-center text-lg md:grid-cols-2"
     >
-        <LazyVideo
+        <ImagePreviewLazyVideo
             :video="video.videoInfo"
             class="text-white"
             sizes="lg:1300px md:1024px 768px"
@@ -112,7 +112,6 @@
 
 <script setup lang="ts">
     import { CountUp } from 'countup.js';
-    import LazyVideo from '~/components/LazyVideo.vue';
     import { handleVideoControls } from '~/lib/handle-video-controls';
 
     const route = useRoute();

@@ -78,12 +78,8 @@
         function handleIntersection(entries: IntersectionObserverEntry[]) {
             entries.map((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
-                    const videoSource: HTMLSourceElement =
-                        document.createElement('source');
-                    videoSource.type = 'video/mp4';
-                    videoSource.src = props.video;
-                    videoElement.value!.appendChild(videoSource);
-                    videoElement.value!.play();
+                    const player = new shaka.Player(videoElement.value);
+                    player.load(props.video);
                     observer.unobserve(entry.target);
                 }
             });
@@ -93,9 +89,6 @@
             rootMargin: '200px',
         });
         observer.observe(videoElement.value!);
-
-        const player = new shaka.Player(videoElement.value);
-        await player.load(props.video);
 
         // Safari won't play videos on low-power mode
         videoElement.value

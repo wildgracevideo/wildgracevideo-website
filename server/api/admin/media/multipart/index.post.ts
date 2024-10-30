@@ -19,6 +19,14 @@ export default defineEventHandler(
             });
         }
 
+        if (!/^[0-9a-zA-Z\-_.]+$/.test(requestBody.filename)) {
+            throw createError({
+                statusCode: 400,
+                statusMessage:
+                    'Invalid file name can only use alphanumberic characters, hyphens, or underscores.',
+            });
+        }
+
         let key = requestBody.filename;
         if (requestBody.prefix) {
             key = `${requestBody.prefix}/${requestBody.filename}`;

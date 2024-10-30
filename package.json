@@ -64,7 +64,7 @@
         "@aws-sdk/s3-request-presigner": "3.609.0",
         "@headlessui/vue": "1.7.20",
         "@heroicons/vue": "2.0.18",
-        "@libsql/client": "0.5.6",
+        "@libsql/client": "0.14.0",
         "@lucia-auth/adapter-drizzle": "1.1.0",
         "@nuxt/content": "2.12.0",
         "@sendgrid/eventwebhook": "7.7.0",

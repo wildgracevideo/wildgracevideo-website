@@ -42,8 +42,7 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Granite Gear's backpacks and the
         experience.
-      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/Granite+Gear+Social+1+V1/Granite
-        Gear Social 1 V1.mpd
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/GraniteGearSocial1-V1/GraniteGearSocial1-V1.mpd
       publicationDate: 2024-10-28T18:47:00.000Z
     title: Granite Gear
   - videoInfo:
@@ -51,13 +50,13 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Colorado's
         boutique hotels, highlighting the Surf Hotel.
       seoTitle: "Surf Hotel: Adventure Boutique Hotel in Colorado | Video Portfolio"
-      video: https://content.wildgracevideo.com/Website-Portfolio/Surf_Compressed/The+Surf+Hotel+Website+Video+V2.mp4
-      thumbnailImage: https://content.wildgracevideo.com/Website-Portfolio/Surf_Compressed/surfthumbnail.webp
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/SurfHotel/TheSurfHotelWebsiteVideoV2/TheSurfHotelWebsiteVideoV2.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/SurfHotel/surfthumbnail.webp
     title: Surf Hotel
   - videoInfo:
       publicationDate: 2024-04-11T15:05:00.000Z
-      video: https://content.wildgracevideo.com/Website-Portfolio/Kama_Compressed/Kama+Ski_Horizontal+V1.mp4
-      thumbnailImage: https://content.wildgracevideo.com/Website-Portfolio/Kama_Compressed/Kamathumbnail.webp
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/KamaSurface/KamaSki_HorizontalV1/KamaSki_HorizontalV1.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/KamaSurface/Kamathumbnail.webp
       seoDescription: Explore our dynamic video portfolio, customized for Colorado's
         outdoor product brands, highlighting Kama Surface.
       seoTitle: "Kama Surface: Outdoor Product Brand in Colorado | Video Portfolio"
@@ -73,16 +72,16 @@ videos:
     pagePath: /case-studies/van-essential
   - videoInfo:
       publicationDate: 2024-04-11T15:05:00.000Z
-      video: https://content.wildgracevideo.com/Website-Portfolio/Curtis_Compressed/The+Curtis+Sales+Pitch+V4.mp4
-      thumbnailImage: https://content.wildgracevideo.com/Website-Portfolio/Curtis_Compressed/curtisthumbnail.webp
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/CurtisHotel/TheCurtisSalesPitchV4/TheCurtisSalesPitchV4.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/CurtisHotel/curtisthumbnail.webp
       seoTitle: "The Curtis Hotel: Pop-Culture Hotel in Denver, CO | Video Portfolio"
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         boutique hotels, highlighting The Curtis Hotel.
     title: The Curtis Hotel
   - title: Genesee Nutrition
     videoInfo:
-      video: https://content.wildgracevideo.com/Website-Portfolio/Genesee_Compressed/Genesee+Flagship+Website+Video.mp4
-      thumbnailImage: https://content.wildgracevideo.com/Website-Portfolio/Genesee_Compressed/Geneseethumbnail.webp
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GeneseeNutrition/GeneseeFlagshipWebsiteVideo/GeneseeFlagshipWebsiteVideo.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/GeneseeNutrition/Geneseethumbnail.webp
       seoTitle: "Genesee Nutrition: Protein Bars for Outdoor Enthusiasts in Denver, CO
         | Video Portfolio"
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
@@ -96,7 +95,6 @@ videos:
         tour companies, highlighting Bio Bio Expedition's Bike Trip through
         Provence, France.
       publicationDate: 2024-10-28T18:49:00.000Z
-      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/Granite+Gear+Social+2+V1/Granite
-        Gear Social 2 V1.mpd
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/GraniteGearSocial2-V1/GraniteGearSocial2-V1.mpd
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/GraniteGear/GGThumbnail.png
 ---

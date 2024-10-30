@@ -24,7 +24,7 @@
                     sizes="lg:1300px md:1024 sm:768px xs:640px 320px"
                 />
             </div>
-            <LazyVideo
+            <ImagePreviewLazyVideo
                 v-else
                 :video="item.videoInfo"
                 :video-title="item.title"
@@ -35,7 +35,6 @@
 </template>
 
 <script setup lang="ts">
-    import LazyVideo from '~/components/LazyVideo.vue';
     import type { VideoInfo } from '~/lib/video';
 
     export interface Portfolio {

@@ -14,7 +14,7 @@
         >
         <PlayIcon v-else class="play-button absolute z-10 h-10 w-10" />
         <NuxtImg
-            :src="video.thumbnailImage"
+            :src="thumbnailImageResolved"
             :alt="video.seoDescription"
             class="w-full brightness-50 duration-300 ease-linear hover:brightness-100"
             :class="`${aspectRatio} ${imageClass}`"
@@ -39,15 +39,15 @@
             :upload-date="video.publicationDate"
             :description="video.seoDescription"
             :thumbnail="{
-                url: video.thumbnailImage,
-                contentUrl: video.thumbnailImage,
+                url: thumbnailImageResolved,
+                contentUrl: thumbnailImageResolved,
             }"
         />
-        <source :src="video.video" type="video/mp4" />
     </video>
 </template>
 
 <script setup lang="ts">
+    import shaka from 'shaka-player';
     import { PlayIcon } from '@heroicons/vue/24/outline';
     import type { VideoInfo } from '~/lib/video';
 
@@ -77,6 +77,9 @@
     const videoClick = async () => {
         videoPlaying.value = true;
         await nextTick();
+        console.log(props.video.video);
+        const player = new shaka.Player(videoElement.value);
+        await player.load(props.video.video);
         if (props.fullScreenClick) {
             if (videoElement.value.requestFullscreen) {
                 videoElement.value.requestFullscreen();
@@ -85,12 +88,16 @@
             } else if (videoElement.value.msRequestFullScreen) {
                 videoElement.value.msRequestFullScreen();
             }
-        } else {
-            videoElement.play();
         }
     };
 
     const title = ref(props.video.seoTitle);
+
+    const thumbnailImageResolved = !props.video.thumbnailImage
+        ? props.video.video
+              .replace('videos/', 'images/')
+              .replace('.mpd', '.0000000.jpg')
+        : props.video.thumbnailImage;
 
     onMounted(() => {
         window.addEventListener('fullscreenchange', (event: Event | null) => {

@@ -7,7 +7,24 @@ export default defineEventHandler(async (event): Promise<void> => {
     const queryParameters = getQuery(event);
     const key = queryParameters.key?.toString();
     if (!key) {
-        throw createError({ status: 400 });
+        throw createError({
+            statusCode: 400,
+            statusMessage: 'Folder name is missing',
+        });
+    }
+    const keyParts = key.split('/');
+    let folderName: string;
+    if (key.endsWith('/')) {
+        folderName = keyParts[keyParts.length - 2];
+    } else {
+        folderName = keyParts[keyParts.length - 1];
+    }
+    if (!/^[0-9a-zA-Z\-_]+$/.test(folderName)) {
+        throw createError({
+            statusCode: 400,
+            statusMessage:
+                'Invalid folder name can only use alphanumberic characters, hyphens or underscores',
+        });
     }
     try {
         const suffixedKey = key.endsWith('/') ? key : key + '/';
@@ -18,11 +35,11 @@ export default defineEventHandler(async (event): Promise<void> => {
             );
             console.log('Create folder response', response);
         } else {
-            throw createError({ status: 400 });
+            throw createError({ statusCode: 400 });
         }
     } catch (e) {
         console.error('Failed to create folder.', e);
-        throw createError({ status: 500 });
+        throw createError({ statusCode: 500 });
     }
 });
 
@@ -39,7 +56,7 @@ export async function existsFolder(bucket: string, key: string) {
     try {
         await client.send(command);
         return true;
-    } catch (error) {
+    } catch (error: unknown) {
         if (error.name === 'NotFound') {
             return false;
         } else {
