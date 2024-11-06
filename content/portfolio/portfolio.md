@@ -42,7 +42,7 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Granite Gear's backpacks and the
         experience.
-      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/GraniteGearSocial1-V1/GraniteGearSocial1-V1.mpd
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/GGSpecV2/GGSpecV2.mpd
       publicationDate: 2024-10-28T18:47:00.000Z
     title: Granite Gear
   - videoInfo:
@@ -87,14 +87,4 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Genesee Nutrition's protein bars.
       publicationDate: 2024-04-11T15:04:00.000Z
-  - title: Bio Bio Expeditions
-    videoInfo:
-      seoTitle: "Bio Bio Expeditions: Adventure Tour Company for Outdoor Enthusiasts |
-        Video Portfolio"
-      seoDescription: Explore our dynamic video portfolio, customized for adventure
-        tour companies, highlighting Bio Bio Expedition's Bike Trip through
-        Provence, France.
-      publicationDate: 2024-10-28T18:49:00.000Z
-      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/GraniteGearSocial2-V1/GraniteGearSocial2-V1.mpd
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/GraniteGear/GGThumbnail.png
 ---
