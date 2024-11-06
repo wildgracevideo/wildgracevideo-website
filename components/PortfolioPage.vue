@@ -2,7 +2,9 @@
     <OgMeta :title="pageTitle" :description="description" />
     <SchemaOrgWebPage :name="pageTitle" />
     <h1 class="mb-8 text-center text-4xl">{{ heading }}</h1>
-    <div class="mx-0 mb-16 mt-16 grid grid-cols-1 gap-8 sm:mx-8 xl:grid-cols-2">
+    <div
+        class="mx-0 mb-16 mt-16 grid grid-cols-1 gap-1.5 sm:mx-8 xl:grid-cols-2"
+    >
         <section v-for="item in videos" :key="item.id" class="w-full">
             <div
                 v-if="item.pagePath"
@@ -20,7 +22,7 @@
                 <NuxtImg
                     :src="item.videoInfo.thumbnailImage"
                     :alt="item.videoInfo.seoDescription"
-                    class="w-full brightness-50 duration-300 ease-linear hover:brightness-100"
+                    class="w-full brightness-60 duration-300 ease-linear hover:brightness-100"
                     sizes="lg:1300px md:1024 sm:768px xs:640px 320px"
                 />
             </div>

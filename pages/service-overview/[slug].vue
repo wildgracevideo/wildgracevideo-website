@@ -46,20 +46,28 @@
             />
         </div>
     </section>
+    <!-- delay-200 delay-400 delay-600 delay-800 delay-1000 delay-1200 -->
     <section class="my-32 grid grid-cols-1 md:grid-cols-3">
         <FileOrVideo
-            v-for="file in serviceData.files"
+            v-for="(file, i) in serviceData.files"
             :key="file.seoTitle"
             :file="file"
             :with-sound-control="false"
             sizes="lg:430px 340px"
+            :parent-class="`service-overview-observable opacity-0 translate-y-1/2 delay-${
+                i * 200
+            }`"
             class="h-full w-full object-cover object-center p-4"
         />
     </section>
     <section
         v-for="(callToAction, index) in serviceData.callsToAction"
         :key="callToAction.title"
-        class="mb-32 grid grid-cols-1 md:grid-cols-2"
+        class="service-overview-observable mb-32 grid grid-cols-1 opacity-0 md:grid-cols-2"
+        :class="{
+            'translate-x-1/20': index % 2 == 0,
+            '-translate-x-1/20': index % 2 != 0,
+        }"
     >
         <!-- md:order-1 md:order-2 -->
         <div
@@ -94,7 +102,7 @@
             }`"
             :parent-class="`my-8 order-2 md:order-${
                 index % 2 === 0 ? 2 : 1
-            } bg-website-accent ${index % 2 === 0 ? '-ml-8 mr-8' : 'ml-8'} `"
+            } bg-website-accent ${index % 2 === 0 ? '-ml-8 mr-8' : 'ml-8'}`"
             :file="callToAction.fileInfo"
             :is-lazy="true"
             sizes="lg:650px md:512px 380px"
@@ -160,4 +168,43 @@
     const overviewFile = overview.fileInfo! as FileConfig;
 
     const testimonials = serviceData.testimonials;
+
+    onMounted(async () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    console.log('intersecting...');
+                    const delayClass = Array.from(
+                        entry.target.classList
+                    ).filter((it) => {
+                        return it.startsWith('delay');
+                    });
+                    entry.target.classList.remove('opacity-0');
+                    if (entry.target.classList.contains('translate-y-1/2')) {
+                        entry.target.classList.remove('translate-y-1/2');
+                        entry.target.classList.add('animate-slide-up');
+                    }
+                    if (entry.target.classList.contains('translate-x-1/20')) {
+                        entry.target.classList.remove('translate-x-1/20');
+                        entry.target.classList.add('animate-slide-left');
+                    }
+                    if (entry.target.classList.contains('-translate-x-1/20')) {
+                        entry.target.classList.remove('-translate-x-1/20');
+                        entry.target.classList.add('animate-slide-right');
+                    }
+                    if (delayClass) {
+                        entry.target.classList.add(
+                            'animation-' + delayClass[0]
+                        );
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        const animatableElements = document.querySelectorAll(
+            '.service-overview-observable'
+        );
+        animatableElements.forEach((element) => observer.observe(element));
+    });
 </script>
