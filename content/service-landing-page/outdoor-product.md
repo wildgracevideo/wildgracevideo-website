@@ -105,8 +105,8 @@ callsToAction:
         captivating video marketing. Showcase your unique product and attract
         more customers effortlessly.
       file: https://content.wildgracevideo.com/images/Website-Outdoor/PIC04489.jpg
-      seoTitle: "Showcase of Kama Surface Behind The Scenes: An Outdoor Brand in
-        Colorado | Wild Grace Video"
+      seoTitle: Showcase of Wild Grace Video behind the scenes, filming and outdoor
+        brand in Colorado | Wild Grace Video
       publicationDate: 2024-10-28T20:16:00.000Z
 testimonials:
   clientTestimonials:
