@@ -112,31 +112,7 @@ callsToAction:
       publicationDate: 2024-09-15T20:07:00.000Z
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Hotel/WildGraceVideo_BoutiqueHotels2.png
     isVertical: true
-socialMediaFiles:
-  - file: https://content.wildgracevideo.com/videos/Website-Hotel/HotelClip1/HotelClip1.mpd
-    seoTitle: "Showcase of The Surf Hotel: A Boutique Experience in Buena Vista
-      Colorado | Wild Grace Video"
-    seoDescription: Discover how Wild Grace Video elevates boutique hotels through
-      captivating video marketing. Showcase your unique charm and attract more
-      guests effortlessly.
-    publicationDate: 2024-09-15T20:09:00.000Z
-    thumbnailImage: https://content.wildgracevideo.com/images/Website-Hotel/WildGraceVideo_BoutiqueHotels.png
-  - file: https://content.wildgracevideo.com/videos/Website-Hotel/HotelClip2/HotelClip2.mpd
-    seoTitle: "Showcase of The Surf Hotel: A Boutique Experience in Buena Vista
-      Colorado | Wild Grace Video"
-    publicationDate: 2024-09-15T20:10:00.000Z
-    seoDescription: Discover how Wild Grace Video elevates boutique hotels through
-      captivating video marketing. Showcase your unique charm and attract more
-      guests effortlessly.
-    thumbnailImage: https://content.wildgracevideo.com/images/Website-Hotel/WildGraceVideo_BoutiqueHotels.png
-  - file: https://content.wildgracevideo.com/videos/Website-Hotel/FrenchHotel_WildGraceVideo/FrenchHotel_WildGraceVideo.mpd
-    seoTitle: Showcase of a French Boutique Hotel Experience in Uzès, France | Wild
-      Grace Video
-    seoDescription: Discover how Wild Grace Video elevates boutique hotels through
-      captivating video marketing. Showcase your unique charm and attract more
-      guests effortlessly.
-    publicationDate: 2024-09-15T20:10:00.000Z
-    thumbnailImage: https://content.wildgracevideo.com/images/Website-Hotel/FrenchHotel_boutiquehotels.png
+socialMediaFiles: []
 testimonials:
   clientTestimonials:
     - author: Megan, The Curtis Hotel
