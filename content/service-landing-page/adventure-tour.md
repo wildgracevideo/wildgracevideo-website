@@ -10,6 +10,50 @@ title: "Video Marketing for Adventure Tour Companies "
 description: Enhance your adventure tour company's visibility and reliability
   through video content to attract more sales and stand out from your
   competition. Engage your audience and boost sales with high-quality content.
+fileInfo:
+  thumbnailImage: https://content.wildgracevideo.com/images/Website-Adventure/icelandphoto1.jpg
+  seoTitle: "Video Marketing for Adventure Tour Companies "
+  seoDescription: Enhance your adventure tour company's visibility and reliability
+    through video content to attract more sales and stand out from your
+    competition. Engage your audience and boost sales with high-quality content.
+  publicationDate: 2024-11-05T22:44:00.000Z
+  file: https://content.wildgracevideo.com/videos/Website-Adventure/AdventureBrandsThumbnailV2/AdventureBrandsThumbnailV2.mpd
+pageTitle: ADVENTURE TOUR VIDEO MARKETING
+callsToAction:
+  - isVertical: false
+    title: POPULAR ADVENTURE TOUR MARKETING VIDEOS
+    description: |-
+      * ADVENTURE TOUR HIGHLIGHTS
+      * GUIDE INTRODUCTION VIDEOS
+      * CUSTOMER TESTIMONIALS
+      * WEBSITE BANNER VIDEO
+      * DAY-IN-THE-LIFE OF A TOUR
+      * "WHAT TO EXPECT" EMAIL VIDEO
+    callToActionText: INQUIRE FOR PRICING
+    fileInfo:
+      file: https://content.wildgracevideo.com/videos/Website-Adventure/Iceland_adventure/Iceland_adventure.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Adventure/icelandphoto1.jpg
+      seoTitle: Showcase of Iceland Adventure Tour in Vik, Iceland | Wild Grace Video
+      seoDescription: Discover how Wild Grace Video elevates adventure tour companies
+        through captivating video marketing. Showcase your unique product and
+        attract more customers effortlessly.
+      publicationDate: 2024-11-05T22:25:00.000Z
+  - isVertical: false
+    title: SOCIAL MEDIA PACKAGES INCLUDE
+    description: |-
+      * MONTHLY OR QUARTERLY SOCIAL MEDIA EDITS 
+      * PAID SOCIAL MEDIA AD CAMPAIGN VIDEOS
+      * EXTENSIVE VIDEO CLIP LIBRARY
+      * SOCIAL MEDIA MANAGEMENT & STRATEGY SESSIONS
+    callToActionText: INQUIRE FOR PRICING
+    fileInfo:
+      file: https://content.wildgracevideo.com/images/Website-Adventure/PIC04815.jpg
+      seoTitle: Showcase of Wild Grace Video behind the scenes, filming and adventure
+        tour in Colorado | Wild Grace Video
+      seoDescription: Discover how Wild Grace Video elevates adventure tour companies
+        through captivating video marketing. Showcase your unique product and
+        attract more customers effortlessly.
+      publicationDate: 2024-11-05T22:31:00.000Z
 videoInfo:
   video: https://content.wildgracevideo.com/videos/Website-Adventure/AdventureBrandsThumbnailV2/AdventureBrandsThumbnailV2.mpd
   thumbnailImage: https://content.wildgracevideo.com/images/Website-Adventure/icelandphoto1.jpg
@@ -20,7 +64,6 @@ videoInfo:
     adventure tour companies, helping them showcase their tours and attract more
     customers and increased sales.
   publicationDate: 2024-11-05T21:04:00.000Z
-pageTitle: ADVENTURE TOUR VIDEO MARKETING
 pageDescription: We understand what it takes to captivate your audience and
   elevate sales for your adventure tour company. Through a bespoke video
   strategy that showcases the customer care and thrill of adventure at the heart
@@ -65,39 +108,4 @@ files:
       through captivating video marketing. Showcase your unique product and
       attract more customers effortlessly.
     publicationDate: 2024-11-05T22:10:00.000Z
-callsToAction:
-  - isVertical: false
-    title: POPULAR ADVENTURE TOUR MARKETING VIDEOS
-    description: |-
-      * ADVENTURE TOUR HIGHLIGHTS
-      * GUIDE INTRODUCTION VIDEOS
-      * CUSTOMER TESTIMONIALS
-      * WEBSITE BANNER VIDEO
-      * DAY-IN-THE-LIFE OF A TOUR
-      * "WHAT TO EXPECT" EMAIL VIDEO
-    callToActionText: INQUIRE FOR PRICING
-    fileInfo:
-      file: https://content.wildgracevideo.com/videos/Website-Adventure/Iceland_adventure/Iceland_adventure.mpd
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Adventure/icelandphoto1.jpg
-      seoTitle: Showcase of Iceland Adventure Tour in Vik, Iceland | Wild Grace Video
-      seoDescription: Discover how Wild Grace Video elevates adventure tour companies
-        through captivating video marketing. Showcase your unique product and
-        attract more customers effortlessly.
-      publicationDate: 2024-11-05T22:25:00.000Z
-  - isVertical: false
-    title: SOCIAL MEDIA PACKAGES INCLUDE
-    description: |-
-      * MONTHLY OR QUARTERLY SOCIAL MEDIA EDITS 
-      * PAID SOCIAL MEDIA AD CAMPAIGN VIDEOS
-      * EXTENSIVE VIDEO CLIP LIBRARY
-      * SOCIAL MEDIA MANAGEMENT & STRATEGY SESSIONS
-    callToActionText: INQUIRE FOR PRICING
-    fileInfo:
-      file: https://content.wildgracevideo.com/images/Website-Adventure/PIC04815.jpg
-      seoTitle: Showcase of Wild Grace Video behind the scenes, filming and adventure
-        tour in Colorado | Wild Grace Video
-      seoDescription: Discover how Wild Grace Video elevates adventure tour companies
-        through captivating video marketing. Showcase your unique product and
-        attract more customers effortlessly.
-      publicationDate: 2024-11-05T22:31:00.000Z
 ---
