@@ -103,14 +103,14 @@ callsToAction:
     callToActionText: INQUIRE FOR PRICING
     callToActionButtonText: GET STARTED
     fileInfo:
-      file: https://content.wildgracevideo.com/videos/Website-Hotel/BoutiqueHotels_social/BoutiqueHotels_social.mpd
+      file: https://content.wildgracevideo.com/images/Website-Hotel/PIC04308-Enhanced-NR.jpg
       seoTitle: Showcase of a Boutique Hotel Experience in Denver, Colorado | Wild
         Grace Video
       seoDescription: Discover how Wild Grace Video elevates boutique hotels through
         captivating video marketing. Showcase your unique charm and attract more
         guests effortlessly.
       publicationDate: 2024-09-15T20:07:00.000Z
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Hotel/WildGraceVideo_BoutiqueHotels2.png
+      thumbnailImage: ""
     isVertical: true
 socialMediaFiles: []
 testimonials:
