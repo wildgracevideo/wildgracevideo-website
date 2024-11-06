@@ -10,8 +10,8 @@ title: Video Marketing Solutions for Boutique Hotels to Increase Bookings
 description: Enhance your boutique hotel's visibility and attract more guests
   with tailored video marketing strategies. Engage your audience and boost
   bookings with high-quality content.
-videoInfo:
-  video: https://content.wildgracevideo.com/videos/Website-Hotel/Boutique+Hotels+Thumbnail/Boutique
+fileInfo:
+  file: https://content.wildgracevideo.com/videos/Website-Hotel/Boutique+Hotels+Thumbnail/Boutique
     Hotels Thumbnail.mpd
   thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/Reel%20photo.jpg
   seoTitle: Wild Grace Video specializes in professional video marketing for

@@ -6,15 +6,12 @@
         in-language="en-US"
     />
     <section class="relative w-full max-w-full bg-fixed">
-        <AutoPlayStreamVideo
-            video-id="reel-video"
-            class="pointer-events-none relative z-0 h-[400px] w-full cursor-default object-cover object-center"
-            :title="videoInfo.seoTitle"
-            :description="videoInfo.seoDescription"
-            :video="videoInfo.video"
+        <FileOrVideo
+            parent-class="pointer-events-none relative z-0 w-full cursor-default"
+            class="h-[400px] w-full object-cover object-center"
+            :file="fileInfo"
+            sizes="2xl:2000px xl:1536px lg:1280px md:1024px sm:768px 640px"
             :with-sound-control="false"
-            :thumbnail-image="videoInfo.thumbnailImage"
-            :publication-date="videoInfo.publicationDate"
         />
     </section>
     <section class="my-32">
@@ -162,7 +159,7 @@
     const title = serviceData.title!;
     const description = serviceData.description!;
     const ogImage = serviceData.ogImage!;
-    const videoInfo = serviceData.videoInfo!;
+    const fileInfo = serviceData.fileInfo!;
 
     const overview = serviceData.overview!;
     const overviewFile = overview.fileInfo! as FileConfig;

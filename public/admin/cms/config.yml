@@ -640,11 +640,11 @@ collections:
             }
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
-          - label: 'Video Info'
-            name: 'videoInfo'
+          - label: 'File Info'
+            name: 'fileInfo'
             widget: 'object'
             summary: '{{fields.seoTitle}}'
-            <<: *videoInfo
+            <<: *fileInfo
           - {
                 label: 'Page Title',
                 name: 'pageTitle',

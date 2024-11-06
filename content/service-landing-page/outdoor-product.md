@@ -10,14 +10,14 @@ title: Video Marketing Solutions for Outdoor Product Companies to Increase Sales
 description: Enhance your outdoor product company's visibility and attract more
   sales with tailored video marketing strategies. Engage your audience and boost
   sales with high-quality content.
-videoInfo:
+fileInfo:
   seoTitle: Wild Grace Video specializes in professional video marketing for
     outdoor product companies, helping them showcase their gear and attract more
     customers and increased sales.
   seoDescription: Wild Grace Video specializes in professional video marketing for
     outdoor product companies, helping them showcase their products and attract
     more customers and increased sales.
-  video: https://content.wildgracevideo.com/Website-Home-Page/Outdoor Brands
+  file: https://content.wildgracevideo.com/Website-Home-Page/Outdoor Brands
     Thumbnail.mp4
   thumbnailImage: https://content.wildgracevideo.com/Website-Home-Page/SEO-Images/outdoor
     product photo-min.png
