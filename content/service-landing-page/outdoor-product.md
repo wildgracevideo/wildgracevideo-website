@@ -10,6 +10,56 @@ title: Video Marketing Solutions for Outdoor Product Companies to Increase Sales
 description: Enhance your outdoor product company's visibility and attract more
   sales with tailored video marketing strategies. Engage your audience and boost
   sales with high-quality content.
+fileInfo:
+  file: https://content.wildgracevideo.com/videos/Website-Outdoor/OutdoorBrandsThumbnail/OutdoorBrandsThumbnail.mpd
+  thumbnailImage: https://content.wildgracevideo.com/images/Website-Outdoor/thumbnailimage.png
+  seoTitle: Video Marketing Solutions for Outdoor Product Companies to Increase Sales
+  seoDescription: Enhance your outdoor product company's visibility and attract
+    more sales with tailored video marketing strategies. Engage your audience
+    and boost sales with high-quality content.
+  publicationDate: 2024-11-05T22:43:00.000Z
+pageTitle: OUTDOOR PRODUCT VIDEO MARKETING
+callsToAction:
+  - isVertical: false
+    title: POPULAR OUTDOOR PRODUCT MARKETING VIDEOS
+    description: |-
+      SEASONAL LIFESTYLE VIDEOS
+
+      ADVENTURE STORIES WITH PRODUCT
+
+      PRODUCT DEMONSTRATIONS
+
+      BEHIND THE SCENES OF PRODUCT CREATION
+
+      ENVIRONMENTAL/SOCIAL IMPACT STORIES
+
+      CUSTOMER TESTIMONIALS
+    callToActionText: INQUIRE FOR PRICING
+    fileInfo:
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Outdoor/Kama.jpg
+      seoTitle: "Showcase of Kama Surface: An Outdoor Brand in Colorado | Wild Grace
+        Video"
+      seoDescription: Discover how Wild Grace Video elevates outdoor brands through
+        captivating video marketing. Showcase your unique product and attract
+        more customers effortlessly.
+      file: https://content.wildgracevideo.com/videos/Website-Outdoor/OutdoorGear_kama/OutdoorGear_kama.mpd
+      publicationDate: 2024-10-28T20:16:00.000Z
+  - isVertical: false
+    title: SOCIAL MEDIA PACKAGES INCLUDE
+    description: |-
+      * MONTHLY OR QUARTERLY SOCIAL MEDIA EDITS 
+      * PAID SOCIAL MEDIA AD CAMPAIGN VIDEOS
+      * EXTENSIVE VIDEO CLIP LIBRARY
+      * SOCIAL MEDIA MANAGEMENT & STRATEGY SESSIONS
+    callToActionText: INQUIRE FOR PRICING
+    fileInfo:
+      seoDescription: Discover how Wild Grace Video elevates outdoor brands through
+        captivating video marketing. Showcase your unique product and attract
+        more customers effortlessly.
+      file: https://content.wildgracevideo.com/images/Website-Outdoor/PIC04489.jpg
+      seoTitle: Showcase of Wild Grace Video behind the scenes, filming and outdoor
+        brand in Colorado | Wild Grace Video
+      publicationDate: 2024-10-28T20:16:00.000Z
 videoInfo:
   seoTitle: Wild Grace Video specializes in professional video marketing for
     outdoor product companies, helping them showcase their gear and attract more
@@ -22,7 +72,6 @@ videoInfo:
   thumbnailImage: https://content.wildgracevideo.com/Website-Home-Page/SEO-Images/outdoor
     product photo-min.png
   publicationDate: 2024-10-28T19:37:00.000Z
-pageTitle: OUTDOOR PRODUCT VIDEO MARKETING
 pageDescription: We know what it takes to engage your audience and boost sales
   for your outdoor brand. With a tailored video strategy that highlights the
   luxurious quality and adventure-driven design of your products, we’ll help
@@ -67,47 +116,6 @@ files:
       captivating video marketing. Showcase your unique product and attract more
       customers effortlessly.
     publicationDate: 2024-10-28T20:14:00.000Z
-callsToAction:
-  - isVertical: false
-    title: POPULAR OUTDOOR PRODUCT MARKETING VIDEOS
-    description: |-
-      SEASONAL LIFESTYLE VIDEOS
-
-      ADVENTURE STORIES WITH PRODUCT
-
-      PRODUCT DEMONSTRATIONS
-
-      BEHIND THE SCENES OF PRODUCT CREATION
-
-      ENVIRONMENTAL/SOCIAL IMPACT STORIES
-
-      CUSTOMER TESTIMONIALS
-    callToActionText: INQUIRE FOR PRICING
-    fileInfo:
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Outdoor/Kama.jpg
-      seoTitle: "Showcase of Kama Surface: An Outdoor Brand in Colorado | Wild Grace
-        Video"
-      seoDescription: Discover how Wild Grace Video elevates outdoor brands through
-        captivating video marketing. Showcase your unique product and attract
-        more customers effortlessly.
-      file: https://content.wildgracevideo.com/videos/Website-Outdoor/OutdoorGear_kama/OutdoorGear_kama.mpd
-      publicationDate: 2024-10-28T20:16:00.000Z
-  - isVertical: false
-    title: SOCIAL MEDIA PACKAGES INCLUDE
-    description: |-
-      * MONTHLY OR QUARTERLY SOCIAL MEDIA EDITS 
-      * PAID SOCIAL MEDIA AD CAMPAIGN VIDEOS
-      * EXTENSIVE VIDEO CLIP LIBRARY
-      * SOCIAL MEDIA MANAGEMENT & STRATEGY SESSIONS
-    callToActionText: INQUIRE FOR PRICING
-    fileInfo:
-      seoDescription: Discover how Wild Grace Video elevates outdoor brands through
-        captivating video marketing. Showcase your unique product and attract
-        more customers effortlessly.
-      file: https://content.wildgracevideo.com/images/Website-Outdoor/PIC04489.jpg
-      seoTitle: Showcase of Wild Grace Video behind the scenes, filming and outdoor
-        brand in Colorado | Wild Grace Video
-      publicationDate: 2024-10-28T20:16:00.000Z
 testimonials:
   clientTestimonials:
     - text: Carly is super easy to work with! She's organized, has a calm energy about
