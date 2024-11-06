@@ -84,4 +84,20 @@ callsToAction:
         through captivating video marketing. Showcase your unique product and
         attract more customers effortlessly.
       publicationDate: 2024-11-05T22:25:00.000Z
+  - isVertical: false
+    title: SOCIAL MEDIA PACKAGES INCLUDE
+    description: |-
+      * MONTHLY OR QUARTERLY SOCIAL MEDIA EDITS 
+      * PAID SOCIAL MEDIA AD CAMPAIGN VIDEOS
+      * EXTENSIVE VIDEO CLIP LIBRARY
+      * SOCIAL MEDIA MANAGEMENT & STRATEGY SESSIONS
+    callToActionText: INQUIRE FOR PRICING
+    fileInfo:
+      file: https://content.wildgracevideo.com/images/Website-Adventure/PIC04815.jpg
+      seoTitle: Showcase of Wild Grace Video behind the scenes, filming and adventure
+        tour in Colorado | Wild Grace Video
+      seoDescription: Discover how Wild Grace Video elevates adventure tour companies
+        through captivating video marketing. Showcase your unique product and
+        attract more customers effortlessly.
+      publicationDate: 2024-11-05T22:31:00.000Z
 ---
