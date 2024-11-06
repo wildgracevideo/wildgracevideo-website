@@ -42,7 +42,7 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Granite Gear's backpacks and the
         experience.
-      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/GraniteGearSocial1-V1/GraniteGearSocial1-V1.mpd
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/GGSpecV2/GGSpecV2.mpd
       publicationDate: 2024-10-28T18:47:00.000Z
     title: Granite Gear
   - videoInfo:
