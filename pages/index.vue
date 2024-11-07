@@ -104,21 +104,6 @@
             />
         </div>
     </article>
-    <BackgroundImageLazy
-        component="section"
-        class="mb-32 grid h-full min-h-14 w-full grid-cols-1 items-center justify-center gap-x-10 bg-full px-8 lg:grid-cols-3"
-        :background-image="testimonials.backgroundImage"
-        :background-image-vertical="testimonials.backgroundImageVertical"
-    >
-        <FileOrVideo
-            v-for="file in testimonials.files!"
-            :key="file.file"
-            :file="file"
-            :is-lazy="true"
-            sizes="2xl:800px xl:460px 400px"
-            class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
-        />
-    </BackgroundImageLazy>
     <article class="mx-8 mb-32 lg:mx-32">
         <Markdown
             :markdown-string="`## ${faq.title!}`"
@@ -138,6 +123,21 @@
             />
         </template>
     </article>
+    <BackgroundImageLazy
+        component="section"
+        class="grid h-full min-h-14 w-full grid-cols-1 items-center justify-center gap-x-10 bg-full px-8 lg:grid-cols-3"
+        :background-image="testimonials.backgroundImage"
+        :background-image-vertical="testimonials.backgroundImageVertical"
+    >
+        <FileOrVideo
+            v-for="file in testimonials.files!"
+            :key="file.file"
+            :file="file"
+            :is-lazy="true"
+            sizes="2xl:800px xl:460px 400px"
+            class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
+        />
+    </BackgroundImageLazy>
 </template>
 
 <script setup lang="ts">
@@ -182,7 +182,6 @@
         text: howTo.footer,
     });
 
-    // const runtimeConfig = useRuntimeConfig();
     onMounted(async () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
