@@ -54,7 +54,7 @@
             :parent-class="`service-overview-observable opacity-0 translate-y-1/2 delay-${
                 i * 200
             }`"
-            class="h-full w-full object-cover object-center p-4"
+            class="h-full w-full object-cover object-center p-0 py-0.5 lg:px-0.5 lg:py-0.5"
         />
     </section>
     <section
@@ -124,13 +124,14 @@
             >
                 <FileOrVideo
                     class="pointer-events-none relative z-0 aspect-photo h-full w-full cursor-default object-cover object-center"
-                    parent-class="p-4"
+                    parent-class="lg:px-0.5 lg:py-0.5 p-0 py-0.5"
                     :file="socialMediaFile"
                     :is-lazy="true"
                     sizes="lg:650px md:512px 380px"
                     :with-sound-control="false"
                 />
                 <div
+                    v-if="socialMediaFile.endsWith('mpd')"
                     class="relative bottom-44 -mb-44 flex flex-col items-end gap-6 pr-8"
                 >
                     <HeartIcon class="h-8 w-8 text-white" />
