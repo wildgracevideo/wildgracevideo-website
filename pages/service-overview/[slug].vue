@@ -173,7 +173,6 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    console.log('intersecting...');
                     const delayClass = Array.from(
                         entry.target.classList
                     ).filter((it) => {

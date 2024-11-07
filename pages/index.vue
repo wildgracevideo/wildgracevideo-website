@@ -34,11 +34,14 @@
     />
     <section class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
         <div
-            v-for="video in videoHighlightVideos"
+            v-for="(video, i) in videoHighlightVideos"
             :key="`home-highlight-video-${video.title}`"
+            :class="`home-scroll-observable delay-${
+                i * 200
+            } translate-y-1/2 opacity-0 `"
         >
             <AutoPlayVideo
-                class="pointer-events-none mb-4 mt-8 aspect-video cursor-default bg-fixed lg:mt-0"
+                class="transition-transform mb-4 mt-8 aspect-video cursor-pointer bg-fixed duration-700 ease-in-out hover:scale-105 lg:mt-0"
                 :title="video.seoTitle"
                 :description="video.seoDescription"
                 :video="video.video"
@@ -186,6 +189,26 @@
                 ) {
                     entry.target.classList.remove('fade-out');
                     entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+
+                if (
+                    entry.isIntersecting &&
+                    entry.target.classList.contains('translate-y-1/2')
+                ) {
+                    const delayClass = Array.from(
+                        entry.target.classList
+                    ).filter((it) => {
+                        return it.startsWith('delay');
+                    });
+                    entry.target.classList.remove('opacity-0');
+                    entry.target.classList.remove('translate-y-1/2');
+                    entry.target.classList.add('animate-slide-up');
+                    if (delayClass) {
+                        entry.target.classList.add(
+                            'animation-' + delayClass[0]
+                        );
+                    }
                     observer.unobserve(entry.target);
                 }
             });
