@@ -869,6 +869,9 @@ collections:
                   widget: 'list'
                   summary: '{{fields.title}}'
                   fields:
+                      - label: 'Link Path (Ex: /service-overview/hotels)'
+                        name: 'linkPath'
+                        widget: 'string'
                       - {
                             label: 'Video Title',
                             name: 'title',

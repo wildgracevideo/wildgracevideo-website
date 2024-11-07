@@ -40,15 +40,18 @@
                 i * 200
             } translate-y-1/2 opacity-0 `"
         >
-            <AutoPlayVideo
-                class="transition-transform mb-4 mt-8 aspect-video cursor-pointer bg-fixed duration-700 ease-in-out hover:scale-105 lg:mt-0"
-                :title="video.seoTitle"
-                :description="video.seoDescription"
-                :video="video.video"
-                :thumbnail-image="video.thumbnailImage"
-                :publication-date="video.publicationDate"
-                :video-id="`home-highlight-video-element-${video.title}`"
-            />
+            <NuxtLink :to="video.linkPath">
+                <AutoPlayVideo
+                    class="transition-transform mb-4 mt-8 aspect-video cursor-pointer bg-fixed duration-700 ease-in-out hover:scale-105 lg:mt-0"
+                    :title="video.seoTitle"
+                    :description="video.seoDescription"
+                    :video="video.video"
+                    :thumbnail-image="video.thumbnailImage"
+                    :publication-date="video.publicationDate"
+                    :video-id="`home-highlight-video-element-${video.title}`"
+                    @click="() => {}"
+                />
+            </NuxtLink>
             <h3 class="mb-12 text-center text-2xl">
                 {{ video.title }}
             </h3>
