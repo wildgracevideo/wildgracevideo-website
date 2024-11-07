@@ -24,7 +24,7 @@
             class="mx-auto max-w-5xl px-4 text-center"
         />
     </section>
-    <section class="grid grid-cols-1 md:grid-cols-2">
+    <section class="grid grid-cols-1 lg:grid-cols-2">
         <FileOrVideo
             class="pointer-events-none relative z-0 aspect-video h-full w-full cursor-default object-cover object-center"
             parent-class="p-4"
@@ -44,7 +44,7 @@
         </div>
     </section>
     <!-- delay-200 delay-400 delay-600 delay-800 delay-1000 delay-1200 -->
-    <section class="my-32 grid grid-cols-1 md:grid-cols-3">
+    <section class="my-32 grid grid-cols-1 lg:grid-cols-3">
         <FileOrVideo
             v-for="(file, i) in serviceData.files"
             :key="file.seoTitle"
@@ -60,25 +60,27 @@
     <section
         v-for="(callToAction, index) in serviceData.callsToAction"
         :key="callToAction.title"
-        class="service-overview-observable mb-32 grid grid-cols-1 opacity-0 md:grid-cols-2"
+        class="service-overview-observable mb-32 grid grid-cols-1 opacity-0 lg:grid-cols-2"
         :class="{
             'translate-x-1/20': index % 2 == 0,
             '-translate-x-1/20': index % 2 != 0,
         }"
     >
-        <!-- md:order-1 md:order-2 -->
+        <!-- lg:order-1 lg:order-2 -->
         <div
             class="order-1 flex flex-col items-center justify-center bg-website-accent"
             :class="{
-                'md:order-1': index % 2 === 0,
-                'md:ml-8': index % 2 === 0,
-                'md:order-2': index % 2 !== 0,
-                'md:mr-8': index % 2 !== 0,
-                'md:-ml-8': index % 2 !== 0,
+                'lg:order-1': index % 2 === 0,
+                'lg:ml-8': index % 2 === 0,
+                'lg:order-2': index % 2 !== 0,
+                'lg:mr-8': index % 2 !== 0,
+                'lg:-ml-8': index % 2 !== 0,
                 'z-10': index % 2 !== 0,
             }"
         >
-            <h2 class="mb-8 pt-8 text-left text-xl">
+            <h2
+                class="mx-2 mb-8 pt-8 text-center text-lg lg:mx-2 lg:text-left lg:text-xl"
+            >
                 {{ callToAction.title }}
             </h2>
             <Markdown
@@ -97,9 +99,9 @@
             :class="`pointer-events-none relative z-0 max-h-[600px] w-full cursor-default object-cover object-center ${
                 callToAction.isVertical ? 'aspect-vertical' : 'aspect-video'
             }`"
-            :parent-class="`my-8 order-2 md:order-${
+            :parent-class="`my-8 order-2 ml-0 mr-0 lg:order-${
                 index % 2 === 0 ? 2 : 1
-            } bg-website-accent ${index % 2 === 0 ? '-ml-8 mr-8' : 'ml-8'}`"
+            } ${index % 2 === 0 ? 'lg:-ml-8 lg:mr-8' : 'lg:ml-8'}`"
             :file="callToAction.fileInfo"
             :is-lazy="true"
             sizes="lg:650px md:512px 380px"
@@ -115,7 +117,7 @@
     </section>
 
     <section class="my-32">
-        <div class="grid grid-cols-1 justify-between md:grid-cols-3">
+        <div class="grid grid-cols-1 justify-between lg:grid-cols-3">
             <div
                 v-for="socialMediaFile in serviceData.socialMediaFiles"
                 :key="socialMediaFile.seoTitle"
