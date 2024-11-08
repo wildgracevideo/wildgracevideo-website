@@ -97,7 +97,7 @@
     .logos-slide {
         width: calc((var(--total-icons) * 10rem + var(--total-icon-width)) * 2);
         animation: calc(
-                3s * var(--total-icons) +
+                4s * var(--total-icons) +
                     (var(--total-icon-width-no-unit) / 560) * 1s
             )
             slide infinite linear;
