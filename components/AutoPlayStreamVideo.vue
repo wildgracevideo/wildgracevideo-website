@@ -40,6 +40,7 @@
         SpeakerWaveIcon,
         SpeakerXMarkIcon,
     } from '@heroicons/vue/24/outline';
+    import { handleVideoControls } from '~/lib/handle-video-controls';
 
     const videoElement = ref<HTMLVideoElement>();
 
@@ -81,6 +82,7 @@
                     const player = new shaka.Player(videoElement.value);
                     player.load(props.video);
                     observer.unobserve(entry.target);
+                    handleVideoControls(videoElement.value);
                 }
             });
         }
@@ -89,18 +91,5 @@
             rootMargin: '200px',
         });
         observer.observe(videoElement.value!);
-
-        // Safari won't play videos on low-power mode
-        videoElement.value
-            .play()
-            .then(() => {})
-            .catch(() => {
-                window.document
-                    .querySelectorAll('video')
-                    .forEach((it: HTMLVideoElement) => {
-                        it.setAttribute('controls', 'controls');
-                        it.classList.remove('pointer-events-none');
-                    });
-            });
     });
 </script>

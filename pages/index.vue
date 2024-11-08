@@ -27,37 +27,41 @@
         :markdown-string="pageTagline"
         component-class="mx-8 mb-32 max-w-6xl text-center lg:mx-auto"
     />
-    <TestimonialScroll :testimonial-quotes="homeData!.testimonialQuotes" />
-    <Markdown
-        :markdown-string="`## ${videoHighlight.title!}`"
-        component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-semibold leading-14 tracking-tighter em:font-medium text-4xl md:text-5xl"
-    />
-    <section class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
-        <div
-            v-for="(video, i) in videoHighlightVideos"
-            :key="`home-highlight-video-${video.title}`"
-            :class="`home-scroll-observable delay-${
-                i * 200
-            } translate-y-1/2 opacity-0 `"
-        >
-            <NuxtLink :to="video.linkPath">
-                <AutoPlayVideo
-                    class="transition-transform mb-4 mt-8 aspect-video cursor-pointer bg-fixed duration-700 ease-in-out hover:scale-105 lg:mt-0"
-                    :title="video.seoTitle"
-                    :description="video.seoDescription"
-                    :video="video.video"
-                    :thumbnail-image="video.thumbnailImage"
-                    :publication-date="video.publicationDate"
-                    :video-id="`home-highlight-video-element-${video.title}`"
-                    @click="() => {}"
-                />
-            </NuxtLink>
-            <h3 class="mb-12 text-center text-2xl">
-                {{ video.title }}
-            </h3>
-            <p class="text-center">
-                {{ video.description }}
-            </p>
+    <!-- <TestimonialScroll :testimonial-quotes="homeData!.testimonialQuotes" /> -->
+    <section>
+        <Markdown
+            :markdown-string="`## ${videoHighlight.title!}`"
+            component-class="my-24 max-w-3xl w-fit mx-8 md:mx-auto text-center no-default-format strong:font-semibold leading-14 tracking-tighter em:font-medium text-3xl md:text-4xl"
+        />
+        <div class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
+            <div
+                v-for="(video, i) in videoHighlightVideos"
+                :key="`home-highlight-video-${video.title}`"
+                :class="`home-scroll-observable delay-${
+                    i * 200
+                } translate-y-1/2 opacity-0 `"
+            >
+                <NuxtLink :to="video.linkPath">
+                    <AutoPlayVideo
+                        class="transition-transform mb-4 mt-8 aspect-video cursor-pointer bg-fixed duration-700 ease-in-out hover:scale-105 lg:mt-0"
+                        :title="video.seoTitle"
+                        :description="video.seoDescription"
+                        :video="video.video"
+                        :thumbnail-image="video.thumbnailImage"
+                        :publication-date="video.publicationDate"
+                        :video-id="`home-highlight-video-element-${video.title}`"
+                        @click="() => {}"
+                    />
+                    <h3
+                        class="mb-12 text-center text-2xl underline decoration-1"
+                    >
+                        {{ video.title }}
+                    </h3>
+                </NuxtLink>
+                <p class="text-center">
+                    {{ video.description }}
+                </p>
+            </div>
         </div>
     </section>
     <HomePageAbout
@@ -135,8 +139,6 @@
     const faq = homeData.faq!;
 
     const testimonials = homeData.testimonials!;
-
-    console.log(howTo.steps);
 
     onMounted(async () => {
         const observer = new IntersectionObserver((entries) => {

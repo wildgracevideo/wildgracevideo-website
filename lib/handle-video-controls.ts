@@ -6,13 +6,11 @@ export function handleVideoControls(
         videoElement
             .play()
             .then(() => {})
-            .catch(() => {
-                window.document
-                    .querySelectorAll('video')
-                    .forEach((it: HTMLVideoElement) => {
-                        it.setAttribute('controls', 'controls');
-                        it.classList.remove('pointer-events-none');
-                    });
+            .catch((error) => {
+                if (error.name === 'NotAllowedError') {
+                    videoElement.setAttribute('controls', 'controls');
+                    videoElement.classList.remove('pointer-events-none');
+                }
             });
     } else {
         console.error('Video element is not defined.');

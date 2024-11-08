@@ -245,7 +245,7 @@ trustedBrandLogos:
     altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
       adventurers.
     image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/genesee.webp
-    width: 200
+    width: 100
   - companyName: Smith & Meade
     altText: Logo of Smith & Meade, Denver-based developer of homes that are well
       designed, and well lived.
@@ -260,7 +260,7 @@ trustedBrandLogos:
       events.
     companyName: The Surf Hotel
     image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
-    width: 200
+    width: 150
 videoTitle: Video reel showcasing the work of Wild Grace Videography.
 pageTagline: Wild Grace Video is a Denver-based video production company
   specializing in creating video and photo content for outdoor, travel, and
