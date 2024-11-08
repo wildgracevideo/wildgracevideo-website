@@ -80,9 +80,14 @@
             entries.map((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
                     const player = new shaka.Player(videoElement.value);
-                    player.load(props.video).then(() => {
-                        handleVideoControls(videoElement.value);
-                    });
+                    player
+                        .load(props.video)
+                        .then(() => {
+                            handleVideoControls(videoElement.value);
+                        })
+                        .catch(() => {
+                            handleVideoControls(videoElement.value);
+                        });
                     observer.unobserve(entry.target);
                 }
             });
