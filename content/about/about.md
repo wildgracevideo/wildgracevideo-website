@@ -25,29 +25,30 @@ aboutMe:
 faq:
   title: "**FREQUENTLY ASKED QUESTIONS**"
   questions:
-    - question: "**Do you do both photo and video?**"
-      answer: I specialize in video production but can also offer photography services
-        upon request. Whether you're seeking a stunning video production,
-        captivating photography, or a combination of both, I’m committed to
-        meeting your creative needs and bringing your vision to life.
+    - question: "**Do you offer both photo and video services?**"
+      answer: We specialize in video production but can also offer photography
+        services upon request. Whether you're seeking a stunning video
+        production, captivating photography, or a combination of both, we're
+        committed to meeting your creative needs and bringing your vision to
+        life.
     - question: "**What is the turnaround time?**"
-      answer: Turnaround time varies based on the project scope and I will provide an
+      answer: Turnaround time varies based on the project scope and we will provide an
         estimated timeline during the Discovery Call. However, the majority of
         our projects have a 2-week turnaround time from the last shoot date.
     - question: "**How involved are you in the planning and storyboarding process?**"
-      answer: I am adaptable to your preferences. Typically, I take the lead in
+      answer: We are adaptable to your preferences. Typically, we take the lead in
         planning and storyboarding based on the insights gathered during our
-        discovery call and pre-production meeting. However, I welcome your
+        discovery call and pre-production meeting. However, we welcome your
         involvement at any level—whether you prefer a hands-on approach in
-        planning every detail or entrusting me to handle the creative process,
-        I’m here to accommodate your needs and vision.
-    - question: "**Can we choose the music for our video?**"
-      answer: Typically, I curate music based on my expertise and the flow of the
-        editing process. I have access to a wide range of quality, royalty-free
-        tracks from a subscription platform. However, I value your preferences.
+        planning every detail or entrusting us to handle the creative process,
+        we're here to accommodate your needs and vision.
+    - question: "**Are we able to select the music for our video?**"
+      answer: Typically, we curate music based on our expertise and the flow of the
+        editing process. We have access to a wide range of quality, royalty-free
+        tracks from a subscription platform. However, we value your preferences.
         If you have specific genre ideas or would like to be presented with song
-        options, I'm more than happy to provide you with a selection to choose
-        from. Otherwise, rest assured that I'll select music that complements
+        options, we're more than happy to provide you with a selection to choose
+        from. Otherwise, rest assured that we'll select music that complements
         the video seamlessly, drawing from my experience and creative instincts
         which have been successful in past projects.
 assets:
