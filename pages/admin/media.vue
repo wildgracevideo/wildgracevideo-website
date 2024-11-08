@@ -16,7 +16,8 @@
                 v-if="
                     currentFolder.length > 0 &&
                     (currentFolder[0] === 'images' ||
-                        currentFolder[0] === 'videos')
+                        currentFolder[0] === 'videos' ||
+                        currentFolder[0] === 'svgs')
                 "
             >
                 <UButton
@@ -494,9 +495,21 @@
             uppy.setOptions({
                 restrictions: { allowedFileTypes: ['image/*'] },
             });
-        } else {
+        } else if (
+            currentFolder.value &&
+            currentFolder.value.length > 0 &&
+            currentFolder.value[0] === 'videos'
+        ) {
             uppy.setOptions({
-                restrictions: { allowedFileTypes: ['video/*', '.pdf', '.txt'] },
+                restrictions: { allowedFileTypes: ['video/*'] },
+            });
+        } else if (
+            currentFolder.value &&
+            currentFolder.value.length > 0 &&
+            currentFolder.value[0] === 'svgs'
+        ) {
+            uppy.setOptions({
+                restrictions: { allowedFileTypes: ['.svg'] },
             });
         }
         const dashboard = uppy.getPlugin('Dashboard');
