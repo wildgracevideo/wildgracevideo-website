@@ -317,17 +317,6 @@ collections:
             }
           - { label: 'Page Title', name: 'pageTitle', widget: 'string' }
           - { label: 'Product Title', name: 'productTitle', widget: 'string' }
-          - { label: 'Menu Title', name: 'menuTitle', widget: 'string' }
-          - {
-                label: 'Menu Description',
-                name: 'menuDescription',
-                widget: 'string',
-            }
-          - {
-                label: 'Menu Hero Icon Name (https://heroicons.com/outline Only pick from outline i.e: academic-cap)',
-                name: 'menuIcon',
-                widget: 'string',
-            }
           - {
                 label: 'Product Description',
                 name: 'productDescription',
@@ -1033,13 +1022,6 @@ collections:
                             summary: '{{fields.seoTitle}}',
                             <<: *fileInfo,
                         }
-                - {
-                      label: 'Footer',
-                      name: 'footer',
-                      widget: 'markdown',
-                      modes: ['rich_text'],
-                      required: false,
-                  }
           - label: 'Testimonials'
             name: 'testimonials'
             widget: 'object'

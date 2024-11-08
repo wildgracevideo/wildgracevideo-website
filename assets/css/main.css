@@ -13,7 +13,8 @@
 }
 
 html {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Cormorant', sans-serif;
+    font-size: 18px;
 }
 
 .font-family-optimus {
@@ -45,11 +46,11 @@ html {
 }
 
 .font-family-cormorant {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cormorant', serif;
 }
 
-.font-family-poppins {
-    font-family: 'Poppins', sans-serif !important;
+.font-family-cormorant-garamond {
+    font-family: 'Cormorant Garamond', serif;
 }
 
 body,

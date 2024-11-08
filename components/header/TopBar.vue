@@ -24,16 +24,16 @@
                     :alt="imageAlt"
                 />
             </NuxtLink>
-            <PopoverGroup class="hidden lg:flex lg:gap-x-12">
+            <div class="hidden lg:flex lg:gap-x-12">
                 <component
                     :is="item.type"
                     v-for="item in items"
                     :key="item.name"
                     :config="item"
                 />
-            </PopoverGroup>
+            </div>
             <NuxtLink
-                class="text-md px-auto ml-auto mr-8 hidden h-12 w-32 cursor-pointer items-center rounded-xl border-2 border-website-primary bg-website-primary text-center text-website-off-white hover:bg-website-off-white hover:text-website-primary lg:flex"
+                class="px-auto ml-auto mr-8 hidden h-12 w-32 cursor-pointer items-center rounded-xl border-2 border-website-primary bg-website-primary text-center text-website-off-white hover:bg-website-off-white hover:text-website-primary lg:flex"
                 to="/get-started"
             >
                 <p class="mx-auto">{{ ctaText }}</p>
@@ -49,14 +49,6 @@
 </template>
 
 <script setup lang="ts">
-    import { PopoverGroup } from '@headlessui/vue';
-    import * as heroIcons from '@heroicons/vue/24/outline';
-    import type {
-        FunctionalComponent,
-        HTMLAttributes,
-        VNodeProps,
-    } from 'nuxt/dist/app/compat/capi';
-    import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
     import HeaderItemDropdown from '~/components/header/HeaderItemDropdown.vue';
     import HeaderItem from '~/components/header/HeaderItem.vue';
 
@@ -64,35 +56,20 @@
 
     const runtimeConfig = useRuntimeConfig();
 
-    const kebabToCamelCase = (str: string) => {
-        let outputStr = '';
-        for (let i = 0; i < str.length; i++) {
-            if (i === 0) {
-                outputStr += str[i].toUpperCase();
-            } else if (str[i] === '-') {
-                outputStr += `${str[i + 1].toUpperCase()}`;
-                i++;
-            } else {
-                outputStr += str[i].toLowerCase();
-            }
-        }
-        return outputStr;
-    };
-
-    const { data } = await useAsyncData('all-services', () =>
-        queryContent('/service/').find()
-    );
-    const servicesChildren = data!.value!.map((it: ParsedContent) => {
-        // @ts-expect-error https://github.com/tailwindlabs/heroicons/issues/278#issuecomment-868966794
-        // eslint-disable-next-line import/namespace
-        const icon = heroIcons[`${kebabToCamelCase(it.menuIcon)}Icon`];
-        return {
-            icon,
-            name: it.menuTitle,
-            description: it.menuDescription,
-            href: `/services/${it.path}`,
-        };
-    });
+    const servicesChildren = [
+        {
+            name: 'Outdoor Products',
+            href: `/service-overview/outdoor-product`,
+        },
+        {
+            name: 'Boutique Hotels',
+            href: `/service-overview/hotels`,
+        },
+        {
+            name: 'Adventure Tours',
+            href: `/service-overview/adventure-tour`,
+        },
+    ];
 
     const imageAlt = 'Wild Grace Videography company logo.';
 
@@ -102,9 +79,7 @@
         type: unknown;
         children?: {
             name: string;
-            description: string;
             href: string;
-            icon: FunctionalComponent<HTMLAttributes & VNodeProps>;
         }[];
     }
 
@@ -123,11 +98,6 @@
             name: 'Services',
             type: HeaderItemDropdown,
             children: servicesChildren,
-        },
-        {
-            name: 'Shop',
-            href: '/shop',
-            type: HeaderItem,
         },
     ];
 

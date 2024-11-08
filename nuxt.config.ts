@@ -329,12 +329,12 @@ const config = {
             '@nuxtjs/google-fonts',
             {
                 families: {
-                    Poppins: [400, 600],
                     Cardo: {
                         wght: [400],
                     },
                     'Playfair Display': [400, 700],
                     'Cormorant Garamond': [400],
+                    Cormorant: [400, 600],
                     'Rock Salt': [400],
                 },
                 inject: true,

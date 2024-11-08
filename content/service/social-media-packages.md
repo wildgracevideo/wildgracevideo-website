@@ -7,9 +7,6 @@ ogImage: https://content.wildgracevideo.com/images/Website-Services/social-media
 path: social-media-packages
 pageTitle: SPECIAL SERVICE (Don't change the path or title)
 productTitle: Social Media Marketing + Video + Photo
-menuTitle: Social Media Management Packages
-menuDescription: Managing your online presence
-menuIcon: device-phone-mobile
 productDescription: >-
   Wild Grace Videography and Samantha Melissa Marketing are partnering together
   to provide Colorado businesses with a full-service social media makeover.

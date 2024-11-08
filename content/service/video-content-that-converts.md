@@ -6,9 +6,6 @@ description: Streamline your social media presence effortlessly. Experience
 path: video-content-that-converts
 pageTitle: Video Content That Converts
 productTitle: Social Media Video Packages
-menuTitle: Social Media Video Packages
-menuDescription: Transform your online presence
-menuIcon: video-camera
 productDescription: >-
     Elevate your social media presence effortlessly. Say goodbye to the daily
     grind of staying top-of-mind. Picture waking up excited to focus on your
