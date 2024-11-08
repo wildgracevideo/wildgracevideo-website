@@ -75,10 +75,10 @@ howTo:
   title: "**THE PROCESS**"
   steps:
     - title: "**Step 1.** Discovery Call"
-      description: This initial step is where I get to know you and your project. We
+      description: This initial step is where we get to know you and your project. We
         discuss your vision, goals, and requirements. It's a collaborative
-        conversation where I gather essential details to ensure I’m aligned with
-        your vision.
+        conversation where we gather essential details to ensure we're aligned
+        with your vision.
       fileInfo:
         file: https://content.wildgracevideo.com/images/Website-Home-Page/discoverycall.jpg
         seoTitle: "The Video Production Process: Step 1 Discovery Call"
@@ -86,7 +86,7 @@ howTo:
           project. We discuss your vision, goals, and requirements. "
         publicationDate: 2024-11-08T09:29:00.000Z
     - title: "**Step 2.** Plan"
-      description: Once I’ve understood your objectives, we begin the planning phase.
+      description: Once we’ve understood your objectives, we begin the planning phase.
         This involves crafting a detailed strategy, storyboard, and production
         plan. We'll work together closely to finalize every aspect of the
         project before moving forward.
@@ -98,17 +98,15 @@ howTo:
         publicationDate: 2024-11-08T09:30:00.000Z
     - title: "**Step 3.** Create + Deliver"
       description: >-
-        This is where the magic happens! I’ll bring the plans to life by
+        This is where the magic happens! We’ll bring the plans to life by
         utilizing a wide range of cinematic equipment and leveraging my
         expertise. Collaboration with industry experts may also come into play
         to ensure the highest quality and creativity for your project.
-        Throughout this stage, I maintain communication and transparency,
+        Throughout this stage, we maintain communication and transparency,
         ensuring the project aligns with your expectations.
 
 
-
-
-        Finally, I’ll deliver the finished product, ready to exceed your vision and goals.
+        Finally, we’ll deliver the finished product, ready to exceed your vision and goals.
       fileInfo:
         file: https://content.wildgracevideo.com/images/Website-Home-Page/create.jpg
         seoTitle: "The Video Production Process: Step 3 Create and Deliver"
@@ -201,28 +199,29 @@ faq:
   title: "**FREQUENTLY ASKED QUESTIONS**"
   questions:
     - question: "**Do you offer both photo and video services?**"
-      answer: I specialize in video production but can also offer photography services
-        upon request. Whether you're seeking a stunning video production,
-        captivating photography, or a combination of both, I’m committed to
-        meeting your creative needs and bringing your vision to life.
+      answer: We specialize in video production but can also offer photography
+        services upon request. Whether you're seeking a stunning video
+        production, captivating photography, or a combination of both, we’re
+        committed to meeting your creative needs and bringing your vision to
+        life.
     - question: "**What is the turnaround time?**"
-      answer: Turnaround time varies based on the project scope and I will provide an
+      answer: Turnaround time varies based on the project scope and we will provide an
         estimated timeline during the Discovery Call. However, the majority of
         our projects have a 2-week turnaround time from the last shoot date.
     - question: "**How involved are you in the planning and storyboarding process?**"
-      answer: I am adaptable to your preferences. Typically, I take the lead in
+      answer: We are adaptable to your preferences. Typically, we take the lead in
         planning and storyboarding based on the insights gathered during our
-        discovery call and pre-production meeting. However, I welcome your
+        discovery call and pre-production meeting. However, we welcome your
         involvement at any level—whether you prefer a hands-on approach in
-        planning every detail or entrusting me to handle the creative process,
-        I’m here to accommodate your needs and vision.
+        planning every detail or entrusting us to handle the creative process,
+        we're here to accommodate your needs and vision.
     - question: "**Are we able to select the music for our video?**"
-      answer: Typically, I curate music based on my expertise and the flow of the
-        editing process. I have access to a wide range of quality, royalty-free
-        tracks from a subscription platform. However, I value your preferences.
+      answer: Typically, we curate music based on our expertise and the flow of the
+        editing process. We have access to a wide range of quality, royalty-free
+        tracks from a subscription platform. However, we value your preferences.
         If you have specific genre ideas or would like to be presented with song
-        options, I'm more than happy to provide you with a selection to choose
-        from. Otherwise, rest assured that I'll select music that complements
+        options, we're more than happy to provide you with a selection to choose
+        from. Otherwise, rest assured that we'll select music that complements
         the video seamlessly, drawing from my experience and creative instincts
         which have been successful in past projects.
 aboutMeDescription: >-
