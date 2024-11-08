@@ -112,20 +112,39 @@ howTo:
         discuss your vision, goals, and requirements. It's a collaborative
         conversation where I gather essential details to ensure I’m aligned with
         your vision.
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/about%20me%20photo-min.png
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2024-11-07T20:22:00.000Z
     - title: "**Step 2.** Plan. Plan. Plan."
       description: Once I’ve understood your objectives, we begin the planning phase.
         This involves crafting a detailed strategy, storyboard, and production
         plan. We'll work together closely to finalize every aspect of the
         project before moving forward.
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/adventure%20excursion%20photo-min.png
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2024-11-07T20:22:00.000Z
     - title: "**Step 3.** Create + Deliver!"
-      description: This is where the magic happens! I’ll bring the plans to life by
+      description: >-
+        This is where the magic happens! I’ll bring the plans to life by
         utilizing a wide range of cinematic equipment and leveraging my
         expertise. Collaboration with industry experts may also come into play
         to ensure the highest quality and creativity for your project.
         Throughout this stage, I maintain communication and transparency,
         ensuring the project aligns with your expectations.
-  footer: Finally, I’ll deliver the finished product, ready to exceed your vision
-    and goals.
+
+
+
+
+        Finally, I’ll deliver the finished product, ready to exceed your vision and goals.
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/boutique%20hotel%20photo-min.png
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2024-11-07T20:22:00.000Z
   seoTitle: How to create a video with Wild Grace Videography
 thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
 aboutMeAltText: TODO

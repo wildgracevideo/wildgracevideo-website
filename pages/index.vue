@@ -72,36 +72,12 @@
     />
     <LogoSlider class="mb-32" :logos="trustedBrandLogos" />
     <article class="bg-website-accent">
-        <div class="w-4/5 pb-16">
-            <SchemaOrgHowTo
-                :name="howTo.seoTitle"
-                :step="howToSteps"
-                in-language="en-US"
-            />
+        <div class="pb-16">
             <Markdown
                 :markdown-string="`## ${howTo.title!}`"
-                component-class="no-default-format mb-12 ml-8 pt-24 text-4xl md:text-5xl lg:ml-24"
+                component-class="no-default-format mb-12 ml-8 pt-24 text-4xl md:text-5xl lg:ml-24 text-center"
             />
-            <div
-                v-for="(step, index) in howTo.steps"
-                :key="`step-${step.title}`"
-                class="pb-16"
-            >
-                <Markdown
-                    :id="`step-${index + 1}`"
-                    :markdown-string="`### ${step.title}`"
-                    component-class="no-default-format strong:font-semibold mb-6 ml-12 text-4xl lg:ml-32"
-                />
-                <Markdown
-                    :markdown-string="step.description"
-                    component-class="ml-16 lg:ml-36"
-                />
-            </div>
-            <Markdown
-                v-if="howTo.footer"
-                :markdown-string="howTo.footer!"
-                component-class="-mt-8 ml-16 lg:ml-36"
-            />
+            <ImageGallery :items="howTo.steps" class="w-full" />
         </div>
     </article>
     <article class="mx-8 mb-32 lg:mx-32">
@@ -109,19 +85,13 @@
             :markdown-string="`## ${faq.title!}`"
             component-class="no-default-format mx-auto mb-20 mt-32 max-w-lg text-center text-4xl strong:font-semibold"
         />
-        <template
+        <AccordionItem
             v-for="faqItem in faq.questions"
             :key="`faq-${faqItem.question}`"
-        >
-            <Markdown
-                :markdown-string="`### ${faqItem.question}`"
-                component-class="no-default-format strong:font-semibold mb-4"
-            />
-            <Markdown
-                :markdown-string="faqItem.answer"
-                component-class="mb-10"
-            />
-        </template>
+            :title-markdown="`### ${faqItem.question}`"
+            :content-markdown="faqItem.answer"
+            class="mb-10 w-full"
+        />
     </article>
     <BackgroundImageLazy
         component="section"
@@ -135,7 +105,7 @@
             :file="file"
             :is-lazy="true"
             sizes="2xl:800px xl:460px 400px"
-            class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
+            class="mx-auto mb-4 mt-8 aspect-vertical bg-fixed lg:mx-0 lg:mt-0"
         />
     </BackgroundImageLazy>
 </template>
@@ -168,19 +138,7 @@
 
     const testimonials = homeData.testimonials!;
 
-    const howToSteps = howTo.steps.map(
-        (it: { title: string; description: string }, i: number) => {
-            return {
-                url: `#step-${i}`,
-                text: it.description,
-                name: it.title,
-            };
-        }
-    );
-
-    howToSteps.push({
-        text: howTo.footer,
-    });
+    console.log(howTo.steps);
 
     onMounted(async () => {
         const observer = new IntersectionObserver((entries) => {

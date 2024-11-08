@@ -1026,6 +1026,13 @@ collections:
                             widget: 'markdown',
                             modes: ['rich_text'],
                         }
+                      - {
+                            label: 'Step File',
+                            name: 'fileInfo',
+                            widget: 'object',
+                            summary: '{{fields.seoTitle}}',
+                            <<: *fileInfo,
+                        }
                 - {
                       label: 'Footer',
                       name: 'footer',
