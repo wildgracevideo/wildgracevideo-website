@@ -4,12 +4,14 @@ description: "Wild Grace Video is a top Denver-based video production company
   specializing in hotel video production, outdoor product videos and adventure
   tour videos. "
 links:
-  - name: MY WORK
+  - name: PORTFOLIO
     destination: https://www.wildgracevideo.com/portfolio
-  - name: SOCIAL MEDIA PACKAGES
-    destination: https://www.wildgracevideo.com/services/video-content-that-converts
-  - name: CONTENT IDEAS
-    destination: https://www.wildgracevideo.com/shop
-  - name: TIK TOK
-    destination: https://www.tiktok.com/@wildgracevideography?is_from_webapp=1&sender_device=pc
+  - name: BOUTIQUE HOTELS
+    destination: https://www.wildgracevideo.com/service-overview/hotels
+  - name: OUTDOOR PRODUCT BRANDS
+    destination: https://www.wildgracevideo.com/service-overview/outdoor-product
+  - name: ADVENTURE TOUR COMPANIES
+    destination: https://www.wildgracevideo.com/service-overview/adventure-tour
+  - name: CONTACT
+    destination: https://www.wildgracevideo.com/get-started
 ---
