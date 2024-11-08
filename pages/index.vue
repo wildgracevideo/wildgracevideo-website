@@ -72,13 +72,11 @@
     />
     <LogoSlider class="mb-32" :logos="trustedBrandLogos" />
     <article class="bg-website-accent">
-        <div class="pb-16">
-            <Markdown
-                :markdown-string="`## ${howTo.title!}`"
-                component-class="no-default-format mb-12 ml-8 pt-24 text-4xl md:text-5xl lg:ml-24 text-center"
-            />
-            <ImageGallery :items="howTo.steps" class="w-full" />
-        </div>
+        <ImageGallery
+            :items="howTo.steps"
+            :gallery-title-markdown="`## ${howTo.title!}`"
+            class="w-full pb-16"
+        />
     </article>
     <article class="mx-8 mb-32 lg:mx-32">
         <Markdown

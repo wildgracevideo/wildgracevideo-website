@@ -1,7 +1,11 @@
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2">
         <div class="flex flex-col justify-between">
-            <div />
+            <Markdown
+                :markdown-string="galleryTitleMarkdown"
+                component-class="no-default-format pt-12 text-2xl md:text-4xl text-center"
+            />
+
             <div class="p-16">
                 <Markdown
                     :key="title"
@@ -41,6 +45,7 @@
 
     const selectedItem = ref(0);
     const props = defineProps<{
+        galleryTitleMarkdown: string;
         items: {
             fileInfo: FileConfig;
             title: string;
