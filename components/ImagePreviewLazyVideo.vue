@@ -77,7 +77,6 @@
     const videoClick = async () => {
         videoPlaying.value = true;
         await nextTick();
-        console.log(props.video.video);
         const player = new shaka.Player(videoElement.value);
         await player.load(props.video.video);
         if (props.fullScreenClick) {
