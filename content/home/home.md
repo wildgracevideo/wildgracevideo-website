@@ -13,7 +13,7 @@ reelVideo:
     expertise.
   video: https://content.wildgracevideo.com/videos/HomePage/2024WebsiteReel/2024WebsiteReel.mpd
   publicationDate: 2024-02-28T22:13:00.000Z
-pageTitle: Your *video content partner* for outdoor, travel, and adventure brands.
+pageTitle: "**YOUR** *VIDEO CONTENT PARTNER* **FOR OUTDOOR, TRAVEL, AND TRAVEL BRANDS**"
 testimonialQuotes:
   - quote: Carly was so great to work with! She listened to every detail I wanted to
       be included, and took creative responsibility during the shoots to ensure
@@ -70,9 +70,9 @@ aboutMe:
       passionate visual storyteller and adventure enthusiast dedicated to
       bringing your vision to life. Learn more about my journey!
     thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
-trustedBrandTitle: Trusted by
+trustedBrandTitle: "**TRUSTED BY**"
 howTo:
-  title: The Process
+  title: "**THE PROCESS**"
   steps:
     - title: "**Step 1.** Discovery Call"
       description: This initial step is where I get to know you and your project. We
@@ -132,7 +132,7 @@ pageTagline: Wild Grace Video is a Denver-based video production company
   wild adventures—those that confidently stand out and stay true to who they
   are. They're bold, inspiring, and refreshingly different.
 videoHighlight:
-  title: Sell the experience.
+  title: SELL THE **EXPERIENCE**.
   videos:
     - publicationDate: 2024-02-27T19:52:06.039Z
       title: BOUTIQUE HOTELS
@@ -198,7 +198,7 @@ testimonials:
   backgroundImageVertical: https://content.wildgracevideo.com/images/Website-Home-Page/Vertical+Paralax.webp
 aboutMeImage: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
 faq:
-  title: Frequently Asked Questions
+  title: "**FREQUENTLY ASKED QUESTIONS**"
   questions:
     - question: "**Do you offer both photo and video services?**"
       answer: I specialize in video production but can also offer photography services
