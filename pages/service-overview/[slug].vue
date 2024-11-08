@@ -90,6 +90,7 @@
             <div class="ml-8 mt-8 gap-8 pb-8 text-xl">
                 <button
                     class="mt-2 min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary"
+                    @click="toGetStarted"
                 >
                     {{ callToAction.callToActionText }}
                 </button>
@@ -168,6 +169,12 @@
     const overviewFile = overview.fileInfo! as FileConfig;
 
     const testimonials = serviceData.testimonials;
+
+    const router = useRouter();
+
+    const toGetStarted = () => {
+        router.push({ path: '/get-started' });
+    };
 
     onMounted(async () => {
         const observer = new IntersectionObserver((entries) => {
