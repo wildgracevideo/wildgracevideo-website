@@ -200,7 +200,7 @@ aboutMeImage: https://content.wildgracevideo.com/images/Website-Home-Page/carly-
 faq:
   title: Frequently Asked Questions
   questions:
-    - question: Do you offer both photo and video services?
+    - question: "**Do you offer both photo and video services?**"
       answer: I specialize in video production but can also offer photography services
         upon request. Whether you're seeking a stunning video production,
         captivating photography, or a combination of both, I’m committed to
@@ -216,7 +216,7 @@ faq:
         involvement at any level—whether you prefer a hands-on approach in
         planning every detail or entrusting me to handle the creative process,
         I’m here to accommodate your needs and vision.
-    - question: "**Can we choose the music for our video?**"
+    - question: "**Are we able to select the music for our video?**"
       answer: Typically, I curate music based on my expertise and the flow of the
         editing process. I have access to a wide range of quality, royalty-free
         tracks from a subscription platform. However, I value your preferences.
