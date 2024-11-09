@@ -13,7 +13,8 @@ reelVideo:
     expertise.
   video: https://content.wildgracevideo.com/videos/HomePage/2024WebsiteReel/2024WebsiteReel.mpd
   publicationDate: 2024-02-28T22:13:00.000Z
-pageTitle: "**YOUR** *VIDEO CONTENT PARTNER* **FOR OUTDOOR, TRAVEL, AND TRAVEL BRANDS**"
+pageTitle: "**YOUR** *VIDEO CONTENT PARTNER* **FOR OUTDOOR, TRAVEL, AND
+  ADVENTURE BRANDS**"
 testimonialQuotes:
   - quote: Carly was so great to work with! She listened to every detail I wanted to
       be included, and took creative responsibility during the shoots to ensure
