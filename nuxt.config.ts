@@ -297,7 +297,13 @@ const config = {
         },
         '/who-we-are': {
             redirect: {
-                to: '/behind-the-scenes',
+                to: '/about',
+                statusCode: 301,
+            },
+        },
+        '/behind-the-scenes': {
+            redirect: {
+                to: '/about',
                 statusCode: 301,
             },
         },

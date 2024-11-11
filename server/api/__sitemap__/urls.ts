@@ -96,7 +96,7 @@ export default defineSitemapEventHandler(async (e) => {
         });
     filteredList.push(
         {
-            loc: `/behind-the-scenes`,
+            loc: `/about`,
         },
         {
             loc: `/shop`,

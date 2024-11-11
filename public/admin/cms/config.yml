@@ -405,7 +405,7 @@ collections:
       create: true
       delete: false
       identifier_field: 'title'
-      preview_path: '/behind-the-scenes'
+      preview_path: '/about'
       slug: 'about'
       editor:
           preview: false

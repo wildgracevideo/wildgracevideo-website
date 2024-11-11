@@ -90,8 +90,8 @@
             type: HeaderItem,
         },
         {
-            name: 'Behind the Scenes',
-            href: '/behind-the-scenes',
+            name: 'About',
+            href: '/about',
             type: HeaderItem,
         },
         {
