@@ -3,7 +3,7 @@ title: Denver Video Production Company | Wild Grace Video Portfolio
 description: "Wild Grace Video is a top Denver-based video production company
   specializing in hotel video production, outdoor product videos and adventure
   tour videos. "
-heading: Portfolio
+heading: PORTFOLIO
 mainReelYoutubeId: yWjmuJ_6mkA
 mainReelName: Video Production Portfolio
 mainReelAlt: Video reel showcasing the work of Wild Grace Videography.
@@ -44,7 +44,7 @@ videos:
         experience.
       video: https://content.wildgracevideo.com/videos/Website-Portfolio/GraniteGear/GGSpecV2/GGSpecV2.mpd
       publicationDate: 2024-10-28T18:47:00.000Z
-    title: Granite Gear
+    title: GRANITE GEAR
   - videoInfo:
       publicationDate: 2024-04-11T15:08:00.000Z
       seoDescription: Explore our dynamic video portfolio, customized for Colorado's
@@ -52,7 +52,7 @@ videos:
       seoTitle: "Surf Hotel: Adventure Boutique Hotel in Colorado | Video Portfolio"
       video: https://content.wildgracevideo.com/videos/Website-Portfolio/SurfHotel/TheSurfHotelWebsiteVideoV2/TheSurfHotelWebsiteVideoV2.mpd
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/SurfHotel/surfthumbnail.webp
-    title: Surf Hotel
+    title: SURF HOTEL
   - videoInfo:
       publicationDate: 2024-04-11T15:05:00.000Z
       video: https://content.wildgracevideo.com/videos/Website-Portfolio/KamaSurface/KamaSki_HorizontalV1/KamaSki_HorizontalV1.mpd
@@ -60,8 +60,8 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Colorado's
         outdoor product brands, highlighting Kama Surface.
       seoTitle: "Kama Surface: Outdoor Product Brand in Colorado | Video Portfolio"
-    title: KĀMA Surface
-  - title: VanEssential
+    title: KĀMA SURFACE
+  - title: VANESSENTIAL
     videoInfo:
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/VanEssential/VanEssential_thumbnail.png
       seoTitle: "VanEssential: Outdoor Product Brand in Colorado | Video Portfolio"
@@ -77,8 +77,8 @@ videos:
       seoTitle: "The Curtis Hotel: Pop-Culture Hotel in Denver, CO | Video Portfolio"
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         boutique hotels, highlighting The Curtis Hotel.
-    title: The Curtis Hotel
-  - title: Genesee Nutrition
+    title: THE CURTIS HOTEL
+  - title: GENESSEE NUTRITION
     videoInfo:
       video: https://content.wildgracevideo.com/videos/Website-Portfolio/GeneseeNutrition/GeneseeFlagshipWebsiteVideo/GeneseeFlagshipWebsiteVideo.mpd
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/GeneseeNutrition/Geneseethumbnail.webp
