@@ -64,6 +64,9 @@ if (process.env.NODE_ENV === 'production') {
                     '*.wildgracevideo.com',
                 ],
             },
+            permissionsPolicy: {
+                fullscreen: ['self', 'https://*.wildgracevideo.com'],
+            },
         },
     };
 } else {
