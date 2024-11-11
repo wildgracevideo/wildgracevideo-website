@@ -25,40 +25,13 @@ testimonialQuotes:
       exceeded our expectations.
     author: Nathan Baller, Abode Outside
 aboutMe:
-  title: "Travel & adventure brands: **it’s time to differentiate yourselves.**"
+  title: " **Forge meaningful connection with a like-minded community.**"
   description: >-
-    I’m Carly, owner & lead videographer at Wild Grace Video Productions based
-    in Denver, Colorado.
+    Wild Grace Video is an outdoor and travel brand video production company
+    based in Denver, Colorado.
 
 
-
-
-    My journey into videography began with a simple desire: to capture and preserve the meaningful moments of my life. As I crafted a video compilation of the adventures I refused to miss out on in New Zealand, wove together college memories for my friends post-graduation from the University of Vermont, and captured the new setting and faces of a fun summer job at a dude ranch in Wyoming, I realized that I loved creating videos that told the story of adventures, people, and new places.
-
-
-
-
-    Over the past five years, I've had the privilege of creating content for a diverse range of brands. However I found myself staying up editing until 2 in the morning (by choice!) for those brands that featured outdoor adventure and wanted to get across a deeper meaning than just selling a product or service—they wanted to create a feeling that attracted a certain type of person and community towards the brand. This is what I found spoke to both me and viewers, and what really sets a brand apart from creating just another cool adventure video with a product.
-
-
-
-
-    With each project I've created I've found myself diving into every detail of the creative process. From fine-tuning the sounds of a crashing wave to sculpting the vivid color palettes of a mountain scene that shaped the mood and atmosphere.
-
-
-
-
-    And now, I'm here to lend my expertise to you. My goal is simple: to help your brand forge meaningful connections with a like-minded community. 
-
-
-
-
-    I'm excited to meet you, to discover what sets your brand apart, and to embark on this creative journey together.
-
-
-
-
-    \-Carly
+    We help outdoor and travel-related brands, like boutique hotels, outdoor gear companies, and adventure tour companies, create a visual identity that inspires their consumers to get outside, romanticize life, and experience the world. Our style is adventurous, inspiring, and organic.
   image: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
   imageName: TODO
   altText: TODO
