@@ -39,28 +39,6 @@
                 </div>
             </div>
         </section>
-        <article class="bg-website-accent px-8 pb-32 pt-16 lg:px-32">
-            <Markdown
-                :markdown-string="`## ${faq.title!}`"
-                component-class="no-default-format mx-auto mb-20 max-w-lg text-center text-4xl strong:font-semibold"
-            />
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div
-                    v-for="faqItem in faq.questions"
-                    :key="`faq-${faqItem.question}`"
-                    class="p-8"
-                >
-                    <Markdown
-                        :markdown-string="`### ${faqItem.question}`"
-                        component-class="no-default-format strong:font-semibold mb-4"
-                    />
-                    <Markdown
-                        :markdown-string="faqItem.answer"
-                        component-class="mb-10 text-sm"
-                    />
-                </div>
-            </div>
-        </article>
         <section
             id="behind-the-scenes"
             class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 bg-website-accent py-8"
@@ -95,10 +73,33 @@
                     </span>
                 </div>
             </div>
-            <TestimonialCarousel
-                :testimonials="testimonials.clientTestimonials"
+            <ImageGallery
+                :items="
+                    Array.from(testimonials.clientTestimonials).map((it) => {
+                        return {
+                            title: it.text,
+                            description: it.author,
+                            fileInfo: it.fileInfo,
+                        };
+                    })
+                "
+                :gallery-title-markdown="`## Client Testimonials`"
+                class="w-full pb-16"
             />
         </section>
+        <article class="bg-website-accent px-8 pb-32 pt-16 lg:px-32">
+            <Markdown
+                :markdown-string="`## ${faq.title!}`"
+                component-class="no-default-format mx-auto mb-20 max-w-lg text-center text-4xl strong:font-semibold"
+            />
+            <AccordionItem
+                v-for="faqItem in faq.questions"
+                :key="`faq-${faqItem.question}`"
+                :title-markdown="`### ${faqItem.question}`"
+                :content-markdown="faqItem.answer"
+                class="mb-10 w-full border-slate-400"
+            />
+        </article>
     </div>
 </template>
 
@@ -119,6 +120,7 @@
     const assets = behindTheScenesData.assets;
 
     const testimonials = behindTheScenesData.testimonials;
+    console.log(testimonials.clientTestimonials);
 
     const faq = behindTheScenesData.faq;
 

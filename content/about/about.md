@@ -92,19 +92,49 @@ testimonials:
   clientTestimonials:
     - author: Nathan, Abode Outside
       text: The final product was very impressive and exceeded our expectations
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-About/WWD_1.webp
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2024-11-11T15:23:00.000Z
     - author: Abby, VanEssential
       text: Carly is super easy to work with! She's organized, has a calm energy about
         her on shoot days and brought creativity and vision to the revision
         process. I'd highly recommend her!
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-About/WWD_1.webp
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2024-11-11T15:24:00.000Z
     - author: Brittany, Aerial Cirque Over Denver
       text: Don't hesitate using her!! She's prompt, professional, incorporates
         feedback. The final outcome was exactly what we were hoping for.
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-About/WWD_1.webp
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2024-11-11T15:24:00.000Z
     - author: Megan, The Curtis Hotel
       text: Carly delivered a great product. You can remain confident in her abilities
         to capture what you are looking for.
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-About/WWD_1.webp
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2024-11-11T15:25:00.000Z
     - author: Maddy, Great Guys HVAC
       text: Pull the trigger already, you won't be disappointed.
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-About/WWD_1.webp
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2024-11-11T15:25:00.000Z
     - author: Inbar, The Potty Kit
       text: It's great to have video content, it can really enhance what you are
         promoting and I'm glad I did it- you would be too!
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-About/WWD_1.webp
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2024-11-11T15:25:00.000Z
 ---

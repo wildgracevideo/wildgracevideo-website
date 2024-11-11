@@ -562,6 +562,11 @@ collections:
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: false
+                      - label: 'File Info'
+                        name: 'fileInfo'
+                        widget: 'object'
+                        summary: '{{fields.seoTitle}}'
+                        <<: *fileInfo
 
     - name: 'service-landing-page'
       label: 'Service Landing Page'

@@ -2,6 +2,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2">
         <div class="flex flex-col justify-between">
             <Markdown
+                v-if="!!galleryTitleMarkdown"
                 :markdown-string="galleryTitleMarkdown"
                 component-class="no-default-format pt-12 text-2xl md:text-4xl text-center"
             />
@@ -12,7 +13,11 @@
                     :markdown-string="title"
                     component-class="no-default-format strong:font-semibold mb-8 text-2xl mx-auto text-center"
                 />
-                <Markdown :key="title" :markdown-string="description" />
+                <Markdown
+                    :key="title"
+                    :markdown-string="description"
+                    component-class="text-center"
+                />
             </div>
             <div class="mx-auto mb-8 flex flex-row gap-8">
                 <ArrowLongLeftIcon
