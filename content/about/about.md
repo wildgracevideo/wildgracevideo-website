@@ -4,7 +4,7 @@ description: Wild Grace Video Productions is a top Denver-based video production
   company specializing in hotel video production, outdoor product videos and
   adventure company videos. We're here to help you bring your brand to life and
   help you better connect with your audience.
-pageTitle: About
+pageTitle: ABOUT
 aboutMe:
   file:
     publicationDate: 2024-04-30T16:13:00.000Z
@@ -15,13 +15,20 @@ aboutMe:
     thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/logo1.webp
   title: Meet **Carly.**
   description: >-
-    Wild Grace Video is an outdoor and travel brand video production company
-    based in Denver, Colorado. 
+    I’m Carly, owner & lead videographer at Wild Grace Video, an outdoor and
+    travel-related video production company based in Denver, Colorado.
 
 
+    My journey into video production began with a simple desire: to capture and preserve the meaningful moments of my life. As I crafted video compilations of adventures that I refused to miss out on, I realized that I loved creating videos that told the story of new experiences. places, and people.
 
 
-    We help outdoor and travel-related brands, like boutique hotels, outdoor gear companies, and adventure tour companies, create a visual identity that inspires their consumers to get outside, romanticize life, and experience the world. Our style is adventurous, inspiring, and organic.
+    Since then, I've been lucky enough to working with a variety of brands that share a love for the outdoors and travel. Now, I’m here to help your brand grow through video, translating your company's identity into a feeling that draws in an aligned audience.
+
+
+    My goal is simple: help your brand forge meaningful connection with a like-minded community.
+
+
+    I'm excited to meet you, discover what sets your brand apart, and to embark on this creative journey together.
 faq:
   title: "**FREQUENTLY ASKED QUESTIONS**"
   questions:
