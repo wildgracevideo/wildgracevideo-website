@@ -4,7 +4,7 @@ description: Wild Grace Video Productions is a top Denver-based video production
   company specializing in hotel video production, outdoor product videos and
   adventure company videos. We're here to help you bring your brand to life and
   help you better connect with your audience.
-pageTitle: Behind The Scenes
+pageTitle: About
 aboutMe:
   file:
     publicationDate: 2024-04-30T16:13:00.000Z
