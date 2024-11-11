@@ -23,12 +23,12 @@ callsToAction:
   - isVertical: false
     title: POPULAR OUTDOOR PRODUCT MARKETING VIDEOS
     description: |-
-      * SEASONAL LIFESTYLE VIDEOS
-      * ADVENTURE STORIES WITH PRODUCT
-      * PRODUCT DEMONSTRATIONS
-      * BEHIND THE SCENES OF PRODUCT CREATION
-      * ENVIRONMENTAL/SOCIAL IMPACT STORIES
-      * CUSTOMER TESTIMONIALS
+      * Seasonal Lifestyle Videos 
+      * Adventure Story Short Films with Product 
+      * Product Demonstration Videos
+      * Behind the Scenes of Production Creation Videos
+      * Environmental/Social Impact Stories
+      * Customer Testimonial Videos
     callToActionText: INQUIRE FOR PRICING
     fileInfo:
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Outdoor/Kama.jpg
@@ -42,10 +42,10 @@ callsToAction:
   - isVertical: false
     title: SOCIAL MEDIA PACKAGES INCLUDE
     description: |-
-      * MONTHLY OR QUARTERLY SOCIAL MEDIA EDITS 
-      * PAID SOCIAL MEDIA AD CAMPAIGN VIDEOS
-      * EXTENSIVE VIDEO CLIP LIBRARY
-      * SOCIAL MEDIA MANAGEMENT & STRATEGY SESSIONS
+      * * Monthly or Quarterly Social Media Edits
+        * Paid Social Media Ad Campaign Videos 
+        * Extensive Video Clip Library
+        * Social Media Management & Strategy Sessions
     callToActionText: INQUIRE FOR PRICING
     fileInfo:
       seoDescription: Discover how Wild Grace Video elevates outdoor brands through
