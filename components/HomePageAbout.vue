@@ -11,6 +11,12 @@
                 :markdown-string="textMarkdown"
                 component-class="tall-p-margin"
             />
+            <button
+                class="mx-auto block min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary"
+                @click="toAboutPage"
+            >
+                Learn More
+            </button>
         </div>
         <div
             class="order-1 flex h-full grow-0 flex-col items-stretch md:order-2"
@@ -35,4 +41,10 @@
         textMarkdown: string;
         fileConfig: FileInfo;
     }>();
+
+    const router = useRouter();
+
+    const toAboutPage = () => {
+        router.push({ path: '/about' });
+    };
 </script>
