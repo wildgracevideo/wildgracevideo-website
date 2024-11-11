@@ -23,12 +23,12 @@ callsToAction:
   - isVertical: false
     title: POPULAR ADVENTURE TOUR MARKETING VIDEOS
     description: |-
-      * ADVENTURE TOUR HIGHLIGHTS
-      * GUIDE INTRODUCTION VIDEOS
-      * CUSTOMER TESTIMONIALS
-      * WEBSITE BANNER VIDEO
-      * DAY-IN-THE-LIFE OF A TOUR
-      * "WHAT TO EXPECT" EMAIL VIDEO
+      * Adventure Tour Highlight Video 
+      * Guide Introduction Videos
+      * Customer Testimonials
+      * Website Banner Video
+      * Day-in-the-Life of a Tour Video
+      * "What to Expect" Email Video
     callToActionText: INQUIRE FOR PRICING
     fileInfo:
       file: https://content.wildgracevideo.com/videos/Website-Adventure/Iceland_adventure/Iceland_adventure.mpd
@@ -41,10 +41,10 @@ callsToAction:
   - isVertical: false
     title: SOCIAL MEDIA PACKAGES INCLUDE
     description: |-
-      * MONTHLY OR QUARTERLY SOCIAL MEDIA EDITS 
-      * PAID SOCIAL MEDIA AD CAMPAIGN VIDEOS
-      * EXTENSIVE VIDEO CLIP LIBRARY
-      * SOCIAL MEDIA MANAGEMENT & STRATEGY SESSIONS
+      * * Monthly or Quarterly Social Media Edits
+        * Paid Social Media Ad Campaign Videos 
+        * Extensive Video Clip Library
+        * Social Media Management & Strategy Sessions
     callToActionText: INQUIRE FOR PRICING
     fileInfo:
       file: https://content.wildgracevideo.com/images/Website-Adventure/PIC04815.jpg
