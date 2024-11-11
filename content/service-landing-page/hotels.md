@@ -76,12 +76,11 @@ files:
 callsToAction:
   - title: POPULAR BOUTIQUE HOTEL MARKETING VIDEOS
     description: |-
-      * HOTEL EXPERIENCE VIDEO
-      * ROOM & SUITE TOURS
-      * LOCAL AREA VIDEO GUIDES
-      * DAY-IN-THE-LIFE OF A GUEST
-      * FOOD & BEVERAGE HIGHLIGHTS
-      * STAFF INTRODUCTIONS
+      * Hotel Guest Experience Video
+      * Room & Suite Tours
+      * Local Area Video Guides
+      * Food & Beverage Highlight Video
+      * Staff Introduction Videos
     callToActionText: INQUIRE FOR  PRICING
     callToActionButtonText: GET STARTED
     fileInfo:
@@ -96,10 +95,10 @@ callsToAction:
     isVertical: false
   - title: SOCIAL MEDIA PACKAGES INCLUDE
     description: |-
-      * MONTHLY OR QUARTERLY SOCIAL MEDIA EDITS 
-      * PAID SOCIAL MEDIA AD CAMPAIGN VIDEOS
-      * EXTENSIVE VIDEO CLIP LIBRARY
-      * SOCIAL MEDIA MANAGEMENT & STRATEGY SESSIONS
+      * Monthly or Quarterly Social Media Edits
+      * Paid Social Media Ad Campaign Videos 
+      * Extensive Video Clip Library
+      * Social Media Management & Strategy Sessions
     callToActionText: INQUIRE FOR PRICING
     callToActionButtonText: GET STARTED
     fileInfo:
