@@ -90,12 +90,15 @@
         const source = isIOS
             ? {
                   src: props.video.video.replace('.mpd', '.m3u8'),
-                  type: 'application/vnd.apple.mpegurl',
+                  type: 'application/x-mpegurl',
               }
             : {
                   src: props.video.video,
                   type: 'application/dash+xml',
               };
+
+        console.log(source);
+        console.log(source.src.replace('.mpd', '.m3u8'));
 
         videoClick.value = async () => {
             videoPlaying.value = true;
