@@ -101,10 +101,10 @@
                             errorDisplay: false,
                             html5: {
                                 vhs: {
-                                    overrideNative: !videojs.browser.IS_SAFARI,
+                                    overrideNative: !isIOS,
                                 },
-                                nativeAudioTracks: videojs.browser.IS_SAFARI,
-                                nativeVideoTracks: videojs.browser.IS_SAFARI,
+                                nativeAudioTracks: isIOS,
+                                nativeVideoTracks: isIOS,
                             },
                         },
                         function onPlayerReady() {
