@@ -89,11 +89,11 @@
             /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         const source = isIOS
             ? {
-                  src: props.video.replace('.mpd', '.m3u8'),
+                  src: props.video.video.replace('.mpd', '.m3u8'),
                   type: 'application/vnd.apple.mpegurl',
               }
             : {
-                  src: props.video,
+                  src: props.video.video,
                   type: 'application/dash+xml',
               };
 
