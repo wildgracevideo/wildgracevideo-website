@@ -78,6 +78,15 @@
     onMounted(async () => {
         const isIOS =
             /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const source = isIOS
+            ? {
+                  src: props.video.replace('.mpd', '.m3u8'),
+                  type: 'application/vnd.apple.mpegurl',
+              }
+            : {
+                  src: props.video,
+                  type: 'application/dash+xml',
+              };
         function handleIntersection(entries: IntersectionObserverEntry[]) {
             entries.map((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
@@ -87,18 +96,7 @@
                             autoplay: true,
                             controls: false,
                             fluid: true,
-                            techOrder: ['html5'],
-                            html5: {
-                                vhs: {
-                                    overrideNative: !isIOS,
-                                },
-                            },
-                            sources: [
-                                {
-                                    src: props.video,
-                                    type: 'application/dash+xml',
-                                },
-                            ],
+                            sources: [source],
                             errorDisplay: false,
                         },
                         function onPlayerReady() {

@@ -87,6 +87,16 @@
     onMounted(() => {
         const isIOS =
             /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const source = isIOS
+            ? {
+                  src: props.video.replace('.mpd', '.m3u8'),
+                  type: 'application/vnd.apple.mpegurl',
+              }
+            : {
+                  src: props.video,
+                  type: 'application/dash+xml',
+              };
+
         videoClick.value = async () => {
             videoPlaying.value = true;
             await nextTick();
@@ -96,18 +106,7 @@
                     autoplay: true,
                     controls: true,
                     fluid: true,
-                    techOrder: ['html5'],
-                    html5: {
-                        vhs: {
-                            overrideNative: !isIOS,
-                        },
-                    },
-                    sources: [
-                        {
-                            src: props.video.video,
-                            type: 'application/dash+xml',
-                        },
-                    ],
+                    sources: [source],
                     fullscreen: {
                         options: { navigationUI: 'hide' },
                     },
