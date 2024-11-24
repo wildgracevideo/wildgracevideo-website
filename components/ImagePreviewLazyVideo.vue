@@ -101,7 +101,7 @@
                         },
                         {
                             src: props.video.video,
-                            type: 'application/x-mpegURL',
+                            type: 'application/vnd.apple.mpegURL',
                         },
                     ],
                     fullscreen: {

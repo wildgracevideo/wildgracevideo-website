@@ -612,7 +612,7 @@
                         },
                         {
                             src: selectedVideoFileName.value,
-                            type: 'application/x-mpegURL',
+                            type: 'application/vnd.apple.mpegURL',
                         },
                     ],
                     errorDisplay: false,
