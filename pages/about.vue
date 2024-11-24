@@ -30,6 +30,7 @@
                 <div>
                     <button
                         class="mx-auto mt-2 block min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary md:mx-0"
+                        @click="toGetStarted"
                     >
                         INQUIRE
                     </button>
@@ -122,9 +123,13 @@
     const assets = behindTheScenesData.assets;
 
     const testimonials = behindTheScenesData.testimonials;
-    console.log(testimonials.clientTestimonials);
 
     const faq = behindTheScenesData.faq;
+
+    const router = useRouter();
+    const toGetStarted = () => {
+        router.push({ path: '/get-started' });
+    };
 
     onMounted(() => {
         addEventListener('scroll', () => {
