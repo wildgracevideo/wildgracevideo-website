@@ -100,18 +100,17 @@
                             sources: [source],
                             errorDisplay: false,
                             html5: {
-                                hls: {
-                                    overrideNative: !isIOS,
+                                vhs: {
+                                    overrideNative: !videojs.browser.IS_SAFARI,
                                 },
-                                nativeVideoTracks: isIOS,
-                                nativeAudioTracks: isIOS,
-                                nativeTextTracks: isIOS,
+                                nativeAudioTracks: videojs.browser.IS_SAFARI,
+                                nativeVideoTracks: videojs.browser.IS_SAFARI,
                             },
                         },
                         function onPlayerReady() {
                             const promise = this.play();
                             if (promise !== undefined) {
-                                promise.catch(function (_error) {
+                                promise.catch((_error) => {
                                     // Autoplay was prevented.
                                     this.controls(true);
                                 });

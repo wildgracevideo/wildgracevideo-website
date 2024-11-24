@@ -114,14 +114,6 @@
                         options: { navigationUI: 'hide' },
                     },
                     errorDisplay: false,
-                    html5: {
-                        hls: {
-                            overrideNative: !isIOS,
-                        },
-                        nativeVideoTracks: isIOS,
-                        nativeAudioTracks: isIOS,
-                        nativeTextTracks: isIOS,
-                    },
                 },
                 function onPlayerReady() {
                     this.play();
