@@ -43,7 +43,7 @@
         defineProps<{
             iconFill: string;
             iconSize: number;
-            showEmail: boolean;
+            showEmail?: boolean | undefined;
         }>(),
         { showEmail: true }
     );

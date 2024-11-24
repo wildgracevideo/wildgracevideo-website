@@ -81,7 +81,7 @@
         const source = isIOS
             ? {
                   src: props.video.replace('.mpd', '.m3u8'),
-                  type: 'application/x-mpegurl',
+                  type: 'application/vnd.apple.mpegurl',
               }
             : {
                   src: props.video,

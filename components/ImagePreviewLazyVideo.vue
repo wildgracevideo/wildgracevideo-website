@@ -90,7 +90,7 @@
         const source = isIOS
             ? {
                   src: props.video.video.replace('.mpd', '.m3u8'),
-                  type: 'application/x-mpegurl',
+                  type: 'application/vnd.apple.mpegurl',
               }
             : {
                   src: props.video.video,
@@ -114,9 +114,16 @@
                         options: { navigationUI: 'hide' },
                     },
                     errorDisplay: false,
+                    html5: {
+                        vhs: {
+                            overrideNative: !isIOS,
+                        },
+                        nativeAudioTracks: isIOS,
+                        nativeVideoTracks: isIOS,
+                    },
                 },
-                function onPlayerReady() {
-                    this.play();
+                async function onPlayerReady() {
+                    await this.play();
                     if (props.fullScreenClick) {
                         if (this.requestFullscreen) {
                             this.requestFullscreen();
