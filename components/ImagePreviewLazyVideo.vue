@@ -9,7 +9,7 @@
     >
         <span
             v-if="videoTitle"
-            class="play-button absolute z-10 font-bold text-white opacity-100 group-hover:opacity-0"
+            class="play-button absolute z-10 text-center font-bold text-white opacity-100 group-hover:opacity-0"
             >{{ videoTitle }}</span
         >
         <PlayIcon v-else class="play-button absolute z-10 h-10 w-10" />
@@ -114,6 +114,14 @@
                         options: { navigationUI: 'hide' },
                     },
                     errorDisplay: false,
+                    html5: {
+                        hls: {
+                            overrideNative: !isIOS,
+                        },
+                        nativeVideoTracks: isIOS,
+                        nativeAudioTracks: isIOS,
+                        nativeTextTracks: isIOS,
+                    },
                 },
                 function onPlayerReady() {
                     this.play();

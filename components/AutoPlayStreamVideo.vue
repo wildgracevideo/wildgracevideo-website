@@ -87,6 +87,7 @@
                   src: props.video,
                   type: 'application/dash+xml',
               };
+
         function handleIntersection(entries: IntersectionObserverEntry[]) {
             entries.map((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
@@ -98,6 +99,14 @@
                             fluid: true,
                             sources: [source],
                             errorDisplay: false,
+                            html5: {
+                                hls: {
+                                    overrideNative: !isIOS,
+                                },
+                                nativeVideoTracks: isIOS,
+                                nativeAudioTracks: isIOS,
+                                nativeTextTracks: isIOS,
+                            },
                         },
                         function onPlayerReady() {
                             const promise = this.play();

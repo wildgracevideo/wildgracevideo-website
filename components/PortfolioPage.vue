@@ -16,7 +16,7 @@
             >
                 <span
                     v-if="item.title"
-                    class="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 font-bold text-white opacity-100 group-hover:opacity-0"
+                    class="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 text-center font-bold text-white opacity-100 group-hover:opacity-0"
                     >{{ item.title }}</span
                 >
                 <NuxtImg
