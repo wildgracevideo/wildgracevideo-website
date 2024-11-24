@@ -27,7 +27,6 @@
         :markdown-string="pageTagline"
         component-class="mx-8 mb-32 max-w-6xl text-center lg:mx-auto"
     />
-    <!-- <TestimonialScroll :testimonial-quotes="homeData!.testimonialQuotes" /> -->
     <section>
         <Markdown
             :markdown-string="`## ${videoHighlight.title!}`"

@@ -610,10 +610,6 @@
                             src: selectedVideoFileName.value,
                             type: 'application/dash+xml',
                         },
-                        {
-                            src: selectedVideoFileName.value,
-                            type: 'application/vnd.apple.mpegURL',
-                        },
                     ],
                     errorDisplay: false,
                 },

@@ -85,6 +85,8 @@
         : props.video.thumbnailImage;
 
     onMounted(() => {
+        const isIOS =
+            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         videoClick.value = async () => {
             videoPlaying.value = true;
             await nextTick();
@@ -94,14 +96,16 @@
                     autoplay: true,
                     controls: true,
                     fluid: true,
+                    techOrder: ['html5'],
+                    html5: {
+                        vhs: {
+                            overrideNative: !isIOS,
+                        },
+                    },
                     sources: [
                         {
-                            src: props.video.vide,
-                            type: 'application/dash+xml',
-                        },
-                        {
                             src: props.video.video,
-                            type: 'application/vnd.apple.mpegURL',
+                            type: 'application/dash+xml',
                         },
                     ],
                     fullscreen: {
@@ -110,7 +114,6 @@
                     errorDisplay: false,
                 },
                 function onPlayerReady() {
-                    // this.requestFullscreen();
                     this.play();
                     if (props.fullScreenClick) {
                         if (this.requestFullscreen) {
