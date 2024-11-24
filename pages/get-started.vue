@@ -9,137 +9,148 @@
         <RecaptchaLoader />
         <OgMeta :title="pageTitle" :description="description" />
         <SchemaOrgWebPage :name="pageTitle" />
-        <h1 class="mb-16 text-center text-2xl">
-            We can't wait to hear about your next project!
-        </h1>
-        <h2
-            class="relative top-28 text-center text-4xl text-black"
-            :class="{
-                hidden: showForm,
-                block: !showForm,
-                'fade-in': !showForm,
-            }"
-        >
-            Thank you!
-        </h2>
-        <form
-            class="mx-8 grid max-w-4xl grid-cols-1 gap-x-4 gap-y-6 lg:mx-auto lg:grid-cols-2"
-            :class="{ invisible: !showForm, 'fade-out': !showForm }"
-            @submit.prevent="submit"
-        >
-            <RequiredInput
-                id="firstname"
-                v-model="firstName"
-                title="First Name"
-                :is-required="isRequired"
-                title-text-class="text-black"
-                hint="First Name"
-                :input-class="inputClass"
-            />
-            <RequiredInput
-                id="lastname"
-                v-model="lastName"
-                title="Last Name"
-                :is-required="isRequired"
-                title-text-class="text-black"
-                hint="Last Name"
-                :input-class="inputClass"
-            />
-            <RequiredInput
-                id="businessname"
-                v-model="businessName"
-                title="Business Name"
-                :is-required="isRequired"
-                title-text-class="text-black"
-                hint="Business Name"
-                :input-class="inputClass"
-            />
-            <RequiredInput
-                id="email"
-                v-model="email"
-                title="Email"
-                type="email"
-                :is-required="isRequired"
-                title-text-class="text-black"
-                hint="example@gmail.com"
-                :input-class="inputClass"
-            />
-            <RequiredInput
-                id="phone"
-                v-model="phone"
-                title="Phone"
-                :is-required="isRequired"
-                title-text-class="text-black"
-                data-mask="(###) ###-####"
-                hint="(888) 888 8888"
-                :error-message="phoneErrorMessage"
-                :input-class="inputClass"
-            />
-            <RequiredInput
-                id="businesswebsite"
-                v-model="businessWebsite"
-                title="Business Website"
-                :is-required="false"
-                title-text-class="text-black"
-                :show-required="false"
-                :input-class="inputClass"
-            />
-            <RequiredTextArea
-                id="currentBusinessChallenge"
-                v-model="currentBusinessChallenge"
-                :rows="3"
-                title="Current Business Challenge"
-                :is-required="isRequired"
-                title-text-class="text-black"
-                container-class="md:col-span-2 col-span-1"
-                hint="The more detail, the better!"
-                :input-class="inputClass"
-            />
-            <RequiredDropdownSelect
-                id="how-did-you-hear-dropdown"
-                v-model="hearChoice"
-                title="How did you hear about us?"
-                container-class="mb-2 md:col-span-2 col-span-1"
-                :is-required="isRequired"
-                title-text-class="text-black"
-                :choices="HEAR_CHOICE"
-                :input-class="inputClass"
-            />
-            <RequiredSelect
-                v-model="monthlyTipSignup"
-                title="I want to sign up to receive monthly tips on how to create video content that will increase sales! "
-                container-class="mb-2 md:col-span-2 col-span-1"
-                :is-required="false"
-                title-text-class="text-black"
-                :choices="MONTHLY_TIP_SIGNUP"
-                :show-required="false"
-            />
-            <p class="col-span-1 text-center text-xs text-black md:col-span-2">
-                This site is protected by reCAPTCHA and the Google
-                <a href="https://policies.google.com/privacy" class="underline"
-                    >Privacy Policy</a
-                >
-                and
-                <a href="https://policies.google.com/terms" class="underline"
-                    >Terms of Service</a
-                >
-                apply.
-            </p>
-            <div class="col-span-1 mx-auto mb-2 md:col-span-2">
-                <button
-                    action="submit"
-                    class="h-14 w-40 rounded-xl border-2 border-website-primary bg-transparent text-xl text-website-primary"
+        <h1 class="mx-auto text-center text-3xl">Contact</h1>
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2">
+            <h2 class="mb-16 text-center text-2xl">
+                We can't wait to hear about your next project!
+            </h2>
+            <div class="px-2">
+                <h2
+                    class="relative top-28 text-center text-4xl text-black"
                     :class="{
-                        'hover:bg-website-primary': !sendingForm,
-                        'hover:text-website-off-white': !sendingForm,
-                        'opacity-50': sendingForm,
-                        'cursor-default': sendingForm,
+                        hidden: showForm,
+                        block: !showForm,
+                        'fade-in': !showForm,
                     }"
                 >
-                    Get Started
-                </button>
+                    Thank you!
+                </h2>
+                <form
+                    class="mx-8 grid max-w-4xl grid-cols-1 gap-x-4 gap-y-6 lg:mx-auto lg:grid-cols-2"
+                    :class="{ invisible: !showForm, 'fade-out': !showForm }"
+                    @submit.prevent="submit"
+                >
+                    <RequiredInput
+                        id="firstname"
+                        v-model="firstName"
+                        title="First Name"
+                        :is-required="isRequired"
+                        title-text-class="text-black"
+                        hint="First Name"
+                        :input-class="inputClass"
+                    />
+                    <RequiredInput
+                        id="lastname"
+                        v-model="lastName"
+                        title="Last Name"
+                        :is-required="isRequired"
+                        title-text-class="text-black"
+                        hint="Last Name"
+                        :input-class="inputClass"
+                    />
+                    <RequiredInput
+                        id="businessname"
+                        v-model="businessName"
+                        title="Business Name"
+                        :is-required="isRequired"
+                        title-text-class="text-black"
+                        hint="Business Name"
+                        :input-class="inputClass"
+                    />
+                    <RequiredInput
+                        id="email"
+                        v-model="email"
+                        title="Email"
+                        type="email"
+                        :is-required="isRequired"
+                        title-text-class="text-black"
+                        hint="example@gmail.com"
+                        :input-class="inputClass"
+                    />
+                    <RequiredInput
+                        id="phone"
+                        v-model="phone"
+                        title="Phone"
+                        :is-required="isRequired"
+                        title-text-class="text-black"
+                        data-mask="(###) ###-####"
+                        hint="(888) 888 8888"
+                        :error-message="phoneErrorMessage"
+                        :input-class="inputClass"
+                    />
+                    <RequiredInput
+                        id="businesswebsite"
+                        v-model="businessWebsite"
+                        title="Business Website"
+                        :is-required="false"
+                        title-text-class="text-black"
+                        :show-required="false"
+                        :input-class="inputClass"
+                    />
+                    <RequiredTextArea
+                        id="currentBusinessChallenge"
+                        v-model="currentBusinessChallenge"
+                        :rows="3"
+                        title="Current Business Challenge"
+                        :is-required="isRequired"
+                        title-text-class="text-black"
+                        container-class="md:col-span-2 col-span-1"
+                        hint="The more detail, the better!"
+                        :input-class="inputClass"
+                    />
+                    <RequiredDropdownSelect
+                        id="how-did-you-hear-dropdown"
+                        v-model="hearChoice"
+                        title="How did you hear about us?"
+                        container-class="mb-2 md:col-span-2 col-span-1"
+                        :is-required="isRequired"
+                        title-text-class="text-black"
+                        :choices="HEAR_CHOICE"
+                        :input-class="inputClass"
+                    />
+                    <RequiredSelect
+                        v-model="monthlyTipSignup"
+                        title="I want to sign up to receive monthly tips on how to create video content that will increase sales! "
+                        container-class="mb-2 md:col-span-2 col-span-1"
+                        :is-required="false"
+                        title-text-class="text-black"
+                        :choices="MONTHLY_TIP_SIGNUP"
+                        :show-required="false"
+                    />
+                    <p
+                        class="col-span-1 text-center text-xs text-black md:col-span-2"
+                    >
+                        This site is protected by reCAPTCHA and the Google
+                        <a
+                            href="https://policies.google.com/privacy"
+                            class="underline"
+                            >Privacy Policy</a
+                        >
+                        and
+                        <a
+                            href="https://policies.google.com/terms"
+                            class="underline"
+                            >Terms of Service</a
+                        >
+                        apply.
+                    </p>
+                    <div class="col-span-1 mx-auto mb-2 md:col-span-2">
+                        <button
+                            action="submit"
+                            class="h-14 w-40 rounded-xl border-2 border-website-primary bg-transparent text-xl text-website-primary"
+                            :class="{
+                                'hover:bg-website-primary': !sendingForm,
+                                'hover:text-website-off-white': !sendingForm,
+                                'opacity-50': sendingForm,
+                                'cursor-default': sendingForm,
+                            }"
+                        >
+                            Get Started
+                        </button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 

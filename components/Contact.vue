@@ -11,7 +11,7 @@
             class="mb-6 text-center text-4xl font-semibold text-website-off-white"
             :class="{ hidden: !showForm }"
         >
-            WORK WITH ME
+            INQUIRE
         </h2>
         <h2
             class="relative top-28 text-center text-3xl text-website-off-white"

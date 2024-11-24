@@ -2,11 +2,12 @@
     <video
         :id="videoId"
         ref="videoElement"
-        :class="`${$attrs.class as string}`"
+        :class="`${$attrs.class as string} video-js`"
         muted
         loop
         disablePictureInPicture
         playsinline
+        autoplay
         :title="title"
     >
         <SchemaOrgVideo
@@ -35,12 +36,11 @@
 </template>
 
 <script setup lang="ts">
-    import shaka from 'shaka-player';
     import {
         SpeakerWaveIcon,
         SpeakerXMarkIcon,
     } from '@heroicons/vue/24/outline';
-    import { handleVideoControls } from '~/lib/handle-video-controls';
+    import videojs from 'video.js';
 
     const videoElement = ref<HTMLVideoElement>();
 
@@ -79,15 +79,31 @@
         function handleIntersection(entries: IntersectionObserverEntry[]) {
             entries.map((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
-                    const player = new shaka.Player(videoElement.value);
-                    player
-                        .load(props.video)
-                        .then(() => {
-                            handleVideoControls(videoElement.value);
-                        })
-                        .catch(() => {
-                            handleVideoControls(videoElement.value);
-                        });
+                    videojs(
+                        videoElement.value,
+                        {
+                            autoplay: true,
+                            controls: false,
+                            fluid: true,
+                            sources: [
+                                {
+                                    src: props.video,
+                                    type: 'application/dash+xml',
+                                },
+                            ],
+                            errorDisplay: false,
+                        },
+                        function onPlayerReady() {
+                            const promise = this.play();
+                            if (promise !== undefined) {
+                                promise.catch(function (_error) {
+                                    // Autoplay was prevented.
+                                    this.controls(true);
+                                });
+                            }
+                        }
+                    );
+
                     observer.unobserve(entry.target);
                 }
             });
@@ -96,6 +112,7 @@
         const observer = new IntersectionObserver(handleIntersection, {
             rootMargin: '200px',
         });
+
         observer.observe(videoElement.value!);
     });
 </script>

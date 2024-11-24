@@ -52,21 +52,21 @@
     import HeaderItemDropdown from '~/components/header/HeaderItemDropdown.vue';
     import HeaderItem from '~/components/header/HeaderItem.vue';
 
-    const ctaText = 'Contact';
+    const ctaText = 'CONTACT';
 
     const runtimeConfig = useRuntimeConfig();
 
     const servicesChildren = [
         {
-            name: 'Outdoor Products',
+            name: 'OUTDOOR PRODUCTS',
             href: `/service-overview/outdoor-product`,
         },
         {
-            name: 'Boutique Hotels',
+            name: 'BOUTIQUE HOTELS',
             href: `/service-overview/hotels`,
         },
         {
-            name: 'Adventure Tours',
+            name: 'ADVENTURE TOURS',
             href: `/service-overview/adventure-tour`,
         },
     ];
@@ -85,17 +85,17 @@
 
     const items: HeaderItemConfig[] = [
         {
-            name: 'Portfolio',
+            name: 'PORTFOLIO',
             href: '/portfolio',
             type: HeaderItem,
         },
         {
-            name: 'About',
+            name: 'ABOUT',
             href: '/about',
             type: HeaderItem,
         },
         {
-            name: 'Services',
+            name: 'SERVICES',
             type: HeaderItemDropdown,
             children: servicesChildren,
         },

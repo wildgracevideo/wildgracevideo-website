@@ -11,23 +11,25 @@
             class="mx-8 mb-20 grid grid-cols-1 gap-32 md:mx-16 md:grid-cols-2"
         >
             <FileOrVideo
-                parent-class="mx-16"
+                parent-class="md:mx-16 mx-0"
                 class="aspect-photo w-[640px] object-cover object-center"
                 :file="aboutMeFile"
                 :is-lazy="true"
                 sizes="640px"
             />
-            <div class="-ml-16 mr-16 flex flex-col justify-between">
+            <div
+                class="ml-2 mr-2 flex flex-col justify-between md:-ml-16 md:mr-16"
+            >
                 <div>
                     <Markdown
                         :markdown-string="`## ${aboutMe.title!}`"
-                        component-class="pt-16 mb-8 w-fit text-left mr-auto no-default-format strong:font-semibold leading-14 tracking-tighter em:font-medium text-2xl md:text-4xl"
+                        component-class="md:pt-16 pt-0 mb-8 w-fit text-left mr-auto no-default-format strong:font-semibold leading-14 tracking-tighter em:font-medium text-2xl md:text-4xl"
                     />
                     <Markdown :markdown-string="aboutMe.description" />
                 </div>
                 <div>
                     <button
-                        class="mt-2 min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary"
+                        class="mx-auto mt-2 block min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary md:mx-0"
                     >
                         INQUIRE
                     </button>

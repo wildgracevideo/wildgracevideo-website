@@ -9,7 +9,7 @@
     >
         <span
             v-if="videoTitle"
-            class="play-button absolute z-10 text-sm font-bold text-white opacity-100 group-hover:opacity-0"
+            class="play-button absolute z-10 font-bold text-white opacity-100 group-hover:opacity-0"
             >{{ videoTitle }}</span
         >
         <PlayIcon v-else class="play-button absolute z-10 h-10 w-10" />
@@ -24,7 +24,7 @@
     <video
         v-else
         ref="videoElement"
-        class="w-full cursor-pointer"
+        class="video-js w-full cursor-pointer"
         :class="`${aspectRatio} ${videoClass}`"
         loop
         playsinline
@@ -47,8 +47,8 @@
 </template>
 
 <script setup lang="ts">
-    import shaka from 'shaka-player';
     import { PlayIcon } from '@heroicons/vue/24/outline';
+    import videojs from 'video.js';
     import type { VideoInfo } from '~/lib/video';
 
     const props = withDefaults(
@@ -74,21 +74,7 @@
 
     const videoElement = ref(null);
 
-    const videoClick = async () => {
-        videoPlaying.value = true;
-        await nextTick();
-        const player = new shaka.Player(videoElement.value);
-        await player.load(props.video.video);
-        if (props.fullScreenClick) {
-            if (videoElement.value.requestFullscreen) {
-                videoElement.value.requestFullscreen();
-            } else if (videoElement.value.webkitRequestFullscreen) {
-                videoElement.value.webkitRequestFullscreen();
-            } else if (videoElement.value.msRequestFullScreen) {
-                videoElement.value.msRequestFullScreen();
-            }
-        }
-    };
+    const videoClick = ref(() => {});
 
     const title = ref(props.video.seoTitle);
 
@@ -99,6 +85,42 @@
         : props.video.thumbnailImage;
 
     onMounted(() => {
+        videoClick.value = async () => {
+            videoPlaying.value = true;
+            await nextTick();
+            videojs(
+                videoElement.value,
+                {
+                    autoplay: true,
+                    controls: true,
+                    fluid: true,
+                    sources: [
+                        {
+                            src: props.video.video,
+                            type: 'application/dash+xml',
+                        },
+                    ],
+                    fullscreen: {
+                        options: { navigationUI: 'hide' },
+                    },
+                    errorDisplay: false,
+                },
+                function onPlayerReady() {
+                    // this.requestFullscreen();
+                    this.play();
+                    if (props.fullScreenClick) {
+                        if (this.requestFullscreen) {
+                            this.requestFullscreen();
+                        } else if (this.webkitRequestFullscreen) {
+                            this.webkitRequestFullscreen();
+                        } else if (this.msRequestFullScreen) {
+                            this.msRequestFullScreen();
+                        }
+                    }
+                }
+            );
+        };
+
         window.addEventListener('fullscreenchange', (event: Event | null) => {
             if (event) {
                 title.value = '';

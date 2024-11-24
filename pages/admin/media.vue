@@ -142,7 +142,7 @@
             </UCard>
         </UModal>
 
-        <UModal v-model="showShakaModal">
+        <UModal v-model="showStreamingModal">
             <UCard>
                 <template #header> Video preview </template>
                 <video
@@ -152,7 +152,7 @@
                     disablePictureInPicture
                     playsinline
                     autoplay
-                    data-shaka-player
+                    class="video-js"
                 ></video>
             </UCard>
         </UModal>
@@ -160,7 +160,6 @@
 </template>
 
 <script lang="ts" setup>
-    import shaka from 'shaka-player';
     import { ClipboardIcon, TrashIcon } from '@heroicons/vue/24/outline';
     import { Uppy } from '@uppy/core';
     import Dashboard from '@uppy/dashboard';
@@ -168,6 +167,7 @@
 
     import '@uppy/core/dist/style.min.css';
     import '@uppy/dashboard/dist/style.min.css';
+    import videojs from 'video.js';
 
     const columns = [
         { key: 'name', label: 'Name' },
@@ -204,7 +204,7 @@
 
     const folderNameError = ref(false);
 
-    const showShakaModal = ref(false);
+    const showStreamingModal = ref(false);
 
     const selectedVideoFileName = ref('');
 
@@ -259,7 +259,7 @@
         } else {
             if (currentFolder.value && currentFolder.value[0] === 'videos') {
                 selectedVideoFileName.value = getCloudFrontUrl(row.name);
-                showShakaModal.value = true;
+                showStreamingModal.value = true;
             } else {
                 previewFile(row.name);
             }
@@ -599,8 +599,24 @@
 
     watchEffect(async () => {
         if (videoElement.value) {
-            const player = new shaka.Player(videoElement.value);
-            await player.load(selectedVideoFileName.value);
+            videojs(
+                videoElement.value,
+                {
+                    autoplay: true,
+                    controls: true,
+                    fluid: true,
+                    sources: [
+                        {
+                            src: selectedVideoFileName.value,
+                            type: 'application/dash+xml',
+                        },
+                    ],
+                    errorDisplay: false,
+                },
+                function onPlayerReady() {
+                    this.play();
+                }
+            );
         }
     });
 

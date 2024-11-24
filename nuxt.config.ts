@@ -40,6 +40,8 @@ if (process.env.NODE_ENV === 'production') {
                     'https:',
                     '*.wildgracevideo.com',
                     'connect.facebook.net',
+                    'blob:',
+                    'https://*.wildgracevideo.com',
                 ],
                 'script-src-attr': ["'unsafe-inline'"],
                 'font-src': [
@@ -99,6 +101,8 @@ if (process.env.NODE_ENV === 'production') {
                     'http://localhost:3000',
                     'https:',
                     'connect.facebook.net',
+                    'blob:',
+                    'http://localhost:3000',
                 ],
                 'script-src-attr': ["'unsafe-inline'"],
                 'font-src': [
@@ -131,6 +135,9 @@ if (process.env.NODE_ENV === 'production') {
                     'http://localhost:3000',
                 ],
                 'upgrade-insecure-requests': false,
+            },
+            permissionsPolicy: {
+                fullscreen: ['self', 'http://*.wildgracevideo.com'],
             },
         },
     };
@@ -217,6 +224,10 @@ const config = {
                     rel: 'preconnect',
                     href: 'https://content.wildgracevideo.com',
                     crossorigin: true,
+                },
+                {
+                    rel: 'stylesheet',
+                    href: 'https://cdnjs.cloudflare.com/ajax/libs/video.js/8.20.0/video-js.min.css',
                 },
             ],
         },
