@@ -96,8 +96,12 @@
                     fluid: true,
                     sources: [
                         {
-                            src: props.video.video,
+                            src: props.video.vide,
                             type: 'application/dash+xml',
+                        },
+                        {
+                            src: props.video.video,
+                            type: 'application/x-mpegURL',
                         },
                     ],
                     fullscreen: {

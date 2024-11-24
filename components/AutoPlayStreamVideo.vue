@@ -90,6 +90,10 @@
                                     src: props.video,
                                     type: 'application/dash+xml',
                                 },
+                                {
+                                    src: props.video,
+                                    type: 'application/x-mpegURL',
+                                },
                             ],
                             errorDisplay: false,
                         },

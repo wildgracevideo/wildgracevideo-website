@@ -11,9 +11,22 @@
         <SchemaOrgWebPage :name="pageTitle" />
         <h1 class="mx-auto text-center text-3xl">Contact</h1>
         <div class="mt-16 grid grid-cols-1 md:grid-cols-2">
-            <h2 class="mb-16 text-center text-2xl">
-                We can't wait to hear about your next project!
-            </h2>
+            <div>
+                <h2 class="mb-16 text-center text-2xl">
+                    We can't wait to hear about your next project!
+                </h2>
+                <a
+                    class="mx-auto block text-center text-website-primary underline"
+                    href="mailto:carly@wildgracevideo.com"
+                    >carly@wildgracevideo.com</a
+                >
+                <SocialMediaIcons
+                    icon-fill="rgb(var(--color-website-primary))"
+                    class="mx-auto -mb-8 mt-8"
+                    :icon-size="80"
+                    :show-email="false"
+                />
+            </div>
             <div class="px-2">
                 <h2
                     class="relative top-28 text-center text-4xl text-black"

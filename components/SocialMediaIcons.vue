@@ -27,6 +27,7 @@
             <Facebook :fill="iconFill" :height="iconSize" :width="iconSize" />
         </a>
         <a
+            v-if="showEmail"
             href="mailto:carly@wildgracevideo.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -38,8 +39,12 @@
 </template>
 
 <script setup lang="ts">
-    defineProps<{
-        iconFill: string;
-        iconSize: number;
-    }>();
+    withDefaults(
+        defineProps<{
+            iconFill: string;
+            iconSize: number;
+            showEmail: boolean;
+        }>(),
+        { showEmail: true }
+    );
 </script>

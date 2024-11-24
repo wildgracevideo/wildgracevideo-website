@@ -610,6 +610,10 @@
                             src: selectedVideoFileName.value,
                             type: 'application/dash+xml',
                         },
+                        {
+                            src: selectedVideoFileName.value,
+                            type: 'application/x-mpegURL',
+                        },
                     ],
                     errorDisplay: false,
                 },
