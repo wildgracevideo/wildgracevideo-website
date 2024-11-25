@@ -169,6 +169,15 @@ html,
     visibility: hidden;
 }
 
+.fade-in-quicker {
+    animation: visible 0.5s;
+}
+
+.fade-out-quicker {
+    animation: invisible 0.5s;
+    visibility: hidden;
+}
+
 .text-0 {
     font-size: 0;
 }

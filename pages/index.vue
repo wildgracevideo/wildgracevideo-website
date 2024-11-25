@@ -79,6 +79,8 @@
             :items="howTo.steps"
             :gallery-title-markdown="`## ${howTo.title!}`"
             class="w-full pb-16"
+            cta-text="View Portfolio"
+            cta-link="/portfolio"
         />
     </article>
     <article class="mx-8 mb-32 lg:mx-32">

@@ -1,6 +1,6 @@
 <template>
     <div class="group relative cursor-pointer">
-        <div class="flex items-center justify-between gap-x-1 px-4">
+        <div class="flex items-center justify-between gap-x-1">
             {{ config.name }}
             <ChevronDownIcon
                 class="h-5 w-5 flex-none text-gray-400"

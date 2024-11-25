@@ -7,7 +7,7 @@
                 component-class="no-default-format pt-12 text-2xl md:text-4xl text-center"
             />
 
-            <div class="p-16">
+            <div ref="selectedHTMLItem" class="p-16">
                 <Markdown
                     :key="title"
                     :markdown-string="title"
@@ -18,6 +18,12 @@
                     :markdown-string="description"
                     component-class="text-center"
                 />
+                <NuxtLink
+                    v-if="ctaLink && ctaText"
+                    :to="ctaLink"
+                    class="text-primary mx-auto mt-8 block text-center underline"
+                    >{{ ctaText }}</NuxtLink
+                >
             </div>
             <div class="mx-auto mb-8 flex flex-row gap-8">
                 <ArrowLongLeftIcon
@@ -31,13 +37,15 @@
                 />
             </div>
         </div>
-        <FileOrVideo
-            parent-class="pointer-events-none relative z-0 cursor-default px"
-            class="aspect-vertical h-dvh w-full object-cover object-center"
-            :file="items[selectedItem].fileInfo"
-            sizes="2xl:1000px xl:768px lg:640px md:512px sm:384px 320px"
-            :with-sound-control="false"
-        />
+        <div ref="fileElement" class="fade-in-quicker">
+            <FileOrVideo
+                parent-class="pointer-events-none relative z-0 cursor-default px"
+                class="aspect-vertical h-dvh w-full object-cover object-center"
+                :file="items[selectedItem].fileInfo"
+                sizes="2xl:1000px xl:768px lg:640px md:512px sm:384px 320px"
+                :with-sound-control="false"
+            />
+        </div>
     </div>
 </template>
 
@@ -56,7 +64,12 @@
             title: string;
             description: string;
         }[];
+        ctaText?: string | undefined;
+        ctaLink?: string | undefined;
     }>();
+
+    const selectedHTMLItem = ref();
+    const fileElement = ref();
 
     const title = computed(() => {
         return props.items[selectedItem.value].title;
@@ -66,14 +79,25 @@
         return props.items[selectedItem.value].description;
     });
 
+    function animateQuick(element: HTMLElement) {
+        element.classList.remove('fade-in-quicker');
+        element.classList.add('fade-out-quicker');
+        setInterval(() => {
+            element.classList.remove('fade-out-quicker');
+            element.classList.add('fade-in-quicker');
+        }, 100);
+    }
+
     const increment = () => {
         if (selectedItem.value < props.items.length - 1) {
+            animateQuick(fileElement.value);
             selectedItem.value++;
         }
     };
 
     const decrement = () => {
         if (selectedItem.value > 0) {
+            animateQuick(fileElement.value);
             selectedItem.value--;
         }
     };

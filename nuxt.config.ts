@@ -229,6 +229,11 @@ const config = {
                     rel: 'stylesheet',
                     href: 'https://cdn.jsdelivr.net/npm/shaka-player@4.12.2/dist/controls.min.css',
                 },
+                {
+                    href: 'https://cdn.jsdelivr.net',
+                    rel: 'preconnect',
+                    crossorigin: true,
+                },
             ],
         },
     },
