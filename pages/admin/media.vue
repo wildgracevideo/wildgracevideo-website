@@ -142,7 +142,7 @@
             </UCard>
         </UModal>
 
-        <UModal v-model="showStreamingModal">
+        <UModal v-model="showShakaModal">
             <UCard>
                 <template #header> Video preview </template>
                 <video
@@ -152,7 +152,7 @@
                     disablePictureInPicture
                     playsinline
                     autoplay
-                    class="video-js"
+                    data-shaka-player
                 ></video>
             </UCard>
         </UModal>
@@ -167,7 +167,6 @@
 
     import '@uppy/core/dist/style.min.css';
     import '@uppy/dashboard/dist/style.min.css';
-    import videojs from 'video.js';
 
     const columns = [
         { key: 'name', label: 'Name' },
@@ -204,7 +203,7 @@
 
     const folderNameError = ref(false);
 
-    const showStreamingModal = ref(false);
+    const showShakaModal = ref(false);
 
     const selectedVideoFileName = ref('');
 
@@ -259,7 +258,7 @@
         } else {
             if (currentFolder.value && currentFolder.value[0] === 'videos') {
                 selectedVideoFileName.value = getCloudFrontUrl(row.name);
-                showStreamingModal.value = true;
+                showShakaModal.value = true;
             } else {
                 previewFile(row.name);
             }
@@ -597,31 +596,20 @@
 
     const videoElement = ref<HTMLVideoElement>();
 
-    watchEffect(async () => {
-        if (videoElement.value) {
-            videojs(
-                videoElement.value,
-                {
-                    autoplay: true,
-                    controls: true,
-                    fluid: true,
-                    sources: [
-                        {
-                            src: selectedVideoFileName.value,
-                            type: 'application/dash+xml',
-                        },
-                    ],
-                    errorDisplay: false,
-                },
-                function onPlayerReady() {
-                    this.play();
-                }
-            );
-        }
-    });
-
     let copyToClipboard = () => {};
     onMounted(async () => {
+        const { onLoaded } = useScript(
+            'https://cdn.jsdelivr.net/npm/shaka-player@4.12.2/dist/shaka-player.compiled.min.js',
+            { bundled: true }
+        );
+        onLoaded(() => {
+            watchEffect(async () => {
+                if (videoElement.value) {
+                    const player = new window.shaka.Player(videoElement.value);
+                    await player.load(selectedVideoFileName.value);
+                }
+            });
+        });
         try {
             await fetchFiles();
         } catch (e: unknown) {

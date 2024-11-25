@@ -2,12 +2,11 @@
     <video
         :id="videoId"
         ref="videoElement"
-        :class="`${$attrs.class as string} video-js`"
+        :class="`${$attrs.class as string}`"
         muted
         loop
         disablePictureInPicture
         playsinline
-        autoplay
         :title="title"
     >
         <SchemaOrgVideo
@@ -40,7 +39,7 @@
         SpeakerWaveIcon,
         SpeakerXMarkIcon,
     } from '@heroicons/vue/24/outline';
-    import videojs from 'video.js';
+    import { handleVideoControls } from '~/lib/handle-video-controls';
 
     const videoElement = ref<HTMLVideoElement>();
 
@@ -76,48 +75,22 @@
         : props.thumbnailImage;
 
     onMounted(async () => {
-        const isIOS =
-            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        const source = isIOS
-            ? {
-                  src: props.video.replace('.mpd', '.m3u8'),
-                  type: 'application/vnd.apple.mpegurl',
-              }
-            : {
-                  src: props.video,
-                  type: 'application/dash+xml',
-              };
-
+        const { onLoaded } = useScript(
+            'https://cdn.jsdelivr.net/npm/shaka-player@4.12.2/dist/shaka-player.compiled.min.js',
+            { bundled: true }
+        );
         function handleIntersection(entries: IntersectionObserverEntry[]) {
             entries.map((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
-                    videojs(
-                        videoElement.value,
-                        {
-                            autoplay: true,
-                            controls: false,
-                            fluid: true,
-                            sources: [source],
-                            errorDisplay: false,
-                            html5: {
-                                vhs: {
-                                    overrideNative: !isIOS,
-                                },
-                                nativeAudioTracks: isIOS,
-                                nativeVideoTracks: isIOS,
-                            },
-                        },
-                        function onPlayerReady() {
-                            const promise = this.play();
-                            if (promise !== undefined) {
-                                promise.catch((_error) => {
-                                    // Autoplay was prevented.
-                                    this.controls(true);
-                                });
-                            }
-                        }
-                    );
-
+                    const player = new window.shaka.Player(videoElement.value);
+                    player
+                        .load(props.video)
+                        .then(() => {
+                            handleVideoControls(videoElement.value);
+                        })
+                        .catch(() => {
+                            handleVideoControls(videoElement.value);
+                        });
                     observer.unobserve(entry.target);
                 }
             });
@@ -126,7 +99,8 @@
         const observer = new IntersectionObserver(handleIntersection, {
             rootMargin: '200px',
         });
-
-        observer.observe(videoElement.value!);
+        onLoaded(() => {
+            observer.observe(videoElement.value!);
+        });
     });
 </script>

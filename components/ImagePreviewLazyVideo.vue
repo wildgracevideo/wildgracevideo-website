@@ -9,7 +9,7 @@
     >
         <span
             v-if="videoTitle"
-            class="play-button absolute z-10 text-center font-bold text-white opacity-100 group-hover:opacity-0"
+            class="play-button absolute z-10 text-sm font-bold text-white opacity-100 group-hover:opacity-0"
             >{{ videoTitle }}</span
         >
         <PlayIcon v-else class="play-button absolute z-10 h-10 w-10" />
@@ -24,7 +24,7 @@
     <video
         v-else
         ref="videoElement"
-        class="video-js w-full cursor-pointer"
+        class="w-full cursor-pointer"
         :class="`${aspectRatio} ${videoClass}`"
         loop
         playsinline
@@ -48,7 +48,6 @@
 
 <script setup lang="ts">
     import { PlayIcon } from '@heroicons/vue/24/outline';
-    import videojs from 'video.js';
     import type { VideoInfo } from '~/lib/video';
 
     const props = withDefaults(
@@ -85,58 +84,27 @@
         : props.video.thumbnailImage;
 
     onMounted(() => {
-        const isIOS =
-            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        const source = isIOS
-            ? {
-                  src: props.video.video.replace('.mpd', '.m3u8'),
-                  type: 'application/vnd.apple.mpegurl',
-              }
-            : {
-                  src: props.video.video,
-                  type: 'application/dash+xml',
-              };
-
-        console.log(source);
-        console.log(source.src.replace('.mpd', '.m3u8'));
-
-        videoClick.value = async () => {
-            videoPlaying.value = true;
-            await nextTick();
-            videojs(
-                videoElement.value,
-                {
-                    autoplay: true,
-                    controls: true,
-                    fluid: true,
-                    sources: [source],
-                    fullscreen: {
-                        options: { navigationUI: 'hide' },
-                    },
-                    errorDisplay: false,
-                    html5: {
-                        vhs: {
-                            overrideNative: !isIOS,
-                        },
-                        nativeAudioTracks: isIOS,
-                        nativeVideoTracks: isIOS,
-                    },
-                },
-                async function onPlayerReady() {
-                    await this.play();
-                    if (props.fullScreenClick) {
-                        if (this.requestFullscreen) {
-                            this.requestFullscreen();
-                        } else if (this.webkitRequestFullscreen) {
-                            this.webkitRequestFullscreen();
-                        } else if (this.msRequestFullScreen) {
-                            this.msRequestFullScreen();
-                        }
+        const { onLoaded } = useScript(
+            'https://cdn.jsdelivr.net/npm/shaka-player@4.12.2/dist/shaka-player.compiled.min.js',
+            { bundled: true }
+        );
+        onLoaded(() => {
+            videoClick.value = async () => {
+                videoPlaying.value = true;
+                await nextTick();
+                const player = new shaka.Player(videoElement.value);
+                await player.load(props.video.video);
+                if (props.fullScreenClick) {
+                    if (videoElement.value.requestFullscreen) {
+                        videoElement.value.requestFullscreen();
+                    } else if (videoElement.value.webkitRequestFullscreen) {
+                        videoElement.value.webkitRequestFullscreen();
+                    } else if (videoElement.value.msRequestFullScreen) {
+                        videoElement.value.msRequestFullScreen();
                     }
                 }
-            );
-        };
-
+            };
+        });
         window.addEventListener('fullscreenchange', (event: Event | null) => {
             if (event) {
                 title.value = '';

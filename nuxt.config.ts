@@ -227,7 +227,7 @@ const config = {
                 },
                 {
                     rel: 'stylesheet',
-                    href: 'https://cdnjs.cloudflare.com/ajax/libs/video.js/8.20.0/video-js.min.css',
+                    href: 'https://cdn.jsdelivr.net/npm/shaka-player@4.12.2/dist/controls.min.css',
                 },
             ],
         },
