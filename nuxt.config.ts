@@ -42,6 +42,7 @@ if (process.env.NODE_ENV === 'production') {
                     'connect.facebook.net',
                     'blob:',
                     'https://*.wildgracevideo.com',
+                    'https://www.googletagmanager.com',
                 ],
                 'script-src-attr': ["'unsafe-inline'"],
                 'font-src': [
@@ -103,6 +104,7 @@ if (process.env.NODE_ENV === 'production') {
                     'connect.facebook.net',
                     'blob:',
                     'http://localhost:3000',
+                    'https://www.googletagmanager.com',
                 ],
                 'script-src-attr': ["'unsafe-inline'"],
                 'font-src': [
