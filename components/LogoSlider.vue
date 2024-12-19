@@ -29,7 +29,6 @@
                     v-else
                     :src="logo.image"
                     :alt="logo.altText"
-                    loading="lazy"
                     class="logo-aspect-ratio my-0 mr-40 inline-block max-h-full"
                     :style="{
                         '--icon-width': `${logo.width}px`,
@@ -70,10 +69,22 @@
     .logos:after {
         position: absolute;
         top: 0;
-        width: 250px;
+        width: 125px;
         height: 160px;
         content: '';
         z-index: 2;
+    }
+
+    @media (min-width: 1024px) {
+        .logos:before,
+        .logos:after {
+            position: absolute;
+            top: 0;
+            width: 250px;
+            height: 160px;
+            content: '';
+            z-index: 2;
+        }
     }
 
     .logos:before {
