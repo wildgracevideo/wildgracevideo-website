@@ -83,17 +83,36 @@
               .replace('.mpd', '.0000000.jpg')
         : props.video.thumbnailImage;
 
-    onMounted(() => {
-        document.addEventListener('shaka-loaded', async () => {
-            console.log('shaka-loaded event.');
+    onMounted(async () => {
+        let estimatedBandwidth = 5000000; // This will default to the high resolution stream
+        if (window.innerWidth < 1024) {
+            estimatedBandwidth = 350000; // This will set the low resolution for small screens
+        }
+
+        if (window.shaka) {
+            await loadShaka();
+        } else {
+            document.addEventListener('shaka-loaded', async () => {
+                await loadShaka();
+            });
+        }
+
+        async function loadShaka() {
             const player = new window.shaka.Player();
             const preloadManager = await player.preload(props.video.video);
             player.configure({
+                streaming: {
+                    bufferingGoal: 2,
+                    rebufferingGoal: 1,
+                    bufferBehind: 0,
+                    lowLatencyMode: true,
+                },
                 abr: {
-                    enabled: true, // Allow ABR to adjust quality after initial playback
-                    defaultBandwidthEstimate: 5000000, // Set a higher default bandwidth estimate
+                    enabled: true,
+                    defaultBandwidthEstimate: estimatedBandwidth,
                 },
             });
+            player.configure('manifest.dash.ignoreMinBufferTime', true);
 
             videoClick.value = async () => {
                 videoPlaying.value = true;
@@ -111,7 +130,8 @@
                     }
                 }
             };
-        });
+        }
+
         window.addEventListener('fullscreenchange', (event: Event | null) => {
             if (event) {
                 title.value = '';

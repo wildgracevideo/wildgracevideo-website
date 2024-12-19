@@ -598,15 +598,44 @@
 
     let copyToClipboard = () => {};
     onMounted(async () => {
-        document.addEventListener('shaka-loaded', async () => {
+        if (window.shaka) {
+            await loadShaka();
+        } else {
+            document.addEventListener('shaka-loaded', async () => {
+                await loadShaka();
+            });
+        }
+
+        async function loadShaka() {
+            let estimatedBandwidth = 5000000; // This will default to the high resolution stream
+            if (window.innerWidth < 1024) {
+                estimatedBandwidth = 350000; // This will set the low resolution for small screens
+            }
             watchEffect(async () => {
                 if (videoElement.value) {
                     const player = new window.shaka.Player();
                     player.attach(videoElement.value);
-                    await player.load(selectedVideoFileName.value);
+                    const preloadManager = await player.preload(
+                        selectedVideoFileName.value
+                    );
+                    player.configure({
+                        streaming: {
+                            bufferingGoal: 2,
+                            rebufferingGoal: 1,
+                            bufferBehind: 0,
+                            lowLatencyMode: true,
+                        },
+                        abr: {
+                            enabled: true,
+                            defaultBandwidthEstimate: estimatedBandwidth,
+                        },
+                    });
+                    player.configure('manifest.dash.ignoreMinBufferTime', true);
+                    await player.load(preloadManager);
                 }
             });
-        });
+        }
+
         try {
             await fetchFiles();
         } catch (e: unknown) {

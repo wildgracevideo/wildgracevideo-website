@@ -78,13 +78,10 @@
         : props.thumbnailImage;
 
     onMounted(async () => {
-        console.log('On mounted');
         function handleIntersection(entries: IntersectionObserverEntry[]) {
             entries.map((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
-                    console.log('On entry intersecting');
                     player.value.attach(videoElement.value);
-                    console.log('On calling player to play');
                     player.value
                         .load(preloadManager.value)
                         .then(() => {
@@ -93,7 +90,6 @@
                         .catch(() => {
                             handleVideoControls(videoElement.value);
                         });
-                    console.log('On player has been requested to play');
                     observer.unobserve(entry.target);
                 }
             });
@@ -102,17 +98,36 @@
         const observer = new IntersectionObserver(handleIntersection, {
             rootMargin: '200px',
         });
-        document.addEventListener('shaka-loaded', async () => {
-            console.log('On script loaded');
+        let estimatedBandwidth = 5000000; // This will default to the high resolution stream
+        if (window.innerWidth < 1024) {
+            estimatedBandwidth = 350000; // This will set the low resolution for small screens
+        }
+
+        if (window.shaka) {
+            await loadShaka();
+        } else {
+            document.addEventListener('shaka-loaded', async () => {
+                await loadShaka();
+            });
+        }
+
+        async function loadShaka() {
             player.value = new window.shaka.Player();
             preloadManager.value = await player.value.preload(props.video);
             player.value.configure({
+                streaming: {
+                    bufferingGoal: 2,
+                    rebufferingGoal: 1,
+                    bufferBehind: 0,
+                    lowLatencyMode: true,
+                },
                 abr: {
-                    enabled: true, // Allow ABR to adjust quality after initial playback
-                    defaultBandwidthEstimate: 5000000, // Set a higher default bandwidth estimate
+                    enabled: true,
+                    defaultBandwidthEstimate: estimatedBandwidth,
                 },
             });
+            player.value.configure('manifest.dash.ignoreMinBufferTime', true);
             observer.observe(videoElement.value!);
-        });
+        }
     });
 </script>
