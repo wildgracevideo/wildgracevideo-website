@@ -144,6 +144,7 @@
     @keyframes slide {
         to {
             transform: translateX(calc(-50%));
+            -webkit-transform: translateX(calc(-50%));
         }
     }
 

@@ -1,5 +1,5 @@
 <template>
-    <h1 class="mx-auto w-fit text-4xl">
+    <h1 class="mx-auto w-fit text-center text-4xl">
         {{ data!.pageTitle }}
     </h1>
     <ServicePage :service="data!" />

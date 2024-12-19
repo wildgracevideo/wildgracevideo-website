@@ -6,6 +6,7 @@
             height: 94px;
             width: 4928.4px;
             transform: translateY(3.4px);
+            -webkit-transform: translateY(3.4px);
             overflow: visible;
         "
     >

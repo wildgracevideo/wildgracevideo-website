@@ -43,10 +43,12 @@
     @media (min-width: 1024px) {
         .enlarge {
             transform: scale(1.025);
+            -webkit-transform: scale(1.025);
         }
         .shadow-floating:hover {
             box-shadow: 16px 48px 96px 24px rgba(0, 0, 0, 0.2);
             transform: scale(1.05);
+            -webkit-transform: scale(1.05);
         }
     }
 </style>

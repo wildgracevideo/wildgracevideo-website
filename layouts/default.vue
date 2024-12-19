@@ -1,11 +1,11 @@
 <template>
     <div class="overflow-x-hidden bg-website-off-white">
         <HeaderTopBar v-model="openMenu" />
-        <main v-if="!openMenu" class="relative">
+        <main v-if="!openMenu" class="relative min-h-dvh">
             <slot />
-            <Contact />
         </main>
-        <Footer v-if="!openMenu" />
+        <Contact />
+        <Footer />
     </div>
 </template>
 
