@@ -84,16 +84,23 @@
         : props.video.thumbnailImage;
 
     onMounted(() => {
-        const { onLoaded } = useScript(
-            'https://cdn.jsdelivr.net/npm/shaka-player@4.12.2/dist/shaka-player.compiled.min.js',
-            { bundled: true }
-        );
-        onLoaded(() => {
+        document.addEventListener('shaka-loaded', async () => {
+            console.log('shaka-loaded event.');
+            const player = new window.shaka.Player();
+            const preloadManager = await player.preload(props.video.video);
+            player.configure({
+                abr: {
+                    enabled: true, // Allow ABR to adjust quality after initial playback
+                    defaultBandwidthEstimate: 5000000, // Set a higher default bandwidth estimate
+                },
+            });
+
             videoClick.value = async () => {
                 videoPlaying.value = true;
                 await nextTick();
-                const player = new shaka.Player(videoElement.value);
-                await player.load(props.video.video);
+                const player = new shaka.Player();
+                player.attach(videoElement.value);
+                await player.load(preloadManager);
                 if (props.fullScreenClick) {
                     if (videoElement.value.requestFullscreen) {
                         videoElement.value.requestFullscreen();

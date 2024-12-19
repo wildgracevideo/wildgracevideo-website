@@ -45,6 +45,9 @@
 
     const muted = ref(true);
 
+    const player = ref(null);
+    const preloadManager = ref(null);
+
     function toggleMute() {
         muted.value = !muted.value;
         videoElement.value.muted = muted.value;
@@ -75,22 +78,22 @@
         : props.thumbnailImage;
 
     onMounted(async () => {
-        const { onLoaded } = useScript(
-            'https://cdn.jsdelivr.net/npm/shaka-player@4.12.2/dist/shaka-player.compiled.min.js',
-            { bundled: true }
-        );
+        console.log('On mounted');
         function handleIntersection(entries: IntersectionObserverEntry[]) {
             entries.map((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
-                    const player = new window.shaka.Player(videoElement.value);
-                    player
-                        .load(props.video)
+                    console.log('On entry intersecting');
+                    player.value.attach(videoElement.value);
+                    console.log('On calling player to play');
+                    player.value
+                        .load(preloadManager.value)
                         .then(() => {
                             handleVideoControls(videoElement.value);
                         })
                         .catch(() => {
                             handleVideoControls(videoElement.value);
                         });
+                    console.log('On player has been requested to play');
                     observer.unobserve(entry.target);
                 }
             });
@@ -99,7 +102,16 @@
         const observer = new IntersectionObserver(handleIntersection, {
             rootMargin: '200px',
         });
-        onLoaded(() => {
+        document.addEventListener('shaka-loaded', async () => {
+            console.log('On script loaded');
+            player.value = new window.shaka.Player();
+            preloadManager.value = await player.value.preload(props.video);
+            player.value.configure({
+                abr: {
+                    enabled: true, // Allow ABR to adjust quality after initial playback
+                    defaultBandwidthEstimate: 5000000, // Set a higher default bandwidth estimate
+                },
+            });
             observer.observe(videoElement.value!);
         });
     });

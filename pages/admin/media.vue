@@ -598,14 +598,11 @@
 
     let copyToClipboard = () => {};
     onMounted(async () => {
-        const { onLoaded } = useScript(
-            'https://cdn.jsdelivr.net/npm/shaka-player@4.12.2/dist/shaka-player.compiled.min.js',
-            { bundled: true }
-        );
-        onLoaded(() => {
+        document.addEventListener('shaka-loaded', async () => {
             watchEffect(async () => {
                 if (videoElement.value) {
-                    const player = new window.shaka.Player(videoElement.value);
+                    const player = new window.shaka.Player();
+                    player.attach(videoElement.value);
                     await player.load(selectedVideoFileName.value);
                 }
             });

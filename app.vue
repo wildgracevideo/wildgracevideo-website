@@ -26,6 +26,17 @@ siteUrl = siteUrl.endsWith('/') ?
 const { proxy } = useScriptMetaPixel()
 
 onMounted(() => {
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/shaka-player@4.12.2/dist/shaka-player.compiled.min.js';
+  script.prefetch = true;
+  script.async = true;
+  document.head.appendChild(script);
+  script.onload = () => {
+    console.log("shaka loaded");
+    const shakaLoadedEvent = document.createEvent("Event");
+    shakaLoadedEvent.initEvent("shaka-loaded");
+    document.dispatchEvent(shakaLoadedEvent);
+  };
   proxy.fbq('track', 'PageView');
 });
 </script>

@@ -130,16 +130,6 @@
     const toGetStarted = () => {
         router.push({ path: '/get-started' });
     };
-
-    onMounted(() => {
-        addEventListener('scroll', () => {
-            if (window.scrollY > window.innerHeight) {
-                videoElement.classList.add('invisible');
-            } else {
-                videoElement.classList.remove('invisible');
-            }
-        });
-    });
 </script>
 
 <style scoped>
