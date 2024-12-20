@@ -142,38 +142,32 @@
     const testimonials = homeData.testimonials!;
 
     onMounted(async () => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (
-                    entry.isIntersecting &&
-                    entry.target.classList.contains('fade-out')
-                ) {
-                    entry.target.classList.remove('fade-out');
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
-                }
-
-                if (
-                    entry.isIntersecting &&
-                    entry.target.classList.contains('translate-y-1/2')
-                ) {
-                    const delayClass = Array.from(
-                        entry.target.classList
-                    ).filter((it) => {
-                        return it.startsWith('delay');
-                    });
-                    entry.target.classList.remove('opacity-0');
-                    entry.target.classList.remove('translate-y-1/2');
-                    entry.target.classList.add('animate-slide-up');
-                    if (delayClass) {
-                        entry.target.classList.add(
-                            'animation-' + delayClass[0]
-                        );
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (
+                        entry.isIntersecting &&
+                        entry.target.classList.contains('translate-y-1/2')
+                    ) {
+                        const delayClass = Array.from(
+                            entry.target.classList
+                        ).filter((it) => {
+                            return it.startsWith('delay');
+                        });
+                        entry.target.classList.remove('opacity-0');
+                        entry.target.classList.remove('translate-y-1/2');
+                        entry.target.classList.add('animate-slide-up');
+                        if (delayClass) {
+                            entry.target.classList.add(
+                                'animation-' + delayClass[0]
+                            );
+                        }
+                        observer.unobserve(entry.target);
                     }
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
+                });
+            },
+            { rootMargin: '0px 0px 300px 0px' }
+        );
 
         const animatableElements = document.querySelectorAll(
             '.home-scroll-observable'

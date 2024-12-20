@@ -32,7 +32,6 @@ onMounted(() => {
   script.async = true;
   document.head.appendChild(script);
   script.onload = () => {
-    console.log("shaka loaded");
     const shakaLoadedEvent = document.createEvent("Event");
     shakaLoadedEvent.initEvent("shaka-loaded");
     document.dispatchEvent(shakaLoadedEvent);

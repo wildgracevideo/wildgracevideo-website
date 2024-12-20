@@ -243,9 +243,6 @@ const config = {
     $production: {
         scripts: {
             registry: {
-                googleAnalytics: {
-                    id: GA_MEASUREMENT_ID,
-                },
                 metaPixel: {
                     id: '7800015660048842',
                 },
@@ -346,6 +343,10 @@ const config = {
             },
         },
     },
+    gtag: {
+        enabled: process.env.NODE_ENV === 'production',
+        id: GA_MEASUREMENT_ID,
+    },
     modules: [
         '@nuxt/content',
         '@nuxt/ui',
@@ -373,6 +374,7 @@ const config = {
                 fontsPath: 'assets/gfonts/fonts',
             },
         ],
+        'nuxt-gtag',
         'nuxt-schema-org',
         'nuxt-simple-robots',
         '@nuxtjs/sitemap',
