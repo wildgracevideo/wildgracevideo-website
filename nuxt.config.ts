@@ -24,6 +24,7 @@ if (process.env.NODE_ENV === 'production') {
                     'fonts.gstatic.com',
                     'github.com',
                     'api.github.com',
+                    'www.googletagmanager.com',
                 ],
                 'style-src': [
                     "'self'",
@@ -57,6 +58,7 @@ if (process.env.NODE_ENV === 'production') {
                     'data:',
                     'https:',
                     '*.wildgracevideo.com',
+                    'www.googletagmanager.com',
                 ],
                 'object-src': ["'self'", 'https:', '*.wildgracevideo.com'],
                 'media-src': [
@@ -120,6 +122,7 @@ if (process.env.NODE_ENV === 'production') {
                     'data:',
                     'https:',
                     '*.wildgracevideo.com',
+                    'www.googletagmanager.com',
                 ],
                 'object-src': [
                     "'self'",

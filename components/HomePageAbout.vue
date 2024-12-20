@@ -23,7 +23,7 @@
         >
             <Markdown
                 :markdown-string="`## ${titleMarkdown}`"
-                component-class="no-default-format strong:font-semibold mb-12 block text-4xl md:hidden md:text-5xl"
+                component-class="no-default-format strong:font-semibold mb-12 block text-4xl md:hidden md:text-5xl text-center"
             />
             <FileOrVideo
                 :file="fileConfig"

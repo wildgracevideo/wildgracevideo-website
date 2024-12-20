@@ -21,11 +21,11 @@
     </section>
     <Markdown
         :markdown-string="`# ${pageTitle}`"
-        component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl mx-8 em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
+        component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl em:font-medium strong:font-semibold leading-14 tracking-tighter mx-auto w-3/4 text-center"
     />
     <Markdown
         :markdown-string="pageTagline"
-        component-class="mx-8 mb-32 max-w-6xl text-center lg:mx-auto"
+        component-class="mb-32 max-w-6xl text-center md:mx-auto mx-4"
     />
     <section>
         <Markdown
@@ -70,10 +70,36 @@
         :file-config="aboutMeFile"
     />
     <Markdown
-        component-class="no-default-format strong:font-semibold mb-12 ml-8 mt-20 text-4xl md:text-5xl lg:ml-16"
+        component-class="no-default-format strong:font-semibold mb-12 md:ml-8 md:mr-0 ml-auto mr-auto md:text-left text-center mt-20 text-4xl md:text-5xl lg:ml-16"
         :markdown-string="`## ${homeData!.trustedBrandTitle}`"
     />
-    <LogoSlider class="mb-32" :logos="trustedBrandLogos" />
+    <LogoSlider class="mb-32 hidden md:block" :logos="trustedBrandLogos" />
+    <div class="mx-8 mb-32 grid grid-cols-2 gap-12 md:hidden">
+        <div
+            v-for="(logo, index) in trustedBrandLogos"
+            :key="`${index % trustedBrandLogos.length}-logo-${
+                logo.companyName
+            }`"
+            :class="`flex items-center justify-center ${
+                index == trustedBrandLogos.length - 1 ? 'col-span-2' : ''
+            }`"
+        >
+            <object
+                v-if="logo.image.endsWith('.svg')"
+                :data="logo.image"
+                type="image/svg+xml"
+                :aria-label="logo.altText"
+                class="logo-aspect-ratio mx-auto my-0 block max-h-full"
+            ></object>
+            <NuxtImg
+                v-else
+                :src="logo.image"
+                :alt="logo.altText"
+                class="logo-aspect-ratio mx-auto my-0 block max-h-full"
+                :sizes="`${logo.width}px`"
+            />
+        </div>
+    </div>
     <article class="bg-website-accent">
         <ImageGallery
             :items="howTo.steps"
