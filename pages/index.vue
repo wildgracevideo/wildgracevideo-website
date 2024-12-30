@@ -89,14 +89,20 @@
                 :data="logo.image"
                 type="image/svg+xml"
                 :aria-label="logo.altText"
-                class="logo-aspect-ratio mx-auto my-0 block max-h-full"
+                class="logo-aspect-ratio mx-auto my-0 block max-h-full p-2"
+                :style="{
+                    width: '40dvw',
+                }"
             ></object>
             <NuxtImg
                 v-else
                 :src="logo.image"
                 :alt="logo.altText"
-                class="logo-aspect-ratio mx-auto my-0 block max-h-full"
+                class="logo-aspect-ratio mx-auto my-0 block max-h-full p-2"
                 :sizes="`${logo.width}px`"
+                :style="{
+                    width: `40dvw`,
+                }"
             />
         </div>
     </div>

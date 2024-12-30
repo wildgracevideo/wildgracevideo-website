@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
                     "'unsafe-inline'",
                     'https:',
                     '*.wildgracevideo.com',
-                    'https://fonts.googleapis.com',
+                    'fonts.googleapis.com',
                     'data:',
                 ],
                 'script-src': [
@@ -94,7 +94,7 @@ if (process.env.NODE_ENV === 'production') {
                     'http://localhost:3000',
                     'https:',
                     '*.wildgracevideo.com',
-                    'https://fonts.googleapis.com',
+                    'fonts.googleapis.com',
                     'data:',
                 ],
                 'script-src': [
