@@ -70,7 +70,7 @@
         </div>
         <Modal
             :show="showFreebieModal"
-            :title="`Get your ${selectedFreebie.freebieName}`"
+            :title="modalTitle"
             @close="() => (showFreebieModal = false)"
         >
             <form class="mt-20" @submit.prevent="submitFreebieForm">
@@ -119,9 +119,12 @@
 
     const email = ref('');
 
+    const modalTitle = ref('');
+
     const selectedFreebie = reactive({});
 
     const loadFreebieModal = (shopItem) => {
+        modalTitle.value = `Get your ${shopItem.productName}`;
         showFreebieModal.value = true;
         selectedFreebie.value = {
             freebieName: shopItem.productName,
