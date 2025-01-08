@@ -32,6 +32,8 @@
 
     const columns = [
         { key: 'email', label: 'Email' },
+        { key: 'firstName', label: 'First Name' },
+        { key: 'lastName', label: 'Last Name' },
         { key: 'freebieName', label: 'Freebie Name' },
         { key: 'createdAt', label: 'Date' },
     ];

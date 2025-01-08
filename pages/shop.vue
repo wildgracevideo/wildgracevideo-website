@@ -74,17 +74,47 @@
             @close="() => (showFreebieModal = false)"
         >
             <form class="mt-20" @submit.prevent="submitFreebieForm">
-                <label for="email" class="text-2xl text-website-primary"
-                    >Email:
-                </label>
-                <input
-                    id="email"
-                    v-model="email"
-                    class="w-72 rounded border border-website-primary"
-                    type="email"
-                    name="email"
-                    required
-                />
+                <div class="grid grid-cols-3 gap-y-4">
+                    <label
+                        for="firstName"
+                        class="text-left text-2xl text-website-primary"
+                        >First Name:
+                    </label>
+                    <input
+                        id="firstName"
+                        v-model="firstName"
+                        class="col-span-2 rounded border border-website-primary"
+                        type="text"
+                        name="firstName"
+                        required
+                    />
+                    <label
+                        for="lastName"
+                        class="text-left text-2xl text-website-primary"
+                        >Last Name:
+                    </label>
+                    <input
+                        id="lastName"
+                        v-model="lastName"
+                        class="col-span-2 rounded border border-website-primary"
+                        type="text"
+                        name="lastName"
+                        required
+                    />
+                    <label
+                        for="email"
+                        class="text-left text-2xl text-website-primary"
+                        >Email:
+                    </label>
+                    <input
+                        id="email"
+                        v-model="email"
+                        class="col-span-2 rounded border border-website-primary"
+                        type="email"
+                        name="email"
+                        required
+                    />
+                </div>
 
                 <hr class="my-8 h-px border-0 bg-gray-300" />
                 <button
@@ -119,6 +149,10 @@
 
     const email = ref('');
 
+    const firstName = ref('');
+
+    const lastName = ref('');
+
     const modalTitle = ref('');
 
     const selectedFreebie = reactive({});
@@ -142,6 +176,8 @@
             method: 'POST',
             body: {
                 email: email.value,
+                firstName: firstName.value,
+                lastName: lastName.value,
                 freebieName: selectedFreebie.value.freebieName,
             },
         });

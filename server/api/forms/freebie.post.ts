@@ -4,6 +4,8 @@ import { freebieSignups } from '~/drizzle/schema';
 interface FreebieSignupRequest {
     email: string;
     freebieName: string;
+    firstName: string;
+    lastName: string;
 }
 
 export default defineEventHandler(

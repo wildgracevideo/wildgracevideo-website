@@ -188,6 +188,8 @@ export const accounts = sqliteTable(
 export const freebieSignups = sqliteTable('FreebieSignups', {
     email: text('email').notNull(),
     freebieName: text('freebieName').notNull(),
+    firstName: text('firstName').notNull(),
+    lastName: text('lastName').notNull(),
     createdAt: text('createdAt')
         .notNull()
         .default(sql`CURRENT_TIMESTAMP`),
