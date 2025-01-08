@@ -185,6 +185,17 @@ export const accounts = sqliteTable(
     })
 );
 
+export const freebieSignups = sqliteTable('FreebieSignups', {
+    email: text('email').notNull(),
+    freebieName: text('freebieName').notNull(),
+    createdAt: text('createdAt')
+        .notNull()
+        .default(sql`CURRENT_TIMESTAMP`),
+    updatedAt: text('updatedAt')
+        .notNull()
+        .default(sql`CURRENT_TIMESTAMP`),
+});
+
 export const sessions = sqliteTable('session', {
     sessionToken: text('sessionToken').notNull().primaryKey(),
     userId: text('userId')

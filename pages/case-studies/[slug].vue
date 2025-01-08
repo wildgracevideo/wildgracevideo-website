@@ -28,7 +28,9 @@
         <div class="mb-10 grid grid-cols-1 gap-10 md:grid-cols-2">
             <div class="min-w-[40%] text-center">
                 <p class="mb-12 mt-16 tracking-tight">{{ stat.statPeriod }}</p>
-                <p class="mb-6 text-5xl font-extralight tracking-tight">
+                <p
+                    class="font-family-poppins mb-6 text-4xl font-extralight tracking-tight"
+                >
                     {{ stat.stat }}
                 </p>
                 <p class="mb-4 tracking-tight md:mb-32">
@@ -62,7 +64,7 @@
                         >
                             <p
                                 :id="`${i}-${j}-additional-stat`"
-                                class="mb-4 text-3xl tracking-tight md:text-5xl"
+                                class="font-family-poppins mb-4 text-2xl tracking-tight md:text-4xl"
                             >
                                 {{ additionalStat.stat }}
                             </p>

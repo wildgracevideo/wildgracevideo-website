@@ -1,6 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
+  "id": "7e3f5082-12f4-47cc-a581-0db77b85d766",
+  "prevId": "737713f5-d79a-44e7-920c-bbd5bbc2ce03",
   "tables": {
     "account": {
       "name": "account",
@@ -88,15 +90,15 @@
         "account_userId_user_id_fk": {
           "name": "account_userId_user_id_fk",
           "tableFrom": "account",
+          "tableTo": "user",
           "columnsFrom": [
             "userId"
           ],
-          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "cascade",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -108,6 +110,29 @@
           "name": "account_provider_providerAccountId_pk"
         }
       },
+      "uniqueConstraints": {}
+    },
+    "FreebieSignups": {
+      "name": "FreebieSignups",
+      "columns": {
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "freebieName": {
+          "name": "freebieName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
     "KeepAlive": {
@@ -164,15 +189,15 @@
         "lucia-session_user_id_lucia-user_id_fk": {
           "name": "lucia-session_user_id_lucia-user_id_fk",
           "tableFrom": "lucia-session",
+          "tableTo": "lucia-user",
           "columnsFrom": [
             "user_id"
           ],
-          "tableTo": "lucia-user",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
@@ -292,15 +317,15 @@
         "MessageReply_messageId_Message_id_fk": {
           "name": "MessageReply_messageId_Message_id_fk",
           "tableFrom": "MessageReply",
+          "tableTo": "Message",
           "columnsFrom": [
             "messageId"
           ],
-          "tableTo": "Message",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "cascade",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
@@ -563,15 +588,15 @@
         "session_userId_user_id_fk": {
           "name": "session_userId_user_id_fk",
           "tableFrom": "session",
+          "tableTo": "user",
           "columnsFrom": [
             "userId"
           ],
-          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "cascade",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
@@ -662,9 +687,11 @@
   },
   "enums": {},
   "_meta": {
+    "schemas": {},
     "tables": {},
     "columns": {}
   },
-  "id": "737713f5-d79a-44e7-920c-bbd5bbc2ce03",
-  "prevId": "edf0a67a-ea37-4acf-be8c-985475e67ff8"
+  "internal": {
+    "indexes": {}
+  }
 }

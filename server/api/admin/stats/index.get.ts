@@ -1,5 +1,5 @@
 import { count, gt } from 'drizzle-orm';
-import { messages, purchaseAudits } from '~/drizzle/schema';
+import { freebieSignups, messages, purchaseAudits } from '~/drizzle/schema';
 import { db } from '~/lib/db';
 import { type Stat } from '~/types/stats';
 
@@ -22,8 +22,16 @@ export default defineEventHandler(async (event): Promise<Stat[]> => {
             gt(purchaseAudits.createdAt, date.toISOString().replace('T', ' '))
         );
 
+    const freebiesInLastXDaysPromise = db
+        .select({ count: count() })
+        .from(freebieSignups)
+        .where(
+            gt(freebieSignups.createdAt, date.toISOString().replace('T', ' '))
+        );
+
     const messagesInLastXDays = await messagesInLastXDaysPromise;
     const purchasesInLastXDays = await purchasesInLastXDaysPromise;
+    const freebiesInLastXDays = await freebiesInLastXDaysPromise;
 
     return [
         {
@@ -34,6 +42,11 @@ export default defineEventHandler(async (event): Promise<Stat[]> => {
         {
             title: 'Purchases',
             stat: purchasesInLastXDays[0].count.toString(),
+            numDays: numDays,
+        },
+        {
+            title: 'Freebies',
+            stat: freebiesInLastXDays[0].count.toString(),
             numDays: numDays,
         },
     ];

@@ -16,7 +16,7 @@
             v-for="element in elements"
             :key="element.title"
             :to="element.to"
-            class="mb-4 ml-4 flex items-center !text-website-off-black"
+            class="mx-4 mb-4 flex items-center !text-website-off-black"
         >
             <component :is="element.icon" class="h-5 w-5" />
             <p class="ml-1 text-lg">{{ element.title }}</p>
@@ -60,6 +60,7 @@
     import {
         BeakerIcon,
         CreditCardIcon,
+        CurrencyDollarIcon,
         FolderIcon,
         InboxIcon,
     } from '@heroicons/vue/24/outline';
@@ -92,6 +93,11 @@
             icon: CreditCardIcon,
             title: 'Purchases',
             to: '/admin/purchases',
+        },
+        {
+            icon: CurrencyDollarIcon,
+            title: 'Freebies',
+            to: '/admin/freebies',
         },
         {
             icon: FolderIcon,

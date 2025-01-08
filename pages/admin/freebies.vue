@@ -6,10 +6,6 @@
         :loading="pending || loading"
         :columns="columns"
         class="mx-4"
-        :ui="{
-            wrapper: 'relative overflow-x-scroll',
-            base: 'min-w-full table-fixed',
-        }"
     >
         <template #createdAt-data="{ row }">
             <span>
@@ -36,18 +32,15 @@
 
     const columns = [
         { key: 'email', label: 'Email' },
-        { key: 'firstName', label: 'First Name' },
-        { key: 'lastName', label: 'Last Name' },
-        { key: 'product', label: 'Product' },
-        { key: 'sendGridMessageStatus', label: 'Message Status' },
-        { key: 'createdAt', label: 'Created At' },
+        { key: 'freebieName', label: 'Freebie Name' },
+        { key: 'createdAt', label: 'Date' },
     ];
 
     const limit = ref(10);
 
     const { data: paginationResponse, pending } = await useLazyAsyncData(
-        'purchases',
-        () => $fetch(`/api/admin/purchases?offset=0&limit=${limit.value}`),
+        'freebies',
+        () => $fetch(`/api/admin/freebies?offset=0&limit=${limit.value}`),
         { server: false }
     );
 
@@ -74,7 +67,7 @@
     const pageSelectHandler = async (pageIndex: number) => {
         loading.value = true;
         const { data: paginationUpdateResponse } = await useFetch(
-            `/api/admin/purchases?offset=${pageIndex * limit.value}&limit=${
+            `/api/admin/freebies?offset=${pageIndex * limit.value}&limit=${
                 limit.value
             }`
         );

@@ -179,7 +179,6 @@ const config = {
         gitProviderAuthorizePath:
             process.env.GIT_PROVIDER_AUTHORIZE_PATH || '/login/oauth/authorize',
         gitProviderScopes: process.env.GIT_PROVIDER_SCOPES || 'repo user',
-        secureCookies: process.env.NODE_ENV === 'production',
         apiKey: process.env.API_KEY,
         s3MediaBucket: process.env.S3_BUCKET,
         allowedGithubUsers: (process.env.ALLOWED_GITHUB_USERS || '').split(','),
@@ -367,6 +366,7 @@ const config = {
                     'Cormorant Garamond': [400],
                     Cormorant: [400, 600],
                     'Rock Salt': [400],
+                    Poppins: [400, 600],
                 },
                 inject: true,
                 base64: false,

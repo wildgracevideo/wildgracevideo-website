@@ -17,7 +17,8 @@
                     currentFolder.length > 0 &&
                     (currentFolder[0] === 'images' ||
                         currentFolder[0] === 'videos' ||
-                        currentFolder[0] === 'svgs')
+                        currentFolder[0] === 'svgs' ||
+                        currentFolder[0] === 'freebies')
                 "
             >
                 <UButton

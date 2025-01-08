@@ -17,6 +17,10 @@ html {
     font-size: 18px;
 }
 
+.font-family-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
 .font-family-optimus {
     font-family: 'OptimusPrinceps', serif;
 }

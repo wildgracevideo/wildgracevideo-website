@@ -7,6 +7,7 @@ backend:
 media_folder: public/uploads
 public_folder: /uploads
 
+# If running locally and seeing unauthorized errors make sure `npx decap-server` is running
 local_backend: true
 
 publish_mode: editorial_workflow
@@ -89,6 +90,35 @@ FileInfo: &fileInfo
           widget: 'datetime'
 
 collections:
+    - name: 'freebie'
+      label: 'Freebie'
+      folder: 'content/freebie'
+      format: 'frontmatter'
+      create: true
+      preview_path: '/shop'
+      identifier_field: 'productName'
+      slug: '{{slug}}'
+      editor:
+          preview: false
+      fields:
+          - { label: 'Freebie Name', name: 'productName', widget: 'string' }
+          - { label: 'File Name', name: 'fileName', widget: 'string' }
+          - { label: 'URL', name: 'fileURL', widget: 'string' }
+          - {
+                label: 'Published Date (This affects ordering in Shop page)',
+                name: 'publishedDate',
+                widget: 'datetime',
+            }
+          - label: 'File Info'
+            name: 'fileInfo'
+            widget: 'object'
+            summary: '{{fields.seoTitle}}'
+            <<: *fileInfo
+          - {
+                label: 'Short description',
+                name: 'shortDescription',
+                widget: 'text',
+            }
     - name: 'product'
       label: 'Product'
       folder: 'content/product'

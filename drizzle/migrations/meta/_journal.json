@@ -15,6 +15,20 @@
       "when": 1725907586464,
       "tag": "0001_glossy_marrow",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1736294262576,
+      "tag": "0002_unique_skullbuster",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1736298487857,
+      "tag": "0003_curvy_living_lightning",
+      "breakpoints": true
     }
   ]
 }
