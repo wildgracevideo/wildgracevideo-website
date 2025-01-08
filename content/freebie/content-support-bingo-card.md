@@ -9,6 +9,6 @@ fileInfo:
   seoTitle: Content Support Bingo Card
   seoDescription: Content Support Bingo Card
   thumbnailImage: ""
-  file: https://content.wildgracevideo.com/images/Website-Products/bingo_thumbnail.png
+  file: https://content.wildgracevideo.com/images/Website-Products/bingoicon.png
 shortDescription: Content Support Bingo Card
 ---
