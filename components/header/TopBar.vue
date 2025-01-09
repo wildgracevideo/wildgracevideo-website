@@ -99,6 +99,11 @@
             type: HeaderItemDropdown,
             children: servicesChildren,
         },
+        {
+            name: 'SHOP',
+            type: HeaderItem,
+            href: '/shop',
+        },
     ];
 
     const props = defineProps<{

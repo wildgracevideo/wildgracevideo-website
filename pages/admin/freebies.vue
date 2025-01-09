@@ -1,5 +1,5 @@
 <template>
-    <p class="my-8 mb-4 ml-8 text-2xl">Purchases</p>
+    <p class="my-8 mb-4 ml-8 text-2xl">Freebies</p>
 
     <UTable
         :rows="paginationResponse?.results || []"
