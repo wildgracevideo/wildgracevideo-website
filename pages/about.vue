@@ -59,21 +59,23 @@
             />
         </section>
         <section id="hear-from-our-clients" class="overflow-hidden">
-            <div
-                class="slider w-fit whitespace-nowrap bg-website-off-black py-3"
-            >
-                <div
-                    v-for="i in Array(8).keys()"
-                    :key="`${i}-container`"
-                    class="inline-block w-fit min-w-[100dvh] whitespace-nowrap pr-2 text-sm tracking-tighter text-website-accent md:pr-12 md:text-xl"
-                >
-                    <span
-                        v-for="char in `${testimonials.title}`"
-                        :key="`${i}-${index}-${char}`"
-                        :class="`inline-block ${char === ' ' ? 'mx-2' : ''}`"
+            <div class="w-dvw whitespace-nowrap bg-website-off-black py-3">
+                <div class="slider w-fit bg-website-off-black">
+                    <div
+                        v-for="i in Array(8).keys()"
+                        :key="`${i}-container`"
+                        class="inline-block w-fit min-w-[100dvh] whitespace-nowrap pr-2 text-sm tracking-tighter text-website-accent md:pr-12 md:text-xl"
                     >
-                        {{ char }}
-                    </span>
+                        <span
+                            v-for="char in `${testimonials.title}`"
+                            :key="`${i}-${index}-${char}`"
+                            :class="`inline-block ${
+                                char === ' ' ? 'mx-2' : ''
+                            }`"
+                        >
+                            {{ char }}
+                        </span>
+                    </div>
                 </div>
             </div>
             <ImageGallery
@@ -145,10 +147,20 @@
         to {
             transform: translateX(calc(-50%));
             -webkit-transform: translateX(calc(-50%));
+            transform-style: preserve-3d;
+            perspective: 0;
+            -webkit-perspective: 0;
+            -webkit-backface-visibility: hidden;
         }
     }
 
     .slider {
-        animation: 60s slide infinite linear;
+        animation: 35s slide infinite linear;
+    }
+
+    @media (min-width: 768px) {
+        .slider {
+            animation: 60s slide infinite linear;
+        }
     }
 </style>
