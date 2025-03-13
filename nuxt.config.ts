@@ -1,9 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const SITE_URL = process.env.URL || 'https://www.wildgracevideo.com';
 const CLOUDFRONT_URL = 'https://content.wildgracevideo.com';
-const APP_ICON = CLOUDFRONT_URL + '/Website-Main/app-icon.png';
+const APP_ICON =
+    CLOUDFRONT_URL + '/Website-Main/WildGraceProductionsAppIcon.png';
+const ANDROID_SITE_MANIFEST_URL =
+    CLOUDFRONT_URL + '/Website-Main/site.manifest';
 const WEBSITE_ICON =
-    CLOUDFRONT_URL + '/images/Website-Main/WildGraceVideo-logo.webp';
+    CLOUDFRONT_URL + '/images/Website-Main/WildGraceProductionsLogo.webp';
 const GA_MEASUREMENT_ID = 'G-FDBGKZY0J2';
 
 process.env['NEXTAUTH_URL'] = process.env.DEPLOY_PRIME_URL;
@@ -221,9 +224,10 @@ const config = {
                 {
                     rel: 'icon',
                     type: 'image/x-icon',
-                    href: CLOUDFRONT_URL + '/Website-Main/favicon.ico',
+                    href: CLOUDFRONT_URL + '/Website-Main/wgvp-favicon.ico',
                 },
-                { rel: 'apple-touch-icon', href: APP_ICON },
+                { rel: 'apple-touch-icon', sizes: '180x180', href: APP_ICON },
+                { rel: 'manifest', href: ANDROID_SITE_MANIFEST_URL },
                 {
                     rel: 'preconnect',
                     href: 'https://content.wildgracevideo.com',

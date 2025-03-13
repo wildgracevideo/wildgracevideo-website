@@ -17,14 +17,14 @@
             >
                 <span class="sr-only">Wild Grace Videography</span>
                 <NuxtImg
-                    class="text-0 mb-8 ml-8 mr-10 mt-3"
-                    width="160"
+                    class="text-0 my-4 ml-8 mr-10"
+                    width="140"
                     height="90"
                     :src="runtimeConfig.public.websiteIcon"
                     :alt="imageAlt"
                 />
             </NuxtLink>
-            <div class="hidden lg:flex lg:gap-x-12">
+            <div class="ml-auto hidden lg:flex lg:gap-x-12">
                 <component
                     :is="item.type"
                     v-for="item in items"
@@ -33,7 +33,7 @@
                 />
             </div>
             <NuxtLink
-                class="px-auto ml-auto mr-8 hidden h-12 w-32 cursor-pointer items-center rounded-xl border-2 border-website-primary bg-website-primary text-center text-website-off-white hover:bg-website-off-white hover:text-website-primary lg:flex"
+                class="px-auto ml-16 mr-8 hidden h-12 w-32 cursor-pointer items-center rounded-xl border-2 border-website-primary bg-website-primary text-center text-website-off-white hover:bg-website-off-white hover:text-website-primary lg:flex"
                 to="/get-started"
             >
                 <p class="mx-auto">{{ ctaText }}</p>

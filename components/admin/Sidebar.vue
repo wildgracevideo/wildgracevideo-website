@@ -6,8 +6,8 @@
         <NuxtLink to="/admin">
             <NuxtImg
                 class="text-0 mb-8 ml-4 mr-10 mt-4"
-                width="100"
-                height="50"
+                width="140"
+                height="90"
                 :src="runtimeConfig.public.websiteIcon"
                 :alt="imageAlt"
             />
@@ -29,8 +29,8 @@
         <NuxtLink to="/admin">
             <NuxtImg
                 class="text-0 my-2 mb-8 ml-4 mr-10"
-                width="100"
-                height="50"
+                width="140"
+                height="90"
                 :src="runtimeConfig.public.websiteIcon"
                 :alt="imageAlt"
             />
