@@ -1,5 +1,6 @@
 <template>
     <header
+        class="subheading-font"
         :class="{
             'bg-website-primary': openMenu,
             'h-dvh': openMenu,

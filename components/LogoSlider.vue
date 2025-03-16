@@ -88,24 +88,6 @@
         }
     }
 
-    .logos:before {
-        left: 0;
-        background: linear-gradient(
-            to left,
-            rgba(250, 249, 249, 0),
-            rgba(250, 249, 249, 1)
-        );
-    }
-
-    .logos:after {
-        right: 0;
-        background: linear-gradient(
-            to right,
-            rgba(250, 249, 249, 0),
-            rgba(250, 249, 249, 1)
-        );
-    }
-
     .logos-slide {
         width: calc((var(--total-icons) * 10rem + var(--total-icon-width)) * 2);
         animation: calc(

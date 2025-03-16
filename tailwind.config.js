@@ -66,6 +66,9 @@ export default {
             translate: {
                 '1/20': '5%',
             },
+            lineHeight: {
+                14: '3.5rem',
+            },
         },
         transitionProperty: {
             top: 'top',

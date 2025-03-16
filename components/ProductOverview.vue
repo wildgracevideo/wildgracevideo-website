@@ -88,7 +88,7 @@
         :style="{ 'background-image': `url('${callToActionBackgroundImage}')` }"
     >
         <Markdown
-            component-class="font-family-optimus mx-auto max-w-4xl text-center text-6xl text-website-off-white"
+            component-class="subheading-font mx-auto max-w-4xl text-center text-6xl text-website-off-white"
             :markdown-string="`${callToActionTitleMarkdown}`"
         />
         <Markdown

@@ -1,9 +1,8 @@
 ---
-sitemap:
-  include: true
-  lastmod: 2024-09-14
-  loc: /
-  changefreq: monthly
+description: Wild Grace Video Productions is a top Denver-based video production
+  company specializing in hotel video production, outdoor product videos and
+  adventure company videos. We're here to help you bring your brand to life and
+  help you better connect with your audience.
 reelVideo:
   thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/Reel%20photo.jpg
   seoTitle: Denver Adventure & Travel Video Production | Explore Our Dynamic Portfolio
@@ -13,17 +12,49 @@ reelVideo:
     expertise.
   video: https://content.wildgracevideo.com/videos/HomePage/2024WebsiteReel/2024WebsiteReel.mpd
   publicationDate: 2024-02-28T22:13:00.000Z
-pageTitle: "**YOUR** *VIDEO CONTENT PARTNER* **FOR OUTDOOR, TRAVEL, AND
-  ADVENTURE BRANDS**"
-testimonialQuotes:
-  - quote: Carly was so great to work with! She listened to every detail I wanted to
-      be included, and took creative responsibility during the shoots to ensure
-      she had everything she needed.
-    author: Lauren Klein, Genesee Nutrition
-  - quote: Carly has great energy and enthusiasm, combined with maturity, knowledge
-      and skill in her field of work. The final product was very impressive and
-      exceeded our expectations.
-    author: Nathan Baller, Abode Outside
+pageTitle: YOUR VIDEO CONTENT PARTNER FOR OUTDOOR, TRAVEL, AND ADVENTURE BRANDS
+videoHighlight:
+  title: SELL THE **EXPERIENCE**.
+  videos:
+    - publicationDate: 2024-02-27T19:52:06.039Z
+      title: BOUTIQUE HOTELS
+      description: Let us capture the essence of your boutique hotel by showcasing
+        your unique spaces and highlighting the beauty of your surroundings.
+        We’ll craft compelling visuals that will speak to your brand and
+        up-level your marketing for years to come.
+      video: https://content.wildgracevideo.com/Website-Home-Page/Boutique%20Hotels%20Thumbnail.mp4
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/boutique%20hotel%20photo-min.png
+      seoTitle: Denver Boutique Hotel Video Production | Luxury Accommodation Visuals
+      seoDescription: Explore our Denver boutique hotel video production services,
+        showcasing upscale stays, unique amenities & stunning interiors. Elevate
+        your brand with captivating visuals.
+      linkPath: /service-overview/hotels
+    - publicationDate: 2024-02-07T21:27:16.938Z
+      title: OUTDOOR PRODUCTS
+      description: Let's spotlight your outdoor gear with visuals that showcase their
+        top-notch quality and demonstrate their ideal use in the great outdoors.
+        Let our compelling imagery redefine your brand's marketing impact for
+        the long term.
+      video: https://content.wildgracevideo.com/Website-Home-Page/Outdoor%20Brands%20Thumbnail.mp4
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/outdoor%20product%20photo-min.png
+      seoTitle: Denver Outdoor Gear Video Production | Adventure Product Showcase
+      seoDescription: Discover our Denver outdoor gear video production, featuring
+        rugged equipment, camping essentials, hiking gear & more. Inspire your
+        audience with high-quality visuals.
+      linkPath: /service-overview/outdoor-product
+    - publicationDate: 2024-02-27T19:53:28.906Z
+      title: ADVENTURE TOUR COMPANIES
+      description: Get ready to flaunt your outdoor excursions with visuals that bring
+        out their thrill and showcase the excitement of your adventure. Our
+        compelling imagery will redefine your brand's marketing impact,
+        attracting thrill-seekers and enthusiasts for unforgettable experiences.
+      video: https://content.wildgracevideo.com/Website-Home-Page/Adventure%20Brands%20Thumbnail%20V2.mp4
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/adventure%20excursion%20photo-min.png
+      seoTitle: Denver Adventure Video Production | Thrilling Experience Showcase
+      seoDescription: Experience our Denver adventure video production, capturing
+        adrenaline-fueled activities, scenic trails, outdoor adventures & more.
+        Inspire action with compelling visuals.
+      linkPath: /service-overview/adventure-tour
 aboutMe:
   title: " **Forge meaningful connection with a like-minded community.**"
   description: >-
@@ -44,7 +75,7 @@ aboutMe:
       passionate visual storyteller and adventure enthusiast dedicated to
       bringing your vision to life. Learn more about my journey!
     thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
-trustedBrandTitle: "**TRUSTED BY**"
+trustedBrandTitle: Trusted by
 howTo:
   title: "**THE PROCESS**"
   steps:
@@ -94,57 +125,11 @@ howTo:
 thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
 aboutMeAltText: TODO
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
-description: Wild Grace Video Productions is a top Denver-based video production
-  company specializing in hotel video production, outdoor product videos and
-  adventure company videos. We're here to help you bring your brand to life and
-  help you better connect with your audience.
-pageTagline: Wild Grace Video is a Denver-based video production company
-  specializing in creating video and photo content for outdoor, travel, and
-  adventure brands. We're here for the brands that embrace dreamy escapes and
-  wild adventures—those that confidently stand out and stay true to who they
-  are. They're bold, inspiring, and refreshingly different.
-videoHighlight:
-  title: SELL THE **EXPERIENCE**.
-  videos:
-    - publicationDate: 2024-02-27T19:52:06.039Z
-      title: BOUTIQUE HOTELS
-      description: Let us capture the essence of your boutique hotel by showcasing
-        your unique spaces and highlighting the beauty of your surroundings.
-        We’ll craft compelling visuals that will speak to your brand and
-        up-level your marketing for years to come.
-      video: https://content.wildgracevideo.com/Website-Home-Page/Boutique%20Hotels%20Thumbnail.mp4
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/boutique%20hotel%20photo-min.png
-      seoTitle: Denver Boutique Hotel Video Production | Luxury Accommodation Visuals
-      seoDescription: Explore our Denver boutique hotel video production services,
-        showcasing upscale stays, unique amenities & stunning interiors. Elevate
-        your brand with captivating visuals.
-      linkPath: /service-overview/hotels
-    - publicationDate: 2024-02-07T21:27:16.938Z
-      title: OUTDOOR PRODUCTS
-      description: Let's spotlight your outdoor gear with visuals that showcase their
-        top-notch quality and demonstrate their ideal use in the great outdoors.
-        Let our compelling imagery redefine your brand's marketing impact for
-        the long term.
-      video: https://content.wildgracevideo.com/Website-Home-Page/Outdoor%20Brands%20Thumbnail.mp4
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/outdoor%20product%20photo-min.png
-      seoTitle: Denver Outdoor Gear Video Production | Adventure Product Showcase
-      seoDescription: Discover our Denver outdoor gear video production, featuring
-        rugged equipment, camping essentials, hiking gear & more. Inspire your
-        audience with high-quality visuals.
-      linkPath: /service-overview/outdoor-product
-    - publicationDate: 2024-02-27T19:53:28.906Z
-      title: ADVENTURE TOUR COMPANIES
-      description: Get ready to flaunt your outdoor excursions with visuals that bring
-        out their thrill and showcase the excitement of your adventure. Our
-        compelling imagery will redefine your brand's marketing impact,
-        attracting thrill-seekers and enthusiasts for unforgettable experiences.
-      video: https://content.wildgracevideo.com/Website-Home-Page/Adventure%20Brands%20Thumbnail%20V2.mp4
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/adventure%20excursion%20photo-min.png
-      seoTitle: Denver Adventure Video Production | Thrilling Experience Showcase
-      seoDescription: Experience our Denver adventure video production, capturing
-        adrenaline-fueled activities, scenic trails, outdoor adventures & more.
-        Inspire action with compelling visuals.
-      linkPath: /service-overview/adventure-tour
+sitemap:
+  include: true
+  lastmod: 2024-09-14
+  loc: /
+  changefreq: monthly
 testimonials:
   backgroundImage: https://content.wildgracevideo.com/images/Website-Home-Page/Horizontal+Paralax-min.webp
   files:
@@ -169,6 +154,15 @@ testimonials:
         Wild Grace Video
   backgroundImageVertical: https://content.wildgracevideo.com/images/Website-Home-Page/Vertical+Paralax.webp
 aboutMeImage: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
+testimonialQuotes:
+  - quote: Carly was so great to work with! She listened to every detail I wanted to
+      be included, and took creative responsibility during the shoots to ensure
+      she had everything she needed.
+    author: Lauren Klein, Genesee Nutrition
+  - quote: Carly has great energy and enthusiasm, combined with maturity, knowledge
+      and skill in her field of work. The final product was very impressive and
+      exceeded our expectations.
+    author: Nathan Baller, Abode Outside
 faq:
   title: "**FREQUENTLY ASKED QUESTIONS**"
   questions:
@@ -245,5 +239,10 @@ trustedBrandLogos:
     image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
     width: 150
 videoTitle: Video reel showcasing the work of Wild Grace Videography.
+pageTagline: Wild Grace Video is a Denver-based video production company
+  specializing in creating video and photo content for outdoor, travel, and
+  adventure brands. We're here for the brands that embrace dreamy escapes and
+  wild adventures—those that confidently stand out and stay true to who they
+  are. They're bold, inspiring, and refreshingly different.
 videoHighlightTitle: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
 ---

@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
     const code = query.code?.toString() ?? null;
     const encodedState = query.state?.toString() ?? null;
     if (!encodedState) {
+        console.error('No state parameter sent for callback.');
         throw createError({
             status: 400,
         });
@@ -42,6 +43,7 @@ export default defineEventHandler(async (event) => {
             new RegExp(it).test(redirectUrl.hostname!)
         )
     ) {
+        console.error(`Invalid redirect for callback, ${redirectUrl.hostname}.`);
         throw createError({
             status: 400,
         });

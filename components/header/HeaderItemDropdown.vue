@@ -14,7 +14,7 @@
                 v-for="item in config.children"
                 :key="item.name"
                 :to="item.href"
-                class="p-4 text-sm text-gray-800 hover:bg-zinc-100"
+                class="p-4 text-sm text-website-off-black hover:bg-website-primary hover:text-website-off-white"
             >
                 {{ item.name }}
             </NuxtLink>

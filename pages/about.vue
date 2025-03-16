@@ -44,7 +44,7 @@
         </section>
         <section
             id="behind-the-scenes"
-            class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 bg-website-accent py-8"
+            class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 bg-website-primary py-8"
         >
             <FileOrVideo
                 v-for="asset in assets"
@@ -64,7 +64,7 @@
                     <div
                         v-for="i in Array(8).keys()"
                         :key="`${i}-container`"
-                        class="inline-block w-fit min-w-[100dvh] whitespace-nowrap pr-2 text-sm tracking-tighter text-website-accent md:pr-12 md:text-xl"
+                        class="inline-block w-fit min-w-[100dvh] whitespace-nowrap pr-2 text-sm tracking-tighter text-website-off-white md:pr-12 md:text-xl"
                     >
                         <span
                             v-for="char in `${testimonials.title}`"
@@ -92,7 +92,7 @@
                 class="w-full pb-16"
             />
         </section>
-        <article class="bg-website-accent px-8 pb-32 pt-16 lg:px-32">
+        <article class="bg-website-primary text-website-off-white px-8 pb-32 pt-16 lg:px-32">
             <Markdown
                 :markdown-string="`## ${faq.title!}`"
                 component-class="no-default-format mx-auto mb-20 max-w-lg text-center text-4xl strong:font-semibold"
@@ -102,7 +102,7 @@
                 :key="`faq-${faqItem.question}`"
                 :title-markdown="`### ${faqItem.question}`"
                 :content-markdown="faqItem.answer"
-                class="mb-10 w-full border-slate-400"
+                class="mb-10 w-full border-website-off-white"
             />
         </article>
     </div>

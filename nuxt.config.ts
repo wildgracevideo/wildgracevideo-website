@@ -187,6 +187,7 @@ const config = {
         allowedGithubUsers: (process.env.ALLOWED_GITHUB_USERS || '').split(','),
         allowedAuthRedirectHosts: [
             '^localhost:3000$',
+            '^localhost$',
             '^www.wildgracevideo.com$',
             '.*wildgracevideo.netlify.app$',
         ],
@@ -271,7 +272,7 @@ const config = {
                     : false, // disable cssnano when not in production
         },
     },
-    css: ['~/assets/css/main.css', '~/assets/gfonts/google-fonts.css'],
+    css: ['~/assets/css/main.css'],
     devtools: { enabled: process.env.NODE_ENV !== 'production' },
     sitemap: {
         xslTips: process.env.NODE_ENV !== 'production',
@@ -359,28 +360,6 @@ const config = {
         '@nuxt/image',
         '@nuxt/scripts',
         'nuxt-security',
-        [
-            '@nuxtjs/google-fonts',
-            {
-                families: {
-                    Cardo: {
-                        wght: [400],
-                    },
-                    'Playfair Display': [400, 700],
-                    'Cormorant Garamond': [400],
-                    Cormorant: [400, 600],
-                    'Rock Salt': [400],
-                    Poppins: [400, 600],
-                },
-                inject: true,
-                base64: false,
-                download: true,
-                outputDir: 'assets/gfonts',
-                stylePath: 'google-fonts.css',
-                fontsDir: 'fonts',
-                fontsPath: 'assets/gfonts/fonts',
-            },
-        ],
         'nuxt-gtag',
         'nuxt-schema-org',
         'nuxt-simple-robots',

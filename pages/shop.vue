@@ -7,9 +7,9 @@
         class="bg-img mb-16 flex w-full flex-col items-center justify-center gap-8"
     >
         <h1
-            class="font-family-optimus max-w-md text-center text-4xl tracking-wide text-white"
+            class="subheading-font max-w-md text-center text-4xl tracking-wide text-white"
         >
-            welcome to the place where you get all of the content creation
+            Welcome to the place where you get all of the content creation
             resources right at your fingertips.
         </h1>
         <ChevronDownIcon

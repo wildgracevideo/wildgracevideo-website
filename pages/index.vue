@@ -21,7 +21,7 @@
     </section>
     <Markdown
         :markdown-string="`# ${pageTitle}`"
-        component-class="no-default-format mt-32 mb-16 text-4xl md:text-5xl em:font-medium strong:font-semibold leading-14 tracking-tighter mx-auto w-3/4 text-center"
+        component-class="no-default-format heading-font mt-32 mb-16 text-4xl md:text-5xl mx-auto w-3/4 text-center"
     />
     <Markdown
         :markdown-string="pageTagline"
@@ -70,7 +70,7 @@
         :file-config="aboutMeFile"
     />
     <Markdown
-        component-class="no-default-format strong:font-semibold mb-12 md:ml-8 md:mr-0 ml-auto mr-auto md:text-left text-center mt-20 text-4xl md:text-5xl lg:ml-16"
+        component-class="no-default-format accent-font mb-12 md:ml-8 md:mr-0 ml-auto mr-auto md:text-left text-center mt-20 text-4xl md:text-5xl lg:ml-16"
         :markdown-string="`## ${homeData!.trustedBrandTitle}`"
     />
     <LogoSlider class="mb-32 hidden md:block" :logos="trustedBrandLogos" />
@@ -106,7 +106,7 @@
             />
         </div>
     </div>
-    <article class="bg-website-accent">
+    <article class="bg-website-primary text-website-off-white">
         <ImageGallery
             :items="howTo.steps"
             :gallery-title-markdown="`## ${howTo.title!}`"
@@ -118,7 +118,7 @@
     <article class="mx-8 mb-32 lg:mx-32">
         <Markdown
             :markdown-string="`## ${faq.title!}`"
-            component-class="no-default-format mx-auto mb-20 mt-32 max-w-lg text-center text-4xl strong:font-semibold"
+            component-class="no-default-format heading-font md:mx-auto mx-8 mb-20 mt-32 text-center text-4xl strong:font-semibold"
         />
         <AccordionItem
             v-for="faqItem in faq.questions"

@@ -29,7 +29,7 @@
             <div class="min-w-[40%] text-center">
                 <p class="mb-12 mt-16 tracking-tight">{{ stat.statPeriod }}</p>
                 <p
-                    class="font-family-poppins mb-6 text-4xl font-extralight tracking-tight"
+                    class="paragraph-font mb-6 text-4xl font-extralight tracking-tight"
                 >
                     {{ stat.stat }}
                 </p>
@@ -64,7 +64,7 @@
                         >
                             <p
                                 :id="`${i}-${j}-additional-stat`"
-                                class="font-family-poppins mb-4 text-2xl tracking-tight md:text-4xl"
+                                class="paragraph-font mb-4 text-2xl tracking-tight md:text-4xl"
                             >
                                 {{ additionalStat.stat }}
                             </p>
