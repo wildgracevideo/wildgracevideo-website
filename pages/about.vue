@@ -92,7 +92,9 @@
                 class="w-full pb-16"
             />
         </section>
-        <article class="bg-website-primary text-website-off-white px-8 pb-32 pt-16 lg:px-32">
+        <article
+            class="bg-website-primary px-8 pb-32 pt-16 text-website-off-white lg:px-32"
+        >
             <Markdown
                 :markdown-string="`## ${faq.title!}`"
                 component-class="no-default-format mx-auto mb-20 max-w-lg text-center text-4xl strong:font-semibold"

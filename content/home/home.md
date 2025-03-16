@@ -12,9 +12,14 @@ reelVideo:
     expertise.
   video: https://content.wildgracevideo.com/videos/HomePage/2024WebsiteReel/2024WebsiteReel.mpd
   publicationDate: 2024-02-28T22:13:00.000Z
-pageTitle: YOUR VIDEO CONTENT PARTNER FOR OUTDOOR, TRAVEL, AND ADVENTURE BRANDS
+pageTitle: YOUR VIDEO CONTENT PARTNER FOR OUTDOOR, TRAVEL, AND ADVENTURE BRANDS.
+visitPortfolioFile:
+  file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_1.jpg
+  publicationDate: 2025-03-15T21:25:00.000Z
+  seoTitle: TODO
+  seoDescription: TODO
 videoHighlight:
-  title: SELL THE **EXPERIENCE**.
+  title: Inspire exploration for your customers
   videos:
     - publicationDate: 2024-02-27T19:52:06.039Z
       title: BOUTIQUE HOTELS
@@ -239,10 +244,5 @@ trustedBrandLogos:
     image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
     width: 150
 videoTitle: Video reel showcasing the work of Wild Grace Videography.
-pageTagline: Wild Grace Video is a Denver-based video production company
-  specializing in creating video and photo content for outdoor, travel, and
-  adventure brands. We're here for the brands that embrace dreamy escapes and
-  wild adventures—those that confidently stand out and stay true to who they
-  are. They're bold, inspiring, and refreshingly different.
 videoHighlightTitle: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
 ---

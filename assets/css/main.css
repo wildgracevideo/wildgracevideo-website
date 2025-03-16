@@ -21,26 +21,29 @@ html {
 
 @font-face {
     font-family: 'Montserrat';
-    src: url("https://content.wildgracevideo.com/Website-Main/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+    src: url('https://content.wildgracevideo.com/Website-Main/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
     font-weight: 100 1000;
 }
 
 @font-face {
     font-family: 'Stylish Aesthetic';
-    src: url("https://content.wildgracevideo.com/Website-Main/Fonts/StylishAesthetic/stylishaesthetic-extralight-webfont.woff2");
+    src: url('https://content.wildgracevideo.com/Website-Main/Fonts/StylishAesthetic/stylishaesthetic-extralight-webfont.woff2');
     font-weight: 200;
 }
 
 @font-face {
     font-family: 'Article Millenium';
-    src: url("https://content.wildgracevideo.com/Website-Main/Fonts/ArticleMillenium/article-millenium-webfont.woff2") format("woff2 supports variations"),
-       url("https://content.wildgracevideo.com/Website-Main/Fonts/ArticleMillenium/article-millenium-webfont.woff2") format("woff2-variations");
+    src:
+        url('https://content.wildgracevideo.com/Website-Main/Fonts/ArticleMillenium/article-millenium-webfont.woff2')
+            format('woff2 supports variations'),
+        url('https://content.wildgracevideo.com/Website-Main/Fonts/ArticleMillenium/article-millenium-webfont.woff2')
+            format('woff2-variations');
     font-weight: 400;
 }
 
 @font-face {
     font-family: 'Cormorant Garamond';
-    src: url("https://content.wildgracevideo.com/Website-Main/Fonts/CormorantGaramond/CormorantGaramond-Italic-VariableFont_wght.ttf");
+    src: url('https://content.wildgracevideo.com/Website-Main/Fonts/CormorantGaramond/CormorantGaramond-Italic-VariableFont_wght.ttf');
     font-weight: 100 1000;
     font-style: italic;
 }

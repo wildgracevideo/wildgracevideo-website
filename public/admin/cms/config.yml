@@ -852,13 +852,11 @@ collections:
                 modes: ['rich_text'],
                 minimal: true,
             }
-          - {
-                label: 'Page tagline',
-                name: 'pageTagline',
-                widget: 'markdown',
-                modes: ['rich_text'],
-                minimal: false,
-            }
+          - label: 'Visit Portfolio File'
+            name: 'visitPortfolioFile'
+            widget: 'object'
+            summary: '{{fields.seoTitle}}'
+            <<: *fileInfo
           - label: 'Testimonial Quotes'
             name: 'testimonialQuotes'
             widget: 'list'

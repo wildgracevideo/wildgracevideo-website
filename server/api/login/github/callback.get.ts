@@ -43,7 +43,9 @@ export default defineEventHandler(async (event) => {
             new RegExp(it).test(redirectUrl.hostname!)
         )
     ) {
-        console.error(`Invalid redirect for callback, ${redirectUrl.hostname}.`);
+        console.error(
+            `Invalid redirect for callback, ${redirectUrl.hostname}.`
+        );
         throw createError({
             status: 400,
         });
