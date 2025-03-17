@@ -14,7 +14,7 @@
                 :markdown-string="textMarkdown"
                 component-class="tall-p-margin mt-24"
             />
-            <LinkButton
+            <DefaultButton
                 :title="aboutMeCta"
                 to="about"
                 class="mx-auto mt-16 lg:mx-0"

@@ -1026,6 +1026,26 @@ collections:
                   name: 'file'
                   summary: '{{fields.seoTitle}}'
                   <<: *fileInfo
+          - label: 'Case Studies'
+            name: caseStudies
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Case Study File'
+                  widget: 'object'
+                  name: 'file'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
           - label: 'Trusted Brand Title'
             name: 'trustedBrandTitle'
             widget: 'markdown'

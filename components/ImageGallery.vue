@@ -33,7 +33,7 @@
                         :markdown-string="description"
                         component-class="text-center"
                     />
-                    <LinkButton
+                    <DefaultButton
                         v-if="ctaLink && ctaText"
                         :title="ctaText"
                         class="mx-auto mt-16"
@@ -68,7 +68,6 @@
         ChevronRightIcon,
     } from '@heroicons/vue/24/outline';
     import type { FileInfo } from '~/components/FileOrVideo.vue';
-    import LinkButton from './LinkButton.vue';
 
     const selectedItem = ref(0);
     const props = defineProps<{

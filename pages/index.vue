@@ -29,7 +29,7 @@
                 :markdown-string="pageTagline"
                 component-class="mb-16 max-w-6xl md:text-left text-center md:mx-16 mx-4"
             />
-            <LinkButton
+            <DefaultButton
                 title="Visit Portfolio"
                 to="portfolio"
                 class="mx-auto md:mx-16"
@@ -168,6 +168,34 @@
             cta-link="/get-started"
         />
     </article>
+    <section class="bg-website-primary p-16 text-website-off-white">
+        <h2 class="mb-16 text-2xl">
+            DISCOVER
+            <span class="subheading-font mt-4 block text-4xl"
+                >REAL CLIENTS</span
+            >
+        </h2>
+        <div class="mx-auto w-[25dvw]">
+            <FileOrVideo
+                parent-class="pointer-events-none relative z-0 cursor-default"
+                class="mx-auto aspect-photo w-full object-cover object-bottom md:mx-0"
+                :file="caseStudies.file"
+                sizes="2xl:800px xl:615px lg:512px 410px"
+                :with-sound-control="false"
+            />
+            <h3 class="subheading-font mt-4 text-4xl">
+                {{ caseStudies.title }}
+            </h3>
+            <hr class="my-2 w-full border-t border-website-accent" />
+            <p>{{ caseStudies.description }}</p>
+        </div>
+        <DefaultButton
+            title="Visit Portfolio"
+            to="portfolio"
+            class="mx-auto mt-12"
+            :dark="true"
+        />
+    </section>
     <article class="mx-8 mb-32 lg:mx-32">
         <Markdown
             :markdown-string="`## ${faq.title!}`"
@@ -206,6 +234,9 @@
     const reelVideo = homeData.reelVideo!;
 
     const freebie = homeData.freebie;
+
+    const caseStudies = homeData.caseStudies;
+    console.log(caseStudies);
 
     const aboutMeTitleMarkdown = homeData.aboutMe.title!;
     const aboutMeDescriptionMarkdown = homeData.aboutMe.description!;

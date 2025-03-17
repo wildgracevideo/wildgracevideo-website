@@ -1,4 +1,5 @@
 ---
+title: Denver Video Production Company | Wild Grace Video
 description: Wild Grace Video Productions is a top Denver-based video production
   company specializing in hotel video production, outdoor product videos and
   adventure company videos. We're here to help you bring your brand to life and
@@ -221,7 +222,14 @@ aboutMeDescription: >-
 
 
   I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
-title: Denver Video Production Company | Wild Grace Video
+caseStudies:
+  file:
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-03-17T16:53:00.000Z
+    file: https://content.wildgracevideo.com/images/HomePage/vanessential_cropped.png
+  title: VAN ESSENTIAL
+  description: Outdoor Product Paid Ads + Instructional Videos
 trustedBrandLogos:
   - companyName: The Curtis Hotel
     altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
