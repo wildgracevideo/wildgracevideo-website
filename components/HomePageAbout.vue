@@ -27,10 +27,17 @@
                 :markdown-string="`## ${titleMarkdown}`"
                 component-class="no-default-format strong:font-semibold mb-12 block text-4xl lg:hidden lg:text-5xl text-center heading-font"
             />
-            <FileOrVideo
-                :file="fileConfig"
-                class="mx-auto mb-12 aspect-photo h-[80dvh] object-cover object-center lg:mb-0"
-            />
+            <div class="relative">
+                <FileOrVideo
+                    :file="stamp"
+                    class="absolute -right-12 -top-12 float-right h-40 w-40 opacity-30 md:-top-28 md:h-60 md:w-60"
+                    sizes="md:240px 160px"
+                />
+                <FileOrVideo
+                    :file="fileConfig"
+                    class="mx-auto mb-12 aspect-photo h-[80dvh] object-cover object-center lg:mb-0"
+                />
+            </div>
         </div>
     </article>
 </template>
@@ -43,5 +50,6 @@
         textMarkdown: string;
         fileConfig: FileInfo;
         aboutMeCta: string;
+        stamp: FileInfo;
     }>();
 </script>

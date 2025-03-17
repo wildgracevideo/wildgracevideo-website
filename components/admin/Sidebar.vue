@@ -47,7 +47,7 @@
             v-for="element in elements"
             :key="element.title"
             :to="element.to"
-            class="mx-auto mb-4 mt-8 flex w-fit items-center text-center text-white"
+            class="mx-auto mb-4 mt-8 flex w-fit items-center text-center text-website-off-white"
             @click="openMenu = !openMenu"
         >
             <component :is="element.icon" class="h-8 w-8" />

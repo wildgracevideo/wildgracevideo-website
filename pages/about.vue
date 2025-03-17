@@ -3,7 +3,7 @@
     <SchemaOrgWebPage type="AboutPage" :name="seoTitle" />
     <Markdown
         :markdown-string="`# ${pageTitle}`"
-        component-class="no-default-format mt-6 md:mt-12 md:mb-24 mb-12 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
+        component-class="no-default-format md:mb-24 mb-12 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
     />
     <div class="relative z-10 bg-website-off-white">
         <section

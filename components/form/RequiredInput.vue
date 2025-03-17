@@ -57,7 +57,7 @@
         type: 'text',
         dataMask: '',
         dataMaskTokens: '',
-        inputClass: 'bg-website-off-white',
+        inputClass: 'bg-website-background',
         errorMessage: '',
     });
 

@@ -135,9 +135,11 @@
                     v-if="socialMediaFile.endsWith('mpd')"
                     class="relative bottom-44 -mb-44 flex flex-col items-end gap-6 pr-8"
                 >
-                    <HeartIcon class="h-8 w-8 text-white" />
-                    <ChatBubbleOvalLeftIcon class="h-8 w-8 text-white" />
-                    <PaperAirplaneIcon class="h-8 w-8 text-white" />
+                    <HeartIcon class="h-8 w-8 text-website-off-white" />
+                    <ChatBubbleOvalLeftIcon
+                        class="h-8 w-8 text-website-off-white"
+                    />
+                    <PaperAirplaneIcon class="h-8 w-8 text-website-off-white" />
                 </div>
             </div>
         </div>

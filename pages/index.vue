@@ -7,10 +7,7 @@
         in-language="en-US"
         date-published="2024-02-28T22:13:39.520Z"
     />
-    <hr class="d-block h-2 border-website-off-black" />
-    <section
-        class="relative mx-auto mt-8 aspect-video w-[95%] bg-fixed md:w-4/5"
-    >
+    <section class="relative mx-auto aspect-video w-[95%] bg-fixed md:w-4/5">
         <AutoPlayStreamVideo
             video-id="reel-video"
             class="pointer-events-none relative z-0 h-full w-full cursor-default rounded-3xl"
@@ -30,12 +27,12 @@
             />
             <Markdown
                 :markdown-string="pageTagline"
-                component-class="mb-32 max-w-6xl md:text-left text-center md:mx-16 mx-4"
+                component-class="mb-16 max-w-6xl md:text-left text-center md:mx-16 mx-4"
             />
             <LinkButton
                 title="Visit Portfolio"
                 to="portfolio"
-                class="mx-auto mt-16 md:mx-16"
+                class="mx-auto md:mx-16"
             />
         </div>
         <FileOrVideo
@@ -110,9 +107,7 @@
                         :video-id="`home-highlight-video-element-${video.title}`"
                         @click="() => {}"
                     />
-                    <h3
-                        class="mb-12 text-center text-2xl underline decoration-1"
-                    >
+                    <h3 class="subheading-font mb-12 text-center text-2xl">
                         {{ video.title }}
                     </h3>
                 </NuxtLink>
@@ -122,14 +117,49 @@
             </div>
         </div>
     </section>
+    <section
+        class="mt-32 flex flex-col items-center justify-normal bg-website-tertiary px-16 py-20 text-website-off-white lg:flex-row lg:justify-between lg:px-32"
+    >
+        <h2
+            class="heading-font mb-16 text-6xl tracking-widest lg:mb-0 lg:-rotate-180 lg:text-9xl lg:writing-vertical"
+        >
+            {{ freebie.title }}
+        </h2>
+        <FileOrVideo
+            parent-class="pointer-events-none relative z-0 cursor-default"
+            class="mx-auto aspect-photo object-cover object-bottom md:mx-0"
+            :file="freebie.file.fileInfo"
+            sizes="64px"
+            :with-sound-control="false"
+        />
+        <div class="flex max-w-3xl flex-col gap-16 text-center">
+            <h3 class="subheading-font text-3xl lg:text-5xl">
+                {{ freebie.subheading }}
+            </h3>
+            <p>
+                {{ freebie.description }}
+            </p>
+            <DefaultButton
+                :title="freebie.ctaText"
+                :light="true"
+                :action="
+                    async () => {
+                        showFreebieModal = true;
+                    }
+                "
+                class="mx-auto"
+            />
+        </div>
+    </section>
     <HomePageAbout
         class="mb-36 mt-32 md:mt-48"
         :text-markdown="aboutMeDescriptionMarkdown"
         :title-markdown="aboutMeTitleMarkdown"
         :file-config="aboutMeFile"
         :about-me-cta="aboutMeCtaText"
+        :stamp="aboutMeStamp"
     />
-    <article class="bg-website-off-black text-website-off-white">
+    <article class="bg-website-tertiary text-website-off-white">
         <ImageGallery
             :items="howTo.steps"
             :gallery-title-markdown="`## ${howTo.title!}`"
@@ -151,6 +181,13 @@
             class="mb-10 w-full"
         />
     </article>
+
+    <FreebieModal
+        v-model="selectedFreebieModel"
+        :modal-title="`Get your ${selectedFreebieModel.freebieName}`"
+        :show-modal="showFreebieModal"
+        @dismiss="showFreebieModal = false"
+    />
 </template>
 
 <script setup lang="ts">
@@ -168,10 +205,13 @@
     const visitPortfolioFile = homeData.visitPortfolioFile!;
     const reelVideo = homeData.reelVideo!;
 
+    const freebie = homeData.freebie;
+
     const aboutMeTitleMarkdown = homeData.aboutMe.title!;
     const aboutMeDescriptionMarkdown = homeData.aboutMe.description!;
     const aboutMeFile = homeData.aboutMe.file! as FileInfo;
     const aboutMeCtaText = homeData.aboutMe.ctaText!;
+    const aboutMeStamp = homeData.aboutMe.stamp!;
 
     const trustedBrandLogos = homeData.trustedBrandLogos!;
     const videoHighlight = homeData.videoHighlight!;
@@ -180,6 +220,14 @@
     const howTo = homeData.howTo!;
 
     const faq = homeData.faq!;
+
+    const showFreebieModal = ref(false);
+
+    const selectedFreebieModel = {
+        freebieName: freebie.name,
+        fileName: freebie.fileName,
+        fileURL: freebie.fileURL,
+    };
 
     onMounted(async () => {
         const observer = new IntersectionObserver(

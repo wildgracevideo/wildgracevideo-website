@@ -3,14 +3,17 @@
         v-if="show"
         class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
     >
-        <div class="w-full max-w-lg rounded-lg bg-white p-6 shadow-lg">
-            <div class="mb-4 flex items-center justify-between border-b pb-2">
-                <h3 class="text-2xl font-semibold">{{ title }}</h3>
-                <button
-                    class="text-gray-500 hover:text-gray-800"
-                    @click="$emit('close')"
-                >
-                    <XMarkIcon class="h-8 w-8" />
+        <div
+            class="w-full max-w-lg rounded-lg bg-website-off-white p-6 text-website-tertiary shadow-lg"
+        >
+            <div
+                class="mb-4 flex items-center justify-between border-b border-website-tertiary pb-2"
+            >
+                <h3 class="subheading-font text-center text-2xl">
+                    {{ title }}
+                </h3>
+                <button class="hover:text-gray-800" @click="$emit('close')">
+                    <XMarkIcon class="h-8 w-8 text-website-tertiary" />
                 </button>
             </div>
             <div>

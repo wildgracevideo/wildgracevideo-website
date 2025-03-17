@@ -991,6 +991,41 @@ collections:
                       - label: 'Publication Date (Change only if changing the file)'
                         name: publicationDate
                         widget: 'datetime'
+                - label: 'About Me Stamp'
+                  widget: 'object'
+                  name: 'stamp'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+          - label: 'Freebie'
+            name: 'freebie'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Freebie Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Freebie Subheading'
+                  name: subheading
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Freebie description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                - label: 'Freebie Call to Action'
+                  name: 'ctaText'
+                  widget: string
+                - { label: 'Freebie Name', name: 'name', widget: 'string' }
+                - { label: 'File Name', name: 'fileName', widget: 'string' }
+                - { label: 'Freebie URL', name: 'fileURL', widget: 'string' }
+                - label: 'Freebie Icon'
+                  widget: 'object'
+                  name: 'file'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
           - label: 'Trusted Brand Title'
             name: 'trustedBrandTitle'
             widget: 'markdown'

@@ -52,7 +52,7 @@
                         video-id="overview-video"
                         class="mb-4 h-full w-full object-cover object-center"
                         sound-control-bottom-class="bottom-14 md:bottom-16"
-                        text-color-class="text-black"
+                        text-color-class="text-website-off-black"
                     />
                     <div
                         class="flex w-full flex-row justify-center gap-20 pb-8 text-center"
@@ -84,7 +84,7 @@
     >
         <ImagePreviewLazyVideo
             :video="video.videoInfo"
-            class="text-white"
+            class="text-website-off-white"
             sizes="lg:1300px md:1024px 768px"
             :full-screen-click="false"
         />

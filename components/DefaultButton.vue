@@ -1,31 +1,37 @@
 <template>
     <button
-        class="px-auto block h-14 w-60 rounded-xl border-2 text-xl"
-        :class="classes"
+        v-if="typeof action === 'string'"
+        :type="action"
+        :class="`${mainClasses} ${colorClasses} ${$attrs.class as string}`"
+    >
+        {{ title.toUpperCase() }}
+    </button>
+    <button
+        v-else
+        :class="`${mainClasses} ${colorClasses} ${$attrs.class as string}`"
         @click="action"
     >
-        {{ title }}
+        {{ title.toUpperCase() }}
     </button>
 </template>
 
 <script setup lang="ts">
     interface Props {
-        action: () => Promise<void>;
+        action: (() => Promise<void>) | ('reset' | 'submit' | 'button');
         title: string;
-        inverse?: boolean;
-        additonalClasses: string;
+        light?: boolean | undefined;
     }
     const props = withDefaults(defineProps<Props>(), {
-        inverse: false,
-        additonalClasses: '',
+        light: false,
     });
+
+    const mainClasses =
+        'flex h-8 w-fit items-center rounded-xl border-2 px-4 text-center text subheading-font';
 
     let colorClasses =
         'text-website-off-white border-website-primary bg-website-primary hover:text-website-primary hover:bg-website-off-white';
-    if (props.inverse === true) {
+    if (props.light) {
         colorClasses =
             'text-website-primary border-website-off-white bg-website-off-white hover:text-website-off-white hover:bg-website-primary';
     }
-
-    const classes = colorClasses + ' ' + props.additonalClasses;
 </script>

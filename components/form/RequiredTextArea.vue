@@ -36,7 +36,7 @@
     const props = withDefaults(defineProps<Props>(), {
         containerClass: '',
         hint: '',
-        inputClass: 'bg-website-off-white',
+        inputClass: 'bg-website-background',
     });
 
     const emit = defineEmits(['update:modelValue']);

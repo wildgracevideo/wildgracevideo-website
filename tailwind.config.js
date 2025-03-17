@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin';
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -81,5 +83,17 @@ export default {
             full: '100%',
         },
     },
-    plugins: [],
+    plugins: [
+        plugin(({ addUtilities }) => {
+            addUtilities({
+                '.writing-vertical': {
+                    'writing-mode': 'vertical-rl',
+                    '& sub': {
+                        bottom: '0',
+                        right: '0.25em',
+                    },
+                },
+            });
+        }),
+    ],
 };

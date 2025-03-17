@@ -67,7 +67,7 @@
         {
             soundControlBottomClass: 'bottom-12',
             videoId: '',
-            textColorClass: 'text-white',
+            textColorClass: 'text-website-off-white',
         }
     );
 

@@ -61,7 +61,7 @@
                 <DefaultButton
                     :title="buttonTitle"
                     :action="buyNow"
-                    additonal-classes="xl:mx-0 mx-auto"
+                    class="mx-auto xl:mx-0"
                 />
             </div>
         </div>
@@ -98,8 +98,8 @@
         <DefaultButton
             :title="buttonTitle"
             :action="buyNow"
-            :inverse="true"
-            additonal-classes="mx-auto mt-16"
+            :light="true"
+            class="mx-auto mt-16"
         />
     </section>
 </template>

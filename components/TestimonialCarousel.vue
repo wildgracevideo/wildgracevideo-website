@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex flex-row justify-between bg-website-accent py-36 align-middle"
+        class="mb-12 flex flex-row justify-between bg-website-secondary py-36 align-middle"
     >
         <button aria-label="Go to previous client testimonial">
             <ArrowLeftIcon

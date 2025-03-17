@@ -1,6 +1,6 @@
 <template>
     <footer
-        class="relative z-50 overflow-hidden bg-website-off-white pb-8 pt-8"
+        class="relative z-50 overflow-hidden bg-website-background pb-8 pt-8"
     >
         <p class="mb-6 text-center text-xl">CARLY KREIGER</p>
         <address class="mx-4 text-center text-xs italic">

@@ -18,6 +18,48 @@ visitPortfolioFile:
   publicationDate: 2025-03-15T21:25:00.000Z
   seoTitle: TODO
   seoDescription: TODO
+videoHighlight:
+  title: Inspire exploration for your customers
+  videos:
+    - publicationDate: 2024-02-27T19:52:06.039Z
+      title: BOUTIQUE HOTELS
+      description: Let us capture the essence of your boutique hotel by showcasing
+        your unique spaces and highlighting the beauty of your surroundings.
+        We’ll craft compelling visuals that will speak to your brand and
+        up-level your marketing for years to come.
+      video: https://content.wildgracevideo.com/Website-Home-Page/Boutique%20Hotels%20Thumbnail.mp4
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/boutique%20hotel%20photo-min.png
+      seoTitle: Denver Boutique Hotel Video Production | Luxury Accommodation Visuals
+      seoDescription: Explore our Denver boutique hotel video production services,
+        showcasing upscale stays, unique amenities & stunning interiors. Elevate
+        your brand with captivating visuals.
+      linkPath: /service-overview/hotels
+    - publicationDate: 2024-02-07T21:27:16.938Z
+      title: OUTDOOR PRODUCTS
+      description: Let's spotlight your outdoor gear with visuals that showcase their
+        top-notch quality and demonstrate their ideal use in the great outdoors.
+        Let our compelling imagery redefine your brand's marketing impact for
+        the long term.
+      video: https://content.wildgracevideo.com/Website-Home-Page/Outdoor%20Brands%20Thumbnail.mp4
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/outdoor%20product%20photo-min.png
+      seoTitle: Denver Outdoor Gear Video Production | Adventure Product Showcase
+      seoDescription: Discover our Denver outdoor gear video production, featuring
+        rugged equipment, camping essentials, hiking gear & more. Inspire your
+        audience with high-quality visuals.
+      linkPath: /service-overview/outdoor-product
+    - publicationDate: 2024-02-27T19:53:28.906Z
+      title: ADVENTURE TOUR COMPANIES
+      description: Get ready to flaunt your outdoor excursions with visuals that bring
+        out their thrill and showcase the excitement of your adventure. Our
+        compelling imagery will redefine your brand's marketing impact,
+        attracting thrill-seekers and enthusiasts for unforgettable experiences.
+      video: https://content.wildgracevideo.com/Website-Home-Page/Adventure%20Brands%20Thumbnail%20V2.mp4
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/adventure%20excursion%20photo-min.png
+      seoTitle: Denver Adventure Video Production | Thrilling Experience Showcase
+      seoDescription: Experience our Denver adventure video production, capturing
+        adrenaline-fueled activities, scenic trails, outdoor adventures & more.
+        Inspire action with compelling visuals.
+      linkPath: /service-overview/adventure-tour
 aboutMe:
   title: MEET YOUR ADVENTURE-LOVING FOUNDER & CINEMATOGRAPHER.
   description: >-
@@ -39,6 +81,11 @@ aboutMe:
       bringing your vision to life. Learn more about my journey!
     thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
   ctaText: More about me
+  stamp:
+    file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-19.png
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-03-17T16:03:00.000Z
 trustedBrandTitle: Trusted by
 howTo:
   title: TRUST THE PROCESS
@@ -88,6 +135,28 @@ howTo:
   seoTitle: How to create a video with Wild Grace Video
 thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
 aboutMeAltText: TODO
+freebie:
+  title: FREEBIE
+  subheading: SOCIAL MEDIA BINGO CARD
+  description: >-
+    Quick and easy content ideas for your brand that will give you that extra
+    push throughout the 
+
+    year, when you feel like you’re stuck on what to post and need some inspiration.
+  ctaText: DOWNLOAD HERE
+  file:
+    fileInfo:
+      file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
+      seoTitle: TODO
+      seoDescription: TODO
+      publicationDate: 2025-03-17T14:25:00.000Z
+    file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-03-17T15:55:00.000Z
+  name: Content Support Bingo Card
+  fileName: WildGraceVideoContentSupportBingoCard.pdf
+  fileURL: https://content.wildgracevideo.com/freebies/ContentSupportBingoCard.pdf
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
 sitemap:
   include: true
@@ -105,7 +174,7 @@ testimonialQuotes:
       exceeded our expectations.
     author: Nathan Baller, Abode Outside
 faq:
-  title: "**FREQUENTLY ASKED QUESTIONS**"
+  title: FREQUENTLY ASKED QUESTIONS
   questions:
     - question: Do you offer both photo and video services?
       answer: We specialize in video production but can also offer photography
@@ -153,48 +222,6 @@ aboutMeDescription: >-
 
   I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
 title: Denver Video Production Company | Wild Grace Video
-videoHighlight:
-  title: Inspire exploration for your customers
-  videos:
-    - publicationDate: 2024-02-27T19:52:06.039Z
-      title: BOUTIQUE HOTELS
-      description: Let us capture the essence of your boutique hotel by showcasing
-        your unique spaces and highlighting the beauty of your surroundings.
-        We’ll craft compelling visuals that will speak to your brand and
-        up-level your marketing for years to come.
-      video: https://content.wildgracevideo.com/Website-Home-Page/Boutique%20Hotels%20Thumbnail.mp4
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/boutique%20hotel%20photo-min.png
-      seoTitle: Denver Boutique Hotel Video Production | Luxury Accommodation Visuals
-      seoDescription: Explore our Denver boutique hotel video production services,
-        showcasing upscale stays, unique amenities & stunning interiors. Elevate
-        your brand with captivating visuals.
-      linkPath: /service-overview/hotels
-    - publicationDate: 2024-02-07T21:27:16.938Z
-      title: OUTDOOR PRODUCTS
-      description: Let's spotlight your outdoor gear with visuals that showcase their
-        top-notch quality and demonstrate their ideal use in the great outdoors.
-        Let our compelling imagery redefine your brand's marketing impact for
-        the long term.
-      video: https://content.wildgracevideo.com/Website-Home-Page/Outdoor%20Brands%20Thumbnail.mp4
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/outdoor%20product%20photo-min.png
-      seoTitle: Denver Outdoor Gear Video Production | Adventure Product Showcase
-      seoDescription: Discover our Denver outdoor gear video production, featuring
-        rugged equipment, camping essentials, hiking gear & more. Inspire your
-        audience with high-quality visuals.
-      linkPath: /service-overview/outdoor-product
-    - publicationDate: 2024-02-27T19:53:28.906Z
-      title: ADVENTURE TOUR COMPANIES
-      description: Get ready to flaunt your outdoor excursions with visuals that bring
-        out their thrill and showcase the excitement of your adventure. Our
-        compelling imagery will redefine your brand's marketing impact,
-        attracting thrill-seekers and enthusiasts for unforgettable experiences.
-      video: https://content.wildgracevideo.com/Website-Home-Page/Adventure%20Brands%20Thumbnail%20V2.mp4
-      thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/adventure%20excursion%20photo-min.png
-      seoTitle: Denver Adventure Video Production | Thrilling Experience Showcase
-      seoDescription: Experience our Denver adventure video production, capturing
-        adrenaline-fueled activities, scenic trails, outdoor adventures & more.
-        Inspire action with compelling visuals.
-      linkPath: /service-overview/adventure-tour
 trustedBrandLogos:
   - companyName: The Curtis Hotel
     altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering

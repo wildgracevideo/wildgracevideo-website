@@ -90,12 +90,11 @@
             <div class="col-span-1 flex justify-center md:col-span-2">
                 <button
                     type="submit"
-                    class="contact-scroll-observable mb-12 border-2 border-website-off-black bg-website-off-white px-16 py-3 text-xl text-website-off-black"
+                    class="contact-scroll-observable subheading-font mb-12 flex h-8 w-fit items-center rounded-xl border-2 border-website-off-white bg-website-off-white px-4 text-center text-website-primary"
                     :class="{
                         'opacity-50': sendingForm,
                         'hover:text-website-off-white': !sendingForm,
-                        'hover:bg-website-off-black': !sendingForm,
-                        'hover:border-website-off-white': !sendingForm,
+                        'hover:bg-website-primary': !sendingForm,
                         'cursor-default': sendingForm,
                         'fade-out': !sendingForm && !formError,
                     }"

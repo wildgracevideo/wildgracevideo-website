@@ -1,5 +1,5 @@
 <template>
-    <div class="flex min-h-screen flex-col bg-website-off-white">
+    <div class="flex min-h-screen flex-col bg-website-background">
         <HeaderTopBar v-model="openMenu" />
         <main v-if="!openMenu" class="relative mb-auto">
             <slot />

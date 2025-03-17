@@ -1,11 +1,11 @@
 <template>
     <template v-if="true">
         <NuxtLink
-            class="px-auto flex h-12 w-fit cursor-pointer items-center rounded-xl border-2 px-4 text-center"
+            class="subheading-font flex h-8 w-fit cursor-pointer items-center rounded-xl border-2 px-4 text-center"
             :class="`${colorClasses} ${$attrs.class as string}`"
             :to="to"
         >
-            <p class="mx-auto">{{ title }}</p>
+            <p class="mx-auto">{{ title.toUpperCase() }}</p>
         </NuxtLink>
     </template>
 </template>

@@ -7,13 +7,13 @@
         class="bg-img mb-16 flex w-full flex-col items-center justify-center gap-8"
     >
         <h1
-            class="subheading-font max-w-md text-center text-4xl tracking-wide text-white"
+            class="subheading-font max-w-md text-center text-4xl tracking-wide text-website-off-white"
         >
             Welcome to the place where you get all of the content creation
             resources right at your fingertips.
         </h1>
         <ChevronDownIcon
-            class="h-16 w-16 cursor-pointer text-white"
+            class="h-16 w-16 cursor-pointer text-website-off-white"
             @click="scrollDown"
         />
     </div>
@@ -68,68 +68,18 @@
             </p>
             <p v-else class="mx-auto max-w-sm">FREE</p>
         </div>
-        <Modal
-            :show="showFreebieModal"
-            :title="modalTitle"
-            @close="() => (showFreebieModal = false)"
-        >
-            <form class="mt-20" @submit.prevent="submitFreebieForm">
-                <div class="grid grid-cols-3 gap-y-4">
-                    <label
-                        for="firstName"
-                        class="text-left text-2xl text-website-primary"
-                        >First Name:
-                    </label>
-                    <input
-                        id="firstName"
-                        v-model="firstName"
-                        class="col-span-2 rounded border border-website-primary"
-                        type="text"
-                        name="firstName"
-                        required
-                    />
-                    <label
-                        for="lastName"
-                        class="text-left text-2xl text-website-primary"
-                        >Last Name:
-                    </label>
-                    <input
-                        id="lastName"
-                        v-model="lastName"
-                        class="col-span-2 rounded border border-website-primary"
-                        type="text"
-                        name="lastName"
-                        required
-                    />
-                    <label
-                        for="email"
-                        class="text-left text-2xl text-website-primary"
-                        >Email:
-                    </label>
-                    <input
-                        id="email"
-                        v-model="email"
-                        class="col-span-2 rounded border border-website-primary"
-                        type="email"
-                        name="email"
-                        required
-                    />
-                </div>
-
-                <hr class="my-8 h-px border-0 bg-gray-300" />
-                <button
-                    type="submit"
-                    class="ml-auto block rounded border-2 border-website-off-black bg-website-primary px-6 py-2 text-website-off-white hover:bg-website-off-white hover:text-website-off-black"
-                >
-                    Submit
-                </button>
-            </form>
-        </Modal>
+        <FreebieModal
+            v-model="selectedFreebie"
+            :show-modal="showFreebieModal"
+            :modal-title="modalTitle"
+            @dismiss="showFreebieModal = false"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
     import { ChevronDownIcon } from '@heroicons/vue/20/solid';
+    import { type FreebieModel } from '~/components/FreebieModal.vue';
 
     const heading: Ref<HTMLElement | null> = ref(null);
 
@@ -147,17 +97,19 @@
 
     const showFreebieModal = ref(false);
 
-    const email = ref('');
-
-    const firstName = ref('');
-
-    const lastName = ref('');
-
     const modalTitle = ref('');
 
-    const selectedFreebie = reactive({});
+    const selectedFreebie: Ref<FreebieModel> = ref({
+        freebieName: '',
+        fileName: '',
+        fileURL: '',
+    });
 
-    const loadFreebieModal = (shopItem) => {
+    const loadFreebieModal = (shopItem: {
+        productName: string;
+        fileName: string;
+        fileURL: string;
+    }) => {
         modalTitle.value = `Get your ${shopItem.productName}`;
         showFreebieModal.value = true;
         selectedFreebie.value = {
@@ -165,42 +117,6 @@
             fileName: shopItem.fileName,
             fileURL: shopItem.fileURL,
         };
-    };
-
-    const submitFreebieForm = async () => {
-        console.log({
-            email: email.value,
-            freebieName: selectedFreebie.value.fileName,
-        });
-        await $fetch(`/api/forms/freebie`, {
-            method: 'POST',
-            body: {
-                email: email.value,
-                firstName: firstName.value,
-                lastName: lastName.value,
-                freebieName: selectedFreebie.value.freebieName,
-            },
-        });
-        showFreebieModal.value = false;
-        const file = selectedFreebie.value.fileURL;
-        const fileName = selectedFreebie.value.fileName;
-        const response = await fetch(file);
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        const blob = await response.blob();
-        const blobUrl = URL.createObjectURL(blob);
-
-        const link = document.createElement('a');
-        link.href = blobUrl;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-
-        document.body.removeChild(link);
-        URL.revokeObjectURL(blobUrl);
     };
 
     const shopItems =
