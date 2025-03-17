@@ -26,14 +26,17 @@
         <div class="col-span-3 mx-8">
             <Markdown
                 :markdown-string="`# ${pageTitle}`"
-                component-class="no-default-format heading-font text-4xl md:text-5xl md:text-left text-center mb-8"
+                component-class="no-default-format heading-font text-4xl md:text-5xl md:text-left text-center mb-8 md:mx-16 mx-4"
             />
-            <NuxtLink
-                class="px-auto mx-auto mt-16 hidden h-12 w-32 cursor-pointer items-center rounded-xl border-2 border-website-primary bg-website-primary text-center text-website-off-white hover:bg-website-off-white hover:text-website-primary lg:flex"
-                to="/portfolio"
-            >
-                <p class="mx-auto">Visit Portfolio</p>
-            </NuxtLink>
+            <Markdown
+                :markdown-string="pageTagline"
+                component-class="mb-32 max-w-6xl md:text-left text-center md:mx-16 mx-4"
+            />
+            <LinkButton
+                title="Visit Portfolio"
+                to="portfolio"
+                class="mx-auto mt-16 md:mx-16"
+            />
         </div>
         <FileOrVideo
             parent-class="pointer-events-none relative z-0 cursor-default mx-auto col-span-2"
@@ -124,14 +127,15 @@
         :text-markdown="aboutMeDescriptionMarkdown"
         :title-markdown="aboutMeTitleMarkdown"
         :file-config="aboutMeFile"
+        :about-me-cta="aboutMeCtaText"
     />
-    <article class="bg-website-primary text-website-off-white">
+    <article class="bg-website-off-black text-website-off-white">
         <ImageGallery
             :items="howTo.steps"
             :gallery-title-markdown="`## ${howTo.title!}`"
-            class="w-full pb-16"
-            cta-text="View Portfolio"
-            cta-link="/portfolio"
+            class="w-full"
+            cta-text="Contact"
+            cta-link="/get-started"
         />
     </article>
     <article class="mx-8 mb-32 lg:mx-32">
@@ -147,25 +151,10 @@
             class="mb-10 w-full"
         />
     </article>
-    <BackgroundImageLazy
-        component="section"
-        class="grid h-full min-h-14 w-full grid-cols-1 items-center justify-center gap-x-10 bg-full px-8 lg:grid-cols-3"
-        :background-image="testimonials.backgroundImage"
-        :background-image-vertical="testimonials.backgroundImageVertical"
-    >
-        <FileOrVideo
-            v-for="file in testimonials.files!"
-            :key="file.file"
-            :file="file"
-            :is-lazy="true"
-            sizes="2xl:800px xl:460px 400px"
-            class="mx-auto mb-4 mt-8 aspect-video bg-fixed lg:mx-0 lg:mt-0"
-        />
-    </BackgroundImageLazy>
 </template>
 
 <script setup lang="ts">
-    import type { FileConfig } from '~/components/FileOrVideo.vue';
+    import type { FileInfo } from '../components/FileOrVideo.vue';
 
     const { data } = await useAsyncData('home', () =>
         queryContent('home').find()
@@ -173,6 +162,7 @@
 
     const homeData = data!.value![0]!;
     const title = homeData.title!;
+    const pageTagline = homeData.pageTagline!;
     const description = homeData.description;
     const pageTitle = homeData.pageTitle!;
     const visitPortfolioFile = homeData.visitPortfolioFile!;
@@ -180,7 +170,8 @@
 
     const aboutMeTitleMarkdown = homeData.aboutMe.title!;
     const aboutMeDescriptionMarkdown = homeData.aboutMe.description!;
-    const aboutMeFile = homeData.aboutMe.file! as FileConfig;
+    const aboutMeFile = homeData.aboutMe.file! as FileInfo;
+    const aboutMeCtaText = homeData.aboutMe.ctaText!;
 
     const trustedBrandLogos = homeData.trustedBrandLogos!;
     const videoHighlight = homeData.videoHighlight!;
@@ -189,8 +180,6 @@
     const howTo = homeData.howTo!;
 
     const faq = homeData.faq!;
-
-    const testimonials = homeData.testimonials!;
 
     onMounted(async () => {
         const observer = new IntersectionObserver(

@@ -45,6 +45,10 @@ export default {
                     'rgb(var(--color-website-secondary) / <alpha-value>)',
                 'website-accent':
                     'rgb(var(--color-website-accent) / <alpha-value>)',
+                'website-background':
+                    'rgb(var(--color-website-background) / <alpha-value>)',
+                'website-tertiary':
+                    'rgb(var(--color-website-tertiary) / <alpha-value>)',
             },
             aspectRatio: {
                 auto: 'auto',

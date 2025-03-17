@@ -1,7 +1,9 @@
 <template>
     <div>
         <h1 class="my-8 ml-8 text-2xl">Media Library</h1>
-        <div class="my-8 flex w-full flex-row justify-between pl-8 text-lg">
+        <div
+            class="my-8 flex w-full flex-row justify-between border-website-tertiary pl-8 text-lg"
+        >
             <div>
                 <button
                     v-if="currentFolder.length > 0"
@@ -53,7 +55,7 @@
 
             <template #name-data="{ row }">
                 <button
-                    class="cursor-pointer text-website-primary underline"
+                    class="cursor-pointer text-website-off-black underline"
                     @click="() => handleNameClick(row)"
                 >
                     {{ row.name }}
@@ -183,7 +185,7 @@
 
     const route = useRoute();
     const queryFolder = route.query.folder;
-    let folder = [];
+    let folder: string[] = [];
     if (queryFolder && queryFolder !== '/') {
         folder = queryFolder.split('/');
     }
@@ -202,7 +204,7 @@
 
     const createFolderName = ref('');
 
-    const folderNameError = ref(false);
+    const folderNameError: Ref<string | boolean> = ref(false);
 
     const showShakaModal = ref(false);
 
@@ -597,7 +599,7 @@
 
     const videoElement = ref<HTMLVideoElement>();
 
-    let copyToClipboard = () => {};
+    let copyToClipboard = (_: string) => {};
     onMounted(async () => {
         if (window.shaka) {
             await loadShaka();

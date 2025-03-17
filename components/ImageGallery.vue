@@ -1,66 +1,80 @@
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2">
-        <div class="flex flex-col justify-between">
-            <Markdown
-                v-if="!!galleryTitleMarkdown"
-                :markdown-string="galleryTitleMarkdown"
-                component-class="no-default-format pt-12 text-2xl md:text-4xl text-center"
-            />
-
-            <div ref="selectedHTMLItem" class="p-16">
-                <Markdown
-                    :key="title"
-                    :markdown-string="title"
-                    component-class="no-default-format strong:font-semibold mb-8 text-2xl mx-auto text-center"
-                />
-                <Markdown
-                    :key="title"
-                    :markdown-string="description"
-                    component-class="text-center"
-                />
-                <NuxtLink
-                    v-if="ctaLink && ctaText"
-                    :to="ctaLink"
-                    class="text-primary mx-auto mt-8 block text-center underline"
-                    >{{ ctaText }}</NuxtLink
-                >
-            </div>
-            <div class="mx-auto mb-8 flex flex-row gap-8">
-                <ArrowLongLeftIcon
-                    class="h-8 w-8 cursor-pointer"
-                    @click="decrement"
-                />
-                <p class="pt-1">{{ selectedItem + 1 }} / {{ items.length }}</p>
-                <ArrowLongRightIcon
-                    class="h-8 w-8 cursor-pointer"
-                    @click="increment"
-                />
-            </div>
-        </div>
         <div ref="fileElement" class="fade-in-quicker">
             <FileOrVideo
-                parent-class="pointer-events-none relative z-0 cursor-default px"
+                parent-class="pointer-events-none relative z-0 cursor-default"
                 class="aspect-vertical h-dvh w-full object-cover object-center"
                 :file="items[selectedItem].fileInfo"
                 sizes="2xl:1000px xl:768px lg:640px md:512px sm:384px 320px"
                 :with-sound-control="false"
             />
         </div>
+        <div class="flex flex-row">
+            <div class="ml-8 flex h-full flex-col justify-center">
+                <ChevronLeftIcon
+                    class="h-6 w-6 cursor-pointer"
+                    @click="decrement"
+                />
+            </div>
+            <div class="flex flex-col justify-between">
+                <Markdown
+                    v-if="!!galleryTitleMarkdown"
+                    :markdown-string="galleryTitleMarkdown"
+                    component-class="no-default-format pt-12 text-2xl md:text-5xl text-center heading-font"
+                />
+                <div ref="selectedHTMLItem" class="p-16">
+                    <Markdown
+                        :key="title"
+                        :markdown-string="`### ${selectedItem + 1}. ${title}`"
+                        component-class="no-default-format mb-12 text-3xl mx-auto subheading-font"
+                    />
+                    <Markdown
+                        :key="title"
+                        :markdown-string="description"
+                        component-class="text-center"
+                    />
+                    <LinkButton
+                        v-if="ctaLink && ctaText"
+                        :title="ctaText"
+                        class="mx-auto mt-16"
+                        :to="ctaLink"
+                        :light="true"
+                    />
+                </div>
+                <div class="mx-auto mb-8 flex flex-row gap-4">
+                    <div
+                        v-for="i in items.length"
+                        :key="`${i}-image-gallery-icon`"
+                        class="h-2 w-2 rounded-full border border-website-off-white"
+                        :class="{
+                            'bg-website-off-white': i - 1 === selectedItem,
+                        }"
+                    ></div>
+                </div>
+            </div>
+            <div class="mr-8 flex h-full flex-col justify-center">
+                <ChevronRightIcon
+                    class="h-6 w-6 cursor-pointer"
+                    @click="increment"
+                />
+            </div>
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
     import {
-        ArrowLongLeftIcon,
-        ArrowLongRightIcon,
+        ChevronLeftIcon,
+        ChevronRightIcon,
     } from '@heroicons/vue/24/outline';
-    import type { FileConfig } from '~/components/FileOrVideo.vue';
+    import type { FileInfo } from '~/components/FileOrVideo.vue';
+    import LinkButton from './LinkButton.vue';
 
     const selectedItem = ref(0);
     const props = defineProps<{
         galleryTitleMarkdown: string;
         items: {
-            fileInfo: FileConfig;
+            fileInfo: FileInfo;
             title: string;
             description: string;
         }[];

@@ -6,13 +6,21 @@
         :message="notification.message"
     />
     <RecaptchaLoader />
-    <div class="relative z-50 bg-website-off-black py-16">
-        <h2
-            class="mb-6 text-center text-4xl font-semibold text-website-off-white"
+    <div
+        class="relative z-50 bg-website-off-black py-16 [&_input]:placeholder-website-secondary"
+    >
+        <div
+            class="mb-24 flex w-full flex-row items-center"
             :class="{ hidden: !showForm }"
         >
-            INQUIRE
-        </h2>
+            <h2
+                class="heading-font px-8 text-center text-4xl font-semibold text-website-off-white"
+                :class="{ hidden: !showForm }"
+            >
+                CONTACT
+            </h2>
+            <div class="h-[1px] flex-grow bg-website-off-white" />
+        </div>
         <h2
             class="relative top-28 text-center text-3xl text-website-off-white"
             :class="{

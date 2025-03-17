@@ -1,5 +1,5 @@
 <template>
-    <div class="border-b border-slate-400">
+    <div class="border-b border-website-tertiary">
         <button
             class="flex w-full items-center justify-between py-8"
             @click="toggleAccordion"
