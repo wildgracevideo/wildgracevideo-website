@@ -20,18 +20,18 @@
                 <Markdown
                     v-if="!!galleryTitleMarkdown"
                     :markdown-string="galleryTitleMarkdown"
-                    component-class="no-default-format pt-12 text-2xl md:text-5xl text-center heading-font"
+                    component-class="no-default-format pt-12 text-2xl md:text-5xl md:text-left text-center heading-font"
                 />
                 <div ref="selectedHTMLItem" class="p-16">
                     <Markdown
                         :key="title"
                         :markdown-string="`### ${selectedItem + 1}. ${title}`"
-                        component-class="no-default-format mb-12 text-3xl mx-auto subheading-font"
+                        component-class="no-default-format mb-12 md:text-4xl text-xl mx-auto subheading-font"
                     />
                     <Markdown
                         :key="title"
                         :markdown-string="description"
-                        component-class="text-center"
+                        component-class="md:text-left text-center md:text-lg text-base"
                     />
                     <DefaultButton
                         v-if="ctaLink && ctaText"

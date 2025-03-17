@@ -75,6 +75,9 @@ export default {
             lineHeight: {
                 14: '3.5rem',
             },
+            width: {
+                0.25: '1px',
+            },
         },
         transitionProperty: {
             top: 'top',

@@ -120,11 +120,14 @@
     <section
         class="mt-32 flex flex-col items-center justify-normal bg-website-tertiary px-16 py-20 text-website-off-white lg:flex-row lg:justify-between lg:px-32"
     >
-        <h2
-            class="heading-font mb-16 text-6xl tracking-widest lg:mb-0 lg:-rotate-180 lg:text-9xl lg:writing-vertical"
-        >
-            {{ freebie.title }}
-        </h2>
+        <div class="flex h-full flex-row items-stretch">
+            <h2
+                class="heading-font mb-16 text-6xl tracking-widest lg:mb-0 lg:-rotate-180 lg:text-9xl lg:writing-vertical"
+            >
+                {{ freebie.title }}
+            </h2>
+            <div class="ml-2 hidden h-auto w-0.25 bg-website-accent md:block" />
+        </div>
         <FileOrVideo
             parent-class="pointer-events-none relative z-0 cursor-default"
             class="mx-auto aspect-photo object-cover object-bottom md:mx-0"
@@ -171,7 +174,7 @@
     <section class="bg-website-primary p-16 text-website-off-white">
         <h2 class="mb-16 text-2xl">
             DISCOVER
-            <span class="subheading-font mt-4 block text-4xl"
+            <span class="subheading-font mt-4 block text-5xl"
                 >REAL CLIENTS</span
             >
         </h2>
@@ -236,7 +239,6 @@
     const freebie = homeData.freebie;
 
     const caseStudies = homeData.caseStudies;
-    console.log(caseStudies);
 
     const aboutMeTitleMarkdown = homeData.aboutMe.title!;
     const aboutMeDescriptionMarkdown = homeData.aboutMe.description!;
