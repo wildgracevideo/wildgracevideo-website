@@ -77,11 +77,14 @@ videoHighlight:
 aboutMe:
   title: MEET YOUR ADVENTURE-LOVING FOUNDER & CINEMATOGRAPHER.
   description: >-
-    Wild Grace Video is an outdoor and travel brand video production company
-    based in Denver, Colorado.
+    Hey, I’m Carly! My journey into this all started pretty casually, making fun
+    videos of my travels as keepsakes for me and my friends.
 
 
-    We help outdoor and travel-related brands, like boutique hotels, outdoor gear companies, and adventure tour companies, create a visual identity that inspires their consumers to get outside, romanticize life, and experience the world. Our style is adventurous, inspiring, and organic.
+    I quickly realized I felt at home in these moments, capturing stories of adventures, people, and new places. I started working for an agency but left to pursue work in my niche - the outdoor space.
+
+
+    I love to travel, ski, and go to Red Rocks concerts, but there’s some more I’d love to share about myself behind the scenes...
   image: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
   imageName: TODO
   altText: TODO
@@ -93,12 +96,12 @@ aboutMe:
     seoDescription: Get to know the owner of our Denver video production company, a
       passionate visual storyteller and adventure enthusiast dedicated to
       bringing your vision to life. Learn more about my journey!
-    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
-  ctaText: More about me
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-02.png
+  ctaText: READ MORE
   stamp:
     file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-19.png
-    seoTitle: TODO
-    seoDescription: TODO
+    seoTitle: Logo for Wild Grace Productions
+    seoDescription: Logo stamp for Wild Grace Productions
     publicationDate: 2025-03-17T16:03:00.000Z
 freebie:
   title: FREEBIE
