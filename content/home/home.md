@@ -212,32 +212,54 @@ trustedBrandLogos:
 faq:
   title: FREQUENTLY ASKED QUESTIONS
   questions:
-    - question: Do you offer both photo and video services??
-      answer: We specialize in video production but can also offer photography
-        services upon request. Whether you're seeking a stunning video
-        production, captivating photography, or a combination of both, we’re
-        committed to meeting your creative needs and bringing your vision to
-        life.
-    - question: What is the turnaround time?
-      answer: Turnaround time varies based on the project scope and we will provide an
-        estimated timeline during the Discovery Call. However, the majority of
-        our projects have a 2-week turnaround time from the last shoot date.
-    - question: How involved are you in the planning and storyboarding process?
-      answer: We are adaptable to your preferences. Typically, we take the lead in
-        planning and storyboarding based on the insights gathered during our
-        discovery call and pre-production meeting. However, we welcome your
-        involvement at any level—whether you prefer a hands-on approach in
-        planning every detail or entrusting us to handle the creative process,
-        we're here to accommodate your needs and vision.
-    - question: Are we able to select the music for our video?
-      answer: Typically, we curate music based on our expertise and the flow of the
-        editing process. We have access to a wide range of quality, royalty-free
-        tracks from a subscription platform. However, we value your preferences.
-        If you have specific genre ideas or would like to be presented with song
-        options, we're more than happy to provide you with a selection to choose
-        from. Otherwise, rest assured that we'll select music that complements
-        the video seamlessly, drawing from my experience and creative instincts
-        which have been successful in past projects.
+    - question: Do you offer both video and photo services?
+      answer: Yes. while my primary focus is video production, I also offer
+        professional photography as an add-on service. This is ideal for brands
+        that need both video content and high-quality images for their website,
+        social media, and marketing materials.
+    - question: How much does a video project cost?
+      answer: Pricing depends on the scope of the project, the number of videos, and
+        the complexity of the shoot. I offer quarterly retainer options, one-off
+        packages, and consulting to fit different business needs. View the
+        Services Page for my starting at rates.
+    - question: How long does the video production process take?
+      answer: |-
+        The timeline varies based on the project, but typically:
+
+
+        Strategy Consult: 1 week
+        Pre-production: 1 week
+        Filming: 1-2 days (depending on scope)
+        Editing: 1-2 weeks
+
+
+        I’ll provide a clear timeline once we understand your project needs.
+    - question: Do you travel for shoots?
+      answer: Yes! I’m based in Denver, CO, but I work with brands across the U.S. and
+        internationally. Travel fees may apply for locations outside the
+        standard service area.
+    - question: Do you offer monthly or quarterly content packages?
+      answer: Yes, I offer ongoing content creation packages for brands that need
+        fresh video content every month. The shoots take place once per quarter,
+        but enough content is captured during those shoots and are delivered
+        strategically every month. This is ideal for brands looking to build a
+        consistent social media presence. Check out my quarterly packages within
+        the Adventure Content Partnership here.
+    - question: How do we get started?
+      answer: >-
+        It’s simple! Here’s how the process works:
+
+
+
+        1. Fill out my [contact form](https://www.wildgracevideo.com/get-started) to get your Discovery Call scheduled.
+
+        2. I’ll finalize a proposal based on what we’ve discussed.
+
+        3. Once approved, we schedule your shoot and get your content out there. 
+
+
+
+        Ready to create content that stands out? [Book your call](https://www.wildgracevideo.com/get-started) today!
 aboutMeDescription: >-
   I'm Carly, and creating videos is my thing. After graduating from the
   University of Vermont (Go Catamounts!) I made the decision to pack my bags and
