@@ -113,7 +113,6 @@
         <TestimonialCarousel
             v-if="testimonials"
             :testimonials="testimonials.clientTestimonials"
-            class="bg-website-off-black text-website-secondary"
         />
     </section>
 

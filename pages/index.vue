@@ -126,7 +126,9 @@
             >
                 {{ freebie.title }}
             </h2>
-            <div class="ml-2 hidden h-auto w-0.25 bg-website-accent md:block" />
+            <div
+                class="ml-2 hidden w-0.25 basis-full bg-website-accent md:block"
+            />
         </div>
         <FileOrVideo
             parent-class="pointer-events-none relative z-0 cursor-default"
