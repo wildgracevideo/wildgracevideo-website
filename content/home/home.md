@@ -119,12 +119,12 @@ freebie:
       seoDescription: TODO
       publicationDate: 2025-03-17T14:25:00.000Z
     file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
-    seoTitle: TODO
-    seoDescription: TODO
+    seoTitle: Freebie icon for Wild Grace Productions
+    seoDescription: Freebie icon for Wild Grace Productions
     publicationDate: 2025-03-17T15:55:00.000Z
   name: Content Support Bingo Card
   fileName: WildGraceVideoContentSupportBingoCard.pdf
-  fileURL: https://content.wildgracevideo.com/freebies/ContentSupportBingoCard.pdf
+  fileURL: https://content.wildgracevideo.com/freebies/CONTENT_SUPPORT_BINGO_CARD.pdf
 caseStudies:
   file:
     seoTitle: TODO
