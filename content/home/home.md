@@ -169,7 +169,7 @@ howTo:
           maintain communication and transparency, ensuring the project aligns
           with your expectations.
         publicationDate: 2024-11-08T09:32:00.000Z
-    - title: Delivery
+    - title: DELIVERY
       description: "You’ll receive awe-inspiring content that will make your audience
         think: “I’ve GOT to be there!”"
       fileInfo:
