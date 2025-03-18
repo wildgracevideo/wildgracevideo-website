@@ -137,48 +137,47 @@ trustedBrandTitle: Trusted by
 howTo:
   title: HOW I GET RESULTS
   steps:
-    - title: Discovery Call
+    - title: BUILD A STRATEGY
       description: This initial step is where we get to know you and your project. We
         discuss your vision, goals, and requirements. It's a collaborative
         conversation where we gather essential details to ensure we're aligned
         with your vision.
       fileInfo:
-        file: https://content.wildgracevideo.com/images/Website-Home-Page/discoverycall.jpg
-        seoTitle: "The Video Production Process: Step 1 Discovery Call"
-        seoDescription: "This Discovery call is where I get to know you and your
+        file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_4.jpg
+        seoTitle: "The Video Production Process: Step 1 Build a Strategy"
+        seoDescription: "This strategy session is where I get to know you and your
           project. We discuss your vision, goals, and requirements. "
         publicationDate: 2024-11-08T09:29:00.000Z
-    - title: Plan
-      description: Once we’ve understood your objectives, we begin the planning phase.
-        This involves crafting a detailed strategy, storyboard, and production
-        plan. We'll work together closely to finalize every aspect of the
-        project before moving forward.
+    - title: PRE-PRODUCTION
+      description: Based on our strategy session, I’ll handle all the video planning
+        and shoot logistics—completely done for you. No stress, no hassle.
       fileInfo:
-        file: https://content.wildgracevideo.com/images/Website-Home-Page/plan.png
-        seoTitle: "The Video Production Process: Step 2 Plan"
-        seoDescription: The planning phase involves crafting a detailed strategy,
+        file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_4.jpg
+        seoTitle: "The Video Production Process: Step 2 Pre-Production"
+        seoDescription: The pre-production phase involves crafting a detailed strategy,
           storyboard, and production plan.
         publicationDate: 2024-11-08T09:30:00.000Z
-    - title: Create + Deliver
-      description: >-
-        This is where the magic happens! We’ll bring the plans to life by
-        utilizing a wide range of cinematic equipment and leveraging my
-        expertise. Collaboration with industry experts may also come into play
-        to ensure the highest quality and creativity for your project.
-        Throughout this stage, we maintain communication and transparency,
-        ensuring the project aligns with your expectations.
-
-
-        Finally, we’ll deliver the finished product, ready to exceed your vision and goals.
+    - title: CONTENT CAPTURE
+      description: Cameras roll! We’ll capture all your content in one or more,
+        efficient shoot days.
       fileInfo:
-        file: https://content.wildgracevideo.com/images/Website-Home-Page/create.jpg
-        seoTitle: "The Video Production Process: Step 3 Create and Deliver"
+        file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_4.jpg
+        seoTitle: "The Video Production Process: Step 3 Content Capture"
         seoDescription: >
-          In the creation step I will utilize a wide range of cinematic
+          In the content capture step I will utilize a wide range of cinematic
           equipment and leveraging my expertise. Throughout this stage, I
           maintain communication and transparency, ensuring the project aligns
           with your expectations.
         publicationDate: 2024-11-08T09:32:00.000Z
+    - title: Delivery
+      description: "You’ll receive awe-inspiring content that will make your audience
+        think: “I’ve GOT to be there!”"
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_4.jpg
+        seoTitle: "The Video Production Process: Step 4 Delivery"
+        seoDescription: In the delivery step I will send over the ready-to-use content
+          for the client's social media, website, or other marketing use.
+        publicationDate: 2025-03-17T22:31:00.000Z
   seoTitle: How to create a video with Wild Grace Video
 thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
 aboutMeAltText: TODO
