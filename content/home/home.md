@@ -127,15 +127,15 @@ freebie:
   fileURL: https://content.wildgracevideo.com/freebies/CONTENT_SUPPORT_BINGO_CARD.pdf
 caseStudies:
   file:
-    seoTitle: TODO
-    seoDescription: TODO
+    seoTitle: Wild Grace Productions Video Marketing Case Study for VanEssential
+    seoDescription: Wild Grace Productions Video Marketing Case Study for VanEssential
     publicationDate: 2025-03-17T16:53:00.000Z
     file: https://content.wildgracevideo.com/images/HomePage/vanessential_cropped.png
-  title: VAN ESSENTIAL
+  title: VANESSENTIAL
   description: Outdoor Product Paid Ads + Instructional Videos
 trustedBrandTitle: Trusted by
 howTo:
-  title: TRUST THE PROCESS
+  title: HOW I GET RESULTS
   steps:
     - title: Discovery Call
       description: This initial step is where we get to know you and your project. We
