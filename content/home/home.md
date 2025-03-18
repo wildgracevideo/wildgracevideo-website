@@ -43,10 +43,8 @@ videoHighlight:
   videos:
     - publicationDate: 2024-02-27T19:52:06.039Z
       title: BOUTIQUE HOTELS
-      description: Let us capture the essence of your boutique hotel by showcasing
-        your unique spaces and highlighting the beauty of your surroundings.
-        We’ll craft compelling visuals that will speak to your brand and
-        up-level your marketing for years to come.
+      description: Expect a fully booked hotel filled with high-paying guests who love
+        their stay, leave glowing reviews, and keep coming back.
       video: https://content.wildgracevideo.com/Website-Home-Page/Boutique%20Hotels%20Thumbnail.mp4
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/boutique%20hotel%20photo-min.png
       seoTitle: Denver Boutique Hotel Video Production | Luxury Accommodation Visuals
@@ -55,11 +53,9 @@ videoHighlight:
         your brand with captivating visuals.
       linkPath: /service-overview/hotels
     - publicationDate: 2024-02-07T21:27:16.938Z
-      title: OUTDOOR PRODUCTS
-      description: Let's spotlight your outdoor gear with visuals that showcase their
-        top-notch quality and demonstrate their ideal use in the great outdoors.
-        Let our compelling imagery redefine your brand's marketing impact for
-        the long term.
+      title: OUTDOOR GEAR
+      description: Envision your outdoor gear as the top choice for adventurers,
+        driving massive sales and a loyal customer base.
       video: https://content.wildgracevideo.com/Website-Home-Page/Outdoor%20Brands%20Thumbnail.mp4
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/outdoor%20product%20photo-min.png
       seoTitle: Denver Outdoor Gear Video Production | Adventure Product Showcase
@@ -68,11 +64,9 @@ videoHighlight:
         audience with high-quality visuals.
       linkPath: /service-overview/outdoor-product
     - publicationDate: 2024-02-27T19:53:28.906Z
-      title: ADVENTURE TOUR COMPANIES
-      description: Get ready to flaunt your outdoor excursions with visuals that bring
-        out their thrill and showcase the excitement of your adventure. Our
-        compelling imagery will redefine your brand's marketing impact,
-        attracting thrill-seekers and enthusiasts for unforgettable experiences.
+      title: HIGH-END TOURS & RETREATS
+      description: Get sold-out in advance, happy customers, and a reputation as the
+        best in the industry.
       video: https://content.wildgracevideo.com/Website-Home-Page/Adventure%20Brands%20Thumbnail%20V2.mp4
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/adventure%20excursion%20photo-min.png
       seoTitle: Denver Adventure Video Production | Thrilling Experience Showcase
