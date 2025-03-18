@@ -68,7 +68,7 @@
     >
         <!-- lg:order-1 lg:order-2 -->
         <div
-            class="order-1 flex flex-col items-center justify-center bg-website-accent"
+            class="order-1 flex flex-col items-center justify-center bg-website-primary text-website-off-white"
             :class="{
                 'lg:order-1': index % 2 === 0,
                 'lg:ml-8': index % 2 === 0,
@@ -113,7 +113,7 @@
         <TestimonialCarousel
             v-if="testimonials"
             :testimonials="testimonials.clientTestimonials"
-            class="bg-website-off-black text-website-accent"
+            class="bg-website-off-black text-website-secondary"
         />
     </section>
 
@@ -135,9 +135,11 @@
                     v-if="socialMediaFile.endsWith('mpd')"
                     class="relative bottom-44 -mb-44 flex flex-col items-end gap-6 pr-8"
                 >
-                    <HeartIcon class="h-8 w-8 text-white" />
-                    <ChatBubbleOvalLeftIcon class="h-8 w-8 text-white" />
-                    <PaperAirplaneIcon class="h-8 w-8 text-white" />
+                    <HeartIcon class="h-8 w-8 text-website-off-white" />
+                    <ChatBubbleOvalLeftIcon
+                        class="h-8 w-8 text-website-off-white"
+                    />
+                    <PaperAirplaneIcon class="h-8 w-8 text-website-off-white" />
                 </div>
             </div>
         </div>

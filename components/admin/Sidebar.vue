@@ -1,6 +1,6 @@
 <template>
     <header
-        class="hidden min-h-dvh w-60 bg-website-accent text-website-off-black lg:block"
+        class="hidden min-h-dvh w-60 bg-website-secondary text-website-off-black lg:block"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
@@ -23,7 +23,7 @@
         </NuxtLink>
     </header>
     <header
-        class="flex h-16 w-full justify-between bg-website-accent text-website-primary lg:hidden"
+        class="flex h-16 w-full justify-between bg-website-secondary text-website-off-white lg:hidden"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
@@ -41,13 +41,13 @@
     </header>
     <section
         v-if="openMenu"
-        class="header-full-height bg-website-accent text-website-primary"
+        class="header-full-height bg-website-secondary text-website-off-white"
     >
         <NuxtLink
             v-for="element in elements"
             :key="element.title"
             :to="element.to"
-            class="mx-auto mb-4 mt-8 flex w-fit items-center text-center text-white"
+            class="mx-auto mb-4 mt-8 flex w-fit items-center text-center text-website-off-white"
             @click="openMenu = !openMenu"
         >
             <component :is="element.icon" class="h-8 w-8" />

@@ -4,57 +4,73 @@
 
 @layer base {
     :root {
-        --color-website-off-white: 250 249 249;
-        --color-website-off-black: 48 48 48;
-        --color-website-accent: 238 236 226;
-        --color-website-primary: 68 74 59;
-        --color-website-secondary: 37 49 31;
+        --color-website-off-white: 207 203 171;
+        /* --color-website-off-white: 234 233 215; */
+        --color-website-off-black: 30 29 25;
+        --color-website-accent: 231 232 98;
+        --color-website-primary: 118 116 74;
+        --color-website-secondary: 162 153 105;
+        --color-website-tertiary: 50 45 29;
+        --color-website-background: 234 233 215;
     }
 }
 
 html {
-    font-family: 'Cormorant', sans-serif;
-    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: rgb(var(--color-website-background));
+    color: rgb(var(--color-website-off-black));
 }
 
-.font-family-poppins {
-    font-family: 'Poppins', sans-serif;
+@font-face {
+    font-family: 'Montserrat';
+    src: url('https://content.wildgracevideo.com/Website-Main/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+    font-weight: 100 1000;
 }
 
-.font-family-optimus {
-    font-family: 'OptimusPrinceps', serif;
+@font-face {
+    font-family: 'Stylish Aesthetic';
+    src: url('https://content.wildgracevideo.com/Website-Main/Fonts/StylishAesthetic/stylishaesthetic-extralight-webfont.woff2');
+    font-weight: 200;
 }
 
-.font-family-playfair-display {
-    font-family: 'Playfair Display', serif;
+@font-face {
+    font-family: 'Article Millenium';
+    src:
+        url('https://content.wildgracevideo.com/Website-Main/Fonts/ArticleMillenium/article-millenium-webfont.woff2')
+            format('woff2 supports variations'),
+        url('https://content.wildgracevideo.com/Website-Main/Fonts/ArticleMillenium/article-millenium-webfont.woff2')
+            format('woff2-variations');
+    font-weight: 400;
 }
 
-.font-family-fredericka {
-    font-family: 'Fredericka the Great', serif;
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('https://content.wildgracevideo.com/Website-Main/Fonts/CormorantGaramond/CormorantGaramond-Italic-VariableFont_wght.ttf');
+    font-weight: 100 1000;
+    font-style: italic;
 }
 
-.font-family-cardo {
-    font-family: 'Cardo', sans-serif;
+.paragraph-font {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
-.font-family-brittany {
-    font-family: 'Brittany', sans-serif;
+.heading-font {
+    font-family: 'Stylish Aesthetic', serif;
+    font-weight: 200;
 }
 
-.font-family-bright-sunshine {
-    font-family: 'BrightSunshine', sans-serif;
+.subheading-font {
+    font-family: 'Article Millenium', sans-serif;
+    font-weight: 400;
 }
 
-.font-family-moontime {
-    font-family: 'Moontime', sans-serif;
-}
-
-.font-family-cormorant {
-    font-family: 'Cormorant', serif;
-}
-
-.font-family-cormorant-garamond {
+.accent-font {
     font-family: 'Cormorant Garamond', serif;
+    font-weight: 200;
+    font-style: italic;
 }
 
 body,
@@ -62,53 +78,6 @@ html,
 #__nuxt {
     height: 100%;
     scroll-behavior: smooth;
-}
-
-.grecaptcha-badge {
-    visibility: hidden;
-}
-
-/* latin */
-@font-face {
-    font-family: 'OptimusPrinceps';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(~/assets/fonts/OptimusPrinceps.ttf);
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-        U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
-        U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Samantha Melissa Marketing */
-@font-face {
-    font-family: 'Brittany';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(~/assets/fonts/BrittanySignature.ttf);
-    unicode-range: U+0053, U+0061, U+006D, U+006E, U+0074, U+0068, U+004D,
-        U+0072, U+006B, U+0065, U+0067, U+006C, U+0069, U+0073;
-}
-
-/* Only for X */
-@font-face {
-    font-family: 'BrightSunshine';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(~/assets/fonts/BrightSunshine.ttf);
-    unicode-range: U+0058;
-}
-
-/* The */
-@font-face {
-    font-family: 'Moontime';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(~/assets/fonts/MoonTime-Regular.ttf);
-    unicode-range: U+0054, U+0068, U+0065;
 }
 
 /* nuxt-ui is setting the ::selection pseudo element to be the primary color this resets it back to the system color */
@@ -125,34 +94,12 @@ html,
     stroke: green;
 }
 
-.rounded-oval {
-    border-radius: 50%;
-}
-
 .min-h-dvh {
     min-height: 100dvh;
 }
 
 .h-dvh {
     height: 100dvh;
-}
-
-.h-2dvh {
-    height: 200dvh;
-}
-
-.h-6dvh {
-    height: 600dvh;
-}
-
-.fade-in-left {
-    filter: blur(0);
-    animation: fadeInLeft 2s;
-}
-
-.fade-in-right {
-    filter: blur(0);
-    animation: fadeInRight 2s;
 }
 
 .fade-in {
@@ -244,69 +191,7 @@ html,
     }
 }
 
-@-webkit-keyframes grow {
-    0% {
-        font-size: 0;
-    }
-
-    100% {
-        font-size: 2.25rem;
-    }
-}
-
-@keyframes grow {
-    0% {
-        font-size: 0;
-    }
-
-    100% {
-        font-size: 2.25rem;
-    }
-}
-
-.grow-transition {
-    -webkit-animation: grow 2s forwards;
-    animation: grow 2s forwards;
-}
-
-.border-custom-green {
-    border-color: rgba(110, 132, 103, 0.5);
-}
-
-.border-y-16 {
-    border-top-width: 16px;
-    border-bottom-width: 16px;
-}
-
 .shadow-floating {
     box-shadow: 8px 8px 16px 16px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
-}
-
-.leading-14 {
-    line-height: 3.5rem;
-}
-
-.animation-delay-200 {
-    animation-delay: 200ms;
-}
-
-.animation-delay-400 {
-    animation-delay: 400ms;
-}
-
-.animation-delay-600 {
-    animation-delay: 600ms;
-}
-
-.animation-delay-800 {
-    animation-delay: 800ms;
-}
-
-.animation-delay-1000 {
-    animation-delay: 1000ms;
-}
-
-.animation-delay-1200 {
-    animation-delay: 1200ms;
 }

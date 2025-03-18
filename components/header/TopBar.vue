@@ -1,5 +1,6 @@
 <template>
     <header
+        class="subheading-font mb-8"
         :class="{
             'bg-website-primary': openMenu,
             'h-dvh': openMenu,
@@ -45,6 +46,8 @@
             :items="items"
             :cta-text="ctaText"
         />
+
+        <hr class="d-block h-2 border-website-off-black" />
     </header>
 </template>
 

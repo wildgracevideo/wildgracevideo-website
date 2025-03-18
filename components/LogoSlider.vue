@@ -1,6 +1,6 @@
 <template>
     <div
-        class="logos relative overflow-hidden whitespace-nowrap bg-website-off-white px-0 py-14"
+        class="logos relative overflow-hidden whitespace-nowrap bg-website-background px-0 py-14"
     >
         <!-- Heights and widths must match the logos-slide width defined below -->
         <div
@@ -86,24 +86,6 @@
             content: '';
             z-index: 2;
         }
-    }
-
-    .logos:before {
-        left: 0;
-        background: linear-gradient(
-            to left,
-            rgba(250, 249, 249, 0),
-            rgba(250, 249, 249, 1)
-        );
-    }
-
-    .logos:after {
-        right: 0;
-        background: linear-gradient(
-            to right,
-            rgba(250, 249, 249, 0),
-            rgba(250, 249, 249, 1)
-        );
     }
 
     .logos-slide {

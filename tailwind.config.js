@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin';
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -45,6 +47,10 @@ export default {
                     'rgb(var(--color-website-secondary) / <alpha-value>)',
                 'website-accent':
                     'rgb(var(--color-website-accent) / <alpha-value>)',
+                'website-background':
+                    'rgb(var(--color-website-background) / <alpha-value>)',
+                'website-tertiary':
+                    'rgb(var(--color-website-tertiary) / <alpha-value>)',
             },
             aspectRatio: {
                 auto: 'auto',
@@ -66,6 +72,12 @@ export default {
             translate: {
                 '1/20': '5%',
             },
+            lineHeight: {
+                14: '3.5rem',
+            },
+            width: {
+                0.25: '1px',
+            },
         },
         transitionProperty: {
             top: 'top',
@@ -74,5 +86,17 @@ export default {
             full: '100%',
         },
     },
-    plugins: [],
+    plugins: [
+        plugin(({ addUtilities }) => {
+            addUtilities({
+                '.writing-vertical': {
+                    'writing-mode': 'vertical-rl',
+                    '& sub': {
+                        bottom: '0',
+                        right: '0.25em',
+                    },
+                },
+            });
+        }),
+    ],
 };

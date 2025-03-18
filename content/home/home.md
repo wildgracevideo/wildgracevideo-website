@@ -1,9 +1,9 @@
 ---
-sitemap:
-  include: true
-  lastmod: 2024-09-14
-  loc: /
-  changefreq: monthly
+title: Denver Video Production Company | Wild Grace Video
+description: Wild Grace Video Productions is a top Denver-based video production
+  company specializing in hotel video production, outdoor product videos and
+  adventure company videos. We're here to help you bring your brand to life and
+  help you better connect with your audience.
 reelVideo:
   thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/Reel%20photo.jpg
   seoTitle: Denver Adventure & Travel Video Production | Explore Our Dynamic Portfolio
@@ -13,98 +13,14 @@ reelVideo:
     expertise.
   video: https://content.wildgracevideo.com/videos/HomePage/2024WebsiteReel/2024WebsiteReel.mpd
   publicationDate: 2024-02-28T22:13:00.000Z
-pageTitle: "**YOUR** *VIDEO CONTENT PARTNER* **FOR OUTDOOR, TRAVEL, AND
-  ADVENTURE BRANDS**"
-testimonialQuotes:
-  - quote: Carly was so great to work with! She listened to every detail I wanted to
-      be included, and took creative responsibility during the shoots to ensure
-      she had everything she needed.
-    author: Lauren Klein, Genesee Nutrition
-  - quote: Carly has great energy and enthusiasm, combined with maturity, knowledge
-      and skill in her field of work. The final product was very impressive and
-      exceeded our expectations.
-    author: Nathan Baller, Abode Outside
-aboutMe:
-  title: " **Forge meaningful connection with a like-minded community.**"
-  description: >-
-    Wild Grace Video is an outdoor and travel brand video production company
-    based in Denver, Colorado.
-
-
-    We help outdoor and travel-related brands, like boutique hotels, outdoor gear companies, and adventure tour companies, create a visual identity that inspires their consumers to get outside, romanticize life, and experience the world. Our style is adventurous, inspiring, and organic.
-  image: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
-  imageName: TODO
-  altText: TODO
-  file:
-    publicationDate: 2024-02-27T19:50:09.711Z
-    file: https://content.wildgracevideo.com/Website-Home-Page/about-me.mp4
-    seoTitle: "Meet the Owner: Denver Video Production | Passionate Visual
-      Storyteller & Adventure Enthusiast"
-    seoDescription: Get to know the owner of our Denver video production company, a
-      passionate visual storyteller and adventure enthusiast dedicated to
-      bringing your vision to life. Learn more about my journey!
-    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
-trustedBrandTitle: "**TRUSTED BY**"
-howTo:
-  title: "**THE PROCESS**"
-  steps:
-    - title: "**Step 1.** Discovery Call"
-      description: This initial step is where we get to know you and your project. We
-        discuss your vision, goals, and requirements. It's a collaborative
-        conversation where we gather essential details to ensure we're aligned
-        with your vision.
-      fileInfo:
-        file: https://content.wildgracevideo.com/images/Website-Home-Page/discoverycall.jpg
-        seoTitle: "The Video Production Process: Step 1 Discovery Call"
-        seoDescription: "This Discovery call is where I get to know you and your
-          project. We discuss your vision, goals, and requirements. "
-        publicationDate: 2024-11-08T09:29:00.000Z
-    - title: "**Step 2.** Plan"
-      description: Once we’ve understood your objectives, we begin the planning phase.
-        This involves crafting a detailed strategy, storyboard, and production
-        plan. We'll work together closely to finalize every aspect of the
-        project before moving forward.
-      fileInfo:
-        file: https://content.wildgracevideo.com/images/Website-Home-Page/plan.png
-        seoTitle: "The Video Production Process: Step 2 Plan"
-        seoDescription: The planning phase involves crafting a detailed strategy,
-          storyboard, and production plan.
-        publicationDate: 2024-11-08T09:30:00.000Z
-    - title: "**Step 3.** Create + Deliver"
-      description: >-
-        This is where the magic happens! We’ll bring the plans to life by
-        utilizing a wide range of cinematic equipment and leveraging my
-        expertise. Collaboration with industry experts may also come into play
-        to ensure the highest quality and creativity for your project.
-        Throughout this stage, we maintain communication and transparency,
-        ensuring the project aligns with your expectations.
-
-
-        Finally, we’ll deliver the finished product, ready to exceed your vision and goals.
-      fileInfo:
-        file: https://content.wildgracevideo.com/images/Website-Home-Page/create.jpg
-        seoTitle: "The Video Production Process: Step 3 Create and Deliver"
-        seoDescription: >
-          In the creation step I will utilize a wide range of cinematic
-          equipment and leveraging my expertise. Throughout this stage, I
-          maintain communication and transparency, ensuring the project aligns
-          with your expectations.
-        publicationDate: 2024-11-08T09:32:00.000Z
-  seoTitle: How to create a video with Wild Grace Video
-thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
-aboutMeAltText: TODO
-aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
-description: Wild Grace Video Productions is a top Denver-based video production
-  company specializing in hotel video production, outdoor product videos and
-  adventure company videos. We're here to help you bring your brand to life and
-  help you better connect with your audience.
-pageTagline: Wild Grace Video is a Denver-based video production company
-  specializing in creating video and photo content for outdoor, travel, and
-  adventure brands. We're here for the brands that embrace dreamy escapes and
-  wild adventures—those that confidently stand out and stay true to who they
-  are. They're bold, inspiring, and refreshingly different.
+pageTitle: YOUR VIDEO CONTENT PARTNER FOR OUTDOOR, TRAVEL, AND ADVENTURE BRANDS.
+visitPortfolioFile:
+  file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_1.jpg
+  publicationDate: 2025-03-15T21:25:00.000Z
+  seoTitle: TODO
+  seoDescription: TODO
 videoHighlight:
-  title: SELL THE **EXPERIENCE**.
+  title: Inspire exploration for your customers
   videos:
     - publicationDate: 2024-02-27T19:52:06.039Z
       title: BOUTIQUE HOTELS
@@ -145,51 +61,140 @@ videoHighlight:
         adrenaline-fueled activities, scenic trails, outdoor adventures & more.
         Inspire action with compelling visuals.
       linkPath: /service-overview/adventure-tour
-testimonials:
-  backgroundImage: https://content.wildgracevideo.com/images/Website-Home-Page/Horizontal+Paralax-min.webp
-  files:
-    - publicationDate: 2024-02-21T04:25:07.894Z
-      file: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Testimonials/1.webp
-      seoDescription: Discover what our clients say about our video production
-        services. Trusted by businesses in Denver, Colorado for exceptional
-        storytelling.
-      seoTitle: Client Testimonials | Trusted Video Production Company in Denver, CO -
-        Wild Grace Video
-    - publicationDate: 2024-02-21T04:25:25.736Z
-      file: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Testimonials/2.webp
-      seoDescription: See why clients love our video production services in Denver,
-        CO. Read authentic reviews from satisfied customers.
-      seoTitle: Video Production Client Reviews | Denver, Colorado - Wild Grace Video
-    - publicationDate: 2024-02-13T03:21:56.578Z
-      file: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Testimonials/3.webp
-      seoDescription: Explore client testimonials for our top-rated video production
-        company in Denver. Find out why businesses trust us for their video
-        needs.
-      seoTitle: Client Feedback | Top Video Production Company in Denver, Colorado -
-        Wild Grace Video
-  backgroundImageVertical: https://content.wildgracevideo.com/images/Website-Home-Page/Vertical+Paralax.webp
+aboutMe:
+  title: MEET YOUR ADVENTURE-LOVING FOUNDER & CINEMATOGRAPHER.
+  description: >-
+    Wild Grace Video is an outdoor and travel brand video production company
+    based in Denver, Colorado.
+
+
+    We help outdoor and travel-related brands, like boutique hotels, outdoor gear companies, and adventure tour companies, create a visual identity that inspires their consumers to get outside, romanticize life, and experience the world. Our style is adventurous, inspiring, and organic.
+  image: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
+  imageName: TODO
+  altText: TODO
+  file:
+    publicationDate: 2024-02-27T19:50:09.711Z
+    file: https://content.wildgracevideo.com/Website-Home-Page/about-me.mp4
+    seoTitle: "Meet the Owner: Denver Video Production | Passionate Visual
+      Storyteller & Adventure Enthusiast"
+    seoDescription: Get to know the owner of our Denver video production company, a
+      passionate visual storyteller and adventure enthusiast dedicated to
+      bringing your vision to life. Learn more about my journey!
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
+  ctaText: More about me
+  stamp:
+    file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-19.png
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-03-17T16:03:00.000Z
+trustedBrandTitle: Trusted by
+howTo:
+  title: TRUST THE PROCESS
+  steps:
+    - title: Discovery Call
+      description: This initial step is where we get to know you and your project. We
+        discuss your vision, goals, and requirements. It's a collaborative
+        conversation where we gather essential details to ensure we're aligned
+        with your vision.
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-Home-Page/discoverycall.jpg
+        seoTitle: "The Video Production Process: Step 1 Discovery Call"
+        seoDescription: "This Discovery call is where I get to know you and your
+          project. We discuss your vision, goals, and requirements. "
+        publicationDate: 2024-11-08T09:29:00.000Z
+    - title: Plan
+      description: Once we’ve understood your objectives, we begin the planning phase.
+        This involves crafting a detailed strategy, storyboard, and production
+        plan. We'll work together closely to finalize every aspect of the
+        project before moving forward.
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-Home-Page/plan.png
+        seoTitle: "The Video Production Process: Step 2 Plan"
+        seoDescription: The planning phase involves crafting a detailed strategy,
+          storyboard, and production plan.
+        publicationDate: 2024-11-08T09:30:00.000Z
+    - title: Create + Deliver
+      description: >-
+        This is where the magic happens! We’ll bring the plans to life by
+        utilizing a wide range of cinematic equipment and leveraging my
+        expertise. Collaboration with industry experts may also come into play
+        to ensure the highest quality and creativity for your project.
+        Throughout this stage, we maintain communication and transparency,
+        ensuring the project aligns with your expectations.
+
+
+        Finally, we’ll deliver the finished product, ready to exceed your vision and goals.
+      fileInfo:
+        file: https://content.wildgracevideo.com/images/Website-Home-Page/create.jpg
+        seoTitle: "The Video Production Process: Step 3 Create and Deliver"
+        seoDescription: >
+          In the creation step I will utilize a wide range of cinematic
+          equipment and leveraging my expertise. Throughout this stage, I
+          maintain communication and transparency, ensuring the project aligns
+          with your expectations.
+        publicationDate: 2024-11-08T09:32:00.000Z
+  seoTitle: How to create a video with Wild Grace Video
+thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
+aboutMeAltText: TODO
+freebie:
+  title: FREEBIE
+  subheading: SOCIAL MEDIA BINGO CARD
+  description: >-
+    Quick and easy content ideas for your brand that will give you that extra
+    push throughout the 
+
+    year, when you feel like you’re stuck on what to post and need some inspiration.
+  ctaText: DOWNLOAD HERE
+  file:
+    fileInfo:
+      file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
+      seoTitle: TODO
+      seoDescription: TODO
+      publicationDate: 2025-03-17T14:25:00.000Z
+    file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-03-17T15:55:00.000Z
+  name: Content Support Bingo Card
+  fileName: WildGraceVideoContentSupportBingoCard.pdf
+  fileURL: https://content.wildgracevideo.com/freebies/ContentSupportBingoCard.pdf
+aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
+sitemap:
+  include: true
+  lastmod: 2024-09-14
+  loc: /
+  changefreq: monthly
 aboutMeImage: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
+testimonialQuotes:
+  - quote: Carly was so great to work with! She listened to every detail I wanted to
+      be included, and took creative responsibility during the shoots to ensure
+      she had everything she needed.
+    author: Lauren Klein, Genesee Nutrition
+  - quote: Carly has great energy and enthusiasm, combined with maturity, knowledge
+      and skill in her field of work. The final product was very impressive and
+      exceeded our expectations.
+    author: Nathan Baller, Abode Outside
 faq:
-  title: "**FREQUENTLY ASKED QUESTIONS**"
+  title: FREQUENTLY ASKED QUESTIONS
   questions:
-    - question: "**Do you offer both photo and video services?**"
+    - question: Do you offer both photo and video services?
       answer: We specialize in video production but can also offer photography
         services upon request. Whether you're seeking a stunning video
         production, captivating photography, or a combination of both, we’re
         committed to meeting your creative needs and bringing your vision to
         life.
-    - question: "**What is the turnaround time?**"
+    - question: What is the turnaround time?
       answer: Turnaround time varies based on the project scope and we will provide an
         estimated timeline during the Discovery Call. However, the majority of
         our projects have a 2-week turnaround time from the last shoot date.
-    - question: "**How involved are you in the planning and storyboarding process?**"
+    - question: How involved are you in the planning and storyboarding process?
       answer: We are adaptable to your preferences. Typically, we take the lead in
         planning and storyboarding based on the insights gathered during our
         discovery call and pre-production meeting. However, we welcome your
         involvement at any level—whether you prefer a hands-on approach in
         planning every detail or entrusting us to handle the creative process,
         we're here to accommodate your needs and vision.
-    - question: "**Are we able to select the music for our video?**"
+    - question: Are we able to select the music for our video?
       answer: Typically, we curate music based on our expertise and the flow of the
         editing process. We have access to a wide range of quality, royalty-free
         tracks from a subscription platform. However, we value your preferences.
@@ -217,7 +222,14 @@ aboutMeDescription: >-
 
 
   I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
-title: Denver Video Production Company | Wild Grace Video
+caseStudies:
+  file:
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-03-17T16:53:00.000Z
+    file: https://content.wildgracevideo.com/images/HomePage/vanessential_cropped.png
+  title: VAN ESSENTIAL
+  description: Outdoor Product Paid Ads + Instructional Videos
 trustedBrandLogos:
   - companyName: The Curtis Hotel
     altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
@@ -245,5 +257,10 @@ trustedBrandLogos:
     image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
     width: 150
 videoTitle: Video reel showcasing the work of Wild Grace Videography.
+pageTagline: Wild Grace Video is a Denver-based video production company
+  specializing in creating video and photo content for outdoor, travel, and
+  adventure brands. We're here for the brands that embrace dreamy escapes and
+  wild adventures—those that confidently stand out and stay true to who they
+  are. They're bold, inspiring, and refreshingly different.
 videoHighlightTitle: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
 ---

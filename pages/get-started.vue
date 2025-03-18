@@ -5,7 +5,9 @@
         :type="notification.type"
         :message="notification.message"
     />
-    <div>
+    <div
+        class="[&_input]:placeholder-website-secondary [&_textarea]:placeholder-website-secondary"
+    >
         <RecaptchaLoader />
         <OgMeta :title="pageTitle" :description="description" />
         <SchemaOrgWebPage :name="pageTitle" />
@@ -29,7 +31,7 @@
             </div>
             <div class="px-2">
                 <h2
-                    class="relative top-28 text-center text-4xl text-black"
+                    class="relative top-28 text-center text-4xl text-website-off-black"
                     :class="{
                         hidden: showForm,
                         block: !showForm,
@@ -48,7 +50,7 @@
                         v-model="firstName"
                         title="First Name"
                         :is-required="isRequired"
-                        title-text-class="text-black"
+                        title-text-class="text-website-off-black"
                         hint="First Name"
                         :input-class="inputClass"
                     />
@@ -57,7 +59,7 @@
                         v-model="lastName"
                         title="Last Name"
                         :is-required="isRequired"
-                        title-text-class="text-black"
+                        title-text-class="text-website-off-black"
                         hint="Last Name"
                         :input-class="inputClass"
                     />
@@ -66,7 +68,7 @@
                         v-model="businessName"
                         title="Business Name"
                         :is-required="isRequired"
-                        title-text-class="text-black"
+                        title-text-class="text-website-off-black"
                         hint="Business Name"
                         :input-class="inputClass"
                     />
@@ -76,7 +78,7 @@
                         title="Email"
                         type="email"
                         :is-required="isRequired"
-                        title-text-class="text-black"
+                        title-text-class="text-website-off-black"
                         hint="example@gmail.com"
                         :input-class="inputClass"
                     />
@@ -85,7 +87,7 @@
                         v-model="phone"
                         title="Phone"
                         :is-required="isRequired"
-                        title-text-class="text-black"
+                        title-text-class="text-website-off-black"
                         data-mask="(###) ###-####"
                         hint="(888) 888 8888"
                         :error-message="phoneErrorMessage"
@@ -96,7 +98,7 @@
                         v-model="businessWebsite"
                         title="Business Website"
                         :is-required="false"
-                        title-text-class="text-black"
+                        title-text-class="text-website-off-black"
                         :show-required="false"
                         :input-class="inputClass"
                     />
@@ -106,7 +108,7 @@
                         :rows="3"
                         title="Current Business Challenge"
                         :is-required="isRequired"
-                        title-text-class="text-black"
+                        title-text-class="text-website-off-black"
                         container-class="md:col-span-2 col-span-1"
                         hint="The more detail, the better!"
                         :input-class="inputClass"
@@ -117,7 +119,7 @@
                         title="How did you hear about us?"
                         container-class="mb-2 md:col-span-2 col-span-1"
                         :is-required="isRequired"
-                        title-text-class="text-black"
+                        title-text-class="text-website-off-black"
                         :choices="HEAR_CHOICE"
                         :input-class="inputClass"
                     />
@@ -126,12 +128,12 @@
                         title="I want to sign up to receive monthly tips on how to create video content that will increase sales! "
                         container-class="mb-2 md:col-span-2 col-span-1"
                         :is-required="false"
-                        title-text-class="text-black"
+                        title-text-class="text-website-off-black"
                         :choices="MONTHLY_TIP_SIGNUP"
                         :show-required="false"
                     />
                     <p
-                        class="col-span-1 text-center text-xs text-black md:col-span-2"
+                        class="col-span-1 text-center text-xs text-website-off-black md:col-span-2"
                     >
                         This site is protected by reCAPTCHA and the Google
                         <a
@@ -150,15 +152,15 @@
                     <div class="col-span-1 mx-auto mb-2 md:col-span-2">
                         <button
                             action="submit"
-                            class="h-14 w-40 rounded-xl border-2 border-website-primary bg-transparent text-xl text-website-primary"
+                            class="subheading-font flex h-8 w-fit items-center rounded-xl border-2 border-website-primary bg-website-primary px-4 text-center text-website-off-white"
                             :class="{
-                                'hover:bg-website-primary': !sendingForm,
-                                'hover:text-website-off-white': !sendingForm,
+                                'hover:bg-website-off-white': !sendingForm,
+                                'hover:text-website-primary': !sendingForm,
                                 'opacity-50': sendingForm,
                                 'cursor-default': sendingForm,
                             }"
                         >
-                            Get Started
+                            GET STARTED
                         </button>
                     </div>
                 </form>
@@ -188,7 +190,7 @@
         layout: 'no-contact',
     });
 
-    const inputClass = 'bg-website-off-white border-2 border-website-primary';
+    const inputClass = 'bg-website-background border-2 border-website-primary';
 
     const MONTHLY_TIP_SIGNUP = [
         {

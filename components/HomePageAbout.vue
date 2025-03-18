@@ -1,34 +1,43 @@
 <template>
     <article
-        class="home-page-about-grid-container mx-12 mb-36 mt-32 grid grid-cols-1 gap-x-16 md:mt-48 md:grid-cols-2 xl:mx-24"
+        class="home-page-about-grid-container mx-12 mb-36 mt-32 grid grid-cols-1 gap-x-16 lg:mt-48 lg:grid-cols-2"
     >
-        <div class="order-2 md:order-1">
+        <div class="order-2 lg:order-1">
             <Markdown
                 :markdown-string="`## ${titleMarkdown}`"
-                component-class="no-default-format strong:font-semibold mb-12 hidden text-4xl md:block md:text-5xl"
+                component-class="no-default-format strong:font-semibold mb-16 hidden text-4xl lg:block lg:text-5xl heading-font lg:text-left text-center"
+            />
+            <div
+                class="-mr-60 hidden border-t border-website-tertiary lg:block"
             />
             <Markdown
                 :markdown-string="textMarkdown"
-                component-class="tall-p-margin"
+                component-class="tall-p-margin mt-24"
             />
-            <button
-                class="mx-auto block min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary"
-                @click="toAboutPage"
-            >
-                Learn More
-            </button>
+            <DefaultButton
+                :title="aboutMeCta"
+                to="about"
+                class="mx-auto mt-16 lg:mx-0"
+            />
         </div>
         <div
-            class="order-1 flex h-full grow-0 flex-col items-stretch md:order-2"
+            class="order-1 flex h-full grow-0 flex-col items-stretch lg:order-2"
         >
             <Markdown
                 :markdown-string="`## ${titleMarkdown}`"
-                component-class="no-default-format strong:font-semibold mb-12 block text-4xl md:hidden md:text-5xl text-center"
+                component-class="no-default-format strong:font-semibold mb-12 block text-4xl lg:hidden lg:text-5xl text-center heading-font"
             />
-            <FileOrVideo
-                :file="fileConfig"
-                class="mx-0 mb-12 aspect-photo md:mb-0"
-            />
+            <div class="relative">
+                <FileOrVideo
+                    :file="stamp"
+                    class="absolute -right-12 -top-12 float-right h-40 w-40 opacity-30 md:-top-28 md:h-60 md:w-60"
+                    sizes="md:240px 160px"
+                />
+                <FileOrVideo
+                    :file="fileConfig"
+                    class="mx-auto mb-12 aspect-photo h-[80dvh] object-cover object-center lg:mb-0"
+                />
+            </div>
         </div>
     </article>
 </template>
@@ -40,11 +49,7 @@
         titleMarkdown: string;
         textMarkdown: string;
         fileConfig: FileInfo;
+        aboutMeCta: string;
+        stamp: FileInfo;
     }>();
-
-    const router = useRouter();
-
-    const toAboutPage = () => {
-        router.push({ path: '/about' });
-    };
 </script>

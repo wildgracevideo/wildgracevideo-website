@@ -1,6 +1,6 @@
 <template>
     <div
-        class="font-family-poppins !font-size-base flex flex-col bg-website-off-white !font-normal lg:flex-row"
+        class="paragraph-font !font-size-base flex flex-col bg-website-background !font-normal lg:flex-row"
     >
         <AdminSidebar v-model="openMenu" />
         <main v-if="!openMenu" class="relative h-full w-full">

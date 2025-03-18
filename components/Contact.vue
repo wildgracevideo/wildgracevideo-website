@@ -6,13 +6,21 @@
         :message="notification.message"
     />
     <RecaptchaLoader />
-    <div class="relative z-50 bg-website-off-black py-16">
-        <h2
-            class="mb-6 text-center text-4xl font-semibold text-website-off-white"
+    <div
+        class="relative z-50 bg-website-off-black py-16 [&_input]:placeholder-website-secondary"
+    >
+        <div
+            class="mb-24 flex w-full flex-row items-center"
             :class="{ hidden: !showForm }"
         >
-            INQUIRE
-        </h2>
+            <h2
+                class="heading-font px-8 text-center text-4xl font-semibold text-website-off-white"
+                :class="{ hidden: !showForm }"
+            >
+                CONTACT
+            </h2>
+            <div class="h-[1px] flex-grow bg-website-off-white" />
+        </div>
         <h2
             class="relative top-28 text-center text-3xl text-website-off-white"
             :class="{
@@ -82,12 +90,11 @@
             <div class="col-span-1 flex justify-center md:col-span-2">
                 <button
                     type="submit"
-                    class="contact-scroll-observable mb-12 border-2 border-website-off-black bg-website-off-white px-16 py-3 text-xl text-website-off-black"
+                    class="contact-scroll-observable subheading-font mb-12 flex h-8 w-fit items-center rounded-xl border-2 border-website-off-white bg-website-off-white px-4 text-center text-website-primary"
                     :class="{
                         'opacity-50': sendingForm,
                         'hover:text-website-off-white': !sendingForm,
-                        'hover:bg-website-off-black': !sendingForm,
-                        'hover:border-website-off-white': !sendingForm,
+                        'hover:bg-website-primary': !sendingForm,
                         'cursor-default': sendingForm,
                         'fade-out': !sendingForm && !formError,
                     }"

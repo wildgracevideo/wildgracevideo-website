@@ -61,7 +61,7 @@
                 <DefaultButton
                     :title="buttonTitle"
                     :action="buyNow"
-                    additonal-classes="xl:mx-0 mx-auto"
+                    class="mx-auto xl:mx-0"
                 />
             </div>
         </div>
@@ -88,7 +88,7 @@
         :style="{ 'background-image': `url('${callToActionBackgroundImage}')` }"
     >
         <Markdown
-            component-class="font-family-optimus mx-auto max-w-4xl text-center text-6xl text-website-off-white"
+            component-class="subheading-font mx-auto max-w-4xl text-center text-6xl text-website-off-white"
             :markdown-string="`${callToActionTitleMarkdown}`"
         />
         <Markdown
@@ -98,8 +98,8 @@
         <DefaultButton
             :title="buttonTitle"
             :action="buyNow"
-            :inverse="true"
-            additonal-classes="mx-auto mt-16"
+            :light="true"
+            class="mx-auto mt-16"
         />
     </section>
 </template>

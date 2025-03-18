@@ -22,7 +22,7 @@
                 stroke-dashoffset="56"
             ></path>
         </g>
-        <text font-family="Cormorant" font-size="1.5rem" fill="#C2B29A">
+        <text font-family="Montserrat" font-size="1.5rem" fill="#C2B29A">
             <textPath href="#yui_3_17_2_1_1703190436466_34632">
                 <tspan x="0">BEHIND THE SCENES</tspan>
                 <tspan x="292.8"></tspan>

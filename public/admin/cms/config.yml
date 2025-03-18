@@ -859,6 +859,11 @@ collections:
                 modes: ['rich_text'],
                 minimal: false,
             }
+          - label: 'Visit Portfolio File'
+            name: 'visitPortfolioFile'
+            widget: 'object'
+            summary: '{{fields.seoTitle}}'
+            <<: *fileInfo
           - label: 'Testimonial Quotes'
             name: 'testimonialQuotes'
             widget: 'list'
@@ -948,6 +953,9 @@ collections:
                   name: description
                   widget: 'markdown'
                   modes: ['rich_text']
+                - label: 'About Me Call to Action'
+                  name: 'ctaText'
+                  widget: string
                 - label: 'About Me Image or Video'
                   widget: 'object'
                   name: 'file'
@@ -983,6 +991,61 @@ collections:
                       - label: 'Publication Date (Change only if changing the file)'
                         name: publicationDate
                         widget: 'datetime'
+                - label: 'About Me Stamp'
+                  widget: 'object'
+                  name: 'stamp'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+          - label: 'Freebie'
+            name: 'freebie'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Freebie Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Freebie Subheading'
+                  name: subheading
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Freebie description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                - label: 'Freebie Call to Action'
+                  name: 'ctaText'
+                  widget: string
+                - { label: 'Freebie Name', name: 'name', widget: 'string' }
+                - { label: 'File Name', name: 'fileName', widget: 'string' }
+                - { label: 'Freebie URL', name: 'fileURL', widget: 'string' }
+                - label: 'Freebie Icon'
+                  widget: 'object'
+                  name: 'file'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+          - label: 'Case Studies'
+            name: caseStudies
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Case Study File'
+                  widget: 'object'
+                  name: 'file'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
           - label: 'Trusted Brand Title'
             name: 'trustedBrandTitle'
             widget: 'markdown'
@@ -1057,52 +1120,6 @@ collections:
                             summary: '{{fields.seoTitle}}',
                             <<: *fileInfo,
                         }
-          - label: 'Testimonials'
-            name: 'testimonials'
-            widget: 'object'
-            summary: 'Testimonials'
-            fields:
-                - label: 'Background Image'
-                  name: 'backgroundImage'
-                  widget: 'image'
-                  choose_url: true
-                  allow_multiple: false
-                - label: 'Background Image Vertical'
-                  name: 'backgroundImageVertical'
-                  widget: 'image'
-                  choose_url: true
-                  allow_multiple: false
-                - label: 'Files'
-                  name: 'files'
-                  widget: 'list'
-                  min: 3
-                  max: 3
-                  allow_add: false
-                  fields:
-                      - label: 'File'
-                        name: 'file'
-                        widget: 'file'
-                        media_library:
-                            allow_multiple: false
-                            choose_url: true
-                            config:
-                                multiple: false
-                                max_file_size: 4096000
-                      - label: 'Thumbnail Image (Only if the file is an mp4 video)'
-                        widget: 'image'
-                        name: 'thumbnailImage'
-                        choose_url: true
-                        allow_multiple: false
-                        required: false
-                      - label: 'SEO Description (About 125 characters)'
-                        name: 'seoDescription'
-                        widget: 'text'
-                      - label: 'SEO Title'
-                        name: 'seoTitle'
-                        widget: 'string'
-                      - label: 'Publication Date (Change only if changing the file)'
-                        name: publicationDate
-                        widget: 'datetime'
           - label: 'FAQ'
             name: 'faq'
             widget: 'object'

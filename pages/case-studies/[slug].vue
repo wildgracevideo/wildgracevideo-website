@@ -29,7 +29,7 @@
             <div class="min-w-[40%] text-center">
                 <p class="mb-12 mt-16 tracking-tight">{{ stat.statPeriod }}</p>
                 <p
-                    class="font-family-poppins mb-6 text-4xl font-extralight tracking-tight"
+                    class="paragraph-font mb-6 text-4xl font-extralight tracking-tight"
                 >
                     {{ stat.stat }}
                 </p>
@@ -52,7 +52,7 @@
                         video-id="overview-video"
                         class="mb-4 h-full w-full object-cover object-center"
                         sound-control-bottom-class="bottom-14 md:bottom-16"
-                        text-color-class="text-black"
+                        text-color-class="text-website-off-black"
                     />
                     <div
                         class="flex w-full flex-row justify-center gap-20 pb-8 text-center"
@@ -64,7 +64,7 @@
                         >
                             <p
                                 :id="`${i}-${j}-additional-stat`"
-                                class="font-family-poppins mb-4 text-2xl tracking-tight md:text-4xl"
+                                class="paragraph-font mb-4 text-2xl tracking-tight md:text-4xl"
                             >
                                 {{ additionalStat.stat }}
                             </p>
@@ -84,7 +84,7 @@
     >
         <ImagePreviewLazyVideo
             :video="video.videoInfo"
-            class="text-white"
+            class="text-website-off-white"
             sizes="lg:1300px md:1024px 768px"
             :full-screen-click="false"
         />
