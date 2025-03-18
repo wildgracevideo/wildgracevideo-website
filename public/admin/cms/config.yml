@@ -1046,6 +1046,12 @@ collections:
                   name: 'file'
                   summary: '{{fields.seoTitle}}'
                   <<: *fileInfo
+                - {
+                      label: 'Page Path (i.e. /case-studies/van-essential)',
+                      name: 'pagePath',
+                      widget: 'string',
+                      required: false,
+                  }
           - label: 'Trusted Brand Title'
             name: 'trustedBrandTitle'
             widget: 'markdown'

@@ -181,18 +181,20 @@
             >
         </h2>
         <div class="mx-auto w-[25dvw]">
-            <FileOrVideo
-                parent-class="pointer-events-none relative z-0 cursor-default"
-                class="mx-auto aspect-photo w-full object-cover object-bottom md:mx-0"
-                :file="caseStudies.file"
-                sizes="2xl:800px xl:615px lg:512px 410px"
-                :with-sound-control="false"
-            />
-            <h3 class="subheading-font mt-4 text-4xl">
-                {{ caseStudies.title }}
-            </h3>
-            <hr class="my-2 w-full border-t border-website-accent" />
-            <p>{{ caseStudies.description }}</p>
+            <NuxtLink :to="caseStudies.pagePath">
+                <FileOrVideo
+                    parent-class="pointer-events-none relative z-0 cursor-default"
+                    class="mx-auto aspect-photo w-full object-cover object-bottom md:mx-0"
+                    :file="caseStudies.file"
+                    sizes="2xl:800px xl:615px lg:512px 410px"
+                    :with-sound-control="false"
+                />
+                <h3 class="subheading-font mt-4 text-4xl">
+                    {{ caseStudies.title }}
+                </h3>
+                <hr class="my-2 w-full border-t border-website-accent" />
+                <p>{{ caseStudies.description }}</p>
+            </NuxtLink>
         </div>
         <DefaultButton
             title="Visit Portfolio"
