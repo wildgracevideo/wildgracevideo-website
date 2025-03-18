@@ -27,8 +27,8 @@ pageTagline: Wild Grace Productions is a Denver-based video production company
 visitPortfolioFile:
   file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_1.jpg
   publicationDate: 2025-03-15T21:25:00.000Z
-  seoTitle: TODO
-  seoDescription: TODO
+  seoTitle: Headshot for Wild Grace Productions - Carly Kreiger
+  seoDescription: Headshot for Wild Grace Productions - Carly Kreiger
 testimonialQuotes:
   - quote: Carly was so great to work with! She listened to every detail I wanted to
       be included, and took creative responsibility during the shoots to ensure
