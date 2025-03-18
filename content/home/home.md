@@ -90,7 +90,7 @@ aboutMe:
   altText: TODO
   file:
     publicationDate: 2024-02-27T19:50:09.711Z
-    file: https://content.wildgracevideo.com/Website-Home-Page/about-me.mp4
+    file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_2.jpg
     seoTitle: "Meet the Owner: Denver Video Production | Passionate Visual
       Storyteller & Adventure Enthusiast"
     seoDescription: Get to know the owner of our Denver video production company, a
