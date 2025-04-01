@@ -4,13 +4,13 @@
 
 @layer base {
     :root {
-        --color-website-off-white: 207 203 171;
-        --color-website-off-black: 30 29 25;
-        --color-website-accent: 231 232 98;
-        --color-website-primary: 118 116 74;
-        --color-website-secondary: 162 153 105;
-        --color-website-tertiary: 50 45 29;
-        --color-website-background: 246 241 230;
+        --color-website-off-white: 207 203 171; /* #cfcbab */
+        --color-website-off-black: 30 29 25; /* #1e1d19 */
+        --color-website-accent: 231 232 98; /* #e7e862 */
+        --color-website-primary: 118 116 74; /* #76744a */
+        --color-website-secondary: 162 153 105; /* #a29969 */
+        --color-website-tertiary: 50 45 29; /* #322d1d */
+        --color-website-background: 246 241 230; /* #f6f1e6 */
     }
 }
 

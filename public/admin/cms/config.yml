@@ -319,115 +319,6 @@ collections:
                   summary: '{{fields.seoTitle}}'
                   <<: *videoInfo
 
-    - name: 'service'
-      label: 'Service'
-      folder: 'content/service'
-      format: 'frontmatter'
-      create: true
-      identifier_field: 'path'
-      slug: '{{slug}}'
-      preview_path: 'services/{{slug}}'
-      editor:
-          preview: false
-      fields:
-          - { label: 'SEO Title', name: 'title', widget: 'string' }
-          - { label: 'SEO Description', name: 'description', widget: 'text' }
-          - {
-                label: 'Page Preview Image',
-                name: 'ogImage',
-                widget: 'image',
-                choose_url: true,
-                allow_multiple: false,
-                required: false,
-            }
-          - {
-                label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED',
-                name: 'path',
-                widget: 'string',
-            }
-          - { label: 'Page Title', name: 'pageTitle', widget: 'string' }
-          - { label: 'Product Title', name: 'productTitle', widget: 'string' }
-          - {
-                label: 'Product Description',
-                name: 'productDescription',
-                widget: 'markdown',
-                modes: ['rich_text'],
-            }
-          - {
-                label: 'Product Subtext',
-                name: 'productSubtext',
-                widget: 'markdown',
-                modes: ['rich_text'],
-                minimal: true,
-            }
-          - label: 'Packages'
-            name: 'packages'
-            widget: 'list'
-            fields:
-                - {
-                      label: 'Title (Without "The")',
-                      name: 'title',
-                      widget: 'string',
-                  }
-                - {
-                      label: 'Price',
-                      name: 'price',
-                      widget: 'number',
-                      required: false,
-                  }
-                - label: 'Components'
-                  name: 'components'
-                  widget: 'list'
-                  fields:
-                      - {
-                            label: 'Title',
-                            name: 'title',
-                            widget: 'string',
-                            required: false,
-                        }
-                      - {
-                            label: 'Description (Non-bold component description, use if title is blank)',
-                            name: 'description',
-                            widget: 'markdown',
-                            modes: ['rich_text'],
-                            minimal: true,
-                            required: false,
-                        }
-                      - {
-                            label: 'Contents',
-                            name: 'contents',
-                            widget: 'markdown',
-                            modes: ['rich_text'],
-                            minimal: true,
-                        }
-          - label: 'Add-Ons'
-            name: 'addOns'
-            widget: 'list'
-            required: false
-            summary: '{{fields.id}}'
-            fields:
-                - label: 'Numeric identifier (1 matches the color of the first component in a package)'
-                  name: 'id'
-                  widget: 'number'
-                - label: 'Components'
-                  name: 'components'
-                  widget: 'list'
-                  fields:
-                      - {
-                            label: 'Contents',
-                            name: 'contents',
-                            widget: 'markdown',
-                            modes: ['rich_text'],
-                            minimal: true,
-                        }
-          - {
-                label: 'Disclaimer',
-                name: 'disclaimer',
-                widget: 'markdown',
-                modes: ['rich_text'],
-                minimal: true,
-            }
-
     - name: 'about'
       label: 'About'
       folder: 'content/about'
@@ -762,6 +653,162 @@ collections:
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: false
+
+    - name: 'services'
+      label: 'Services'
+      folder: 'content/services'
+      format: 'frontmatter'
+      create: false
+      delete: false
+      identifier_field: 'title'
+      preview_path: '/services'
+      slug: 'services'
+      editor:
+          preview: false
+      fields:
+          - label: "Sitemap (Don't change)"
+            name: 'sitemap'
+            widget: 'object'
+            fields:
+                - {
+                      label: 'Change Frequency',
+                      name: 'changefreq',
+                      widget: 'select',
+                      options:
+                          [
+                              'always',
+                              'hourly',
+                              'daily',
+                              'weekly',
+                              'monthly',
+                              'yearly',
+                              'never',
+                          ],
+                      default: 'monthly',
+                  }
+                - {
+                      label: 'Include in Sitemap',
+                      name: 'include',
+                      widget: 'boolean',
+                      default: true,
+                  }
+                - {
+                      label: 'Last Modified',
+                      name: 'lastmod',
+                      widget: 'datetime',
+                      default: '{{now}}',
+                      date_format: 'YYYY-MM-DD',
+                      time_format: false,
+                  }
+                - {
+                      label: 'Location',
+                      name: 'loc',
+                      widget: 'string',
+                      default: '/',
+                  }
+          - { label: 'SEO Title', name: 'title', widget: 'string' }
+          - { label: 'SEO Description', name: 'description', widget: 'text' }
+          - label: 'Heading File'
+            name: 'headingFile'
+            widget: 'object'
+            summary: '{{fields.seoTitle}}'
+            <<: *fileInfo
+          - label: 'Problem Overview'
+            name: 'problemOverview'
+            widget: object
+            summary: '{{fields.pageTagline}}'
+            fields:
+                - {
+                      label: 'Page Tagline',
+                      name: 'pageTagline',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - label: 'Problem File'
+                  name: 'problemFile'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - {
+                      label: 'Problem Overview 1',
+                      name: 'problemOverview1',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - label: 'Problem Items 1'
+                  name: 'problemItems1'
+                  widget: 'list'
+                  allow_add: true
+                  summary: '{{fields.description}}'
+                  fields:
+                      - {
+                            label: 'Description',
+                            name: 'description',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: false,
+                        }
+                - {
+                      label: 'Problem Overview 2',
+                      name: 'problemOverview2',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - label: 'Problem Items 2'
+                  name: 'problemItems2'
+                  widget: 'list'
+                  allow_add: true
+                  summary: '{{fields.description}}'
+                  fields:
+                      - {
+                            label: 'Description',
+                            name: 'description',
+                            widget: 'markdown',
+                            modes: ['rich_text'],
+                            minimal: false,
+                        }
+          - label: 'Solution'
+            name: solution
+            widget: object
+            summary: '{{ fields.title }}'
+            fields:
+                - {
+                      label: 'Title',
+                      name: 'title',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - label: 'Solution Overview File'
+                  name: 'solutionOverviewFile'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - {
+                      label: 'Description',
+                      name: 'description',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: false,
+                  }
+                - {
+                      label: 'Solution Action',
+                      name: 'action',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - label: 'Solution Action Description'
+                  name: 'actionOverview'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Action Call to Action text'
+                  name: actionCta
+                  widget: string
 
     - name: 'home'
       label: 'Home'

@@ -78,6 +78,9 @@ export default {
             width: {
                 0.25: '1px',
             },
+            height: {
+                0.25: '1px',
+            },
         },
         transitionProperty: {
             top: 'top',
