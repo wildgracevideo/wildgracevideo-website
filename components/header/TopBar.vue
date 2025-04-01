@@ -52,27 +52,11 @@
 </template>
 
 <script setup lang="ts">
-    import HeaderItemDropdown from '~/components/header/HeaderItemDropdown.vue';
     import HeaderItem from '~/components/header/HeaderItem.vue';
 
     const ctaText = 'CONTACT';
 
     const runtimeConfig = useRuntimeConfig();
-
-    const servicesChildren = [
-        {
-            name: 'OUTDOOR PRODUCTS',
-            href: `/service-overview/outdoor-product`,
-        },
-        {
-            name: 'BOUTIQUE HOTELS',
-            href: `/service-overview/hotels`,
-        },
-        {
-            name: 'ADVENTURE TOURS',
-            href: `/service-overview/adventure-tour`,
-        },
-    ];
 
     const imageAlt = 'Wild Grace Videography company logo.';
 
@@ -99,8 +83,8 @@
         },
         {
             name: 'SERVICES',
-            type: HeaderItemDropdown,
-            children: servicesChildren,
+            href: '/services',
+            type: HeaderItem,
         },
         {
             name: 'SHOP',

@@ -42,7 +42,7 @@
                 :with-sound-control="false"
             />
             <div class="hidden flex-col lg:flex">
-                <div class="-mb-48 w-0.25 flex-grow bg-website-off-black"></div>
+                <div class="-mb-48 w-0.25 flex-grow bg-website-tertiary"></div>
             </div>
             <div class="mx-24 flex-1">
                 <Markdown
@@ -98,7 +98,7 @@
         <div>
             <Markdown
                 :markdown-string="`## ${servicesData.solution.title}`"
-                component-class="no-default-format text-center text-3xl lg:text-5xl heading-font strong:font-semibold pt-32 tracking-widest leading-normal md:mx-auto mx-8"
+                component-class="no-default-format text-center text-3xl lg:text-5xl heading-font strong:font-semibold pt-32 tracking-widest leading-normal lg:mx-auto mx-8"
             />
             <FileOrVideo
                 parent-class="pointer-events-none relative z-0 cursor-default mx-auto w-28 h-28 my-16"
@@ -108,12 +108,21 @@
                 :with-sound-control="false"
             />
             <Markdown
-                :markdown-string="`## ${servicesData.solution.description}`"
-                component-class="no-default-format text-center strong:font-semibold mx-auto max-w-4xl pb-32 md:mx-auto mx-10"
+                :markdown-string="`### ${servicesData.solution.description}`"
+                component-class="no-default-format text-center strong:font-semibold mx-auto max-w-4xl pb-32 lg:mx-auto mx-10"
             />
         </div>
-        <div class="bg-website-tertiary pb-16 text-website-off-white">
-            <div class="flex flex-row items-center pb-32 pl-12 pt-12">
+        <div
+            class="solution-background relative bg-website-tertiary pb-16 text-website-off-white"
+        >
+            <!-- <FileOrVideo -->
+            <!--     parent-class="pointer-events-none relative z-0 cursor-default w-1/3 aspect-square absolute ml-auto z-0 opacity-10 top-[50%] -translate-y-1/2" -->
+            <!--     class="h-full object-cover object-center" -->
+            <!--     :file="servicesData.solution.actionFile" -->
+            <!--     sizes="2xl:800px xl:615px lg:512px 410px" -->
+            <!--     :with-sound-control="false" -->
+            <!-- /> -->
+            <div class="z-10 flex flex-row items-center pb-32 pl-12 pt-12">
                 <Markdown
                     :markdown-string="`### ${servicesData.solution.action}`"
                     component-class="no-default-format text-left text-lg lg:text-2xl accent-font strong:font-semibold mr-8"
@@ -122,7 +131,7 @@
             </div>
             <Markdown
                 :markdown-string="`${servicesData.solution.actionOverview}`"
-                component-class="text-center strong:font-semibold md:mr-72 md:ml-24 mr-4 ml-4 md:text-left text-center pb-16"
+                component-class="text-center strong:font-semibold lg:w-[60%] w-full lg:mr-72 lg:ml-24 mr-4 ml-4 lg:text-left text-center pb-16 z-10"
             />
             <DefaultButton
                 :title="servicesData.solution.actionCta"
@@ -130,6 +139,54 @@
                 to="/get-started"
                 :light="true"
             />
+        </div>
+        <div>
+            <Markdown
+                :markdown-string="`### ${servicesData.solution.nextStepsHeading}`"
+                component-class="no-default-format text-center strong:font-semibold mx-auto py-32 heading-font lg:text-5xl text-3xl"
+            />
+            <Markdown
+                :markdown-string="`${servicesData.solution.nextStepsDescription}`"
+                component-class="strong:font-semibold w-[75%] mx-auto pb-32 text-left max-w-4xl"
+            />
+            <Markdown
+                :markdown-string="`#### ${servicesData.solution.nextStepsSubheading}`"
+                component-class="no-default-format text-center strong:font-semibold mx-auto pb-16 subheading-font lg:text-3xl text-xl max-w-4xl"
+            />
+        </div>
+    </article>
+    <article>
+        <div class="relative">
+            <div
+                class="absolute inset-0 z-10 h-dvh bg-website-secondary bg-opacity-20"
+            ></div>
+            <FileOrVideo
+                parent-class="pointer-events-none relative z-0 cursor-default mx-auto h-dvh w-dvh brightness-50"
+                class="h-full w-full object-cover object-center"
+                :file="servicesData.adventureContentPartnership.overviewFile"
+                sizes="2xl:2000px xl:1536px lg:1280px md:1024px sm:768px 640px"
+                :with-sound-control="false"
+            />
+            <Markdown
+                :markdown-string="`${servicesData.adventureContentPartnership.overview}`"
+                component-class="strong:font-semibold w-[75%] mx-auto text-center absolute top-1/2 left-1/2 -translate-x-1/2 z-20 lg:text-3xl text-xl heading-font text-website-off-white"
+            />
+        </div>
+        <div class="flex flex-col bg-website-secondary lg:flex-row">
+            <div class="relative flex-1">
+                <FileOrVideo
+                    parent-class="pointer-events-none z-0 cursor-default lg:m-16 m-4 absolute"
+                    class="h-full w-full object-cover object-center"
+                    :file="
+                        servicesData.adventureContentPartnership
+                            .titleBackgroundImage
+                    "
+                    sizes="2xl:800px xl:615px lg:512px 410px"
+                    :with-sound-control="false"
+                />
+            </div>
+            <div class="flex-0 -mb-36 -mt-64 w-0.25 bg-website-accent"></div>
+            <div class="flex-1"></div>
         </div>
     </article>
 </template>

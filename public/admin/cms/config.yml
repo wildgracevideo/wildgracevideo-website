@@ -809,6 +809,86 @@ collections:
                 - label: 'Action Call to Action text'
                   name: actionCta
                   widget: string
+                - label: 'Action File'
+                  name: 'actionFile'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - {
+                      label: 'Next Steps Heading',
+                      name: 'nextStepsHeading',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - label: 'Next Steps Description'
+                  name: 'nextStepsDescription'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Next Steps Subheading'
+                  name: 'nextStepsSubheading'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+          - label: 'Adventure Content Partnership'
+            name: 'adventureContentPartnership'
+            widget: object
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Overview'
+                  name: overview
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Overview File'
+                  name: 'overviewFile'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Title background image'
+                  name: 'titleBackgroundImage'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - label: 'Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Action Call to Action text'
+                  name: actionCta
+                  widget: string
+                - label: 'Steps title'
+                  name: stepsTitle
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Steps backgroundImage'
+                  name: 'stepsBackgroundImage'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - label: 'Steps'
+                  name: steps
+                  widget: list
+                  summary: '{{ fields.title }}'
+                  fields:
+                      - label: 'Title'
+                        name: 'Title'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Description'
+                        name: 'description'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
 
     - name: 'home'
       label: 'Home'
