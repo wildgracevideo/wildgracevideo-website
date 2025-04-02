@@ -62,6 +62,14 @@ solution:
     seoTitle: TODO
     seoDescription: TODO
     publicationDate: 2025-03-31T22:32:00.000Z
+  nextSteps:
+    - title: Miss out on bookings or sales with customer hesitation or simply not
+        being aware of your business.
+    - title: Continue to blend in with your competition.
+    - title: Get Stuck trying to DIY your content that won’t convert, having to redo
+        it later anyway.
+    - title: Waste time and money hiring a new content partner every time you need a
+        video, with generic visuals that don’t reflect your brand.
   action: Here’s the thing
   nextStepsSubheading: REMAIN FEELING DEFEATED WHEN YOU COULD BE CONFIDENTLY HITTING YOUR GOALS.
   title: ALL OF THIS IS COSTING YOU.

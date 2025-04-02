@@ -1,8 +1,8 @@
 <template>
     <div
-        class="mx-12 mb-12 bg-website-primary text-website-off-white opacity-80 lg:mx-24 lg:mb-24"
+        class="relative mx-12 mb-12 bg-website-primary/50 text-website-off-white lg:mx-24 lg:mb-24"
     >
-        <div v-if="index % 2 != 0" class="flex flex-row items-center">
+        <div v-if="index % 2 == 0" class="flex flex-row items-center">
             <Markdown
                 :markdown-string="title"
                 component-class="no-default-format strong:font-semibold m-6 text-left lg:text-3xl text-xl accent-font"

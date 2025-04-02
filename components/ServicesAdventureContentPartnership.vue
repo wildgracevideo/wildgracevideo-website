@@ -2,7 +2,7 @@
     <article>
         <div class="relative">
             <div
-                class="absolute inset-0 z-10 h-dvh bg-website-secondary bg-opacity-20"
+                class="absolute inset-0 z-10 h-dvh bg-website-off-black bg-opacity-70"
             ></div>
             <FileOrVideo
                 parent-class="pointer-events-none relative z-0 cursor-default mx-auto h-dvh w-dvh brightness-50"
@@ -13,7 +13,7 @@
             />
             <Markdown
                 :markdown-string="`${overview}`"
-                component-class="strong:font-semibold w-[75%] mx-auto text-center absolute top-1/2 left-1/2 -translate-x-1/2 z-20 text-3xl heading-font text-website-off-white"
+                component-class="strong:font-semibold w-3/4 mx-auto text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-5xl leading-normal tracking-wider heading-font text-website-off-white"
             />
         </div>
 
@@ -29,7 +29,7 @@
                     sizes="2xl:800px xl:615px lg:512px 410px"
                     :with-sound-control="false"
                 />
-                <div class="mt-24 w-full text-center">
+                <div class="relative z-20 mt-24 w-full text-center">
                     <p class="accent-font mb-12 text-3xl">Introducing</p>
                     <Markdown
                         :markdown-string="`## ${title}`"
@@ -67,7 +67,7 @@
                 sizes="2xl:800px xl:615px lg:512px 410px"
                 :with-sound-control="false"
             />
-            <div class="mt-12 w-full flex-1 text-center">
+            <div class="relative z-20 mt-12 w-full flex-1 text-center">
                 <p class="accent-font mb-12 text-xl">Introducing</p>
                 <Markdown
                     :markdown-string="`## ${title}`"
@@ -89,7 +89,7 @@
         </div>
 
         <div
-            class="bg-contain flex flex-col bg-black/30 bg-center bg-no-repeat text-website-off-white bg-blend-darken"
+            class="bg-contain flex flex-col bg-black/60 bg-fixed bg-center bg-no-repeat text-website-off-white bg-blend-darken"
             :style="{
                 backgroundImage: `url('${stepsBackgroundImage.file}')`,
             }"
@@ -116,7 +116,7 @@
 
         <div class="bg-website-tertiary text-website-off-white">
             <FileOrVideo
-                parent-class="pointer-events-none relative z-10 cursor-default ml-12 relative h-28 w-24 -top-12"
+                parent-class="pointer-events-none relative z-10 cursor-default ml-12 relative h-28 w-24 -top-12 opacity-60"
                 class="h-full w-full object-contain object-center"
                 :file="accentImage"
                 sizes="200px"
@@ -145,9 +145,9 @@
                     >
                 </template>
             </div>
-            <p class="text-center text-6xl">=</p>
+            <p class="subheading-font text-center text-6xl">=</p>
             <p
-                class="mx-4 py-12 text-center text-2xl lg:mx-auto lg:py-24 lg:text-5xl"
+                class="subheading-font mx-4 py-12 text-center text-2xl lg:mx-auto lg:py-24 lg:text-5xl"
             >
                 1 YEAR OF CONSISTENT CONTENT
             </p>

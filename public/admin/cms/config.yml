@@ -821,11 +821,16 @@ collections:
                       modes: ['rich_text'],
                       minimal: true,
                   }
-                - label: 'Next Steps Description'
-                  name: 'nextStepsDescription'
-                  widget: 'markdown'
-                  modes: ['rich_text']
-                  minimal: false
+                - label: 'Next Steps'
+                  name: nextSteps
+                  widget: list
+                  summary: '{{ fields.title }}'
+                  fields:
+                      - label: Title
+                        name: title
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
                 - label: 'Next Steps Subheading'
                   name: 'nextStepsSubheading'
                   widget: 'markdown'

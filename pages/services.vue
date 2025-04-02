@@ -78,7 +78,7 @@
                     <li
                         v-for="(item, i) in servicesData.problemOverview
                             .problemItems2"
-                        :key="`${i}-problemItems1-list-item`"
+                        :key="`${i}-problemItems2-list-item`"
                         class="pb-8"
                     >
                         <div class="flex flex-row">
@@ -143,12 +143,24 @@
         <div>
             <Markdown
                 :markdown-string="`### ${servicesData.solution.nextStepsHeading}`"
-                component-class="no-default-format text-center strong:font-semibold mx-auto py-32 heading-font lg:text-5xl text-3xl"
+                component-class="no-default-format text-center strong:font-semibold mx-auto pt-32 subheading-font lg:text-3xl text-xl"
             />
-            <Markdown
-                :markdown-string="`${servicesData.solution.nextStepsDescription}`"
-                component-class="strong:font-semibold w-[75%] mx-auto pb-32 text-left max-w-4xl"
-            />
+            <ul class="mx-auto w-3/4 list-none py-24 lg:w-1/2">
+                <li
+                    v-for="(item, i) in servicesData.solution.nextSteps"
+                    :key="`${i}-next-steps-list-item`"
+                    class="mb-4"
+                >
+                    <div class="flex flex-row items-center">
+                        <XCircleIcon
+                            class="mr-2 h-8 w-8 flex-shrink-0 text-website-primary"
+                        />
+                        <p class="flex-0">
+                            {{ item.title }}
+                        </p>
+                    </div>
+                </li>
+            </ul>
             <Markdown
                 :markdown-string="`#### ${servicesData.solution.nextStepsSubheading}`"
                 component-class="no-default-format text-center strong:font-semibold mx-auto pb-16 subheading-font lg:text-3xl text-xl max-w-4xl"
