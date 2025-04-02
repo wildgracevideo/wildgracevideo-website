@@ -115,13 +115,13 @@
         <div
             class="solution-background relative bg-website-tertiary pb-16 text-website-off-white"
         >
-            <!-- <FileOrVideo -->
-            <!--     parent-class="pointer-events-none relative z-0 cursor-default w-1/3 aspect-square absolute ml-auto z-0 opacity-10 top-[50%] -translate-y-1/2" -->
-            <!--     class="h-full object-cover object-center" -->
-            <!--     :file="servicesData.solution.actionFile" -->
-            <!--     sizes="2xl:800px xl:615px lg:512px 410px" -->
-            <!--     :with-sound-control="false" -->
-            <!-- /> -->
+            <FileOrVideo
+                parent-class="pointer-events-none z-0 cursor-default md:w-1/3 w-1/2 aspect-square absolute ml-auto z-0 opacity-10 lg:top-1/2 top-16 lg:-translate-y-1/2 left-full -translate-x-full"
+                class="h-full object-cover object-center"
+                :file="servicesData.solution.actionFile"
+                sizes="2xl:800px xl:615px lg:512px 410px"
+                :with-sound-control="false"
+            />
             <div class="z-10 flex flex-row items-center pb-32 pl-12 pt-12">
                 <Markdown
                     :markdown-string="`### ${servicesData.solution.action}`"
@@ -131,7 +131,7 @@
             </div>
             <Markdown
                 :markdown-string="`${servicesData.solution.actionOverview}`"
-                component-class="text-center strong:font-semibold lg:w-[60%] w-full lg:mr-72 lg:ml-24 mr-4 ml-4 lg:text-left text-center pb-16 z-10"
+                component-class="text-center strong:font-semibold lg:w-7/12 w-11/12 lg:mr-72 lg:ml-24 mr-8 ml-4 lg:text-left text-center pb-16 z-10"
             />
             <DefaultButton
                 :title="servicesData.solution.actionCta"
@@ -155,44 +155,27 @@
             />
         </div>
     </article>
-    <article>
-        <div class="relative">
-            <div
-                class="absolute inset-0 z-10 h-dvh bg-website-secondary bg-opacity-20"
-            ></div>
-            <FileOrVideo
-                parent-class="pointer-events-none relative z-0 cursor-default mx-auto h-dvh w-dvh brightness-50"
-                class="h-full w-full object-cover object-center"
-                :file="servicesData.adventureContentPartnership.overviewFile"
-                sizes="2xl:2000px xl:1536px lg:1280px md:1024px sm:768px 640px"
-                :with-sound-control="false"
-            />
-            <Markdown
-                :markdown-string="`${servicesData.adventureContentPartnership.overview}`"
-                component-class="strong:font-semibold w-[75%] mx-auto text-center absolute top-1/2 left-1/2 -translate-x-1/2 z-20 lg:text-3xl text-xl heading-font text-website-off-white"
-            />
-        </div>
-        <div class="flex flex-col bg-website-secondary lg:flex-row">
-            <div class="relative flex-1">
-                <FileOrVideo
-                    parent-class="pointer-events-none z-0 cursor-default lg:m-16 m-4 absolute"
-                    class="h-full w-full object-cover object-center"
-                    :file="
-                        servicesData.adventureContentPartnership
-                            .titleBackgroundImage
-                    "
-                    sizes="2xl:800px xl:615px lg:512px 410px"
-                    :with-sound-control="false"
-                />
-            </div>
-            <div class="flex-0 -mb-36 -mt-64 w-0.25 bg-website-accent"></div>
-            <div class="flex-1"></div>
-        </div>
-    </article>
+    <ServicesAdventureContentPartnership
+        :overview="adventureContentPartnershipOverview"
+        :overview-file="adventureContentPartnershipOverviewFile"
+        :title="adventureContentPartnershipTitle"
+        :title-background-image="
+            adventureContentPartnershipTitleBackgroundImage
+        "
+        :description="adventureContentPartnershipDescription"
+        :action-cta="adventureContentPartnershipActionCta"
+        :steps-background-image="
+            adventureContentPartnershipStepsBackgroundImage
+        "
+        :steps-title="adventureContentPartnershipStepsTitle"
+        :steps="adventureContentPartnershipSteps"
+        :accent-image="adventureContentPartnershipStepsAccentImage"
+    />
 </template>
 
 <script setup lang="ts">
     import { XCircleIcon } from '@heroicons/vue/24/outline';
+    import type { FileInfo } from '~/components/FileOrVideo.vue';
 
     const { data } = await useAsyncData('services', () =>
         queryContent('services').find()
@@ -204,4 +187,28 @@
 
     const headingFile = servicesData.headingFile!;
     const problemFile = servicesData.problemFile!;
+
+    const adventureContentPartnershipOverview = servicesData
+        .adventureContentPartnership.overview! as string;
+    const adventureContentPartnershipOverviewFile = servicesData
+        .adventureContentPartnership.overviewFile! as FileInfo;
+    const adventureContentPartnershipTitleBackgroundImage = servicesData
+        .adventureContentPartnership.titleBackgroundImage! as FileInfo;
+    const adventureContentPartnershipTitle = servicesData
+        .adventureContentPartnership.title! as string;
+    const adventureContentPartnershipDescription = servicesData
+        .adventureContentPartnership.description! as string;
+    const adventureContentPartnershipActionCta = servicesData
+        .adventureContentPartnership.actionCta! as string;
+    const adventureContentPartnershipStepsBackgroundImage = servicesData
+        .adventureContentPartnership.stepsBackgroundImage! as FileInfo;
+    const adventureContentPartnershipStepsTitle = servicesData
+        .adventureContentPartnership.stepsTitle! as string;
+    const adventureContentPartnershipSteps = servicesData
+        .adventureContentPartnership.steps! as {
+        title: string;
+        description: string;
+    }[];
+    const adventureContentPartnershipStepsAccentImage = servicesData
+        .adventureContentPartnership.stepsAccentImage! as FileInfo;
 </script>

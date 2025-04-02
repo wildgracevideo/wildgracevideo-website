@@ -874,13 +874,18 @@ collections:
                   widget: 'object'
                   summary: '{{fields.seoTitle}}'
                   <<: *fileInfo
+                - label: 'Steps accent image'
+                  name: 'stepsAccentImage'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
                 - label: 'Steps'
                   name: steps
                   widget: list
                   summary: '{{ fields.title }}'
                   fields:
                       - label: 'Title'
-                        name: 'Title'
+                        name: 'title'
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: true

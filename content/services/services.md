@@ -83,21 +83,54 @@ headingFile:
   seoDescription: TODO
   publicationDate: 2025-03-31T18:29:00.000Z
 adventureContentPartnership:
+  stepsBackgroundImage:
+    file: https://content.wildgracevideo.com/images/Website-Services/Icelandbackground.jpg
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-04-01T13:13:00.000Z
+  steps:
+    - Title: a brand clarity session
+      description: I’ll take time to understand your brand, goals and current
+        challenges. Together, we’ll craft a custom video strategy tailored to
+        your business. (RELATE THIS TO A SPECIFIC PROBLEM); no more working with
+        freelancers or influencers who don’t get your vision and damage your
+        brand
+      title: a brand clarity session
+    - Title: complete production plan
+      description: Based on our strategy session, I’ll handle all the video planning
+        and shoot logistics—completely done for you. No stress, no hassle. (what
+        it does for the client - how does this help them achieve something)
+      title: complete production plan
+    - title: done-for-you content capture
+      description: Cameras roll! We’ll capture all your content in one efficient,
+        high-impact shoot day. With just four filming days a year, you’ll have a
+        steady flow of content strategically delivered every month.
+    - title: monthly content drops
+      description: "Ready to post content to stay top of mind. You’ll receive
+        awe-inspiring content that will make your audience think: “I’ve GOT to
+        be there!” Plus, I’ll provide a Content Launch Schedule to make sure
+        you’ve got a clear plan to roll out your content seamlessly."
+  stepsAccentImage:
+    file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-04-01T18:16:00.000Z
+  stepsTitle: EVERY QUARTER YOU CAN EXPECT...
   overviewFile:
     seoTitle: TODO
     seoDescription: TODO
     publicationDate: 2025-03-31T23:12:00.000Z
     file: https://content.wildgracevideo.com/images/Website-Services/backgroundcarly.jpg
-  title: THE ADVENTURE CONTENT PARTNERSHIP
-  overview: AND THAT'S WHY I'VE COME UP WITH A NEW CONTENT APPROACH CURATED FOR
-    ADVENTURE BRANDS
-  description: DONE-FOR-YOU CONTENT, DELIVERED TO YOUR INBOX EVERY MONTH.
-  actionCta: BOOK YOUR CALL
   titleBackgroundImage:
     seoDescription: TODO
     seoTitle: TODO
     thumbnailImage: ""
     publicationDate: 2025-03-31T23:42:00.000Z
     file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-27.png
+  title: THE ADVENTURE CONTENT PARTNERSHIP
+  overview: AND THAT'S WHY I'VE COME UP WITH A NEW CONTENT APPROACH CURATED FOR
+    ADVENTURE BRANDS
+  actionCta: BOOK YOUR CALL
+  description: DONE-FOR-YOU CONTENT, DELIVERED TO YOUR INBOX EVERY MONTH.
 pageTagline: TURN YOUR CONTENT STRESS INTO SEAMLESS SALES
 ---
