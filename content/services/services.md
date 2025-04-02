@@ -100,14 +100,11 @@ adventureContentPartnership:
     - Title: a brand clarity session
       description: I’ll take time to understand your brand, goals and current
         challenges. Together, we’ll craft a custom video strategy tailored to
-        your business. (RELATE THIS TO A SPECIFIC PROBLEM); no more working with
-        freelancers or influencers who don’t get your vision and damage your
-        brand
+        your business.
       title: a brand clarity session
     - Title: complete production plan
       description: Based on our strategy session, I’ll handle all the video planning
-        and shoot logistics—completely done for you. No stress, no hassle. (what
-        it does for the client - how does this help them achieve something)
+        and shoot logistics—completely done for you. No stress, no hassle.
       title: complete production plan
     - title: done-for-you content capture
       description: Cameras roll! We’ll capture all your content in one efficient,
