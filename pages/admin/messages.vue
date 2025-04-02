@@ -103,7 +103,6 @@
         TrashIcon,
     } from '@heroicons/vue/24/outline';
     import { type MessageWithReply } from '~/drizzle/schema';
-    import { type SerializeObject } from '~/types/nitro';
 
     definePageMeta({ middleware: 'auth', layout: 'admin' });
     useHead({
@@ -114,8 +113,7 @@
     const showPreview = ref(false);
     const showReplyModal = ref(false);
 
-    const selectedMessage: Ref<SerializeObject<MessageWithReply> | null> =
-        ref(null);
+    const selectedMessage = ref(null);
 
     const messageReplySchema = object({
         email: string().email('Invalid email').required('Required'),
