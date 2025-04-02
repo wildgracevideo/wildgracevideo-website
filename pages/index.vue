@@ -260,11 +260,11 @@
 
     const showFreebieModal = ref(false);
 
-    const selectedFreebieModel = {
+    const selectedFreebieModel = ref({
         freebieName: freebie.name,
         fileName: freebie.fileName,
         fileURL: freebie.fileURL,
-    };
+    });
 
     onMounted(async () => {
         const observer = new IntersectionObserver(
