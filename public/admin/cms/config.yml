@@ -1291,6 +1291,38 @@ collections:
                             widget: 'markdown',
                             modes: ['rich_text'],
                         }
+          - label: 'Adventure Content Partnership'
+            name: adventureContentPartnership
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Call to Action'
+                  name: callToAction
+                  widget: 'string'
+                - {
+                      label: 'File',
+                      name: 'fileInfo',
+                      widget: 'object',
+                      summary: '{{fields.seoTitle}}',
+                      <<: *fileInfo,
+                  }
+                - {
+                      label: 'File',
+                      name: 'accentFile',
+                      widget: 'object',
+                      summary: '{{fields.seoTitle}}',
+                      <<: *fileInfo,
+                  }
 
     - name: 'links'
       label: 'Links'

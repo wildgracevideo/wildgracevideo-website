@@ -80,6 +80,47 @@
             />
         </div>
     </div>
+    <section
+        class="relative mb-24 bg-website-primary py-24 text-website-off-white"
+    >
+        <div class="flex flex-col justify-center lg:flex-row lg:justify-normal">
+            <FileOrVideo
+                parent-class="pointer-events-none lg:mx-16 mx-auto flex-shrink-0 lg:w-1/3 w-2/3 lg:mb-0 mb-16 aspect-photo-long"
+                class="h-full w-full object-cover object-center"
+                :file="adventureContentFileInfo"
+                sizes="2xl:800px xl:615px lg:512px 410px"
+                :with-sound-control="false"
+            />
+            <FileOrVideo
+                parent-class="pointer-events-none h-36 w-36 aspect-square top-0 lg:static absolute left-[80%] lg:-translate-y-[30%] translate-y-[30%] -ml-32 mr-16 translate-x-0 lg:-translate-x-1/2"
+                class="mx-16 h-full w-full object-cover object-center"
+                :file="adventureContentAccentFile"
+                sizes="138px"
+                :with-sound-control="false"
+            />
+            <div
+                class="relative z-10 -mt-24 hidden h-dvh w-0.25 bg-website-accent lg:block"
+            ></div>
+            <div
+                class="flex flex-shrink flex-col items-center justify-center gap-16"
+            >
+                <Markdown
+                    :markdown-string="`## ${adventureContentTitle}`"
+                    component-class="lg:text-5xl lg:px-16 px-4 heading-font no-default-format text-3xl heading-font lg:text-left text-center"
+                />
+                <Markdown
+                    :markdown-string="adventureContentDescription"
+                    component-class="px-16"
+                />
+                <DefaultButton
+                    :title="adventureContentCallToAction"
+                    to="/services"
+                    class="mx-auto"
+                    :light="true"
+                />
+            </div>
+        </div>
+    </section>
     <section>
         <div class="mb-24 flex w-full flex-row items-center">
             <div class="h-[1px] flex-grow bg-website-off-black" />
@@ -253,6 +294,16 @@
     const trustedBrandLogos = homeData.trustedBrandLogos!;
     const videoHighlight = homeData.videoHighlight!;
     const videoHighlightVideos = videoHighlight.videos!;
+
+    const adventureContentTitle = homeData.adventureContentPartnership.title;
+    const adventureContentDescription =
+        homeData.adventureContentPartnership.description;
+    const adventureContentCallToAction =
+        homeData.adventureContentPartnership.callToAction;
+    const adventureContentFileInfo =
+        homeData.adventureContentPartnership.fileInfo;
+    const adventureContentAccentFile =
+        homeData.adventureContentPartnership.accentFile;
 
     const howTo = homeData.howTo!;
 
