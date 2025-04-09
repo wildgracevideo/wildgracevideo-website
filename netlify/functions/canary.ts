@@ -16,6 +16,7 @@ export default async function (req: Request): Promise<void> {
         pages.map(async (page) => {
             try {
                 await fetch(page);
+                console.log(`Fetch page, ${page}.`);
             } catch (e: unknown) {
                 console.error('Failed to fetch page', e);
             }
