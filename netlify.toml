@@ -6,6 +6,8 @@
   functions = 'netlify/functions'
 [functions."daily-db-keep-alive"]
   schedule = "@daily"
+[functions."canary"]
+  schedule = "@hourly"
 
 [[headers]]
   for = "/*"

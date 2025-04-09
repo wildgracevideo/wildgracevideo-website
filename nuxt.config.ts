@@ -292,7 +292,7 @@ const config = {
         excludeAppSources: true,
     },
     routeRules: {
-        '/**': { isr: 3_600 }, // 1hr
+        '/**': { isr: true }, // Build once and cache
         '/admin/**': { isr: false },
         '/admin/media': { ssr: false },
         '/api/**': { isr: false },
