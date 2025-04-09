@@ -21,7 +21,7 @@
             </div>
         </h1>
         <FileOrVideo
-            parent-class="pointer-events-none relative z-0 cursor-default lg:-top-36 -top-[110px]"
+            parent-class="pointer-events-none relative z-0 cursor-default lg:-top-36 xs:-top-[110px] -top-[140px]"
             class="h-[60dvh] w-full object-cover object-top brightness-50"
             :file="headingFile"
             sizes="2xl:2000px xl:1536px lg:1280px md:1024px sm:768px 640px"
@@ -95,10 +95,10 @@
         </div>
     </article>
     <article>
-        <div>
+        <div class="mx-8">
             <Markdown
                 :markdown-string="`## ${servicesData.solution.title}`"
-                component-class="no-default-format text-center text-3xl lg:text-5xl heading-font strong:font-semibold pt-32 tracking-widest leading-normal lg:mx-auto mx-8"
+                component-class="no-default-format text-center text-3xl lg:text-5xl heading-font strong:font-semibold pt-32 tracking-widest leading-normal mx-auto"
             />
             <FileOrVideo
                 parent-class="pointer-events-none relative z-0 cursor-default mx-auto w-28 h-28 my-16"
@@ -109,7 +109,7 @@
             />
             <Markdown
                 :markdown-string="`### ${servicesData.solution.description}`"
-                component-class="no-default-format text-center strong:font-semibold mx-auto max-w-4xl pb-32 lg:mx-auto mx-10"
+                component-class="no-default-format text-center strong:font-semibold mx-auto max-w-4xl pb-32 mx-auto"
             />
         </div>
         <div
@@ -143,7 +143,7 @@
         <div>
             <Markdown
                 :markdown-string="`### ${servicesData.solution.nextStepsHeading}`"
-                component-class="no-default-format text-center strong:font-semibold mx-auto pt-32 subheading-font lg:text-3xl text-xl"
+                component-class="no-default-format text-center strong:font-semibold lg:mx-auto mx-4 pt-32 subheading-font lg:text-3xl text-xl"
             />
             <ul class="mx-auto w-3/4 list-none py-24 lg:w-1/2">
                 <li

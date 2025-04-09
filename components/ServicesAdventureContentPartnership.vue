@@ -13,7 +13,7 @@
             />
             <Markdown
                 :markdown-string="`${overview}`"
-                component-class="strong:font-semibold w-3/4 mx-auto text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-5xl leading-normal tracking-wider heading-font text-website-off-white"
+                component-class="strong:font-semibold w-3/4 mx-auto text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 lg:text-5xl text-2xl leading-normal tracking-wider heading-font text-website-off-white"
             />
         </div>
 
@@ -89,7 +89,7 @@
         </div>
 
         <div
-            class="bg-contain flex flex-col bg-black/60 bg-fixed bg-center bg-no-repeat text-website-off-white bg-blend-darken"
+            class="bg-contain lg:bg-auto bg-cover flex flex-col bg-black/60 bg-fixed bg-center bg-no-repeat text-website-off-white bg-blend-darken"
             :style="{
                 backgroundImage: `url('${stepsBackgroundImage.file}')`,
             }"
