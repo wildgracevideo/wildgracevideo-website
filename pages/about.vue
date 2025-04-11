@@ -5,7 +5,7 @@
         :markdown-string="`# ${pageTitle}`"
         component-class="no-default-format md:mb-24 mb-12 text-2xl md:text-4xl mx-auto em:font-medium strong:font-semibold leading-14 tracking-tighter lg:mx-auto w-3/4 text-center"
     />
-    <div class="relative z-10 bg-website-off-white">
+    <div class="bg-website-off-white relative z-10">
         <section
             id="meet-carly"
             class="mx-8 mb-20 grid grid-cols-1 gap-32 md:mx-16 md:grid-cols-2"
@@ -18,7 +18,7 @@
                 sizes="640px"
             />
             <div
-                class="ml-2 mr-2 flex flex-col justify-between md:-ml-16 md:mr-16"
+                class="mr-2 ml-2 flex flex-col justify-between md:mr-16 md:-ml-16"
             >
                 <div>
                     <Markdown
@@ -29,14 +29,14 @@
                 </div>
                 <div>
                     <button
-                        class="mx-auto mt-2 block min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary md:mx-0"
+                        class="border-website-primary bg-website-primary text-website-off-white hover:bg-website-off-white hover:text-website-primary mx-auto mt-2 block min-w-40 rounded-xl border-2 p-4 text-center text-xl md:mx-0"
                         @click="toGetStarted"
                     >
                         INQUIRE
                     </button>
                     <SocialMediaIcons
                         icon-fill="rgb(var(--color-website-primary))"
-                        class="my-8 -ml-10 !justify-start"
+                        class="my-8 -ml-10 justify-start!"
                         :icon-size="80"
                     />
                 </div>
@@ -44,12 +44,12 @@
         </section>
         <section
             id="behind-the-scenes"
-            class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 bg-website-primary py-8"
+            class="bg-website-primary flex flex-row flex-wrap justify-center gap-x-12 gap-y-6 py-8"
         >
             <FileOrVideo
                 v-for="asset in assets"
                 :key="asset.seoTitle"
-                :class="`h-[420px] flex-grow object-cover ${
+                :class="`h-[420px] grow object-cover ${
                     asset.isWide ? 'aspect-video' : 'aspect-photo'
                 }`"
                 :file="asset"
@@ -59,12 +59,12 @@
             />
         </section>
         <section id="hear-from-our-clients" class="overflow-hidden">
-            <div class="w-dvw whitespace-nowrap bg-website-off-black py-3">
-                <div class="slider w-fit bg-website-off-black">
+            <div class="bg-website-off-black w-dvw py-3 whitespace-nowrap">
+                <div class="slider bg-website-off-black w-fit">
                     <div
                         v-for="i in Array(8).keys()"
                         :key="`${i}-container`"
-                        class="inline-block w-fit min-w-[100dvh] whitespace-nowrap pr-2 text-sm tracking-tighter text-website-off-white md:pr-12 md:text-xl"
+                        class="text-website-off-white inline-block w-fit min-w-[100dvh] pr-2 text-sm tracking-tighter whitespace-nowrap md:pr-12 md:text-xl"
                     >
                         <span
                             v-for="char in `${testimonials.title}`"
@@ -93,7 +93,7 @@
             />
         </section>
         <article
-            class="bg-website-primary px-8 pb-32 pt-16 text-website-off-white lg:px-32"
+            class="bg-website-primary text-website-off-white px-8 pt-16 pb-32 lg:px-32"
         >
             <Markdown
                 :markdown-string="`## ${faq.title!}`"
@@ -103,7 +103,7 @@
                 v-for="faqItem in faq.questions"
                 :key="`faq-${faqItem.question}`"
                 :title-markdown="`### ${faqItem.question}`"
-                class="mb-10 w-full border-website-off-white"
+                class="border-website-off-white mb-10 w-full"
             >
                 <Markdown
                     :markdown-string="faqItem.answer"
@@ -116,10 +116,10 @@
 
 <script setup lang="ts">
     const { data } = await useAsyncData('about', () =>
-        queryContent('about').find()
+        queryCollection('content').path('about').first()
     );
 
-    const behindTheScenesData = data!.value![0]!;
+    const behindTheScenesData = data!.value!;
     const seoTitle = behindTheScenesData.title;
     const seoDescription = behindTheScenesData.description;
 

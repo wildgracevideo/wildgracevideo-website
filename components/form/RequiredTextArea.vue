@@ -10,7 +10,7 @@
             class="block w-full p-2 opacity-80"
             :class="[
                 inputClass,
-                { '!border-2': showError, '!border-red-700': showError },
+                { 'border-2!': showError, 'border-red-700!': showError },
             ]"
             :placeholder="hint"
             maxlength="5000"

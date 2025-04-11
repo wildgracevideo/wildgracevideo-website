@@ -13,7 +13,7 @@
                     >A NEW CONTENT APPROACH FOR</span
                 >
                 <div class="flex shrink flex-row items-center">
-                    <div class="h-[1px] flex-grow bg-website-off-white" />
+                    <div class="h-[1px] grow bg-website-off-white" />
                     <span class="subheading-font ml-8 text-2xl lg:text-4xl"
                         >ADVENTURE BRANDS</span
                     >
@@ -42,7 +42,7 @@
                 :with-sound-control="false"
             />
             <div class="hidden flex-col lg:flex">
-                <div class="-mb-48 w-0.25 flex-grow bg-website-tertiary"></div>
+                <div class="-mb-48 w-0.25 grow bg-website-tertiary"></div>
             </div>
             <div class="mx-24 flex-1">
                 <Markdown
@@ -58,7 +58,7 @@
                     >
                         <div class="flex flex-row">
                             <XCircleIcon
-                                class="mr-2 h-8 w-8 flex-shrink-0 text-website-primary"
+                                class="mr-2 h-8 w-8 shrink-0 text-website-primary"
                             />
                             <p class="flex-0">
                                 {{ item.description }}
@@ -83,7 +83,7 @@
                     >
                         <div class="flex flex-row">
                             <XCircleIcon
-                                class="mr-2 h-8 w-8 flex-shrink-0 text-website-primary"
+                                class="mr-2 h-8 w-8 shrink-0 text-website-primary"
                             />
                             <p class="flex-0">
                                 {{ item.description }}
@@ -153,7 +153,7 @@
                 >
                     <div class="flex flex-row items-center">
                         <XCircleIcon
-                            class="mr-2 h-8 w-8 flex-shrink-0 text-website-primary"
+                            class="mr-2 h-8 w-8 shrink-0 text-website-primary"
                         />
                         <p class="flex-0">
                             {{ item.title }}
@@ -225,10 +225,10 @@
     import type { FileInfo } from '~/components/FileOrVideo.vue';
 
     const { data } = await useAsyncData('services', () =>
-        queryContent('services').find()
+        queryCollection('content').path('services').first()
     );
 
-    const servicesData = data!.value![0]!;
+    const servicesData = data!.value!;
     const title = servicesData.title!;
     const description = servicesData.description;
 

@@ -1,8 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
 import type { EventHandlerRequest, H3Event } from 'h3';
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
-// eslint-disable-next-line import/no-unresolved
-import { serverQueryContent } from '#content/server';
 
 export interface ProductBackendProperties {
     stripePriceId: string;
@@ -37,10 +34,9 @@ async function getProductBy(
     predicate: (element: ProductBackendProperties) => boolean,
     errorMessage: string
 ): Promise<ProductBackendProperties> {
-    const contentList = (await serverQueryContent(
-        event,
-        'product'
-    ).find()) as ParsedContent[];
+    const contentList = await queryCollection(event, 'content')
+        .path('product')
+        .all();
     const product = contentList
         .map((it) => it as unknown as ProductBackendProperties)
         .find(predicate);

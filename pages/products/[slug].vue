@@ -30,7 +30,7 @@
 
     const route = useRoute();
     const { data } = await useAsyncData('products', () =>
-        queryContent('/product').where({ path: route.params.slug }).findOne()
+        queryCollection('content').path(`product/${route.params.slug}`).first()
     );
     const pageTitle = data!.value!.title!;
     const imageDescription = data!.value!.imageDescription!;

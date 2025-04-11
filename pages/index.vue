@@ -37,7 +37,7 @@
         </div>
         <FileOrVideo
             parent-class="pointer-events-none relative z-0 cursor-default mx-auto col-span-2"
-            class="mx-auto aspect-photo w-4/5 border-2 border-website-secondary object-cover object-bottom md:mx-0"
+            class="aspect-photo border-website-secondary mx-auto w-4/5 border-2 object-cover object-bottom md:mx-0"
             :file="visitPortfolioFile"
             sizes="2xl:800px xl:615px lg:512px 410px"
             :with-sound-control="false"
@@ -81,11 +81,11 @@
         </div>
     </div>
     <section
-        class="relative mb-24 bg-website-primary py-24 text-website-off-white"
+        class="bg-website-primary text-website-off-white relative mb-24 py-24"
     >
         <div class="flex flex-col justify-center lg:flex-row lg:justify-normal">
             <FileOrVideo
-                parent-class="pointer-events-none lg:mx-16 mx-auto flex-shrink-0 lg:w-1/3 w-2/3 lg:mb-0 mb-16 aspect-photo-long"
+                parent-class="pointer-events-none lg:mx-16 mx-auto shrink-0 lg:w-1/3 w-2/3 lg:mb-0 mb-16 aspect-photo-long"
                 class="h-full w-full object-cover object-center"
                 :file="adventureContentFileInfo"
                 sizes="2xl:800px xl:615px lg:512px 410px"
@@ -99,10 +99,10 @@
                 :with-sound-control="false"
             />
             <div
-                class="relative z-10 -mt-24 hidden h-dvh w-0.25 bg-website-accent lg:block"
+                class="bg-website-accent relative z-10 -mt-24 hidden h-dvh w-0.25 lg:block"
             ></div>
             <div
-                class="flex flex-shrink flex-col items-center justify-center gap-16"
+                class="flex shrink flex-col items-center justify-center gap-16"
             >
                 <Markdown
                     :markdown-string="`## ${adventureContentTitle}`"
@@ -123,7 +123,7 @@
     </section>
     <section>
         <div class="mb-24 flex w-full flex-row items-center">
-            <div class="h-[1px] flex-grow bg-website-off-black" />
+            <div class="bg-website-off-black h-[1px] grow" />
             <Markdown
                 :markdown-string="`## ${videoHighlight.title!}`"
                 component-class="max-w-3xl w-fit px-8 md:mx-auto accent-font no-default-format text-3xl md:text-4xl"
@@ -135,11 +135,11 @@
                 :key="`home-highlight-video-${video.title}`"
                 :class="`home-scroll-observable delay-${
                     i * 200
-                } translate-y-1/2 opacity-0 `"
+                } translate-y-1/2 opacity-0`"
             >
                 <NuxtLink :to="video.linkPath">
                     <AutoPlayVideo
-                        class="transition-transform mb-4 mt-8 aspect-video cursor-pointer bg-fixed duration-700 ease-in-out hover:scale-105 lg:mt-0"
+                        class="mt-8 mb-4 aspect-video cursor-pointer bg-fixed transition-transform duration-700 ease-in-out hover:scale-105 lg:mt-0"
                         :title="video.seoTitle"
                         :description="video.seoDescription"
                         :video="video.video"
@@ -159,21 +159,21 @@
         </div>
     </section>
     <section
-        class="mt-32 flex flex-col items-center justify-normal bg-website-tertiary px-16 py-20 text-website-off-white lg:flex-row lg:justify-between lg:px-32"
+        class="bg-website-tertiary text-website-off-white mt-32 flex flex-col items-center justify-normal px-16 py-20 lg:flex-row lg:justify-between lg:px-32"
     >
         <div class="flex h-full flex-row items-stretch">
             <h2
-                class="heading-font mb-16 text-6xl tracking-widest lg:mb-0 lg:-rotate-180 lg:text-9xl lg:writing-vertical"
+                class="heading-font lg:writing-vertical mb-16 text-6xl tracking-widest lg:mb-0 lg:-rotate-180 lg:text-9xl"
             >
                 {{ freebie.title }}
             </h2>
             <div
-                class="ml-2 hidden w-0.25 basis-full bg-website-accent md:block"
+                class="bg-website-accent ml-2 hidden w-0.25 basis-full md:block"
             />
         </div>
         <FileOrVideo
             parent-class="pointer-events-none relative z-0 cursor-default"
-            class="mx-auto aspect-photo object-cover object-bottom md:mx-0"
+            class="aspect-photo mx-auto object-cover object-bottom md:mx-0"
             :file="freebie.file.fileInfo"
             sizes="64px"
             :with-sound-control="false"
@@ -198,7 +198,7 @@
         </div>
     </section>
     <HomePageAbout
-        class="mb-36 mt-32 md:mt-48"
+        class="mt-32 mb-36 md:mt-48"
         :text-markdown="aboutMeDescriptionMarkdown"
         :title-markdown="aboutMeTitleMarkdown"
         :file-config="aboutMeFile"
@@ -214,7 +214,7 @@
             cta-link="/get-started"
         />
     </article>
-    <section class="bg-website-primary p-16 text-website-off-white">
+    <section class="bg-website-primary text-website-off-white p-16">
         <h2 class="mb-16 text-2xl">
             DISCOVER
             <span class="subheading-font mt-4 block text-5xl"
@@ -225,7 +225,7 @@
             <NuxtLink :to="caseStudies.pagePath">
                 <FileOrVideo
                     parent-class="pointer-events-none relative z-0 cursor-default"
-                    class="mx-auto aspect-photo w-full object-cover object-bottom md:mx-0"
+                    class="aspect-photo mx-auto w-full object-cover object-bottom md:mx-0"
                     :file="caseStudies.file"
                     sizes="2xl:800px xl:615px lg:512px 410px"
                     :with-sound-control="false"
@@ -233,7 +233,7 @@
                 <h3 class="subheading-font mt-4 text-4xl">
                     {{ caseStudies.title }}
                 </h3>
-                <hr class="my-2 w-full border-t border-website-accent" />
+                <hr class="border-website-accent my-2 w-full border-t" />
                 <p>{{ caseStudies.description }}</p>
             </NuxtLink>
         </div>
@@ -273,11 +273,12 @@
 <script setup lang="ts">
     import type { FileInfo } from '../components/FileOrVideo.vue';
 
-    const { data } = await useAsyncData('home', () =>
-        queryContent('home').find()
-    );
+    const { data } = await useAsyncData('home', () => {
+        console.log(queryCollection('content').all());
+        return queryCollection('content').path('home').first();
+    });
 
-    const homeData = data!.value![0]!;
+    const homeData = data!.value!;
     const title = homeData.title!;
     const pageTagline = homeData.pageTagline!;
     const description = homeData.description;

@@ -34,7 +34,7 @@
             :with-sound-control="false"
         />
         <div
-            class="flex flex-col items-center justify-center py-4 pl-4 pr-8 text-left"
+            class="flex flex-col items-center justify-center py-4 pr-8 pl-4 text-left"
         >
             <h2 class="mb-8 text-center text-3xl">{{ overview.title }}</h2>
             <Markdown
@@ -68,7 +68,7 @@
     >
         <!-- lg:order-1 lg:order-2 -->
         <div
-            class="order-1 flex flex-col items-center justify-center bg-website-primary text-website-off-white"
+            class="bg-website-primary text-website-off-white order-1 flex flex-col items-center justify-center"
             :class="{
                 'lg:order-1': index % 2 === 0,
                 'lg:ml-8': index % 2 === 0,
@@ -87,9 +87,9 @@
                 :markdown-string="callToAction.description"
                 class="mx-16 mb-8 inline-block text-left [&>li]:break-all"
             />
-            <div class="ml-8 mt-8 gap-8 pb-8 text-xl">
+            <div class="mt-8 ml-8 gap-8 pb-8 text-xl">
                 <button
-                    class="mt-2 min-w-40 rounded-xl border-2 border-website-primary bg-website-primary p-4 text-center text-xl text-website-off-white hover:bg-website-off-white hover:text-website-primary"
+                    class="border-website-primary bg-website-primary text-website-off-white hover:bg-website-off-white hover:text-website-primary mt-2 min-w-40 rounded-xl border-2 p-4 text-center text-xl"
                     @click="toGetStarted"
                 >
                     {{ callToAction.callToActionText }}
@@ -123,7 +123,7 @@
                 :key="socialMediaFile.seoTitle"
             >
                 <FileOrVideo
-                    class="pointer-events-none relative z-0 aspect-photo h-full w-full cursor-default object-cover object-center"
+                    class="aspect-photo pointer-events-none relative z-0 h-full w-full cursor-default object-cover object-center"
                     parent-class="lg:px-0.5 lg:py-0.5 p-0 py-0.5"
                     :file="socialMediaFile"
                     :is-lazy="true"
@@ -134,11 +134,11 @@
                     v-if="socialMediaFile.endsWith('mpd')"
                     class="relative bottom-44 -mb-44 flex flex-col items-end gap-6 pr-8"
                 >
-                    <HeartIcon class="h-8 w-8 text-website-off-white" />
+                    <HeartIcon class="text-website-off-white h-8 w-8" />
                     <ChatBubbleOvalLeftIcon
-                        class="h-8 w-8 text-website-off-white"
+                        class="text-website-off-white h-8 w-8"
                     />
-                    <PaperAirplaneIcon class="h-8 w-8 text-website-off-white" />
+                    <PaperAirplaneIcon class="text-website-off-white h-8 w-8" />
                 </div>
             </div>
         </div>
@@ -155,9 +155,9 @@
 
     const route = useRoute();
     const { data } = await useAsyncData('serviceLandingPage', () =>
-        queryContent('/service-landing-page')
-            .where({ path: route.params.slug })
-            .findOne()
+        queryCollection('content')
+            .path(`service-landing-page/${route.params.slug}`)
+            .first()
     );
 
     const serviceData = data!.value!;

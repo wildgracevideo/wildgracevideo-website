@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
     const { data } = await useAsyncData('portfolio', () =>
-        queryContent('portfolio').find()
+        queryCollection('content').path('portfolio').first()
     );
-    const portfolio = data!.value![0] as Portfolio;
+    const portfolio = data!.value!;
 </script>

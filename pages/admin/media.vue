@@ -2,12 +2,12 @@
     <div>
         <h1 class="my-8 ml-8 text-2xl">Media Library</h1>
         <div
-            class="my-8 flex w-full flex-row justify-between border-website-tertiary pl-8 text-lg"
+            class="border-website-tertiary my-8 flex w-full flex-row justify-between pl-8 text-lg"
         >
             <div>
                 <button
                     v-if="currentFolder.length > 0"
-                    class="cursor-hover mr-2 inline text-website-primary underline"
+                    class="cursor-hover text-website-primary mr-2 inline underline"
                     @click="() => goUpDirectory()"
                 >
                     Back
@@ -24,7 +24,7 @@
                 "
             >
                 <UButton
-                    color="amber"
+                    color="warning"
                     size="lg"
                     variant="solid"
                     label="Create Folder"
@@ -32,7 +32,7 @@
                     @click="() => (showCreateFolder = true)"
                 />
                 <UButton
-                    color="green"
+                    color="success"
                     size="lg"
                     variant="solid"
                     label="Upload"
@@ -55,7 +55,7 @@
 
             <template #name-data="{ row }">
                 <button
-                    class="cursor-pointer text-website-off-black underline"
+                    class="text-website-off-black cursor-pointer underline"
                     @click="() => handleNameClick(row)"
                 >
                     {{ row.name }}
@@ -88,76 +88,86 @@
                 </div>
             </template>
         </UTable>
-        <UModal v-model="showCreateFolder">
-            <UCard>
-                <template #header> Folder name </template>
-                <UFormGroup
-                    class="mx-8"
-                    label="Folder Name"
-                    :error="folderNameError"
-                >
-                    <UInput
-                        v-model="createFolderName"
-                        color="black"
-                        variant="outline"
-                        placeholder="Folder name"
-                    />
-                </UFormGroup>
-                <template #footer>
-                    <div class="flex flex-row justify-end">
-                        <UButton
-                            label="Cancel"
-                            color="red"
-                            class="ml-auto"
-                            @click="showCreateFolder = false"
+        <UModal v-model:open="showCreateFolder">
+            <template #content>
+                <UCard>
+                    <template #header> Folder name </template>
+                    <UFormField
+                        class="mx-8"
+                        label="Folder Name"
+                        :error="folderNameError"
+                    >
+                        <UInput
+                            v-model="createFolderName"
+                            color="neutral"
+                            variant="outline"
+                            placeholder="Folder name"
                         />
+                    </UFormField>
+                    <template #footer>
+                        <div class="flex flex-row justify-end">
+                            <UButton
+                                label="Cancel"
+                                color="error"
+                                class="ml-auto"
+                                @click="showCreateFolder = false"
+                            />
+                            <UButton
+                                class="mx-4"
+                                label="Create"
+                                color="success"
+                                @click="createFolderAction"
+                            />
+                        </div>
+                    </template>
+                </UCard>
+            </template>
+        </UModal>
+
+        <UModal v-model:open="showDeleteConfirmation">
+            <template #content>
+                <UCard>
+                    <template #header>
+                        Are you sure you want to delete
+                        <b> {{ selectedObject.name }} </b>?
+                        {{
+                            selectedObject.isFolder
+                                ? ' \n(Folder must be empty to delete)'
+                                : ''
+                        }}
+                    </template>
+                    <span class="float-right my-4">
                         <UButton
+                            label="No"
+                            color="error"
                             class="mx-4"
-                            label="Create"
-                            color="green"
-                            @click="createFolderAction"
+                            @click="showDeleteConfirmation = false"
                         />
-                    </div>
-                </template>
-            </UCard>
+                        <UButton
+                            label="Yes"
+                            color="success"
+                            @click="deleteAction"
+                        />
+                    </span>
+                </UCard>
+            </template>
         </UModal>
 
-        <UModal v-model="showDeleteConfirmation">
-            <UCard>
-                <template #header>
-                    Are you sure you want to delete
-                    <b> {{ selectedObject.name }} </b>?
-                    {{
-                        selectedObject.isFolder
-                            ? ' \n(Folder must be empty to delete)'
-                            : ''
-                    }}
-                </template>
-                <span class="float-right my-4">
-                    <UButton
-                        label="No"
-                        color="red"
-                        class="mx-4"
-                        @click="showDeleteConfirmation = false"
-                    />
-                    <UButton label="Yes" color="green" @click="deleteAction" />
-                </span>
-            </UCard>
-        </UModal>
-
-        <UModal v-model="showShakaModal">
-            <UCard>
-                <template #header> Video preview </template>
-                <video
-                    ref="videoElement"
-                    controls
-                    muted
-                    disablePictureInPicture
-                    playsinline
-                    autoplay
-                    data-shaka-player
-                ></video>
-            </UCard>
+        <UModal v-model:open="showShakaModal">
+            <template #content>
+                <UCard>
+                    <template #header> Video preview </template>
+                    <video
+                        ref="videoElement"
+                        controls
+                        muted
+                        disablePictureInPicture
+                        playsinline
+                        autoplay
+                        data-shaka-player
+                    ></video>
+                </UCard>
+            </template>
         </UModal>
     </div>
 </template>

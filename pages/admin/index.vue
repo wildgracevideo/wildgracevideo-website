@@ -5,7 +5,7 @@
         Data in the last:
         <USelect
             v-model="numDays"
-            :options="options"
+            :items="options"
             option-attribute="name"
             class="mt-2 w-64"
         />

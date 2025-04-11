@@ -24,9 +24,9 @@
 
 <script setup lang="ts">
     const { data } = await useAsyncData('link', () =>
-        queryContent('link').find()
+        queryCollection('content').path('link').first()
     );
-    const linksData = data!.value![0]!;
+    const linksData = data!.value!;
 
     const runtimeConfig = useRuntimeConfig();
 

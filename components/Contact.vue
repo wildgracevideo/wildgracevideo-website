@@ -19,7 +19,7 @@
             >
                 CONTACT
             </h2>
-            <div class="h-[1px] flex-grow bg-website-off-white" />
+            <div class="h-[1px] grow bg-website-off-white" />
         </div>
         <h2
             class="relative top-28 text-center text-3xl text-website-off-white"

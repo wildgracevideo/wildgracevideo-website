@@ -120,9 +120,8 @@
     let caseStudyData;
     try {
         const { data } = await useAsyncData('case-study', () =>
-            queryContent('/case-study')
-                .where({ path: route.params.slug })
-                .findOne()
+            queryCollection('content').path(`case-study/${route.params.slug}`)
+                .first()
         );
         caseStudyData = data!.value!;
         if (!caseStudyData) {

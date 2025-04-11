@@ -14,7 +14,7 @@
         </template>
     </UTable>
     <div
-        class="flex justify-end border-t border-gray-200 px-3 py-3.5 dark:border-gray-700"
+        class="flex justify-end border-t border-neutral-200 px-3 py-3.5 dark:border-gray-700"
     >
         <UPagination
             v-model="page"

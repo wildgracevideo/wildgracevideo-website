@@ -10,7 +10,7 @@
             class="h-11 w-full max-w-lg px-2"
             :class="[
                 inputClass,
-                { '!border-red-700': showError, '!border-2': showError },
+                { 'border-red-700!': showError, 'border-2!': showError },
             ]"
         >
             <option value="" disabled selected hidden>Select</option>

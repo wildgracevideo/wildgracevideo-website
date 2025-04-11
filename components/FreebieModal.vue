@@ -12,7 +12,7 @@
                 <input
                     id="firstName"
                     v-model="firstName"
-                    class="col-span-2 rounded border border-website-tertiary bg-website-background"
+                    class="col-span-2 rounded-sm border border-website-tertiary bg-website-background"
                     type="text"
                     name="firstName"
                     required
@@ -23,7 +23,7 @@
                 <input
                     id="lastName"
                     v-model="lastName"
-                    class="col-span-2 rounded border border-website-tertiary bg-website-background"
+                    class="col-span-2 rounded-sm border border-website-tertiary bg-website-background"
                     type="text"
                     name="lastName"
                     required
@@ -32,7 +32,7 @@
                 <input
                     id="email"
                     v-model="email"
-                    class="col-span-2 rounded border border-website-tertiary bg-website-background"
+                    class="col-span-2 rounded-sm border border-website-tertiary bg-website-background"
                     type="email"
                     name="email"
                     required

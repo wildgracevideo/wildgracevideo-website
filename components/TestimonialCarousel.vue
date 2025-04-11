@@ -17,7 +17,7 @@
                 v-for="(clientTestimonial, i) in testimonials"
                 :key="clientTestimonial.author"
                 :data-active="i === activeTestimonialIndex ? true : null"
-                class="transition-opacity absolute mx-auto flex h-full w-full flex-col justify-center text-center opacity-0 duration-700 ease-in-out data-[active]:opacity-100"
+                class="transition-opacity absolute mx-auto flex h-full w-full flex-col justify-center text-center opacity-0 duration-700 ease-in-out data-active:opacity-100"
             >
                 <Markdown
                     :markdown-string="`&#8220;${clientTestimonial.text}&#8221;`"

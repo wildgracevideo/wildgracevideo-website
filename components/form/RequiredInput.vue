@@ -19,8 +19,8 @@
             :type="type"
             class="block h-11 w-full p-2 opacity-80"
             :class="[
-                !!showError ? '!border-2' : '',
-                !!showError ? '!border-red-700' : '',
+                !!showError ? 'border-2!' : '',
+                !!showError ? 'border-red-700!' : '',
                 inputClass,
             ]"
             :placeholder="hint"

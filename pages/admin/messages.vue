@@ -42,56 +42,66 @@
         </template>
     </UTable>
 
-    <UModal v-model="showDeleteConfirmation">
-        <UCard>
-            <template #header>
-                Are you sure you want to delete the message?
-            </template>
-            <span class="float-right my-4">
-                <UButton
-                    label="No"
-                    color="red"
-                    class="mx-4"
-                    @click="showDeleteConfirmation = false"
-                />
-                <UButton label="Yes" color="green" @click="deleteAction" />
-            </span>
-        </UCard>
+    <UModal v-model:open="showDeleteConfirmation">
+        <template #content>
+            <UCard>
+                <template #header>
+                    Are you sure you want to delete the message?
+                </template>
+                <span class="float-right my-4">
+                    <UButton
+                        label="No"
+                        color="error"
+                        class="mx-4"
+                        @click="showDeleteConfirmation = false"
+                    />
+                    <UButton
+                        label="Yes"
+                        color="success"
+                        @click="deleteAction"
+                    />
+                </span>
+            </UCard>
+        </template>
     </UModal>
 
-    <UModal v-model="showReplyModal">
-        <UCard>
-            <template #header> Send email </template>
-            <UForm
-                :schema="messageReplySchema"
-                :state="messageReplyState"
-                class="space-y-4"
-                @submit="replyAction"
-            >
-                <UFormGroup label="To Email" name="email">
-                    <UInput v-model="messageReplyState.email" />
-                </UFormGroup>
-
-                <UFormGroup label="Name" name="name">
-                    <UInput v-model="messageReplyState.name" />
-                </UFormGroup>
-
-                <UButton
-                    type="submit"
-                    color="green"
-                    class="my-8 ml-auto mr-4 block"
+    <UModal v-model:open="showReplyModal">
+        <template #content>
+            <UCard>
+                <template #header> Send email </template>
+                <UForm
+                    :schema="messageReplySchema"
+                    :state="messageReplyState"
+                    class="space-y-4"
+                    @submit="replyAction"
                 >
-                    Submit
-                </UButton>
-            </UForm>
-        </UCard>
+                    <UFormGroup label="To Email" name="email">
+                        <UInput v-model="messageReplyState.email" />
+                    </UFormGroup>
+
+                    <UFormGroup label="Name" name="name">
+                        <UInput v-model="messageReplyState.name" />
+                    </UFormGroup>
+
+                    <UButton
+                        type="submit"
+                        color="success"
+                        class="my-8 mr-4 ml-auto block"
+                    >
+                        Submit
+                    </UButton>
+                </UForm>
+            </UCard>
+        </template>
     </UModal>
 
-    <UModal v-model="showPreview">
-        <UCard>
-            <template #header> Message </template>
-            <span class="whitespace-pre-wrap" v-html="formatMessage()" />
-        </UCard>
+    <UModal v-model:open="showPreview">
+        <template #content>
+            <UCard>
+                <template #header> Message </template>
+                <span class="whitespace-pre-wrap" v-html="formatMessage()" />
+            </UCard>
+        </template>
     </UModal>
 </template>
 

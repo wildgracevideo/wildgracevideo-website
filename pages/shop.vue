@@ -88,11 +88,11 @@
     };
 
     const { data } = await useAsyncData('products', () =>
-        queryContent('/product').find()
+        queryCollection('content').path('product').all()
     );
 
     const { data: freebieData } = await useAsyncData('freebies', () =>
-        queryContent('/freebie').find()
+        queryCollection('content').path('freebie').all()
     );
 
     const showFreebieModal = ref(false);
