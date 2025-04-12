@@ -45,7 +45,7 @@
                     <div
                         v-for="i in items.length"
                         :key="`${i}-image-gallery-icon`"
-                        class="h-2 w-2 rounded-full border border-website-off-white"
+                        class="border-website-off-white h-2 w-2 rounded-full border"
                         :class="{
                             'bg-website-off-white': i - 1 === selectedItem,
                         }"

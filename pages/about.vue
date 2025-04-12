@@ -67,7 +67,7 @@
                         class="text-website-off-white inline-block w-fit min-w-[100dvh] pr-2 text-sm tracking-tighter whitespace-nowrap md:pr-12 md:text-xl"
                     >
                         <span
-                            v-for="char in `${testimonials.title}`"
+                            v-for="(char, index) in `${testimonials.title}`"
                             :key="`${i}-${index}-${char}`"
                             :class="`inline-block ${
                                 char === ' ' ? 'mx-2' : ''
@@ -115,11 +115,13 @@
 </template>
 
 <script setup lang="ts">
+    import type { CmsAbout } from '~/types/cms';
+
     const { data } = await useAsyncData('about', () =>
-        queryCollection('content').path('about').first()
+        queryCollection('content').where('stem', '=', 'about/about').first()
     );
 
-    const behindTheScenesData = data!.value!;
+    const behindTheScenesData = data!.value!.meta as unknown as CmsAbout;
     const seoTitle = behindTheScenesData.title;
     const seoDescription = behindTheScenesData.description;
 

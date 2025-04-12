@@ -1,19 +1,19 @@
 <template>
     <div
         v-if="show"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+        class="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black"
     >
         <div
-            class="w-full max-w-lg rounded-lg bg-website-off-white p-6 text-website-tertiary shadow-lg"
+            class="bg-website-off-white text-website-tertiary w-full max-w-lg rounded-lg p-6 shadow-lg"
         >
             <div
-                class="mb-4 flex items-center justify-between border-b border-website-tertiary pb-2"
+                class="border-website-tertiary mb-4 flex items-center justify-between border-b pb-2"
             >
                 <h3 class="subheading-font text-center text-2xl">
                     {{ title }}
                 </h3>
                 <button class="hover:text-gray-800" @click="$emit('close')">
-                    <XMarkIcon class="h-8 w-8 text-website-tertiary" />
+                    <XMarkIcon class="text-website-tertiary h-8 w-8" />
                 </button>
             </div>
             <div>

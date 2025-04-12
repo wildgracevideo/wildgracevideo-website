@@ -2,7 +2,7 @@
     <article>
         <div class="relative">
             <div
-                class="absolute inset-0 z-10 h-dvh bg-website-off-black bg-opacity-70"
+                class="bg-website-off-black bg-opacity-70 absolute inset-0 z-10 h-dvh"
             ></div>
             <FileOrVideo
                 parent-class="pointer-events-none relative z-0 cursor-default mx-auto h-dvh w-dvh brightness-50"
@@ -19,7 +19,7 @@
 
         <!-- Large screens view -->
         <div
-            class="hidden flex-row bg-website-primary pb-12 text-website-off-white lg:flex"
+            class="bg-website-primary text-website-off-white hidden flex-row pb-12 lg:flex"
         >
             <div class="relative min-h-dvh flex-1">
                 <FileOrVideo
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div
-                class="flex-0 z-20 -mb-36 -mt-56 block w-0.25 bg-website-accent"
+                class="bg-website-accent z-20 -mt-56 -mb-36 block w-0.25 flex-0"
             ></div>
             <div
                 class="relative flex flex-1 flex-col justify-center gap-16 py-8"
@@ -58,7 +58,7 @@
 
         <!-- Small screens view -->
         <div
-            class="relative flex flex-col gap-16 bg-website-primary pb-12 text-website-off-white lg:hidden lg:gap-0"
+            class="bg-website-primary text-website-off-white relative flex flex-col gap-16 pb-12 lg:hidden lg:gap-0"
         >
             <FileOrVideo
                 parent-class="pointer-events-none z-0 cursor-default absolute opacity-20 max-h-[60dvh] max-w-[60dvh] h-[60%] w-[60%] aspect-square top-[10%] left-1/2 -translate-x-1/2"
@@ -89,7 +89,7 @@
         </div>
 
         <div
-            class="bg-contain lg:bg-auto bg-cover flex flex-col bg-black/60 bg-fixed bg-center bg-no-repeat text-website-off-white bg-blend-darken"
+            class="text-website-off-white flex flex-col bg-black/60 bg-contain bg-cover bg-fixed bg-center bg-no-repeat bg-blend-darken lg:bg-auto"
             :style="{
                 backgroundImage: `url('${stepsBackgroundImage.file}')`,
             }"
@@ -123,12 +123,12 @@
                 :with-sound-control="false"
             />
             <div
-                class="mx-24 flex flex-row flex-wrap items-center justify-center gap-8 pb-0 pt-24 lg:pb-12"
+                class="mx-24 flex flex-row flex-wrap items-center justify-center gap-8 pt-24 pb-0 lg:pb-12"
             >
                 <template v-for="x in 4" :key="`${x}-quarter-block`">
                     <div class="w-48">
                         <div
-                            class="subheading-font flex h-48 items-center justify-center bg-website-primary text-6xl"
+                            class="subheading-font bg-website-primary flex h-48 items-center justify-center text-6xl"
                         >
                             <p>Q{{ x }}</p>
                         </div>

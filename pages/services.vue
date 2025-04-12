@@ -2,10 +2,10 @@
     <OgMeta :title="title" :description="description" />
     <div class="relative">
         <div
-            class="absolute inset-0 -top-[36px] z-10 h-[60dvh] bg-website-secondary bg-opacity-30"
+            class="bg-website-secondary bg-opacity-30 absolute inset-0 -top-[36px] z-10 h-[60dvh]"
         ></div>
         <h1
-            class="relative top-36 z-20 mx-auto text-website-off-white lg:top-24"
+            class="text-website-off-white relative top-36 z-20 mx-auto lg:top-24"
         >
             <div class="mx-auto flex w-fit flex-col px-4">
                 <span
@@ -13,7 +13,7 @@
                     >A NEW CONTENT APPROACH FOR</span
                 >
                 <div class="flex shrink flex-row items-center">
-                    <div class="h-[1px] grow bg-website-off-white" />
+                    <div class="bg-website-off-white h-[1px] grow" />
                     <span class="subheading-font ml-8 text-2xl lg:text-4xl"
                         >ADVENTURE BRANDS</span
                     >
@@ -30,7 +30,7 @@
     </div>
     <article>
         <Markdown
-            :markdown-string="`## ${servicesData.pageTagline!}`"
+            :markdown-string="`## ${servicesData.problemOverview.pageTagline}`"
             component-class="no-default-format lg:mx-32 mx-12 -mt-16 mb-10 lg:mb-20 text-center text-3xl lg:text-6xl heading-font max-w-8xl strong:font-semibold tracking-widest leading-normal"
         />
         <div class="mb-24 flex flex-col lg:flex-row">
@@ -42,14 +42,14 @@
                 :with-sound-control="false"
             />
             <div class="hidden flex-col lg:flex">
-                <div class="-mb-48 w-0.25 grow bg-website-tertiary"></div>
+                <div class="bg-website-tertiary -mb-48 w-0.25 grow"></div>
             </div>
             <div class="mx-24 flex-1">
                 <Markdown
                     :markdown-string="`### ${servicesData.problemOverview.problemOverview1}`"
                     component-class="no-default-format text-left text-lg lg:text-3xl subheading-font strong:font-semibold -ml-8"
                 />
-                <ul class="-ml-8 mt-8 list-none">
+                <ul class="mt-8 -ml-8 list-none">
                     <li
                         v-for="(item, i) in servicesData.problemOverview
                             .problemItems1"
@@ -58,7 +58,7 @@
                     >
                         <div class="flex flex-row">
                             <XCircleIcon
-                                class="mr-2 h-8 w-8 shrink-0 text-website-primary"
+                                class="text-website-primary mr-2 h-8 w-8 shrink-0"
                             />
                             <p class="flex-0">
                                 {{ item.description }}
@@ -83,7 +83,7 @@
                     >
                         <div class="flex flex-row">
                             <XCircleIcon
-                                class="mr-2 h-8 w-8 shrink-0 text-website-primary"
+                                class="text-website-primary mr-2 h-8 w-8 shrink-0"
                             />
                             <p class="flex-0">
                                 {{ item.description }}
@@ -113,7 +113,7 @@
             />
         </div>
         <div
-            class="solution-background relative bg-website-tertiary pb-16 text-website-off-white"
+            class="solution-background bg-website-tertiary text-website-off-white relative pb-16"
         >
             <FileOrVideo
                 parent-class="pointer-events-none z-0 cursor-default md:w-1/3 w-1/2 aspect-square absolute ml-auto z-0 opacity-10 lg:top-1/2 top-16 lg:-translate-y-1/2 left-full -translate-x-full"
@@ -122,12 +122,12 @@
                 sizes="2xl:800px xl:615px lg:512px 410px"
                 :with-sound-control="false"
             />
-            <div class="z-10 flex flex-row items-center pb-32 pl-12 pt-12">
+            <div class="z-10 flex flex-row items-center pt-12 pb-32 pl-12">
                 <Markdown
                     :markdown-string="`### ${servicesData.solution.action}`"
                     component-class="no-default-format text-left text-lg lg:text-2xl accent-font strong:font-semibold mr-8"
                 />
-                <div class="h-0.25 flex-1 bg-website-off-white" />
+                <div class="bg-website-off-white h-0.25 flex-1" />
             </div>
             <Markdown
                 :markdown-string="`${servicesData.solution.actionOverview}`"
@@ -153,7 +153,7 @@
                 >
                     <div class="flex flex-row items-center">
                         <XCircleIcon
-                            class="mr-2 h-8 w-8 shrink-0 text-website-primary"
+                            class="text-website-primary mr-2 h-8 w-8 shrink-0"
                         />
                         <p class="flex-0">
                             {{ item.title }}
@@ -222,18 +222,20 @@
 
 <script setup lang="ts">
     import { XCircleIcon } from '@heroicons/vue/24/outline';
-    import type { FileInfo } from '~/components/FileOrVideo.vue';
+    import type { CmsServices } from '~/types/cms';
 
-    const { data } = await useAsyncData('services', () =>
-        queryCollection('content').path('services').first()
-    );
+    const { data } = await useAsyncData('services', () => {
+        return queryCollection('content')
+            .where('stem', '=', 'services/services')
+            .first();
+    });
 
-    const servicesData = data!.value!;
-    const title = servicesData.title!;
+    const servicesData = data!.value!.meta as unknown as CmsServices;
+    const title = servicesData.title;
     const description = servicesData.description;
 
-    const headingFile = servicesData.headingFile!;
-    const problemFile = servicesData.problemOverview.problemFile!;
+    const headingFile = servicesData.headingFile;
+    const problemFile = servicesData.problemOverview.problemFile;
 
     const adventureContentPartnershipOverview = servicesData
         .adventureContentPartnership.overview! as string;

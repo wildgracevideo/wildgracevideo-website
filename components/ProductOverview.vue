@@ -28,7 +28,7 @@
             class="mx-auto -mt-4 flex flex-col items-center justify-center gap-0 xl:mx-32 xl:flex-row xl:gap-24"
         >
             <div
-                class="text-0 image-box-shadow max-height-488 mb-12 ml-4 mr-4 mt-4 h-auto w-auto max-w-sm object-contain object-center xl:-mt-16 xl:mb-0 xl:ml-10 xl:mr-0"
+                class="text-0 image-box-shadow max-height-488 mt-4 mr-4 mb-12 ml-4 h-auto w-auto max-w-sm object-contain object-center xl:-mt-16 xl:mr-0 xl:mb-0 xl:ml-10"
             >
                 <NuxtImg
                     :src="imageSrc"
@@ -39,7 +39,7 @@
             </div>
             <div class="mx-8 sm:mx-8 xl:mx-0">
                 <div
-                    class="text-shadow mt-8 min-h-fit text-center text-4xl text-black sm:text-left lg:h-52 xl:mt-64 xl:text-website-off-white"
+                    class="text-shadow xl:text-website-off-white mt-8 min-h-fit text-center text-4xl text-black sm:text-left lg:h-52 xl:mt-64"
                 >
                     <h1>{{ productTitle }}</h1>
                     <Markdown
@@ -51,7 +51,7 @@
                     component-class="max-w-xl pb-4 text-sm product-description"
                     :markdown-string="productDescriptionMarkdown"
                 />
-                <p class="my-8 text-xl italic text-website-primary">
+                <p class="text-website-primary my-8 text-xl italic">
                     Price:
                     <span class="line-through decoration-2"
                         >${{ originalPriceDollars }}</span
@@ -66,7 +66,7 @@
             </div>
         </div>
     </section>
-    <section class="ml-8 mt-8 xl:ml-44">
+    <section class="mt-8 ml-8 xl:ml-44">
         <h3 class="mb-2 text-2xl">What's Inside</h3>
         <h4 class="curved-underline mb-8 w-fit text-lg">
             {{ productTitle }} Includes:
@@ -74,7 +74,7 @@
         <div
             v-for="(detailItem, i) in whatsInsideMarkdown"
             :key="`${i}-detailItem`"
-            class="mr-8 mt-4 flex flex-row gap-4"
+            class="mt-4 mr-8 flex flex-row gap-4"
         >
             <CheckCircleIcon class="h-6 w-6 shrink-0" />
             <Markdown
@@ -84,7 +84,7 @@
         </div>
     </section>
     <section
-        class="banner-background-image mt-8 h-fit w-full px-4 pb-8 pt-32"
+        class="banner-background-image mt-8 h-fit w-full px-4 pt-32 pb-8"
         :style="{ 'background-image': `url('${callToActionBackgroundImage}')` }"
     >
         <Markdown

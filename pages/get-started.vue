@@ -18,20 +18,20 @@
                     We can't wait to hear about your next project!
                 </h2>
                 <a
-                    class="mx-auto block text-center text-website-primary underline"
+                    class="text-website-primary mx-auto block text-center underline"
                     href="mailto:carly@wildgracevideo.com"
                     >carly@wildgracevideo.com</a
                 >
                 <SocialMediaIcons
                     icon-fill="rgb(var(--color-website-primary))"
-                    class="mx-auto -mb-8 mt-8"
+                    class="mx-auto mt-8 -mb-8"
                     :icon-size="80"
                     :show-email="false"
                 />
             </div>
             <div class="px-2">
                 <h2
-                    class="relative top-28 text-center text-4xl text-website-off-black"
+                    class="text-website-off-black relative top-28 text-center text-4xl"
                     :class="{
                         hidden: showForm,
                         block: !showForm,
@@ -133,7 +133,7 @@
                         :show-required="false"
                     />
                     <p
-                        class="col-span-1 text-center text-xs text-website-off-black md:col-span-2"
+                        class="text-website-off-black col-span-1 text-center text-xs md:col-span-2"
                     >
                         This site is protected by reCAPTCHA and the Google
                         <a
@@ -152,7 +152,7 @@
                     <div class="col-span-1 mx-auto mb-2 md:col-span-2">
                         <button
                             action="submit"
-                            class="subheading-font flex h-8 w-fit items-center rounded-xl border-2 border-website-primary bg-website-primary px-4 text-center text-website-off-white"
+                            class="subheading-font border-website-primary bg-website-primary text-website-off-white flex h-8 w-fit items-center rounded-xl border-2 px-4 text-center"
                             :class="{
                                 'hover:bg-website-off-white': !sendingForm,
                                 'hover:text-website-primary': !sendingForm,

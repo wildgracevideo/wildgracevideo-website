@@ -23,11 +23,11 @@
     <section
         v-for="(stat, i) in stats"
         :key="stat.stat"
-        class="w-full bg-website-off-black text-website-off-white"
+        class="bg-website-off-black text-website-off-white w-full"
     >
         <div class="mb-10 grid grid-cols-1 gap-10 md:grid-cols-2">
             <div class="min-w-[40%] text-center">
-                <p class="mb-12 mt-16 tracking-tight">{{ stat.statPeriod }}</p>
+                <p class="mt-16 mb-12 tracking-tight">{{ stat.statPeriod }}</p>
                 <p
                     class="paragraph-font mb-6 text-4xl font-extralight tracking-tight"
                 >
@@ -36,7 +36,7 @@
                 <p class="mb-4 tracking-tight md:mb-32">
                     {{ stat.statClarifier }}
                 </p>
-                <p class="mb-4 ml-16 mr-4 text-left">
+                <p class="mr-4 mb-4 ml-16 text-left">
                     {{ stat.statDescription }}
                 </p>
             </div>
@@ -94,7 +94,7 @@
         <TestimonialCarousel :testimonials="testimonials.clientTestimonials" />
     </section>
     <section class="mb-16">
-        <div class="h-[150px] animate-loop-scroll">
+        <div class="animate-loop-scroll h-[150px]">
             <BTSMarquee />
         </div>
         <div
@@ -115,15 +115,17 @@
 <script setup lang="ts">
     import { CountUp } from 'countup.js';
     import { handleVideoControls } from '~/lib/handle-video-controls';
+    import type { CmsCaseStudy } from '~/types/cms';
 
     const route = useRoute();
     let caseStudyData;
     try {
-        const { data } = await useAsyncData('case-study', () =>
-            queryCollection('content').path(`case-study/${route.params.slug}`)
-                .first()
-        );
-        caseStudyData = data!.value!;
+        const { data } = await useAsyncData('case-study', () => {
+            return queryCollection('content')
+                .where('stem', '=', `case-study/${route.params.slug}`)
+                .first();
+        });
+        caseStudyData = data!.value!.meta as unknown as CmsCaseStudy;
         if (!caseStudyData) {
             throw createError({
                 statusCode: 404,

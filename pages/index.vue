@@ -271,34 +271,35 @@
 </template>
 
 <script setup lang="ts">
-    import type { FileInfo } from '../components/FileOrVideo.vue';
+    import type { CmsHome } from '../types/cms';
 
     const { data } = await useAsyncData('home', () => {
-        console.log(queryCollection('content').all());
-        return queryCollection('content').path('home').first();
+        return queryCollection('content')
+            .where('stem', '=', 'home/home')
+            .first();
     });
 
-    const homeData = data!.value!;
-    const title = homeData.title!;
-    const pageTagline = homeData.pageTagline!;
+    const homeData = data!.value!.meta as unknown as CmsHome;
+    const title = homeData.title;
+    const pageTagline = homeData.pageTagline;
     const description = homeData.description;
-    const pageTitle = homeData.pageTitle!;
-    const visitPortfolioFile = homeData.visitPortfolioFile!;
-    const reelVideo = homeData.reelVideo!;
+    const pageTitle = homeData.pageTitle;
+    const visitPortfolioFile = homeData.visitPortfolioFile;
+    const reelVideo = homeData.reelVideo;
 
     const freebie = homeData.freebie;
 
     const caseStudies = homeData.caseStudies;
 
-    const aboutMeTitleMarkdown = homeData.aboutMe.title!;
-    const aboutMeDescriptionMarkdown = homeData.aboutMe.description!;
-    const aboutMeFile = homeData.aboutMe.file! as FileInfo;
-    const aboutMeCtaText = homeData.aboutMe.ctaText!;
-    const aboutMeStamp = homeData.aboutMe.stamp!;
+    const aboutMeTitleMarkdown = homeData.aboutMe.title;
+    const aboutMeDescriptionMarkdown = homeData.aboutMe.description;
+    const aboutMeFile = homeData.aboutMe.file;
+    const aboutMeCtaText = homeData.aboutMe.ctaText;
+    const aboutMeStamp = homeData.aboutMe.stamp;
 
-    const trustedBrandLogos = homeData.trustedBrandLogos!;
-    const videoHighlight = homeData.videoHighlight!;
-    const videoHighlightVideos = videoHighlight.videos!;
+    const trustedBrandLogos = homeData.trustedBrandLogos;
+    const videoHighlight = homeData.videoHighlight;
+    const videoHighlightVideos = videoHighlight.videos;
 
     const adventureContentTitle = homeData.adventureContentPartnership.title;
     const adventureContentDescription =
@@ -310,9 +311,9 @@
     const adventureContentAccentFile =
         homeData.adventureContentPartnership.accentFile;
 
-    const howTo = homeData.howTo!;
+    const howTo = homeData.howTo;
 
-    const faq = homeData.faq!;
+    const faq = homeData.faq;
 
     const showFreebieModal = ref(false);
 

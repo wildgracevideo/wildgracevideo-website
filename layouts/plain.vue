@@ -1,7 +1,11 @@
 <template>
     <main
-        class="relative mb-auto flex min-h-screen flex-col bg-website-background"
+        class="bg-website-background relative mb-auto flex min-h-screen flex-col"
     >
         <slot />
     </main>
 </template>
+
+<script setup lang="ts">
+    import '~/assets/css/main.css';
+</script>

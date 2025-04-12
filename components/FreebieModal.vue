@@ -12,7 +12,7 @@
                 <input
                     id="firstName"
                     v-model="firstName"
-                    class="col-span-2 rounded-sm border border-website-tertiary bg-website-background"
+                    class="border-website-tertiary bg-website-background col-span-2 rounded-sm border"
                     type="text"
                     name="firstName"
                     required
@@ -23,7 +23,7 @@
                 <input
                     id="lastName"
                     v-model="lastName"
-                    class="col-span-2 rounded-sm border border-website-tertiary bg-website-background"
+                    class="border-website-tertiary bg-website-background col-span-2 rounded-sm border"
                     type="text"
                     name="lastName"
                     required
@@ -32,14 +32,14 @@
                 <input
                     id="email"
                     v-model="email"
-                    class="col-span-2 rounded-sm border border-website-tertiary bg-website-background"
+                    class="border-website-tertiary bg-website-background col-span-2 rounded-sm border"
                     type="email"
                     name="email"
                     required
                 />
             </div>
 
-            <hr class="my-8 h-px border-0 bg-website-tertiary" />
+            <hr class="bg-website-tertiary my-8 h-px border-0" />
             <DefaultButton action="submit" class="ml-auto" title="Submit" />
         </form>
     </Modal>

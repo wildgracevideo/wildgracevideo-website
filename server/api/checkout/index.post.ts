@@ -7,7 +7,9 @@ export default defineEventHandler(async (event): Promise<string> => {
     const checkoutRequest = await readBody<CheckoutRequest>(event);
 
     let stripePriceId: string;
-    const product = await queryCollection('collection').path('product').first();
+    const product = await queryCollection(event, 'content')
+        .path('product')
+        .first();
     if (product) {
         stripePriceId = product.stripePriceId;
     } else {

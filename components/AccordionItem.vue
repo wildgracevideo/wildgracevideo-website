@@ -42,7 +42,7 @@
         </button>
         <div
             ref="contentElement"
-            class="transition-all max-h-0 overflow-hidden duration-300 ease-in-out"
+            class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
         >
             <slot />
         </div>

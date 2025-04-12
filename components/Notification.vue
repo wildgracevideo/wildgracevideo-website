@@ -1,6 +1,6 @@
 <template>
     <div
-        class="space-x fixed right-6 flex w-full max-w-xs items-center space-x-4 divide-x divide-gray-200 rounded-lg bg-white p-4 shadow-sm transition-top duration-1000 ease-out"
+        class="space-x transition-top fixed right-6 flex w-full max-w-xs items-center space-x-4 divide-x divide-gray-200 rounded-lg bg-white p-4 shadow-sm duration-1000 ease-out"
         :class="{ 'top-6': show, '-top-24': !show }"
         role="alert"
     >

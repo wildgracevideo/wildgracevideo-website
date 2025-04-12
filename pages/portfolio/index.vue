@@ -9,8 +9,12 @@
 </template>
 
 <script setup lang="ts">
+    import type { CmsPortfolio } from '~/types/cms';
+
     const { data } = await useAsyncData('portfolio', () =>
-        queryCollection('content').path('portfolio').first()
+        queryCollection('content')
+            .where('stem', '=', 'portfolio/portfolio')
+            .first()
     );
-    const portfolio = data!.value!;
+    const portfolio = data!.value!.meta as unknown as CmsPortfolio;
 </script>

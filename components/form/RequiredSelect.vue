@@ -12,7 +12,7 @@
                 :id="choice.id"
                 type="checkbox"
                 :value="choice.value"
-                class="mb-4 mr-2 h-4 w-4 bg-website-off-white"
+                class="bg-website-off-white mr-2 mb-4 h-4 w-4"
                 :aria-label="choice.value"
                 @change="updateModelValue"
             /><label

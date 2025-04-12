@@ -89,6 +89,39 @@ FileInfo: &fileInfo
           name: publicationDate
           widget: 'datetime'
 
+Sitemap: &sitemap
+    fields:
+        - {
+              label: 'Change Frequency',
+              name: 'changefreq',
+              widget: 'select',
+              options:
+                  [
+                      'always',
+                      'hourly',
+                      'daily',
+                      'weekly',
+                      'monthly',
+                      'yearly',
+                      'never',
+                  ],
+              default: 'monthly',
+          }
+        - {
+              label: 'Include in Sitemap',
+              name: 'include',
+              widget: 'boolean',
+              default: true,
+          }
+        - {
+              label: 'Last Modified',
+              name: 'lastmod',
+              widget: 'datetime',
+              default: '{{now}}',
+              date_format: 'YYYY-MM-DD',
+              time_format: false,
+          }
+
 collections:
     - name: 'freebie'
       label: 'Freebie'
@@ -130,6 +163,10 @@ collections:
       editor:
           preview: false
       fields:
+          - label: 'Sitemap'
+            name: 'sitemap'
+            widget: 'object'
+            <<: *sitemap
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - {
                 label: 'SEO Description (About 150-160 characters)',
@@ -265,6 +302,10 @@ collections:
       editor:
           preview: false
       fields:
+          - label: 'Sitemap'
+            name: 'sitemap'
+            widget: 'object'
+            <<: *sitemap
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - { label: 'Page Title', name: 'heading', widget: 'string' }
@@ -331,6 +372,10 @@ collections:
       editor:
           preview: false
       fields:
+          - label: 'Sitemap'
+            name: 'sitemap'
+            widget: 'object'
+            <<: *sitemap
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - {
@@ -500,46 +545,10 @@ collections:
       editor:
           preview: false
       fields:
-          - label: 'Sitemap (Only change location change)'
+          - label: 'Sitemap'
             name: 'sitemap'
             widget: 'object'
-            fields:
-                - {
-                      label: 'Change Frequency',
-                      name: 'changefreq',
-                      widget: 'select',
-                      options:
-                          [
-                              'always',
-                              'hourly',
-                              'daily',
-                              'weekly',
-                              'monthly',
-                              'yearly',
-                              'never',
-                          ],
-                      default: 'monthly',
-                  }
-                - {
-                      label: 'Include in Sitemap',
-                      name: 'include',
-                      widget: 'boolean',
-                      default: true,
-                  }
-                - {
-                      label: 'Last Modified',
-                      name: 'lastmod',
-                      widget: 'datetime',
-                      default: '{{now}}',
-                      date_format: 'YYYY-MM-DD',
-                      time_format: false,
-                  }
-                - {
-                      label: 'Location',
-                      name: 'loc',
-                      widget: 'string',
-                      default: '/service-overview/{{slug}}',
-                  }
+            <<: *sitemap
           - {
                 label: 'Page Preview Image',
                 name: 'ogImage',
@@ -666,46 +675,10 @@ collections:
       editor:
           preview: false
       fields:
-          - label: "Sitemap (Don't change)"
+          - label: 'Sitemap'
             name: 'sitemap'
             widget: 'object'
-            fields:
-                - {
-                      label: 'Change Frequency',
-                      name: 'changefreq',
-                      widget: 'select',
-                      options:
-                          [
-                              'always',
-                              'hourly',
-                              'daily',
-                              'weekly',
-                              'monthly',
-                              'yearly',
-                              'never',
-                          ],
-                      default: 'monthly',
-                  }
-                - {
-                      label: 'Include in Sitemap',
-                      name: 'include',
-                      widget: 'boolean',
-                      default: true,
-                  }
-                - {
-                      label: 'Last Modified',
-                      name: 'lastmod',
-                      widget: 'datetime',
-                      default: '{{now}}',
-                      date_format: 'YYYY-MM-DD',
-                      time_format: false,
-                  }
-                - {
-                      label: 'Location',
-                      name: 'loc',
-                      widget: 'string',
-                      default: '/',
-                  }
+            <<: *sitemap
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - label: 'Heading File'
@@ -947,46 +920,10 @@ collections:
       editor:
           preview: false
       fields:
-          - label: "Sitemap (Don't change)"
+          - label: 'Sitemap'
             name: 'sitemap'
             widget: 'object'
-            fields:
-                - {
-                      label: 'Change Frequency',
-                      name: 'changefreq',
-                      widget: 'select',
-                      options:
-                          [
-                              'always',
-                              'hourly',
-                              'daily',
-                              'weekly',
-                              'monthly',
-                              'yearly',
-                              'never',
-                          ],
-                      default: 'monthly',
-                  }
-                - {
-                      label: 'Include in Sitemap',
-                      name: 'include',
-                      widget: 'boolean',
-                      default: true,
-                  }
-                - {
-                      label: 'Last Modified',
-                      name: 'lastmod',
-                      widget: 'datetime',
-                      default: '{{now}}',
-                      date_format: 'YYYY-MM-DD',
-                      time_format: false,
-                  }
-                - {
-                      label: 'Location',
-                      name: 'loc',
-                      widget: 'string',
-                      default: '/',
-                  }
+            <<: *sitemap
           - { label: 'SEO Title', name: 'title', widget: 'string' }
           - { label: 'SEO Description', name: 'description', widget: 'text' }
           - label: 'Reel Video'
@@ -1395,12 +1332,16 @@ collections:
       editor:
           preview: false
       fields:
+          - label: 'Sitemap'
+            name: 'sitemap'
+            widget: 'object'
+            <<: *sitemap
           - label: 'SEO Title (About 125 characters)'
             name: 'seoTitle'
             widget: 'string'
           - label: 'SEO Description (About 150-160 characters)'
             name: seoDescription
-            widgets: 'text'
+            widget: 'text'
           - label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED'
             widget: 'string'
             name: 'path'

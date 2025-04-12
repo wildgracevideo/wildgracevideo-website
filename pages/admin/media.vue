@@ -29,7 +29,7 @@
                     variant="solid"
                     label="Create Folder"
                     class="mr-8"
-                    @click="() => (showCreateFolder = true)"
+                    @click="async (_) => (showCreateFolder = true)"
                 />
                 <UButton
                     color="success"
@@ -37,7 +37,7 @@
                     variant="solid"
                     label="Upload"
                     class="mr-8"
-                    @click="() => launchUppyModal()"
+                    @click="async (_) => launchUppyModal()"
                 />
             </div>
         </div>
@@ -546,7 +546,7 @@
             });
             toast.add({
                 title: `Successfully deleted ${selectedObject.value.name}.`,
-                color: 'green',
+                color: 'success',
                 icon: 'i-heroicons-check-badge',
             });
             await fetchFiles();
@@ -554,13 +554,13 @@
             if (selectedObject.value.isFolder) {
                 toast.add({
                     title: `Failed to delete the folder, ${selectedObject.value.name}, folders must be empty to delete.`,
-                    color: 'red',
+                    color: 'error',
                     icon: 'i-heroicons-information-circle',
                 });
             } else {
                 toast.add({
                     title: `Failed to delete the file, ${selectedObject.value.name}.`,
-                    color: 'red',
+                    color: 'error',
                     icon: 'i-heroicons-information-circle',
                 });
             }
@@ -585,7 +585,7 @@
                 );
                 toast.add({
                     title: `Successfully created the folder ${createFolderName.value}.`,
-                    color: 'green',
+                    color: 'success',
                     icon: 'i-heroicons-check-badge',
                 });
                 showCreateFolder.value = false;
@@ -593,7 +593,7 @@
             } catch (e: unknown) {
                 toast.add({
                     title: `Failed to create the folder ${createFolderName.value}.`,
-                    color: 'red',
+                    color: 'error',
                     icon: 'i-heroicons-information-circle',
                 });
                 console.error(e);
@@ -669,7 +669,7 @@
                     );
                     toast.add({
                         title: `Successfully copied file url.`,
-                        color: 'green',
+                        color: 'success',
                         icon: 'i-heroicons-check-badge',
                     });
                 } catch (error) {

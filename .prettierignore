@@ -43,3 +43,5 @@ content/
 assets/gfonts/google-fonts.css
 
 drizzle/migrations
+
+types/cms.ts

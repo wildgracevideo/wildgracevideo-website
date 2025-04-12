@@ -1,11 +1,11 @@
 <template>
     <div
-        class="mb-12 flex flex-row justify-between bg-website-primary py-36 align-middle text-website-off-white"
+        class="bg-website-primary text-website-off-white mb-12 flex flex-row justify-between py-36 align-middle"
     >
         <button aria-label="Go to previous client testimonial">
             <ArrowLeftIcon
                 v-if="testimonials.length > 1"
-                class="flex-0 ml-4 h-10 w-10 cursor-pointer"
+                class="ml-4 h-10 w-10 flex-0 cursor-pointer"
                 @click="decrementTestimonialIndex"
             />
         </button>
@@ -17,7 +17,7 @@
                 v-for="(clientTestimonial, i) in testimonials"
                 :key="clientTestimonial.author"
                 :data-active="i === activeTestimonialIndex ? true : null"
-                class="transition-opacity absolute mx-auto flex h-full w-full flex-col justify-center text-center opacity-0 duration-700 ease-in-out data-active:opacity-100"
+                class="absolute mx-auto flex h-full w-full flex-col justify-center text-center opacity-0 transition-opacity duration-700 ease-in-out data-active:opacity-100"
             >
                 <Markdown
                     :markdown-string="`&#8220;${clientTestimonial.text}&#8221;`"
@@ -37,7 +37,7 @@
             aria-label="Go to next client testimonial"
         >
             <ArrowRightIcon
-                class="flex-0 mr-4 h-10 w-10 cursor-pointer"
+                class="mr-4 h-10 w-10 flex-0 cursor-pointer"
                 @click="incrementTestimonialIndex"
             />
         </button>

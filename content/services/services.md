@@ -3,7 +3,7 @@ sitemap:
   changefreq: monthly
   include: true
   lastmod: 2025-03-31
-  loc: /
+  loc: /services
 title: Denver Video Production Company | Wild Grace Video Services
 headingFile:
   file: https://content.wildgracevideo.com/images/Website-Services/Servicesbanner.jpg

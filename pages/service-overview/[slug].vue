@@ -131,7 +131,7 @@
                     :with-sound-control="false"
                 />
                 <div
-                    v-if="socialMediaFile.endsWith('mpd')"
+                    v-if="socialMediaFile.file.endsWith('mpd')"
                     class="relative bottom-44 -mb-44 flex flex-col items-end gap-6 pr-8"
                 >
                     <HeartIcon class="text-website-off-white h-8 w-8" />
@@ -151,23 +151,29 @@
         HeartIcon,
         PaperAirplaneIcon,
     } from '@heroicons/vue/24/outline';
-    import type { FileConfig } from '~/components/FileOrVideo.vue';
+    import type { CmsServiceLandingPage } from '~/types/cms';
 
     const route = useRoute();
-    const { data } = await useAsyncData('serviceLandingPage', () =>
+    const { data } = await useAsyncData('about', () =>
         queryCollection('content')
-            .path(`service-landing-page/${route.params.slug}`)
+            .where('stem', '=', `service-landing-page/${route.params.slug}`)
             .first()
     );
+    const serviceData = data?.value?.meta as unknown as CmsServiceLandingPage;
+    if (!serviceData) {
+        throw createError({
+            statusCode: 404,
+            statusMessage: 'Page Not Found',
+        });
+    }
 
-    const serviceData = data!.value!;
-    const title = serviceData.title!;
-    const description = serviceData.description!;
-    const ogImage = serviceData.ogImage!;
-    const fileInfo = serviceData.fileInfo!;
+    const title = serviceData.title;
+    const description = serviceData.description;
+    const ogImage = serviceData.ogImage;
+    const fileInfo = serviceData.fileInfo;
 
-    const overview = serviceData.overview!;
-    const overviewFile = overview.fileInfo! as FileConfig;
+    const overview = serviceData.overview;
+    const overviewFile = overview.fileInfo;
 
     const testimonials = serviceData.testimonials;
 

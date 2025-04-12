@@ -5,7 +5,7 @@
         <NuxtImg
             :src="runtimeConfig.public.websiteIcon"
             alt="Wild Grace Videography company logo."
-            class="mx-auto mb-12 mt-8 cursor-pointer"
+            class="mx-auto mt-8 mb-12 cursor-pointer"
             width="140"
             height="90"
         />
@@ -14,7 +14,7 @@
         <a
             v-for="link in linksData.links"
             :key="link.name"
-            class="contact-scroll-observable mx-auto w-80 border-2 border-website-off-white bg-website-off-black px-16 py-6 text-center text-xl text-website-off-white"
+            class="contact-scroll-observable border-website-off-white bg-website-off-black text-website-off-white mx-auto w-80 border-2 px-16 py-6 text-center text-xl"
             :href="link.destination"
         >
             {{ link.name }}
@@ -23,10 +23,12 @@
 </template>
 
 <script setup lang="ts">
+    import type { CmsLinks } from '~/types/cms';
+
     const { data } = await useAsyncData('link', () =>
-        queryCollection('content').path('link').first()
+        queryCollection('content').where('stem', '=', 'link/links').first()
     );
-    const linksData = data!.value!;
+    const linksData = data!.value!.meta as unknown as CmsLinks;
 
     const runtimeConfig = useRuntimeConfig();
 

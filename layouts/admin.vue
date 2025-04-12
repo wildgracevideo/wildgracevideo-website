@@ -12,6 +12,8 @@
 </template>
 
 <script setup lang="ts">
+    import '~/assets/css/admin.css';
+    import '~/assets/css/main.css';
     import { provideUseId } from '@headlessui/vue';
 
     const openMenu = ref(false);

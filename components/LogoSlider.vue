@@ -1,6 +1,6 @@
 <template>
     <div
-        class="logos relative overflow-hidden whitespace-nowrap bg-website-background px-0 py-14"
+        class="logos bg-website-background relative overflow-hidden px-0 py-14 whitespace-nowrap"
     >
         <!-- Heights and widths must match the logos-slide width defined below -->
         <div

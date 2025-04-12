@@ -9,7 +9,7 @@
     >
         <span
             v-if="videoTitle"
-            class="play-button absolute z-10 text-sm font-bold text-website-off-white opacity-100 group-hover:opacity-0"
+            class="play-button text-website-off-white absolute z-10 text-sm font-bold opacity-100 group-hover:opacity-0"
             >{{ videoTitle }}</span
         >
         <PlayIcon v-else class="play-button absolute z-10 h-10 w-10" />

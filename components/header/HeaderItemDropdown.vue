@@ -8,13 +8,13 @@
             />
         </div>
         <div
-            class="invisible absolute z-50 flex w-[300%] flex-col bg-website-off-white shadow-xl group-hover:visible"
+            class="bg-website-off-white invisible absolute z-50 flex w-[300%] flex-col shadow-xl group-hover:visible"
         >
             <NuxtLink
                 v-for="item in config.children"
                 :key="item.name"
                 :to="item.href"
-                class="p-4 text-sm text-website-off-black hover:bg-website-primary hover:text-website-off-white"
+                class="text-website-off-black hover:bg-website-primary hover:text-website-off-white p-4 text-sm"
             >
                 {{ item.name }}
             </NuxtLink>

@@ -1,4 +1,8 @@
 ---
+sitemap:
+  changefreq: monthly
+  include: true
+  lastmod: 2025-04-12
 title: Wild Grace Videography | 30-Day Video Transformation
 description: Boost Your Social Media Presence with 37 Engaging Reel Ideas and a
   Content Planner. Share Your Journey, Build Trust, and Watch Your Audience Grow

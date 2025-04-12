@@ -1,6 +1,6 @@
 <template>
     <footer
-        class="relative z-50 overflow-hidden bg-website-background pb-8 pt-8"
+        class="bg-website-background relative z-50 overflow-hidden pt-8 pb-8"
     >
         <p class="mb-6 text-center text-xl">CARLY KREIGER</p>
         <address class="mx-4 text-center text-xs italic">
@@ -14,7 +14,7 @@
         </div>
         <SocialMediaIcons
             icon-fill="rgb(var(--color-website-primary))"
-            class="mx-auto -mb-8 mt-8"
+            class="mx-auto mt-8 -mb-8"
             :icon-size="80"
         />
     </footer>

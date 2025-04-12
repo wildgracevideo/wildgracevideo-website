@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite';
 
 const SITE_URL = process.env.URL || 'https://www.wildgracevideo.com';
 const CLOUDFRONT_URL = 'https://content.wildgracevideo.com';
@@ -207,6 +207,7 @@ const config = {
             },
         },
     },
+    compatibilityDate: '2025-04-11',
     colorMode: {
         preference: 'light',
     },
@@ -273,11 +274,9 @@ const config = {
                     : false, // disable cssnano when not in production
         },
     },
-    css: ['~/assets/css/main.css'],
+    // css: ['~/assets/css/main.css'],
     vite: {
-        plugins: [
-            tailwindcss(),
-        ]
+        plugins: [tailwindcss()],
     },
     devtools: { enabled: process.env.NODE_ENV !== 'production' },
     sitemap: {
@@ -294,7 +293,7 @@ const config = {
             '/links',
         ],
         xsl: false,
-        // sources: ['/api/__sitemap__/urls'],
+        sources: ['/api/__sitemap__/urls'],
         excludeAppSources: true,
     },
     routeRules: {

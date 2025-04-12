@@ -1,4 +1,8 @@
 ---
+sitemap:
+  changefreq: monthly
+  include: true
+  lastmod: 2025-04-12
 seoTitle: Denver Video Production Company | VanEssential Case Study
 seoDescription: "Denver video production case study for a results-driven video
   project for a van storage company. "

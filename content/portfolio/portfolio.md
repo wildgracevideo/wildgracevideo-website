@@ -1,40 +1,12 @@
 ---
-title: Denver Video Production Company | Wild Grace Video Portfolio
-description: "Wild Grace Video is a top Denver-based video production company
-  specializing in hotel video production, outdoor product videos and adventure
-  tour videos. "
 heading: PORTFOLIO
 mainReelYoutubeId: yWjmuJ_6mkA
-mainReelName: Video Production Portfolio
+sitemap:
+  changefreq: monthly
+  include: true
+  lastmod: 2025-04-12
 mainReelAlt: Video reel showcasing the work of Wild Grace Videography.
-youtubeVideos:
-  - title: The Curtis Hotel
-    description: Teaser/Promo Video
-    youtubeId: ieRb3ZCgPwk
-    alt: Promotion video created by Wild Grace Videography for the Curtis Hotel.
-  - title: Genesee Nutrition
-    description: Website Video
-    youtubeId: ZVYOhYmYn3w
-    alt: Website video created by Wild Grace Videography Genesee Nutrition.
-  - title: Madlom Real Estate
-    description: Staff Recruitment Video
-    youtubeId: jXGrsa0MZWo
-    alt: A staff recruitment video created by Wild Grace Videography Madlom Real
-      Estate
-  - title: KB Digital Designs
-    description: Creative Promotional Video
-    youtubeId: mzGrOYT7viE
-    alt: A promotional video created by Wild Grace Videography KB Digital Designs.
-  - title: Nordica Spec Ad
-    description: Creative Commercial
-    youtubeId: FEHxRKq0220
-    alt: A spec ad created by Wild Grace Videography highlighting Nordica ski
-      equipment.
-  - title: Big Island, Hawaii
-    description: Travel & Tourism Video
-    youtubeId: -9b9t_bAEz8
-    alt: A travel video created by Wild Grace Videography showcasing the Big Island
-      of Hawaii.
+title: Denver Video Production Company | Wild Grace Video Portfolio
 videos:
   - videoInfo:
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/GraniteGear/GGThumbnail.png
@@ -87,4 +59,36 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Genesee Nutrition's protein bars.
       publicationDate: 2024-04-11T15:04:00.000Z
+youtubeVideos:
+  - title: The Curtis Hotel
+    description: Teaser/Promo Video
+    youtubeId: ieRb3ZCgPwk
+    alt: Promotion video created by Wild Grace Videography for the Curtis Hotel.
+  - title: Genesee Nutrition
+    description: Website Video
+    youtubeId: ZVYOhYmYn3w
+    alt: Website video created by Wild Grace Videography Genesee Nutrition.
+  - title: Madlom Real Estate
+    description: Staff Recruitment Video
+    youtubeId: jXGrsa0MZWo
+    alt: A staff recruitment video created by Wild Grace Videography Madlom Real
+      Estate
+  - title: KB Digital Designs
+    description: Creative Promotional Video
+    youtubeId: mzGrOYT7viE
+    alt: A promotional video created by Wild Grace Videography KB Digital Designs.
+  - title: Nordica Spec Ad
+    description: Creative Commercial
+    youtubeId: FEHxRKq0220
+    alt: A spec ad created by Wild Grace Videography highlighting Nordica ski
+      equipment.
+  - title: Big Island, Hawaii
+    description: Travel & Tourism Video
+    youtubeId: -9b9t_bAEz8
+    alt: A travel video created by Wild Grace Videography showcasing the Big Island
+      of Hawaii.
+description: "Wild Grace Video is a top Denver-based video production company
+  specializing in hotel video production, outdoor product videos and adventure
+  tour videos. "
+mainReelName: Video Production Portfolio
 ---

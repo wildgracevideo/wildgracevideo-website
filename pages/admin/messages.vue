@@ -1,43 +1,24 @@
 <template>
     <h1 class="my-8 ml-8 text-2xl">Get Started Messages</h1>
-    <UTable :rows="messages || []" :columns="columns" :loading="pending">
-        <template #read-data="{ row }">
-            <span
-                v-if="!row.read"
-                class="ml-2 inline-block h-2 w-2 rounded-full bg-blue-400"
-            />
-            <span v-else />
-        </template>
-        <template #status-data="{ row }">
-            <AdminTag
-                v-if="row.messageReply"
-                :label="`Reply:${row.messageReply.sendGridMessageStatus}`"
-                additional-classes="inline-block bg-website-accent text-website-off-black"
-            />
-        </template>
-        <template #createdAt-data="{ row }">
-            <span>
-                {{ formatDate(row.createdAt) }}
-            </span>
-        </template>
-        <template #actions-data="{ row }">
+    <UTable
+        :data="data || undefined"
+        :columns="columns"
+        :loading="status === 'pending'"
+        empty="No Messages"
+    >
+        <template #actions-cell="{ row }: { row: TableRow<MessageWithReply> }">
             <EnvelopeOpenIcon
                 class="inline h-6 w-6 cursor-pointer"
-                @click="() => showPreviewAction(row)"
+                @click="() => showPreviewAction(row.original)"
             />
             <TrashIcon
                 class="mx-4 inline h-6 w-6 cursor-pointer"
                 @click="
                     () => {
-                        selectedMessage = row;
+                        selectedMessage = row.original;
                         showDeleteConfirmation = true;
                     }
                 "
-            />
-            <PaperAirplaneIcon
-                v-if="!row.messageReply"
-                class="inline h-6 w-6 cursor-pointer"
-                @click="() => showReplyAction(row)"
             />
         </template>
     </UTable>
@@ -65,36 +46,6 @@
         </template>
     </UModal>
 
-    <UModal v-model:open="showReplyModal">
-        <template #content>
-            <UCard>
-                <template #header> Send email </template>
-                <UForm
-                    :schema="messageReplySchema"
-                    :state="messageReplyState"
-                    class="space-y-4"
-                    @submit="replyAction"
-                >
-                    <UFormGroup label="To Email" name="email">
-                        <UInput v-model="messageReplyState.email" />
-                    </UFormGroup>
-
-                    <UFormGroup label="Name" name="name">
-                        <UInput v-model="messageReplyState.name" />
-                    </UFormGroup>
-
-                    <UButton
-                        type="submit"
-                        color="success"
-                        class="my-8 mr-4 ml-auto block"
-                    >
-                        Submit
-                    </UButton>
-                </UForm>
-            </UCard>
-        </template>
-    </UModal>
-
     <UModal v-model:open="showPreview">
         <template #content>
             <UCard>
@@ -106,12 +57,9 @@
 </template>
 
 <script setup lang="ts">
-    import { type InferType, object, string } from 'yup';
-    import {
-        EnvelopeOpenIcon,
-        PaperAirplaneIcon,
-        TrashIcon,
-    } from '@heroicons/vue/24/outline';
+    import { EnvelopeOpenIcon, TrashIcon } from '@heroicons/vue/24/outline';
+    import type { TableRow } from '@nuxt/ui';
+    import { h } from 'vue';
     import { type MessageWithReply } from '~/drizzle/schema';
 
     definePageMeta({ middleware: 'auth', layout: 'admin' });
@@ -121,96 +69,77 @@
 
     const showDeleteConfirmation = ref(false);
     const showPreview = ref(false);
-    const showReplyModal = ref(false);
 
-    const selectedMessage = ref(null);
-
-    const messageReplySchema = object({
-        email: string().email('Invalid email').required('Required'),
-        name: string().required('Required'),
-    });
-
-    type MessageReplySchema = InferType<typeof schema>;
-
-    const messageReplyState = reactive({
-        email: undefined,
-        name: undefined,
-    });
+    const selectedMessage: Ref<MessageWithReply | null> = ref(null);
 
     const toast = useToast();
 
     const columns = [
-        { key: 'read' },
-        { key: 'firstname', label: 'First Name' },
-        { key: 'lastname', label: 'Last Name' },
-        { key: 'email', label: 'Email' },
-        { key: 'createdAt', label: 'Created At' },
-        { key: 'status' },
-        { key: 'actions' },
+        {
+            accessorKey: 'read',
+            header: '',
+            cell: ({ row }: { row: TableRow<MessageWithReply> }) => {
+                if (row.getValue('read')) {
+                    return h('span');
+                } else {
+                    return h('span', {
+                        class: 'ml-2 inline-block h-2 w-2 rounded-full bg-blue-400',
+                    });
+                }
+            },
+        },
+        { accessorKey: 'firstname', header: 'First Name' },
+        { accessorKey: 'lastname', header: 'Last Name' },
+        { accessorKey: 'email', header: 'Email' },
+        {
+            accessorKey: 'createdAt',
+            header: 'Created At',
+            cell: ({ row }: { row: TableRow<MessageWithReply> }) => {
+                const formattedDate = formatDate(row.getValue('createdAt'));
+                return h('span', {}, formattedDate);
+            },
+        },
+        { accessorKey: 'actions', header: ' ' },
     ];
 
-    const { data: messages, pending } = await useLazyAsyncData(
+    const { data, status } = await useLazyAsyncData(
         'messages',
-        () => $fetch('/api/admin/messages'),
+        async () => {
+            return (await $fetch('/api/admin/messages')) as MessageWithReply[];
+        },
         { server: false }
     );
 
     const deleteAction = async () => {
+        if (!selectedMessage.value) {
+            return;
+        }
         try {
-            await $fetch(`/api/admin/messages/${selectedMessage.value.id}`, {
+            await $fetch(`/api/admin/messages/${selectedMessage.value!.id}`, {
                 method: 'delete',
             });
-            messages.value
-                ?.filter((it) => it.id === selectedMessage.value.id)
-                .map((it) => messages.value!.indexOf(it))
-                .forEach((it) => messages.value!.splice(it, 1));
+            data.value
+                ?.filter((it) => it.id === selectedMessage.value?.id)
+                .map((it) => data.value!.indexOf(it))
+                .forEach((it) => data.value!.splice(it, 1));
             showDeleteConfirmation.value = false;
             toast.add({
                 title: 'Successfully deleted the message.',
-                color: 'green',
+                color: 'success',
                 icon: 'i-heroicons-check-badge',
             });
         } catch (e) {
             toast.add({
                 title: 'Failed to delete message',
-                color: 'red',
+                color: 'error',
                 icon: 'i-heroicons-information-circle',
             });
             console.error(e);
         }
-    };
-
-    const replyAction = async (event: FormSubmitEvent<MessageReplySchema>) => {
-        try {
-            const messageReply = await $fetch('/api/admin/messages/reply', {
-                method: 'POST',
-                body: {
-                    name: event.data.name,
-                    toEmail: event.data.email,
-                    messageId: selectedMessage.value.id,
-                },
-            });
-            messages
-                .value!.filter((it) => it.id === selectedMessage.value.id)
-                .forEach((it) => (it.messageReply = messageReply));
-            toast.add({
-                title: 'Successfully sent reply.',
-                color: 'green',
-                icon: 'i-heroicons-check-badge',
-            });
-        } catch (e) {
-            toast.add({
-                title: 'Failed to send reply message.',
-                color: 'red',
-                icon: 'i-heroicons-information-circle',
-            });
-            console.error(e);
-        }
-        showReplyModal.value = false;
     };
 
     const markRead = async () => {
-        if (!selectedMessage.value.read) {
+        if (selectedMessage.value != null && !selectedMessage.value.read) {
             // This is used to separate the message from the reply
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { messageReply, ...messageWithoutReply } =
@@ -237,17 +166,12 @@
         showPreview.value = true;
     }
 
-    async function showReplyAction(row: MessageWithReply) {
-        selectedMessage.value = row;
-        messageReplyState.email = row.email;
-        messageReplyState.name = row.firstname;
-        showReplyModal.value = true;
-    }
-
     function formatMessage(): string {
-        return selectedMessage.value.message
-            .replaceAll('\\n', '<br />')
-            .replaceAll("\\'", "'");
+        return (
+            selectedMessage.value?.message
+                .replaceAll('\\n', '<br />')
+                .replaceAll("\\'", "'") ?? ''
+        );
     }
 
     function formatDate(dateString: string): string {

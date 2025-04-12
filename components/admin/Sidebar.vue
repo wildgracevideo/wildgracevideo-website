@@ -1,11 +1,11 @@
 <template>
     <header
-        class="hidden min-h-dvh w-60 bg-website-secondary text-website-off-black lg:block"
+        class="bg-website-secondary text-website-off-black hidden min-h-dvh w-60 lg:block"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
             <NuxtImg
-                class="text-0 mb-8 ml-4 mr-10 mt-4"
+                class="text-0 mt-4 mr-10 mb-8 ml-4"
                 width="140"
                 height="90"
                 :src="runtimeConfig.public.websiteIcon"
@@ -16,19 +16,19 @@
             v-for="element in elements"
             :key="element.title"
             :to="element.to"
-            class="mx-4 mb-4 flex items-center text-website-off-black!"
+            class="text-website-off-black! mx-4 mb-4 flex items-center"
         >
             <component :is="element.icon" class="h-5 w-5" />
             <p class="ml-1 text-lg">{{ element.title }}</p>
         </NuxtLink>
     </header>
     <header
-        class="flex h-16 w-full justify-between bg-website-secondary text-website-off-white lg:hidden"
+        class="bg-website-secondary text-website-off-white flex h-16 w-full justify-between lg:hidden"
     >
         <span class="sr-only">Wild Grace Videography</span>
         <NuxtLink to="/admin">
             <NuxtImg
-                class="text-0 my-2 mb-8 ml-4 mr-10"
+                class="text-0 my-2 mr-10 mb-8 ml-4"
                 width="140"
                 height="90"
                 :src="runtimeConfig.public.websiteIcon"
@@ -47,7 +47,7 @@
             v-for="element in elements"
             :key="element.title"
             :to="element.to"
-            class="mx-auto mb-4 mt-8 flex w-fit items-center text-center text-website-off-white"
+            class="text-website-off-white mx-auto mt-8 mb-4 flex w-fit items-center text-center"
             @click="openMenu = !openMenu"
         >
             <component :is="element.icon" class="h-8 w-8" />

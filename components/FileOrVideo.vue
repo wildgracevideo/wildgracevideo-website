@@ -42,13 +42,7 @@
 </template>
 
 <script setup lang="ts">
-    export type FileInfo = {
-        file: string;
-        seoDescription: string;
-        seoTitle: string;
-        thumbnailImage?: string;
-        publicationDate: string;
-    };
+    import type { FileInfo } from '../types/cms';
 
     export type FileConfig = {
         file: FileInfo;

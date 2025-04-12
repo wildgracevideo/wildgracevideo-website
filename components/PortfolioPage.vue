@@ -3,9 +3,13 @@
     <SchemaOrgWebPage :name="pageTitle" />
     <h1 class="mb-8 text-center text-4xl">{{ heading }}</h1>
     <div
-        class="mx-0 mb-16 mt-16 grid grid-cols-1 gap-1.5 sm:mx-8 xl:grid-cols-2"
+        class="mx-0 mt-16 mb-16 grid grid-cols-1 gap-1.5 sm:mx-8 xl:grid-cols-2"
     >
-        <section v-for="item in videos" :key="item.id" class="w-full">
+        <section
+            v-for="(item, index) in videos"
+            :key="`portfolio-page-video-${index}`"
+            class="w-full"
+        >
             <div
                 v-if="item.pagePath"
                 class="group relative h-full cursor-pointer"
@@ -16,7 +20,7 @@
             >
                 <span
                     v-if="item.title"
-                    class="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 text-center font-bold text-website-off-white opacity-100 group-hover:opacity-0"
+                    class="text-website-off-white absolute top-1/2 left-1/2 z-10 -translate-x-1/2 text-center font-bold opacity-100 group-hover:opacity-0"
                     >{{ item.title }}</span
                 >
                 <NuxtImg
@@ -43,15 +47,22 @@
         pageTitle: string;
         description: string;
         heading: string;
-        videos: {
-            videoInfo: VideoInfo;
-            videoTitle: string;
-        }[];
+        videos: Array<
+            | {
+                  videoInfo: VideoInfo;
+                  title: string;
+                  pagePath?: string | undefined;
+              }
+            | {
+                  videoInfo: VideoInfo;
+                  title: string;
+              }
+        >;
     }
 
     defineProps<Portfolio>();
 
-    const imageClick = async (path) => {
+    const imageClick = async (path: string) => {
         await navigateTo({ path });
     };
 </script>

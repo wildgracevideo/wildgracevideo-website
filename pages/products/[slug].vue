@@ -1,37 +1,49 @@
 <template>
     <OgMeta
         :title="pageTitle"
-        :description="data!.description"
-        :icon="data!.ogImage!"
+        :description="product.description"
+        :icon="product.ogImage!"
     />
     <SchemaOrgWebPage type="ItemPage" :name="pageTitle" />
     <ProductOverview
-        :product-title="data!.productName!"
-        :product-tag-line-markdown="data!.productTagline!"
+        :product-title="product.productName"
+        :product-tag-line-markdown="product.productTagline"
         :main-image-description="imageDescription"
-        :product-description-markdown="data!.productDescription!"
-        :whats-inside-markdown="data!.whatsInsideComponents!"
-        :call-to-action-title-markdown="data!.callToActionTitle!"
-        :call-to-action-description-markdown="data!.callToActionSubheading!"
-        :image-src="data!.productImage!"
-        :price-dollars="data!.priceDollars! as number"
-        :original-price-dollars="data!.originalPriceDollars! as number"
+        :product-description-markdown="product.productDescription"
+        :whats-inside-markdown="product.whatsInsideComponents"
+        :call-to-action-title-markdown="product.callToActionTitle"
+        :call-to-action-description-markdown="product.callToActionSubheading"
+        :image-src="product.productImage"
+        :price-dollars="product.priceDollars"
+        :original-price-dollars="product.originalPriceDollars"
         :route="route.params.slug as string"
-        :product-description="data!.description!"
-        :call-to-action-background-image="data!.callToActionBackgroundImage!"
-        :top-background-image="data!.topBackgroundImage!"
+        :product-description="product.description"
+        :call-to-action-background-image="product.callToActionBackgroundImage"
+        :top-background-image="product.topBackgroundImage"
     />
 </template>
 
 <script setup lang="ts">
+    import type { CmsProduct } from '~/types/cms';
+
     definePageMeta({
         layout: 'no-contact',
     });
 
     const route = useRoute();
-    const { data } = await useAsyncData('products', () =>
-        queryCollection('content').path(`product/${route.params.slug}`).first()
-    );
-    const pageTitle = data!.value!.title!;
-    const imageDescription = data!.value!.imageDescription!;
+    const { data } = await useAsyncData('products', () => {
+        return queryCollection('content')
+            .where('stem', '=', `product/${route.params.slug}`)
+            .first();
+    });
+
+    const product = data?.value?.meta as unknown as CmsProduct;
+    if (!product) {
+        throw createError({
+            statusCode: 404,
+            statusMessage: 'Page Not Found',
+        });
+    }
+    const pageTitle = product.title;
+    const imageDescription = product.imageDescription;
 </script>

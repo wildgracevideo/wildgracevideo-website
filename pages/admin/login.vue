@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="mx-auto mb-4 mt-16 w-full text-center text-2xl">
+        <h1 class="mx-auto mt-16 mb-4 w-full text-center text-2xl">
             WGV Admin Portal Login
         </h1>
         <a

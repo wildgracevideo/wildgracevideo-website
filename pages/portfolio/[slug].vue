@@ -9,16 +9,18 @@
 </template>
 
 <script setup lang="ts">
+    import type { CmsCustomPortfolio } from '~/types/cms';
+
     const route = useRoute();
     const { data } = await useAsyncData('custom-portfolio', () =>
         queryCollection('content')
-            .path(`custom-portfolio/${route.params.slug}`)
+            .where('stem', '=', `custom-portfolio/${route.params.slug}`)
             .first()
     );
-    let portfolio = null;
-    if (!data || !data.value!) {
+    let portfolio: CmsCustomPortfolio | null = null;
+    if (!data || !data.value) {
         await navigateTo('/portfolio');
     } else {
-        portfolio = data!.value!;
+        portfolio = data!.value!.meta as unknown as CmsCustomPortfolio;
     }
 </script>

@@ -7,22 +7,22 @@
     />
     <RecaptchaLoader />
     <div
-        class="relative z-50 bg-website-off-black py-16 [&_input]:placeholder-website-secondary"
+        class="bg-website-off-black [&_input]:placeholder-website-secondary relative z-50 py-16"
     >
         <div
             class="mb-24 flex w-full flex-row items-center"
             :class="{ hidden: !showForm }"
         >
             <h2
-                class="heading-font px-8 text-center text-4xl font-semibold text-website-off-white"
+                class="heading-font text-website-off-white px-8 text-center text-4xl font-semibold"
                 :class="{ hidden: !showForm }"
             >
                 CONTACT
             </h2>
-            <div class="h-[1px] grow bg-website-off-white" />
+            <div class="bg-website-off-white h-[1px] grow" />
         </div>
         <h2
-            class="relative top-28 text-center text-3xl text-website-off-white"
+            class="text-website-off-white relative top-28 text-center text-3xl"
             :class="{
                 hidden: showForm,
                 block: !showForm,
@@ -75,7 +75,7 @@
                 container-class="md:col-span-2 col-span-1 text-sm fade-out contact-scroll-observable"
             />
             <p
-                class="fade-out contact-scroll-observable col-span-1 text-center text-xs text-website-off-white md:col-span-2"
+                class="fade-out contact-scroll-observable text-website-off-white col-span-1 text-center text-xs md:col-span-2"
             >
                 This site is protected by reCAPTCHA and the Google
                 <a href="https://policies.google.com/privacy" class="underline"
@@ -90,7 +90,7 @@
             <div class="col-span-1 flex justify-center md:col-span-2">
                 <button
                     type="submit"
-                    class="contact-scroll-observable subheading-font mb-12 flex h-8 w-fit items-center rounded-xl border-2 border-website-off-white bg-website-off-white px-4 text-center text-website-primary"
+                    class="contact-scroll-observable subheading-font border-website-off-white bg-website-off-white text-website-primary mb-12 flex h-8 w-fit cursor-pointer items-center rounded-xl border-2 px-4 text-center"
                     :class="{
                         'opacity-50': sendingForm,
                         'hover:text-website-off-white': !sendingForm,

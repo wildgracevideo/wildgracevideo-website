@@ -1,6 +1,6 @@
 <template>
     <div
-        class="three-bar-wrapper relative z-20 ml-auto mr-10 block h-8 w-10 cursor-pointer lg:hidden"
+        class="three-bar-wrapper relative z-20 mr-10 ml-auto block h-8 w-10 cursor-pointer lg:hidden"
         :class="{ active: openMenu }"
         tabindex="0"
         role="button"
