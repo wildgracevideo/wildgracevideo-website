@@ -1,9 +1,9 @@
 <template>
     <h1 class="my-8 ml-8 text-2xl">Get Started Messages</h1>
     <UTable
-        :data="data || undefined"
+        v-if="data"
+        :data="data || []"
         :columns="columns"
-        :loading="status === 'pending'"
         empty="No Messages"
     >
         <template #actions-cell="{ row }: { row: TableRow<MessageWithReply> }">
@@ -22,6 +22,7 @@
             />
         </template>
     </UTable>
+    <Spinner v-else :additional-classes="['mx-auto']" />
 
     <UModal v-model:open="showDeleteConfirmation">
         <template #content>
@@ -102,7 +103,7 @@
         { accessorKey: 'actions', header: ' ' },
     ];
 
-    const { data, status } = await useLazyAsyncData(
+    const { data  } = await useLazyAsyncData(
         'messages',
         async () => {
             return (await $fetch('/api/admin/messages')) as MessageWithReply[];

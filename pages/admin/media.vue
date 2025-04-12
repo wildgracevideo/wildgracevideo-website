@@ -44,16 +44,16 @@
         <UTable
             :columns="columns"
             :rows="files || []"
-            :loading="loading"
+            <!-- :loading="loading" -->
             class="min-h-96"
         >
-            <template #lastModified-data="{ row }">
+            <template #lastModified-cell="{ row }">
                 <span>
                     {{ transformDateTime(row.lastModified) }}
                 </span>
             </template>
 
-            <template #name-data="{ row }">
+            <template #name-cell="{ row }">
                 <button
                     class="text-website-off-black cursor-pointer underline"
                     @click="() => handleNameClick(row)"
@@ -62,13 +62,13 @@
                 </button>
             </template>
 
-            <template #size-data="{ row }">
+            <template #size-cell="{ row }">
                 <span>
                     {{ formatBytes(row.size) }}
                 </span>
             </template>
 
-            <template #action-data="{ row }">
+            <template #action-cell="{ row }">
                 <div class="flex flex-row justify-end">
                     <ClipboardIcon
                         v-if="!row.isFolder"
@@ -182,10 +182,10 @@
     import '@uppy/dashboard/dist/style.min.css';
 
     const columns = [
-        { key: 'name', label: 'Name' },
-        { key: 'lastModified', label: 'Last Modified' },
-        { key: 'size', label: 'Size' },
-        { key: 'action' },
+        { accessorKey: 'name', header: 'Name' },
+        { accessorKey: 'lastModified', header: 'Last Modified' },
+        { accessorKey: 'size', header: 'Size' },
+        { accessorKey: 'action', header: '' },
     ];
 
     definePageMeta({ middleware: 'auth', layout: 'admin' });
@@ -247,7 +247,7 @@
                 timeStyle: 'short',
                 dateStyle: 'medium',
             }).format(localDate);
-        } catch (e: unknown) {
+        } catch {
             return dateString;
         }
     }
@@ -279,7 +279,7 @@
     };
 
     const handleFolderClick = async (folderName: string) => {
-        const lastFolderName = folderName.replace(/\/$/, '').split('/').pop();
+        const lastFolderName = folderName.replace(/\/$/, '').split('/').pop() ?? '';
         currentFolder.value.push(lastFolderName);
         push({
             query: {

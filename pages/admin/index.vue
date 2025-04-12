@@ -12,7 +12,7 @@
     </div>
 
     <div
-        v-if="status !== 'pending'"
+        v-if="stats"
         class="ml-16 flex flex-row justify-start gap-8"
     >
         <UCard
@@ -75,7 +75,7 @@
         loading.value = false;
     });
 
-    const { data: stats, status } = await useLazyAsyncData(
+    const { data: stats } = await useLazyAsyncData(
         'messages',
         () => $fetch(`/api/admin/stats?numDays=${numDays.value}`),
         { server: false }

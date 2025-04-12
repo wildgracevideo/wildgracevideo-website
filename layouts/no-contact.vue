@@ -9,6 +9,9 @@
 </template>
 
 <script setup lang="ts">
-    import '~/assets/css/main.css';
     const openMenu = ref(false);
 </script>
+
+<style>
+    @import '~/assets/css/main.css';
+</style>
