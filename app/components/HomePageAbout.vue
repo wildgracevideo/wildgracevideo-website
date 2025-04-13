@@ -1,6 +1,6 @@
 <template>
     <article
-        class="home-page-about-grid-container mx-12 mt-32 mb-36 grid grid-cols-1 gap-x-16 lg:mt-48 lg:grid-cols-2"
+        class="home-page-about-grid-container mx-12 grid grid-cols-1 gap-x-16 lg:grid-cols-2"
     >
         <div class="order-2 lg:order-1">
             <Markdown
@@ -43,8 +43,6 @@
 </template>
 
 <script setup lang="ts">
-    import type { FileInfo } from './FileOrVideo.vue';
-
     defineProps<{
         titleMarkdown: string;
         textMarkdown: string;

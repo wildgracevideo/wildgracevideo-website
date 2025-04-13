@@ -19,7 +19,7 @@
             :publication-date="reelVideo.publicationDate"
         />
     </section>
-    <section class="my-32 flex flex-col gap-16 md:grid md:grid-cols-5">
+    <section class="my-16 flex flex-col gap-16 md:my-32 md:grid md:grid-cols-5">
         <div class="col-span-3 mx-8">
             <Markdown
                 :markdown-string="`# ${pageTitle}`"
@@ -81,8 +81,12 @@
         </div>
     </div>
     <section
-        class="bg-website-primary text-website-off-white relative mb-24 py-24"
+        class="bg-website-primary text-website-off-white relative mb-12 py-12 lg:mb-24 lg:py-24"
     >
+        <Markdown
+            :markdown-string="`## ${adventureContentTitle}`"
+            component-class="px-4 heading-font no-default-format text-3xl heading-font text-center lg:hidden block mb-8"
+        />
         <div class="flex flex-col justify-center lg:flex-row lg:justify-normal">
             <FileOrVideo
                 parent-class="pointer-events-none lg:mx-16 mx-auto shrink-0 lg:w-1/3 w-2/3 lg:mb-0 mb-16 aspect-photo-long"
@@ -92,7 +96,7 @@
                 :with-sound-control="false"
             />
             <FileOrVideo
-                parent-class="pointer-events-none h-36 w-36 aspect-square top-0 lg:static absolute left-[80%] lg:-translate-y-[30%] translate-y-[30%] -ml-32 mr-16 translate-x-0 lg:-translate-x-1/2"
+                parent-class="pointer-events-none h-36 w-36 aspect-square top-16 lg:static absolute left-[80%] lg:-translate-y-[30%] translate-y-[30%] -ml-32 mr-16 translate-x-0 lg:-translate-x-1/2"
                 class="mx-16 h-full w-full object-cover object-center"
                 :file="adventureContentAccentFile"
                 sizes="138px"
@@ -106,7 +110,7 @@
             >
                 <Markdown
                     :markdown-string="`## ${adventureContentTitle}`"
-                    component-class="lg:text-5xl lg:px-16 px-4 heading-font no-default-format text-3xl heading-font lg:text-left text-center"
+                    component-class="lg:text-5xl lg:px-16 px-4 heading-font no-default-format text-3xl heading-font lg:text-left text-center lg:block hidden"
                 />
                 <Markdown
                     :markdown-string="adventureContentDescription"
@@ -122,11 +126,11 @@
         </div>
     </section>
     <section>
-        <div class="mb-24 flex w-full flex-row items-center">
+        <div class="mb-8 flex w-full flex-row items-center lg:mb-24">
             <div class="bg-website-off-black h-[1px] grow" />
             <Markdown
                 :markdown-string="`## ${videoHighlight.title!}`"
-                component-class="max-w-3xl w-fit px-8 md:mx-auto accent-font no-default-format text-3xl md:text-4xl"
+                component-class="max-w-3xl w-fit px-8 md:mx-auto accent-font no-default-format text-3xl md:text-4xl lg:text-left text-center"
             />
         </div>
         <div class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">
@@ -173,8 +177,8 @@
         </div>
         <FileOrVideo
             parent-class="pointer-events-none relative z-0 cursor-default"
-            class="aspect-photo mx-auto object-cover object-bottom md:mx-0"
-            :file="freebie.file.fileInfo"
+            class="aspect-photo mx-auto mb-16 object-cover object-bottom md:mx-0"
+            :file="freebie.file"
             sizes="64px"
             :with-sound-control="false"
         />
@@ -198,7 +202,7 @@
         </div>
     </section>
     <HomePageAbout
-        class="mt-32 mb-36 md:mt-48"
+        class="mt-16 mb-36 lg:mt-48"
         :text-markdown="aboutMeDescriptionMarkdown"
         :title-markdown="aboutMeTitleMarkdown"
         :file-config="aboutMeFile"
@@ -221,20 +225,24 @@
                 >REAL CLIENTS</span
             >
         </h2>
-        <div class="mx-auto w-[25dvw]">
+        <div class="1/2 mx-auto md:w-1/4">
             <NuxtLink :to="caseStudies.pagePath">
                 <FileOrVideo
-                    parent-class="pointer-events-none relative z-0 cursor-default"
+                    parent-class="pointer-events-none relative z-0 cursor-default w-full aspect-photo"
                     class="aspect-photo mx-auto w-full object-cover object-bottom md:mx-0"
                     :file="caseStudies.file"
                     sizes="2xl:800px xl:615px lg:512px 410px"
                     :with-sound-control="false"
                 />
-                <h3 class="subheading-font mt-4 text-4xl">
+                <h3
+                    class="subheading-font mt-4 text-center text-2xl lg:text-left lg:text-4xl"
+                >
                     {{ caseStudies.title }}
                 </h3>
                 <hr class="border-website-accent my-2 w-full border-t" />
-                <p>{{ caseStudies.description }}</p>
+                <p class="text-center lg:text-left">
+                    {{ caseStudies.description }}
+                </p>
             </NuxtLink>
         </div>
         <DefaultButton

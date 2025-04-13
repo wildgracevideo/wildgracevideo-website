@@ -1,9 +1,9 @@
 <template>
     <OgMeta :title="pageTitle" :description="description" />
     <SchemaOrgWebPage :name="pageTitle" />
-    <h1 class="mb-8 text-center text-4xl">{{ heading }}</h1>
+    <h1 class="heading-font mb-8 text-center text-4xl">{{ heading }}</h1>
     <div
-        class="mx-0 mt-16 mb-16 grid grid-cols-1 gap-1.5 sm:mx-8 xl:grid-cols-2"
+        class="subheading-font mx-0 mt-16 mb-16 grid grid-cols-1 gap-1.5 sm:mx-8 xl:grid-cols-2"
     >
         <section
             v-for="(item, index) in videos"
@@ -42,8 +42,6 @@
 </template>
 
 <script setup lang="ts">
-    import type { VideoInfo } from '~~/shared/lib/video';
-
     export interface Portfolio {
         pageTitle: string;
         description: string;
