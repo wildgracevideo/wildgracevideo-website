@@ -253,9 +253,13 @@
             v-for="faqItem in faq.questions"
             :key="`faq-${faqItem.question}`"
             :title-markdown="`### ${faqItem.question}`"
-            :content-markdown="faqItem.answer"
             class="mb-10 w-full"
-        />
+        >
+            <Markdown
+                :markdown-string="faqItem.answer"
+                component-class="pb-5"
+            />
+        </AccordionItem>
     </article>
 
     <FreebieModal

@@ -899,6 +899,41 @@ collections:
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: false
+          - label: 'Quarterly Process'
+            name: 'quarterlyProcess'
+            widget: object
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Title'
+                  name: 'title'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Subtitle'
+                  name: 'subtitle'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Steps'
+                  name: 'steps'
+                  widget: 'list'
+                  summary: '{{fields.title}}'
+                  fields:
+                      - label: 'Title'
+                        name: 'title'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Description'
+                        name: 'description'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
+                - label: 'Footer Title'
+                  name: 'footerTitle'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
 
     - name: 'home'
       label: 'Home'

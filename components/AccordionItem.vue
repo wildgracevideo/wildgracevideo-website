@@ -1,6 +1,29 @@
 <template>
-    <div class="border-b border-website-tertiary">
+    <div class="border-b border-website-secondary">
         <button
+            v-if="largeStyle"
+            class="flex w-full items-center justify-between py-10 md:py-14"
+            @click="toggleAccordion"
+        >
+            <Markdown
+                :markdown-string="titleMarkdown"
+                component-class="no-default-format strong:font-semibold mx-auto md:text-4xl text-xl md:translate-x-6 translate-x-4"
+            />
+            <span class="transition-transform duration-300">
+                <PlusIcon
+                    v-if="!showAccordionItem"
+                    class="h-8 w-8 md:h-12 md:w-12"
+                    fill="currentcolor"
+                />
+                <MinusIcon
+                    v-else
+                    class="h-8 w-8 md:h-12 md:w-12"
+                    fill="currentcolor"
+                />
+            </span>
+        </button>
+        <button
+            v-else
             class="flex w-full items-center justify-between py-8"
             @click="toggleAccordion"
         >
@@ -21,10 +44,7 @@
             ref="contentElement"
             class="transition-all max-h-0 overflow-hidden duration-300 ease-in-out"
         >
-            <Markdown
-                :markdown-string="contentMarkdown"
-                component-class="pb-5"
-            />
+            <slot />
         </div>
     </div>
 </template>
@@ -48,8 +68,13 @@
         }
     };
 
-    defineProps<{
-        titleMarkdown: string;
-        contentMarkdown: string;
-    }>();
+    withDefaults(
+        defineProps<{
+            titleMarkdown: string;
+            largeStyle?: boolean | null;
+        }>(),
+        {
+            largeStyle: false,
+        }
+    );
 </script>

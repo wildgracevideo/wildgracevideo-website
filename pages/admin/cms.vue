@@ -28,7 +28,7 @@
         const decapCMSScript = document.createElement('script');
         decapCMSScript.setAttribute(
             'src',
-            'https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js'
+            'https://unpkg.com/decap-cms@^3.6.2/dist/decap-cms.js'
         );
         document.head.appendChild(decapCMSScript);
     });

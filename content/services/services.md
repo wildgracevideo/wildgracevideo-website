@@ -5,6 +5,11 @@ sitemap:
   lastmod: 2025-03-31
   loc: /
 title: Denver Video Production Company | Wild Grace Video Services
+headingFile:
+  file: https://content.wildgracevideo.com/images/Website-Services/Servicesbanner.jpg
+  seoTitle: TODO
+  seoDescription: TODO
+  publicationDate: 2025-03-31T18:29:00.000Z
 problemOverview:
   pageTagline: TURN YOUR CONTENT STRESS INTO SEAMLESS SALES
   problemFile:
@@ -76,6 +81,61 @@ solution:
   actionCta: BOOK YOUR CALL
   description: Your brand isn’t coming across as cohesive or high-caliber, and
     customers are passing you by for brands that do.
+quarterlyProcess:
+  steps:
+    - description: |-
+        **week 1 - brand clarity session**
+
+
+
+        90 min strategy session
+
+        define brand identity
+
+        pinpoint audience desires
+
+        content audit
+      title: WEEK 1
+    - title: WEEK 2
+      description: |-
+        **week 2 - complete production plan**
+
+
+
+        60 min pre-production call
+
+        build shotlist
+
+        cast talent
+
+        location scout
+    - title: WEEK 3
+      description: |-
+        **week 3 - done for you content capture**
+
+
+
+        full day shoot
+
+        capture content in bulk
+
+        professional camera, audio, and lighting gear
+    - title: WEEK 4
+      description: |-
+        **week 4 - monthly content drops**
+
+
+
+        ready-to-use videos & images
+
+        content schedule & guide
+
+        monthly content delivery
+
+        1 round of revisions
+  title: HOW THE PROCESS WORKS
+  subtitle: First month of every quarter
+  footerTitle: POSITION YOUR BRAND AS THE TOP CHOICE IN YOUR INDUSTRY.
 problemFile:
   file: https://content.wildgracevideo.com/images/Website-Services/ServiceHeadshot.jpg
   seoTitle: TODO
@@ -85,11 +145,6 @@ description: Wild Grace Video Productions is a top Denver-based video production
   company specializing in hotel video production, outdoor product videos and
   adventure company videos. We're here to help you bring your brand to life and
   help you better connect with your audience.
-headingFile:
-  file: https://content.wildgracevideo.com/images/Website-Services/Servicesbanner.jpg
-  seoTitle: TODO
-  seoDescription: TODO
-  publicationDate: 2025-03-31T18:29:00.000Z
 adventureContentPartnership:
   stepsBackgroundImage:
     file: https://content.wildgracevideo.com/images/Website-Services/Icelandbackground.jpg

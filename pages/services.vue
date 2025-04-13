@@ -183,6 +183,41 @@
         :steps="adventureContentPartnershipSteps"
         :accent-image="adventureContentPartnershipStepsAccentImage"
     />
+    <article class="w-full">
+        <Markdown
+            :markdown-string="`## ${quarterlyProcess.title!}`"
+            component-class="no-default-format subheading-font md:ml-16 ml-8 mb-16 md:mt-32 mt-16 text-left md:text-4xl text-2xl"
+        />
+        <Markdown
+            :markdown-string="`### ${quarterlyProcess.subtitle!}`"
+            component-class="no-default-format accent-font md:mx-auto mx-12 mb-8 text-center md:text-4xl text-lg"
+        />
+        <div class="mx-auto mb-32 w-3/4">
+            <AccordionItem
+                v-for="step in quarterlyProcess.steps"
+                :key="`step-${step.title}`"
+                :large-style="true"
+                :title-markdown="`#### ${step.title}`"
+                class="mb-1 w-full bg-website-primary text-website-off-white"
+            >
+                <Markdown
+                    :markdown-string="step.description"
+                    component-class="mx-auto bg-website-off-white text-website-off-black text-center py-8"
+                />
+            </AccordionItem>
+        </div>
+        <Markdown
+            :markdown-string="quarterlyProcess.footerTitle"
+            component-class="w-3/4 mx-auto text-center my-16 md:text-5xl text-2xl subheading-font"
+        />
+        <DefaultButton
+            :title="servicesData.solution.actionCta"
+            class="mx-auto mb-16"
+            to="/get-started"
+            :light="false"
+        />
+    </article>
+    <article></article>
 </template>
 
 <script setup lang="ts">
@@ -198,7 +233,7 @@
     const description = servicesData.description;
 
     const headingFile = servicesData.headingFile!;
-    const problemFile = servicesData.problemFile!;
+    const problemFile = servicesData.problemOverview.problemFile!;
 
     const adventureContentPartnershipOverview = servicesData
         .adventureContentPartnership.overview! as string;
@@ -223,4 +258,5 @@
     }[];
     const adventureContentPartnershipStepsAccentImage = servicesData
         .adventureContentPartnership.stepsAccentImage! as FileInfo;
+    const quarterlyProcess = servicesData.quarterlyProcess;
 </script>
