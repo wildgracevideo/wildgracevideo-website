@@ -2,7 +2,7 @@
     <OgMeta :title="title" :description="description" />
     <div class="relative">
         <div
-            class="bg-website-secondary bg-opacity-30 absolute inset-0 -top-[36px] z-10 h-[60dvh]"
+            class="bg-website-secondary/30 absolute inset-0 -top-[36px] z-10 h-[60dvh]"
         ></div>
         <h1
             class="text-website-off-white relative top-36 z-20 mx-auto lg:top-24"
@@ -60,7 +60,7 @@
                             <XCircleIcon
                                 class="text-website-primary mr-2 h-8 w-8 shrink-0"
                             />
-                            <p class="flex-0">
+                            <p>
                                 {{ item.description }}
                             </p>
                         </div>
@@ -85,7 +85,7 @@
                             <XCircleIcon
                                 class="text-website-primary mr-2 h-8 w-8 shrink-0"
                             />
-                            <p class="flex-0">
+                            <p>
                                 {{ item.description }}
                             </p>
                         </div>
@@ -112,9 +112,7 @@
                 component-class="no-default-format text-center strong:font-semibold mx-auto max-w-4xl pb-32 mx-auto"
             />
         </div>
-        <div
-            class="solution-background bg-website-tertiary text-website-off-white relative pb-16"
-        >
+        <div class="bg-website-tertiary text-website-off-white relative pb-16">
             <FileOrVideo
                 parent-class="pointer-events-none z-0 cursor-default md:w-1/3 w-1/2 aspect-square absolute ml-auto z-0 opacity-10 lg:top-1/2 top-16 lg:-translate-y-1/2 left-full -translate-x-full"
                 class="h-full object-cover object-center"
@@ -155,7 +153,7 @@
                         <XCircleIcon
                             class="text-website-primary mr-2 h-8 w-8 shrink-0"
                         />
-                        <p class="flex-0">
+                        <p>
                             {{ item.title }}
                         </p>
                     </div>

@@ -2,10 +2,10 @@
     <article>
         <div class="relative">
             <div
-                class="bg-website-off-black bg-opacity-70 absolute inset-0 z-10 h-dvh"
+                class="bg-website-off-black/70 absolute inset-0 z-10 h-dvh"
             ></div>
             <FileOrVideo
-                parent-class="pointer-events-none relative z-0 cursor-default mx-auto h-dvh w-dvh brightness-50"
+                parent-class="pointer-events-none relative z-0 cursor-default h-dvh w-dvw brightness-50"
                 class="h-full w-full object-cover object-center"
                 :file="overviewFile"
                 sizes="2xl:2000px xl:1536px lg:1280px md:1024px sm:768px 640px"

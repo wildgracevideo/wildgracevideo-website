@@ -12,11 +12,11 @@
 </template>
 
 <script setup lang="ts">
-    import { provideUseId } from '@headlessui/vue';
+    // import { provideUseId } from '@headlessui/vue';
 
     const openMenu = ref(false);
 
-    provideUseId(() => useId());
+    // provideUseId(() => useId());
 </script>
 
 <style>
