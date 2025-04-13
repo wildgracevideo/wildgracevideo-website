@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/no-unresolved
 import type { EventHandlerRequest, H3Event } from 'h3';
+import { CmsProduct } from '~~/shared/types/cms';
 
 export interface ProductBackendProperties {
     stripePriceId: string;
@@ -35,10 +35,10 @@ async function getProductBy(
     errorMessage: string
 ): Promise<ProductBackendProperties> {
     const contentList = await queryCollection(event, 'content')
-        .path('product') // TODO: Fix
+        .where('stem', 'LIKE', 'product/%')
         .all();
     const product = contentList
-        .map((it) => it as unknown as ProductBackendProperties)
+        .map((it) => it.meta as unknown as CmsProduct)
         .find(predicate);
 
     if (product) {
