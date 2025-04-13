@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div
-                class="bg-website-accent z-20 -mt-56 -mb-36 block w-0.25 flex-0"
+                class="bg-website-accent z-30 -mt-56 -mb-36 block w-0.25 grow-0"
             ></div>
             <div
                 class="relative flex flex-1 flex-col justify-center gap-16 py-8"
@@ -156,8 +156,6 @@
 </template>
 
 <script lang="ts" setup>
-    import type { FileInfo } from './FileOrVideo.vue';
-
     defineProps<{
         overviewFile: FileInfo;
         overview: string;

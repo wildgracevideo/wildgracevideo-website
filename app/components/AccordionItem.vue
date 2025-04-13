@@ -1,5 +1,5 @@
 <template>
-    <div class="border-website-secondary border-b">
+    <div class="border-website-secondary cursor-pointer border-b">
         <button
             v-if="largeStyle"
             class="flex w-full items-center justify-between py-10 md:py-14"
@@ -7,17 +7,17 @@
         >
             <Markdown
                 :markdown-string="titleMarkdown"
-                component-class="no-default-format strong:font-semibold mx-auto md:text-4xl text-xl md:translate-x-6 translate-x-4"
+                component-class="no-default-format strong:font-semibold mx-auto md:text-4xl text-xl md:translate-x-8 translate-x-6"
             />
             <span class="transition-transform duration-300">
                 <PlusIcon
                     v-if="!showAccordionItem"
-                    class="h-8 w-8 md:h-12 md:w-12"
+                    class="mr-2 h-8 w-8 md:mr-4 md:h-12 md:w-12"
                     fill="currentcolor"
                 />
                 <MinusIcon
                     v-else
-                    class="h-8 w-8 md:h-12 md:w-12"
+                    class="mr-2 h-8 w-8 md:mr-4 md:h-12 md:w-12"
                     fill="currentcolor"
                 />
             </span>
@@ -53,16 +53,16 @@
     import { MinusIcon, PlusIcon } from '@heroicons/vue/24/outline';
 
     const showAccordionItem = ref(false);
-    const contentElement = ref(null);
+    const contentElement: Ref<HTMLElement | null> = ref(null);
 
     const toggleAccordion = () => {
         showAccordionItem.value = !showAccordionItem.value;
         if (
-            contentElement.value.style.maxHeight &&
+            contentElement.value?.style.maxHeight &&
             contentElement.value.style.maxHeight !== '0px'
         ) {
             contentElement.value.style.maxHeight = '0';
-        } else {
+        } else if (contentElement.value) {
             contentElement.value.style.maxHeight =
                 contentElement.value.scrollHeight + 'px';
         }

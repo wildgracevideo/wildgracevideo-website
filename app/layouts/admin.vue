@@ -12,14 +12,10 @@
 </template>
 
 <script setup lang="ts">
-    // import { provideUseId } from '@headlessui/vue';
-
     const openMenu = ref(false);
-
-    // provideUseId(() => useId());
 </script>
 
 <style>
-    @import '@/assets/css/main.css';
-    @import '@/assets/css/admin.css';
+    @import '~/assets/css/main.css';
+    @import '~/assets/css/admin.css';
 </style>

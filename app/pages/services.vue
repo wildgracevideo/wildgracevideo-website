@@ -68,7 +68,7 @@
                 </ul>
             </div>
         </div>
-        <div class="bg-website-secondary">
+        <div class="bg-website-secondary text-website-tertiary">
             <div class="mx-24 max-w-[50%]">
                 <Markdown
                     :markdown-string="`### ${servicesData.problemOverview.problemOverview2}`"
@@ -83,7 +83,7 @@
                     >
                         <div class="flex flex-row">
                             <XCircleIcon
-                                class="text-website-primary mr-2 h-8 w-8 shrink-0"
+                                class="text-website-tertiary/80 mr-2 h-8 w-8 shrink-0"
                             />
                             <p>
                                 {{ item.description }}
@@ -196,11 +196,11 @@
                 :key="`step-${step.title}`"
                 :large-style="true"
                 :title-markdown="`#### ${step.title}`"
-                class="bg-website-primary text-website-off-white mb-1 w-full"
+                class="bg-website-primary text-website-off-white subheading-font mb-1 w-full"
             >
                 <Markdown
                     :markdown-string="step.description"
-                    component-class="mx-auto bg-website-off-white text-website-off-black text-center py-8"
+                    component-class="mx-auto bg-website-off-white text-website-off-black text-center py-8 paragraph-font"
                 />
             </AccordionItem>
         </div>
