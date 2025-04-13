@@ -1,6 +1,9 @@
 import type { EventHandlerRequest, H3Event } from 'h3';
 import { eq, InferSelectModel, sql } from 'drizzle-orm';
-import { createContact, CreateContactRequest } from '~~/shared/lib/create-contact';
+import {
+    createContact,
+    CreateContactRequest,
+} from '~~/shared/lib/create-contact';
 import { sendTemplatedEmail } from '~~/shared/lib/send-template-email';
 import { stripe } from '~~/shared/lib/stripe';
 import {

@@ -1,4 +1,4 @@
-import { RecaptchaType } from '~~/shared/types/form-requests'; 
+import { RecaptchaType } from '~~/shared/types/form-requests';
 
 export default defineNuxtPlugin((_nuxtApp) => {
     const runtimeConfig = useRuntimeConfig();

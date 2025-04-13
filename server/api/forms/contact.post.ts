@@ -1,7 +1,10 @@
 import { db } from '~~/shared/lib/db';
 import { messages } from '~~/shared/drizzle/schema';
 import { sendEmail } from '~~/shared/lib/send-email';
-import { ContactSubmitRequest, RecaptchaType } from '~~/shared/types/form-requests';
+import {
+    ContactSubmitRequest,
+    RecaptchaType,
+} from '~~/shared/types/form-requests';
 import { validateRecaptcha } from '~~/shared/lib/validate-recaptcha';
 
 const runtimeConfig = useRuntimeConfig();

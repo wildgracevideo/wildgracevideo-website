@@ -80,13 +80,15 @@
             </div>
             <ImageGallery
                 :items="
-                    Array.from(testimonials.clientTestimonials).map((testimonial) => {
-                        return {
-                            title: testimonial.text,
-                            description: testimonial.author,
-                            fileInfo: testimonial.fileInfo,
-                        };
-                    })
+                    Array.from(testimonials.clientTestimonials).map(
+                        (testimonial) => {
+                            return {
+                                title: testimonial.text,
+                                description: testimonial.author,
+                                fileInfo: testimonial.fileInfo,
+                            };
+                        }
+                    )
                 "
                 :gallery-title-markdown="`## Client Testimonials`"
                 class="w-full pb-16"

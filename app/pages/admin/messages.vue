@@ -62,7 +62,7 @@
     import type { TableRow } from '@nuxt/ui';
     import { h } from 'vue';
     import { type MessageWithReply } from '~~/shared/drizzle/schema';
-import { formatDate } from '~~/shared/lib/format-date';
+    import { formatDate } from '~~/shared/lib/format-date';
 
     definePageMeta({ middleware: 'auth', layout: 'admin' });
     useHead({
@@ -81,7 +81,10 @@ import { formatDate } from '~~/shared/lib/format-date';
             accessorKey: 'read',
             header: '',
             cell: ({ row }: { row: TableRow<MessageWithReply> }) => {
-                if (row.original.read !== null || row.original.read !== undefined) {
+                if (
+                    row.original.read !== null ||
+                    row.original.read !== undefined
+                ) {
                     if (row.original.read) {
                         return h('span');
                     } else {

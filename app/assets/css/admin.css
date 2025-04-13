@@ -1,9 +1,10 @@
 @import '@nuxt/ui';
 
-button, [role="button"] {
-  cursor: pointer;
+button,
+[role='button'] {
+    cursor: pointer;
 }
 
 :disabled {
-  cursor: default;
+    cursor: default;
 }

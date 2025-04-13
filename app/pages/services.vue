@@ -198,7 +198,7 @@
                 :key="`step-${step.title}`"
                 :large-style="true"
                 :title-markdown="`#### ${step.title}`"
-                class="mb-1 w-full bg-website-primary text-website-off-white"
+                class="bg-website-primary text-website-off-white mb-1 w-full"
             >
                 <Markdown
                     :markdown-string="step.description"

@@ -472,7 +472,7 @@
                 }: {
                     key: string;
                     uploadId: string;
-                    parts: Record<string, any>;
+                    parts: Record<string, unknown>;
                 },
                 signal
             ) {
