@@ -1,7 +1,7 @@
 import { count, gt } from 'drizzle-orm';
-import { freebieSignups, messages, purchaseAudits } from '~/drizzle/schema';
-import { db } from '~/lib/db';
-import { type Stat } from '~/types/stats';
+import { freebieSignups, messages, purchaseAudits } from '~~/shared/drizzle/schema';
+import { db } from '~~/shared/lib/db';
+import { type Stat } from '~~/shared/types/stats';
 
 export default defineEventHandler(async (event): Promise<Stat[]> => {
     const requestQueryParams = getQuery(event);

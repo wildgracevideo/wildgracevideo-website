@@ -1,6 +1,6 @@
-import { sendEmail } from '~/lib/send-email';
-import { GetStartedSubmitRequest, RecaptchaType } from '~/types/form-requests';
-import { validateRecaptcha } from '~/lib/validate-recaptcha';
+import { sendEmail } from '~~/shared/lib/send-email';
+import { GetStartedSubmitRequest, RecaptchaType } from '~~/shared/types/form-requests';
+import { validateRecaptcha } from '~~/shared/lib/validate-recaptcha';
 
 const runtimeConfig = useRuntimeConfig();
 

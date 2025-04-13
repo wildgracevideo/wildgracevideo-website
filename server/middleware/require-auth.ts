@@ -1,4 +1,4 @@
-import { lucia } from '~/server/utils/auth';
+import { lucia } from '~~/server/utils/auth';
 
 export default defineEventHandler(async (event) => {
     const sessionId = getCookie(event, lucia.sessionCookieName) ?? null;

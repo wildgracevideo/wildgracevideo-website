@@ -2,7 +2,7 @@ import * as yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 
-const outputPath = path.resolve('./types/cms.ts');
+const outputPath = path.resolve('./shared/types/cms.ts');
 const configPath = path.resolve('./public/admin/cms/config.yml');
 
 const rawYaml = fs.readFileSync(configPath, 'utf-8');

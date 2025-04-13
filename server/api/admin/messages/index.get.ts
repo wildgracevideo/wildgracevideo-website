@@ -1,6 +1,6 @@
 import { desc, eq } from 'drizzle-orm';
-import { messages, MessageWithReply } from '~/drizzle/schema';
-import { db } from '~/lib/db';
+import { messages, MessageWithReply } from '~~/shared/drizzle/schema';
+import { db } from '~~/shared/lib/db';
 
 export default defineEventHandler(
     async (_event): Promise<MessageWithReply[]> => {

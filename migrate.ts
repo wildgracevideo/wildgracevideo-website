@@ -2,7 +2,7 @@ import { migrate } from 'drizzle-orm/libsql/migrator';
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient } from '@libsql/client';
 import * as dotenv from 'dotenv';
-import * as schema from '~/drizzle/schema';
+import * as schema from '~~/shared/drizzle/schema';
 dotenv.config();
 
 const migrateEnv = process.env.MIGRATE_ENV || 'dev';

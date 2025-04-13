@@ -208,6 +208,9 @@ const config = {
         },
     },
     compatibilityDate: '2025-04-11',
+    future: {
+        compatibilityVersion: 4,
+    },
     colorMode: {
         preference: 'light',
     },
@@ -274,7 +277,6 @@ const config = {
                     : false, // disable cssnano when not in production
         },
     },
-    // css: ['~/assets/css/main.css'],
     vite: {
         plugins: [tailwindcss()],
     },

@@ -1,5 +1,5 @@
-import { stripe } from '~/lib/stripe';
-import { CheckoutRequest } from '~/types/checkout-request';
+import { stripe } from '~~/shared/lib/stripe';
+import { CheckoutRequest } from '~~/shared/types/checkout-request';
 
 const runtimeConfig = useRuntimeConfig();
 

@@ -1,15 +1,15 @@
 import { EventWebhook } from '@sendgrid/eventwebhook';
 import { LibSQLDatabase } from 'drizzle-orm/libsql';
 import { eq, InferSelectModel, sql } from 'drizzle-orm';
-import { JSONObject } from '~/types/main';
+import { JSONObject } from '~~/shared/types/main';
 import {
     messageReplies,
     MessageStatus,
     purchaseAudits,
     sendGridMessagesMap,
-} from '~/drizzle/schema';
-import { db } from '~/lib/db';
-import * as schema from '~/drizzle/schema';
+} from '~~/shared/drizzle/schema';
+import { db } from '~~/shared/lib/db';
+import * as schema from '~~/shared/drizzle/schema';
 
 const eventWebhookValidator = new EventWebhook();
 

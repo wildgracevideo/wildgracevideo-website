@@ -1,14 +1,14 @@
 import type { EventHandlerRequest, H3Event } from 'h3';
 import { eq, InferSelectModel, sql } from 'drizzle-orm';
-import { createContact, CreateContactRequest } from '~/lib/create-contact';
-import { sendTemplatedEmail } from '~/lib/send-template-email';
-import { stripe } from '~/lib/stripe';
+import { createContact, CreateContactRequest } from '~~/shared/lib/create-contact';
+import { sendTemplatedEmail } from '~~/shared/lib/send-template-email';
+import { stripe } from '~~/shared/lib/stripe';
 import {
     getProductByPriceId,
     ProductBackendProperties,
-} from '~/lib/get-product';
-import { purchaseAudits, sendGridMessagesMap } from '~/drizzle/schema';
-import { db } from '~/lib/db';
+} from '~~/server/utils/get-product';
+import { purchaseAudits, sendGridMessagesMap } from '~~/shared/drizzle/schema';
+import { db } from '~~/shared/lib/db';
 
 export default defineEventHandler(async (event): Promise<void> => {
     const webhookBody = await readBody(event);

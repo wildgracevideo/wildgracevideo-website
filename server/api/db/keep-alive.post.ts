@@ -1,5 +1,5 @@
-import { keepAlives } from '~/drizzle/schema';
-import { db } from '~/lib/db';
+import { keepAlives } from '~~/shared/drizzle/schema';
+import { db } from '~~/shared/lib/db';
 
 const runtimeConfig = useRuntimeConfig();
 

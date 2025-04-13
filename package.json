@@ -87,5 +87,8 @@
         "tsx": "^4.19.3",
         "uuid": "9.0.1",
         "yup": "1.6.0"
+    },
+    "overrides": {
+        "@libsql/hrana-client": "^0.8.0"
     }
 }
