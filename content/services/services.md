@@ -5,6 +5,10 @@ sitemap:
   lastmod: 2025-03-31
   loc: /services
 title: Denver Video Production Company | Wild Grace Video Services
+description: Wild Grace Video Productions is a top Denver-based video production
+  company specializing in hotel video production, outdoor product videos and
+  adventure company videos. We're here to help you bring your brand to life and
+  help you better connect with your audience.
 headingFile:
   file: https://content.wildgracevideo.com/images/Website-Services/Servicesbanner.jpg
   seoTitle: TODO
@@ -136,15 +140,32 @@ quarterlyProcess:
   title: HOW THE PROCESS WORKS
   subtitle: First month of every quarter
   footerTitle: POSITION YOUR BRAND AS THE TOP CHOICE IN YOUR INDUSTRY.
+results:
+  file:
+    seoTitle: TODO
+    seoDescription: TODO
+    file: https://content.wildgracevideo.com/videos/Website-Hotel/Boutique+Hotels+Thumbnail/Boutique
+      Hotels Thumbnail.mpd
+    publicationDate: 2025-04-14T12:55:00.000Z
+  title: results you can expect
+  description: >-
+    Your brand becomes the obvious choice for customers who value quality,
+    because of your clear credibility and authority
+
+
+    A strong social media presence and increased community engagement
+
+
+    More direct bookings or sales through your website, reducing dependency on third-party platforms
+
+
+    A streamlined content system that provides fresh content monthly with a clear marketing strategy.
+  callToAction: BOOK YOUR CALL
 problemFile:
   file: https://content.wildgracevideo.com/images/Website-Services/ServiceHeadshot.jpg
   seoTitle: TODO
   seoDescription: TODO
   publicationDate: 2025-03-31T20:26:00.000Z
-description: Wild Grace Video Productions is a top Denver-based video production
-  company specializing in hotel video production, outdoor product videos and
-  adventure company videos. We're here to help you bring your brand to life and
-  help you better connect with your audience.
 adventureContentPartnership:
   stepsBackgroundImage:
     file: https://content.wildgracevideo.com/images/Website-Services/Icelandbackground.jpg

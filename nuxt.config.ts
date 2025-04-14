@@ -279,6 +279,11 @@ const config = {
     },
     vite: {
         plugins: [tailwindcss()],
+        server: {
+            hmr: {
+                overlay: false,
+            },
+        },
     },
     devtools: { enabled: process.env.NODE_ENV !== 'production' },
     sitemap: {

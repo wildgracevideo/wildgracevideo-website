@@ -120,13 +120,10 @@
                 sizes="2xl:800px xl:615px lg:512px 410px"
                 :with-sound-control="false"
             />
-            <div class="z-10 flex flex-row items-center pt-12 pb-32 pl-12">
-                <Markdown
-                    :markdown-string="`### ${servicesData.solution.action}`"
-                    component-class="no-default-format text-left text-lg lg:text-2xl accent-font strong:font-semibold mr-8"
-                />
-                <div class="bg-website-off-white h-0.25 flex-1" />
-            </div>
+            <MarkdownHeaderWithLine
+                :header-markdown="`### ${servicesData.solution.action}`"
+                class="pt-12 pb-32 pl-12"
+            />
             <Markdown
                 :markdown-string="`${servicesData.solution.actionOverview}`"
                 component-class="text-center strong:font-semibold lg:w-7/12 w-11/12 lg:mr-72 lg:ml-24 mr-8 ml-4 lg:text-left text-center pb-16 z-10"
@@ -215,7 +212,33 @@
             :light="false"
         />
     </article>
-    <article></article>
+    <article class="bg-website-tertiary text-website-off-white">
+        <MarkdownHeaderWithLine
+            :header-markdown="servicesData.results.title"
+            class="pb-8 pt-12 lg:pl-12 pl-4"
+        />
+        <div class="flex flex-col-reverse lg:flex-row lg:pb-12 pb-8 lg:text-left text-center">
+            <div class="lg:ml-20 lg:mr-0 ml-4 mr-4">
+                <Markdown
+                    :markdown-string="servicesData.results.description"
+                    component-class="tall-p-margin"
+                />
+                <DefaultButton
+                    :title="servicesData.results.callToAction"
+                    class="lg:mb-8 mb-0 lg:mx-0 mx-auto"
+                    to="/get-started"
+                    :light="false"
+                />
+            </div>
+            <FileOrVideo
+                parent-class="pointer-events-none relative z-0 cursor-default lg:w-2/3 w-4/5 aspect-video lg:mx-12 mx-auto lg:mb-0 mb-8"
+                class="aspect-video w-full object-cover object-center"
+                :file="servicesData.results.file"
+                sizes="2xl:800px xl:615px lg:512px 410px"
+                :with-sound-control="false"
+            />
+        </div>
+    </article>
 </template>
 
 <script setup lang="ts">

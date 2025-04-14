@@ -907,6 +907,71 @@ collections:
                   widget: 'markdown'
                   modes: ['rich_text']
                   minimal: true
+          - label: 'Results'
+            name: results
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Call to Action'
+                  name: callToAction
+                  widget: 'string'
+                - {
+                      label: 'File',
+                      name: 'file',
+                      widget: 'object',
+                      summary: '{{fields.seoTitle}}',
+                      <<: *fileInfo,
+                  }
+          - label: 'Packages'
+            name: packages
+            widget: 'items'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Call to Action'
+                  name: ctaText
+                  widget: 'string'
+                - {
+                      label: 'Background Image',
+                      name: '',
+                      widget: 'object',
+                      summary: '{{fields.seoTitle}}',
+                      <<: *fileInfo,
+                  }
+                - label: 'Items'
+                  name: items
+                  widget: 'list'
+                  summary: '{{ fields.title }}'
+                  fields:
+                      - label: 'Title'
+                        name: title
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Offering'
+                        name: offering
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Pricing'
+                        name: pricing
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
 
     - name: 'home'
       label: 'Home'
