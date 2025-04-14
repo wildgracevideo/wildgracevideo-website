@@ -5,15 +5,6 @@ sitemap:
   lastmod: 2025-03-31
   loc: /services
 title: Denver Video Production Company | Wild Grace Video Services
-description: Wild Grace Video Productions is a top Denver-based video production
-  company specializing in hotel video production, outdoor product videos and
-  adventure company videos. We're here to help you bring your brand to life and
-  help you better connect with your audience.
-headingFile:
-  file: https://content.wildgracevideo.com/images/Website-Services/Servicesbanner.jpg
-  seoTitle: TODO
-  seoDescription: TODO
-  publicationDate: 2025-03-31T18:29:00.000Z
 problemOverview:
   pageTagline: TURN YOUR CONTENT STRESS INTO SEAMLESS SALES
   problemFile:
@@ -161,11 +152,73 @@ results:
 
     A streamlined content system that provides fresh content monthly with a clear marketing strategy.
   callToAction: BOOK YOUR CALL
+packages:
+  title: CHOOSE YOUR PACKAGE TIER
+  ctaText: BOOK YOUR CALL
+  backgroundImage:
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-04-14T15:41:00.000Z
+    file: https://content.wildgracevideo.com/images/Website-Services/Icelandbackground.jpg
+  items:
+    - title: Emerging Brand
+      offering: |-
+        Core Brand Video
+
+        Testimonial or FAQ Video
+
+        6 Short-Form Social Videos
+
+        15 Edited Images
+
+        1 Shoot Day
+      pricing: $3,600/quarter
+    - title: Established
+      offering: |-
+        Core Brand Video
+
+        Testimonial or Case Study Video
+
+        Seasonal Experience Video
+
+        9 Short-Form Social Videos
+
+        2 Ad-Ready Video Edits
+
+        30 Edited Images
+
+        1 Shoot Day
+      pricing: $6,000/quarter
+    - title: Premium Brand
+      offering: |-
+        Craftsmanship Video or Cinematic Brand Film
+
+        2 Client Testimonial or Case Study Videos
+
+        1 Event or Seasonal Experience Video
+
+        12 Short-Form Social Videos
+
+        4 Ad-Ready Video Edits
+
+        30 Edited Images
+
+        2 Shoot Days
+      pricing: $9,000/quarter
 problemFile:
   file: https://content.wildgracevideo.com/images/Website-Services/ServiceHeadshot.jpg
   seoTitle: TODO
   seoDescription: TODO
   publicationDate: 2025-03-31T20:26:00.000Z
+description: Wild Grace Video Productions is a top Denver-based video production
+  company specializing in hotel video production, outdoor product videos and
+  adventure company videos. We're here to help you bring your brand to life and
+  help you better connect with your audience.
+headingFile:
+  file: https://content.wildgracevideo.com/images/Website-Services/Servicesbanner.jpg
+  seoTitle: TODO
+  seoDescription: TODO
+  publicationDate: 2025-03-31T18:29:00.000Z
 adventureContentPartnership:
   stepsBackgroundImage:
     file: https://content.wildgracevideo.com/images/Website-Services/Icelandbackground.jpg

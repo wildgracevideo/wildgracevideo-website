@@ -49,6 +49,7 @@ export interface CmsServices {
   adventureContentPartnership: CmsServicesAdventureContentPartnership;
   quarterlyProcess: CmsServicesQuarterlyProcess;
   results: CmsServicesResults;
+  packages: CmsServicesPackages;
 }
 
 export interface CmsServiceLandingPage {
@@ -317,6 +318,19 @@ export interface CmsServicesResults {
   description: string;
   callToAction: string;
   file: FileInfo;
+}
+
+export interface CmsServicesPackagesItemsItem {
+  title: string;
+  offering: string;
+  pricing: string;
+}
+
+export interface CmsServicesPackages {
+  title: string;
+  ctaText: string;
+  backgroundImage: FileInfo;
+  items: CmsServicesPackagesItemsItem[];
 }
 
 export interface CmsHomeReelVideo {

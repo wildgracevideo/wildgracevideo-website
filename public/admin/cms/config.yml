@@ -934,7 +934,7 @@ collections:
                   }
           - label: 'Packages'
             name: packages
-            widget: 'items'
+            widget: 'object'
             summary: '{{ fields.title }}'
             fields:
                 - label: 'Title'
@@ -943,11 +943,11 @@ collections:
                   modes: ['rich_text']
                   minimal: true
                 - label: 'Call to Action'
-                  name: ctaText
+                  name: callToAction
                   widget: 'string'
                 - {
                       label: 'Background Image',
-                      name: '',
+                      name: 'backgroundImage',
                       widget: 'object',
                       summary: '{{fields.seoTitle}}',
                       <<: *fileInfo,
@@ -966,7 +966,7 @@ collections:
                         name: offering
                         widget: 'markdown'
                         modes: ['rich_text']
-                        minimal: true
+                        minimal: false
                       - label: 'Pricing'
                         name: pricing
                         widget: 'markdown'

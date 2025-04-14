@@ -215,17 +215,19 @@
     <article class="bg-website-tertiary text-website-off-white">
         <MarkdownHeaderWithLine
             :header-markdown="servicesData.results.title"
-            class="pb-8 pt-12 lg:pl-12 pl-4"
+            class="pt-12 pb-8 pl-4 lg:pl-12"
         />
-        <div class="flex flex-col-reverse lg:flex-row lg:pb-12 pb-8 lg:text-left text-center">
-            <div class="lg:ml-20 lg:mr-0 ml-4 mr-4">
+        <div
+            class="flex flex-col-reverse pb-8 text-center lg:flex-row lg:pb-12 lg:text-left"
+        >
+            <div class="mr-4 ml-4 lg:mr-0 lg:ml-20">
                 <Markdown
                     :markdown-string="servicesData.results.description"
                     component-class="tall-p-margin"
                 />
                 <DefaultButton
                     :title="servicesData.results.callToAction"
-                    class="lg:mb-8 mb-0 lg:mx-0 mx-auto"
+                    class="mx-auto mb-0 lg:mx-0 lg:mb-8"
                     to="/get-started"
                     :light="false"
                 />
@@ -238,6 +240,45 @@
                 :with-sound-control="false"
             />
         </div>
+    </article>
+    <article
+        class="text-website-off-white bg-black/60 bg-cover bg-fixed bg-center bg-no-repeat py-16 bg-blend-darken lg:bg-auto"
+        :style="{
+            backgroundImage: `url('${servicesData.packages.backgroundImage}')`,
+        }"
+    >
+        <Markdown
+            :markdown-string="`## ${servicesData.packages.title}`"
+            component-class="w-3/4 mx-auto text-center my-16 md:text-5xl text-2xl heading-font"
+        />
+        <div
+            class="border-website-background grid grid-cols-1 divide-x-0 divide-y border py-8 lg:grid-cols-3 lg:divide-x lg:divide-y-0 lg:py-12"
+        >
+            <div
+                v-for="item in servicesData.packages.items"
+                :key="item.title"
+                class="flex flex-col justify-between"
+            >
+                <Markdown
+                    :markdown-string="`### ${item.title}`"
+                    component-class="mx-4 text-center md:text-3xl text-xl subheading-font"
+                />
+                <Markdown
+                    :markdown-string="`${item.offering}`"
+                    component-class="mx-auto text-center"
+                />
+                <Markdown
+                    :markdown-string="`${item.pricing}`"
+                    component-class="mx-auto text-center"
+                />
+            </div>
+        </div>
+        <DefaultButton
+            :title="servicesData.packages.callToAction"
+            class="mx-auto my-8 lg:my-12"
+            to="/get-started"
+            :light="false"
+        />
     </article>
 </template>
 
