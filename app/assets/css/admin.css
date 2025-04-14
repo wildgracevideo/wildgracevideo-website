@@ -1,14 +1,5 @@
 @import '@nuxt/ui';
 
-button,
-[role='button'] {
-    cursor: pointer;
-}
-
-:disabled {
-    cursor: default;
-}
-
 /* nuxt-ui is setting the ::selection pseudo element to be the primary color this resets it back to the system color */
 ::selection {
     background-color: Highlight !important;

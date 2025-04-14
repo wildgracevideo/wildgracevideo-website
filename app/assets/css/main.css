@@ -32,6 +32,15 @@
     }
 }
 
+button,
+[role='button'] {
+    cursor: pointer;
+}
+
+:disabled {
+    cursor: default;
+}
+
 html {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;

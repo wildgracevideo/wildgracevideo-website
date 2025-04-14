@@ -188,6 +188,7 @@ class MessageStatusTableFactory {
                 statusMessage: 'Internal Server Error',
             });
         }
+        console.log(`Message type, ${sendGridMessageMap.type}.`);
         switch (sendGridMessageMap.type) {
             case 'PURCHASE':
                 return new PurchaseAuditTable(this.dbClient);
@@ -203,6 +204,7 @@ class MessageStatusTableFactory {
 }
 
 export default defineEventHandler(async (event): Promise<void> => {
+    console.log('webhook received...');
     const webhookBody: JSONObject[] = await readBody(event);
     const signature = event.node.req.headers[
         'x-twilio-email-event-webhook-signature'
@@ -210,6 +212,8 @@ export default defineEventHandler(async (event): Promise<void> => {
     const timestamp = event.node.req.headers[
         'x-twilio-email-event-webhook-timestamp'
     ] as string;
+
+    console.log(webhookBody);
 
     if (!signature) {
         console.error(
@@ -252,7 +256,7 @@ async function handleEvent(webhookEvent: JSONObject) {
     )[0];
     const newStatus = getStatusFrom(webhookEvent);
     if (!newStatus) {
-        // Don't contine to process an unknown event type
+        // Don't continue to process an unknown event type
         return;
     }
 
