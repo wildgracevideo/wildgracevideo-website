@@ -1,6 +1,6 @@
 import { UploadPartCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { getS3Client } from '~/server/utils/s3Client';
+import { getS3Client } from '~~/server/utils/s3Client';
 
 const EXPIRES_IN = 900; // 15 minutes
 

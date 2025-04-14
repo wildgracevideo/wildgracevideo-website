@@ -1,4 +1,8 @@
 ---
+sitemap:
+  changefreq: monthly
+  include: true
+  lastmod: 2025-04-12
 title: Wild Grace Videography | Interior Designer Video Transformation
 description: Boost Your Social Media Presence with 37 Engaging Reel Ideas for
   Interior Designers and a Content Planner. Share Your Interior Design Journey,

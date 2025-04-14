@@ -1,7 +1,6 @@
-import { stripe } from '~/lib/stripe';
-import { CheckoutRequest } from '~/types/checkout-request';
-// eslint-disable-next-line import/no-unresolved
-import { serverQueryContent } from '#content/server';
+import { stripe } from '~~/shared/lib/stripe';
+import { CheckoutRequest } from '~~/shared/types/checkout-request';
+import { CmsProduct } from '~~/shared/types/cms';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -9,9 +8,11 @@ export default defineEventHandler(async (event): Promise<string> => {
     const checkoutRequest = await readBody<CheckoutRequest>(event);
 
     let stripePriceId: string;
-    const product = await serverQueryContent(event, '/product')
-        .where({ path: checkoutRequest.route })
-        .findOne();
+    const product = (
+        await queryCollection(event, 'content')
+            .where('stem', '=', `product/${checkoutRequest.route}`)
+            .first()
+    )?.meta as unknown as CmsProduct;
     if (product) {
         stripePriceId = product.stripePriceId;
     } else {

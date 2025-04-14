@@ -1,7 +1,7 @@
 import { InferInsertModel, InferSelectModel } from 'drizzle-orm';
-import { messageReplies, sendGridMessagesMap } from '~/drizzle/schema';
-import { db } from '~/lib/db';
-import { sendDiscoveryCall } from '~/lib/send-template-email';
+import { messageReplies, sendGridMessagesMap } from '~~/shared/drizzle/schema';
+import { db } from '~~/shared/lib/db';
+import { sendDiscoveryCall } from '~~/shared/lib/send-template-email';
 
 export default defineEventHandler(
     async (event): Promise<InferSelectModel<typeof messageReplies>> => {
@@ -13,7 +13,7 @@ export default defineEventHandler(
             messageId = await sendDiscoveryCall(messageReplyRequest.toEmail, {
                 firstName: messageReplyRequest.name,
             });
-        } catch (e) {
+        } catch {
             throw createError({
                 status: 500,
                 statusMessage: 'Internal server error',

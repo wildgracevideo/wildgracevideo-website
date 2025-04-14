@@ -1,4 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+import tailwindcss from '@tailwindcss/vite';
+
 const SITE_URL = process.env.URL || 'https://www.wildgracevideo.com';
 const CLOUDFRONT_URL = 'https://content.wildgracevideo.com';
 const APP_ICON =
@@ -204,6 +207,10 @@ const config = {
             },
         },
     },
+    compatibilityDate: '2025-04-11',
+    future: {
+        compatibilityVersion: 4,
+    },
     colorMode: {
         preference: 'light',
     },
@@ -258,8 +265,6 @@ const config = {
     },
     postcss: {
         plugins: {
-            tailwindcss: {},
-            autoprefixer: {},
             // https://github.com/nuxt/nuxt/issues/22257#issuecomment-1667578345
             cssnano:
                 process.env.NODE_ENV === 'production'
@@ -272,7 +277,9 @@ const config = {
                     : false, // disable cssnano when not in production
         },
     },
-    css: ['~/assets/css/main.css'],
+    vite: {
+        plugins: [tailwindcss()],
+    },
     devtools: { enabled: process.env.NODE_ENV !== 'production' },
     sitemap: {
         xslTips: process.env.NODE_ENV !== 'production',
@@ -355,15 +362,15 @@ const config = {
         id: GA_MEASUREMENT_ID,
     },
     modules: [
-        '@nuxt/content',
         '@nuxt/ui',
         '@nuxt/image',
         '@nuxt/scripts',
         'nuxt-security',
         'nuxt-gtag',
         'nuxt-schema-org',
-        'nuxt-simple-robots',
+        '@nuxtjs/robots',
         '@nuxtjs/sitemap',
+        '@nuxt/content',
     ],
 };
 

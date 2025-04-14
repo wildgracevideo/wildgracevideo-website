@@ -1,6 +1,6 @@
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { getS3Client } from '~/server/utils/s3Client';
+import { getS3Client } from '~~/server/utils/s3Client';
 
 const runtimeConfig = useRuntimeConfig();
 

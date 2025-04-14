@@ -1,6 +1,6 @@
 import { eq, InferSelectModel, sql } from 'drizzle-orm';
-import { messages } from '~/drizzle/schema';
-import { db } from '~/lib/db';
+import { messages } from '~~/shared/drizzle/schema';
+import { db } from '~~/shared/lib/db';
 
 export default defineEventHandler(
     async (event): Promise<InferSelectModel<typeof messages>> => {

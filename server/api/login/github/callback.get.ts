@@ -1,8 +1,8 @@
 import { eq } from 'drizzle-orm';
 import { generateIdFromEntropySize } from 'lucia';
 import * as url from 'url';
-import { luciaUserTable } from '~/drizzle/schema';
-import { db } from '~/lib/db';
+import { luciaUserTable } from '~~/shared/drizzle/schema';
+import { db } from '~~/shared/lib/db';
 
 const runtimeConfig = useRuntimeConfig();
 

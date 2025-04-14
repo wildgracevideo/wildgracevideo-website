@@ -1,5 +1,5 @@
-import { db } from '~/lib/db';
-import { freebieSignups } from '~/drizzle/schema';
+import { db } from '~~/shared/lib/db';
+import { freebieSignups } from '~~/shared/drizzle/schema';
 
 interface FreebieSignupRequest {
     email: string;

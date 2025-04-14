@@ -1,8 +1,8 @@
 import { count, desc } from 'drizzle-orm';
 import { type InferSelectModel } from 'drizzle-orm';
-import { freebieSignups } from '~/drizzle/schema';
-import { db } from '~/lib/db';
-import { PaginationResult } from '~/types/pagination';
+import { freebieSignups } from '~~/shared/drizzle/schema';
+import { db } from '~~/shared/lib/db';
+import { PaginationResult } from '~~/shared/types/pagination';
 
 export default defineEventHandler(
     async (

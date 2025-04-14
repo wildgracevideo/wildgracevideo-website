@@ -1,14 +1,8 @@
 import { ListObjectsV2Command } from '@aws-sdk/client-s3';
-import { getS3Client } from '~/server/utils/s3Client';
+import { getS3Client } from '~~/server/utils/s3Client';
+import { S3Object } from '~~/shared/lib/aws';
 
 const runtimeConfig = useRuntimeConfig();
-
-export interface S3Object {
-    name: string;
-    lastModified: string;
-    size: string;
-    isFolder: boolean;
-}
 
 export default defineEventHandler(async (event): Promise<S3Object[]> => {
     const requestQueryParams = getQuery(event);

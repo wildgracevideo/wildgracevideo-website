@@ -1,5 +1,5 @@
 import { ListPartsCommand, Part } from '@aws-sdk/client-s3';
-import { getS3Client } from '~/server/utils/s3Client';
+import { getS3Client } from '~~/server/utils/s3Client';
 
 const runtimeConfig = useRuntimeConfig();
 

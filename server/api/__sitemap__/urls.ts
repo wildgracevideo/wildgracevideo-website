@@ -1,11 +1,26 @@
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
-// eslint-disable-next-line import/no-unresolved
-import { SitemapUrl } from 'nuxt-simple-sitemap/dist/runtime/types';
-import { asSitemapUrl, defineSitemapEventHandler } from '#imports';
-// eslint-disable-next-line import/no-unresolved
-import { serverQueryContent } from '#content/server';
+import { ContentCollectionItem } from '@nuxt/content';
+import {
+    Changefreq,
+    ImageEntry,
+    SitemapUrl,
+    type SitemapUrlInput,
+    VideoEntry,
+} from '#sitemap/types';
+import { defineSitemapEventHandler } from '#imports';
 
 const runtimeConfig = useRuntimeConfig();
+
+interface SitemapConfig {
+    lastmod: string;
+    changefreq: Changefreq;
+    include: boolean;
+}
+
+function isImage(
+    sitemapFile: ImageEntry | VideoEntry
+): sitemapFile is ImageEntry {
+    return (sitemapFile as ImageEntry).loc !== undefined;
+}
 
 function parseImageOrVideo(file: {
     file: string;
@@ -13,11 +28,13 @@ function parseImageOrVideo(file: {
     seoTitle: string;
     thumbnailImage?: string;
     publicationDate?: string;
-}) {
+}): ImageEntry | VideoEntry | null {
     let data;
-    let isImage = true;
     if (file.file.endsWith('mp4') || file.file.endsWith('mpd')) {
         const thumbnailLoc = getThumbnailLoc(file.thumbnailImage);
+        if (!thumbnailLoc) {
+            return null;
+        }
         data = {
             title: file.seoTitle,
             thumbnail_loc: thumbnailLoc,
@@ -27,7 +44,6 @@ function parseImageOrVideo(file: {
             live: false,
             publication_date: file.publicationDate,
         };
-        isImage = false;
     } else {
         data = {
             loc: file.file,
@@ -35,77 +51,53 @@ function parseImageOrVideo(file: {
             caption: file.seoDescription,
         };
     }
-    return { isImage, data };
+    return data;
 }
 
 export default defineSitemapEventHandler(async (e) => {
-    const contentList = (await serverQueryContent(e).find()) as ParsedContent[];
-    const filteredList = contentList
-        .filter(
-            (c) =>
-                c._dir === 'product' ||
-                c._dir === 'home' ||
-                c._dir === 'service' ||
-                c._dir === 'service-landing-page'
-        )
-        .map((c) => {
-            if (c._dir === 'product') {
-                const sitemapUrl: SitemapUrl = {
-                    loc: `/${c._dir}s/${c.path}`,
-                    lastmod: c.publishDate,
-                    images: [
-                        {
-                            loc: c.productImage,
-                            title: c.productName,
-                            caption: c.description,
-                        },
-                    ],
-                };
-                return asSitemapUrl(sitemapUrl);
-            } else if (c._dir === 'home' || c._dir === 'service-landing-page') {
-                // TODO: Use this format for everything
-                if (c.sitemap.include) {
-                    const additionalImages: unknown[] = [];
-                    const additionalVideos: unknown[] = [];
-                    const videosAndImages = findImagesAndVideos(c);
-                    videosAndImages.forEach((imageOrVideo) => {
-                        const imageOrVideoResult =
-                            parseImageOrVideo(imageOrVideo);
-                        if (imageOrVideoResult.isImage) {
-                            additionalImages.push(imageOrVideoResult.data);
-                        } else {
-                            additionalVideos.push(imageOrVideoResult.data);
-                        }
-                    });
-                    const lastModDate = new Date(c.lastmod);
-                    const sitemapUrl: SitemapUrl = {
-                        loc: c.sitemap.loc,
-                        lastmod: `${lastModDate.getUTCFullYear()}-${lastModDate.getUTCMonth()}-${lastModDate.getUTCDate()}`,
-                        changefreq: c.sitemap.changefreq,
-                        images: additionalImages,
-                        videos: additionalVideos,
-                    };
-                    return asSitemapUrl(sitemapUrl);
+    const content = await queryCollection(e, 'content').all();
+    const sitemapUrls: SitemapUrl[] = content
+        .filter((it) => !!it.meta.sitemap)
+        .filter((it) => (it.meta.sitemap as SitemapConfig)?.include)
+        .map((it) => {
+            const stemParts = it.stem.split('/');
+            let loc = `/${it.stem}`;
+            if (stemParts.length == 2 && stemParts[0] === stemParts[1]) {
+                if (stemParts[0] === 'home') {
+                    loc = '/';
+                } else {
+                    loc = `/${stemParts[0]}`;
                 }
-            } else if (c._dir === 'service') {
-                const sitemapUrl: SitemapUrl = {
-                    loc: `/${c._dir}s/${c.path}`,
-                };
-                return asSitemapUrl(sitemapUrl);
             }
+            const sitemap = it.meta.sitemap as SitemapConfig;
+            const lastModDate = new Date(sitemap.lastmod);
+            const additionalImages: ImageEntry[] = [];
+            const additionalVideos: VideoEntry[] = [];
+            const videosAndImages = findImagesAndVideos(it);
+            videosAndImages
+                .map(parseImageOrVideo)
+                .filter((it) => it != null)
+                .forEach((imageOrVideo) => {
+                    if (isImage(imageOrVideo)) {
+                        additionalImages.push(imageOrVideo);
+                    } else {
+                        additionalVideos.push(imageOrVideo);
+                    }
+                });
+            return {
+                loc: `${runtimeConfig.public.siteUrl}${loc}`,
+                lastmod: `${lastModDate.getUTCFullYear()}-${lastModDate.getUTCMonth()}-${lastModDate.getUTCDate()}`,
+                changefreq: sitemap.changefreq,
+                images: additionalImages,
+                videos: additionalVideos,
+            };
         });
-    filteredList.push(
-        {
-            loc: `/about`,
-        },
-        {
-            loc: `/shop`,
-        },
-        {
-            loc: '/portfolio',
-        }
-    );
-    return filteredList;
+    sitemapUrls.push({
+        loc: `${runtimeConfig.public.siteUrl}/shop`,
+        lastmod: '2024-02-28T22:13:00.000Z',
+        changefreq: 'monthly',
+    });
+    return sitemapUrls satisfies SitemapUrlInput[];
 });
 
 function getThumbnailLoc(
@@ -126,15 +118,10 @@ interface FileDescription {
     thumbnailImage: string | undefined;
 }
 
-function findImagesAndVideos(data: object) {
+function findImagesAndVideos(data: ContentCollectionItem): FileDescription[] {
     const results: FileDescription[] = [];
 
-    function recursiveSearch(
-        obj: Partial<FileDescription> & {
-            video: string | undefined;
-            image: string | undefined;
-        }
-    ) {
+    function recursiveSearch(obj: unknown) {
         if (typeof obj === 'object' && obj !== null) {
             // Check if the object has all the required fields
             if (
@@ -143,12 +130,17 @@ function findImagesAndVideos(data: object) {
                 'publicationDate' in obj &&
                 ('file' in obj || 'video' in obj || 'image' in obj)
             ) {
-                const result = {
+                let thumbnailImage: string | undefined = undefined;
+                if ('thumbnailImage' in obj) {
+                    thumbnailImage = obj.thumbnailImage as string;
+                }
+                const result: FileDescription = {
                     seoTitle: obj.seoTitle as string,
                     seoDescription: obj.seoDescription as string,
                     publicationDate: obj.publicationDate as string,
-                    file: (obj.file || obj.video || obj.image)!,
-                    thumbnailImage: obj.thumbnailImage,
+                    // @ts-expect-error Checking type above
+                    file: (obj.file || obj.video || obj.image)! as string,
+                    thumbnailImage,
                 };
                 results.push(result);
             }
@@ -156,15 +148,15 @@ function findImagesAndVideos(data: object) {
             // Recursively search each key-value pair
             for (const key in obj) {
                 if (obj.hasOwnProperty(key)) {
-                    recursiveSearch(obj[key]);
+                    // @ts-expect-error Iterating over properties
+                    recursiveSearch(obj[key] as unknown);
                 }
             }
         } else if (Array.isArray(obj)) {
-            // Recursively search in each array element
             obj.forEach((item) => recursiveSearch(item));
         }
     }
 
-    recursiveSearch(data);
+    recursiveSearch(data.meta);
     return results;
 }

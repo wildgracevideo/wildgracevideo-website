@@ -3,8 +3,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 export default {
-    schema: './drizzle/schema.ts',
-    out: './drizzle/migrations',
+    schema: './shared/drizzle/schema.ts',
+    out: './shared/drizzle/migrations',
     driver: 'turso',
     dbCredentials: {
         url: process.env.PRD_TURSO_DATABASE_URL!,
