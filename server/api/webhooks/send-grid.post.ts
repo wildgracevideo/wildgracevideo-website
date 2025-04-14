@@ -147,7 +147,7 @@ class PurchaseAuditTable extends MessageStatusTable<
                 sendGridMessageStatus: updateRequest.sendGridMessageStatus,
                 updatedAt: sql`CURRENT_TIMESTAMP`,
             })
-            .where(eq(messageReplies.id, updateRequest.id));
+            .where(eq(purchaseAudits.id, updateRequest.id));
     }
 }
 
@@ -168,12 +168,11 @@ class MessageStatusTableFactory {
                 .from(sendGridMessagesMap)
                 .where(eq(sendGridMessagesMap.id, sendGridMessageId));
             if (!results) {
-                console.error(
-                    `No mapping found for sendGridMessageId, ${sendGridMessageId}.`
-                );
+                const message = `No mapping found for sendGridMessageId, ${sendGridMessageId}.`;
+                console.error(message);
                 throw createError({
-                    status: 500,
-                    statusMessage: 'Internal Server Error',
+                    status: 200,
+                    statusMessage: message,
                 });
             } else {
                 sendGridMessageMap = results[0];
@@ -204,7 +203,6 @@ class MessageStatusTableFactory {
 }
 
 export default defineEventHandler(async (event): Promise<void> => {
-    console.log('webhook received...');
     const webhookBody: JSONObject[] = await readBody(event);
     const signature = event.node.req.headers[
         'x-twilio-email-event-webhook-signature'
@@ -213,6 +211,7 @@ export default defineEventHandler(async (event): Promise<void> => {
         'x-twilio-email-event-webhook-timestamp'
     ] as string;
 
+    console.log('send-grid: webhook received');
     console.log(webhookBody);
 
     if (!signature) {
