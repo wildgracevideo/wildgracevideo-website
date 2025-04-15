@@ -242,40 +242,79 @@
         </div>
     </article>
     <article
-        class="text-website-off-white bg-black/60 bg-cover bg-fixed bg-center bg-no-repeat py-16 bg-blend-darken lg:bg-auto"
+        class="text-website-off-white bg-black/70 bg-cover bg-fixed bg-center bg-no-repeat py-16 bg-blend-darken lg:bg-auto"
         :style="{
-            backgroundImage: `url('${servicesData.packages.backgroundImage}')`,
+            backgroundImage: `url('${servicesData.packages.backgroundImage.file}')`,
         }"
     >
         <Markdown
             :markdown-string="`## ${servicesData.packages.title}`"
-            component-class="w-3/4 mx-auto text-center my-16 md:text-5xl text-2xl heading-font"
+            component-class="no-default-format w-3/4 mx-auto text-center my-16 md:text-5xl text-2xl subheading-font"
         />
         <div
-            class="border-website-background grid grid-cols-1 divide-x-0 divide-y border py-8 lg:grid-cols-3 lg:divide-x lg:divide-y-0 lg:py-12"
+            class="border-website-background my-8 grid grid-cols-1 divide-x-0 divide-y border-y lg:my-12 lg:grid-cols-3 lg:divide-x lg:divide-y-0"
         >
             <div
                 v-for="item in servicesData.packages.items"
                 :key="item.title"
-                class="flex flex-col justify-between"
+                class="flex flex-col justify-between py-8 lg:py-12"
             >
                 <Markdown
                     :markdown-string="`### ${item.title}`"
-                    component-class="mx-4 text-center md:text-3xl text-xl subheading-font"
+                    component-class="no-default-format mx-4 text-center lg:text-4xl text-2xl accent-font"
                 />
                 <Markdown
                     :markdown-string="`${item.offering}`"
-                    component-class="mx-auto text-center"
+                    component-class="mx-auto text-center lg:py-12 py-8"
                 />
                 <Markdown
                     :markdown-string="`${item.pricing}`"
-                    component-class="mx-auto text-center"
+                    component-class="no-default-format mx-auto text-center accent-font lg:text-2xl text-lg"
                 />
             </div>
         </div>
         <DefaultButton
             :title="servicesData.packages.callToAction"
-            class="mx-auto my-8 lg:my-12"
+            class="mx-auto mt-16 lg:mt-12"
+            to="/get-started"
+            :light="false"
+        />
+    </article>
+    <section class="bg-website-tertiary text-website-off-white">
+        <div
+            class="flex flex-col-reverse items-center px-4 py-16 lg:flex-row lg:px-16"
+        >
+            <FileOrVideo
+                parent-class="pointer-events-none relative z-0 cursor-default lg:w-1/3 w-4/5 aspect-photo mx-auto lg:my-16 my-4 shrink-0"
+                class="aspect-photo w-full object-cover object-center"
+                :file="servicesData.testimonial.file"
+                sizes="2xl:800px xl:615px lg:512px 410px"
+                :with-sound-control="false"
+            />
+            <div class="max-w-2xl">
+                <Markdown
+                    :markdown-string="`### ${servicesData.testimonial.author}`"
+                    component-class="no-default-format mx-4 text-center lg:text-4xl text-2xl subheading-font"
+                />
+                <Markdown
+                    :markdown-string="`${servicesData.testimonial.comment}`"
+                    component-class="mx-auto text-center lg:py-12 py-8"
+                />
+            </div>
+        </div>
+    </section>
+    <article class="text-website-tertiary py-8 lg:py-24">
+        <Markdown
+            :markdown-string="`## ${servicesData.ready.title}`"
+            component-class="no-default-format mx-4 text-center lg:text-5xl text-3xl heading-font"
+        />
+        <Markdown
+            :markdown-string="`${servicesData.ready.content}`"
+            component-class="mx-auto text-center lg:py-12 py-8 w-fit lg:text-3xl text-xl subheading-font"
+        />
+        <DefaultButton
+            :title="servicesData.ready.callToAction"
+            class="mx-auto"
             to="/get-started"
             :light="false"
         />

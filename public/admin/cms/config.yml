@@ -972,6 +972,48 @@ collections:
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: true
+          - label: 'Testimonial'
+            name: testimonial
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Author'
+                  name: author
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Comment'
+                  name: comment
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - {
+                      label: 'File',
+                      name: 'file',
+                      widget: 'object',
+                      summary: '{{fields.seoTitle}}',
+                      <<: *fileInfo,
+                  }
+          - label: 'Ready'
+            name: ready
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Content'
+                  name: content
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Call to Action'
+                  name: callToAction
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
 
     - name: 'home'
       label: 'Home'

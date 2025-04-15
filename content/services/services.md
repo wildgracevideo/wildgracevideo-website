@@ -159,7 +159,7 @@ packages:
     seoTitle: TODO
     seoDescription: TODO
     publicationDate: 2025-04-14T15:41:00.000Z
-    file: https://content.wildgracevideo.com/images/Website-Services/Icelandbackground.jpg
+    file: https://content.wildgracevideo.com/images/Website-Adventure/Package_Tier_Background.jpg
   items:
     - title: Emerging Brand
       offering: |-
@@ -205,6 +205,14 @@ packages:
 
         2 Shoot Days
       pricing: $9,000/quarter
+  callToAction: BOOK YOUR CALL
+ready:
+  title: READY TO TAKE ACTION?
+  content: |-
+    1. BOOK YOUR DISCOVERY CALL
+    2. CHOOSE YOUR PACKAGE TIER
+    3. LOCK IN YOUR FIRST BRAND CLARITY SESSION
+  callToAction: BOOK YOUR CALL
 problemFile:
   file: https://content.wildgracevideo.com/images/Website-Services/ServiceHeadshot.jpg
   seoTitle: TODO
@@ -266,5 +274,15 @@ adventureContentPartnership:
     ADVENTURE BRANDS
   actionCta: BOOK YOUR CALL
   description: DONE-FOR-YOU CONTENT, DELIVERED TO YOUR INBOX EVERY MONTH.
+testimonial:
+  author: ABBY, VANESSENTIAL
+  comment: “Carly is super easy to work with! She's organized, has a calm energy
+    about her on shoot days and brought creativity and vision to the revision
+    process. I'd highly recommend her!”
+  file:
+    file: https://content.wildgracevideo.com/images/Website-Adventure/Vanessential_BTS.png?original
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-04-14T18:12:00.000Z
 pageTagline: TURN YOUR CONTENT STRESS INTO SEAMLESS SALES
 ---

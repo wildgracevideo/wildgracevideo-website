@@ -50,6 +50,8 @@ export interface CmsServices {
   quarterlyProcess: CmsServicesQuarterlyProcess;
   results: CmsServicesResults;
   packages: CmsServicesPackages;
+  testimonial: CmsServicesTestimonial;
+  ready: CmsServicesReady;
 }
 
 export interface CmsServiceLandingPage {
@@ -328,9 +330,21 @@ export interface CmsServicesPackagesItemsItem {
 
 export interface CmsServicesPackages {
   title: string;
-  ctaText: string;
+  callToAction: string;
   backgroundImage: FileInfo;
   items: CmsServicesPackagesItemsItem[];
+}
+
+export interface CmsServicesTestimonial {
+  author: string;
+  comment: string;
+  file: FileInfo;
+}
+
+export interface CmsServicesReady {
+  title: string;
+  content: string;
+  callToAction: string;
 }
 
 export interface CmsHomeReelVideo {
