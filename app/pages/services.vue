@@ -2,7 +2,7 @@
     <OgMeta :title="title" :description="description" />
     <div class="relative">
         <div
-            class="bg-website-secondary/30 absolute inset-0 -top-[36px] z-10 h-[60dvh]"
+            class="bg-website-secondary/30 absolute inset-0 -top-[36px] z-10 h-[60dvh] lg:-top-[36px]"
         ></div>
         <h1
             class="text-website-off-white relative top-36 z-20 mx-auto lg:top-24"
@@ -21,7 +21,7 @@
             </div>
         </h1>
         <FileOrVideo
-            parent-class="pointer-events-none relative z-0 cursor-default lg:-top-36 xs:-top-[110px] -top-[140px]"
+            parent-class="pointer-events-none relative z-0 cursor-default lg:-top-36 -top-[110px]"
             class="h-[60dvh] w-full object-cover object-top brightness-50"
             :file="headingFile"
             sizes="2xl:2000px xl:1536px lg:1280px md:1024px sm:768px 640px"
@@ -120,13 +120,10 @@
                 sizes="2xl:800px xl:615px lg:512px 410px"
                 :with-sound-control="false"
             />
-            <div class="z-10 flex flex-row items-center pt-12 pb-32 pl-12">
-                <Markdown
-                    :markdown-string="`### ${servicesData.solution.action}`"
-                    component-class="no-default-format text-left text-lg lg:text-2xl accent-font strong:font-semibold mr-8"
-                />
-                <div class="bg-website-off-white h-0.25 flex-1" />
-            </div>
+            <MarkdownHeaderWithLine
+                :header-markdown="`### ${servicesData.solution.action}`"
+                class="pt-12 pb-32 pl-12"
+            />
             <Markdown
                 :markdown-string="`${servicesData.solution.actionOverview}`"
                 component-class="text-center strong:font-semibold lg:w-7/12 w-11/12 lg:mr-72 lg:ml-24 mr-8 ml-4 lg:text-left text-center pb-16 z-10"
@@ -181,13 +178,40 @@
         :steps="adventureContentPartnershipSteps"
         :accent-image="adventureContentPartnershipStepsAccentImage"
     />
+    <section class="bg-website-secondary text-website-off-white pb-6 lg:pb-12">
+        <Markdown
+            :markdown-string="`## ${servicesData.howItWorks.title}`"
+            component-class="no-default-format text-left md:text-4xl text-2xl accent-font lg:pt-32 pt-16 pb-6 lg:border-r border-r-0 border-website-accent w-1/2 lg:mx-16 mx-4 lg:mb-12 mb-4"
+        />
+        <div
+            v-for="(item, index) in servicesData.howItWorks.items"
+            :key="`how-it-works-item-${index}`"
+            class="mb-6 grid grid-cols-2 items-center gap-8 px-8 lg:mb-12 lg:gap-16 lg:px-16"
+        >
+            <Markdown
+                :markdown-string="`### ${item.description}`"
+                :component-class="`text-center ${
+                    index % 2 === 0 ? 'order-1' : 'order-2'
+                }`"
+            />
+            <FileOrVideo
+                :parent-class="`pointer-events-none z-0 cursor-default aspect-video ${
+                    index % 2 === 0 ? 'order-2' : 'order-1'
+                }`"
+                class="h-full object-cover object-center"
+                :file="item.file"
+                sizes="2xl:800px xl:615px lg:512px 410px"
+                :with-sound-control="false"
+            />
+        </div>
+    </section>
     <article class="w-full">
         <Markdown
-            :markdown-string="`## ${quarterlyProcess.title!}`"
+            :markdown-string="`## ${quarterlyProcess.title}`"
             component-class="no-default-format subheading-font md:ml-16 ml-8 mb-16 md:mt-32 mt-16 text-left md:text-4xl text-2xl"
         />
         <Markdown
-            :markdown-string="`### ${quarterlyProcess.subtitle!}`"
+            :markdown-string="`### ${quarterlyProcess.subtitle}`"
             component-class="no-default-format accent-font md:mx-auto mx-12 mb-8 text-center md:text-4xl text-lg"
         />
         <div class="mx-auto mb-32 w-3/4">
@@ -215,7 +239,218 @@
             :light="false"
         />
     </article>
-    <article></article>
+    <article class="bg-website-tertiary text-website-off-white">
+        <MarkdownHeaderWithLine
+            :header-markdown="servicesData.results.title"
+            class="pt-12 pb-8 pl-4 lg:pl-12"
+        />
+        <div
+            class="flex flex-col-reverse pb-8 text-center lg:flex-row lg:pb-12 lg:text-left"
+        >
+            <div class="mr-4 ml-4 lg:mr-0 lg:ml-20">
+                <Markdown
+                    :markdown-string="servicesData.results.description"
+                    component-class="tall-p-margin"
+                />
+                <DefaultButton
+                    :title="servicesData.results.callToAction"
+                    class="mx-auto mb-0 lg:mx-0 lg:mb-8"
+                    to="/get-started"
+                    :light="false"
+                />
+            </div>
+            <FileOrVideo
+                parent-class="pointer-events-none relative z-0 cursor-default lg:w-2/3 w-4/5 aspect-video lg:mx-12 mx-auto lg:mb-0 mb-8"
+                class="aspect-video w-full object-cover object-center"
+                :file="servicesData.results.file"
+                sizes="2xl:800px xl:615px lg:512px 410px"
+                :with-sound-control="false"
+            />
+        </div>
+    </article>
+    <article
+        class="text-website-off-white bg-black/80 bg-cover bg-fixed bg-center bg-no-repeat py-16 bg-blend-color"
+        :style="{
+            backgroundImage: `url('${servicesData.packages.backgroundImage.file}')`,
+        }"
+    >
+        <Markdown
+            :markdown-string="`## ${servicesData.packages.title}`"
+            component-class="no-default-format w-3/4 mx-auto text-center my-16 md:text-5xl text-2xl subheading-font"
+        />
+        <div
+            class="border-website-background my-8 grid grid-cols-1 divide-x-0 divide-y border-y lg:my-12 lg:grid-cols-3 lg:divide-x lg:divide-y-0"
+        >
+            <div
+                v-for="item in servicesData.packages.items"
+                :key="item.title"
+                class="flex flex-col justify-between py-8 lg:py-12"
+            >
+                <Markdown
+                    :markdown-string="`### ${item.title}`"
+                    component-class="no-default-format mx-4 text-center lg:text-4xl text-2xl accent-font"
+                />
+                <Markdown
+                    :markdown-string="`${item.offering}`"
+                    component-class="mx-auto text-center lg:py-12 py-8"
+                />
+                <Markdown
+                    :markdown-string="`${item.pricing}`"
+                    component-class="no-default-format mx-auto text-center accent-font lg:text-2xl text-lg"
+                />
+            </div>
+        </div>
+        <DefaultButton
+            :title="servicesData.packages.callToAction"
+            class="mx-auto mt-16 lg:mt-12"
+            to="/get-started"
+            :light="false"
+        />
+    </article>
+    <section class="bg-website-tertiary text-website-off-white">
+        <div
+            class="flex flex-col-reverse items-center px-4 py-16 lg:flex-row lg:px-16"
+        >
+            <FileOrVideo
+                parent-class="pointer-events-none relative z-0 cursor-default lg:w-1/3 w-4/5 aspect-photo mx-auto lg:my-16 my-4 shrink-0"
+                class="aspect-photo w-full object-cover object-center"
+                :file="servicesData.testimonial.file"
+                sizes="2xl:800px xl:615px lg:512px 410px"
+                :with-sound-control="false"
+            />
+            <div class="max-w-2xl">
+                <Markdown
+                    :markdown-string="`### ${servicesData.testimonial.author}`"
+                    component-class="no-default-format mx-4 text-center lg:text-4xl text-2xl subheading-font"
+                />
+                <Markdown
+                    :markdown-string="`${servicesData.testimonial.comment}`"
+                    component-class="mx-auto text-center lg:py-12 py-8"
+                />
+            </div>
+        </div>
+    </section>
+    <article class="text-website-tertiary mx-12 py-8 lg:py-24">
+        <Markdown
+            :markdown-string="`## ${servicesData.ready.title}`"
+            component-class="no-default-format mx-4 text-center lg:text-5xl text-3xl heading-font"
+        />
+        <Markdown
+            :markdown-string="`${servicesData.ready.content}`"
+            component-class="mx-auto text-center lg:py-12 py-8 w-fit lg:text-3xl text-xl subheading-font"
+        />
+        <DefaultButton
+            :title="servicesData.ready.callToAction"
+            class="mx-auto"
+            to="/get-started"
+            :light="false"
+        />
+    </article>
+    <article class="bg-website-primary text-website-off-white pt-8 lg:pt-16">
+        <div
+            class="flex w-full flex-col justify-between gap-8 py-16 py-32 lg:flex-row lg:gap-0"
+        >
+            <div class="grow-1">
+                <Markdown
+                    :markdown-string="`### ${servicesData.urgency.title}`"
+                    component-class="no-default-format mx-auto text-center lg:text-4xl text-2xl subheading-font"
+                />
+                <Markdown
+                    :markdown-string="`${servicesData.urgency.startingAt}`"
+                    component-class="mx-auto text-center accent-font lg:text-2xl text-xl"
+                />
+            </div>
+            <div class="-mb-64 hidden grow-1 self-stretch lg:block">
+                <div class="border-website-accent h-full border-r"></div>
+            </div>
+            <div class="ml-4 flex grow-1 flex-row text-left text-lg text-xl">
+                <Markdown
+                    :markdown-string="`${servicesData.urgency.limitingFactor}`"
+                    component-class="mx-auto text-center"
+                />
+            </div>
+        </div>
+        <div
+            class="text-website-off-white bg-black/40 bg-cover bg-fixed bg-center bg-no-repeat py-20 bg-blend-color"
+            :style="{
+                backgroundImage: `url('${servicesData.urgency.backgroundImage.file}')`,
+            }"
+        >
+            <div
+                class="bg-website-tertiary/60 mx-auto w-3/4 px-12 py-8 lg:px-32 lg:py-20"
+            >
+                <Markdown
+                    :markdown-string="`### ${servicesData.urgency.subtitle}`"
+                    component-class="no-default-format mx-auto text-center lg:text-4xl text-2xl subheading-font lg:mb-20 mb-8"
+                />
+                <div
+                    v-for="(item, index) in servicesData.urgency
+                        .descriptionItems"
+                    :key="`urgency-item-${index}`"
+                >
+                    <Markdown
+                        :markdown-string="`${item.title}`"
+                        component-class="no-default-format mx-auto text-center accent-font lg:text-4xl text-2xl"
+                    />
+                    <Markdown
+                        :markdown-string="`${item.description}`"
+                        component-class="no-default-format mx-auto text-center lg:mb-20 mb-8"
+                    />
+                </div>
+                <Markdown
+                    :markdown-string="`${servicesData.urgency.footer}`"
+                    component-class="no-default-format mx-auto text-center lg:text-4xl text-2xl subheading-font"
+                />
+            </div>
+            <DefaultButton
+                :title="servicesData.urgency.callToAction"
+                class="mx-auto mt-8 lg:mt-16"
+                to="/get-started"
+                :light="false"
+            />
+        </div>
+    </article>
+    <CaseStudies
+        :case-studies="servicesData.caseStudies"
+        class="bg-website-tertiary text-website-off-white p-16"
+        :light-button="true"
+    />
+    <section
+        class="bg-website-secondary text-website-off-white flex flex-col items-center gap-8 px-8 py-16 lg:flex-row lg:gap-24 lg:px-20 lg:py-32"
+    >
+        <div>
+            <Markdown
+                :markdown-string="`## ${servicesData.notReady.title}`"
+                component-class="no-default-format mx-auto lg:text-left text-center lg:text-5xl text-3xl heading-font mb-8"
+            />
+            <Markdown
+                :markdown-string="`${servicesData.notReady.subtitle}`"
+                component-class="no-default-format mx-auto lg:text-left text-center lg:text-3xl text-xl accent-font mb-8"
+            />
+        </div>
+        <div class="w-10/12 lg:w-7/12">
+            <div
+                v-for="(p, index) in servicesData.notReady.packages"
+                :key="`not-ready-package-${index}`"
+                class="border-website-accent rounded-6xl mb-8 w-full border p-8"
+            >
+                <Markdown
+                    :markdown-string="`### ${p.title}`"
+                    component-class="no-default-format mx-auto text-center lg:text-3xl text-xl subheading-font mb-8"
+                />
+                <Markdown
+                    :markdown-string="`${p.content}`"
+                    component-class="mx-4 text-center"
+                />
+                <DefaultButton
+                    :title="p.callToAction"
+                    class="mx-auto mt-4"
+                    to="/get-started"
+                    :light="false"
+                />
+            </div>
+        </div>
+    </section>
 </template>
 
 <script setup lang="ts">

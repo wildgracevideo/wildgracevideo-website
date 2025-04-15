@@ -41,9 +41,14 @@
         text-align: left;
     }
 
-    .markdown:not(.no-default-format) li {
+    .markdown:not(.no-default-format) ul > li {
         display: list-item;
         list-style-type: disc;
+    }
+
+    .markdown:not(.no-default-format) ol > li {
+        display: list-item;
+        list-style-type: decimal;
     }
 
     .markdown:not(.no-default-format) a {
