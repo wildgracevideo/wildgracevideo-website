@@ -32,6 +32,11 @@
     }
 }
 
+@theme {
+    --radius-5xl: 3rem;
+    --radius-6xl: 4rem;
+}
+
 button,
 [role='button'] {
     cursor: pointer;

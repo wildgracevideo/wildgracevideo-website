@@ -31,7 +31,7 @@ export interface CmsHome {
   videoHighlight: CmsHomeVideoHighlight;
   aboutMe: CmsHomeAboutMe;
   freebie: CmsHomeFreebie;
-  caseStudies: CmsHomeCaseStudies;
+  caseStudies: CmsHomeCaseStudiesItem[];
   trustedBrandTitle: string;
   trustedBrandLogos: CmsHomeTrustedBrandLogosItem[];
   howTo: CmsHomeHowTo;
@@ -47,11 +47,15 @@ export interface CmsServices {
   problemOverview: CmsServicesProblemOverview;
   solution: CmsServicesSolution;
   adventureContentPartnership: CmsServicesAdventureContentPartnership;
+  howItWorks: CmsServicesHowItWorks;
   quarterlyProcess: CmsServicesQuarterlyProcess;
   results: CmsServicesResults;
   packages: CmsServicesPackages;
   testimonial: CmsServicesTestimonial;
   ready: CmsServicesReady;
+  urgency: CmsServicesUrgency;
+  caseStudies: CmsServicesCaseStudiesItem[];
+  notReady: CmsServicesNotReady;
 }
 
 export interface CmsServiceLandingPage {
@@ -303,6 +307,16 @@ export interface CmsServicesAdventureContentPartnership {
   steps: CmsServicesAdventureContentPartnershipStepsItem[];
 }
 
+export interface CmsServicesHowItWorksItemsItem {
+  description: string;
+  file: FileInfo;
+}
+
+export interface CmsServicesHowItWorks {
+  title: string;
+  items: CmsServicesHowItWorksItemsItem[];
+}
+
 export interface CmsServicesQuarterlyProcessStepsItem {
   title: string;
   description: string;
@@ -345,6 +359,41 @@ export interface CmsServicesReady {
   title: string;
   content: string;
   callToAction: string;
+}
+
+export interface CmsServicesUrgencyDescriptionItemsItem {
+  title: string;
+  description: string;
+}
+
+export interface CmsServicesUrgency {
+  title: string;
+  startingAt: string;
+  limitingFactor: string;
+  subtitle: string;
+  descriptionItems: CmsServicesUrgencyDescriptionItemsItem[];
+  footer: string;
+  callToAction: string;
+  backgroundImage: FileInfo;
+}
+
+export interface CmsServicesCaseStudiesItem {
+  title: string;
+  description: string;
+  file: FileInfo;
+  pagePath?: string;
+}
+
+export interface CmsServicesNotReadyPackagesItem {
+  title: string;
+  content: string;
+  callToAction: string;
+}
+
+export interface CmsServicesNotReady {
+  title: string;
+  subtitle: string;
+  packages: CmsServicesNotReadyPackagesItem[];
 }
 
 export interface CmsHomeReelVideo {
@@ -403,7 +452,7 @@ export interface CmsHomeFreebie {
   file: FileInfo;
 }
 
-export interface CmsHomeCaseStudies {
+export interface CmsHomeCaseStudiesItem {
   title: string;
   description: string;
   file: FileInfo;

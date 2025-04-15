@@ -76,6 +76,31 @@ solution:
   actionCta: BOOK YOUR CALL
   description: Your brand isn’t coming across as cohesive or high-caliber, and
     customers are passing you by for brands that do.
+howItWorks:
+  title: imagine these results...
+  items:
+    - description: You’re a boutique hotel, fully booked with high-paying guests who
+        love their stay, leave glowing reviews, and return regularly.
+      file:
+        file: https://content.wildgracevideo.com/videos/Website-Adventure/BoutiqueHotelsThumbnail/BoutiqueHotelsThumbnail.mpd
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2025-04-14T19:04:00.000Z
+    - description: Or you’re an Outdoor product brand that has become the go-to option
+        in your category, driving massive sales and strong brand loyalty.
+      file:
+        file: https://content.wildgracevideo.com/videos/Website-Adventure/OutdoorBrandsThumbnail/OutdoorBrandsThumbnail.mpd
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2025-04-14T19:08:00.000Z
+    - description: Or you’re an Adventure Tour Company that is thriving with fully
+        booked tours, happy customers, and a reputation as the best adventure
+        provider in their niche
+      file:
+        file: https://content.wildgracevideo.com/videos/Website-Adventure/AdventureBrandsThumbnailV2/AdventureBrandsThumbnailV2.mpd
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2025-04-14T19:08:00.000Z
 quarterlyProcess:
   steps:
     - description: |-
@@ -213,6 +238,52 @@ ready:
     2. CHOOSE YOUR PACKAGE TIER
     3. LOCK IN YOUR FIRST BRAND CLARITY SESSION
   callToAction: BOOK YOUR CALL
+urgency:
+  title: LIMITED SPOTS AVAILABLE
+  startingAt: starting at $3,600/quarter
+  limitingFactor: Only accepting 2 clients per year at this level of service
+  subtitle: SIGN UP BEFORE JUNE 1ST AND GET...
+  footer: Total Bonus Value of $1,250 -- Available At No Extra Cost If You Join
+    Before June 1st.
+  callToAction: BOOK YOUR CALL
+  backgroundImage:
+    file: https://content.wildgracevideo.com/images/Website-Adventure/Signup_Background.jpg
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-04-14T20:24:00.000Z
+  descriptionItems:
+    - title: + 1 Month of Done-for-You Social Media Management ($1,000 Value)
+      description: I handle your content posting, optimization, and engagement—so you
+        can focus on running your business.
+    - title: + Client Testimonial Collection Guide ($250 Value)
+      description: A step-by-step guide to collecting authentic testimonials on your
+        own, with key questions to ask and tips for capturing real, on-the-spot
+        feedback.
+caseStudies:
+  - title: VANESSENTIAL
+    description: Outdoor Product Paid Ads + Instructional Videos
+    file:
+      file: https://content.wildgracevideo.com/images/HomePage/vanessential_cropped.png
+      seoTitle: Wild Grace Productions Video Marketing Case Study for VanEssential
+      seoDescription: Wild Grace Productions Video Marketing Case Study for VanEssential
+      publicationDate: 2025-04-14T19:14:00.000Z
+    pagePath: /case-studies/van-essential
+notReady:
+  title: NOT READY TO COMMIT TO A FULL YEAR?
+  subtitle: Let's find the right fit.
+  packages:
+    - title: THE CONTENT KICKSTART PACKAGE
+      content: A content package designed to provide your business with video content
+        for one quarter. Ideal for brands who want to learn how the process
+        works and build a foundation before committing to a full-year
+        partnership.
+      callToAction: Learn More
+    - title: THE 'ROADMAPPING' STRATEGY SESSION
+      content: For brands who want to incorporate video into their strategy but aren’t
+        ready to invest in a full production. If you can’t answer the question
+        “what is your long-term goal with this content”, I’ll help you create a
+        video strategy, so you don’t waste time or money on ineffective content.
+      callToAction: Learn More
 problemFile:
   file: https://content.wildgracevideo.com/images/Website-Services/ServiceHeadshot.jpg
   seoTitle: TODO

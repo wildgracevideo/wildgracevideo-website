@@ -1,5 +1,4 @@
 ---
-path: home
 title: Denver Video Production Company | Wild Grace Video
 description: Wild Grace Productions is a top Denver-based video production
   company specializing in hotel video production, outdoor product videos and
@@ -14,6 +13,7 @@ reelVideo:
     expertise.
   video: https://content.wildgracevideo.com/videos/HomePage/2024WebsiteReel/2024WebsiteReel.mpd
   publicationDate: 2024-02-28T22:13:00.000Z
+path: home
 pageTitle: YOUR VIDEO CONTENT PARTNER FOR PREMIUM OUTDOOR, TRAVEL, AND ADVENTURE BRANDS.
 visitPortfolioFile:
   file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_1.jpg
@@ -86,6 +86,32 @@ aboutMe:
     seoDescription: Logo stamp for Wild Grace Productions
     publicationDate: 2025-03-17T16:03:00.000Z
 trustedBrandTitle: Trusted by
+trustedBrandLogos:
+  - companyName: The Curtis Hotel
+    altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
+      themed rooms.
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/curtis.webp
+    width: 200
+  - companyName: Genesee Nutrition
+    altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
+      adventurers.
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/genesee.webp
+    width: 100
+  - companyName: Smith & Meade
+    altText: Logo of Smith & Meade, Denver-based developer of homes that are well
+      designed, and well lived.
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/smith-and-meade.svg
+    width: 300
+  - companyName: Abode Outside
+    altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/abode-outside.svg
+    width: 200
+  - altText: Logo of The Surf Hotel, a boutique hotel in adventurous Buena Vista,
+      Colorado, ideal for romantic getaways, mountain weddings, or corporate
+      events.
+    companyName: The Surf Hotel
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
+    width: 150
 howTo:
   title: HOW I GET RESULTS
   steps:
@@ -242,39 +268,14 @@ aboutMeDescription: >-
 
   I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
 caseStudies:
-  file:
-    seoTitle: Wild Grace Productions Video Marketing Case Study for VanEssential
-    seoDescription: Wild Grace Productions Video Marketing Case Study for VanEssential
-    publicationDate: 2025-03-17T16:53:00.000Z
-    file: https://content.wildgracevideo.com/images/HomePage/vanessential_cropped.png
-  title: VANESSENTIAL
-  description: Outdoor Product Paid Ads + Instructional Videos
-trustedBrandLogos:
-  - companyName: The Curtis Hotel
-    altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
-      themed rooms.
-    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/curtis.webp
-    width: 200
-  - companyName: Genesee Nutrition
-    altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
-      adventurers.
-    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/genesee.webp
-    width: 100
-  - companyName: Smith & Meade
-    altText: Logo of Smith & Meade, Denver-based developer of homes that are well
-      designed, and well lived.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/smith-and-meade.svg
-    width: 300
-  - companyName: Abode Outside
-    altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/abode-outside.svg
-    width: 200
-  - altText: Logo of The Surf Hotel, a boutique hotel in adventurous Buena Vista,
-      Colorado, ideal for romantic getaways, mountain weddings, or corporate
-      events.
-    companyName: The Surf Hotel
-    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
-    width: 150
+  - file:
+      seoTitle: Wild Grace Productions Video Marketing Case Study for VanEssential
+      seoDescription: Wild Grace Productions Video Marketing Case Study for VanEssential
+      publicationDate: 2025-03-17T16:53:00.000Z
+      file: https://content.wildgracevideo.com/images/HomePage/vanessential_cropped.png
+    title: VANESSENTIAL
+    description: Outdoor Product Paid Ads + Instructional Videos
+    pagePath: /case-studies/van-essential
 adventureContentPartnership:
   accentFile:
     publicationDate: 2025-04-01T20:55:00.000Z

@@ -872,6 +872,33 @@ collections:
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: false
+          - label: 'How it works'
+            name: 'howItWorks'
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Title'
+                  name: 'title'
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Items'
+                  name: items
+                  widget: 'list'
+                  summary: '{{fields.description}}'
+                  fields:
+                      - label: 'Description'
+                        name: 'description'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
+                      - {
+                            label: 'File',
+                            name: 'file',
+                            widget: 'object',
+                            summary: '{{fields.seoTitle}}',
+                            <<: *fileInfo,
+                        }
           - label: 'Quarterly Process'
             name: 'quarterlyProcess'
             widget: object
@@ -1011,9 +1038,118 @@ collections:
                   minimal: false
                 - label: 'Call to Action'
                   name: callToAction
+                  widget: 'string'
+          - label: 'Urgency'
+            name: urgency
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
                   widget: 'markdown'
                   modes: ['rich_text']
                   minimal: true
+                - label: 'Starting At'
+                  name: startingAt
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Limiting Factor'
+                  name: limitingFactor
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Subtitle'
+                  name: subtitle
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Description Items'
+                  name: descriptionItems
+                  widget: 'list'
+                  summary: '{{ fields.title }}'
+                  fields:
+                      - label: 'Title'
+                        name: title
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Description'
+                        name: description
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
+                - label: 'Footer'
+                  name: footer
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Call to Action'
+                  name: callToAction
+                  widget: 'string'
+                - label: 'Background Image'
+                  widget: 'object'
+                  name: 'backgroundImage'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+          - label: 'Case Studies'
+            name: caseStudies
+            widget: 'list'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Case Study File'
+                  widget: 'object'
+                  name: 'file'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - {
+                      label: 'Page Path (i.e. /case-studies/van-essential)',
+                      name: 'pagePath',
+                      widget: 'string',
+                      required: false,
+                  }
+          - label: 'Not Ready'
+            name: notReady
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Subtitle'
+                  name: subtitle
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Packages'
+                  name: packages
+                  widget: 'list'
+                  fields:
+                      - label: 'Title'
+                        name: title
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Content'
+                        name: content
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Call to Action'
+                        name: callToAction
+                        widget: 'string'
 
     - name: 'home'
       label: 'Home'
@@ -1244,7 +1380,7 @@ collections:
                   <<: *fileInfo
           - label: 'Case Studies'
             name: caseStudies
-            widget: 'object'
+            widget: 'list'
             summary: '{{ fields.title }}'
             fields:
                 - label: 'Title'
