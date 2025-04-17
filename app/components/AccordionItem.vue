@@ -1,5 +1,5 @@
 <template>
-    <div class="border-website-secondary cursor-pointer border-b">
+    <div class="border-website-tertiary cursor-pointer border-b">
         <button
             v-if="largeStyle"
             class="flex w-full items-center justify-between py-10 md:py-14"

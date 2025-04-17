@@ -38,10 +38,7 @@
             :content-url="video.video"
             :upload-date="video.publicationDate"
             :description="video.seoDescription"
-            :thumbnail="{
-                url: thumbnailImageResolved,
-                contentUrl: thumbnailImageResolved,
-            }"
+            :thumbnail-url="thumbnailImageResolved"
         />
     </video>
 </template>

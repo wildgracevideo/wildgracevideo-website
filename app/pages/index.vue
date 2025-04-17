@@ -223,21 +223,7 @@
         class="bg-website-primary text-website-off-white p-16"
     />
     <article class="mx-8 mb-32 lg:mx-32">
-        <Markdown
-            :markdown-string="`## ${faq.title!}`"
-            component-class="no-default-format heading-font md:mx-auto mx-8 mb-20 mt-32 text-center text-4xl strong:font-semibold"
-        />
-        <AccordionItem
-            v-for="faqItem in faq.questions"
-            :key="`faq-${faqItem.question}`"
-            :title-markdown="`### ${faqItem.question}`"
-            class="mb-10 w-full"
-        >
-            <Markdown
-                :markdown-string="faqItem.answer"
-                component-class="pb-5"
-            />
-        </AccordionItem>
+        <FaqItems :title="faq.title" :items="faq.questions" />
     </article>
 
     <FreebieModal

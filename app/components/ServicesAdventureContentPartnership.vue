@@ -91,7 +91,7 @@
         <div
             class="text-website-off-white flex flex-col bg-black/60 bg-cover bg-fixed bg-center bg-no-repeat bg-blend-darken lg:bg-auto"
             :style="{
-                backgroundImage: `url('${stepsBackgroundImage.file}')`,
+                backgroundImage: `url('${stepsBackgroundImage.file}?format=webp&size=2000')`,
             }"
         >
             <Markdown

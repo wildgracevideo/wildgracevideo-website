@@ -271,7 +271,7 @@
     <article
         class="text-website-off-white bg-black/80 bg-cover bg-fixed bg-center bg-no-repeat py-16 bg-blend-color"
         :style="{
-            backgroundImage: `url('${servicesData.packages.backgroundImage.file}')`,
+            backgroundImage: `url('${servicesData.packages.backgroundImage.file}?format=webp&width=2000')`,
         }"
     >
         <Markdown
@@ -307,28 +307,8 @@
             :light="false"
         />
     </article>
-    <section class="bg-website-tertiary text-website-off-white">
-        <div
-            class="flex flex-col-reverse items-center px-4 py-16 lg:flex-row lg:px-16"
-        >
-            <FileOrVideo
-                parent-class="pointer-events-none relative z-0 cursor-default lg:w-1/3 w-4/5 aspect-photo mx-auto lg:my-16 my-4 shrink-0"
-                class="aspect-photo w-full object-cover object-center"
-                :file="servicesData.testimonial.file"
-                sizes="2xl:800px xl:615px lg:512px 410px"
-                :with-sound-control="false"
-            />
-            <div class="max-w-2xl">
-                <Markdown
-                    :markdown-string="`### ${servicesData.testimonial.author}`"
-                    component-class="no-default-format mx-4 text-center lg:text-4xl text-2xl subheading-font"
-                />
-                <Markdown
-                    :markdown-string="`${servicesData.testimonial.comment}`"
-                    component-class="mx-auto text-center lg:py-12 py-8"
-                />
-            </div>
-        </div>
+    <section>
+        <TestimonialOverview :testimonial="servicesData.testimonial" />
     </section>
     <article class="text-website-tertiary mx-12 py-8 lg:py-24">
         <Markdown
@@ -373,7 +353,7 @@
         <div
             class="text-website-off-white bg-black/40 bg-cover bg-fixed bg-center bg-no-repeat py-20 bg-blend-color"
             :style="{
-                backgroundImage: `url('${servicesData.urgency.backgroundImage.file}')`,
+                backgroundImage: `url('${servicesData.urgency.backgroundImage.file}?format=webp&width=2000')`,
             }"
         >
             <div

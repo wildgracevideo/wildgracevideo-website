@@ -1,7 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import tailwindcss from '@tailwindcss/vite';
-
 const SITE_URL = process.env.URL || 'https://www.wildgracevideo.com';
 const CLOUDFRONT_URL = 'https://content.wildgracevideo.com';
 const APP_ICON =
@@ -278,7 +276,6 @@ const config = {
         },
     },
     vite: {
-        plugins: [tailwindcss()],
         server: {
             hmr: {
                 overlay: false,
