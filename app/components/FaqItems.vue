@@ -1,7 +1,7 @@
 <template>
     <Markdown
         :markdown-string="`## ${title}`"
-        component-class="no-default-format subheading-font md:mx-auto mx-8 mb-20 mt-32 text-center text-4xl strong:font-semibold"
+        component-class="no-default-format subheading-font md:mx-auto mx-8 mb-20 mt-32 text-center text-4xl strong:font-semibold mx-auto"
     />
     <AccordionItem
         v-for="(faqItem, index) in items"

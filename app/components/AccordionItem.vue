@@ -29,7 +29,7 @@
         >
             <Markdown
                 :markdown-string="titleMarkdown"
-                component-class="no-default-format strong:font-semibold"
+                component-class="no-default-format strong:font-semibold lg:text-left text-center mx-auto lg:mx-0"
             />
             <span class="transition-transform duration-300">
                 <PlusIcon

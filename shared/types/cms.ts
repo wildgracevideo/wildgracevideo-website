@@ -341,9 +341,24 @@ export interface CmsServicesSolution {
   nextStepsSubheading: string;
 }
 
+export interface CmsServicesAdventureContentPartnershipStepsItemItemsItem {
+  title: string;
+}
+
 export interface CmsServicesAdventureContentPartnershipStepsItem {
   title: string;
+  value: string;
+  items: CmsServicesAdventureContentPartnershipStepsItemItemsItem[];
   description: string;
+}
+
+export interface CmsServicesAdventureContentPartnershipDetails {
+  whatYouGetTitle: string;
+  whatYouGetDescription: string;
+  whatYouPayTitle: string;
+  whatYouPayDescription: string;
+  footer: string;
+  callToAction: string;
 }
 
 export interface CmsServicesAdventureContentPartnership {
@@ -357,11 +372,13 @@ export interface CmsServicesAdventureContentPartnership {
   stepsBackgroundImage: FileInfo;
   stepsAccentImage: FileInfo;
   steps: CmsServicesAdventureContentPartnershipStepsItem[];
+  details: CmsServicesAdventureContentPartnershipDetails;
 }
 
 export interface CmsServicesHowItWorksItemsItem {
   description: string;
   file: FileInfo;
+  accentFile: FileInfo;
 }
 
 export interface CmsServicesHowItWorks {
@@ -408,6 +425,7 @@ export interface CmsServicesTestimonial {
 }
 
 export interface CmsServicesReady {
+  backgroundImage: FileInfo;
   title: string;
   content: string;
   callToAction: string;

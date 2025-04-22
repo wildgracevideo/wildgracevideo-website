@@ -77,7 +77,7 @@ solution:
   description: Your brand isn’t coming across as cohesive or high-caliber, and
     customers are passing you by for brands that do.
 howItWorks:
-  title: imagine these results...
+  title: STEP INTO WHAT'S POSSIBLE
   items:
     - description: You’re a boutique hotel, fully booked with high-paying guests who
         love their stay, leave glowing reviews, and return regularly.
@@ -86,6 +86,11 @@ howItWorks:
         seoTitle: TODO
         seoDescription: TODO
         publicationDate: 2025-04-14T19:04:00.000Z
+      accentFile:
+        file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-45.png
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2025-04-21T23:44:00.000Z
     - description: Or you’re an Outdoor product brand that has become the go-to option
         in your category, driving massive sales and strong brand loyalty.
       file:
@@ -93,6 +98,11 @@ howItWorks:
         seoTitle: TODO
         seoDescription: TODO
         publicationDate: 2025-04-14T19:08:00.000Z
+      accentFile:
+        file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-45.png
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2025-04-21T23:48:00.000Z
     - description: Or you’re an Adventure Tour Company that is thriving with fully
         booked tours, happy customers, and a reputation as the best adventure
         provider in their niche
@@ -101,6 +111,11 @@ howItWorks:
         seoTitle: TODO
         seoDescription: TODO
         publicationDate: 2025-04-14T19:08:00.000Z
+      accentFile:
+        file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-45.png
+        seoTitle: TODO
+        seoDescription: TODO
+        publicationDate: 2025-04-21T23:48:00.000Z
 quarterlyProcess:
   steps:
     - description: |-
@@ -238,6 +253,11 @@ ready:
     2. CHOOSE YOUR PACKAGE TIER
     3. LOCK IN YOUR FIRST BRAND CLARITY SESSION
   callToAction: BOOK YOUR CALL
+  backgroundImage:
+    file: https://content.wildgracevideo.com/images/Website-Adventure/Package_Tier_Background.jpg
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-04-21T23:26:00.000Z
 urgency:
   title: LIMITED SPOTS AVAILABLE
   startingAt: starting at $3,600/quarter
@@ -245,7 +265,7 @@ urgency:
   subtitle: SIGN UP BEFORE JUNE 1ST AND GET...
   footer: Total Bonus Value of $1,250 -- Available At No Extra Cost If You Join
     Before June 1st.
-  callToAction: BOOK YOUR CALL
+  callToAction: RESERVE MY SPOT
   backgroundImage:
     file: https://content.wildgracevideo.com/images/Website-Adventure/Signup_Background.jpg
     seoTitle: TODO
@@ -299,30 +319,58 @@ headingFile:
   seoDescription: TODO
   publicationDate: 2025-03-31T18:29:00.000Z
 adventureContentPartnership:
+  details:
+    whatYouGetTitle: "WHAT YOU GET:"
+    whatYouGetDescription: Over $7,000 in value each quarter
+    whatYouPayTitle: "WHAT YOU PAY:"
+    whatYouPayDescription: $3600 each quarter
+    callToAction: LET'S GET STARTED
+    footer: \*Additional tiers available based on scope and deliverables. We'll find
+      the best fit on your discovery call.
   stepsBackgroundImage:
     file: https://content.wildgracevideo.com/images/Website-Services/Icelandbackground.jpg
     seoTitle: TODO
     seoDescription: TODO
     publicationDate: 2025-04-01T13:13:00.000Z
   steps:
-    - Title: a brand clarity session
-      description: I’ll take time to understand your brand, goals and current
+    - description: I’ll take time to understand your brand, goals and current
         challenges. Together, we’ll craft a custom video strategy tailored to
         your business.
-      title: a brand clarity session
-    - Title: complete production plan
-      description: Based on our strategy session, I’ll handle all the video planning
+      title: Brand Clarity Session
+      value: "Value: $1,000"
+      items:
+        - title: Set a clear direction for future growth.
+        - title: Speak directly to your target audience's needs and aspirations,
+            understanding their struggles.
+        - title: Identify your unique position in the market to differentiate from
+            competitors.
+    - description: Based on our strategy session, I’ll handle all the video planning
         and shoot logistics—completely done for you. No stress, no hassle.
-      title: complete production plan
-    - title: done-for-you content capture
+      title: Done-For-You Production Plan
+      value: "Value: $1,500"
+    - title: High-Impact Shoot Day
       description: Cameras roll! We’ll capture all your content in one efficient,
         high-impact shoot day. With just four filming days a year, you’ll have a
         steady flow of content strategically delivered every month.
-    - title: monthly content drops
+      value: "Value: $1,500"
+      items:
+        - title: Set a clear direction for future growth.
+        - title: Speak directly to your target audience's needs and aspirations,
+            understanding their struggles.
+        - title: Identify your unique position in the market to differentiate from
+            competitors.
+    - title: Content Launch Kit
       description: "Ready to post content to stay top of mind. You’ll receive
         awe-inspiring content that will make your audience think: “I’ve GOT to
         be there!” Plus, I’ll provide a Content Launch Schedule to make sure
         you’ve got a clear plan to roll out your content seamlessly."
+      value: "Value: $3,000+"
+      items:
+        - title: Set a clear direction for future growth.
+        - title: Speak directly to your target audience's needs and aspirations,
+            understanding their struggles.
+        - title: Identify your unique position in the market to differentiate from
+            competitors.
   stepsAccentImage:
     file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
     seoTitle: TODO

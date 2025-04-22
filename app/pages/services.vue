@@ -163,83 +163,36 @@
         </div>
     </article>
     <ServicesAdventureContentPartnership
-        :overview="adventureContentPartnershipOverview"
-        :overview-file="adventureContentPartnershipOverviewFile"
-        :title="adventureContentPartnershipTitle"
-        :title-background-image="
-            adventureContentPartnershipTitleBackgroundImage
-        "
-        :description="adventureContentPartnershipDescription"
-        :action-cta="adventureContentPartnershipActionCta"
-        :steps-background-image="
-            adventureContentPartnershipStepsBackgroundImage
-        "
-        :steps-title="adventureContentPartnershipStepsTitle"
-        :steps="adventureContentPartnershipSteps"
-        :accent-image="adventureContentPartnershipStepsAccentImage"
+        :config="servicesData.adventureContentPartnership"
     />
-    <section class="bg-website-secondary text-website-off-white pb-6 lg:pb-12">
-        <Markdown
-            :markdown-string="`## ${servicesData.howItWorks.title}`"
-            component-class="no-default-format text-left md:text-4xl text-2xl accent-font lg:pt-32 pt-16 pb-6 lg:border-r border-r-0 border-website-accent w-1/2 lg:mx-16 mx-4 lg:mb-12 mb-4"
+    <section>
+        <TestimonialOverview
+            :testimonial="servicesData.testimonial"
+            class="!bg-website-off-white !text-website-tertiary"
         />
-        <div
-            v-for="(item, index) in servicesData.howItWorks.items"
-            :key="`how-it-works-item-${index}`"
-            class="mb-6 grid grid-cols-2 items-center gap-8 px-8 lg:mb-12 lg:gap-16 lg:px-16"
-        >
-            <Markdown
-                :markdown-string="`### ${item.description}`"
-                :component-class="`text-center ${
-                    index % 2 === 0 ? 'order-1' : 'order-2'
-                }`"
-            />
-            <FileOrVideo
-                :parent-class="`pointer-events-none z-0 cursor-default aspect-video ${
-                    index % 2 === 0 ? 'order-2' : 'order-1'
-                }`"
-                class="h-full object-cover object-center"
-                :file="item.file"
-                sizes="2xl:800px xl:615px lg:512px 410px"
-                :with-sound-control="false"
-            />
-        </div>
     </section>
-    <article class="w-full">
+    <article
+        class="text-website-off-white bg-black/40 bg-cover bg-fixed bg-center bg-no-repeat px-12 py-16 pb-36 bg-blend-color lg:py-36 lg:pb-72"
+        :style="{
+            backgroundImage: `url('${servicesData.ready.backgroundImage.file}?format=webp&width=2000')`,
+        }"
+    >
         <Markdown
-            :markdown-string="`## ${quarterlyProcess.title}`"
-            component-class="no-default-format subheading-font md:ml-16 ml-8 mb-16 md:mt-32 mt-16 text-left md:text-4xl text-2xl"
+            :markdown-string="`## ${servicesData.ready.title}`"
+            component-class="no-default-format mx-4 text-center lg:text-5xl text-3xl heading-font"
         />
         <Markdown
-            :markdown-string="`### ${quarterlyProcess.subtitle}`"
-            component-class="no-default-format accent-font md:mx-auto mx-12 mb-8 text-center md:text-4xl text-lg"
-        />
-        <div class="mx-auto mb-32 w-3/4">
-            <AccordionItem
-                v-for="step in quarterlyProcess.steps"
-                :key="`step-${step.title}`"
-                :large-style="true"
-                :title-markdown="`#### ${step.title}`"
-                class="bg-website-primary text-website-off-white subheading-font mb-1 w-full"
-            >
-                <Markdown
-                    :markdown-string="step.description"
-                    component-class="mx-auto bg-website-off-white text-website-off-black text-center py-8 paragraph-font"
-                />
-            </AccordionItem>
-        </div>
-        <Markdown
-            :markdown-string="quarterlyProcess.footerTitle"
-            component-class="w-3/4 mx-auto text-center my-16 md:text-5xl text-2xl subheading-font"
+            :markdown-string="`${servicesData.ready.content}`"
+            component-class="mx-auto text-center lg:py-12 py-8 w-fit lg:text-3xl text-xl subheading-font"
         />
         <DefaultButton
-            :title="servicesData.solution.actionCta"
-            class="mx-auto mb-16"
+            :title="servicesData.ready.callToAction"
+            class="mx-auto"
             to="/get-started"
             :light="false"
         />
     </article>
-    <article class="bg-website-tertiary text-website-off-white">
+    <article class="bg-website-tertiary text-website-off-white lg:pb-16">
         <MarkdownHeaderWithLine
             :header-markdown="servicesData.results.title"
             class="pt-12 pb-8 pl-4 lg:pl-12"
@@ -267,6 +220,75 @@
                 :with-sound-control="false"
             />
         </div>
+    </article>
+    <section class="bg-website-primary text-website-off-white pb-6 lg:pb-12">
+        <Markdown
+            :markdown-string="`## ${servicesData.howItWorks.title}`"
+            component-class="text-center mx-auto no-default-format heading-font lg:py-16 py-8 lg:text-6xl text-3xl"
+        />
+        <div class="bg-website-accent mb-8 h-0.25 w-full lg:mb-16" />
+        <div
+            v-for="(item, index) in servicesData.howItWorks.items"
+            :key="`how-it-works-item-${index}`"
+            class="mb-6 flex flex-col items-center gap-8 px-8 lg:mb-12 lg:flex-row lg:gap-16 lg:px-16"
+        >
+            <FileOrVideo
+                :parent-class="`pointer-events-none z-0 cursor-default aspect-photo w-24 lg:block hidden ${
+                    index % 2 === 0 ? 'order-3' : 'order-1'
+                }`"
+                class="h-full w-full object-contain object-center"
+                :file="item.accentFile"
+                sizes="96px"
+                :with-sound-control="false"
+            />
+            <Markdown
+                :markdown-string="`${item.description}`"
+                component-class="text-center order-2"
+            />
+            <FileOrVideo
+                :parent-class="`pointer-events-none z-0 cursor-default aspect-video lg:w-5/12 w-4/5 shrink-0 order-3 ${
+                    index % 2 === 0 ? 'lg:order-1' : 'lg:order-3'
+                }`"
+                class="h-full object-cover object-center"
+                :file="item.file"
+                sizes="2xl:800px xl:615px lg:512px 410px"
+                :with-sound-control="false"
+            />
+        </div>
+    </section>
+    <article class="w-full">
+        <Markdown
+            :markdown-string="`## ${quarterlyProcess.title}`"
+            component-class="no-default-format subheading-font md:ml-16 ml-8 mb-16 md:mt-32 mt-16 text-left md:text-4xl text-2xl"
+        />
+        <Markdown
+            :markdown-string="`### ${quarterlyProcess.subtitle}`"
+            component-class="no-default-format accent-font md:mx-auto mx-12 mb-8 text-center md:text-4xl text-lg"
+        />
+        <div class="mx-auto mb-32 w-3/4">
+            <AccordionItem
+                v-for="step in quarterlyProcess.steps"
+                :key="`quarterly-process-step-${step.title}`"
+                :large-style="true"
+                :title-markdown="`#### ${step.title}`"
+                class="bg-website-primary text-website-off-white subheading-font mb-1 w-full"
+            >
+                <Markdown
+                    :markdown-string="step.description"
+                    component-class="mx-auto bg-website-off-white text-website-off-black text-center py-8 paragraph-font"
+                />
+            </AccordionItem>
+        </div>
+        <Markdown
+            :markdown-string="quarterlyProcess.footerTitle"
+            component-class="w-3/4 mx-auto text-center my-16 md:text-5xl text-2xl subheading-font"
+        />
+        <DefaultButton
+            :title="servicesData.solution.actionCta"
+            class="mx-auto mb-16"
+            to="/get-started"
+            :light="false"
+        />
     </article>
     <article
         class="text-website-off-white bg-black/80 bg-cover bg-fixed bg-center bg-no-repeat py-16 bg-blend-color"
@@ -307,26 +329,7 @@
             :light="false"
         />
     </article>
-    <section>
-        <TestimonialOverview :testimonial="servicesData.testimonial" />
-    </section>
-    <article class="text-website-tertiary mx-12 py-8 lg:py-24">
-        <Markdown
-            :markdown-string="`## ${servicesData.ready.title}`"
-            component-class="no-default-format mx-4 text-center lg:text-5xl text-3xl heading-font"
-        />
-        <Markdown
-            :markdown-string="`${servicesData.ready.content}`"
-            component-class="mx-auto text-center lg:py-12 py-8 w-fit lg:text-3xl text-xl subheading-font"
-        />
-        <DefaultButton
-            :title="servicesData.ready.callToAction"
-            class="mx-auto"
-            to="/get-started"
-            :light="false"
-        />
-    </article>
-    <article class="bg-website-primary text-website-off-white pt-8 lg:pt-16">
+    <article class="bg-website-off-white text-website-tertiary pt-8 lg:pt-16">
         <div
             class="flex w-full flex-col justify-between gap-8 py-16 py-32 lg:flex-row lg:gap-0"
         >
@@ -340,7 +343,7 @@
                     component-class="mx-auto text-center accent-font lg:text-2xl text-xl"
                 />
             </div>
-            <div class="-mb-64 hidden grow-1 self-stretch lg:block">
+            <div class="-mt-64 -mb-64 hidden grow-1 self-stretch lg:block">
                 <div class="border-website-accent h-full border-r"></div>
             </div>
             <div class="ml-4 flex grow-1 flex-row text-left text-lg text-xl">
@@ -449,29 +452,5 @@
 
     const headingFile = servicesData.headingFile;
     const problemFile = servicesData.problemOverview.problemFile;
-
-    const adventureContentPartnershipOverview = servicesData
-        .adventureContentPartnership.overview! as string;
-    const adventureContentPartnershipOverviewFile = servicesData
-        .adventureContentPartnership.overviewFile! as FileInfo;
-    const adventureContentPartnershipTitleBackgroundImage = servicesData
-        .adventureContentPartnership.titleBackgroundImage! as FileInfo;
-    const adventureContentPartnershipTitle = servicesData
-        .adventureContentPartnership.title! as string;
-    const adventureContentPartnershipDescription = servicesData
-        .adventureContentPartnership.description! as string;
-    const adventureContentPartnershipActionCta = servicesData
-        .adventureContentPartnership.actionCta! as string;
-    const adventureContentPartnershipStepsBackgroundImage = servicesData
-        .adventureContentPartnership.stepsBackgroundImage! as FileInfo;
-    const adventureContentPartnershipStepsTitle = servicesData
-        .adventureContentPartnership.stepsTitle! as string;
-    const adventureContentPartnershipSteps = servicesData
-        .adventureContentPartnership.steps! as {
-        title: string;
-        description: string;
-    }[];
-    const adventureContentPartnershipStepsAccentImage = servicesData
-        .adventureContentPartnership.stepsAccentImage! as FileInfo;
     const quarterlyProcess = servicesData.quarterlyProcess;
 </script>

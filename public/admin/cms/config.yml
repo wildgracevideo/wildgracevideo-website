@@ -1003,11 +1003,58 @@ collections:
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: true
+                      - label: 'Value'
+                        name: 'value'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Items'
+                        name: items
+                        widget: list
+                        summary: '{{ fields.title }}'
+                        fields:
+                            - label: 'Title'
+                              name: 'title'
+                              widget: 'markdown'
+                              modes: ['rich_text']
+                              minimal: false
                       - label: 'Description'
                         name: 'description'
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: false
+                - label: 'Details'
+                  name: details
+                  widget: object
+                  fields:
+                      - label: 'What You Get Title'
+                        name: whatYouGetTitle
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'What You Get Description'
+                        name: whatYouGetDescription
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'What You Pay Title'
+                        name: whatYouPayTitle
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'What You Pay Description'
+                        name: whatYouPayDescription
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Footer'
+                        name: footer
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
+                      - label: 'Call to Action'
+                        name: callToAction
+                        widget: 'string'
           - label: 'How it works'
             name: 'howItWorks'
             widget: 'object'
@@ -1031,6 +1078,13 @@ collections:
                       - {
                             label: 'File',
                             name: 'file',
+                            widget: 'object',
+                            summary: '{{fields.seoTitle}}',
+                            <<: *fileInfo,
+                        }
+                      - {
+                            label: 'Accent File',
+                            name: 'accentFile',
                             widget: 'object',
                             summary: '{{fields.seoTitle}}',
                             <<: *fileInfo,
@@ -1162,6 +1216,13 @@ collections:
             widget: 'object'
             summary: '{{ fields.title }}'
             fields:
+                - {
+                      label: 'Background Image',
+                      name: 'backgroundImage',
+                      widget: 'object',
+                      summary: '{{fields.seoTitle}}',
+                      <<: *fileInfo,
+                  }
                 - label: 'Title'
                   name: title
                   widget: 'markdown'

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex w-full overflow-hidden rounded-lg shadow-lg">
+    <div class="hidden w-full overflow-hidden rounded-lg shadow-lg lg:flex">
         <div
             v-for="(item, index) in items"
             :key="item.title"
@@ -47,6 +47,29 @@
             </div>
         </div>
     </div>
+    <AccordionItem
+        v-for="(item, index) in items"
+        :key="`${index}-horizontal-accordion-item`"
+        :large-style="true"
+        :title-markdown="`### ${item.title}`"
+        class="bg-website-primary text-website-off-white subheading-font mb-1 block w-full text-2xl lg:hidden lg:text-4xl"
+    >
+        <Markdown
+            :markdown-string="item.title"
+            component-class="subheading-font lg:text-4xl text-2xl ml-2"
+        />
+        <Markdown
+            :markdown-string="item.description"
+            component-class="paragraph-font text-base mx-8"
+        />
+
+        <DefaultButton
+            :title="item.callToAction"
+            class="mx-auto mt-16 mb-8"
+            :to="item.callToActionPath"
+            :dark="true"
+        />
+    </AccordionItem>
 </template>
 
 <script setup lang="ts">
