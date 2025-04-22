@@ -2,7 +2,7 @@
     <Meta name="description" :content="description" />
     <Meta property="og:description" :content="description" />
     <Meta name="twitter:description" :content="description" />
-    <Meta name="twitter:title" :cotent="title" />
+    <Meta name="twitter:title" :content="title" />
     <Meta property="og:title" :content="title" />
     <Meta property="og:url" :content="`${siteUrl}${String(route.path)}`" />
     <Meta name="twitter:url" :content="`${siteUrl}${String(route.path)}`" />

@@ -73,7 +73,7 @@ export default defineSitemapEventHandler(async (e) => {
             const lastModDate = new Date(sitemap.lastmod);
             const additionalImages: ImageEntry[] = [];
             const additionalVideos: VideoEntry[] = [];
-            const videosAndImages = findImagesAndVideos(it);
+            let videosAndImages = findImagesAndVideos(it);
             videosAndImages
                 .map(parseImageOrVideo)
                 .filter((it) => it != null)
@@ -84,6 +84,11 @@ export default defineSitemapEventHandler(async (e) => {
                         additionalVideos.push(imageOrVideo);
                     }
                 });
+            videosAndImages = Array.from(
+                new Map(
+                    videosAndImages.map((item) => [item.file, item])
+                ).values()
+            );
             return {
                 loc: `${runtimeConfig.public.siteUrl}${loc}`,
                 lastmod: `${lastModDate.getUTCFullYear()}-${lastModDate.getUTCMonth()}-${lastModDate.getUTCDate()}`,

@@ -16,7 +16,7 @@
         <NuxtImg
             :src="thumbnailImageResolved"
             :alt="video.seoDescription"
-            class="w-full brightness-60 duration-300 ease-linear hover:brightness-100"
+            class="w-full brightness-50 duration-300 ease-linear hover:brightness-100"
             :class="`${aspectRatio} ${imageClass}`"
             :sizes="sizes"
         />
@@ -38,10 +38,7 @@
             :content-url="video.video"
             :upload-date="video.publicationDate"
             :description="video.seoDescription"
-            :thumbnail="{
-                url: thumbnailImageResolved,
-                contentUrl: thumbnailImageResolved,
-            }"
+            :thumbnail-url="thumbnailImageResolved"
         />
     </video>
 </template>

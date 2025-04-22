@@ -399,11 +399,30 @@ collections:
                       minimal: true,
                   }
                 - {
+                      label: 'Subtitle',
+                      name: 'subtitle',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
+                  }
+                - {
                       label: 'Description',
                       name: 'description',
                       widget: 'markdown',
                       modes: ['rich_text'],
                       minimal: false,
+                  }
+                - {
+                      label: 'Call To Action',
+                      name: 'callToAction',
+                      widget: 'string',
+                  }
+                - {
+                      label: 'Footer',
+                      name: 'footer',
+                      widget: 'markdown',
+                      modes: ['rich_text'],
+                      minimal: true,
                   }
                 - label: 'About Me Image or Video'
                   widget: 'object'
@@ -440,6 +459,168 @@ collections:
                       - label: 'Publication Date (Change only if changing the file)'
                         name: publicationDate
                         widget: 'datetime'
+          - label: 'Next Steps'
+            name: nextSteps
+            widget: 'object'
+            summary: '{{fields.title}}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'File Info'
+                  name: 'fileInfo'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+          - label: 'Gaps'
+            name: gaps
+            widget: 'object'
+            summary: 'Gaps'
+            fields:
+                - label: 'Call To Action'
+                  name: callToAction
+                  widget: 'string'
+                - label: 'File Info'
+                  name: 'backgroundImage'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - label: 'Items'
+                  name: items
+                  widget: 'list'
+                  summary: '{{fields.title}}'
+                  fields:
+                      - label: 'Title'
+                        name: title
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Description'
+                        name: description
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
+          - label: 'Solution'
+            name: solution
+            summary: '{{fields.title}}'
+            widget: 'object'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Subtitle'
+                  name: subtitle
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+          - label: 'Goal'
+            name: goal
+            summary: '{{fields.title}}'
+            widget: 'object'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Subtitle'
+                  name: subtitle
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'File'
+                  name: 'file'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - label: 'Accent File'
+                  name: 'accentFile'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - label: 'Call To Action'
+                  name: callToAction
+                  widget: string
+                - label: 'How To Help'
+                  name: howToHelp
+                  widget: 'object'
+                  summary: '{{fields.title}}'
+                  fields:
+                      - label: 'Title'
+                        name: title
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Items'
+                        name: items
+                        widget: 'list'
+                        summary: '{{fields.title}}'
+                        fields:
+                            - label: 'Title'
+                              name: title
+                              widget: 'markdown'
+                              modes: ['rich_text']
+                              minimal: true
+                            - label: 'Description'
+                              name: description
+                              widget: 'markdown'
+                              modes: ['rich_text']
+                              minimal: false
+                            - label: 'Call To Action'
+                              name: callToAction
+                              widget: string
+                            - label: 'Call To Action Path (i.e. /case-studies/van-essential)'
+                              name: callToActionPath
+                              widget: string
+          - label: 'Testimonial'
+            name: testimonial
+            summary: '{{fields.title}}'
+            widget: 'object'
+            fields:
+                - label: 'Author'
+                  name: author
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Comment'
+                  name: comment
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'File'
+                  name: 'file'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+          - label: 'Trust'
+            name: trust
+            summary: '{{fields.title}}'
+            widget: 'object'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Items'
+                  name: items
+                  widget: 'list'
+                  summary: '{{fields.title}}'
+                  fields:
+                      - label: 'Title'
+                        name: title
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Description'
+                        name: description
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
           - label: 'FAQ'
             name: 'faq'
             widget: 'object'
@@ -468,71 +649,26 @@ collections:
                             widget: 'markdown',
                             modes: ['rich_text'],
                         }
-          - label: 'Assets'
-            name: assets
+          - label: 'Background'
+            name: background
             widget: 'list'
-            min: 1
-            summary: '{{fields.seoTitle}}'
-            fields:
-                - label: 'Video Or Photo'
-                  name: 'file'
-                  widget: 'file'
-                  media_library:
-                      allow_multiple: false
-                      choose_url: true
-                      config:
-                          multiple: false
-                          max_file_size: 4096000
-                - {
-                      label: 'Thumbnail Image (Only for Video)',
-                      name: 'thumbnailImage',
-                      widget: 'image',
-                      required: false,
-                      choose_url: true,
-                      allow_multiple: false,
-                  }
-                - label: 'Wide'
-                  name: 'isWide'
-                  default: false
-                  widget: 'boolean'
-                - label: 'SEO Title (About 125 characters)'
-                  name: 'seoTitle'
-                  widget: 'string'
-                - label: 'SEO Description (About 150-160 characters)'
-                  name: seoDescription
-                  widget: 'text'
-                - label: 'Publication Date (Change only if changing the file)'
-                  name: publicationDate
-                  widget: 'datetime'
-          - label: 'Testimonials'
-            name: 'testimonials'
-            widget: 'object'
             summary: '{{fields.title}}'
             fields:
                 - label: 'Title'
-                  name: 'title'
-                  widget: 'text'
-                - label: 'Client Testimonials'
-                  name: 'clientTestimonials'
-                  widget: 'list'
-                  min: 2
-                  summary: '{{fields.author}}'
-                  fields:
-                      - label: 'Author'
-                        name: 'author'
-                        widget: 'markdown'
-                        modes: ['rich_text']
-                        minimal: true
-                      - label: 'Text'
-                        name: 'text'
-                        widget: 'markdown'
-                        modes: ['rich_text']
-                        minimal: false
-                      - label: 'File Info'
-                        name: 'fileInfo'
-                        widget: 'object'
-                        summary: '{{fields.seoTitle}}'
-                        <<: *fileInfo
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'File Info'
+                  name: 'fileInfo'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
 
     - name: 'service-landing-page'
       label: 'Service Landing Page'
@@ -867,14 +1003,61 @@ collections:
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: true
+                      - label: 'Value'
+                        name: 'value'
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Items'
+                        name: items
+                        widget: list
+                        summary: '{{ fields.title }}'
+                        fields:
+                            - label: 'Title'
+                              name: 'title'
+                              widget: 'markdown'
+                              modes: ['rich_text']
+                              minimal: true
                       - label: 'Description'
                         name: 'description'
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: false
-          - label: 'Quarterly Process'
-            name: 'quarterlyProcess'
-            widget: object
+                - label: 'Details'
+                  name: details
+                  widget: object
+                  fields:
+                      - label: 'What You Get Title'
+                        name: whatYouGetTitle
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'What You Get Description'
+                        name: whatYouGetDescription
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'What You Pay Title'
+                        name: whatYouPayTitle
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'What You Pay Description'
+                        name: whatYouPayDescription
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Footer'
+                        name: footer
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
+                      - label: 'Call to Action'
+                        name: callToAction
+                        widget: 'string'
+          - label: 'How it works'
+            name: 'howItWorks'
+            widget: 'object'
             summary: '{{fields.title}}'
             fields:
                 - label: 'Title'
@@ -882,31 +1065,213 @@ collections:
                   widget: 'markdown'
                   modes: ['rich_text']
                   minimal: true
-                - label: 'Subtitle'
-                  name: 'subtitle'
-                  widget: 'markdown'
-                  modes: ['rich_text']
-                  minimal: true
-                - label: 'Steps'
-                  name: 'steps'
+                - label: 'Items'
+                  name: items
                   widget: 'list'
-                  summary: '{{fields.title}}'
+                  summary: '{{fields.description}}'
                   fields:
-                      - label: 'Title'
-                        name: 'title'
-                        widget: 'markdown'
-                        modes: ['rich_text']
-                        minimal: true
                       - label: 'Description'
                         name: 'description'
                         widget: 'markdown'
                         modes: ['rich_text']
                         minimal: false
-                - label: 'Footer Title'
-                  name: 'footerTitle'
+                      - {
+                            label: 'File',
+                            name: 'file',
+                            widget: 'object',
+                            summary: '{{fields.seoTitle}}',
+                            <<: *fileInfo,
+                        }
+                      - {
+                            label: 'Accent File',
+                            name: 'accentFile',
+                            widget: 'object',
+                            summary: '{{fields.seoTitle}}',
+                            <<: *fileInfo,
+                        }
+          - label: 'Results'
+            name: results
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
                   widget: 'markdown'
                   modes: ['rich_text']
                   minimal: true
+                - label: 'Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Call to Action'
+                  name: callToAction
+                  widget: 'string'
+                - {
+                      label: 'File',
+                      name: 'file',
+                      widget: 'object',
+                      summary: '{{fields.seoTitle}}',
+                      <<: *fileInfo,
+                  }
+          - label: 'Testimonial'
+            name: testimonial
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Author'
+                  name: author
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Comment'
+                  name: comment
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - {
+                      label: 'File',
+                      name: 'file',
+                      widget: 'object',
+                      summary: '{{fields.seoTitle}}',
+                      <<: *fileInfo,
+                  }
+          - label: 'Ready'
+            name: ready
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - {
+                      label: 'Background Image',
+                      name: 'backgroundImage',
+                      widget: 'object',
+                      summary: '{{fields.seoTitle}}',
+                      <<: *fileInfo,
+                  }
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Content'
+                  name: content
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Call to Action'
+                  name: callToAction
+                  widget: 'string'
+          - label: 'Urgency'
+            name: urgency
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Starting At'
+                  name: startingAt
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Limiting Factor'
+                  name: limitingFactor
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Subtitle'
+                  name: subtitle
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Description Items'
+                  name: descriptionItems
+                  widget: 'list'
+                  summary: '{{ fields.title }}'
+                  fields:
+                      - label: 'Title'
+                        name: title
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Description'
+                        name: description
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: false
+                - label: 'Footer'
+                  name: footer
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Call to Action'
+                  name: callToAction
+                  widget: 'string'
+                - label: 'Background Image'
+                  widget: 'object'
+                  name: 'backgroundImage'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+          - label: 'Case Studies'
+            name: caseStudies
+            widget: 'list'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Description'
+                  name: description
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: false
+                - label: 'Case Study File'
+                  widget: 'object'
+                  name: 'file'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+                - {
+                      label: 'Page Path (i.e. /case-studies/van-essential)',
+                      name: 'pagePath',
+                      widget: 'string',
+                      required: false,
+                  }
+          - label: 'Not Ready'
+            name: notReady
+            widget: 'object'
+            summary: '{{ fields.title }}'
+            fields:
+                - label: 'Title'
+                  name: title
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Subtitle'
+                  name: subtitle
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Packages'
+                  name: packages
+                  widget: 'list'
+                  fields:
+                      - label: 'Title'
+                        name: title
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Content'
+                        name: content
+                        widget: 'markdown'
+                        modes: ['rich_text']
+                        minimal: true
+                      - label: 'Call to Action'
+                        name: callToAction
+                        widget: 'string'
 
     - name: 'home'
       label: 'Home'
@@ -1137,7 +1502,7 @@ collections:
                   <<: *fileInfo
           - label: 'Case Studies'
             name: caseStudies
-            widget: 'object'
+            widget: 'list'
             summary: '{{ fields.title }}'
             fields:
                 - label: 'Title'

@@ -1,5 +1,5 @@
 <template>
-    <div class="border-website-secondary cursor-pointer border-b">
+    <div class="border-website-tertiary cursor-pointer border-b">
         <button
             v-if="largeStyle"
             class="flex w-full items-center justify-between py-10 md:py-14"
@@ -29,7 +29,7 @@
         >
             <Markdown
                 :markdown-string="titleMarkdown"
-                component-class="no-default-format strong:font-semibold"
+                component-class="no-default-format strong:font-semibold lg:text-left text-center mx-auto lg:mx-0"
             />
             <span class="transition-transform duration-300">
                 <PlusIcon
