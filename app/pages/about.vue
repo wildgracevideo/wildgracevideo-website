@@ -101,7 +101,7 @@
             backgroundImage: `url('${behindTheScenesData.gaps.backgroundImage.file}?format=webp&size=2000')`,
         }"
     >
-        <div class="bg-website-tertiary/50 mx-8 pt-16 pb-16 lg:mx-24 lg:pt-48">
+        <div class="bg-website-tertiary/50 mx-8 pt-16 pb-16 lg:mx-24 lg:pt-36">
             <div
                 v-for="(item, index) in behindTheScenesData.gaps.items"
                 :key="`${index}-gaps-item`"
@@ -120,7 +120,7 @@
                 :title="behindTheScenesData.gaps.callToAction"
                 class="mx-auto mt-16"
                 to="/get-started"
-                :dark="true"
+                :light="true"
             />
         </div>
     </section>

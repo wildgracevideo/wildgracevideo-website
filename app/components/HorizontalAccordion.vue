@@ -3,7 +3,7 @@
         <div
             v-for="(item, index) in items"
             :key="item.title"
-            class="bg-website-primary border-website-off-white relative flex w-full flex-1 cursor-pointer items-center justify-center border-r transition-all duration-500 ease-in-out"
+            class="bg-website-primary border-website-off-white relative flex w-full flex-1 cursor-pointer items-center justify-center border-r"
             :class="{
                 'flex-[4]': activeIndex === index,
                 'flex-[1]': activeIndex !== index,
@@ -20,12 +20,12 @@
                     :markdown-string="`### ${
                         index === activeIndex ? '-' : '+'
                     } ${item.title}`"
-                    :component-class="`no-default-format lg:text-6xl text-3xl writing-vertical tracking-widest -rotate-180 text-left self-end mb-4 ${
+                    :component-class="`no-default-format lg:text-5xl text-2xl writing-vertical tracking-widest -rotate-180 text-left self-end mb-4 subheading-font ${
                         index === activeIndex ? 'ml-12' : 'ml-0'
                     }`"
                 />
                 <div
-                    v-if="activeIndex === index"
+                    v-show="activeIndex === index"
                     class="text-website-tertiary bg-website-off-white -mr-4 ml-16 flex flex-col justify-between p-16 pr-16 text-center opacity-100 transition-opacity duration-300"
                 >
                     <Markdown
