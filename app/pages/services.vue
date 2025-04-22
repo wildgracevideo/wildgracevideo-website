@@ -256,79 +256,6 @@
             />
         </div>
     </section>
-    <article class="w-full">
-        <Markdown
-            :markdown-string="`## ${quarterlyProcess.title}`"
-            component-class="no-default-format subheading-font md:ml-16 ml-8 mb-16 md:mt-32 mt-16 text-left md:text-4xl text-2xl"
-        />
-        <Markdown
-            :markdown-string="`### ${quarterlyProcess.subtitle}`"
-            component-class="no-default-format accent-font md:mx-auto mx-12 mb-8 text-center md:text-4xl text-lg"
-        />
-        <div class="mx-auto mb-32 w-3/4">
-            <AccordionItem
-                v-for="step in quarterlyProcess.steps"
-                :key="`quarterly-process-step-${step.title}`"
-                :large-style="true"
-                :title-markdown="`#### ${step.title}`"
-                class="bg-website-primary text-website-off-white subheading-font mb-1 w-full"
-            >
-                <Markdown
-                    :markdown-string="step.description"
-                    component-class="mx-auto bg-website-off-white text-website-off-black text-center py-8 paragraph-font"
-                />
-            </AccordionItem>
-        </div>
-        <Markdown
-            :markdown-string="quarterlyProcess.footerTitle"
-            component-class="w-3/4 mx-auto text-center my-16 md:text-5xl text-2xl subheading-font"
-        />
-        <DefaultButton
-            :title="servicesData.solution.actionCta"
-            class="mx-auto mb-16"
-            to="/get-started"
-            :light="false"
-        />
-    </article>
-    <article
-        class="text-website-off-white bg-black/80 bg-cover bg-fixed bg-center bg-no-repeat py-16 bg-blend-color"
-        :style="{
-            backgroundImage: `url('${servicesData.packages.backgroundImage.file}?format=webp&width=2000')`,
-        }"
-    >
-        <Markdown
-            :markdown-string="`## ${servicesData.packages.title}`"
-            component-class="no-default-format w-3/4 mx-auto text-center my-16 md:text-5xl text-2xl subheading-font"
-        />
-        <div
-            class="border-website-background my-8 grid grid-cols-1 divide-x-0 divide-y border-y lg:my-12 lg:grid-cols-3 lg:divide-x lg:divide-y-0"
-        >
-            <div
-                v-for="item in servicesData.packages.items"
-                :key="item.title"
-                class="flex flex-col justify-between py-8 lg:py-12"
-            >
-                <Markdown
-                    :markdown-string="`### ${item.title}`"
-                    component-class="no-default-format mx-4 text-center lg:text-4xl text-2xl accent-font"
-                />
-                <Markdown
-                    :markdown-string="`${item.offering}`"
-                    component-class="mx-auto text-center lg:py-12 py-8"
-                />
-                <Markdown
-                    :markdown-string="`${item.pricing}`"
-                    component-class="no-default-format mx-auto text-center accent-font lg:text-2xl text-lg"
-                />
-            </div>
-        </div>
-        <DefaultButton
-            :title="servicesData.packages.callToAction"
-            class="mx-auto mt-16 lg:mt-12"
-            to="/get-started"
-            :light="false"
-        />
-    </article>
     <article class="bg-website-off-white text-website-tertiary pt-8 lg:pt-16">
         <div
             class="flex w-full flex-col justify-between gap-8 py-16 py-32 lg:flex-row lg:gap-0"
@@ -452,5 +379,4 @@
 
     const headingFile = servicesData.headingFile;
     const problemFile = servicesData.problemOverview.problemFile;
-    const quarterlyProcess = servicesData.quarterlyProcess;
 </script>

@@ -116,61 +116,6 @@ howItWorks:
         seoTitle: TODO
         seoDescription: TODO
         publicationDate: 2025-04-21T23:48:00.000Z
-quarterlyProcess:
-  steps:
-    - description: |-
-        **week 1 - brand clarity session**
-
-
-
-        90 min strategy session
-
-        define brand identity
-
-        pinpoint audience desires
-
-        content audit
-      title: WEEK 1
-    - title: WEEK 2
-      description: |-
-        **week 2 - complete production plan**
-
-
-
-        60 min pre-production call
-
-        build shotlist
-
-        cast talent
-
-        location scout
-    - title: WEEK 3
-      description: |-
-        **week 3 - done for you content capture**
-
-
-
-        full day shoot
-
-        capture content in bulk
-
-        professional camera, audio, and lighting gear
-    - title: WEEK 4
-      description: |-
-        **week 4 - monthly content drops**
-
-
-
-        ready-to-use videos & images
-
-        content schedule & guide
-
-        monthly content delivery
-
-        1 round of revisions
-  title: HOW THE PROCESS WORKS
-  subtitle: First month of every quarter
-  footerTitle: POSITION YOUR BRAND AS THE TOP CHOICE IN YOUR INDUSTRY.
 results:
   file:
     seoTitle: TODO

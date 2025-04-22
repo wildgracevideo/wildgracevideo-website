@@ -1089,41 +1089,6 @@ collections:
                             summary: '{{fields.seoTitle}}',
                             <<: *fileInfo,
                         }
-          - label: 'Quarterly Process'
-            name: 'quarterlyProcess'
-            widget: object
-            summary: '{{fields.title}}'
-            fields:
-                - label: 'Title'
-                  name: 'title'
-                  widget: 'markdown'
-                  modes: ['rich_text']
-                  minimal: true
-                - label: 'Subtitle'
-                  name: 'subtitle'
-                  widget: 'markdown'
-                  modes: ['rich_text']
-                  minimal: true
-                - label: 'Steps'
-                  name: 'steps'
-                  widget: 'list'
-                  summary: '{{fields.title}}'
-                  fields:
-                      - label: 'Title'
-                        name: 'title'
-                        widget: 'markdown'
-                        modes: ['rich_text']
-                        minimal: true
-                      - label: 'Description'
-                        name: 'description'
-                        widget: 'markdown'
-                        modes: ['rich_text']
-                        minimal: false
-                - label: 'Footer Title'
-                  name: 'footerTitle'
-                  widget: 'markdown'
-                  modes: ['rich_text']
-                  minimal: true
           - label: 'Results'
             name: results
             widget: 'object'
@@ -1149,46 +1114,6 @@ collections:
                       summary: '{{fields.seoTitle}}',
                       <<: *fileInfo,
                   }
-          - label: 'Packages'
-            name: packages
-            widget: 'object'
-            summary: '{{ fields.title }}'
-            fields:
-                - label: 'Title'
-                  name: title
-                  widget: 'markdown'
-                  modes: ['rich_text']
-                  minimal: true
-                - label: 'Call to Action'
-                  name: callToAction
-                  widget: 'string'
-                - {
-                      label: 'Background Image',
-                      name: 'backgroundImage',
-                      widget: 'object',
-                      summary: '{{fields.seoTitle}}',
-                      <<: *fileInfo,
-                  }
-                - label: 'Items'
-                  name: items
-                  widget: 'list'
-                  summary: '{{ fields.title }}'
-                  fields:
-                      - label: 'Title'
-                        name: title
-                        widget: 'markdown'
-                        modes: ['rich_text']
-                        minimal: true
-                      - label: 'Offering'
-                        name: offering
-                        widget: 'markdown'
-                        modes: ['rich_text']
-                        minimal: false
-                      - label: 'Pricing'
-                        name: pricing
-                        widget: 'markdown'
-                        modes: ['rich_text']
-                        minimal: true
           - label: 'Testimonial'
             name: testimonial
             widget: 'object'
