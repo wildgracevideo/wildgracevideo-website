@@ -1,9 +1,4 @@
 ---
-sitemap:
-  changefreq: monthly
-  include: true
-  lastmod: 2025-03-31
-  loc: /services
 title: Denver Video Production Company | Wild Grace Video Services
 problemOverview:
   pageTagline: TURN YOUR CONTENT STRESS INTO SEAMLESS SALES
@@ -116,27 +111,39 @@ howItWorks:
         seoTitle: TODO
         seoDescription: TODO
         publicationDate: 2025-04-21T23:48:00.000Z
-results:
-  file:
+ready:
+  title: READY TO TAKE ACTION?
+  content: |-
+    1. BOOK YOUR DISCOVERY CALL
+    2. CHOOSE YOUR PACKAGE TIER
+    3. LOCK IN YOUR FIRST BRAND CLARITY SESSION
+  callToAction: BOOK YOUR CALL
+  backgroundImage:
+    file: https://content.wildgracevideo.com/images/Website-Adventure/Package_Tier_Background.jpg
     seoTitle: TODO
     seoDescription: TODO
-    file: https://content.wildgracevideo.com/videos/Website-Hotel/Boutique+Hotels+Thumbnail/Boutique
-      Hotels Thumbnail.mpd
-    publicationDate: 2025-04-14T12:55:00.000Z
-  title: results you can expect
-  description: >-
-    Your brand becomes the obvious choice for customers who value quality,
-    because of your clear credibility and authority
-
-
-    A strong social media presence and increased community engagement
-
-
-    More direct bookings or sales through your website, reducing dependency on third-party platforms
-
-
-    A streamlined content system that provides fresh content monthly with a clear marketing strategy.
-  callToAction: BOOK YOUR CALL
+    publicationDate: 2025-04-21T23:26:00.000Z
+urgency:
+  title: LIMITED SPOTS AVAILABLE
+  startingAt: starting at $3,600/quarter
+  limitingFactor: Only accepting 2 clients per year at this level of service
+  subtitle: SIGN UP BEFORE JUNE 1ST AND GET...
+  footer: Total Bonus Value of $1,250 -- Available At No Extra Cost If You Join
+    Before June 1st.
+  callToAction: RESERVE MY SPOT
+  backgroundImage:
+    file: https://content.wildgracevideo.com/images/Website-Adventure/Signup_Background.jpg
+    seoTitle: TODO
+    seoDescription: TODO
+    publicationDate: 2025-04-14T20:24:00.000Z
+  descriptionItems:
+    - title: + 1 Month of Done-for-You Social Media Management ($1,000 Value)
+      description: I handle your content posting, optimization, and engagement—so you
+        can focus on running your business.
+    - title: + Client Testimonial Collection Guide ($250 Value)
+      description: A step-by-step guide to collecting authentic testimonials on your
+        own, with key questions to ask and tips for capturing real, on-the-spot
+        feedback.
 packages:
   title: CHOOSE YOUR PACKAGE TIER
   ctaText: BOOK YOUR CALL
@@ -191,39 +198,32 @@ packages:
         2 Shoot Days
       pricing: $9,000/quarter
   callToAction: BOOK YOUR CALL
-ready:
-  title: READY TO TAKE ACTION?
-  content: |-
-    1. BOOK YOUR DISCOVERY CALL
-    2. CHOOSE YOUR PACKAGE TIER
-    3. LOCK IN YOUR FIRST BRAND CLARITY SESSION
+sitemap:
+  changefreq: monthly
+  include: true
+  lastmod: 2025-03-31
+  loc: /services
+results:
+  file:
+    seoTitle: TODO
+    seoDescription: TODO
+    file: https://content.wildgracevideo.com/videos/Website-Hotel/Boutique+Hotels+Thumbnail/Boutique
+      Hotels Thumbnail.mpd
+    publicationDate: 2025-04-14T12:55:00.000Z
+  title: results you can expect
+  description: >-
+    Your brand becomes the obvious choice for customers who value quality,
+    because of your clear credibility and authority
+
+
+    A strong social media presence and increased community engagement
+
+
+    More direct bookings or sales through your website, reducing dependency on third-party platforms
+
+
+    A streamlined content system that provides fresh content monthly with a clear marketing strategy.
   callToAction: BOOK YOUR CALL
-  backgroundImage:
-    file: https://content.wildgracevideo.com/images/Website-Adventure/Package_Tier_Background.jpg
-    seoTitle: TODO
-    seoDescription: TODO
-    publicationDate: 2025-04-21T23:26:00.000Z
-urgency:
-  title: LIMITED SPOTS AVAILABLE
-  startingAt: starting at $3,600/quarter
-  limitingFactor: Only accepting 2 clients per year at this level of service
-  subtitle: SIGN UP BEFORE JUNE 1ST AND GET...
-  footer: Total Bonus Value of $1,250 -- Available At No Extra Cost If You Join
-    Before June 1st.
-  callToAction: RESERVE MY SPOT
-  backgroundImage:
-    file: https://content.wildgracevideo.com/images/Website-Adventure/Signup_Background.jpg
-    seoTitle: TODO
-    seoDescription: TODO
-    publicationDate: 2025-04-14T20:24:00.000Z
-  descriptionItems:
-    - title: + 1 Month of Done-for-You Social Media Management ($1,000 Value)
-      description: I handle your content posting, optimization, and engagement—so you
-        can focus on running your business.
-    - title: + Client Testimonial Collection Guide ($250 Value)
-      description: A step-by-step guide to collecting authentic testimonials on your
-        own, with key questions to ask and tips for capturing real, on-the-spot
-        feedback.
 caseStudies:
   - title: VANESSENTIAL
     description: Outdoor Product Paid Ads + Instructional Videos
@@ -293,6 +293,13 @@ adventureContentPartnership:
         and shoot logistics—completely done for you. No stress, no hassle.
       title: Done-For-You Production Plan
       value: "Value: $1,500"
+      items:
+        - title: Get a fully customized outline of the video deliverables aligned with
+            your goals.
+        - title: Entire shoot day schedule is organized, with a clear, efficient plan that
+            minimizes stress and maximizes results providing peace of mind out
+            from talent to locations to take it all off of your plate.
+        - title: Designed to save you time, eliminate overwhelm, and maximize impact.
     - title: High-Impact Shoot Day
       description: Cameras roll! We’ll capture all your content in one efficient,
         high-impact shoot day. With just four filming days a year, you’ll have a

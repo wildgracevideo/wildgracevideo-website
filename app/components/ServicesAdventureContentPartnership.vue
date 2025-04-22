@@ -149,7 +149,7 @@
                 :with-sound-control="false"
             />
             <div
-                class="mx-24 flex flex-row flex-wrap items-center justify-center gap-8 pt-24 pb-0 lg:pb-12"
+                class="mx-24 flex flex-row flex-wrap items-center justify-center gap-8 pb-0 pb-12"
             >
                 <div
                     class="subheading-font bg-website-primary flex h-48 w-56 items-center justify-center p-4 text-center text-3xl lg:text-5xl"
@@ -160,7 +160,7 @@
                     X 4 = 1 YEAR OF CONSISTENT CONTENT
                 </p>
             </div>
-            <p class="mx-auto mt-8 pb-16 text-center lg:mt-16 lg:pb-32">
+            <p class="mx-4 mt-8 pb-16 text-center lg:mx-auto lg:mt-16 lg:pb-32">
                 Content delivered and the process repeats quarterly for
                 year-round impact.
             </p>

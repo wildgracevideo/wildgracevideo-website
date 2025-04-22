@@ -1017,7 +1017,7 @@ collections:
                               name: 'title'
                               widget: 'markdown'
                               modes: ['rich_text']
-                              minimal: false
+                              minimal: true
                       - label: 'Description'
                         name: 'description'
                         widget: 'markdown'

@@ -9,7 +9,7 @@
             :key="`${i}-adventure-content-partnership-step-item`"
             class="my-4 ml-8 flex flex-row"
         >
-            <CheckCircleIcon class="mr-6 h-6 w-6" />
+            <CheckCircleIcon class="mr-6 h-6 w-6 shrink-0" />
             <Markdown :markdown-string="item.title" component-class="" />
         </div>
         <Markdown
