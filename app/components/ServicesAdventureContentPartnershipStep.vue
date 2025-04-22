@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-website-primary/50 text-website-off-white relative mx-12 mb-12 lg:mx-24 lg:mb-24"
+        class="bg-website-primary/50 text-website-off-white relative mx-8 mb-12 lg:mx-24 lg:mb-24"
     >
         <MarkdownHeaderWithLine :header-markdown="title" />
         <Markdown :markdown-string="value" component-class="mb-6 ml-8" />

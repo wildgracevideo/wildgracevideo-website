@@ -1,15 +1,15 @@
 <template>
     <OgMeta :title="title" :description="description" />
-    <div class="relative">
+    <div class="relative mb-16">
         <div
-            class="bg-website-secondary/30 absolute inset-0 -top-[36px] z-10 h-[60dvh] lg:-top-[36px]"
+            class="bg-website-secondary/30 absolute inset-0 -top-[36px] z-10 h-[60dvh]"
         ></div>
         <h1
-            class="text-website-off-white relative top-36 z-20 mx-auto lg:top-24"
+            class="text-website-off-white absolute top-[30dvh] left-0 z-20 mx-auto w-full translate-x-0 -translate-y-full lg:top-24 lg:left-1/2 lg:w-4/5 lg:-translate-x-1/2 lg:translate-y-0"
         >
             <div class="mx-auto flex w-fit flex-col px-4">
                 <span
-                    class="heading-font block pb-2 text-2xl tracking-widest lg:text-6xl"
+                    class="heading-font block w-fit pb-2 text-2xl tracking-widest lg:text-6xl"
                     >A NEW CONTENT APPROACH FOR</span
                 >
                 <div class="flex shrink flex-row items-center">
@@ -21,7 +21,7 @@
             </div>
         </h1>
         <FileOrVideo
-            parent-class="pointer-events-none relative z-0 cursor-default lg:-top-36 -top-[110px]"
+            parent-class="pointer-events-none relative z-0 cursor-default -top-[36px]"
             class="h-[60dvh] w-full object-cover object-top brightness-50"
             :file="headingFile"
             sizes="2xl:2000px xl:1536px lg:1280px md:1024px sm:768px 640px"
@@ -44,7 +44,7 @@
             <div class="hidden flex-col lg:flex">
                 <div class="bg-website-tertiary -mb-48 w-0.25 grow"></div>
             </div>
-            <div class="mx-24 flex-1">
+            <div class="mx-16 flex-1 lg:mx-24">
                 <Markdown
                     :markdown-string="`### ${servicesData.problemOverview.problemOverview1}`"
                     component-class="no-default-format text-left text-lg lg:text-3xl subheading-font strong:font-semibold -ml-8"
@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="bg-website-secondary text-website-tertiary">
-            <div class="mx-24 max-w-[50%]">
+            <div class="mx-8 max-w-[90%] lg:mx-24 lg:max-w-[50%]">
                 <Markdown
                     :markdown-string="`### ${servicesData.problemOverview.problemOverview2}`"
                     component-class="no-default-format text-left text-lg lg:text-3xl subheading-font strong:font-semibold pt-24"
@@ -98,7 +98,7 @@
         <div class="mx-8">
             <Markdown
                 :markdown-string="`## ${servicesData.solution.title}`"
-                component-class="no-default-format text-center text-3xl lg:text-5xl heading-font strong:font-semibold pt-32 tracking-widest leading-normal mx-auto"
+                component-class="no-default-format text-center text-3xl lg:text-5xl heading-font strong:font-semibold lg:pt-32 pt-16 tracking-widest leading-normal mx-auto"
             />
             <FileOrVideo
                 parent-class="pointer-events-none relative z-0 cursor-default mx-auto w-28 h-28 my-16"
@@ -138,9 +138,9 @@
         <div>
             <Markdown
                 :markdown-string="`### ${servicesData.solution.nextStepsHeading}`"
-                component-class="no-default-format text-center strong:font-semibold lg:mx-auto mx-4 pt-32 subheading-font lg:text-3xl text-xl"
+                component-class="no-default-format text-center strong:font-semibold lg:mx-auto mx-4 lg:pt-32 pt-16 subheading-font lg:text-3xl text-xl"
             />
-            <ul class="mx-auto w-3/4 list-none py-24 lg:w-1/2">
+            <ul class="mx-auto w-3/4 list-none py-12 lg:w-1/2 lg:py-24">
                 <li
                     v-for="(item, i) in servicesData.solution.nextSteps"
                     :key="`${i}-next-steps-list-item`"
