@@ -1,9 +1,4 @@
 ---
-title: Denver Video Production Company | Wild Grace Video
-description: Wild Grace Productions is a top Denver-based video production
-  company specializing in hotel video production, outdoor product videos and
-  adventure company videos. We're here to help you bring your brand to life and
-  help you better connect with your audience.
 reelVideo:
   thumbnailImage: https://content.wildgracevideo.com/images/Website-Home-Page/SEO-Images/Reel%20photo.jpg
   seoTitle: Denver Adventure & Travel Video Production | Explore Our Dynamic Portfolio
@@ -14,12 +9,36 @@ reelVideo:
   video: https://content.wildgracevideo.com/videos/HomePage/2024WebsiteReel/2024WebsiteReel.mpd
   publicationDate: 2024-02-28T22:13:00.000Z
 path: home
+sitemap:
+  include: true
+  lastmod: 2024-09-14
+  loc: /
+  changefreq: monthly
+title: Denver Video Production Company | Wild Grace Video
+description: Wild Grace Productions is a top Denver-based video production
+  company specializing in hotel video production, outdoor product videos and
+  adventure company videos. We're here to help you bring your brand to life and
+  help you better connect with your audience.
 pageTitle: YOUR VIDEO CONTENT PARTNER FOR PREMIUM OUTDOOR, TRAVEL, AND ADVENTURE BRANDS.
+pageTagline: Wild Grace Productions is a Denver-based video production company
+  specializing in creating video and photo content for premium outdoor, travel,
+  and adventure brands. We're here for the brands that embrace dreamy escapes
+  and wild adventures—those that confidently stand out and stay true to who they
+  are. They want to be bold, inspiring, and refreshingly different.
 visitPortfolioFile:
   file: https://content.wildgracevideo.com/images/HomePage/WildGraceVideo_1.jpg
   publicationDate: 2025-03-15T21:25:00.000Z
   seoTitle: Headshot for Wild Grace Productions - Carly Kreiger
   seoDescription: Headshot for Wild Grace Productions - Carly Kreiger
+testimonialQuotes:
+  - quote: Carly was so great to work with! She listened to every detail I wanted to
+      be included, and took creative responsibility during the shoots to ensure
+      she had everything she needed.
+    author: Lauren Klein, Genesee Nutrition
+  - quote: Carly has great energy and enthusiasm, combined with maturity, knowledge
+      and skill in her field of work. The final product was very impressive and
+      exceeded our expectations.
+    author: Nathan Baller, Abode Outside
 videoHighlight:
   title: Inspire exploration for your customers
   videos:
@@ -46,7 +65,7 @@ videoHighlight:
         audience with high-quality visuals.
       linkPath: /service-overview/outdoor-product
     - publicationDate: 2024-02-27T19:53:28.906Z
-      title: HIGH-END TOURS & RETREATS
+      title: ADVENTURE TOURS & RETREATS
       description: Get sold-out in advance, happy customers, and a reputation as the
         best in the industry.
       video: https://content.wildgracevideo.com/Website-Home-Page/Adventure%20Brands%20Thumbnail%20V2.mp4
@@ -85,33 +104,38 @@ aboutMe:
     seoTitle: Logo for Wild Grace Productions
     seoDescription: Logo stamp for Wild Grace Productions
     publicationDate: 2025-03-17T16:03:00.000Z
+freebie:
+  title: FREEBIE
+  subheading: SOCIAL MEDIA BINGO CARD
+  description: >-
+    Quick and easy content ideas for your brand that will give you that extra
+    push throughout the 
+
+    year, when you feel like you’re stuck on what to post and need some inspiration.
+  ctaText: DOWNLOAD HERE
+  file:
+    fileInfo:
+      file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
+      seoTitle: TODO
+      seoDescription: TODO
+      publicationDate: 2025-03-17T14:25:00.000Z
+    file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
+    seoTitle: Freebie icon for Wild Grace Productions
+    seoDescription: Freebie icon for Wild Grace Productions
+    publicationDate: 2025-03-17T15:55:00.000Z
+  name: Content Support Bingo Card
+  fileName: WildGraceVideoContentSupportBingoCard.pdf
+  fileURL: https://content.wildgracevideo.com/freebies/CONTENT_SUPPORT_BINGO_CARD.pdf
+caseStudies:
+  - file:
+      seoTitle: Wild Grace Productions Video Marketing Case Study for VanEssential
+      seoDescription: Wild Grace Productions Video Marketing Case Study for VanEssential
+      publicationDate: 2025-03-17T16:53:00.000Z
+      file: https://content.wildgracevideo.com/images/HomePage/vanessential_cropped.png
+    title: VANESSENTIAL
+    description: Outdoor Product Paid Ads + Instructional Videos
+    pagePath: /case-studies/van-essential
 trustedBrandTitle: Trusted by
-trustedBrandLogos:
-  - companyName: The Curtis Hotel
-    altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
-      themed rooms.
-    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/curtis.webp
-    width: 200
-  - companyName: Genesee Nutrition
-    altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
-      adventurers.
-    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/genesee.webp
-    width: 100
-  - companyName: Smith & Meade
-    altText: Logo of Smith & Meade, Denver-based developer of homes that are well
-      designed, and well lived.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/smith-and-meade.svg
-    width: 300
-  - companyName: Abode Outside
-    altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/abode-outside.svg
-    width: 200
-  - altText: Logo of The Surf Hotel, a boutique hotel in adventurous Buena Vista,
-      Colorado, ideal for romantic getaways, mountain weddings, or corporate
-      events.
-    companyName: The Surf Hotel
-    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
-    width: 150
 howTo:
   title: HOW I GET RESULTS
   steps:
@@ -159,44 +183,34 @@ howTo:
   seoTitle: How to create a video with Wild Grace Video
 thumbnailImage: https://content.wildgracevideo.com/images/Website-Main/WildGraceVideo-logo.webp
 aboutMeAltText: TODO
-freebie:
-  title: FREEBIE
-  subheading: SOCIAL MEDIA BINGO CARD
-  description: >-
-    Quick and easy content ideas for your brand that will give you that extra
-    push throughout the 
-
-    year, when you feel like you’re stuck on what to post and need some inspiration.
-  ctaText: DOWNLOAD HERE
-  file:
-    fileInfo:
-      file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
-      seoTitle: TODO
-      seoDescription: TODO
-      publicationDate: 2025-03-17T14:25:00.000Z
-    file: https://content.wildgracevideo.com/images/Website-Main/Logos/WGP_Logos-47.png
-    seoTitle: Freebie icon for Wild Grace Productions
-    seoDescription: Freebie icon for Wild Grace Productions
-    publicationDate: 2025-03-17T15:55:00.000Z
-  name: Content Support Bingo Card
-  fileName: WildGraceVideoContentSupportBingoCard.pdf
-  fileURL: https://content.wildgracevideo.com/freebies/CONTENT_SUPPORT_BINGO_CARD.pdf
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
-sitemap:
-  include: true
-  lastmod: 2024-09-14
-  loc: /
-  changefreq: monthly
 aboutMeImage: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
-testimonialQuotes:
-  - quote: Carly was so great to work with! She listened to every detail I wanted to
-      be included, and took creative responsibility during the shoots to ensure
-      she had everything she needed.
-    author: Lauren Klein, Genesee Nutrition
-  - quote: Carly has great energy and enthusiasm, combined with maturity, knowledge
-      and skill in her field of work. The final product was very impressive and
-      exceeded our expectations.
-    author: Nathan Baller, Abode Outside
+trustedBrandLogos:
+  - companyName: The Curtis Hotel
+    altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
+      themed rooms.
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/curtis.webp
+    width: 200
+  - companyName: Genesee Nutrition
+    altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
+      adventurers.
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/genesee.webp
+    width: 100
+  - companyName: Smith & Meade
+    altText: Logo of Smith & Meade, Denver-based developer of homes that are well
+      designed, and well lived.
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/smith-and-meade.svg
+    width: 300
+  - companyName: Abode Outside
+    altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/abode-outside.svg
+    width: 200
+  - altText: Logo of The Surf Hotel, a boutique hotel in adventurous Buena Vista,
+      Colorado, ideal for romantic getaways, mountain weddings, or corporate
+      events.
+    companyName: The Surf Hotel
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
+    width: 150
 faq:
   title: FREQUENTLY ASKED QUESTIONS
   questions:
@@ -267,15 +281,6 @@ aboutMeDescription: >-
 
 
   I feel beyond fortunate that I have been able to combine my love for creativity and video into my own business and I’m excited to share that same energy and excitement with you.
-caseStudies:
-  - file:
-      seoTitle: Wild Grace Productions Video Marketing Case Study for VanEssential
-      seoDescription: Wild Grace Productions Video Marketing Case Study for VanEssential
-      publicationDate: 2025-03-17T16:53:00.000Z
-      file: https://content.wildgracevideo.com/images/HomePage/vanessential_cropped.png
-    title: VANESSENTIAL
-    description: Outdoor Product Paid Ads + Instructional Videos
-    pagePath: /case-studies/van-essential
 adventureContentPartnership:
   accentFile:
     publicationDate: 2025-04-01T20:55:00.000Z
@@ -299,10 +304,5 @@ adventureContentPartnership:
     A video package that will help you boost engagement during the “off-season,” build brand awareness effortlessly, and drive direct sales through your website.
   callToAction: How it works
 videoTitle: Video reel showcasing the work of Wild Grace Videography.
-pageTagline: Wild Grace Productions is a Denver-based video production company
-  specializing in creating video and photo content for premium outdoor, travel,
-  and adventure brands. We're here for the brands that embrace dreamy escapes
-  and wild adventures—those that confidently stand out and stay true to who they
-  are. They want to be bold, inspiring, and refreshingly different.
 videoHighlightTitle: MAINTAIN CONSISTENT BRANDING **AT SCALE.**
 ---
