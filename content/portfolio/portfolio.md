@@ -59,6 +59,13 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Genesee Nutrition's protein bars.
       publicationDate: 2024-04-11T15:04:00.000Z
+  - title: ADVENTURE TRAVEL TRADE ASSOCIATION
+    videoInfo:
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/ATTA/ATTA_Elevate_Denver_Promo_V2/ATTA_Elevate_Denver_Promo_V2.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/ATTA/ATTA_Thumbnail.png
+      seoTitle: Adventure Travel Trade Association Elevate Denver Promotional Video
+      seoDescription: Adventure Travel Trade Association Elevate Denver Promotional Video
+      publicationDate: 2025-08-18T15:56:00.000-06:00
 youtubeVideos:
   - title: The Curtis Hotel
     description: Teaser/Promo Video
