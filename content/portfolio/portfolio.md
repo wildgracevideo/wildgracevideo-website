@@ -42,6 +42,13 @@ videos:
       publicationDate: 2024-10-11T18:51:00.000Z
       video: http://localhost
     pagePath: /case-studies/van-essential
+  - title: WHITEDUCK OUTDOORS
+    videoInfo:
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/WhiteDuck/Trim_SunshadeConfigurations/Trim_SunshadeConfigurations.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/WhiteDuck/WHITEDUCK_Thumbnail.png
+      seoTitle: Whitduck Outdoors Sunshade Configurations Video
+      seoDescription: Whitduck Outdoors Sunshade Configurations Video
+      publicationDate: 2025-08-18T16:01:00.000-06:00
   - videoInfo:
       publicationDate: 2024-04-11T15:05:00.000Z
       video: https://content.wildgracevideo.com/videos/Website-Portfolio/CurtisHotel/TheCurtisSalesPitchV4/TheCurtisSalesPitchV4.mpd
@@ -59,6 +66,13 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         outdoor brands, highlighting Genesee Nutrition's protein bars.
       publicationDate: 2024-04-11T15:04:00.000Z
+  - title: ADVENTURE TRAVEL TRADE ASSOCIATION
+    videoInfo:
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/ATTA/ATTA_Elevate_Denver_Promo_V2/ATTA_Elevate_Denver_Promo_V2.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/ATTA/ATTA_Thumbnail.png
+      seoTitle: Adventure Travel Trade Association Elevate Denver Promotional Video
+      seoDescription: Adventure Travel Trade Association Elevate Denver Promotional Video
+      publicationDate: 2025-08-18T15:56:00.000-06:00
 youtubeVideos:
   - title: The Curtis Hotel
     description: Teaser/Promo Video
