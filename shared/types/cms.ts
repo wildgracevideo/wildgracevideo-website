@@ -48,9 +48,7 @@ export interface CmsServices {
   solution: CmsServicesSolution;
   adventureContentPartnership: CmsServicesAdventureContentPartnership;
   howItWorks: CmsServicesHowItWorks;
-  quarterlyProcess: CmsServicesQuarterlyProcess;
   results: CmsServicesResults;
-  packages: CmsServicesPackages;
   testimonial: CmsServicesTestimonial;
   ready: CmsServicesReady;
   urgency: CmsServicesUrgency;
@@ -386,36 +384,11 @@ export interface CmsServicesHowItWorks {
   items: CmsServicesHowItWorksItemsItem[];
 }
 
-export interface CmsServicesQuarterlyProcessStepsItem {
-  title: string;
-  description: string;
-}
-
-export interface CmsServicesQuarterlyProcess {
-  title: string;
-  subtitle: string;
-  steps: CmsServicesQuarterlyProcessStepsItem[];
-  footerTitle: string;
-}
-
 export interface CmsServicesResults {
   title: string;
   description: string;
   callToAction: string;
   file: FileInfo;
-}
-
-export interface CmsServicesPackagesItemsItem {
-  title: string;
-  offering: string;
-  pricing: string;
-}
-
-export interface CmsServicesPackages {
-  title: string;
-  callToAction: string;
-  backgroundImage: FileInfo;
-  items: CmsServicesPackagesItemsItem[];
 }
 
 export interface CmsServicesTestimonial {
