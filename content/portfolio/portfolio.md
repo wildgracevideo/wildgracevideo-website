@@ -73,6 +73,13 @@ videos:
       seoTitle: Adventure Travel Trade Association Elevate Denver Promotional Video
       seoDescription: Adventure Travel Trade Association Elevate Denver Promotional Video
       publicationDate: 2025-08-18T15:56:00.000-06:00
+  - title: EXPNTL ATHLETICS
+    videoInfo:
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/Expntl/Expntl_Doc_Commercial_V1/Expntl_Doc_Commercial_V1.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/EXPNTL_thumbnail.jpg
+      seoTitle: Expntl Athletics Brand Documentary
+      seoDescription: Expntl Athletics Brand Documentary
+      publicationDate: 2025-08-20T09:18:00.000-06:00
 youtubeVideos:
   - title: The Curtis Hotel
     description: Teaser/Promo Video
