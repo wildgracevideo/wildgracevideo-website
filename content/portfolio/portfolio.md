@@ -8,6 +8,13 @@ sitemap:
 mainReelAlt: Video reel showcasing the work of Wild Grace Videography.
 title: Denver Video Production Company | Wild Grace Video Portfolio
 videos:
+  - title: EXPNTL ATHLETICS
+    videoInfo:
+      video: https://content.wildgracevideo.com/videos/Website-Portfolio/Expntl/Expntl_Doc_Commercial_V1/Expntl_Doc_Commercial_V1.mpd
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/EXPNTL_thumbnail.jpg
+      seoTitle: Expntl Athletics Brand Documentary
+      seoDescription: Expntl Athletics Brand Documentary
+      publicationDate: 2025-08-20T09:18:00.000-06:00
   - videoInfo:
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/GraniteGear/GGThumbnail.png
       seoTitle: "Granite Gear: Backpacks for Outdoor Enthusiasts | Video Portfolio"
