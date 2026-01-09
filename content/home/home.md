@@ -251,37 +251,38 @@ faq:
       question: How do I know what kind of video I need?
     - question: Do you offer packages or custom pricing?
       answer: >-
-        Yes. I offer** [quarterly content packages](<>)** for brands that want
+        Yes, both. I offer [quarterly content
+        packages](https://www.wildgracevideo.com/services) for brands that want
         to put out ongoing social content, seasonal campaigns, or regular
-        product launches. I offer **custom proposals** for one-off projects like
+        product launches. I offer custom proposals for one-off projects like
         brand films, commercials, or larger campaigns.
 
 
         If you’re not sure which is right, we’ll help you choose the most effective option for your budget and goals.
     - question: How much does professional video typically cost?
       answer: >-
-        Professional video production pricing can vary depending on
-        deliverables, day-of production needs, and usage. Most projects fall
-        into an **investment range of $2k - $10k.**
+        Professional video production pricing varies based on deliverables,
+        day-of production needs, and usage. Most of my client's projects fall
+        within a $5k–$10k investment range.
 
 
-        After a 30-min Discovery Call, we'll provide a clear and transparent proposal within 24-48 hours.
+        After a 30-min Discovery Call, we'll deliver a clear, transparent proposal within 24-48 hours.
     - question: When will I receive the final video(s)?
       answer: >-
-        Timelines vary by project, but most videos are delivered within **2–3
-        weeks after filming**. This includes editing, color grading, and sound
+        Timelines vary by project, but most videos are delivered within 2–3
+        weeks after filming. This includes editing, color grading, and sound
         design. 
 
 
         If you have a specific deadline (launch, event, campaign), we’ll build the timeline around that and discuss any expedited options upfront.
     - question: Where are you located, and do you travel?
-      answer: I am based in **Denver, Colorado** and available for projects statewide,
+      answer: I am based in Denver, Colorado and available for projects statewide,
         nationwide, and internationally.
     - question: What's the first step to get started?
       answer: >-
-        The first step is to book your **30-min Discovery Call**. This allows me
-        to learn more about your business, goals, and timeline. From there, I’ll
-        provide a proposal for your review within 24-48 hours.
+        The first step is to book your 30-min Discovery Call. This allows me to
+        learn more about your business, goals, and timeline. From there, I’ll
+        deliver a proposal for your review within 24-48 hours.
 
 
         You can inquire through my website [Contact Form](https://www.wildgracevideo.com/get-started) to get started.
