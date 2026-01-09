@@ -237,54 +237,54 @@ trustedBrandLogos:
 faq:
   title: FREQUENTLY ASKED QUESTIONS
   questions:
-    - question: Do you offer both video and photo services?
-      answer: Yes. while my primary focus is video production, I also offer
-        professional photography as an add-on service. This is ideal for brands
-        that need both video content and high-quality images for their website,
-        social media, and marketing materials.
-    - question: How much does a video project cost?
-      answer: Pricing depends on the scope of the project, the number of videos, and
-        the complexity of the shoot. I offer quarterly retainer options, one-off
-        packages, and consulting to fit different business needs. View the
-        Services Page for my starting at rates.
-    - question: How long does the video production process take?
-      answer: |-
-        The timeline varies based on the project, but typically:
+    - question: What types of businesses do you work with?
+      answer: I work primarily with boutique hotels, outdoor brands and adventure tour
+        companies. I also have extensive experience working with service-based
+        companies that value high-quality storytelling and a strong visual
+        identity.
+    - answer: >-
+        Most clients come to us knowing they need video, but not always sure
+        *what* kind. That’s completely normal.
 
 
-        Strategy Consult: 1 week
-        Pre-production: 1 week
-        Filming: 1-2 days (depending on scope)
-        Editing: 1-2 weeks
-
-
-        I’ll provide a clear timeline once we understand your project needs.
-    - question: Do you travel for shoots?
-      answer: Yes! I’m based in Denver, CO, but I work with brands across the U.S. and
-        internationally. Travel fees may apply for locations outside the
-        standard service area.
-    - question: Do you offer monthly or quarterly content packages?
-      answer: Yes, I offer ongoing content creation packages for brands that need
-        fresh video content every month. The shoots take place once per quarter,
-        but enough content is captured during those shoots and are delivered
-        strategically every month. This is ideal for brands looking to build a
-        consistent social media presence. Check out my quarterly packages within
-        the Adventure Content Partnership here.
-    - question: How do we get started?
+        In our initial Discovery Call, I'll ask you specific questions about your business and goals. From there, I can recommend the right video types and strategy to help you achieve those goals
+      question: How do I know what kind of video I need?
+    - question: Do you offer packages or custom pricing?
       answer: >-
-        It’s simple! Here’s how the process works:
+        Yes. I offer** [quarterly content packages](<>)** for brands that want
+        to put out ongoing social content, seasonal campaigns, or regular
+        product launches. I offer **custom proposals** for one-off projects like
+        brand films, commercials, or larger campaigns.
 
 
+        If you’re not sure which is right, we’ll help you choose the most effective option for your budget and goals.
+    - question: How much does professional video typically cost?
+      answer: >-
+        Professional video production pricing can vary depending on
+        deliverables, day-of production needs, and usage. Most projects fall
+        into an **investment range of $2k - $10k.**
 
-        1. Fill out my [contact form](https://www.wildgracevideo.com/get-started) to get your Discovery Call scheduled.
 
-        2. I’ll finalize a proposal based on what we’ve discussed.
+        After a 30-min Discovery Call, we'll provide a clear and transparent proposal within 24-48 hours.
+    - question: When will I receive the final video(s)?
+      answer: >-
+        Timelines vary by project, but most videos are delivered within **2–3
+        weeks after filming**. This includes editing, color grading, and sound
+        design. 
 
-        3. Once approved, we schedule your shoot and get your content out there. 
+
+        If you have a specific deadline (launch, event, campaign), we’ll build the timeline around that and discuss any expedited options upfront.
+    - question: Where are you located, and do you travel?
+      answer: I am based in **Denver, Colorado** and available for projects statewide,
+        nationwide, and internationally.
+    - question: What's the first step to get started?
+      answer: >-
+        The first step is to book your **30-min Discovery Call**. This allows me
+        to learn more about your business, goals, and timeline. From there, I’ll
+        provide a proposal for your review within 24-48 hours.
 
 
-
-        Ready to create content that stands out? [Book your call](https://www.wildgracevideo.com/get-started) today!
+        You can inquire through my website [Contact Form](https://www.wildgracevideo.com/get-started) to get started.
 aboutMeDescription: >-
   I'm Carly, and creating videos is my thing. After graduating from the
   University of Vermont (Go Catamounts!) I made the decision to pack my bags and
