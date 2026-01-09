@@ -243,7 +243,7 @@ faq:
         companies that value high-quality storytelling and a strong visual
         identity.
     - answer: >-
-        Most clients come to us knowing they need video, but not always sure
+        Most clients come to me knowing they need video, but not always sure
         *what* kind. That’s completely normal.
 
 
@@ -258,7 +258,7 @@ faq:
         brand films, commercials, or larger campaigns.
 
 
-        If you’re not sure which is right, we’ll help you choose the most effective option for your budget and goals.
+        If you’re not sure which is right, I’ll help you choose the most effective option for your budget and goals.
     - question: How much does professional video typically cost?
       answer: >-
         Professional video production pricing varies based on deliverables,
@@ -266,7 +266,7 @@ faq:
         within a $5k–$10k investment range.
 
 
-        After a 30-min Discovery Call, we'll deliver a clear, transparent proposal within 24-48 hours.
+        After a 30-min Discovery Call, I'll deliver a clear, transparent proposal within 24-48 hours.
     - question: When will I receive the final video(s)?
       answer: >-
         Timelines vary by project, but most videos are delivered within 2–3
@@ -274,7 +274,7 @@ faq:
         design. 
 
 
-        If you have a specific deadline (launch, event, campaign), we’ll build the timeline around that and discuss any expedited options upfront.
+        If you have a specific deadline (launch, event, campaign), I’ll build the timeline around that and discuss any expedited options upfront.
     - question: Where are you located, and do you travel?
       answer: I am based in Denver, Colorado and available for projects statewide,
         nationwide, and internationally.
