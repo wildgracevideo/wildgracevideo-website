@@ -86,11 +86,6 @@
             href: '/services',
             type: HeaderItem,
         },
-        {
-            name: 'SHOP',
-            type: HeaderItem,
-            href: '/shop',
-        },
     ];
 
     const props = defineProps<{
