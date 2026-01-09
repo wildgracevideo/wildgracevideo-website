@@ -186,24 +186,15 @@ aboutMeAltText: TODO
 aboutMeTitle: MEET YOUR **ADVENTURE-LOVING VIDEOGRAPHER**
 aboutMeImage: https://content.wildgracevideo.com/images/Website-Home-Page/carly-headshot.webp
 trustedBrandLogos:
-  - companyName: The Curtis Hotel
-    altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
-      themed rooms.
-    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/curtis.webp
-    width: 200
   - companyName: Genesee Nutrition
     altText: Logo of Genesee Nutrition, a protein bar company fueling Colorado
       adventurers.
     image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/genesee.webp
     width: 100
-  - companyName: Smith & Meade
-    altText: Logo of Smith & Meade, Denver-based developer of homes that are well
-      designed, and well lived.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/smith-and-meade.svg
-    width: 300
-  - companyName: Abode Outside
-    altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
-    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/abode-outside.svg
+  - companyName: The Curtis Hotel
+    altText: Logo of The Curtis Hotel, a downtown Denver boutique hotel offering
+      themed rooms.
+    image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/curtis.webp
     width: 200
   - altText: Logo of The Surf Hotel, a boutique hotel in adventurous Buena Vista,
       Colorado, ideal for romantic getaways, mountain weddings, or corporate
@@ -211,6 +202,48 @@ trustedBrandLogos:
     companyName: The Surf Hotel
     image: https://content.wildgracevideo.com/images/Website-Home-Page/Client-Logos/surf-hotel.webp
     width: 150
+  - width: 112
+    companyName: Whiteduck Outdoors
+    altText: Logo of Whiteduck Outdoors, a top-quality company for camping tent,
+      gear, and more. Best for luxury safari, camping, glamping, hunting, music
+      festivals, and family trips.
+    image: https://content.wildgracevideo.com/images/HomePage/whiteducklogo.png
+  - width: 112
+    companyName: Snooze Eatery
+    image: https://content.wildgracevideo.com/images/HomePage/snoozelogo.png
+    altText: Logo of Snooze Eatery, a popular national breakfast and brunch
+      breakfast restaurant spot and experience.
+  - width: 112
+    companyName: Adventure Travel Trade Association
+    image: https://content.wildgracevideo.com/images/HomePage/ATTA-Logo_Positive-3000px.png
+    altText: Logo of Adventure Travel Trade Association, the largest global network
+      of adventure travel leaders
+  - width: 112
+    companyName: Colorado Department of Public Health and Environment and Colorado
+      Green Business Network
+    altText: Logo of Colorado Department of Public Health and Environment and
+      Colorado Green Business Network, an organization that encourages, supports
+      and rewards organizations that push toward true operational
+      sustainability.
+    image: https://content.wildgracevideo.com/images/HomePage/CO-CGBNLogo.png
+  - width: 112
+    image: https://content.wildgracevideo.com/images/HomePage/Hotel-Teatro-Logo-1.webp
+    companyName: Hotel Teatro
+    altText: Logo of Hotel Teatro, a historic boutique hotel located in downtown Denver.
+  - companyName: Abode Outside
+    altText: Logo of Abode Outside, an outdoor clothing store headquarted in Minnesota.
+    image: https://content.wildgracevideo.com/Website-Home-Page/Client-Logos/abode-outside.svg
+    width: 200
+  - width: 112
+    image: https://content.wildgracevideo.com/images/HomePage/HRL_Logo.png
+    companyName: Honeyrock Landing
+    altText: Logo of Honeyrock Landing, an agritourism farm in western Colorado
+      featuring orchards and cave suites for a boutique hotel experience.
+  - width: 112
+    image: https://content.wildgracevideo.com/images/HomePage/Expntl_Athleticslogo.png
+    companyName: Expntl Athletics
+    altText: Logo of Expntl Athletics, a premium athletic-wear company designed
+      specifically for high intensity workouts, and running.
 faq:
   title: FREQUENTLY ASKED QUESTIONS
   questions:
