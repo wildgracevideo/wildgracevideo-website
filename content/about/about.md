@@ -139,34 +139,57 @@ trust:
         industry who inspire growth and make the journey enjoyable. We’re here
         because we love what we do—supporting each other only makes us stronger.
 faq:
-  title: "**FREQUENTLY ASKED QUESTIONS**"
+  title: FREQUENTLY ASKED QUESTIONS
   questions:
-    - question: "**Do you offer both photo and video services?**"
-      answer: We specialize in video production but can also offer photography
-        services upon request. Whether you're seeking a stunning video
-        production, captivating photography, or a combination of both, we're
-        committed to meeting your creative needs and bringing your vision to
-        life.
-    - question: "**What is the turnaround time?**"
-      answer: Turnaround time varies based on the project scope and we will provide an
-        estimated timeline during the Discovery Call. However, the majority of
-        our projects have a 2-week turnaround time from the last shoot date.
-    - question: "**How involved are you in the planning and storyboarding process?**"
-      answer: We are adaptable to your preferences. Typically, we take the lead in
-        planning and storyboarding based on the insights gathered during our
-        discovery call and pre-production meeting. However, we welcome your
-        involvement at any level—whether you prefer a hands-on approach in
-        planning every detail or entrusting us to handle the creative process,
-        we're here to accommodate your needs and vision.
-    - question: "**Are we able to select the music for our video?**"
-      answer: Typically, we curate music based on our expertise and the flow of the
-        editing process. We have access to a wide range of quality, royalty-free
-        tracks from a subscription platform. However, we value your preferences.
-        If you have specific genre ideas or would like to be presented with song
-        options, we're more than happy to provide you with a selection to choose
-        from. Otherwise, rest assured that we'll select music that complements
-        the video seamlessly, drawing from my experience and creative instincts
-        which have been successful in past projects.
+    - question: What types of businesses do you work with?
+      answer: I work primarily with boutique hotels, outdoor brands and adventure tour
+        companies. I also have extensive experience working with service-based
+        companies that value high-quality storytelling and a strong visual
+        identity.
+    - question: How do I know what kind of video I need?
+      answer: >-
+        Most clients come to me knowing they need video, but not always
+        sure *what* kind. That’s completely normal.
+
+
+        In our initial Discovery Call, I'll ask you specific questions about your business and goals. From there, I can recommend the right video types and strategy to help you achieve those goals
+    - question: Do you offer packages or custom pricing?
+      answer: >-
+        Yes, both. I offer [quarterly content
+        packages](https://www.wildgracevideo.com/services)[](https://www.wildgracevideo.com/services) for
+        brands that want to put out ongoing social content, seasonal campaigns,
+        or regular product launches. I offer custom proposals for one-off
+        projects like brand films, commercials, or larger campaigns.
+
+
+        If you’re not sure which is right, I’ll help you choose the most effective option for your budget and goals.
+    - question: How much does professional video typically cost?
+      answer: >-
+        Professional video production pricing varies based on deliverables,
+        day-of production needs, and usage. Most of my client's projects fall
+        within a $5k–$10k investment range.
+
+
+        After a 30-min Discovery Call, I'll deliver a clear, transparent proposal within 24-48 hours.
+    - question: When will I receive the final video(s)?
+      answer: >-
+        Timelines vary by project, but most videos are delivered within 2–3
+        weeks after filming. This includes editing, color grading, and sound
+        design.
+
+
+        If you have a specific deadline (launch, event, campaign), I’ll build the timeline around that and discuss any expedited options upfront.
+    - question: Where are you located, and do you travel?
+      answer: I am based in Denver, Colorado and available for projects statewide,
+        nationwide, and internationally.
+    - question: What's the first step to get started?
+      answer: >-
+        The first step is to book your 30-min Discovery Call. This allows me to
+        learn more about your business, goals, and timeline. From there, I’ll
+        deliver a proposal for your review within 24-48 hours.
+
+
+        You can inquire through my website [Contact Form](https://www.wildgracevideo.com/get-started) to get started.
 background:
   - title: SPRING 2019
     description: Graduated from the University of Vermont with a degree in
