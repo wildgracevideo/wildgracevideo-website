@@ -65,14 +65,6 @@ videos:
       seoDescription: Explore our dynamic video portfolio, customized for Denver's
         boutique hotels, highlighting The Curtis Hotel.
     title: THE CURTIS HOTEL
-  - videoInfo:
-      video: http://localhost
-      seoTitle: Test
-      seoDescription: Test
-      publicationDate: 2026-01-11T13:41:00.000-07:00
-      thumbnailImage: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.insidehook.com%2Fwp-content%2Fuploads%2F2022%2F11%2Fbob-weir.jpg%3Ffit%3D1024%252C683&f=1&nofb=1&ipt=d1711a07b7b3e005d0ae4d948f5f5e2a47e14ab2733de6ccdf91733576b5d08b
-    pagePath: /case-study/test
-    title: Test
   - title: GENESSEE NUTRITION
     videoInfo:
       video: https://content.wildgracevideo.com/videos/Website-Portfolio/GeneseeNutrition/GeneseeFlagshipWebsiteVideo/GeneseeFlagshipWebsiteVideo.mpd
