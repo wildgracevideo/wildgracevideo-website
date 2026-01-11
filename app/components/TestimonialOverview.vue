@@ -3,8 +3,8 @@
         class="bg-website-tertiary text-website-off-white flex flex-col-reverse items-center px-4 py-16 lg:flex-row lg:px-16"
     >
         <FileOrVideo
-            parent-class="pointer-events-none relative z-0 cursor-default lg:w-1/3 w-4/5 aspect-photo mx-auto lg:my-16 my-4 shrink-0"
-            class="aspect-photo w-full object-cover object-center"
+            parent-class="pointer-events-none z-0 cursor-default mx-auto lg:my-16 my-4 shrink-0"
+            class="rendering-crisp-edges aspect-square h-56 w-56 rounded-[50%] object-cover object-center"
             :file="testimonial.file"
             sizes="2xl:800px xl:615px lg:512px 410px"
             :with-sound-control="false"

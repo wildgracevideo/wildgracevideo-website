@@ -54,7 +54,8 @@
         "dbview": "npx drizzle-kit studio",
         "prd-dbview": "npx drizzle-kit studio --config prd.drizzle.config.ts",
         "migrate": "MIGRATE_ENV=dev npx tsx migrate.ts",
-        "prd-migrate": "MIGRATE_ENV=prd npx tsx migrate.ts"
+        "prd-migrate": "MIGRATE_ENV=prd npx tsx migrate.ts",
+        "decap-server": "npx decap-server"
     },
     "type": "module",
     "dependencies": {

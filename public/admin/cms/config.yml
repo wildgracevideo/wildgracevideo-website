@@ -2,13 +2,13 @@ backend:
     name: github
     branch: main
     repo: wildgracevideo/wildgracevideo-website
-    base_url: http://localhost:3000
+    base_url: https://www.wildgracevideo.com
 
 media_folder: public/uploads
 public_folder: /uploads
 
 # If running locally and seeing unauthorized errors make sure `npx decap-server` is running
-local_backend: true
+local_backend: false
 
 publish_mode: editorial_workflow
 
@@ -23,7 +23,7 @@ VideoInfo: &videoInfo
               config:
                   multiple: false
         - {
-              label: 'Thumbnail Image (Optional)',
+              label: 'Thumbnail Image',
               name: 'thumbnailImage',
               widget: 'image',
               choose_url: true,
@@ -323,7 +323,7 @@ collections:
                   required: false
                   <<: *videoInfo
                 - {
-                      label: 'Page Path (i.e. /case-studies/van-essential)',
+                      label: 'Page Path (i.e. /case-studies/van-essential or /case-study/test)',
                       name: 'pagePath',
                       widget: 'string',
                       required: false,
@@ -573,7 +573,7 @@ collections:
                             - label: 'Call To Action'
                               name: callToAction
                               widget: string
-                            - label: 'Call To Action Path (i.e. /case-studies/van-essential)'
+                            - label: 'Call To Action Path (i.e. /case-studies/van-essential or /case-study/test)'
                               name: callToActionPath
                               widget: string
           - label: 'Testimonial'
@@ -1235,7 +1235,7 @@ collections:
                   summary: '{{fields.seoTitle}}'
                   <<: *fileInfo
                 - {
-                      label: 'Page Path (i.e. /case-studies/van-essential)',
+                      label: 'Page Path (i.e. /case-studies/van-essential or /case-study/test)',
                       name: 'pagePath',
                       widget: 'string',
                       required: false,
@@ -1521,7 +1521,7 @@ collections:
                   summary: '{{fields.seoTitle}}'
                   <<: *fileInfo
                 - {
-                      label: 'Page Path (i.e. /case-studies/van-essential)',
+                      label: 'Page Path (i.e. /case-studies/van-essential or /case-study/test)',
                       name: 'pagePath',
                       widget: 'string',
                       required: false,
@@ -1693,7 +1693,7 @@ collections:
       create: true
       identifier_field: 'path'
       slug: '{{slug}}'
-      preview_path: 'case-studies/{{slug}}'
+      preview_path: 'case-study/{{slug}}'
       editor:
           preview: false
       fields:
@@ -1842,3 +1842,148 @@ collections:
                   widget: 'list'
                   summary: '{{fields.seoTitle}}'
                   <<: *fileInfo
+
+    - name: 'case-study-2'
+      label: 'Case Study 2'
+      folder: 'content/case-study-2'
+      format: 'frontmatter'
+      create: true
+      identifier_field: 'path'
+      slug: '{{slug}}'
+      preview_path: 'case-study/{{slug}}'
+      editor:
+          preview: false
+      fields:
+          - label: 'Sitemap'
+            name: 'sitemap'
+            widget: 'object'
+            <<: *sitemap
+          - label: 'SEO Title (About 125 characters)'
+            name: 'seoTitle'
+            widget: 'string'
+          - label: 'SEO Description (About 150-160 characters)'
+            name: seoDescription
+            widget: 'text'
+          - label: 'Path (All lowercase, separate words with -, no starting /) DO NOT CHANGE ONCE CREATED'
+            widget: 'string'
+            name: 'path'
+          - label: 'Webpage Preview File'
+            name: 'webpagePreviewFile'
+            widget: 'file'
+            required: false
+            media_library:
+                allow_multiple: false
+                choose_url: true
+          - {
+                label: 'Page Title',
+                name: 'pageTitle',
+                widget: 'markdown',
+                minimal: true,
+                modes: ['rich_text'],
+            }
+          - {
+                label: 'Page Subtitle',
+                name: 'pageSubtitle',
+                widget: 'markdown',
+                minimal: true,
+                modes: ['rich_text'],
+            }
+          - {
+                label: 'Overview Video',
+                name: 'overviewVideo',
+                widget: 'object',
+                summary: '{{fields.seoTitle}}',
+                <<: *videoInfo,
+            }
+          - {
+                label: 'Behind the Scenes Files',
+                name: 'btsFiles',
+                widget: 'list',
+                summary: '{{fields.seoTitle}}',
+                <<: *fileInfo,
+            }
+          - label: 'Problem Process Result Section'
+            name: 'problemProcessResultSection'
+            widget: 'object'
+            fields:
+                - {
+                      label: 'Problem Text',
+                      name: 'problemText',
+                      widget: 'markdown',
+                      minimal: true,
+                      modes: ['rich_text'],
+                  }
+                - {
+                      label: 'Process Text',
+                      name: 'processText',
+                      widget: 'markdown',
+                      minimal: true,
+                      modes: ['rich_text'],
+                  }
+                - {
+                      label: 'Result Text',
+                      name: 'resultText',
+                      widget: 'markdown',
+                      minimal: true,
+                      modes: ['rich_text'],
+                  }
+                - label: 'Files'
+                  name: 'files'
+                  widget: 'list'
+                  summary: '{{ fields.seoTitle }}'
+                  fields:
+                      - label: 'File'
+                        name: 'file'
+                        widget: 'file'
+                        media_library:
+                            allow_multiple: false
+                            choose_url: true
+                            config:
+                                multiple: false
+                                max_file_size: 4096000
+                      - {
+                            label: 'Thumbnail Image (Optional for Video, not needed for Image)',
+                            name: 'thumbnailImage',
+                            widget: 'image',
+                            choose_url: true,
+                            allow_multiple: false,
+                            required: false,
+                        }
+                      - label: 'SEO File Title (About 125 characters)'
+                        name: seoTitle
+                        widget: 'text'
+                      - label: 'SEO File Description (About 150-160 characters)'
+                        name: seoDescription
+                        widget: 'text'
+                      - label: 'Publication Date (Change only if changing the file)'
+                        name: publicationDate
+                        widget: 'datetime'
+                      - label: 'Is Vertical'
+                        default: false
+                        name: 'isVertical'
+                        widget: 'boolean'
+          - label: 'Testimonial Section'
+            name: 'testimonialSection'
+            widget: 'object'
+            summary: '{{fields.author}}'
+            fields:
+                - label: 'Author'
+                  name: author
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'Comment'
+                  name: comment
+                  widget: 'markdown'
+                  modes: ['rich_text']
+                  minimal: true
+                - label: 'File'
+                  name: 'file'
+                  widget: 'object'
+                  summary: '{{fields.seoTitle}}'
+                  <<: *fileInfo
+          - label: 'Behind The Scenes Video'
+            name: 'btsVideo'
+            widget: 'object'
+            summary: '{{fields.seoTitle}}'
+            <<: *fileInfo

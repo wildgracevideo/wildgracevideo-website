@@ -1,3 +1,18 @@
+export interface CmsCaseStudy2 {
+  sitemap: Sitemap;
+  seoTitle: string;
+  seoDescription: string;
+  path: string;
+  webpagePreviewFile?: string;
+  pageTitle: string;
+  pageSubtitle: string;
+  overviewVideo: VideoInfo;
+  btsFiles: CmsCaseStudy2BtsFilesItem[];
+  problemProcessResultSection: CmsCaseStudy2ProblemProcessResultSection;
+  testimonialSection: CmsCaseStudy2TestimonialSection;
+  btsVideo: FileInfo;
+}
+
 export interface CmsCaseStudy {
   sitemap: Sitemap;
   seoTitle: string;
@@ -582,4 +597,34 @@ export interface CmsCaseStudyBtsFilesItem {
 
 export interface CmsCaseStudyBts {
   files: CmsCaseStudyBtsFilesItem[];
+}
+
+export interface CmsCaseStudy2BtsFilesItem {
+  file: string;
+  thumbnailImage?: string;
+  seoTitle: string;
+  seoDescription: string;
+  publicationDate: string;
+}
+
+export interface CmsCaseStudy2ProblemProcessResultSectionFilesItem {
+  file: string;
+  thumbnailImage?: string;
+  seoTitle: string;
+  seoDescription: string;
+  publicationDate: string;
+  isVertical: boolean;
+}
+
+export interface CmsCaseStudy2ProblemProcessResultSection {
+  problemText: string;
+  processText: string;
+  resultText: string;
+  files: CmsCaseStudy2ProblemProcessResultSectionFilesItem[];
+}
+
+export interface CmsCaseStudy2TestimonialSection {
+  author: string;
+  comment: string;
+  file: FileInfo;
 }

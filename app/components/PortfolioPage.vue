@@ -27,7 +27,7 @@
                     v-if="item.videoInfo"
                     :src="item.videoInfo.thumbnailImage"
                     :alt="item.videoInfo.seoDescription"
-                    class="h-full w-full brightness-50 duration-300 ease-linear hover:brightness-100"
+                    class="aspect-video h-full w-full object-cover object-center brightness-50 duration-300 ease-linear hover:brightness-100"
                     sizes="lg:1300px md:1024 sm:768px xs:640px 320px"
                 />
             </div>

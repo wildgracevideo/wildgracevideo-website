@@ -225,3 +225,7 @@ html,
 .grecaptcha-badge {
     visibility: hidden !important;
 }
+
+.rendering-crisp-edges {
+    image-rendering: crisp-edges;
+}
