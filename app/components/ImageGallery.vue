@@ -20,7 +20,7 @@
                 <Markdown
                     v-if="!!galleryTitleMarkdown"
                     :markdown-string="galleryTitleMarkdown"
-                    component-class="no-default-format pt-12 text-2xl md:text-5xl md:text-left text-center heading-font mx-auto"
+                    component-class="no-default-format pt-12 text-2xl md:text-5xl md:text-left text-center heading-font mx-auto tracking-wider"
                 />
                 <div ref="selectedHTMLItem" class="p-16">
                     <Markdown

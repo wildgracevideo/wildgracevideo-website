@@ -23,7 +23,7 @@
         <div class="col-span-3 mx-8">
             <Markdown
                 :markdown-string="`# ${pageTitle}`"
-                component-class="no-default-format heading-font text-4xl md:text-5xl md:text-left text-center mb-8 md:mx-16 mx-4"
+                component-class="no-default-format heading-font text-4xl md:text-5xl md:text-left text-center mb-8 md:mx-16 mx-4 tracking-wider"
             />
             <Markdown
                 :markdown-string="pageTagline"
@@ -44,7 +44,7 @@
         />
     </section>
     <Markdown
-        component-class="no-default-format accent-font mb-12 md:ml-8 md:mr-0 ml-auto mr-auto md:text-left text-center mt-20 text-4xl md:text-5xl lg:ml-16"
+        component-class="no-default-format accent-font mb-12 md:ml-8 md:mr-0 ml-auto mr-auto md:text-left text-center mt-20 text-4xl md:text-5xl lg:ml-16 tracking-wider"
         :markdown-string="`## ${homeData!.trustedBrandTitle}`"
     />
     <LogoSlider
@@ -94,7 +94,7 @@
     >
         <Markdown
             :markdown-string="`## ${adventureContentTitle}`"
-            component-class="px-4 heading-font no-default-format text-3xl heading-font text-center lg:hidden block mb-8"
+            component-class="px-4 heading-font no-default-format text-3xl tracking-wider heading-font text-center lg:hidden block mb-8"
         />
         <div class="flex flex-col justify-center lg:flex-row lg:justify-normal">
             <FileOrVideo
@@ -119,7 +119,7 @@
             >
                 <Markdown
                     :markdown-string="`## ${adventureContentTitle}`"
-                    component-class="lg:text-5xl lg:px-16 px-4 heading-font no-default-format text-3xl heading-font lg:text-left text-center lg:block hidden"
+                    component-class="lg:text-5xl lg:px-16 px-4 heading-font no-default-format text-3xl tracking-wider heading-font lg:text-left text-center lg:block hidden"
                 />
                 <Markdown
                     :markdown-string="adventureContentDescription"
@@ -139,7 +139,7 @@
             <div class="bg-website-off-black h-[1px] grow" />
             <Markdown
                 :markdown-string="`## ${videoHighlight.title!}`"
-                component-class="max-w-3xl w-fit px-8 md:mx-auto accent-font no-default-format text-3xl md:text-4xl lg:text-left text-center"
+                component-class="max-w-3xl w-fit px-8 md:mx-auto accent-font no-default-format text-3xl md:text-4xl tracking-wider lg:text-left text-center"
             />
         </div>
         <div class="mx-16 grid grid-cols-1 gap-x-10 lg:grid-cols-3">

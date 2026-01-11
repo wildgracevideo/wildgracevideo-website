@@ -5,7 +5,7 @@
         <div class="order-2 lg:order-1">
             <Markdown
                 :markdown-string="`## ${titleMarkdown}`"
-                component-class="no-default-format strong:font-semibold mb-16 hidden text-4xl lg:block lg:text-5xl heading-font lg:text-left text-center"
+                component-class="no-default-format strong:font-semibold mb-16 hidden text-4xl lg:block lg:text-5xl heading-font lg:text-left text-center tracking-wider"
             />
             <div
                 class="border-website-tertiary -mr-60 hidden border-t lg:block"
