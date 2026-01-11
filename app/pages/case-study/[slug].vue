@@ -62,7 +62,9 @@
                 v-for="file in caseStudyData.problemProcessResultSection.files"
                 :key="file.seoTitle"
                 :parent-class="`pointer-events-none relative z-0 cursor-default mx-auto ${
-                    file.isVertical ? 'aspect-photo w-1/2' : 'aspect-video w-3/4'
+                    file.isVertical
+                        ? 'aspect-photo w-1/2'
+                        : 'aspect-video w-3/4'
                 }`"
                 class="h-full w-full object-cover object-center"
                 :file="file"

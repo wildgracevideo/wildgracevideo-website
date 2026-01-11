@@ -9,6 +9,7 @@
                 '--total-icons': logos.length,
                 '--total-icon-width': `${totalWidth}px`,
                 '--total-icon-width-no-unit': `${totalWidth}`,
+                '--animation-direction': `${isReverse ? 'reverse' : 'normal'}`,
             }"
         >
             <template
@@ -48,6 +49,7 @@
             companyName: string;
             width: number;
         }[];
+        isReverse: boolean;
     }>();
     const totalWidth = props.logos
         .map((it) => it.width)
@@ -94,7 +96,7 @@
                 6s * var(--total-icons) +
                     (var(--total-icon-width-no-unit) / 560) * 1s
             )
-            slide infinite linear;
+            slide infinite linear var(--animation-direction);
     }
 
     .logos img,

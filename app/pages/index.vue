@@ -47,7 +47,16 @@
         component-class="no-default-format accent-font mb-12 md:ml-8 md:mr-0 ml-auto mr-auto md:text-left text-center mt-20 text-4xl md:text-5xl lg:ml-16"
         :markdown-string="`## ${homeData!.trustedBrandTitle}`"
     />
-    <LogoSlider class="mb-32 hidden md:block" :logos="trustedBrandLogos" />
+    <LogoSlider
+        class="mb-12 hidden md:block"
+        :logos="trustedBrandLogos1"
+        :is-reverse="false"
+    />
+    <LogoSlider
+        class="mb-32 hidden md:block"
+        :logos="trustedBrandLogos2"
+        :is-reverse="true"
+    />
     <div class="mx-8 mb-32 grid grid-cols-2 gap-12 md:hidden">
         <div
             v-for="(logo, index) in trustedBrandLogos"
@@ -235,7 +244,10 @@
 </template>
 
 <script setup lang="ts">
-    import type { CmsHome } from '~~/shared/types/cms';
+    import type {
+        CmsHome,
+        CmsHomeTrustedBrandLogosItem,
+    } from '~~/shared/types/cms';
 
     const { data } = await useAsyncData('home', () => {
         return queryCollection('content')
@@ -262,6 +274,11 @@
     const aboutMeStamp = homeData.aboutMe.stamp;
 
     const trustedBrandLogos = homeData.trustedBrandLogos;
+
+    const listSplit = splitListInHalf(trustedBrandLogos);
+    const trustedBrandLogos1 = listSplit.first;
+    const trustedBrandLogos2 = listSplit.second;
+
     const videoHighlight = homeData.videoHighlight;
     const videoHighlightVideos = videoHighlight.videos;
 
@@ -320,4 +337,15 @@
         );
         animatableElements.forEach((element) => observer.observe(element));
     });
+
+    function splitListInHalf(arr: CmsHomeTrustedBrandLogosItem[]) {
+        const firstHalfLength = Math.ceil(arr.length / 2);
+        const firstHalf = arr.slice(0, firstHalfLength);
+        const secondHalf = arr.slice(firstHalfLength);
+
+        return {
+            first: firstHalf,
+            second: secondHalf,
+        };
+    }
 </script>
