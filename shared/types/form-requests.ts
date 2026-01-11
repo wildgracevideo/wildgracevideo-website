@@ -17,6 +17,7 @@ export interface GetStartedSubmitRequest {
     hearChoice: string;
     monthlyTipSignup: boolean;
     businessWebsite?: string | undefined;
+    budget?: string | undefined;
 }
 
 export enum RecaptchaType {

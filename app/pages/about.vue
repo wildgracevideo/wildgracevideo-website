@@ -1,10 +1,10 @@
 <template>
     <OgMeta :title="seoTitle" :description="seoDescription" />
     <SchemaOrgWebPage type="AboutPage" :name="seoTitle" />
-    <div class="bg-website-tertiary text-website-off-white -mt-10 py-50">
+    <div class="bg-website-tertiary text-website-off-white -mt-10 py-40">
         <Markdown
             :markdown-string="`# ${pageTitle}`"
-            component-class="no-default-format mx-4 mb-4 text-center text-3xl lg:text-6xl lg:mx-auto lg:py-12 py-6 heading-font"
+            component-class="no-default-format mx-4 mb-4 text-center text-3xl lg:text-6xl lg:mx-auto lg:py-8 py-3 heading-font"
         />
         <div class="bg-website-off-white mx-auto h-0.25 w-1/3" />
     </div>

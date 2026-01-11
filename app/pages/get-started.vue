@@ -11,11 +11,17 @@
         <RecaptchaLoader />
         <OgMeta :title="pageTitle" :description="description" />
         <SchemaOrgWebPage :name="pageTitle" />
-        <h1 class="mx-auto text-center text-3xl">Contact</h1>
+        <div class="bg-website-tertiary text-website-off-white -mt-10 py-40">
+            <Markdown
+                :markdown-string="`# CONTACT`"
+                component-class="no-default-format mx-4 mb-4 text-center text-3xl lg:text-6xl lg:mx-auto lg:py-8 py-3 heading-font"
+            />
+            <div class="bg-website-off-white mx-auto h-0.25 w-1/3" />
+        </div>
         <div class="mt-16 grid grid-cols-1 md:grid-cols-2">
             <div>
                 <h2 class="mb-16 text-center text-2xl">
-                    We can't wait to hear about your next project!
+                    I can't wait to hear about your next project!
                 </h2>
                 <a
                     class="text-website-primary mx-auto block text-center underline"
@@ -29,7 +35,7 @@
                     :show-email="false"
                 />
             </div>
-            <div class="px-2">
+            <div class="px-2 md:pr-6 md:pl-0">
                 <h2
                     class="text-website-off-black relative top-28 text-center text-4xl"
                     :class="{
@@ -79,7 +85,7 @@
                         type="email"
                         :is-required="isRequired"
                         title-text-class="text-website-off-black"
-                        hint="example@gmail.com"
+                        hint="hello@example.com"
                         :input-class="inputClass"
                     />
                     <RequiredInput
@@ -123,9 +129,19 @@
                         :choices="HEAR_CHOICE"
                         :input-class="inputClass"
                     />
+                    <RequiredDropdownSelect
+                        id="project-budget-dropdown"
+                        v-model="hearChoice"
+                        title="Project Budget"
+                        container-class="mb-2 md:col-span-2 col-span-1"
+                        :is-required="isRequired"
+                        title-text-class="text-website-off-black"
+                        :choices="BUDGET_CHOICE"
+                        :input-class="inputClass"
+                    />
                     <RequiredSelect
                         v-model="monthlyTipSignup"
-                        title="I want to sign up to receive monthly tips on how to create video content that will increase sales! "
+                        title="Yes! Keep me in the loop with practical video strategies that I can apply to my brand"
                         container-class="mb-2 md:col-span-2 col-span-1"
                         :is-required="false"
                         title-text-class="text-website-off-black"
@@ -210,6 +226,13 @@
         { id: 'other-choice', value: 'Other' },
     ];
 
+    const BUDGET_CHOICE = [
+        { id: 'budget-3-5k', value: '$3k - $5k' },
+        { id: 'budget-5-10k', value: '$5k - $10k' },
+        { id: 'budget-10-30k', value: '$10k - $30k' },
+        { id: 'budget-30k+', value: '$30k+' },
+    ];
+
     const firstName = ref('');
     const lastName = ref('');
     const businessName = ref('');
@@ -219,6 +242,7 @@
     const email = ref('');
     const monthlyTipSignup = ref(MONTHLY_TIP_SIGNUP);
     const hearChoice = ref('');
+    const budgetChoice = ref('');
     const phoneErrorMessage = ref('');
 
     const showForm = ref(true);
@@ -274,6 +298,7 @@
                     hearChoice: `${hearChoice.value}`,
                     monthlyTipSignup: monthlyTipSignup.value.length > 0,
                     businessWebsite: `${businessWebsite.value}`,
+                    budget: `${budgetChoice.value}`,
                 };
                 try {
                     await $fetch(`/api/forms/get-started`, {

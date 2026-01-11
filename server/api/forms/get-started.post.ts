@@ -43,6 +43,8 @@ export default defineEventHandler(async (event): Promise<void> => {
           Monthly Tip Signup: ${body.monthlyTipSignup === true ? 'Yes' : 'No'}
           <br />
           Business Website:  ${body.businessWebsite || 'N/A'}
+          <br />
+          Budget: ${body.budget || 'N/A'}
         </body>
     </html>`;
 
