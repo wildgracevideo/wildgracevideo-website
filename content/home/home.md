@@ -205,7 +205,7 @@ trustedBrandLogos:
       events.
     companyName: The Surf Hotel
     image: https://content.wildgracevideo.com/images/HomePage/SurfHotel_BoxLogo2_Color.png
-    width: 200
+    width: 300
   - width: 200
     companyName: Colorado Department of Public Health and Environment and Colorado
       Green Business Network
