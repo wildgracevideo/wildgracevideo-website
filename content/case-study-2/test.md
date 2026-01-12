@@ -3,7 +3,7 @@ sitemap:
   changefreq: monthly
   include: true
   lastmod: 2026-01-11
-seoTitle: Test
+seoTitle: Test Case Study
 seoDescription: Test Case Study
 path: test
 pageTitle: Test Case Study
