@@ -204,7 +204,7 @@ trustedBrandLogos:
       Colorado, ideal for romantic getaways, mountain weddings, or corporate
       events.
     companyName: The Surf Hotel
-    image: https://content.wildgracevideo.com/images/HomePage/surf-logo2.png
+    image: https://content.wildgracevideo.com/images/HomePage/surf-logo3.png
     width: 200
   - width: 200
     companyName: Colorado Department of Public Health and Environment and Colorado
