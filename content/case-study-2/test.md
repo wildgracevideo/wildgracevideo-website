@@ -67,21 +67,21 @@ problemProcessResultSection:
       publicationDate: 2026-01-11T13:04:00.000-07:00
       isVertical: true
 testimonialSection:
-  author: Bob Weir
-  comment: |-
-    “Carly exceeded my expectations with bringing my vision to life and 
-    delivering an epic video for our brand. She listened to every detail I 
-    wanted to be included, and took creative responsibility during the 
-    shoots to ensure she had everything she needed. Highly recommend her for
-     your cinematic needs!”
-  file:
-    file: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.insidehook.com%2Fwp-content%2Fuploads%2F2022%2F11%2Fbob-weir.jpg%3Ffit%3D1024%252C683&f=1&nofb=1&ipt=d1711a07b7b3e005d0ae4d948f5f5e2a47e14ab2733de6ccdf91733576b5d08b
+  - author: Bob Weir
+    comment: |-
+      “Carly exceeded my expectations with bringing my vision to life and 
+      delivering an epic video for our brand. She listened to every detail I 
+      wanted to be included, and took creative responsibility during the 
+      shoots to ensure she had everything she needed. Highly recommend her for
+       your cinematic needs!”
+    file:
+      file: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.insidehook.com%2Fwp-content%2Fuploads%2F2022%2F11%2Fbob-weir.jpg%3Ffit%3D1024%252C683&f=1&nofb=1&ipt=d1711a07b7b3e005d0ae4d948f5f5e2a47e14ab2733de6ccdf91733576b5d08b
+      seoTitle: Test
+      seoDescription: Test
+      publicationDate: 2026-01-11T12:05:00.000-07:00
+btsVideo:
+  - file: https://content.wildgracevideo.com/Website-Portfolio/VanEssential_Compressed/Product%20Overview%20Video%20V2.mp4
     seoTitle: Test
     seoDescription: Test
     publicationDate: 2026-01-11T12:05:00.000-07:00
-btsVideo:
-  file: https://content.wildgracevideo.com/Website-Portfolio/VanEssential_Compressed/Product%20Overview%20Video%20V2.mp4
-  seoTitle: Test
-  seoDescription: Test
-  publicationDate: 2026-01-11T12:05:00.000-07:00
 ---

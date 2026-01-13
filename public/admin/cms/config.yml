@@ -2,13 +2,13 @@ backend:
     name: github
     branch: main
     repo: wildgracevideo/wildgracevideo-website
-    base_url: http://localhost:3000
+    base_url: https://www.wildgracevideo.com
 
 media_folder: public/uploads
 public_folder: /uploads
 
 # If running locally and seeing unauthorized errors make sure `npx decap-server` is running
-local_backend: true
+local_backend: false
 
 publish_mode: editorial_workflow
 
@@ -1964,7 +1964,8 @@ collections:
                         widget: 'boolean'
           - label: 'Testimonial Section'
             name: 'testimonialSection'
-            widget: 'object'
+            widget: 'list'
+            max: 1
             summary: '{{fields.author}}'
             fields:
                 - label: 'Author'
@@ -1984,6 +1985,7 @@ collections:
                   <<: *fileInfo
           - label: 'Behind The Scenes Video'
             name: 'btsVideo'
-            widget: 'object'
+            widget: 'list'
+            max: 1
             summary: '{{fields.seoTitle}}'
             <<: *fileInfo

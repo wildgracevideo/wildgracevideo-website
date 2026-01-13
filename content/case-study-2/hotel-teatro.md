@@ -91,21 +91,21 @@ problemProcessResultSection:
 
     Additional footage was captured to create a versatile clip library for future website updates and social content.
 testimonialSection:
-  file:
+  - file:
+      seoTitle: Hotel Teatro Denver | Boutique Hotel Marketing Video Case Study
+      seoDescription: Hotel Teatro Denver video portfolio featuring boutique hotel
+        video production that highlights luxury interiors, design details, and
+        guest experience.
+      publicationDate: 2026-01-12T17:17:00.000-07:00
+      file: https://content.wildgracevideo.com/images/Website-Portfolio/HotelTeatro/frame1.png
+    author: Megan Pierce, The Curtis Hotel
+    comment: Carly delivered a great product. You can remain confident in her
+      abilities to capture what you are looking for.
+btsVideo:
+  - file: https://content.wildgracevideo.com/images/Website-Portfolio/HotelTeatro/frame4.png
     seoTitle: Hotel Teatro Denver | Boutique Hotel Marketing Video Case Study
     seoDescription: Hotel Teatro Denver video portfolio featuring boutique hotel
-      video production that highlights luxury interiors, design details, and
-      guest experience.
-    publicationDate: 2026-01-12T17:17:00.000-07:00
-    file: https://content.wildgracevideo.com/images/Website-Portfolio/HotelTeatro/frame1.png
-  author: Megan Pierce, The Curtis Hotel
-  comment: Carly delivered a great product. You can remain confident in her
-    abilities to capture what you are looking for.
-btsVideo:
-  file: https://content.wildgracevideo.com/images/Website-Portfolio/HotelTeatro/frame4.png
-  seoTitle: Hotel Teatro Denver | Boutique Hotel Marketing Video Case Study
-  seoDescription: Hotel Teatro Denver video portfolio featuring boutique hotel
-    video production that highlights luxury interiors, design details, and guest
-    experience.
-  publicationDate: 2026-01-12T17:18:00.000-07:00
+      video production that highlights luxury interiors, design details, and guest
+      experience.
+    publicationDate: 2026-01-12T17:18:00.000-07:00
 ---

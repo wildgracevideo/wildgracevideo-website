@@ -9,8 +9,8 @@ export interface CmsCaseStudy2 {
   overviewVideo: VideoInfo;
   btsFiles: CmsCaseStudy2BtsFilesItem[];
   problemProcessResultSection: CmsCaseStudy2ProblemProcessResultSection;
-  testimonialSection: CmsCaseStudy2TestimonialSection;
-  btsVideo: FileInfo;
+  testimonialSection: CmsCaseStudy2TestimonialSectionItem[];
+  btsVideo: CmsCaseStudy2BtsVideoItem[];
 }
 
 export interface CmsCaseStudy {
@@ -623,8 +623,16 @@ export interface CmsCaseStudy2ProblemProcessResultSection {
   files: CmsCaseStudy2ProblemProcessResultSectionFilesItem[];
 }
 
-export interface CmsCaseStudy2TestimonialSection {
+export interface CmsCaseStudy2TestimonialSectionItem {
   author: string;
   comment: string;
   file: FileInfo;
+}
+
+export interface CmsCaseStudy2BtsVideoItem {
+  file: string;
+  thumbnailImage?: string;
+  seoTitle: string;
+  seoDescription: string;
+  publicationDate: string;
 }

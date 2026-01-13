@@ -13,7 +13,7 @@
         </h1>
         <h2 class="mx-auto my-24 w-[60%] text-center">{{ pageSubtitle }}</h2>
         <div class="mx-auto mb-12 w-[70%]">
-            <AutoPlayVideo
+            <AutoPlayStreamVideo
                 :title="overviewVideo.seoTitle"
                 :description="overviewVideo.seoDescription"
                 :thumbnail-image="overviewVideo.thumbnailImage"
@@ -74,24 +74,27 @@
         </div>
     </section>
     <TestimonialOverview
-        :testimonial="caseStudyData.testimonialSection"
+        v-if="
+            caseStudyData.testimonialSection &&
+            caseStudyData.testimonialSection.length > 0
+        "
+        :testimonial="caseStudyData.testimonialSection[0]!"
         class="w-full"
     />
-    <section class="bg-website-primary text-website-off-white pb-12 md:pb-24">
+    <section
+        v-if="btsVideo"
+        class="bg-website-primary text-website-off-white pb-12 md:pb-24"
+    >
         <MarkdownHeaderWithLine
             :header-markdown="`### behind the scenes`"
             class="pt-12 pb-32 pl-12"
         />
         <div class="mx-auto mb-12 w-[70%]">
-            <AutoPlayVideo
-                :title="overviewVideo.seoTitle"
-                :description="overviewVideo.seoDescription"
-                :thumbnail-image="overviewVideo.thumbnailImage"
-                :publication-date="overviewVideo.publicationDate"
-                :video="overviewVideo.video"
+            <FileOrVideo
+                :file="btsVideo"
                 :with-sound-control="true"
-                video-id="overview-video"
-                class="mb-12 h-full w-full object-cover object-center"
+                video-id="bts-video"
+                class="h-full w-full object-cover object-center"
                 sound-control-bottom-class="bottom-20 md:bottom-24"
             />
         </div>
@@ -137,6 +140,11 @@
     const pageTitle = caseStudyData.pageTitle;
     const pageSubtitle = caseStudyData.pageSubtitle;
     const overviewVideo = caseStudyData.overviewVideo;
+
+    const btsVideo =
+        caseStudyData.btsVideo && caseStudyData.btsVideo.length > 0
+            ? caseStudyData.btsVideo[0]
+            : null;
 
     const problemProcessResults = [
         {
