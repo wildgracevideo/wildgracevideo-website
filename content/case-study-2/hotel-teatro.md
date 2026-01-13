@@ -90,6 +90,15 @@ problemProcessResultSection:
 
 
     Additional footage was captured to create a versatile clip library for future website updates and social content.
-testimonialSection: []
+testimonialSection:
+  - author: Megan Pierce, The Curtis Hotel
+    file:
+      thumbnailImage: ""
+      file: https://content.wildgracevideo.com/images/Website-Portfolio/HotelTeatro/meganpierce.jpg
+      seoTitle: The Curtis Hotel Testimonial for Video Marketing Case Study
+      publicationDate: 2026-01-13T11:00:00.000-07:00
+      seoDescription: The Curtis Hotel Testimonial for Video Marketing Case Study
+    comment: Carly delivered a great product. You can remain confident in her
+      abilities to capture what you are looking for.
 btsVideo: []
 ---
