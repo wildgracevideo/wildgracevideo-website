@@ -33,6 +33,16 @@ videos:
       video: https://content.wildgracevideo.com/videos/Website-Portfolio/SurfHotel/TheSurfHotelWebsiteVideoV2/TheSurfHotelWebsiteVideoV2.mpd
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/SurfHotel/surfthumbnail.webp
     title: SURF HOTEL
+  - title: HOTEL TEATRO
+    videoInfo:
+      video: http://localhost.
+      publicationDate: 2026-01-12T17:32:00.000-07:00
+      seoTitle: Hotel Teatro Denver | Boutique Hotel Marketing Video Case Study
+      seoDescription: Hotel Teatro Denver video portfolio featuring boutique hotel
+        video production that highlights luxury interiors, design details, and
+        guest experience.
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/HotelTeatro/thumbnail_hotelteatro.png
+    pagePath: /case-study/hotel-teatro
   - videoInfo:
       publicationDate: 2024-04-11T15:05:00.000Z
       video: https://content.wildgracevideo.com/videos/Website-Portfolio/KamaSurface/KamaSki_HorizontalV1/KamaSki_HorizontalV1.mpd
