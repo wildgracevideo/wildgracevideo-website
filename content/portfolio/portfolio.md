@@ -62,11 +62,14 @@ videos:
     pagePath: /case-studies/van-essential
   - title: WHITEDUCK OUTDOORS
     videoInfo:
-      video: https://content.wildgracevideo.com/videos/Website-Portfolio/WhiteDuck/Trim_SunshadeConfigurations/Trim_SunshadeConfigurations.mpd
+      video: http://localhost.
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/WhiteDuck/WHITEDUCK_Thumbnail.png
-      seoTitle: Whitduck Outdoors Sunshade Configurations Video
-      seoDescription: Whitduck Outdoors Sunshade Configurations Video
-      publicationDate: 2025-08-18T16:01:00.000-06:00
+      seoTitle: Whiteduck Outdoors | Outdoor Brand Marketing Video Case Study
+      seoDescription: Whiteduck Outdoors video portfolio featuring outdoor brand video
+        production that highlights product experience, design details, and
+        product features.
+      publicationDate: 2026-01-13T10:56:00.000-07:00
+    pagePath: case-study/whiteduck-outdoors
   - videoInfo:
       publicationDate: 2024-04-11T15:05:00.000Z
       video: https://content.wildgracevideo.com/videos/Website-Portfolio/CurtisHotel/TheCurtisSalesPitchV4/TheCurtisSalesPitchV4.mpd
