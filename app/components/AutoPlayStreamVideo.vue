@@ -7,6 +7,7 @@
         loop
         disablePictureInPicture
         playsinline
+        :controls="showControls"
         :title="title"
     >
         <SchemaOrgVideo
@@ -60,11 +61,13 @@
             soundControlBottomClass?: string;
             videoId?: string;
             textColorClass?: string;
+            showControls?: boolean;
         }>(),
         {
             soundControlBottomClass: 'bottom-12',
             videoId: '',
             textColorClass: 'text-website-off-white',
+            showControls: false,
         }
     );
 
