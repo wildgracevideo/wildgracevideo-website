@@ -68,25 +68,22 @@ problemProcessResultSection:
         production that highlights product experience, design details, and
         product features.
       publicationDate: 2026-01-13T17:08:00.000-07:00
+  problemText: TEST
+  processText: TEST
+  resultText: TEST
 testimonialSection:
-  file:
-    seoTitle: Whiteduck Outdoors | Outdoor Brand Marketing Video Case Study
-    seoDescription: Whiteduck Outdoors video portfolio featuring outdoor brand video
-      production that highlights product experience, design details, and product
-      features.
-    publicationDate: 2026-01-13T11:33:00.000-07:00
-    file: https://content.wildgracevideo.com/images/Website-Portfolio/WhiteDuck/frame2.png
-  author: Madi Carson, Whiteduck Outdoors
-  comment: We recently worked with Carly and couldn’t be more impressed with the
-    experience. The content she created for us was stunning and perfectly
-    aligned with our brand. She was an absolute pleasure to work with from start
-    to finish—professional, communicative, and incredibly organized. Highly
-    recommend! You will not be disappointed!
-btsVideo:
-  publicationDate: 2026-01-13T17:10:00.000-07:00
-  file: https://content.wildgracevideo.com/images/Website-Portfolio/WhiteDuck/whiteducksetup_thumbnail.png
-  seoTitle: Whiteduck Outdoors | Outdoor Brand Marketing Video Case Study
-  seoDescription: Whiteduck Outdoors video portfolio featuring outdoor brand video
-    production that highlights product experience, design details, and product
-    features.
+  - file:
+      seoTitle: Whiteduck Outdoors | Outdoor Brand Marketing Video Case Study
+      seoDescription: Whiteduck Outdoors video portfolio featuring outdoor brand video
+        production that highlights product experience, design details, and
+        product features.
+      publicationDate: 2026-01-13T11:33:00.000-07:00
+      file: https://content.wildgracevideo.com/images/Website-Portfolio/WhiteDuck/frame2.png
+    author: Madi Carson, Whiteduck Outdoors
+    comment: We recently worked with Carly and couldn’t be more impressed with the
+      experience. The content she created for us was stunning and perfectly
+      aligned with our brand. She was an absolute pleasure to work with from
+      start to finish—professional, communicative, and incredibly organized.
+      Highly recommend! You will not be disappointed!
+btsVideo: []
 ---
