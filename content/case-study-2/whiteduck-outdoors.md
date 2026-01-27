@@ -68,9 +68,29 @@ problemProcessResultSection:
         production that highlights product experience, design details, and
         product features.
       publicationDate: 2026-01-13T17:08:00.000-07:00
-  problemText: TEST
-  processText: TEST
-  resultText: TEST
+  problemText: >-
+    Whiteduck Outdoors launched a new product, *The Sunshade*, but lacked video
+    content showing its versatility and setup. 
+
+
+    Customers struggled to see themselves using it and didn’t have a clear tutorial on how to easily set up the product.
+
+
+    They hired me to create a video concept that highlighted the product’s features and lifestyle use, along with a simple, easy-to-follow setup video.
+  processText: >-
+    I started by developing two video concepts, full shotlists, and vision
+    boards based on their goals and shared that with them over a Pre-Production
+    call. They loved the ideas and organized approach and were ready to move
+    forward.
+
+
+    I then scouted for location, hired actors and a production assistant and with a small crew we were able to get the videos done in a half day shoot.
+  resultText: >-
+    Whiteduck Outdoors now has conversion-focused content that they can use on
+    their Amazon product page, website, YouTube and post-purchase email.
+
+
+    They also have informational content that can be used on a QR code with package instructions to make the client experience easy and stress-free.
 testimonialSection:
   - file:
       seoTitle: Whiteduck Outdoors | Outdoor Brand Marketing Video Case Study
