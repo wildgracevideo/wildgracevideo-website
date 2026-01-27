@@ -19,10 +19,11 @@
             :title="file.seoTitle"
             :thumbnail-image="file.thumbnailImage"
             :publication-date="file.publicationDate"
-            :class="`pointer-events-none cursor-default ${
-                $attrs.class as string
-            }`"
+            :class="`${
+                showControls ? '' : 'pointer-events-none cursor-default'
+            } ${$attrs.class as string}`"
             :with-sound-control="withSoundControl"
+            :show-controls="showControls ?? false"
         />
         <template v-else>
             <NuxtImg
@@ -49,6 +50,7 @@
         sizes?: string;
         isLazy?: boolean;
         withSoundControl?: boolean;
+        showControls?: boolean;
         parentClass?: string;
     };
     defineProps<FileConfig>();

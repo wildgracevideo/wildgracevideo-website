@@ -23,7 +23,6 @@
                 :show-controls="true"
                 video-id="overview-video"
                 class="mb-12 h-full w-full object-cover object-center"
-                sound-control-bottom-class="bottom-20 md:bottom-24"
             />
         </div>
         <div
@@ -32,7 +31,7 @@
             <FileOrVideo
                 v-for="file in caseStudyData.btsFiles"
                 :key="file.seoTitle"
-                parent-class="pointer-events-none relative z-0 cursor-default h-64"
+                parent-class="relative z-0 cursor-default h-64"
                 class="h-full w-full object-cover object-center"
                 :file="file"
                 sizes="2xl:800px xl:615px lg:512px 410px"
@@ -62,7 +61,7 @@
             <FileOrVideo
                 v-for="file in caseStudyData.problemProcessResultSection.files"
                 :key="file.seoTitle"
-                :parent-class="`pointer-events-none relative z-0 cursor-default mx-auto ${
+                :parent-class="`relative z-0 cursor-default mx-auto ${
                     file.isVertical
                         ? 'aspect-photo w-1/2'
                         : 'aspect-video w-3/4'
@@ -71,6 +70,7 @@
                 :file="file"
                 sizes="2xl:800px xl:615px lg:512px 410px"
                 :with-sound-control="false"
+                :show-controls="true"
             />
         </div>
     </section>
@@ -93,10 +93,10 @@
         <div class="mx-auto mb-12 w-[70%]">
             <FileOrVideo
                 :file="btsVideo"
-                :with-sound-control="true"
+                :with-sound-control="false"
+                :show-controls="true"
                 video-id="bts-video"
                 class="h-full w-full object-cover object-center"
-                sound-control-bottom-class="bottom-20 md:bottom-24"
             />
         </div>
         <div class="flex w-full flex-row justify-center">
