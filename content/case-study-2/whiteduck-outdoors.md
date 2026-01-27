@@ -105,5 +105,12 @@ testimonialSection:
       aligned with our brand. She was an absolute pleasure to work with from
       start to finish—professional, communicative, and incredibly organized.
       Highly recommend! You will not be disappointed!
-btsVideo: []
+btsVideo:
+  - file: https://content.wildgracevideo.com/videos/Website-Portfolio/WhiteDuck/WhiteduckBTSVideo/WhiteduckBTSVideo.mpd
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/WhiteDuck/WhiteduckBTS_Thumbnail_1.11.1.png
+    seoTitle: Whiteduck Outdoors | Outdoor Brand Marketing Video Case Study
+    seoDescription: Whiteduck Outdoors video portfolio featuring outdoor brand video
+      production that highlights product experience, design details, and product
+      features.
+    publicationDate: 2026-01-26T21:57:00.000-07:00
 ---
