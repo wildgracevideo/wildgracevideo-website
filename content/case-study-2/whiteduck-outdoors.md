@@ -98,12 +98,19 @@ testimonialSection:
         production that highlights product experience, design details, and
         product features.
       publicationDate: 2026-01-13T11:33:00.000-07:00
-      file: https://content.wildgracevideo.com/images/Website-Portfolio/WhiteDuck/frame2.png
+      file: https://content.wildgracevideo.com/images/Website-Portfolio/WhiteDuck/madicarson_whiteduck.jpeg
     author: Madi Carson, Whiteduck Outdoors
     comment: We recently worked with Carly and couldn’t be more impressed with the
       experience. The content she created for us was stunning and perfectly
       aligned with our brand. She was an absolute pleasure to work with from
       start to finish—professional, communicative, and incredibly organized.
       Highly recommend! You will not be disappointed!
-btsVideo: []
+btsVideo:
+  - file: https://content.wildgracevideo.com/videos/Website-Portfolio/WhiteDuck/WhiteduckBTSVideo/WhiteduckBTSVideo.mpd
+    thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/WhiteDuck/WhiteduckBTS_Thumbnail_1.11.1.png
+    seoTitle: Whiteduck Outdoors | Outdoor Brand Marketing Video Case Study
+    seoDescription: Whiteduck Outdoors video portfolio featuring outdoor brand video
+      production that highlights product experience, design details, and product
+      features.
+    publicationDate: 2026-01-26T21:57:00.000-07:00
 ---
