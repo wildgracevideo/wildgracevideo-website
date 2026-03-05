@@ -28,13 +28,13 @@ btsFiles:
       apparel brand video marketing that highlights apparel design details,
       storytelling and founder experience.
     publicationDate: 2026-03-05T10:17:00.000-07:00
-  - file: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/DSC00941.jpg
+  - file: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/Expntl_3.png
     seoTitle: Expntl Athletics | Running Apparel Brand Marketing Video Case Study
     seoDescription: Expntl Athletics video portfolio featuring outdoor running
       apparel brand video marketing that highlights apparel design details,
       storytelling and founder experience.
     publicationDate: 2026-03-05T10:17:00.000-07:00
-  - file: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/Expntl_1.png
+  - file: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/DSC00941.jpg
     seoTitle: Expntl Athletics | Running Apparel Brand Marketing Video Case Study
     seoDescription: Expntl Athletics video portfolio featuring outdoor running
       apparel brand video marketing that highlights apparel design details,
@@ -46,7 +46,7 @@ btsFiles:
       apparel brand video marketing that highlights apparel design details,
       storytelling and founder experience.
     publicationDate: 2026-03-05T10:17:00.000-07:00
-  - file: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/Expntl_3.png
+  - file: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/Expntl_1.png
     seoTitle: Expntl Athletics | Running Apparel Brand Marketing Video Case Study
     seoDescription: Expntl Athletics video portfolio featuring outdoor running
       apparel brand video marketing that highlights apparel design details,
