@@ -74,12 +74,20 @@ problemProcessResultSection:
         apparel brand video marketing that highlights apparel design details,
         storytelling and founder experience.
       publicationDate: 2026-03-05T10:18:00.000-07:00
-  problemText: I wanted to create a brand documentary for an athlete with a story
-    to tell. Someone who had their own brand that we could promote through
-    authentic storytelling. After searching for the right fit, I found Caitlyn
-    on Instagram. I was immediately drawn in by her work ethic and what she'd
-    already accomplished at such a young age. I sent her a voice memo, she loved
-    the idea, and we got to work.
+  problemText: >-
+    I wanted to create a brand documentary for an athlete with a story to tell.
+    Someone who had their own brand that we could promote through authentic
+    storytelling.
+
+
+
+
+    After searching for the right fit, I found Caitlyn on Instagram. I was immediately drawn in by her work ethic and what she'd already accomplished at such a young age.
+
+
+
+
+    I sent her a voice memo, she loved the idea, and we got to work.
   processText: >-
     We started with a video call so I could get to know Caitlyn better before
     bringing cameras in.
