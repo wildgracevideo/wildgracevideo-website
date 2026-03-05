@@ -14,8 +14,8 @@ videos:
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/EXPNTL_thumbnail.jpg
       seoTitle: Expntl Athletics Brand Documentary
       seoDescription: Expntl Athletics Brand Documentary
-      publicationDate: 2025-08-20T09:18:00.000-06:00
-    pagePath: ""
+      publicationDate: 2026-03-05T09:43:00.000-07:00
+    pagePath: /CASE-STUDY/EXPNTL-ATHLETICS
   - videoInfo:
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/GraniteGear/GGThumbnail.png
       seoTitle: "Granite Gear: Backpacks for Outdoor Enthusiasts | Video Portfolio"
