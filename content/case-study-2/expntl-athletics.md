@@ -93,14 +93,10 @@ problemProcessResultSection:
     bringing cameras in.
 
 
-
-
     After hearing more of her story, I was able to build out a shotlist and storyboard, do a full day location scout, put together a schedule and get a small crew together to achieve the vision (Bella McCloskey as the truck driver and Maddy Montoya as PA and BTS). 
 
 
-
-
-    Finally it was time to shoot, and I made sure to share the whole plan with Caitlyn so there were no surprises. We had an early start at 5am, wrapped by 10am and had an amazing shoot day!
+    Finally it was time to shoot, and I made sure to share the whole plan with Caitlyn so there were no surprises. Day 1, we had an early start at 5am, wrapped by 10am and had an amazing shoot day capturing all the running B-roll! Day 2, was focused on Caitlyn and her "home life". We filmed her interview and I captured pieces of her home in its natural state--nothing staged.
   resultText: The final result was a short documentary that could be used to
     connect and build trust with her audience, by sharing her story while
     showcasing her product throughout the documentary.
