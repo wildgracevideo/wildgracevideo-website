@@ -10,9 +10,9 @@ seoDescription: Expntl Athletics video portfolio featuring outdoor running
 path: expntl-athletics
 webpagePreviewFile: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/EXPNTL_thumbnail.jpg
 pageTitle: Expntl Athletics
-pageSubtitle: I created a brand documentary short film for Expntl Athletics to
-  help build authenticity, trust and emotional connection through real,
-  human-centered narratives rather than polished ads.
+pageSubtitle: I helped Expntl Athletics connect with their audience by creating
+  a short brand documentary that showcased the real journey behind the athlete
+  and founder.
 overviewVideo:
   video: https://content.wildgracevideo.com/videos/Website-Portfolio/Expntl/Expntl_Doc_Commercial_V1/Expntl_Doc_Commercial_V1.mpd
   thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/Expntl/EXPNTL_thumbnail.jpg
@@ -75,30 +75,32 @@ problemProcessResultSection:
         storytelling and founder experience.
       publicationDate: 2026-03-05T10:18:00.000-07:00
   problemText: >-
-    I had the idea to create a brand documentary short film for an athlete who
-    had a great story and their own brand that we could promote through
-    authentic storytelling and human connection.
+    I wanted to create a brand documentary for an athlete with a story to tell.
+    Someone who had their own brand that we could promote through authentic
+    storytelling.
 
 
-    After searching around for the right fit, I found Caitlyn on Instagram and I was immediately inspired by the amount of work she put into training and the achievements she had already accomplished at such a young age. I had so many questions about her background and what was involved for her to get to where she was. 
 
 
-    I sent Caitlyn a voice memo on Instagram, she loved the idea and it was time to put a plan in place.
+    After searching for the right fit, I found Caitlyn on Instagram. I was immediately drawn in by her work ethic and what she'd already accomplished at such a young age.
+
+
+
+
+    I sent her a voice memo, she loved the idea, and we got to work.
   processText: >-
-    We started with an initial video call so that I could get to know her before
+    We started with a video call so I could get to know Caitlyn better before
     bringing cameras in.
 
 
-    After hearing a little more about her story, I put together a shotlist and storyboard.
 
 
-    The next step was to hire a crew. I reached out to a few friends of mine in the industry and they were super down to help with this project. We had Bella McCloskey as the truck driver, and Maddy Montoya as the production assistant and behind the scenes. 
+    After hearing more of her story, I was able to build out a shotlist and storyboard, do a full day location scout, put together a schedule and get a small crew together to achieve the vision (Bella McCloskey as the truck driver and Maddy Montoya as PA and BTS). 
 
 
-    I spent a day locations scouting for the perfect locations and came up with a shoot schedule so that we got everything we needed in a short period of time. I shared this all with Caitlyn so she knew exactly what to expect.
 
 
-    With a great plan in place, we were able to start at 5am, and complete the shoot by 10am!
+    Finally it was time to shoot, and I made sure to share the whole plan with Caitlyn so there were no surprises. We had an early start at 5am, wrapped by 10am and had an amazing shoot day!
   resultText: The final result was a short documentary that could be used to
     connect and build trust with her audience, by sharing her story while
     showcasing her product throughout the documentary.
