@@ -84,19 +84,17 @@
         function handleIntersection(entries: IntersectionObserverEntry[]) {
             entries.map((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
-                    player.value.attach(videoElement.value);
-                    player.value
-                        .load(preloadManager.value)
-                        .then(() => {
-                            if (props.autoPlay) {
+                    if (props.autoPlay) {
+                        player.value.attach(videoElement.value);
+                        player.value
+                            .load(preloadManager.value)
+                            .then(() => {
                                 handleVideoControls(videoElement.value);
-                            }
-                        })
-                        .catch(() => {
-                            if (props.autoPlay) {
+                            })
+                            .catch(() => {
                                 handleVideoControls(videoElement.value);
-                            }
-                        });
+                            });
+                    }
                     observer.unobserve(entry.target);
                 }
             });
@@ -121,7 +119,7 @@
         async function loadShaka() {
             player.value = new window.shaka.Player();
             preloadManager.value = await player.value.preload(props.video);
-            const bufferingGoal = props.autoPlay ? 2 : 10;
+            const bufferingGoal = 2;
             player.value.configure({
                 streaming: {
                     bufferingGoal,
@@ -136,6 +134,21 @@
             });
             player.value.configure('manifest.dash.ignoreMinBufferTime', true);
             observer.observe(videoElement.value!);
+
+            if (!props.autoPlay) {
+                videoElement.value!.addEventListener(
+                    'play',
+                    async () => {
+                        if (!player.value.getMediaElement()) {
+                            videoElement.value!.pause();
+                            await player.value.attach(videoElement.value);
+                            await player.value.load(preloadManager.value);
+                            videoElement.value!.play();
+                        }
+                    },
+                    { once: true }
+                );
+            }
         }
     });
 </script>

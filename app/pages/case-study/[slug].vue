@@ -114,7 +114,6 @@
 </template>
 
 <script setup lang="ts">
-    import { handleVideoControls } from '~~/shared/lib/handle-video-controls';
     import type { CmsCaseStudy2 } from '~~/shared/types/cms';
 
     const route = useRoute();
@@ -165,12 +164,4 @@
             description: caseStudyData.problemProcessResultSection.resultText,
         },
     ];
-
-    onMounted(() => {
-        const videoElement = document.getElementById(
-            'overview-video'
-        ) as HTMLVideoElement;
-
-        handleVideoControls(videoElement);
-    });
 </script>

@@ -14,7 +14,7 @@ pages for managing customer inquiries, an overview of products purchased on the 
 
 Make sure to install the dependencies:
 
-* Install [mise](https://mise.jdx.dev/getting-started.html#installing-mise-cli)
+-   Install [mise](https://mise.jdx.dev/getting-started.html#installing-mise-cli)
 
 ```bash
 mise trust .node-version
