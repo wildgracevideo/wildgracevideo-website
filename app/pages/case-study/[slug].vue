@@ -93,7 +93,7 @@
             :header-markdown="`### behind the scenes`"
             class="pt-12 pb-32 pl-12"
         />
-        <div class="mx-auto mb-12 w-[70%]">
+        <div class="mx-auto mb-12 w-[90%] md:w-[70%]">
             <FileOrVideo
                 :file="btsVideo"
                 :with-sound-control="false"
