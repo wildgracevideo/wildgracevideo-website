@@ -8,7 +8,7 @@
         disablePictureInPicture
         playsinline
         :controls="!autoPlay || showControls"
-        :poster="thumbnailImageResolved"
+        :poster="!autoPlay ? thumbnailImageResolved : ''"
         :title="title"
     >
         <SchemaOrgVideo

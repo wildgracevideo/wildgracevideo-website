@@ -302,6 +302,7 @@ const config = {
     },
     routeRules: {
         '/**': { isr: true }, // Build once and cache
+        '/get-started': { ssr: false },
         '/admin/**': { isr: false },
         '/admin/media': { ssr: false },
         '/api/**': { isr: false },
