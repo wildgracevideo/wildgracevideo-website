@@ -11,6 +11,7 @@
                 $attrs.class as string
             }`"
             :with-sound-control="withSoundControl"
+            :auto-play="autoPlay"
         />
         <AutoPlayStreamVideo
             v-else-if="file.file.endsWith('mpd')"
@@ -24,6 +25,7 @@
             } ${$attrs.class as string}`"
             :with-sound-control="withSoundControl"
             :show-controls="showControls ?? false"
+            :auto-play="autoPlay"
         />
         <template v-else>
             <NuxtImg
@@ -52,6 +54,7 @@
         withSoundControl?: boolean;
         showControls?: boolean;
         parentClass?: string;
+        autoPlay?: boolean;
     };
     defineProps<FileConfig>();
 

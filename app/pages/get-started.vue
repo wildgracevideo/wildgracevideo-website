@@ -131,7 +131,7 @@
                     />
                     <RequiredDropdownSelect
                         id="project-budget-dropdown"
-                        v-model="hearChoice"
+                        v-model="budgetChoice"
                         title="Project Budget"
                         container-class="mb-2 md:col-span-2 col-span-1"
                         :is-required="isRequired"

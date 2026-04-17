@@ -3,11 +3,12 @@
         :id="videoId"
         ref="videoElement"
         :class="`${$attrs.class as string}`"
-        muted
+        :muted="autoPlay"
         loop
         disablePictureInPicture
         playsinline
-        :controls="showControls"
+        :controls="!autoPlay || showControls"
+        :poster="thumbnailImageResolved"
         :title="title"
     >
         <SchemaOrgVideo
@@ -41,8 +42,6 @@
 
     const videoElement = ref<HTMLVideoElement>();
 
-    const muted = ref(true);
-
     const player = ref(null);
     const preloadManager = ref(null);
 
@@ -62,14 +61,18 @@
             videoId?: string;
             textColorClass?: string;
             showControls?: boolean;
+            autoPlay?: boolean;
         }>(),
         {
             soundControlBottomClass: 'bottom-12',
             videoId: '',
             textColorClass: 'text-website-off-white',
             showControls: false,
+            autoPlay: true,
         }
     );
+
+    const muted = ref(props.autoPlay);
 
     const thumbnailImageResolved = !props.thumbnailImage
         ? props.video
@@ -85,10 +88,14 @@
                     player.value
                         .load(preloadManager.value)
                         .then(() => {
-                            handleVideoControls(videoElement.value);
+                            if (props.autoPlay) {
+                                handleVideoControls(videoElement.value);
+                            }
                         })
                         .catch(() => {
-                            handleVideoControls(videoElement.value);
+                            if (props.autoPlay) {
+                                handleVideoControls(videoElement.value);
+                            }
                         });
                     observer.unobserve(entry.target);
                 }
@@ -114,9 +121,10 @@
         async function loadShaka() {
             player.value = new window.shaka.Player();
             preloadManager.value = await player.value.preload(props.video);
+            const bufferingGoal = props.autoPlay ? 2 : 10;
             player.value.configure({
                 streaming: {
-                    bufferingGoal: 2,
+                    bufferingGoal,
                     rebufferingGoal: 1,
                     bufferBehind: 0,
                     lowLatencyMode: true,

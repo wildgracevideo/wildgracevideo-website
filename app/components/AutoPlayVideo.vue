@@ -3,10 +3,11 @@
         :id="videoId"
         ref="videoElement"
         :class="`${$attrs.class as string}`"
-        muted
+        :muted="autoPlay"
         loop
         disablePictureInPicture
         playsinline
+        :poster="thumbnailImage"
         :title="title"
     >
         <SchemaOrgVideo
@@ -39,7 +40,28 @@
 
     const videoElement = ref<HTMLVideoElement>();
 
-    const muted = ref(true);
+    const props = withDefaults(
+        defineProps<{
+            title: string;
+            description: string;
+            thumbnailImage: string | undefined;
+            video: string;
+            publicationDate: string;
+            withSoundControl?: boolean;
+            soundControlBottomClass?: string;
+            videoId?: string;
+            textColorClass?: string;
+            autoPlay?: boolean;
+        }>(),
+        {
+            soundControlBottomClass: 'bottom-12',
+            videoId: '',
+            textColorClass: 'text-website-off-white',
+            autoPlay: true,
+        }
+    );
+
+    const muted = ref(props.autoPlay);
 
     function toggleMute() {
         muted.value = !muted.value;
@@ -55,7 +77,9 @@
                     videoSource.type = 'video/mp4';
                     videoSource.src = props.video;
                     videoElement.value!.appendChild(videoSource);
-                    videoElement.value!.play();
+                    if (props.autoPlay) {
+                        videoElement.value!.play();
+                    }
                     observer.unobserve(entry.target);
                 }
             });
@@ -66,23 +90,4 @@
         });
         observer.observe(videoElement.value!);
     });
-
-    const props = withDefaults(
-        defineProps<{
-            title: string;
-            description: string;
-            thumbnailImage: string | undefined;
-            video: string;
-            publicationDate: string;
-            withSoundControl?: boolean;
-            soundControlBottomClass?: string;
-            videoId?: string;
-            textColorClass?: string;
-        }>(),
-        {
-            soundControlBottomClass: 'bottom-12',
-            videoId: '',
-            textColorClass: 'text-website-off-white',
-        }
-    );
 </script>

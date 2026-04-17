@@ -21,12 +21,13 @@
                 :video="overviewVideo.video"
                 :with-sound-control="false"
                 :show-controls="true"
+                :auto-play="false"
                 video-id="overview-video"
                 class="mb-12 h-full w-full object-cover object-center"
             />
         </div>
         <div
-            class="grid w-full grid-cols-2 flex-wrap gap-2 px-2 pb-8 md:grid-cols-3"
+            class="grid w-full grid-cols-1 flex-wrap gap-2 px-2 pb-8 md:grid-cols-3"
         >
             <FileOrVideo
                 v-for="file in caseStudyData.btsFiles"
@@ -36,6 +37,7 @@
                 :file="file"
                 sizes="2xl:800px xl:615px lg:512px 410px"
                 :with-sound-control="false"
+                :auto-play="false"
             />
         </div>
     </section>
@@ -71,6 +73,7 @@
                 sizes="2xl:800px xl:615px lg:512px 410px"
                 :with-sound-control="false"
                 :show-controls="true"
+                :auto-play="false"
             />
         </div>
     </section>
@@ -95,6 +98,7 @@
                 :file="btsVideo"
                 :with-sound-control="false"
                 :show-controls="true"
+                :auto-play="false"
                 video-id="bts-video"
                 class="h-full w-full object-cover object-center"
             />
