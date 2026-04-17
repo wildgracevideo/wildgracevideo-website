@@ -12,7 +12,7 @@
             {{ pageTitle }}
         </h1>
         <h2 class="mx-auto my-24 w-[60%] text-center">{{ pageSubtitle }}</h2>
-        <div class="mx-auto mb-12 w-[70%]">
+        <div class="mx-auto mb-12 w-[90%] md:w-[70%]">
             <AutoPlayStreamVideo
                 :title="overviewVideo.seoTitle"
                 :description="overviewVideo.seoDescription"

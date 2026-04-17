@@ -2,7 +2,9 @@
     <video
         :id="videoId"
         ref="videoElement"
-        :class="`${$attrs.class as string}`"
+        :class="`${$attrs.class as string} ${
+            !autoPlay ? 'cursor-pointer' : ''
+        }`"
         :muted="autoPlay"
         loop
         disablePictureInPicture
@@ -142,7 +144,39 @@
                         if (!player.value.getMediaElement()) {
                             videoElement.value!.pause();
                             await player.value.attach(videoElement.value);
+                            const isDesktop = window.innerWidth >= 1024;
+                            if (isDesktop) {
+                                // Disable ABR temporarily so the initial segments
+                                // are fetched at the highest quality instead of
+                                // starting low and ramping up over ~5 seconds.
+                                player.value.configure({
+                                    abr: { enabled: false },
+                                });
+                            }
                             await player.value.load(preloadManager.value);
+                            if (isDesktop) {
+                                const tracks = player.value.getVariantTracks();
+                                if (tracks.length) {
+                                    const best = tracks.reduce(
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                        (a: any, b: any) =>
+                                            a.bandwidth > b.bandwidth ? a : b
+                                    );
+                                    // Force the highest-quality track without
+                                    // clearing the already-buffered data.
+                                    player.value.selectVariantTrack(
+                                        best,
+                                        false
+                                    );
+                                }
+                                // Re-enable ABR after 4 s — enough time to
+                                // buffer the opening seconds at full resolution.
+                                setTimeout(() => {
+                                    player.value?.configure({
+                                        abr: { enabled: true },
+                                    });
+                                }, 4000);
+                            }
                             videoElement.value!.play();
                         }
                     },
