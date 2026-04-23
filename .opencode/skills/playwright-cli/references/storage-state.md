@@ -32,27 +32,27 @@ The saved file contains:
 
 ```json
 {
-  "cookies": [
-    {
-      "name": "session_id",
-      "value": "abc123",
-      "domain": "example.com",
-      "path": "/",
-      "expires": 1735689600,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "Lax"
-    }
-  ],
-  "origins": [
-    {
-      "origin": "https://example.com",
-      "localStorage": [
-        { "name": "theme", "value": "dark" },
-        { "name": "user_id", "value": "12345" }
-      ]
-    }
-  ]
+    "cookies": [
+        {
+            "name": "session_id",
+            "value": "abc123",
+            "domain": "example.com",
+            "path": "/",
+            "expires": 1735689600,
+            "httpOnly": true,
+            "secure": true,
+            "sameSite": "Lax"
+        }
+    ],
+    "origins": [
+        {
+            "origin": "https://example.com",
+            "localStorage": [
+                { "name": "theme", "value": "dark" },
+                { "name": "user_id", "value": "12345" }
+            ]
+        }
+    ]
 }
 ```
 
@@ -268,8 +268,8 @@ playwright-cli open https://example.com
 
 ## Security Notes
 
-- Never commit storage state files containing auth tokens
-- Add `*.auth-state.json` to `.gitignore`
-- Delete state files after automation completes
-- Use environment variables for sensitive data
-- By default, sessions run in-memory mode which is safer for sensitive operations
+-   Never commit storage state files containing auth tokens
+-   Add `*.auth-state.json` to `.gitignore`
+-   Delete state files after automation completes
+-   Use environment variables for sensitive data
+-   By default, sessions run in-memory mode which is safer for sensitive operations

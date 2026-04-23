@@ -20,7 +20,6 @@
                 :publication-date="overviewVideo.publicationDate"
                 :video="overviewVideo.video"
                 :with-sound-control="false"
-                :show-controls="true"
                 :auto-play="false"
                 video-id="overview-video"
                 class="mb-12 h-full w-full object-cover object-center"

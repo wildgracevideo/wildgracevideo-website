@@ -1,28 +1,53 @@
 <template>
-    <video
-        :id="videoId"
-        ref="videoElement"
-        :class="`${$attrs.class as string} ${
-            !autoPlay ? 'cursor-pointer' : ''
-        }`"
-        :muted="autoPlay"
-        loop
-        disablePictureInPicture
-        playsinline
-        :controls="!autoPlay || showControls"
-        :poster="!autoPlay ? thumbnailImageResolved : ''"
-        :title="title"
-        @click="handleVideoClick"
-    >
-        <SchemaOrgVideo
-            :name="title"
-            :url="video"
-            :content-url="video"
-            :upload-date="publicationDate"
-            :description="description"
-            :thumbnail-url="thumbnailImageResolved"
-        />
-    </video>
+    <div :class="`${$attrs.class as string} relative`">
+        <video
+            :id="videoId"
+            ref="videoElement"
+            class="h-full w-full object-cover object-center"
+            :class="{
+                'cursor-pointer': !autoPlay,
+            }"
+            :muted="autoPlay"
+            loop
+            disablePictureInPicture
+            playsinline
+            :controls="showNativeControls || showControls"
+            :poster="!autoPlay ? thumbnailImageResolved : ''"
+            :title="title"
+            tabindex="0"
+            role="button"
+            @click="handleVideoClick"
+            @keydown="handleVideoClick"
+        >
+            <SchemaOrgVideo
+                :name="title"
+                :url="video"
+                :content-url="video"
+                :upload-date="publicationDate"
+                :description="description"
+                :thumbnail-url="thumbnailImageResolved"
+            />
+        </video>
+        <button
+            v-if="!autoPlay && !hasStarted"
+            class="absolute inset-0 flex items-center justify-center"
+            aria-label="Play video"
+            @click="initAndPlay()"
+        >
+            <span
+                class="flex h-16 w-16 items-center justify-center rounded-full bg-black/50"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    class="h-8 w-8 translate-x-0.5"
+                >
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+            </span>
+        </button>
+    </div>
     <button
         v-if="withSoundControl"
         :class="`relative ${soundControlBottomClass} z-10 float-right mr-4 ml-auto h-8 w-8 cursor-pointer ${textColorClass} md:h-10 md:w-10`"
@@ -43,10 +68,39 @@
     } from '@heroicons/vue/24/outline';
     import { handleVideoControls } from '~~/shared/lib/handle-video-controls';
 
+    defineOptions({
+        inheritAttrs: false,
+    });
+
+    const props = withDefaults(
+        defineProps<{
+            title: string;
+            description: string;
+            thumbnailImage: string | undefined;
+            video: string;
+            publicationDate: string;
+            withSoundControl?: boolean;
+            soundControlBottomClass?: string;
+            videoId?: string;
+            textColorClass?: string;
+            showControls?: boolean;
+            autoPlay?: boolean;
+        }>(),
+        {
+            soundControlBottomClass: 'bottom-12',
+            videoId: '',
+            textColorClass: 'text-website-off-white',
+            showControls: false,
+            autoPlay: true,
+        }
+    );
+
     const videoElement = ref<HTMLVideoElement>();
 
     const player = ref(null);
     const preloadManager = ref(null);
+    const hasStarted = ref(false);
+    const showNativeControls = ref(false);
     // Prevents initAndPlay from being called twice if both click and play fire
     let shakaInitialising = false;
 
@@ -60,6 +114,8 @@
     // event listener (Firefox, where native controls fire play directly).
     async function initAndPlay() {
         if (player.value.getMediaElement() || shakaInitialising) return;
+        hasStarted.value = true;
+        showNativeControls.value = true;
         shakaInitialising = true;
         try {
             videoElement.value!.pause();
@@ -94,37 +150,12 @@
     // Chrome / Safari: the @click on the video element fires before play.
     // We intercept it, prevent the default (which would try to play an
     // unloaded video), and drive playback ourselves via initAndPlay().
-    async function handleVideoClick(event: MouseEvent) {
+    async function handleVideoClick(_event: MouseEvent) {
         if (props.autoPlay) return;
         if (!player.value.getMediaElement() && !shakaInitialising) {
-            event.preventDefault();
-            event.stopPropagation();
             await initAndPlay();
         }
     }
-
-    const props = withDefaults(
-        defineProps<{
-            title: string;
-            description: string;
-            thumbnailImage: string | undefined;
-            video: string;
-            publicationDate: string;
-            withSoundControl?: boolean;
-            soundControlBottomClass?: string;
-            videoId?: string;
-            textColorClass?: string;
-            showControls?: boolean;
-            autoPlay?: boolean;
-        }>(),
-        {
-            soundControlBottomClass: 'bottom-12',
-            videoId: '',
-            textColorClass: 'text-website-off-white',
-            showControls: false,
-            autoPlay: true,
-        }
-    );
 
     const muted = ref(props.autoPlay);
 

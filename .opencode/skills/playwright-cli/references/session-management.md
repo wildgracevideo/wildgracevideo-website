@@ -21,12 +21,13 @@ playwright-cli -s=public snapshot
 ## Browser Session Isolation Properties
 
 Each browser session has independent:
-- Cookies
-- LocalStorage / SessionStorage
-- IndexedDB
-- Cache
-- Browsing history
-- Open tabs
+
+-   Cookies
+-   LocalStorage / SessionStorage
+-   IndexedDB
+-   Cache
+-   Browsing history
+-   Open tabs
 
 ## Browser Session Commands
 
