@@ -12,6 +12,7 @@
         :controls="!autoPlay || showControls"
         :poster="!autoPlay ? thumbnailImageResolved : ''"
         :title="title"
+        @click="handleVideoClick"
     >
         <SchemaOrgVideo
             :name="title"
@@ -46,11 +47,62 @@
 
     const player = ref(null);
     const preloadManager = ref(null);
+    // Prevents initAndPlay from being called twice if both click and play fire
+    let shakaInitialising = false;
 
     function toggleMute() {
         muted.value = !muted.value;
         videoElement.value.muted = muted.value;
     }
+
+    // Shared logic: attach Shaka, load, configure quality, then play.
+    // Safe to call from both the click handler (Chrome/Safari) and the play
+    // event listener (Firefox, where native controls fire play directly).
+    async function initAndPlay() {
+        if (player.value.getMediaElement() || shakaInitialising) return;
+        shakaInitialising = true;
+        try {
+            videoElement.value!.pause();
+            await player.value.attach(videoElement.value);
+            await player.value.load(preloadManager.value);
+            const isDesktop = window.innerWidth >= 1024;
+            if (isDesktop) {
+                // Disable ABR temporarily so the initial segments are fetched
+                // at the highest quality instead of starting low and ramping up.
+                player.value.configure({ abr: { enabled: false } });
+                const tracks = player.value.getVariantTracks();
+                if (tracks.length) {
+                    const best = tracks.reduce(
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        (a: any, b: any) => (a.bandwidth > b.bandwidth ? a : b)
+                    );
+                    // Force the highest-quality track without clearing buffered data.
+                    player.value.selectVariantTrack(best, false);
+                }
+                // Re-enable ABR after 4 s — enough time to buffer the opening
+                // seconds at full resolution.
+                setTimeout(() => {
+                    player.value?.configure({ abr: { enabled: true } });
+                }, 4000);
+            }
+            await videoElement.value!.play();
+        } finally {
+            shakaInitialising = false;
+        }
+    }
+
+    // Chrome / Safari: the @click on the video element fires before play.
+    // We intercept it, prevent the default (which would try to play an
+    // unloaded video), and drive playback ourselves via initAndPlay().
+    async function handleVideoClick(event: MouseEvent) {
+        if (props.autoPlay) return;
+        if (!player.value.getMediaElement() && !shakaInitialising) {
+            event.preventDefault();
+            event.stopPropagation();
+            await initAndPlay();
+        }
+    }
+
     const props = withDefaults(
         defineProps<{
             title: string;
@@ -138,48 +190,12 @@
             observer.observe(videoElement.value!);
 
             if (!props.autoPlay) {
+                // Firefox fires the native play event directly from its
+                // controls without first dispatching a click on the video
+                // element. We listen here so those browsers are also handled.
                 videoElement.value!.addEventListener(
                     'play',
-                    async () => {
-                        if (!player.value.getMediaElement()) {
-                            videoElement.value!.pause();
-                            await player.value.attach(videoElement.value);
-                            const isDesktop = window.innerWidth >= 1024;
-                            if (isDesktop) {
-                                // Disable ABR temporarily so the initial segments
-                                // are fetched at the highest quality instead of
-                                // starting low and ramping up over ~5 seconds.
-                                player.value.configure({
-                                    abr: { enabled: false },
-                                });
-                            }
-                            await player.value.load(preloadManager.value);
-                            if (isDesktop) {
-                                const tracks = player.value.getVariantTracks();
-                                if (tracks.length) {
-                                    const best = tracks.reduce(
-                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                        (a: any, b: any) =>
-                                            a.bandwidth > b.bandwidth ? a : b
-                                    );
-                                    // Force the highest-quality track without
-                                    // clearing the already-buffered data.
-                                    player.value.selectVariantTrack(
-                                        best,
-                                        false
-                                    );
-                                }
-                                // Re-enable ABR after 4 s — enough time to
-                                // buffer the opening seconds at full resolution.
-                                setTimeout(() => {
-                                    player.value?.configure({
-                                        abr: { enabled: true },
-                                    });
-                                }, 4000);
-                            }
-                            videoElement.value!.play();
-                        }
-                    },
+                    () => initAndPlay(),
                     { once: true }
                 );
             }
