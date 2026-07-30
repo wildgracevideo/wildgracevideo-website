@@ -33,14 +33,14 @@ btsFiles:
     file: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/snooze2.png
   - seoDescription: Snooze video portfolio features hospitality and restaurant video
       production that highlights the Snooze culture and guest experience.
-    publicationDate: 2026-07-29T21:24:00.000-06:00
+    publicationDate: 2026-07-30T07:23:00.000-06:00
     seoTitle: Snooze Eatery | Hospitality Marketing Video Case Study
-    file: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/snooze_3.png
+    file: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/snooze3.png
   - seoDescription: Snooze video portfolio features hospitality and restaurant video
       production that highlights the Snooze culture and guest experience.
-    publicationDate: 2026-07-29T19:30:00.000-06:00
+    publicationDate: 2026-07-30T07:24:00.000-06:00
     seoTitle: Snooze Eatery | Hospitality Marketing Video Case Study
-    file: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/snooze4.png
+    file: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/snooze_4.png
   - seoDescription: Snooze video portfolio features hospitality and restaurant video
       production that highlights the Snooze culture and guest experience.
     publicationDate: 2026-07-29T19:30:00.000-06:00
@@ -102,10 +102,5 @@ testimonialSection:
       seoDescription: Snooze video portfolio features hospitality and restaurant video
         production that highlights the Snooze culture and guest experience.
       file: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/laurenrainwater.jpg
-btsVideo:
-  - file: https://content.wildgracevideo.com/videos/Website-Portfolio/Snooze/btssnooze/btssnooze.mpd
-    seoTitle: Snooze Eatery | Hospitality Marketing Video Case Study
-    seoDescription: Snooze video portfolio features hospitality and restaurant video
-      production that highlights the Snooze culture and guest experience.
-    publicationDate: 2026-07-30T07:18:00.000-06:00
+btsVideo: []
 ---
