@@ -7,6 +7,9 @@ sitemap:
   lastmod: 2025-04-12
 mainReelAlt: Video reel showcasing the work of Wild Grace Videography.
 title: Denver Video Production Company | Wild Grace Video Portfolio
+description: "Wild Grace Video is a top Denver-based video production company
+  specializing in hotel video production, outdoor product videos and adventure
+  tour videos. "
 videos:
   - title: EXPNTL ATHLETICS
     videoInfo:
@@ -16,6 +19,15 @@ videos:
       seoDescription: Expntl Athletics Brand Documentary
       publicationDate: 2026-03-05T09:43:00.000-07:00
     pagePath: /case-study/expntl-athletics
+  - title: SNOOZE
+    pagePath: /case-study/snooze
+    videoInfo:
+      video: http://localhost.
+      publicationDate: 2026-07-29T20:20:00.000-06:00
+      seoTitle: Snooze Eatery | Hospitality Marketing Video Case Study
+      seoDescription: Snooze video portfolio features hospitality and restaurant video
+        production that highlights the Snooze culture and guest experience.
+      thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/thumbnail.png
   - videoInfo:
       thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/GraniteGear/GGThumbnail.png
       seoTitle: "Granite Gear: Backpacks for Outdoor Enthusiasts | Video Portfolio"
@@ -122,8 +134,5 @@ youtubeVideos:
     youtubeId: -9b9t_bAEz8
     alt: A travel video created by Wild Grace Videography showcasing the Big Island
       of Hawaii.
-description: "Wild Grace Video is a top Denver-based video production company
-  specializing in hotel video production, outdoor product videos and adventure
-  tour videos. "
 mainReelName: Video Production Portfolio
 ---
