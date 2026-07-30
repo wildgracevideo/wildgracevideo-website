@@ -10,9 +10,9 @@ path: snooze
 webpagePreviewFile: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/thumbnail.png
 pageTitle: SNOOZE
 pageSubtitle: I helped Snooze create an energetic atmosphere for their annual
-  leadership conference with an intro video that was built to recognize the
-  audience of of Head Chefs and General Managers and showcase the positive
-  culture that Snooze strives for.
+  leadership conference with an intro video that was built to recognize the hard
+  work and grit of the audience (Chefs and General Managers), shine light on the
+  importance of the community, and end on high energy and good vibes.
 overviewVideo:
   thumbnailImage: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/thumbnail.png
   seoTitle: Snooze Eatery | Hospitality Marketing Video Case Study
@@ -35,7 +35,7 @@ btsFiles:
       production that highlights the Snooze culture and guest experience.
     publicationDate: 2026-07-29T19:30:00.000-06:00
     seoTitle: Snooze Eatery | Hospitality Marketing Video Case Study
-    file: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/snooze3.png
+    file: https://content.wildgracevideo.com/images/Website-Portfolio/Snooze/snooze_3.png
   - seoDescription: Snooze video portfolio features hospitality and restaurant video
       production that highlights the Snooze culture and guest experience.
     publicationDate: 2026-07-29T19:30:00.000-06:00
