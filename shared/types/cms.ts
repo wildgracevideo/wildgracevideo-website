@@ -187,7 +187,8 @@ export interface CmsPortfolioVideosItem {
 
 export interface CmsCustomPortfolioVideosItem {
   title: string;
-  videoInfo: VideoInfo;
+  videoInfo?: VideoInfo;
+  pagePath?: string;
 }
 
 export interface CmsAboutAboutMeFile {
